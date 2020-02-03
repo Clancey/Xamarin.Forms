@@ -289,6 +289,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
+    <ProjectReference Include="..\DotNetUI.Core\DotNetUI.Core.csproj">
+      <Project>{9be33751-98ca-42e0-ae4b-a86158606dfd}</Project>
+      <Name>DotNetUI.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Xamarin.Forms.Core\Xamarin.Forms.Core.csproj">
       <Project>{57B8B73D-C3B5-4C42-869E-7B2F17D354AC}</Project>
       <Name>Xamarin.Forms.Core</Name>
