@@ -8,6 +8,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Xamarin.Forms.Platform\Xamarin.Forms.Platform.csproj" />
+		<ProjectReference Include="..\DotNetUI.Core\DotNetUI.Core.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Remove="Internals\Legacy\**" />

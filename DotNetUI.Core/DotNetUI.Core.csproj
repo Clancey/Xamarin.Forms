@@ -1,0 +1,68 @@
+<Project Sdk="MSBuild.Sdk.Extras">
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;Xamarin.iOS10;MonoAndroid90;Xamarin.Mac20</TargetFrameworks>
+    <RootNamespace>DotNetUI</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <ItemGroup Condition="$(TargetFramework.StartsWith('Xamarin.iOS')) != true ">
+    <Compile Remove="**\*.Ios.cs" />
+    <None Include="**\*.Ios.cs" />
+  </ItemGroup>
+  <ItemGroup Condition="$(TargetFramework.StartsWith('Xamarin.Mac')) != true ">
+    <Compile Remove="**\*.Mac.cs" />
+    <None Include="**\*.Mac.cs" />
+  </ItemGroup>
+  <ItemGroup Condition="$(TargetFramework.StartsWith('Xamarin.Mac')) != true And $(TargetFramework.StartsWith('Xamarin.iOS')) != true ">
+    <Compile Remove="**\*.MaciOS.cs" />
+    <None Include="**\*.MaciOS.cs" />
+  </ItemGroup>  
+  <ItemGroup Condition="$(TargetFramework.StartsWith('MonoAndroid')) != true ">
+    <Compile Remove="**\*.Android.cs" />
+    <None Include="**\*.Android.cs" />
+  </ItemGroup>
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard2')) != true ">
+    <Compile Remove="**\*.Standard.cs" />
+    <None Include="**\*.Standard.cs" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'MonoAndroid90'">
+    <PackageReference Include="Xamarin.Android.Support.v4" Version="28.0.0.3" />
+    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="28.0.0.3" />
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Platform\Android\ButtonLayoutManager.Android.cs">
+      <SubType>Code</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Renderers\LabelRenderer.iOS.cs">
+      <SubType></SubType>
+    </Compile>
+    <Compile Update="Renderers\LabelRenderer %28copy%29.iOS.cs">
+      <SubType></SubType>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Forms\TextType.cs">
+      <SubType></SubType>
+    </Compile>
+    <Compile Update="Platform\iOS\ViewExtensions.cs">
+      <SubType></SubType>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Forms\Color.cs">
+      <SubType></SubType>
+    </Compile>
+    <Compile Update="Forms\NumericExtensions.cs">
+      <SubType></SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Platform\MaciOS\" />
+    <Folder Include="Forms\" />
+    <Folder Include="Platform\iOS\" />
+    <Folder Include="Platform\Mac\" />
+  </ItemGroup>
+</Project>
