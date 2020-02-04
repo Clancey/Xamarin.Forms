@@ -32,6 +32,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Xamarin.Forms.Core\Xamarin.Forms.Core.csproj" />
     <ProjectReference Include="..\Xamarin.Forms.Xaml\Xamarin.Forms.Xaml.csproj" />
+    <ProjectReference Include="..\DotNetUI.Core\DotNetUI.Core.csproj" />
   </ItemGroup>
 
 	<PropertyGroup Condition="'$(SnExe)' == '' And '$(OS)' != 'Windows_NT'">

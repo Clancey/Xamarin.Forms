@@ -35,9 +35,6 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
-    <None Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Platform\Android\ButtonLayoutManager.Android.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Update="Renderers\LabelRenderer.iOS.cs">
       <SubType></SubType>
     </Compile>

@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Xamarin.Forms.Core\Xamarin.Forms.Core.csproj">
     </ProjectReference>
+    <ProjectReference Include="..\DotNetUI.Core\DotNetUI.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Diagnostics\" />

@@ -33,6 +33,7 @@
     <ProjectReference Include="..\Xamarin.Forms.CustomAttributes\Xamarin.Forms.CustomAttributes.csproj" />
     <ProjectReference Include="..\Xamarin.Forms.Maps\Xamarin.Forms.Maps.csproj" />
     <ProjectReference Include="..\Xamarin.Forms.Xaml\Xamarin.Forms.Xaml.csproj" />
+    <ProjectReference Include="..\DotNetUI.Core\DotNetUI.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="BuildNumber.txt" />
