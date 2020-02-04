@@ -42,7 +42,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuspec", ".nuspec", "{7E12
 		.nuspec\Xamarin.Forms.Visual.Material.targets = .nuspec\Xamarin.Forms.Visual.Material.targets
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xamarin.Forms.Core", "Xamarin.Forms.Core\Xamarin.Forms.Core.csproj", "{57B8B73D-C3B5-4C42-869E-7B2F17D354AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin.Forms.Core", "Xamarin.Forms.Core\Xamarin.Forms.Core.csproj", "{57B8B73D-C3B5-4C42-869E-7B2F17D354AC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xamarin.Forms.Xaml", "Xamarin.Forms.Xaml\Xamarin.Forms.Xaml.csproj", "{9DB2F292-8034-4E06-89AD-98BBDA4306B9}"
 EndProject
@@ -135,7 +135,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Xamarin.Forms.Material", "X
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin.Forms.Material.iOS", "Xamarin.Forms.Material.iOS\Xamarin.Forms.Material.iOS.csproj", "{8A75B1DC-CEED-4B1B-8675-A7DFFD1E6DE4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetUI.Core", "DotNetUI.Core\DotNetUI.Core.csproj", "{9BE33751-98CA-42E0-AE4B-A86158606DFD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetUI.Core", "DotNetUI.Core\DotNetUI.Core.csproj", "{9BE33751-98CA-42E0-AE4B-A86158606DFD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin.Forms.Build.Tasks", "Xamarin.Forms.Build.Tasks\Xamarin.Forms.Build.Tasks.csproj", "{2206C0A0-1654-4D0E-823E-90F870F82A83}"
 EndProject
