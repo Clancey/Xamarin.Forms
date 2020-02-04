@@ -33,6 +33,13 @@ using Xamarin.Forms.StyleSheets;
 [assembly: InternalsVisibleTo("Xamarin.Forms.Pages.UnitTests")]
 [assembly: InternalsVisibleTo("Xamarin.Forms.CarouselView")]
 [assembly: Preserve]
+[assembly: TypeForwardedTo(typeof(Color))]
+[assembly: TypeForwardedTo(typeof(Rectangle))]
+[assembly: TypeForwardedTo(typeof(Size))]
+[assembly: TypeForwardedTo(typeof(Point))]
+[assembly: TypeForwardedTo(typeof(TypeConverter))]
+[assembly: TypeForwardedTo(typeof(TypeConverterAttribute))]
+[assembly: TypeForwardedTo(typeof(TextType))]
 
 [assembly: XmlnsDefinition("http://xamarin.com/schemas/2014/forms", "Xamarin.Forms")]
 [assembly: XmlnsDefinition("http://xamarin.com/schemas/2014/forms/design", "Xamarin.Forms")]
