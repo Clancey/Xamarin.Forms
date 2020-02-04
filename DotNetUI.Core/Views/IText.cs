@@ -7,6 +7,6 @@ namespace DotNetUI.Views {
 
 		TextType TextType { get; }
 		//TODO: Add fonts and Colors
-		Color Color { get; set; }
+		Color Color { get; }
 	}
 }

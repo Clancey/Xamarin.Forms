@@ -34,6 +34,7 @@ namespace Xamarin.Forms.Build.Tasks
 
 		public static TypeReference GetBindablePropertyTypeConverter(this FieldReference bpRef, ModuleDefinition module)
 		{
+			//TODO: we need a static way to specify this stuff. So we don't need the attributes on the types.
 			var owner = bpRef.DeclaringType;
 			var bpName = bpRef.Name.EndsWith("Property", StringComparison.Ordinal) ? bpRef.Name.Substring(0, bpRef.Name.Length - 8) : bpRef.Name;
 			var property = owner.GetProperty(pd => pd.Name == bpName, out TypeReference propertyDeclaringType);

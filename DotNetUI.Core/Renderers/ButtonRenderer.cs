@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using DotNetUI.Views;
 
 namespace DotNetUI.Renderers {

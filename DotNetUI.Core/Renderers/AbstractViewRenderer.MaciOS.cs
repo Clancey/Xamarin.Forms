@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Drawing;
 using DotNetUI.Platform;
+using Xamarin.Forms;
 
 #if __MOBILE__
 using NativeColor = UIKit.UIColor;
@@ -16,7 +16,7 @@ namespace DotNetUI.Renderers {
 			this.mapper = mapper;
 		}
 
-		public void SetFrame (RectangleF rect) => View.Frame = rect.ToCGRect ();
+		public void SetFrame (Rectangle rect) => View.Frame = rect.ToCGRect ();
 
 		protected virtual void OnNativeViewCreated ()
 		{

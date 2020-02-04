@@ -37,7 +37,7 @@ namespace Xamarin.Forms
 	[AttributeUsage(AttributeTargets.All)]
 	public sealed class TypeConverterAttribute : Attribute
 	{
-		internal static string[] TypeConvertersType = { "Xamarin.Forms.TypeConverterAttribute", "System.ComponentModel.TypeConverterAttribute" };
+		public static string[] TypeConvertersType = { "Xamarin.Forms.TypeConverterAttribute", "System.ComponentModel.TypeConverterAttribute" };
 
 		public static readonly TypeConverterAttribute Default = new TypeConverterAttribute();
 

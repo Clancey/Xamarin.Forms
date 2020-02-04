@@ -1,6 +1,6 @@
-<Project Sdk="MSBuild.Sdk.Extras">
+﻿<Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;Xamarin.iOS10;MonoAndroid90;Xamarin.Mac20</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard1.0;Xamarin.iOS10;MonoAndroid90;Xamarin.Mac20</TargetFrameworks>
     <RootNamespace>DotNetUI</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -25,7 +25,7 @@
     <Compile Remove="**\*.Android.cs" />
     <None Include="**\*.Android.cs" />
   </ItemGroup>
-  <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard2')) != true ">
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) != true ">
     <Compile Remove="**\*.Standard.cs" />
     <None Include="**\*.Standard.cs" />
   </ItemGroup>
@@ -59,7 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Platform\MaciOS\" />
-    <Folder Include="Forms\" />
     <Folder Include="Platform\iOS\" />
     <Folder Include="Platform\Mac\" />
   </ItemGroup>

@@ -37,7 +37,7 @@ namespace Xamarin.Forms.Platform
 #if __ANDROID__
 	[RenderWith(typeof(Xamarin.Forms.Platform.Android.LabelRenderer))]
 #else
-	[RenderWith (typeof (LabelRenderer))]
+	[RenderWith (typeof(Xamarin.Forms.Platform.iOS.NewRenderers.LabelRenderer))]
 #endif
 	internal class _LabelRenderer { }
 

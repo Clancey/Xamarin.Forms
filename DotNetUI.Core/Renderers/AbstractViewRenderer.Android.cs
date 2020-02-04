@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Drawing;
 using Android.Content;
 using Android.Views;
+using Xamarin.Forms;
 
 namespace DotNetUI.Renderers
 {
@@ -14,7 +14,7 @@ namespace DotNetUI.Renderers
 
 		public Context Context { get; }
 
-		public void SetFrame(RectangleF frame)
+		public void SetFrame(Rectangle frame)
 		{
 			var nativeView = TypedNativeView;
 			if (nativeView == null)

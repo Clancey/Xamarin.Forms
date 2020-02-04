@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Drawing;
+using Xamarin.Forms;
 #if __IOS__
 using NativeView = UIKit.UIView;
 #elif __MACOS__
@@ -51,7 +51,7 @@ namespace DotNetUI.Renderers
 		{
 			mapper?.UpdateProperty(this, _virtualView, property);
 		}
-		public SizeF GetIntrinsicSize(SizeF availableSize) => new SizeF(-1, -1);
+		public Size GetIntrinsicSize(Size availableSize) => new Size(-1, -1);
 
 	}
 }

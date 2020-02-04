@@ -73,6 +73,10 @@
     <ITunesArtwork Include="iTunesArtwork@2x" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\DotNetUI.Core\DotNetUI.Core.csproj">
+      <Project>{9be33751-98ca-42e0-ae4b-a86158606dfd}</Project>
+      <Name>DotNetUI.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Xamarin.Forms.Core\Xamarin.Forms.Core.csproj">
       <Project>{57b8b73d-c3b5-4c42-869e-7b2f17d354ac}</Project>
       <Name>Xamarin.Forms.Core</Name>

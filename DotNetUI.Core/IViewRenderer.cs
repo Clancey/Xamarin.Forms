@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Drawing;
+using Xamarin.Forms;
 
 namespace DotNetUI
 {
@@ -9,7 +9,7 @@ namespace DotNetUI
 		void UpdateValue (string property, object value);
 		void Remove (IView view);
 		object NativeView { get; }
-		SizeF GetIntrinsicSize (SizeF availableSize);
-		void SetFrame (RectangleF frame);
+		Size GetIntrinsicSize (Size availableSize);
+		void SetFrame (Rectangle frame);
 	}
 }

@@ -45,7 +45,7 @@ namespace Xamarin.Forms.Internals
 			return null;
 		}
 
-		internal static object[] GetCustomAttributesSafe(this Assembly assembly,  Type attrType)
+		public static object[] GetCustomAttributesSafe(this Assembly assembly,  Type attrType)
 		{
 			try
 			{
@@ -58,7 +58,8 @@ namespace Xamarin.Forms.Internals
 			catch (System.IO.FileNotFoundException)
 			{
 				// Sometimes the previewer doesn't actually have everything required for these loads to work
-				Log.Warning(nameof(Registrar), "Could not load assembly: {0} for Attribute {1} | Some renderers may not be loaded", assembly.FullName, attrType.FullName);
+				//TODO: figure this out
+				//Log.Warning(nameof(Registrar), "Could not load assembly: {0} for Attribute {1} | Some renderers may not be loaded", assembly.FullName, attrType.FullName);
 			}
 
 			return null;

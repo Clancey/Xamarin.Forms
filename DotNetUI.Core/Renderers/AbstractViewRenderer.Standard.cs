@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Drawing;
+using Xamarin.Forms;
 
 namespace DotNetUI.Renderers
 {
 	public abstract partial class AbstractViewRenderer<TVirtualView, TNativeView>
 	{
-		public void SetFrame(RectangleF rect)
+		public void SetFrame(Rectangle rect)
 		{
 
 		}

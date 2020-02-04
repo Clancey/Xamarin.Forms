@@ -7,7 +7,7 @@ using Xamarin.Forms.Internals;
 namespace Xamarin.Forms
 {
 	[DebuggerDisplay("R={R}, G={G}, B={B}, A={A}, Hue={Hue}, Saturation={Saturation}, Luminosity={Luminosity}")]
-	//[TypeConverter(typeof(ColorTypeConverter))]
+	[TypeConverter(typeof(ColorTypeConverter))]
 	public struct Color
 	{
 		readonly Mode _mode;
