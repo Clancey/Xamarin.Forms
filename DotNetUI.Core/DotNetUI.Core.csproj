@@ -32,27 +32,6 @@
   <ItemGroup Condition="'$(TargetFramework)' == 'MonoAndroid90'">
     <PackageReference Include="Xamarin.Android.Support.v4" Version="28.0.0.3" />
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="28.0.0.3" />
-    <Reference Include="System.Drawing" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Update="Renderers\LabelRenderer.iOS.cs">
-      <SubType></SubType>
-    </Compile>
-    <Compile Update="Renderers\LabelRenderer %28copy%29.iOS.cs">
-      <SubType></SubType>
-    </Compile>
-    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Forms\TextType.cs">
-      <SubType></SubType>
-    </Compile>
-    <Compile Update="Platform\iOS\ViewExtensions.cs">
-      <SubType></SubType>
-    </Compile>
-    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Forms\Color.cs">
-      <SubType></SubType>
-    </Compile>
-    <Compile Update="Forms\NumericExtensions.cs">
-      <SubType></SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Platform\MaciOS\" />

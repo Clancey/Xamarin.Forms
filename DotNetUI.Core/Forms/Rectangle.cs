@@ -31,7 +31,7 @@ using System.Globalization;
 namespace Xamarin.Forms
 {
 	[DebuggerDisplay("X={X}, Y={Y}, Width={Width}, Height={Height}")]
-	//[TypeConverter(typeof(RectangleTypeConverter))]
+	[TypeConverter(typeof(RectangleTypeConverter))]
 	public struct Rectangle
 	{
 		public double X { get; set; }
