@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using Xamarin.Forms.Internals;
@@ -141,7 +142,7 @@ namespace Xamarin.Forms.Internals
 					return specificTypeRenderer.target;
 
 			// 2. Do we have a RenderWith for this type or its base types? Register them now.
-			RegisterRenderWithTypes(viewType, visualType);
+			//RegisterRenderWithTypes(viewType, visualType);
 
 			// 3. Do we have a custom renderer for a base type or did we just register an appropriate renderer from RenderWith?
 			if (LookupHandlerType(viewType, visualType, out (Type target, short priority) baseTypeRenderer))
@@ -179,69 +180,6 @@ namespace Xamarin.Forms.Internals
 
 			handlerType = (null, 0);
 			return false;
-		}
-
-		void RegisterRenderWithTypes(Type viewType, Type visualType)
-		{
-			visualType = visualType ?? _defaultVisualType;
-
-			// We're going to go through each type in this viewType's inheritance chain to look for classes
-			// decorated with a RenderWithAttribute. We're going to register each specific type with its
-			// renderer.
-			while (viewType != null && viewType != typeof(Element))
-			{
-				// Only go through this process if we have not registered something for this type;
-				// we don't want RenderWith renderers to override ExportRenderers that are already registered.
-				// Plus, there's no need to do this again if we already have a renderer registered.
-				if (!_handlers.TryGetValue(viewType, out Dictionary<Type, (Type target, short priority)> visualRenderers) || 
-					!(visualRenderers.ContainsKey(visualType) ||
-					  visualRenderers.ContainsKey(_defaultVisualType)))
-				{
-					// get RenderWith attribute for just this type, do not inherit attributes from base types
-					var attribute = viewType.GetTypeInfo().GetCustomAttributes<RenderWithAttribute>(false).FirstOrDefault();
-					if (attribute == null)
-					{
-						// TODO this doesn't appear to do anything. Register just returns as a NOOP if the renderer is null
-						Register(viewType, null, new[] { visualType }); // Cache this result so we don't have to do GetCustomAttributes again
-					}
-					else
-					{
-						Type specificTypeRenderer = attribute.Type;
-
-						if (specificTypeRenderer.Name.StartsWith("_", StringComparison.Ordinal))
-						{
-							// TODO: Remove attribute2 once renderer names have been unified across all platforms
-							var attribute2 = specificTypeRenderer.GetTypeInfo().GetCustomAttribute<RenderWithAttribute>();
-							if (attribute2 != null)
-							{
-								for (int i = 0; i < attribute2.SupportedVisuals.Length; i++)
-								{
-									if (attribute2.SupportedVisuals[i] == _defaultVisualType)
-										specificTypeRenderer = attribute2.Type;
-
-									if (attribute2.SupportedVisuals[i] == visualType)
-									{
-										specificTypeRenderer = attribute2.Type;
-										break;
-									}
-								}
-							}
-
-							if (specificTypeRenderer.Name.StartsWith("_", StringComparison.Ordinal))
-							{
-								Register(viewType, null, new[] { visualType }); // Cache this result so we don't work through this chain again
-
-								viewType = viewType.GetTypeInfo().BaseType;
-								continue;
-							}
-						}
-
-						Register(viewType, specificTypeRenderer, new[] { visualType }); // Register this so we don't have to look for the RenderWithAttibute again in the future
-					}
-				}
-
-				viewType = viewType.GetTypeInfo().BaseType;
-			}
 		}
 	}
 
@@ -354,6 +292,8 @@ namespace Xamarin.Forms.Internals
 						{
 							if (attribute.ShouldRegister())
 								Registered.Register(attribute.HandlerType, attribute.TargetType, attribute.SupportedVisuals, attribute.Priority);
+							if (attribute.HandlerType == typeof(Label))
+ 								Debug.WriteLine(attribute.TargetType);
 						}
 					}
 				}

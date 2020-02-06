@@ -305,6 +305,7 @@ namespace Xamarin.Forms
 				X = value.X;
 				Y = value.Y;
 				SetSize(value.Width, value.Height);
+				OnPropertyChanged("Frame");
 				BatchCommit();
 			}
 		}

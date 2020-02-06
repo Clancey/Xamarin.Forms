@@ -2,14 +2,12 @@ using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using Xamarin.Forms.Internals;
-using Xamarin.Forms.Platform;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 
 namespace Xamarin.Forms
 {
-	[RenderWith(typeof(_WebViewRenderer))]
 	public class WebView : View, IWebViewController, IElementConfiguration<WebView>
 	{
 		public static readonly BindableProperty SourceProperty = BindableProperty.Create("Source", typeof(WebViewSource), typeof(WebView), default(WebViewSource),

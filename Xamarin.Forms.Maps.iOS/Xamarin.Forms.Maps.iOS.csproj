@@ -63,6 +63,10 @@
       <IsAppExtension>false</IsAppExtension>
       <IsWatchApp>false</IsWatchApp>
     </ProjectReference>
+    <ProjectReference Include="..\DotNetUI.Core\DotNetUI.Core.csproj">
+      <Project>{5CB151CE-8FC4-4992-A3A1-036E88C469DD}</Project>
+      <Name>DotNetUI.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>

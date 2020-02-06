@@ -7,7 +7,6 @@
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
 	</PropertyGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\Xamarin.Forms.Platform\Xamarin.Forms.Platform.csproj" />
 		<ProjectReference Include="..\DotNetUI.Core\DotNetUI.Core.csproj" />
 	</ItemGroup>
 	<ItemGroup>

@@ -7,12 +7,9 @@ using System.Linq;
 using DotNetUI;
 using DotNetUI.Views;
 using Xamarin.Forms.Internals;
-using Xamarin.Forms.Platform;
 
 namespace Xamarin.Forms
 {
-	[ContentProperty("Text")]
-	[RenderWith(typeof(_LabelRenderer))]
 	public class Label : View, IFontElement, ITextElement, ITextAlignmentElement, ILineHeightElement, IElementConfiguration<Label>, IDecorableTextElement, IPaddingElement, ILabel
 	{
 		public static readonly BindableProperty HorizontalTextAlignmentProperty = TextAlignmentElement.HorizontalTextAlignmentProperty;
@@ -233,6 +230,8 @@ namespace Xamarin.Forms
 		bool IView.IsEnabled => IsEnabled;
 
 		Color IView.BackgroundColor => BackgroundColor;
+
+		Rectangle IView.Frame => Bounds;
 
 		double IFontElement.FontSizeDefaultValueCreator() =>
 			Device.GetNamedSize(NamedSize.Default, (Label)this);
