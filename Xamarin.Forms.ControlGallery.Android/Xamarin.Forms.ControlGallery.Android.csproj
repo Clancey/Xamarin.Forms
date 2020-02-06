@@ -172,10 +172,6 @@
     <AndroidResource Include="Resources\drawable\cover1.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Stubs\Xamarin.Forms.Platform.Android\Xamarin.Forms.Platform.Android (Forwarders).csproj">
-      <Project>{6e53feb1-1100-46ae-8013-17bba35cc197}</Project>
-      <Name>Xamarin.Forms.Platform.Android (Forwarders)</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Xamarin.Forms.Controls\Xamarin.Forms.Controls.csproj">
       <Project>{cb9c96ce-125c-4a68-b6a1-c3ff1fbf93e1}</Project>
       <Name>Xamarin.Forms.Controls</Name>
@@ -184,17 +180,9 @@
       <Project>{4dcd0420-1168-4b77-86db-6196ee4bd491}</Project>
       <Name>Xamarin.Forms.CustomAttributes</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Xamarin.Forms.Maps.Android\Xamarin.Forms.Maps.Android.csproj">
-      <Project>{bd50b39a-ebc5-408f-9c5e-923a8ebae473}</Project>
-      <Name>Xamarin.Forms.Maps.Android</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Xamarin.Forms.Maps\Xamarin.Forms.Maps.csproj">
       <Project>{7d13bac2-c6a4-416a-b07e-c169b199e52b}</Project>
       <Name>Xamarin.Forms.Maps</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Xamarin.Forms.Platform.Android.AppLinks\Xamarin.Forms.Platform.Android.AppLinks.csproj">
-      <Project>{42db052e-0909-45d2-8240-187f99f393fb}</Project>
-      <Name>Xamarin.Forms.Platform.Android.AppLinks</Name>
     </ProjectReference>
     <ProjectReference Include="..\Xamarin.Forms.Platform.Android.FormsViewGroup\Xamarin.Forms.Platform.Android.FormsViewGroup.csproj">
       <Project>{3b72465b-acae-43ae-9327-10f372fe5f80}</Project>
@@ -208,8 +196,20 @@
       <Project>{57B8B73D-C3B5-4C42-869E-7B2F17D354AC}</Project>
       <Name>Xamarin.Forms.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DotNetUI.Core\DotNetUI.Core.csproj">
+      <Project>{5CB151CE-8FC4-4992-A3A1-036E88C469DD}</Project>
+      <Name>DotNetUI.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xamarin.Forms.Platform.Android.AppLinks\Xamarin.Forms.Platform.Android.AppLinks.csproj">
+      <Project>{B188EB18-89CC-4A25-9DDD-0200BA456B58}</Project>
+      <Name>Xamarin.Forms.Platform.Android.AppLinks</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xamarin.Forms.Maps.Android\Xamarin.Forms.Maps.Android.csproj">
+      <Project>{5750341E-952E-4E0D-9AD4-E03921709400}</Project>
+      <Name>Xamarin.Forms.Maps.Android</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Xamarin.Forms.Material.Android\Xamarin.Forms.Material.Android.csproj">
-      <Project>{e1586ce6-8eac-4388-a15a-1aabf108b5f8}</Project>
+      <Project>{77A2BF5D-2FF8-4706-87B6-C39A63364DD0}</Project>
       <Name>Xamarin.Forms.Material.Android</Name>
     </ProjectReference>
   </ItemGroup>

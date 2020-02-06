@@ -22,7 +22,7 @@ using Xamarin.Forms.Platform.iOS;
 [assembly: ExportRenderer(typeof(Editor), typeof(PerformanceTrackingEditor))]
 [assembly: ExportRenderer(typeof(Entry), typeof(PerformanceTrackingEntry))]
 [assembly: ExportRenderer(typeof(Image), typeof(PerformanceTrackingImage))]
-[assembly: ExportRenderer(typeof(Label), typeof(PerformanceTrackingLabel))]
+//[assembly: ExportRenderer(typeof(Label), typeof(PerformanceTrackingLabel))]
 [assembly: ExportRenderer(typeof(ListView), typeof(PerformanceTrackingListView))]
 [assembly: ExportRenderer(typeof(Map), typeof(PerformanceTrackingMap))]
 [assembly: ExportRenderer(typeof(Picker), typeof(PerformanceTrackingPicker))]

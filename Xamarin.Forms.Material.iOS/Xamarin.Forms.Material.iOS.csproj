@@ -83,7 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DotNetUI.Core\DotNetUI.Core.csproj">
-      <Project>{9be33751-98ca-42e0-ae4b-a86158606dfd}</Project>
+      <Project>{5CB151CE-8FC4-4992-A3A1-036E88C469DD}</Project>
       <Name>DotNetUI.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Xamarin.Forms.Platform.iOS\Xamarin.Forms.Platform.iOS.csproj">

@@ -1,6 +1,6 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard1.0;Xamarin.iOS10;MonoAndroid90;Xamarin.Mac20</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard1.0;Xamarin.iOS10;$(AndroidTargetFrameworks);Xamarin.Mac20</TargetFrameworks>
     <RootNamespace>DotNetUI</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -30,8 +30,14 @@
     <None Include="**\*.Standard.cs" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'MonoAndroid90'">
+    <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.3" />
     <PackageReference Include="Xamarin.Android.Support.v4" Version="28.0.0.3" />
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="28.0.0.3" />
+  </ItemGroup>
+    <ItemGroup Condition="'$(TargetFramework)' == 'MonoAndroid10.0'">
+    <PackageReference Include="Xamarin.AndroidX.Lifecycle.LiveData" Version="2.1.0-rc1" />
+    <PackageReference Include="Xamarin.Google.Android.Material" Version="1.0.0-rc1" />
+    <PackageReference Include="Xamarin.AndroidX.Legacy.Support.V4" Version="1.0.0-rc1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Platform\MaciOS\" />
@@ -42,5 +48,13 @@
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Forms\SizeRequest.cs">
       <SubType></SubType>
     </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Platform\Android\ContextExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Platform\Android\ContextExtensions.Android.cs">
+      <SubType>Code</SubType>
+    </None>
   </ItemGroup>
 </Project>

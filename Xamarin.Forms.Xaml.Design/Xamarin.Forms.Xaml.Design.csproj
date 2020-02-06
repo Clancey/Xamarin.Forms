@@ -61,7 +61,7 @@
       <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\DotNetUI.Core\DotNetUI.Core.csproj">
-      <Project>{9BE33751-98CA-42E0-AE4B-A86158606DFD}</Project>
+      <Project>{5CB151CE-8FC4-4992-A3A1-036E88C469DD}</Project>
       <Name>DotNetUI.Core</Name>
     </ProjectReference>
   </ItemGroup>
