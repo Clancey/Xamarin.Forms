@@ -8,7 +8,9 @@ using Xamarin.Forms.Internals;
 
 namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries.HeaderFooterGalleries
 {
+#if XAMLC
 	[XamlCompilation(XamlCompilationOptions.Compile)]
+#endif
 	public partial class HeaderFooterTemplate : ContentPage
 	{
 		public HeaderFooterTemplate()

@@ -10,7 +10,9 @@ using Xamarin.Forms.Xaml;
 
 namespace Xamarin.Forms.Controls.GalleryPages
 {
+#if XAMLC
 	[XamlCompilation(XamlCompilationOptions.Compile)]
+#endif
 	public partial class MapElementsGallery : ContentPage
 	{
 		enum SelectedElementType

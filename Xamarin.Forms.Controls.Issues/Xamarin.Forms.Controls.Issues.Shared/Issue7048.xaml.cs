@@ -15,7 +15,9 @@ namespace Xamarin.Forms.Controls.Issues
 	[Preserve(AllMembers = true)]
 	[Issue(IssueTracker.Github, 7048, "[Bug][UWP] CheckBox Has Incosistent Paddings",
 		PlatformAffected.UWP)]
+#if XAMLC
 	[XamlCompilation(XamlCompilationOptions.Compile)]
+#endif
     public partial class Issue7048 : ContentPage
     {
         public Issue7048()

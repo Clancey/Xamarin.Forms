@@ -2,7 +2,9 @@
 
 namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries.AlternateLayoutGalleries
 {
+#if XAMLC
 	[XamlCompilation(XamlCompilationOptions.Compile)]
+#endif
 	public partial class StaggeredLayout : ContentPage
 	{
 		readonly DemoFilteredItemSource _demoFilteredItemSource = new DemoFilteredItemSource();

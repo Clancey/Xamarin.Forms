@@ -12,7 +12,9 @@ using Xamarin.Forms.Xaml;
 
 namespace Xamarin.Forms.Controls
 {
+#if XAMLC
 	[XamlCompilation(XamlCompilationOptions.Compile)]
+#endif
 	public partial class MapGallery : ContentPage
 	{
 		readonly Geocoder _geocoder = new Geocoder();

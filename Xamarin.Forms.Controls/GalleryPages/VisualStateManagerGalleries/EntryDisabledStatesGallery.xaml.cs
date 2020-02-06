@@ -3,7 +3,9 @@ using Xamarin.Forms.Xaml;
 
 namespace Xamarin.Forms.Controls.GalleryPages.VisualStateManagerGalleries
 {
+#if XAMLC
 	[XamlCompilation(XamlCompilationOptions.Compile)]
+#endif
 	public partial class EntryDisabledStatesGallery : ContentPage
 	{
 		public EntryDisabledStatesGallery()

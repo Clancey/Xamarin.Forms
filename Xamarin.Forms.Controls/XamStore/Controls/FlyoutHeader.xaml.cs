@@ -9,7 +9,9 @@ using Xamarin.Forms.Xaml;
 
 namespace Xamarin.Forms.Controls.XamStore
 {
+#if XAMLC
 	[XamlCompilation(XamlCompilationOptions.Compile)]
+#endif
 	public partial class FlyoutHeader : ContentView
 	{
 		public FlyoutHeader ()

@@ -10,7 +10,9 @@ using System.Threading.Tasks;
 namespace Xamarin.Forms.Controls.GalleryPages.PlatformTestsGallery
 {
 	[Preserve(AllMembers = true)]
+#if XAMLC
 	[XamlCompilation(XamlCompilationOptions.Compile)]
+#endif
 	public partial class PlatformTestsConsole : ContentPage
 	{
 		const string FailedText = "FAILED";

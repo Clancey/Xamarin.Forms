@@ -9,7 +9,9 @@ using Xamarin.Forms.Xaml;
 
 namespace Xamarin.Forms.Controls.GalleryPages.VisualStateManagerGalleries
 {
+#if XAMLC
 	[XamlCompilation(XamlCompilationOptions.Compile)]
+#endif
 	public partial class VisualStateSetterTarget : ContentPage
 	{
 		string _currentColorState = "Normal";

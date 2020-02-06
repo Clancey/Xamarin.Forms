@@ -9,7 +9,7 @@ namespace Xamarin.Forms.Controls.Issues
 {
 	[Preserve(AllMembers = true)]
 	[Issue(IssueTracker.None, 0, "Platform Specifics - iOS Translucent Navigation Bar XAML", PlatformAffected.iOS)]
-#if APP
+#if APP && XAMLC
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 #endif
 	public partial class PlatformSpecifics_iOSTranslucentNavBarX : TestNavigationPage

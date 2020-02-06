@@ -20,9 +20,9 @@ namespace Xamarin.Forms.Controls.Issues
 {
 	[Preserve(AllMembers = true)]
 	[Issue(IssueTracker.Bugzilla, 39636, "Cannot use XamlC with OnPlatform in resources, it throws System.InvalidCastException", PlatformAffected.All)]
-	#if APP
+#if APP && XAMLC
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	#endif
+#endif
 	public partial class Bugzilla39636 : TestContentPage
 	{
 		public Bugzilla39636 ()

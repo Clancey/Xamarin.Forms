@@ -2,7 +2,9 @@
 
 namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries
 {
+#if XAMLC
 	[XamlCompilation(XamlCompilationOptions.Compile)]
+#endif
 	public partial class FilterCollectionView : ContentPage
 	{
 		readonly DemoFilteredItemSource _demoFilteredItemSource = new DemoFilteredItemSource();

@@ -11,7 +11,9 @@ using Xamarin.Forms.Xaml;
 namespace Xamarin.Forms.Controls.XamStore
 {
 	[Preserve(AllMembers = true)]
+#if XAMLC
 	[XamlCompilation(XamlCompilationOptions.Compile)]
+#endif
 	public partial class StoreShell : TestShell
 	{
 		public StoreShell() 

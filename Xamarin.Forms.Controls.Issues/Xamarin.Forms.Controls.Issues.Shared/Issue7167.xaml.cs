@@ -14,8 +14,8 @@ using NUnit.Framework;
 
 
 namespace Xamarin.Forms.Controls.Issues
-{ 
-#if APP
+{
+#if APP && XAMLC
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 #endif
 

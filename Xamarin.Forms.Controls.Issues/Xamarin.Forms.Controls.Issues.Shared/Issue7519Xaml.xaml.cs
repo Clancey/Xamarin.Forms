@@ -5,7 +5,9 @@ using Xamarin.Forms.Xaml;
 namespace Xamarin.Forms.Controls.Issues
 {
 #if APP
+#if XAMLC
 	[XamlCompilation(XamlCompilationOptions.Compile)]
+#endif
 	public partial class Issue7519Xaml : ContentPage
 	{
 		public Issue7519Xaml()

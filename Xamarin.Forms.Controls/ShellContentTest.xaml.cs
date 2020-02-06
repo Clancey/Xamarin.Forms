@@ -12,7 +12,9 @@ namespace Xamarin.Forms.Controls
 {
 	[Preserve]
 	[QueryProperty("Text", "welcome")]
+#if XAMLC
 	[XamlCompilation(XamlCompilationOptions.Compile)]
+#endif
 	public partial class ShellContentTest : ContentPage
 	{
 		private class MySearchHandler : SearchHandler

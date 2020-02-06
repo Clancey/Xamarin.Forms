@@ -15,7 +15,9 @@ namespace Xamarin.Forms.Controls.Issues
 	[Preserve(AllMembers = true)]
 	[Issue(IssueTracker.Github, 7035, "[Bug][iOS] CarouselView last element is clipped", 
 		PlatformAffected.iOS)]
+#if XAMLC
 	[XamlCompilation(XamlCompilationOptions.Compile)]
+#endif
 	public partial class Issue7035 : ContentPage
 	{
         List<AdItem> announcements = new List<AdItem>();

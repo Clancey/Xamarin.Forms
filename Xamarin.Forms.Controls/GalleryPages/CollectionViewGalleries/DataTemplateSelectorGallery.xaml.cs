@@ -9,8 +9,10 @@ using Xamarin.Forms.Xaml;
 
 namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DataTemplateSelectorGallery : ContentPage
+#if XAMLC
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+#endif
+	public partial class DataTemplateSelectorGallery : ContentPage
     {
 		DemoFilteredItemSource _demoFilteredItemSource;
 

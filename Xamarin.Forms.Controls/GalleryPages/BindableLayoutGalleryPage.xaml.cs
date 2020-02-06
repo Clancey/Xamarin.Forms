@@ -6,7 +6,9 @@ using Xamarin.Forms.Xaml;
 
 namespace Xamarin.Forms.Controls.GalleryPages
 {
+#if XAMLC
 	[XamlCompilation(XamlCompilationOptions.Compile)]
+#endif
 	public partial class BindableLayoutGalleryPage : ContentPage
 	{
 		public BindableLayoutGalleryPage()

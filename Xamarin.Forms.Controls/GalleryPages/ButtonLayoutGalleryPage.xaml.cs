@@ -11,7 +11,9 @@ using ButtonImagePosition = Xamarin.Forms.Button.ButtonContentLayout.ImagePositi
 namespace Xamarin.Forms.Controls
 {
 	[Preserve(AllMembers = true)]
+#if XAMLC
 	[XamlCompilation(XamlCompilationOptions.Compile)]
+#endif
 	public partial class ButtonLayoutGalleryPage : ContentPage
 	{
 		string _buttonText = "Text";

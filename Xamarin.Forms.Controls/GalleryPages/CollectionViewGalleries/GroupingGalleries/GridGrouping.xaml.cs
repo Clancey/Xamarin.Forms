@@ -2,7 +2,9 @@
 
 namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries.GroupingGalleries
 {
+#if XAMLC
 	[XamlCompilation(XamlCompilationOptions.Compile)]
+#endif
 	public partial class GridGrouping : ContentPage
 	{
 		public GridGrouping()

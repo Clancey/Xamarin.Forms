@@ -7,7 +7,7 @@ namespace Xamarin.Forms.Controls.Issues
 	[Preserve(AllMembers = true)]
 	[Issue(IssueTracker.Github, 5046, "CornerRadius doesn't work in explicit style when implicit style exists", 
 	       PlatformAffected.Android | PlatformAffected.iOS | PlatformAffected.UWP)]
-#if APP
+#if APP && XAMLC
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 #endif
 	public partial class Issue5046 : ContentPage

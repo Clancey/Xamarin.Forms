@@ -10,7 +10,9 @@ using Xamarin.Forms.Xaml;
 
 namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries.GroupingGalleries
 {
+#if XAMLC
 	[XamlCompilation(XamlCompilationOptions.Compile)]
+#endif
 	[Preserve(AllMembers = true)]
 	public partial class BasicGrouping : ContentPage
 	{

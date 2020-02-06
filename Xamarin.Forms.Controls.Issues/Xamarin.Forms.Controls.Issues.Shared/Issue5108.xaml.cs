@@ -6,7 +6,9 @@ using System;
 namespace Xamarin.Forms.Controls.Issues
 {
 #if APP
+#if XAMLC
 	[XamlCompilation(XamlCompilationOptions.Compile)]
+#endif
 	[Preserve(AllMembers = true)]
 	[Issue(IssueTracker.Github, 5108, "iOS: Frame with HasShadow set to true and BackgroundColor alpha < 1 casts shadow on all child views", PlatformAffected.iOS)]
 	public partial class Issue5108 : TestContentPage

@@ -10,7 +10,9 @@ using Xamarin.Forms.Xaml;
 
 namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries.NestedGalleries
 {
+#if XAMLC
 	[XamlCompilation(XamlCompilationOptions.Compile)]
+#endif
 	public partial class NestedCollectionViewGallery : ContentPage
 	{
 		public NestedCollectionViewGallery()

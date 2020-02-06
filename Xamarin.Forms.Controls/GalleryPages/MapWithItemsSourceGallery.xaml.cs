@@ -10,7 +10,9 @@ using Xamarin.Forms.Xaml;
 
 namespace Xamarin.Forms.Controls.GalleryPages
 {
+#if XAMLC
 	[XamlCompilation(XamlCompilationOptions.Compile)]
+#endif
 	public partial class MapWithItemsSourceGallery : ContentPage
 	{
 		static readonly Position startPosition = new Position(39.8283459, -98.5794797);
