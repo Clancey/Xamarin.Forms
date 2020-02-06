@@ -9,7 +9,8 @@ using UIKit;
 
 namespace Xamarin.Forms.Platform.iOS.NewRenderers
 {
-	class LabelRenderer : RendererWrapper<DotNetUI.Renderers.LabelRenderer>
+	[Preserve(AllMembers =true)]
+	public class LabelRenderer : RendererWrapper<DotNetUI.Renderers.LabelRenderer>
 	{
 
 	}

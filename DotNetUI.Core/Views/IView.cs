@@ -7,5 +7,6 @@ namespace DotNetUI
 	public interface IView {
 		bool IsEnabled { get; }
 		Color BackgroundColor { get; }
+		Rectangle Frame { get; }
 	}
 }

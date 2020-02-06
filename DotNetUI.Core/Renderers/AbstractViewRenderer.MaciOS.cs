@@ -22,5 +22,21 @@ namespace DotNetUI.Renderers {
 		{
 
 		}
+		public virtual SizeRequest GetDesiredSize(double widthConstraint, double heightConstraint)
+		{
+			CoreGraphics.CGSize s;
+#if __MOBILE__
+			s = TypedNativeView.SizeThatFits(new CoreGraphics.CGSize((float)widthConstraint, (float)heightConstraint));
+#else
+			var control = TypedNativeView as AppKit.NSControl;
+			if (control != null)
+				s = control.SizeThatFits(new CoreGraphics.CGSize(widthConstraint, heightConstraint));
+			else
+				s = TypedNativeView.FittingSize;
+#endif
+			var request = new Size(s.Width == float.PositiveInfinity ? double.PositiveInfinity : s.Width,
+				s.Height == float.PositiveInfinity ? double.PositiveInfinity : s.Height);
+			return new SizeRequest(request, request);
+		}
 	}
 }

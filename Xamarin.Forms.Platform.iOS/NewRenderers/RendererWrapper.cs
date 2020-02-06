@@ -8,8 +8,9 @@ using UIKit;
 
 namespace Xamarin.Forms.Platform.iOS.NewRenderers
 {
-	class RendererWrapper<T> : IVisualElementRenderer where T : DotNetUI.IViewRenderer , new ()
+	public class RendererWrapper<T> : IVisualElementRenderer where T : DotNetUI.IViewRenderer , new ()
 	{
+
 		T Renderer = new T();
 
 		VisualElement Element;
@@ -24,18 +25,28 @@ namespace Xamarin.Forms.Platform.iOS.NewRenderers
 		void IDisposable.Dispose()
 		{
 			//Renderer.Dispose();
+			if (Element != null)
+				Element.PropertyChanged -= Element_PropertyChanged;
 		}
 
 		SizeRequest IVisualElementRenderer.GetDesiredSize(double widthConstraint, double heightConstraint)
-			=> new SizeRequest(Renderer.GetIntrinsicSize(new Size(widthConstraint, heightConstraint)));
+			=> Renderer.GetDesiredSize(widthConstraint, heightConstraint);
 
 		void IVisualElementRenderer.SetElement(VisualElement element)
 		{
+			if(Element != null)
+				Element.PropertyChanged -= Element_PropertyChanged;
 			ElementChanged?.Invoke(this, new VisualElementChangedEventArgs(Element, element));
 			Element = element;
+			if (Element != null)
+				Element.PropertyChanged += Element_PropertyChanged;
 			Renderer.SetView((DotNetUI.IView)element);
 		}
 
+		private void Element_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+				=> Renderer.UpdateValue(e.PropertyName);
+
 		void IVisualElementRenderer.SetElementSize(Size size) => Renderer.SetFrame(new Rectangle(Point.Zero, size));
+
 	}
 }

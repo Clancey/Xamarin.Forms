@@ -9,5 +9,7 @@ namespace DotNetUI.Renderers
 		{
 
 		}
+		public virtual SizeRequest GetDesiredSize(double widthConstraint, double heightConstraint)
+			=> new SizeRequest();
 	}
 }

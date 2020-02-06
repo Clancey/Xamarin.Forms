@@ -6,10 +6,10 @@ namespace DotNetUI
 	public interface IViewRenderer //: IDisposable
 	{
 		void SetView (IView view);
-		void UpdateValue (string property, object value);
+		void UpdateValue (string property);
 		void Remove (IView view);
 		object NativeView { get; }
-		Size GetIntrinsicSize (Size availableSize);
+		SizeRequest GetDesiredSize(double widthConstraint, double heightConstraint);
 		void SetFrame (Rectangle frame);
 	}
 }

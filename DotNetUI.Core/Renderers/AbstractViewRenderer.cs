@@ -47,11 +47,9 @@ namespace DotNetUI.Renderers
 
 		}
 
-		public virtual void UpdateValue(string property, object value)
-		{
-			mapper?.UpdateProperty(this, _virtualView, property);
-		}
-		public Size GetIntrinsicSize(Size availableSize) => new Size(-1, -1);
+		public virtual void UpdateValue(string property)
+			=> mapper?.UpdateProperty(this, _virtualView, property);
 
+		
 	}
 }

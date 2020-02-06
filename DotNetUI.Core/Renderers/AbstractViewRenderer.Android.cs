@@ -41,5 +41,8 @@ namespace DotNetUI.Renderers
 
 			nativeView.Layout((int)left, (int)top, (int)right, (int)bottom);
 		}
+
+		public virtual SizeRequest GetDesiredSize(double widthConstraint, double heightConstraint)
+			=> new SizeRequest();
 	}
 }

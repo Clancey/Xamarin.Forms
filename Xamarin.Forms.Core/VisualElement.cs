@@ -305,7 +305,6 @@ namespace Xamarin.Forms
 				X = value.X;
 				Y = value.Y;
 				SetSize(value.Width, value.Height);
-				OnPropertyChanged("Frame");
 				BatchCommit();
 			}
 		}
@@ -570,7 +569,10 @@ namespace Xamarin.Forms
 		{
 			_batched = Math.Max(0, _batched - 1);
 			if (!Batched)
+			{
+				OnPropertyChanged("Frame");
 				BatchCommitted?.Invoke(this, new EventArg<VisualElement>(this));
+			}
 		}
 
 		ResourceDictionary _resources;
