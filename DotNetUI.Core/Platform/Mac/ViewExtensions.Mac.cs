@@ -17,5 +17,8 @@ namespace DotNetUI.Platform
 
 		public static NSColor GetBackgroundColor (this NSView view) =>
 			NSColor.FromCGColor(view.Layer.BackgroundColor);
+
+		public static CoreGraphics.CGSize SizeThatFits(this NSView view, CoreGraphics.CGSize size) =>
+			(view as NSControl)?.SizeThatFits(size) ?? view.FittingSize;
 	}
 }
