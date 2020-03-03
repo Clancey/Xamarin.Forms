@@ -23,12 +23,19 @@ namespace DotNetUI.Renderers
 	{
 		SizeRequest _perfectSize;
 		bool _perfectSizeValid;
+		static Color? DefaultTextColor;
 
 		public LabelRenderer() : base(Mapper)
 		{
 
 		}
-		protected override NativeLabel CreateView() => new NativeLabel();
+		protected override NativeLabel CreateView()
+		{
+			var label = new NativeLabel();
+			if (DefaultTextColor == null)
+				DefaultTextColor = label.TextColor.ToColor();
+			return label;
+		}
 
 
 		public override SizeRequest GetDesiredSize(double widthConstraint, double heightConstraint)
@@ -88,10 +95,7 @@ namespace DotNetUI.Renderers
 			var label = renderer.NativeView as NativeLabel;
 			if (label == null)
 				return;
-			//label.TextColor = view.Color.ToNativeColor ();
+			label.TextColor = view.Color.ToNativeColor (DefaultTextColor.Value);
 		}
-
-
-
 	}
 }
