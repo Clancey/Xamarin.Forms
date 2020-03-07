@@ -97,5 +97,11 @@ namespace DotNetUI.Renderers
 				return;
 			label.TextColor = view.Color.ToNativeColor (DefaultTextColor.Value);
 		}
+
+
+		public static void MapPropertyLineHeight(IViewRenderer renderer, Views.ILabel view)
+		{
+
+		}
 	}
 }

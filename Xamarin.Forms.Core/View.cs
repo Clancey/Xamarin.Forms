@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
+using DotNetUI;
 using Xamarin.Forms.Internals;
 
 namespace Xamarin.Forms
 {
-	public class View : VisualElement, IViewController, IGestureController
+	public class View : VisualElement, IViewController, IGestureController, IPropertyMapperView
 	{
 		protected internal IGestureController GestureController => this;
 
@@ -170,5 +171,10 @@ namespace Xamarin.Forms
 			if (gesture is PinchGestureRecognizer && _gestureRecognizers.GetGesturesFor<PinchGestureRecognizer>().Count() > 1)
 				throw new InvalidOperationException($"Only one {nameof(PinchGestureRecognizer)} per view is allowed");
 		}
+
+		protected PropertyMapper propertyMapper;
+		protected PropertyMapper<T> GetRendererOverides<T>() where T : IView => (PropertyMapper<T>)(propertyMapper as PropertyMapper<T> ?? (propertyMapper = new PropertyMapper<T>()));
+
+		PropertyMapper IPropertyMapperView.GetPropertyMapperOverrides() => propertyMapper;
 	}
 }

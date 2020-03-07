@@ -13,15 +13,11 @@ namespace DotNetUI.Renderers {
 
 		protected AbstractViewRenderer (PropertyMapper<TVirtualView> mapper)
 		{
-			this.mapper = mapper;
+			this.defaultMapper = mapper;
 		}
 
 		public void SetFrame (Rectangle rect) => View.Frame = rect.ToCGRect ();
 
-		protected virtual void OnNativeViewCreated ()
-		{
-
-		}
 		public virtual SizeRequest GetDesiredSize(double widthConstraint, double heightConstraint)
 		{
 			var s = TypedNativeView.SizeThatFits(new CoreGraphics.CGSize((float)widthConstraint, (float)heightConstraint));

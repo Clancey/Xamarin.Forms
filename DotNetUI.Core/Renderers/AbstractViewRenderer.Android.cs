@@ -10,7 +10,7 @@ namespace DotNetUI.Renderers
 		public AbstractViewRenderer(Context context, PropertyMapper<TVirtualView> mapper)
 		{
 			Context = context;
-			this.mapper = mapper;
+			this.defaultMapper = mapper;
 		}
 
 		public Context Context { get; }

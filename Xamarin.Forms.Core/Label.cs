@@ -233,6 +233,12 @@ namespace Xamarin.Forms
 
 		Rectangle IView.Frame => Bounds;
 
+		public PropertyMapper<ILabel> RendererOverrides
+		{
+			get => GetRendererOverides<ILabel>();
+			set => propertyMapper = value;
+		}
+
 		double IFontElement.FontSizeDefaultValueCreator() =>
 			Device.GetNamedSize(NamedSize.Default, (Label)this);
 

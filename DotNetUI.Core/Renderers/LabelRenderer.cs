@@ -7,6 +7,7 @@ namespace DotNetUI.Renderers {
 		{
 			[nameof(ILabel.Text)] = MapPropertyText,
 			[nameof(ILabel.Color)] = MapPropertyColor,
+			[nameof(ILabel.LineHeight)] = MapPropertyLineHeight,
 		};
 	}
 }

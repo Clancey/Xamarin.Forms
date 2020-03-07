@@ -19,8 +19,8 @@ namespace DotNetUI.Renderers
 #endif
 	{
 
-		protected readonly PropertyMapper<TVirtualView> mapper;
-
+		protected readonly PropertyMapper<TVirtualView> defaultMapper;
+		protected PropertyMapper<TVirtualView> mapper;
 		private TVirtualView _virtualView;
 		private TNativeView _nativeView;
 
@@ -34,6 +34,21 @@ namespace DotNetUI.Renderers
 		{
 			_virtualView = view as TVirtualView;
 			_nativeView = CreateView();
+			mapper = defaultMapper;
+			if (_virtualView is IPropertyMapperView imv)
+			{
+				var map = imv.GetPropertyMapperOverrides();
+				var instancePropertyMapper = map as PropertyMapper<TVirtualView>;
+				if(map != null && instancePropertyMapper == null)
+				{
+				}
+				if (instancePropertyMapper != null)
+				{
+					instancePropertyMapper.Chained = defaultMapper;
+					mapper = instancePropertyMapper;
+				}
+			}
+			
 			mapper?.UpdateProperties(this, _virtualView);
 		}
 

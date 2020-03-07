@@ -17,27 +17,31 @@ using Color = Xamarin.Forms.Color;
 using DotNetUI.Platform;
 using Xamarin.Forms;
 
-namespace DotNetUI.Renderers {
-	public partial class LabelRenderer : AbstractViewRenderer<ILabel, TextView> {
-		public LabelRenderer (Context context) : base (context, Mapper)
+namespace DotNetUI.Renderers
+{
+	public partial class LabelRenderer : AbstractViewRenderer<ILabel, TextView>
+	{
+		public LabelRenderer(Context context) : base(context, Mapper)
 		{
 
 		}
 		ColorStateList _labelTextColorDefault;
 		Color _lastUpdateColor = Color.Default;
+		float _lineSpacingExtraDefault = -1.0f;
+		float _lineSpacingMultiplierDefault = -1.0f;
 
 		int _lastConstraintHeight;
 		int _lastConstraintWidth;
 		SizeRequest? _lastSizeRequest;
 
-		protected override TextView CreateView ()
+		protected override TextView CreateView()
 		{
-			var text = new TextView (Context);
+			var text = new TextView(Context);
 			_labelTextColorDefault = text.TextColors;
 			return text;
 		}
 
-		public static void MapPropertyText (IViewRenderer renderer, Views.ILabel view)
+		public static void MapPropertyText(IViewRenderer renderer, Views.ILabel view)
 		{
 			var textView = renderer.NativeView as TextView;
 			if (textView == null)
@@ -45,10 +49,10 @@ namespace DotNetUI.Renderers {
 			(renderer as LabelRenderer)._lastSizeRequest = null;
 			textView.Text = view.Text;
 		}
-		public static void MapPropertyColor (IViewRenderer renderer, Views.ILabel view)
+		public static void MapPropertyColor(IViewRenderer renderer, Views.ILabel view)
 		{
 			var labelRenderer = renderer as LabelRenderer;
-			if(labelRenderer == null)
+			if (labelRenderer == null)
 				return;
 			var c = view.Color;
 			if (c == labelRenderer._lastUpdateColor)
@@ -56,10 +60,28 @@ namespace DotNetUI.Renderers {
 
 
 			if (c.IsDefault)
-				labelRenderer.TypedNativeView.SetTextColor (labelRenderer._labelTextColorDefault);
+				labelRenderer.TypedNativeView.SetTextColor(labelRenderer._labelTextColorDefault);
 			else
-				labelRenderer.TypedNativeView.SetTextColor (c.ToNative ());
+				labelRenderer.TypedNativeView.SetTextColor(c.ToNative());
 		}
+
+		public static void MapPropertyLineHeight(IViewRenderer renderer, Views.ILabel view)
+		{
+			var nativeLabel = renderer.NativeView as TextView;
+			var labelRenderer = renderer as LabelRenderer;
+			if (labelRenderer._lineSpacingExtraDefault < 0)
+				labelRenderer._lineSpacingExtraDefault = nativeLabel.LineSpacingExtra;
+			if (labelRenderer._lineSpacingMultiplierDefault < 0)
+				labelRenderer._lineSpacingMultiplierDefault = nativeLabel.LineSpacingMultiplier;
+
+			if (view.LineHeight == -1)
+				nativeLabel.SetLineSpacing(labelRenderer._lineSpacingExtraDefault, labelRenderer._lineSpacingMultiplierDefault);
+			else if (nativeLabel.LineHeight >= 0)
+				nativeLabel.SetLineSpacing(0, (float)nativeLabel.LineHeight);
+
+			labelRenderer._lastSizeRequest = null;
+		}
+
 		public override SizeRequest GetDesiredSize(double wConstraint, double hConstraint)
 		{
 			int widthConstraint = wConstraint == double.MaxValue ? int.MaxValue : (int)wConstraint;

@@ -1,8 +1,8 @@
 ﻿using System;
 using DotNetUI.Renderers;
 
-namespace DotNetUI.Views {
+namespace DotNetUI {
 	public interface IPropertyMapperView {
-		PropertyMapper<IView> GetPropertyMapperOverrides ();
+		PropertyMapper GetPropertyMapperOverrides ();
 	}
 }
