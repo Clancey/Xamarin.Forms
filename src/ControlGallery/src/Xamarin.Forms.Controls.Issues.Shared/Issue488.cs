@@ -17,7 +17,7 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			var layout = new RelativeLayout
 			{
-				BackgroundColor = Color.Gray
+				BackgroundColor = Colors.Gray
 			};
 			var label = new Label
 			{

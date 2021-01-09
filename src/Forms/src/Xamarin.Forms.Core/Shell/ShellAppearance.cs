@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Graphics;
 
 namespace Xamarin.Forms
 {
@@ -32,56 +33,56 @@ namespace Xamarin.Forms
 			Shell.FlyoutHeightProperty
 		};
 
-		Color?[] _colorArray = new Color?[s_ingestArray.Length];
+		Color[] _colorArray = new Color[s_ingestArray.Length];
 		Brush[] _brushArray = new Brush[s_ingestBrushArray.Length];
-		double[] _doubleArray = new double[s_ingestDoubleArray.Length];
+		float[] _floatArray = new float[s_ingestDoubleArray.Length];
 
-		public Color BackgroundColor => _colorArray[0].Value;
+		public Color BackgroundColor => _colorArray[0];
 
-		public Color DisabledColor => _colorArray[1].Value;
+		public Color DisabledColor => _colorArray[1];
 
-		public Color ForegroundColor => _colorArray[2].Value;
+		public Color ForegroundColor => _colorArray[2];
 
-		public Color TabBarBackgroundColor => _colorArray[3].Value;
+		public Color TabBarBackgroundColor => _colorArray[3];
 
-		public Color TabBarDisabledColor => _colorArray[4].Value;
+		public Color TabBarDisabledColor => _colorArray[4];
 
-		public Color TabBarForegroundColor => _colorArray[5].Value;
+		public Color TabBarForegroundColor => _colorArray[5];
 
-		public Color TabBarTitleColor => _colorArray[6].Value;
+		public Color TabBarTitleColor => _colorArray[6];
 
-		public Color TabBarUnselectedColor => _colorArray[7].Value;
+		public Color TabBarUnselectedColor => _colorArray[7];
 
-		public Color TitleColor => _colorArray[8].Value;
+		public Color TitleColor => _colorArray[8];
 
-		public Color UnselectedColor => _colorArray[9].Value;
+		public Color UnselectedColor => _colorArray[9];
 
 		public Brush FlyoutBackdrop => _brushArray[0];
-		public double FlyoutWidth => _doubleArray[0];
-		public double FlyoutHeight => _doubleArray[1];
+		public float FlyoutWidth => _floatArray[0];
+		public float FlyoutHeight => _floatArray[1];
 
 		Color IShellAppearanceElement.EffectiveTabBarBackgroundColor =>
-			!TabBarBackgroundColor.IsDefault ? TabBarBackgroundColor : BackgroundColor;
+			TabBarBackgroundColor ?? BackgroundColor;
 
 		Color IShellAppearanceElement.EffectiveTabBarDisabledColor =>
-			!TabBarDisabledColor.IsDefault ? TabBarDisabledColor : DisabledColor;
+			TabBarDisabledColor ?? DisabledColor;
 
 		Color IShellAppearanceElement.EffectiveTabBarForegroundColor =>
-			!TabBarForegroundColor.IsDefault ? TabBarForegroundColor : ForegroundColor;
+			TabBarForegroundColor ?? ForegroundColor;
 
 		Color IShellAppearanceElement.EffectiveTabBarTitleColor =>
-			!TabBarTitleColor.IsDefault ? TabBarTitleColor : TitleColor;
+			TabBarTitleColor ?? TitleColor;
 
 		Color IShellAppearanceElement.EffectiveTabBarUnselectedColor =>
-			!TabBarUnselectedColor.IsDefault ? TabBarUnselectedColor : UnselectedColor;
+			TabBarUnselectedColor ?? UnselectedColor;
 
 		internal ShellAppearance()
 		{
 			for (int i = 0; i < _brushArray.Length; i++)
 				_brushArray[i] = Brush.Default;
 
-			for (int i = 0; i < _doubleArray.Length; i++)
-				_doubleArray[i] = -1;
+			for (int i = 0; i < _floatArray.Length; i++)
+				_floatArray[i] = -1;
 		}
 
 		public override bool Equals(object obj)
@@ -91,7 +92,7 @@ namespace Xamarin.Forms
 
 			for (int i = 0; i < _colorArray.Length; i++)
 			{
-				if (!EqualityComparer<Color>.Default.Equals(_colorArray[i].Value, appearance._colorArray[i].Value))
+				if (!EqualityComparer<Color>.Default.Equals(_colorArray[i], appearance._colorArray[i]))
 					return false;
 			}
 
@@ -101,9 +102,9 @@ namespace Xamarin.Forms
 					return false;
 			}
 
-			for (int i = 0; i < _doubleArray.Length; i++)
+			for (int i = 0; i < _floatArray.Length; i++)
 			{
-				if (!EqualityComparer<double>.Default.Equals(_doubleArray[i], appearance._doubleArray[i]))
+				if (!EqualityComparer<double>.Default.Equals(_floatArray[i], appearance._floatArray[i]))
 					return false;
 			}
 
@@ -114,13 +115,13 @@ namespace Xamarin.Forms
 		{
 			var hashCode = -1988429770;
 			for (int i = 0; i < _colorArray.Length; i++)
-				hashCode = hashCode * -1521134295 + EqualityComparer<Color>.Default.GetHashCode(_colorArray[i].Value);
+				hashCode = hashCode * -1521134295 + EqualityComparer<Color>.Default.GetHashCode(_colorArray[i]);
 
 			for (int i = 0; i < _brushArray.Length; i++)
 				hashCode = hashCode * -1521134295 + EqualityComparer<Brush>.Default.GetHashCode(_brushArray[i]);
 
-			for (int i = 0; i < _doubleArray.Length; i++)
-				hashCode = hashCode * -1521134295 + EqualityComparer<double>.Default.GetHashCode(_doubleArray[i]);
+			for (int i = 0; i < _floatArray.Length; i++)
+				hashCode = hashCode * -1521134295 + EqualityComparer<double>.Default.GetHashCode(_floatArray[i]);
 
 			return hashCode;
 		}
@@ -132,7 +133,7 @@ namespace Xamarin.Forms
 			var dataSet = pivot.GetValues<Color>(s_ingestArray);
 			for (int i = 0; i < s_ingestArray.Length; i++)
 			{
-				if (!_colorArray[i].HasValue && dataSet[i].IsSet)
+				if (_colorArray[i] == null && dataSet[i].IsSet)
 				{
 					anySet = true;
 					_colorArray[i] = dataSet[i].Value;
@@ -149,13 +150,13 @@ namespace Xamarin.Forms
 				}
 			}
 
-			var doubleDataSet = pivot.GetValues<double>(s_ingestDoubleArray);
+			var doubleDataSet = pivot.GetValues<float>(s_ingestDoubleArray);
 			for (int i = 0; i < s_ingestDoubleArray.Length; i++)
 			{
-				if (_doubleArray[i] == -1 && doubleDataSet[i].IsSet)
+				if (_floatArray[i] == -1 && doubleDataSet[i].IsSet)
 				{
 					anySet = true;
-					_doubleArray[i] = doubleDataSet[i].Value;
+					_floatArray[i] = doubleDataSet[i].Value;
 				}
 			}
 
@@ -167,7 +168,7 @@ namespace Xamarin.Forms
 			for (int i = 0; i < s_ingestArray.Length; i++)
 			{
 				if (_colorArray[i] == null)
-					_colorArray[i] = Color.Default;
+					_colorArray[i] = null;
 			}
 		}
 

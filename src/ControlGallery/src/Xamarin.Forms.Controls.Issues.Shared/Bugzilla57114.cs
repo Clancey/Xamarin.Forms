@@ -46,7 +46,7 @@ namespace Xamarin.Forms.Controls.Issues
 				AutomationId = ViewAutomationId,
 				HeightRequest = 200,
 				WidthRequest = 200,
-				BackgroundColor = Color.Aqua,
+				BackgroundColor = Colors.Aqua,
 				HorizontalOptions = LayoutOptions.Fill,
 				VerticalOptions = LayoutOptions.Fill
 			};

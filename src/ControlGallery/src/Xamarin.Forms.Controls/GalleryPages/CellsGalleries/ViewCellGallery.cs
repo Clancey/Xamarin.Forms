@@ -83,7 +83,7 @@ namespace Xamarin.Forms.Controls
 				ItemsSource = Enumerable.Range(0, albums.Length).Select(i => new UrlImageViewCellListPageModel
 				{
 					Text = "Text " + i,
-					TextColor = i % 2 == 0 ? Color.Red : Color.Blue,
+					TextColor = i % 2 == 0 ? Colors.Red : Colors.Blue,
 					Image = albums[i]
 				}),
 				ItemTemplate = dataTemplate

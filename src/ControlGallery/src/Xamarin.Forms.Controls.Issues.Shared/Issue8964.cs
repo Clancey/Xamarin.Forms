@@ -69,7 +69,7 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			System.Diagnostics.Debug.WriteLine($"CurrentItemChanged {CarouselViewUnderTest.Position}");
 			_counter++;
-			ItemSourceUnderTest.Insert(0, new ModelIssue8964 { Name = $"Counter {_counter}", Color = Color.Red, Index = _counter });
+			ItemSourceUnderTest.Insert(0, new ModelIssue8964 { Name = $"Counter {_counter}", Color = Colors.Red, Index = _counter });
 		}
 
 		DataTemplate GetCarouselTemplate()
@@ -113,7 +113,7 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				items.Add(new ModelIssue8964
 				{
-					Color = Color.FromRgb(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255)),
+					Color = Colors.FromRgb(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255)),
 					Name = DateTime.Now.AddDays(n).ToString("D"),
 					Index = _counter
 				});

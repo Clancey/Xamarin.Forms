@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 
 namespace Xamarin.Forms
 {
@@ -19,7 +20,7 @@ namespace Xamarin.Forms
 			set { SetValue(HasRenderLoopProperty, value); }
 		}
 
-		public Action<Rectangle> OnDisplay { get; set; }
+		public Action<RectangleF> OnDisplay { get; set; }
 
 		public void Display()
 			=> DisplayRequested?.Invoke(this, EventArgs.Empty);

@@ -14,7 +14,7 @@ namespace Xamarin.Forms.Xaml.UnitTests
 	{
 		public Gh2483Custom()
 		{
-			Add("foo", Color.Orange);
+			Add("foo", Colors.Orange);
 		}
 	}
 

@@ -22,7 +22,7 @@ namespace Xamarin.Forms.Maps
 			nameof(FillColor),
 			typeof(Color),
 			typeof(Circle),
-			Color.Default);
+			null);
 
 		public Position Center
 		{

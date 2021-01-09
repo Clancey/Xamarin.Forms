@@ -52,7 +52,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries.CarouselVi
 				{
 					items.Add(new CarouselData
 					{
-						Color = Color.FromRgb(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255)),
+						Color = Colors.FromRgb(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255)),
 						Name = $"{n + 1}"
 					});
 				}
@@ -65,7 +65,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries.CarouselVi
 				{
 					Items.Add(new CarouselData
 					{
-						Color = Color.FromRgb(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255)),
+						Color = Colors.FromRgb(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255)),
 						Name = $"{n + 1}"
 					});
 				}

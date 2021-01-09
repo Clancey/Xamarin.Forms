@@ -50,7 +50,7 @@ namespace Xamarin.Forms.Controls.GalleryPages
 
 			var gifImage = new Image
 			{
-				BackgroundColor = Color.LightGray,
+				BackgroundColor = Colors.LightGray,
 				Source = itemsSource[0]
 			};
 

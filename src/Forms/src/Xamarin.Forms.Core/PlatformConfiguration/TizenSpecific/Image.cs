@@ -1,10 +1,11 @@
 namespace Xamarin.Forms.PlatformConfiguration.TizenSpecific
 {
+	using System.Graphics;
 	using FormsElement = Forms.Image;
 
 	public static class Image
 	{
-		public static readonly BindableProperty BlendColorProperty = BindableProperty.Create("BlendColor", typeof(Color), typeof(FormsElement), Color.Default);
+		public static readonly BindableProperty BlendColorProperty = BindableProperty.Create("BlendColor", typeof(Color), typeof(FormsElement), null);
 
 		public static readonly BindableProperty FileProperty = BindableProperty.Create("File", typeof(string), typeof(FormsElement), default(string));
 

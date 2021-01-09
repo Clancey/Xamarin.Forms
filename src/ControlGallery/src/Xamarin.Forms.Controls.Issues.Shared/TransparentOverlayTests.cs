@@ -22,8 +22,8 @@ namespace Xamarin.Forms.Controls.Issues
 	[Issue(IssueTracker.None, 618, "Transparent Overlays", PlatformAffected.All)]
 	public class TransparentOverlayTests : TestNavigationPage
 	{
-		readonly Color _transparentColor = Color.Transparent;
-		readonly Color _nontransparentColor = Color.Blue;
+		readonly Color _transparentColor = Colors.Transparent;
+		readonly Color _nontransparentColor = Colors.Blue;
 
 		double _transparentOpacity = 0;
 		double _nonTransparentOpacity = 0.2;

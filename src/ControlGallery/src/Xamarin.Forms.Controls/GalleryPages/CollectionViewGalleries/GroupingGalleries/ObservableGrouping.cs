@@ -210,7 +210,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries.GroupingGa
 				{
 					FontSize = 16,
 					FontAttributes = FontAttributes.Bold,
-					BackgroundColor = Color.LightGreen
+					BackgroundColor = Colors.LightGreen
 
 				};
 
@@ -229,7 +229,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries.GroupingGa
 				var label = new Label()
 				{
 					Margin = new Thickness(0, 0, 0, 15),
-					BackgroundColor = Color.LightBlue
+					BackgroundColor = Colors.LightBlue
 				};
 
 				label.SetBinding(Label.TextProperty, new Binding("Count", stringFormat: "Total members: {0:D}"));

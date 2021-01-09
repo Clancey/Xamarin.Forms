@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.Graphics;
 using Xamarin.Forms.Internals;
 
 namespace Xamarin.Forms
@@ -46,9 +47,9 @@ namespace Xamarin.Forms
 
 		public static readonly BindableProperty CharacterSpacingProperty = TextElement.CharacterSpacingProperty;
 
-		public double CharacterSpacing
+		public float CharacterSpacing
 		{
-			get { return (double)GetValue(TextElement.CharacterSpacingProperty); }
+			get { return (float)GetValue(TextElement.CharacterSpacingProperty); }
 			set { SetValue(TextElement.CharacterSpacingProperty, value); }
 		}
 
@@ -113,9 +114,9 @@ namespace Xamarin.Forms
 		}
 
 		[TypeConverter(typeof(FontSizeConverter))]
-		public double FontSize
+		public float FontSize
 		{
-			get { return (double)GetValue(FontElement.FontSizeProperty); }
+			get { return (float)GetValue(FontElement.FontSizeProperty); }
 			set { SetValue(FontElement.FontSizeProperty, value); }
 		}
 
@@ -125,9 +126,9 @@ namespace Xamarin.Forms
 			set { SetValue(TextDecorationsProperty, value); }
 		}
 
-		public double LineHeight
+		public float LineHeight
 		{
-			get { return (double)GetValue(LineHeightElement.LineHeightProperty); }
+			get { return (float)GetValue(LineHeightElement.LineHeightProperty); }
 			set { SetValue(LineHeightElement.LineHeightProperty, value); }
 		}
 
@@ -141,11 +142,11 @@ namespace Xamarin.Forms
 		{
 		}
 
-		void IFontElement.OnFontSizeChanged(double oldValue, double newValue)
+		void IFontElement.OnFontSizeChanged(float oldValue, float newValue)
 		{
 		}
 
-		double IFontElement.FontSizeDefaultValueCreator() =>
+		float IFontElement.FontSizeDefaultValueCreator() =>
 			Device.GetNamedSize(NamedSize.Default, new Label());
 
 		void IFontElement.OnFontAttributesChanged(FontAttributes oldValue, FontAttributes newValue)
@@ -160,7 +161,7 @@ namespace Xamarin.Forms
 		{
 		}
 
-		void ITextElement.OnCharacterSpacingPropertyChanged(double oldValue, double newValue)
+		void ITextElement.OnCharacterSpacingPropertyChanged(float oldValue, float newValue)
 		{
 		}
 
@@ -182,7 +183,7 @@ namespace Xamarin.Forms
 			}
 		}
 
-		void ILineHeightElement.OnLineHeightChanged(double oldValue, double newValue)
+		void ILineHeightElement.OnLineHeightChanged(float oldValue, float newValue)
 		{
 		}
 	}

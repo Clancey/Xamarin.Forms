@@ -20,8 +20,8 @@ namespace Xamarin.Forms.ControlGallery.iOS
             if (layer != null)
             {
                 layer.BorderWidth = 10;
-                layer.BorderColor = Color.Red.ToCGColor();
-                layer.BackgroundColor = Color.Orange.ToCGColor();
+                layer.BorderColor = Colors.Red.ToCGColor();
+                layer.BackgroundColor = Colors.Orange.ToCGColor();
 
                 var width = 100;
                 var height = 25;

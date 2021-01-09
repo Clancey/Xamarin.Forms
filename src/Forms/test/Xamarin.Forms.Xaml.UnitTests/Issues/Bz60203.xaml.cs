@@ -38,7 +38,7 @@ namespace Xamarin.Forms.Xaml.UnitTests
 				var layout = new Bz60203(useCompiledXaml);
 				Assert.That(layout.label.BackgroundColor, Is.EqualTo(BackgroundColorProperty.DefaultValue));
 				layout.BindingContext = new { Text = "Foo" };
-				layout.label.TextColor = Color.Blue;
+				layout.label.TextColor = Colors.Blue;
 				Assert.That(layout.label.BackgroundColor, Is.EqualTo(Color.Pink));
 			}
 

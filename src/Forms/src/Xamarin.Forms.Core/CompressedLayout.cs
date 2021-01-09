@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 
 namespace Xamarin.Forms
 {
@@ -25,16 +26,16 @@ namespace Xamarin.Forms
 		}
 
 		static readonly BindablePropertyKey HeadlessOffsetPropertyKey =
-			BindableProperty.CreateReadOnly("HeadlessOffset", typeof(Point), typeof(CompressedLayout), default(Point));
+			BindableProperty.CreateReadOnly("HeadlessOffset", typeof(PointF), typeof(CompressedLayout), default(PointF));
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public static readonly BindableProperty HeadlessOffsetProperty = HeadlessOffsetPropertyKey.BindableProperty;
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public static Point GetHeadlessOffset(BindableObject bindable)
-			=> (Point)bindable.GetValue(HeadlessOffsetProperty);
+		public static PointF GetHeadlessOffset(BindableObject bindable)
+			=> (PointF)bindable.GetValue(HeadlessOffsetProperty);
 
-		internal static void SetHeadlessOffset(BindableObject bindable, Point value)
+		internal static void SetHeadlessOffset(BindableObject bindable, PointF value)
 			=> bindable.SetValue(HeadlessOffsetPropertyKey, value);
 	}
 }

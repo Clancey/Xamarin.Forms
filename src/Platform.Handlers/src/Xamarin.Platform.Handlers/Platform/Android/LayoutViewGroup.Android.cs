@@ -3,8 +3,8 @@ using Android.Content;
 using Android.Runtime;
 using Android.Util;
 using Android.Views;
-using Rectangle = Xamarin.Forms.Rectangle;
-using Size = Xamarin.Forms.Size;
+using RectangleF = System.Graphics.RectangleF;
+using SizeF = System.Graphics.SizeF;
 
 namespace Xamarin.Platform.Handlers
 {
@@ -46,7 +46,7 @@ namespace Xamarin.Platform.Handlers
 			var deviceIndependentWidth = widthMeasureSpec.ToDouble(Context);
 			var deviceIndependentHeight = heightMeasureSpec.ToDouble(Context);
 
-			var size = CrossPlatformMeasure(deviceIndependentWidth, deviceIndependentHeight);
+			var size = CrossPlatformMeasure((float)deviceIndependentWidth, (float)deviceIndependentHeight);
 
 			var nativeWidth = Context.ToPixels(size.Width);
 			var nativeHeight = Context.ToPixels(size.Height);
@@ -61,18 +61,18 @@ namespace Xamarin.Platform.Handlers
 				return;
 			}
 
-			var deviceIndependentLeft = Context.FromPixels(l);
-			var deviceIndependentTop = Context.FromPixels(t);
-			var deviceIndependentRight = Context.FromPixels(r);
-			var deviceIndependentBottom = Context.FromPixels(b);
+			var deviceIndependentLeft = (float)Context.FromPixels(l);
+			var deviceIndependentTop = (float)Context.FromPixels(t);
+			var deviceIndependentRight = (float)Context.FromPixels(r);
+			var deviceIndependentBottom = (float)Context.FromPixels(b);
 
-			var destination = Rectangle.FromLTRB(deviceIndependentLeft, deviceIndependentTop,
+			var destination = RectangleF.FromLTRB(deviceIndependentLeft, deviceIndependentTop,
 				deviceIndependentRight, deviceIndependentBottom);
 
 			CrossPlatformArrange(destination);
 		}
 
-		internal Func<double, double, Size>? CrossPlatformMeasure { get; set; }
-		internal Action<Rectangle>? CrossPlatformArrange { get; set; }
+		internal Func<float, float, SizeF>? CrossPlatformMeasure { get; set; }
+		internal Action<RectangleF>? CrossPlatformArrange { get; set; }
 	}
 }

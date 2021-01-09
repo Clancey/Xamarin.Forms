@@ -88,7 +88,7 @@ namespace Xamarin.Forms.Xaml.UnitTests
 	{
 		public IGh1346FontIcon FontIcon { get; set; }
 
-		public Color Color { get; set; } = Color.White;
+		public Color Color { get; set; } = Colors.White;
 
 		public Gh1346FontIconOptions() { }
 

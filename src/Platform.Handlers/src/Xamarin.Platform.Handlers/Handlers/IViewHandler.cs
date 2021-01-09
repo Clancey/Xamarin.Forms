@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System.Graphics;
+using Xamarin.Forms;
 
 namespace Xamarin.Platform
 {
@@ -9,7 +10,7 @@ namespace Xamarin.Platform
 		void DisconnectHandler();
 		object? NativeView { get; }
 		bool HasContainer { get; set; }
-		Size GetDesiredSize(double widthConstraint, double heightConstraint);
-		void SetFrame(Rectangle frame);
+		SizeF GetDesiredSize(float widthConstraint, float heightConstraint);
+		void SetFrame(RectangleF frame);
 	}
 }

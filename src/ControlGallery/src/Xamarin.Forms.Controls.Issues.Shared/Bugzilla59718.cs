@@ -46,8 +46,8 @@ namespace Xamarin.Forms.Controls.Issues
 
 		protected override void Init()
 		{
-			_LabelTappedLabel = new Label { TextColor = Color.Red };
-			_ItemTappedLabel = new Label { TextColor = Color.Purple };
+			_LabelTappedLabel = new Label { TextColor = Colors.Red };
+			_ItemTappedLabel = new Label { TextColor = Colors.Purple };
 
 			_list = new ListView
 			{

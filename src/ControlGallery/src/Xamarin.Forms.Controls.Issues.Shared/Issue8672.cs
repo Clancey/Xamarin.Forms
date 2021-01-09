@@ -24,8 +24,8 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var indications = new Label
 			{
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White,
 				Text = "If the CollectionView below loads items, the test has passed."
 			};
 

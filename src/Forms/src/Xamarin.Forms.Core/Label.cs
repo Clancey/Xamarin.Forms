@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Graphics;
 using System.Linq;
 using System.Text;
 using Xamarin.Forms.Internals;
@@ -155,9 +156,9 @@ namespace Xamarin.Forms
 			set { SetValue(TextElement.TextColorProperty, value); }
 		}
 
-		public double CharacterSpacing
+		public float CharacterSpacing
 		{
-			get { return (double)GetValue(TextElement.CharacterSpacingProperty); }
+			get { return (float)GetValue(TextElement.CharacterSpacingProperty); }
 			set { SetValue(TextElement.CharacterSpacingProperty, value); }
 		}
 
@@ -202,15 +203,15 @@ namespace Xamarin.Forms
 		}
 
 		[TypeConverter(typeof(FontSizeConverter))]
-		public double FontSize
+		public float FontSize
 		{
-			get { return (double)GetValue(FontSizeProperty); }
+			get { return (float)GetValue(FontSizeProperty); }
 			set { SetValue(FontSizeProperty, value); }
 		}
 
-		public double LineHeight
+		public float LineHeight
 		{
-			get { return (double)GetValue(LineHeightProperty); }
+			get { return (float)GetValue(LineHeightProperty); }
 			set { SetValue(LineHeightProperty, value); }
 		}
 
@@ -232,7 +233,7 @@ namespace Xamarin.Forms
 			set => SetValue(TextTypeProperty, value);
 		}
 
-		double IFontElement.FontSizeDefaultValueCreator() =>
+		float IFontElement.FontSizeDefaultValueCreator() =>
 			Device.GetNamedSize(NamedSize.Default, (Label)this);
 
 		void IFontElement.OnFontAttributesChanged(FontAttributes oldValue, FontAttributes newValue) =>
@@ -241,13 +242,13 @@ namespace Xamarin.Forms
 		void IFontElement.OnFontFamilyChanged(string oldValue, string newValue) =>
 			InvalidateMeasureInternal(InvalidationTrigger.MeasureChanged);
 
-		void IFontElement.OnFontSizeChanged(double oldValue, double newValue) =>
+		void IFontElement.OnFontSizeChanged(float oldValue, float newValue) =>
 			InvalidateMeasureInternal(InvalidationTrigger.MeasureChanged);
 
 		void IFontElement.OnFontChanged(Font oldValue, Font newValue) =>
 			InvalidateMeasureInternal(InvalidationTrigger.MeasureChanged);
 
-		void ILineHeightElement.OnLineHeightChanged(double oldValue, double newValue) =>
+		void ILineHeightElement.OnLineHeightChanged(float oldValue, float newValue) =>
 			InvalidateMeasureInternal(InvalidationTrigger.MeasureChanged);
 
 		void OnFormattedTextChanging(object sender, PropertyChangingEventArgs e)
@@ -375,13 +376,13 @@ namespace Xamarin.Forms
 		{
 		}
 
-		void ITextElement.OnCharacterSpacingPropertyChanged(double oldValue, double newValue)
+		void ITextElement.OnCharacterSpacingPropertyChanged(float oldValue, float newValue)
 		{
 			InvalidateMeasure();
 		}
 
 
-		public override IList<GestureElement> GetChildElements(Point point)
+		public override IList<GestureElement> GetChildElements(PointF point)
 		{
 			if (FormattedText?.Spans == null || FormattedText?.Spans.Count == 0)
 				return null;

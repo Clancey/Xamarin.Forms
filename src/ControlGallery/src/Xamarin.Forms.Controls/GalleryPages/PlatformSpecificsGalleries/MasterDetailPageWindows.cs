@@ -84,7 +84,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.PlatformSpecificsGalleries
 				VerticalOptions = LayoutOptions.Center
 			};
 			var adjustCollapseWidthEntry = new Entry { Text = page.On<WindowsOS>().CollapsedPaneWidth().ToString() };
-			var adjustCollapseWidthButton = new Button { Text = "Change", BackgroundColor = Color.Gray };
+			var adjustCollapseWidthButton = new Button { Text = "Change", BackgroundColor = Colors.Gray };
 			adjustCollapseWidthButton.Clicked += (sender, args) =>
 			{
 				double newWidth;

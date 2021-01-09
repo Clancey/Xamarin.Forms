@@ -45,7 +45,7 @@ namespace Xamarin.Forms.Controls.Issues
 					b = (b + Mix.Item3) / 2;
 				}
 
-				yield return Color.FromRgb(r, g, b);
+				yield return Colors.FromRgb(r, g, b);
 			}
 		}
 
@@ -64,7 +64,7 @@ namespace Xamarin.Forms.Controls.Issues
 			var label = new Label()
 			{
 				AutomationId = $"{s_id++}",
-				TextColor = Color.Black,
+				TextColor = Colors.Black,
 				BackgroundColor = color,
 				VerticalOptions = LayoutOptions.Center
 			};

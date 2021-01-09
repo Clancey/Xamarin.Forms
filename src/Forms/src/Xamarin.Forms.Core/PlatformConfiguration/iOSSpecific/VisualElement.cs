@@ -2,6 +2,7 @@
 namespace Xamarin.Forms.PlatformConfiguration.iOSSpecific
 {
 	using System;
+	using System.Graphics;
 	using FormsElement = Forms.VisualElement;
 
 	public static class VisualElement
@@ -84,7 +85,7 @@ namespace Xamarin.Forms.PlatformConfiguration.iOSSpecific
 
 		public static readonly BindableProperty ShadowColorProperty =
 			BindableProperty.Create("ShadowColor", typeof(Color),
-			typeof(VisualElement), Color.Default);
+			typeof(VisualElement), null);
 
 		public static Color GetShadowColor(BindableObject element)
 		{
@@ -133,25 +134,25 @@ namespace Xamarin.Forms.PlatformConfiguration.iOSSpecific
 		}
 
 		public static readonly BindableProperty ShadowOffsetProperty =
-		BindableProperty.Create("ShadowOffset", typeof(Size),
-		typeof(VisualElement), Size.Zero);
+		BindableProperty.Create("ShadowOffset", typeof(SizeF),
+		typeof(VisualElement), SizeF.Zero);
 
-		public static Size GetShadowOffset(BindableObject element)
+		public static SizeF GetShadowOffset(BindableObject element)
 		{
-			return (Size)element.GetValue(ShadowOffsetProperty);
+			return (SizeF)element.GetValue(ShadowOffsetProperty);
 		}
 
-		public static void SetShadowOffset(BindableObject element, Size value)
+		public static void SetShadowOffset(BindableObject element, SizeF value)
 		{
 			element.SetValue(ShadowOffsetProperty, value);
 		}
 
-		public static Size GetShadowOffset(this IPlatformElementConfiguration<iOS, FormsElement> config)
+		public static SizeF GetShadowOffset(this IPlatformElementConfiguration<iOS, FormsElement> config)
 		{
 			return GetShadowOffset(config.Element);
 		}
 
-		public static IPlatformElementConfiguration<iOS, FormsElement> SetShadowOffset(this IPlatformElementConfiguration<iOS, FormsElement> config, Size value)
+		public static IPlatformElementConfiguration<iOS, FormsElement> SetShadowOffset(this IPlatformElementConfiguration<iOS, FormsElement> config, SizeF value)
 		{
 			SetShadowOffset(config.Element, value);
 			return config;

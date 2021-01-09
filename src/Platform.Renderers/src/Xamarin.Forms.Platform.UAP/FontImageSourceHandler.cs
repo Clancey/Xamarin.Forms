@@ -39,7 +39,7 @@ namespace Xamarin.Forms.Platform.UWP
 				var imageSource = new CanvasImageSource(device, canvasWidth, canvasHeight, dpi);
 				using (var ds = imageSource.CreateDrawingSession(Windows.UI.Colors.Transparent))
 				{
-					var iconcolor = (fontsource.Color != Color.Default ? fontsource.Color : Color.White).ToWindowsColor();
+					var iconcolor = (fontsource.Color != null ? fontsource.Color : Colors.White).ToWindowsColor();
 
 					// offset by 1 as we added a 1 inset
 					var x = (float)layout.DrawBounds.X * -1;

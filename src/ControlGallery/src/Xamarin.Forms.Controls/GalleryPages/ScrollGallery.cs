@@ -33,7 +33,7 @@ namespace Xamarin.Forms.Controls
 			var btn2 = new Button { Text = "Center" };
 			var btn3 = new Button { Text = "End" };
 			var btn7 = new Button { Text = "Toggle Scroll Bar Visibility", WidthRequest = 120 };
-			var btn6 = new Button { Text = "MakeVisible", HorizontalOptions = LayoutOptions.CenterAndExpand, BackgroundColor = Color.Accent };
+			var btn6 = new Button { Text = "MakeVisible", HorizontalOptions = LayoutOptions.CenterAndExpand, BackgroundColor = Colors.Accent };
 			var btn8 = new Button { Text = "Toggle Orientation", WidthRequest = 120 };
 			var btn9 = new Button { Text = "Default Scroll Bar Visibility", WidthRequest = 120 };
 
@@ -74,7 +74,7 @@ namespace Xamarin.Forms.Controls
 			_scrollview = new ScrollView
 			{
 				AutomationId = "thescroller",
-				BackgroundColor = Color.Aqua,
+				BackgroundColor = Colors.Aqua,
 				Content = grid
 			};
 			root.Children.Add(_scrollview);
@@ -200,8 +200,8 @@ namespace Xamarin.Forms.Controls
 				if (i == 50)
 				{
 					newButton.Text = "the scrollto button";
-					newButton.BackgroundColor = Color.Yellow;
-					newButton.TextColor = Color.Black;
+					newButton.BackgroundColor = Colors.Yellow;
+					newButton.TextColor = Colors.Black;
 					_toNavigateTo = newButton;
 				}
 				if (i == 51)

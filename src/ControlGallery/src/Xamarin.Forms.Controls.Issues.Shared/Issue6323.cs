@@ -14,7 +14,7 @@ namespace Xamarin.Forms.Controls.Issues
 	{
 		protected override void Init()
 		{
-			SelectedTabColor = Color.Purple;
+			SelectedTabColor = Colors.Purple;
 			Device.StartTimer(TimeSpan.FromSeconds(2), () =>
 			{
 				Children.Add(new ContentPage

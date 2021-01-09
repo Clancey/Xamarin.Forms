@@ -97,7 +97,7 @@ namespace Xamarin.Forms.Controls.Issues
 					collection.Add(new Model5623((BindingContext as ViewModel5623).ItemSizingStrategy == ItemSizingStrategy.MeasureAllItems)
 					{
 						Text = i.ToString(),
-						BackgroundColor = i % 2 == 0 ? Color.AntiqueWhite : Color.Lavender
+						BackgroundColor = i % 2 == 0 ? Colors.AntiqueWhite : Colors.Lavender
 					});
 				}
 
@@ -156,7 +156,7 @@ namespace Xamarin.Forms.Controls.Issues
 				collection.Add(new Model5623(ItemSizingStrategy == ItemSizingStrategy.MeasureAllItems)
 				{
 					Text = i.ToString(),
-					BackgroundColor = i % 2 == 0 ? Color.AntiqueWhite : Color.Lavender
+					BackgroundColor = i % 2 == 0 ? Colors.AntiqueWhite : Colors.Lavender
 				});
 			}
 

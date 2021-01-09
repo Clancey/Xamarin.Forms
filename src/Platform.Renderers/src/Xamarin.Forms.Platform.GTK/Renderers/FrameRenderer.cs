@@ -42,12 +42,12 @@ namespace Xamarin.Forms.Platform.GTK.Renderers
 
 		private void SetupLayer()
 		{
-			if (Element.BackgroundColor == Color.Default)
+			if (Element.BackgroundColor == null)
 				Control.ResetBackgroundColor();
 			else
 				Control.SetBackgroundColor(Element.BackgroundColor);
 
-			if (Element.BorderColor == Color.Default)
+			if (Element.BorderColor == null)
 				Control.ResetBorderColor();
 			else
 				Control.SetBorderColor(Element.BorderColor);

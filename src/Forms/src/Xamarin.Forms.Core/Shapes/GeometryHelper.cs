@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Graphics;
 
 namespace Xamarin.Forms.Shapes
 {
 	public static class GeometryHelper
 	{
-		static readonly List<Point> Points = new List<Point>();
+		static readonly List<PointF> Points = new List<PointF>();
 
-		public static PathGeometry FlattenGeometry(Geometry geoSrc, double tolerance)
+		public static PathGeometry FlattenGeometry(Geometry geoSrc, float tolerance)
 		{
 			// Return empty PathGeometry if Geometry is null
 			if (geoSrc == null)
@@ -19,7 +20,7 @@ namespace Xamarin.Forms.Shapes
 			return pathGeoDst;
 		}
 
-		public static void FlattenGeometry(PathGeometry pathGeoDst, Geometry geoSrc, double tolerance, Matrix matxPrevious)
+		public static void FlattenGeometry(PathGeometry pathGeoDst, Geometry geoSrc, float tolerance, Matrix matxPrevious)
 		{
 			Matrix matx = matxPrevious;
 
@@ -48,11 +49,11 @@ namespace Xamarin.Forms.Shapes
 				PathFigure figDst = new PathFigure();
 				PolyLineSegment segDst = new PolyLineSegment();
 
-				figDst.StartPoint = matx.Transform(new Point(rectGeoSrc.Rect.Left, rectGeoSrc.Rect.Top));
-				segDst.Points.Add(matx.Transform(new Point(rectGeoSrc.Rect.Right, rectGeoSrc.Rect.Top)));
-				segDst.Points.Add(matx.Transform(new Point(rectGeoSrc.Rect.Right, rectGeoSrc.Rect.Bottom)));
-				segDst.Points.Add(matx.Transform(new Point(rectGeoSrc.Rect.Left, rectGeoSrc.Rect.Bottom)));
-				segDst.Points.Add(matx.Transform(new Point(rectGeoSrc.Rect.Left, rectGeoSrc.Rect.Top)));
+				figDst.StartPoint = matx.Transform(new PointF(rectGeoSrc.Rect.Left, rectGeoSrc.Rect.Top));
+				segDst.Points.Add(matx.Transform(new PointF(rectGeoSrc.Rect.Right, rectGeoSrc.Rect.Top)));
+				segDst.Points.Add(matx.Transform(new PointF(rectGeoSrc.Rect.Right, rectGeoSrc.Rect.Bottom)));
+				segDst.Points.Add(matx.Transform(new PointF(rectGeoSrc.Rect.Left, rectGeoSrc.Rect.Bottom)));
+				segDst.Points.Add(matx.Transform(new PointF(rectGeoSrc.Rect.Left, rectGeoSrc.Rect.Top)));
 
 				figDst.IsClosed = true;
 				figDst.Segments.Add(segDst);
@@ -68,9 +69,9 @@ namespace Xamarin.Forms.Shapes
 
 				for (int i = 0; i < max; i++)
 				{
-					double x = elipGeoSrc.Center.X + elipGeoSrc.RadiusX * Math.Sin(i * 2 * Math.PI / max);
-					double y = elipGeoSrc.Center.Y - elipGeoSrc.RadiusY * Math.Cos(i * 2 * Math.PI / max);
-					Point pt = matx.Transform(new Point(x, y));
+					var x = elipGeoSrc.Center.X + elipGeoSrc.RadiusX * (float)Math.Sin(i * 2 * Math.PI / max);
+					var y = elipGeoSrc.Center.Y - elipGeoSrc.RadiusY * (float)Math.Cos(i * 2 * Math.PI / max);
+					var pt = matx.Transform(new PointF(x, y));
 
 					if (i == 0)
 						figDst.StartPoint = pt;
@@ -95,7 +96,7 @@ namespace Xamarin.Forms.Shapes
 						IsClosed = figSrc.IsClosed,
 						StartPoint = matx.Transform(figSrc.StartPoint)
 					};
-					Point ptLast = figDst.StartPoint;
+					var ptLast = figDst.StartPoint;
 
 					foreach (PathSegment segSrc in figSrc.Segments)
 					{
@@ -111,7 +112,7 @@ namespace Xamarin.Forms.Shapes
 						{
 							PolyLineSegment polySegSrc = segSrc as PolyLineSegment;
 
-							foreach (Point pt in polySegSrc.Points)
+							foreach (var pt in polySegSrc.Points)
 							{
 								ptLast = matx.Transform(pt);
 								segDst.Points.Add(ptLast);
@@ -120,10 +121,10 @@ namespace Xamarin.Forms.Shapes
 						else if (segSrc is BezierSegment)
 						{
 							BezierSegment bezSeg = segSrc as BezierSegment;
-							Point pt0 = ptLast;
-							Point pt1 = matx.Transform(bezSeg.Point1);
-							Point pt2 = matx.Transform(bezSeg.Point2);
-							Point pt3 = matx.Transform(bezSeg.Point3);
+							var pt0 = ptLast;
+							var pt1 = matx.Transform(bezSeg.Point1);
+							var pt2 = matx.Transform(bezSeg.Point2);
+							var pt3 = matx.Transform(bezSeg.Point3);
 
 							Points.Clear();
 							FlattenCubicBezier(Points, pt0, pt1, pt2, pt3, tolerance);
@@ -142,10 +143,10 @@ namespace Xamarin.Forms.Shapes
 								if (bez + 2 > polyBezSeg.Points.Count - 1)
 									break;
 
-								Point pt0 = ptLast;
-								Point pt1 = matx.Transform(polyBezSeg.Points[bez]);
-								Point pt2 = matx.Transform(polyBezSeg.Points[bez + 1]);
-								Point pt3 = matx.Transform(polyBezSeg.Points[bez + 2]);
+								var pt0 = ptLast;
+								var pt1 = matx.Transform(polyBezSeg.Points[bez]);
+								var pt2 = matx.Transform(polyBezSeg.Points[bez + 1]);
+								var pt3 = matx.Transform(polyBezSeg.Points[bez + 2]);
 
 								Points.Clear();
 								FlattenCubicBezier(Points, pt0, pt1, pt2, pt3, tolerance);
@@ -159,9 +160,9 @@ namespace Xamarin.Forms.Shapes
 						else if (segSrc is QuadraticBezierSegment)
 						{
 							QuadraticBezierSegment quadBezSeg = segSrc as QuadraticBezierSegment;
-							Point pt0 = ptLast;
-							Point pt1 = matx.Transform(quadBezSeg.Point1);
-							Point pt2 = matx.Transform(quadBezSeg.Point2);
+							var pt0 = ptLast;
+							var pt1 = matx.Transform(quadBezSeg.Point1);
+							var pt2 = matx.Transform(quadBezSeg.Point2);
 
 							Points.Clear();
 							FlattenQuadraticBezier(Points, pt0, pt1, pt2, tolerance);
@@ -180,9 +181,9 @@ namespace Xamarin.Forms.Shapes
 								if (bez + 1 > polyQuadBezSeg.Points.Count - 1)
 									break;
 
-								Point pt0 = ptLast;
-								Point pt1 = matx.Transform(polyQuadBezSeg.Points[bez]);
-								Point pt2 = matx.Transform(polyQuadBezSeg.Points[bez + 1]);
+								var pt0 = ptLast;
+								var pt1 = matx.Transform(polyQuadBezSeg.Points[bez]);
+								var pt2 = matx.Transform(polyQuadBezSeg.Points[bez + 1]);
 
 								Points.Clear();
 								FlattenQuadraticBezier(Points, pt0, pt1, pt2, tolerance);
@@ -223,51 +224,51 @@ namespace Xamarin.Forms.Shapes
 			}
 		}
 
-		public static void FlattenCubicBezier(List<Point> points, Point ptStart, Point ptCtrl1, Point ptCtrl2, Point ptEnd, double tolerance)
+		public static void FlattenCubicBezier(List<PointF> points, PointF ptStart, PointF ptCtrl1, PointF ptCtrl2, PointF ptEnd, float tolerance)
 		{
 			int max = (int)((ptCtrl1.Distance(ptStart) + ptCtrl2.Distance(ptCtrl1) + ptEnd.Distance(ptCtrl2)) / tolerance);
 
 			for (int i = 0; i <= max; i++)
 			{
-				double t = (double)i / max;
+				float t = (float)i / max;
 
-				double x = (1 - t) * (1 - t) * (1 - t) * ptStart.X +
+				float x = (1 - t) * (1 - t) * (1 - t) * ptStart.X +
 						   3 * t * (1 - t) * (1 - t) * ptCtrl1.X +
 						   3 * t * t * (1 - t) * ptCtrl2.X +
 						   t * t * t * ptEnd.X;
 
-				double y = (1 - t) * (1 - t) * (1 - t) * ptStart.Y +
+				float y = (1 - t) * (1 - t) * (1 - t) * ptStart.Y +
 						   3 * t * (1 - t) * (1 - t) * ptCtrl1.Y +
 						   3 * t * t * (1 - t) * ptCtrl2.Y +
 						   t * t * t * ptEnd.Y;
 
-				points.Add(new Point(x, y));
+				points.Add(new PointF(x, y));
 			}
 		}
 
-		public static void FlattenQuadraticBezier(List<Point> points, Point ptStart, Point ptCtrl, Point ptEnd, double tolerance)
+		public static void FlattenQuadraticBezier(List<PointF> points, PointF ptStart, PointF ptCtrl, PointF ptEnd, float tolerance)
 		{
 			int max = (int)((ptCtrl.Distance(ptStart) + ptEnd.Distance(ptCtrl)) / tolerance);
 
 			for (int i = 0; i <= max; i++)
 			{
-				double t = (double)i / max;
+				float t = (float)i / max;
 
-				double x = (1 - t) * (1 - t) * ptStart.X +
+				float x = (1 - t) * (1 - t) * ptStart.X +
 						   2 * t * (1 - t) * ptCtrl.X +
 						   t * t * ptEnd.X;
 
-				double y = (1 - t) * (1 - t) * ptStart.Y +
+				float y = (1 - t) * (1 - t) * ptStart.Y +
 						   2 * t * (1 - t) * ptCtrl.Y +
 						   t * t * ptEnd.Y;
 
-				points.Add(new Point(x, y));
+				points.Add(new PointF(x, y));
 			}
 		}
 
 		// More information: http://www.charlespetzold.com/blog/2008/01/Mathematics-of-ArcSegment.html
-		public static void FlattenArc(List<Point> points, Point pt1, Point pt2, double radiusX, double radiusY, double angleRotation,
-			bool isLargeArc, bool isCounterclockwise, double tolerance)
+		public static void FlattenArc(List<PointF> points, PointF pt1, PointF pt2, float radiusX, float radiusY, float angleRotation,
+			bool isLargeArc, bool isCounterclockwise, float tolerance)
 		{
 			// Adjust for different radii and rotation angle
 			Matrix matx = new Matrix();
@@ -277,9 +278,9 @@ namespace Xamarin.Forms.Shapes
 			pt2 = matx.Transform(pt2);
 
 			// Get info about chord that connects both points
-			Point midPoint = new Point((pt1.X + pt2.X) / 2, (pt1.Y + pt2.Y) / 2);
+			PointF midPoint = new PointF((pt1.X + pt2.X) / 2, (pt1.Y + pt2.Y) / 2);
 			Vector2 vect = new Vector2(pt2.X - pt1.X, pt2.Y - pt1.Y);
-			double halfChord = vect.Length / 2;
+			float halfChord = vect.Length / 2;
 
 			// Get vector from chord to center
 			Vector2 vectRotated;
@@ -292,16 +293,16 @@ namespace Xamarin.Forms.Shapes
 			vectRotated = vectRotated.Normalized;
 
 			// Distance from chord to center
-			double centerDistance = Math.Sqrt(Math.Abs((radiusY * radiusY) - (halfChord * halfChord)));
+			float centerDistance = (float)Math.Sqrt(Math.Abs((radiusY * radiusY) - (halfChord * halfChord)));
 
 			// Calculate center point
-			Point center = midPoint + centerDistance * vectRotated;
+			var center = midPoint + centerDistance * vectRotated;
 
 			// Get angles from center to the two points
-			double angle1 = Math.Atan2(pt1.Y - center.Y, pt1.X - center.X);
-			double angle2 = Math.Atan2(pt2.Y - center.Y, pt2.X - center.X);
+			float angle1 = (float)Math.Atan2(pt1.Y - center.Y, pt1.X - center.X);
+			float angle2 = (float)Math.Atan2(pt2.Y - center.Y, pt2.X - center.X);
 
-			double sweep = Math.Abs(angle2 - angle1);
+			float sweep = Math.Abs(angle2 - angle1);
 			bool reverseArc;
 
 			if (Math.IEEERemainder(sweep + 0.000005, Math.PI) < 0.000010)
@@ -317,9 +318,9 @@ namespace Xamarin.Forms.Shapes
 			if (reverseArc)
 			{
 				if (angle1 < angle2)
-					angle1 += 2 * Math.PI;
+					angle1 += 2 * (float)Math.PI;
 				else
-					angle2 += 2 * Math.PI;
+					angle2 += 2 * (float)Math.PI;
 			}
 
 			// Invert matrix for final point calculation
@@ -330,11 +331,11 @@ namespace Xamarin.Forms.Shapes
 
 			for (int i = 0; i <= max; i++)
 			{
-				double angle = ((max - i) * angle1 + i * angle2) / max;
-				double x = center.X + radiusY * Math.Cos(angle);
-				double y = center.Y + radiusY * Math.Sin(angle);
+				float angle = ((max - i) * angle1 + i * angle2) / max;
+				float x = center.X + radiusY * (float)Math.Cos(angle);
+				float y = center.Y + radiusY * (float)Math.Sin(angle);
 
-				Point pt = matx.Transform(new Point(x, y));
+				var pt = matx.Transform(new PointF(x, y));
 				points.Add(pt);
 			}
 		}

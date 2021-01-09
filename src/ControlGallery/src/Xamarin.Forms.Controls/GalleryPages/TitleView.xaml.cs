@@ -136,14 +136,14 @@ namespace Xamarin.Forms.Controls.GalleryPages
 
 		static View createSearchBarView()
 		{
-			return new SearchBar { BackgroundColor = Color.Cornsilk, HorizontalOptions = LayoutOptions.FillAndExpand, Margin = new Thickness(10, 0) };
+			return new SearchBar { BackgroundColor = Colors.Cornsilk, HorizontalOptions = LayoutOptions.FillAndExpand, Margin = new Thickness(10, 0) };
 		}
 
 		static View createGrid()
 		{
 			var grid = new Grid
 			{
-				BackgroundColor = Color.LightGray
+				BackgroundColor = Colors.LightGray
 			};
 
 			grid.RowDefinitions.Add(new RowDefinition());
@@ -151,8 +151,8 @@ namespace Xamarin.Forms.Controls.GalleryPages
 			grid.ColumnDefinitions.Add(new ColumnDefinition());
 			grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Star });
 
-			var label = new Label { Text = "hello", HorizontalOptions = LayoutOptions.Start, BackgroundColor = Color.Yellow };
-			var label2 = new Label { Text = "hello 2", HorizontalOptions = LayoutOptions.Start, BackgroundColor = Color.Yellow };
+			var label = new Label { Text = "hello", HorizontalOptions = LayoutOptions.Start, BackgroundColor = Colors.Yellow };
+			var label2 = new Label { Text = "hello 2", HorizontalOptions = LayoutOptions.Start, BackgroundColor = Colors.Yellow };
 			grid.Children.Add(
 				new StackLayout()
 				{

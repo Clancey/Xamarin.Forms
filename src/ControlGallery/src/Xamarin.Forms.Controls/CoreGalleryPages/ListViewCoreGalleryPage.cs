@@ -101,15 +101,15 @@ namespace Xamarin.Forms.Controls
 				var title = new Label
 				{
 					HeightRequest = 30,
-					BackgroundColor = Color.Navy,
-					TextColor = Color.White
+					BackgroundColor = Colors.Navy,
+					TextColor = Colors.White
 				};
 
 				title.SetBinding(Label.TextProperty, new Binding("Key"));
 
 				View = new StackLayout
 				{
-					BackgroundColor = Color.Pink,
+					BackgroundColor = Colors.Pink,
 					Children = { title }
 				};
 			}
@@ -128,7 +128,7 @@ namespace Xamarin.Forms.Controls
 
 				var layout = new StackLayout
 				{
-					BackgroundColor = Color.Red,
+					BackgroundColor = Colors.Red,
 					Children = {
 						label
 					}
@@ -283,7 +283,7 @@ namespace Xamarin.Forms.Controls
 
 			var refreshControlColorContainer = new ViewContainer<ListView>(Test.ListView.RefreshControlColor, new ListView());
 			InitializeElement(refreshControlColorContainer.View);
-			refreshControlColorContainer.View.RefreshControlColor = Color.Red;
+			refreshControlColorContainer.View.RefreshControlColor = Colors.Red;
 			refreshControlColorContainer.View.IsPullToRefreshEnabled = true;
 			refreshControlColorContainer.View.Refreshing += async (object sender, EventArgs e) =>
 			{

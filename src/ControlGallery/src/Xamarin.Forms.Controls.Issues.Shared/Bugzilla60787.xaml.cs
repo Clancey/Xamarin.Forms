@@ -25,7 +25,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 		void btnChangeColour_Click(object sender, EventArgs e)
 		{
-			this.frmDoesChange.BackgroundColor = _colourIndicator ? Color.LightBlue : Color.LightGoldenrodYellow;
+			this.frmDoesChange.BackgroundColor = _colourIndicator ? Colors.LightBlue : Colors.LightGoldenrodYellow;
 
 			_colourIndicator = !_colourIndicator;
 		}

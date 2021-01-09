@@ -71,7 +71,7 @@ namespace Xamarin.Forms.Controls.Issues
 			var divider = new BoxView
 			{
 				HeightRequest = 1,
-				BackgroundColor = Color.Black
+				BackgroundColor = Colors.Black
 			};
 
 			StackLayout stackLayout = new StackLayout();

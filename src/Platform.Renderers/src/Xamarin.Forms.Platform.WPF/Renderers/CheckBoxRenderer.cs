@@ -6,7 +6,7 @@ namespace Xamarin.Forms.Platform.WPF
 	public class CheckBoxRenderer : ViewRenderer<CheckBox, FormsCheckBox>
 	{
 		bool _isDisposed;
-		static WBrush _tintDefaultBrush = Color.Transparent.ToBrush();
+		static WBrush _tintDefaultBrush = Colors.Transparent.ToBrush();
 
 		public CheckBoxRenderer()
 		{
@@ -52,7 +52,7 @@ namespace Xamarin.Forms.Platform.WPF
 
 		void UpdateTintColor()
 		{
-			if (Element.Color == Color.Default)
+			if (Element.Color == null)
 				Control.TintBrush = _tintDefaultBrush;
 			else
 				Control.TintBrush = Element.Color.ToBrush();

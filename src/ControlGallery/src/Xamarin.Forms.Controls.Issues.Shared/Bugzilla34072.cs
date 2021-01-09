@@ -18,7 +18,7 @@ namespace Xamarin.Forms.Controls.Issues
 			_testButton = new Button()
 			{
 				Text = "Enabled",
-				TextColor = Color.Yellow,
+				TextColor = Colors.Yellow,
 				IsEnabled = true
 			};
 

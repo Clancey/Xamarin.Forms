@@ -37,7 +37,7 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				WidthRequest = 100,
 				HeightRequest = 100,
-				BackgroundColor = Color.Bisque,
+				BackgroundColor = Colors.Bisque,
 				AutomationId = SingleTapBoxId
 			};
 

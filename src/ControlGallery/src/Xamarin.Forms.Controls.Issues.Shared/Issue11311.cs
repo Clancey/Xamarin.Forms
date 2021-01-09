@@ -48,7 +48,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var collectionView = new CollectionView
 			{
-				Footer = new BoxView { BackgroundColor = Color.Red, HeightRequest = 53 }
+				Footer = new BoxView { BackgroundColor = Colors.Red, HeightRequest = 53 }
 			};
 
 			collectionView.SetBinding(ItemsView.ItemsSourceProperty, nameof(_11311ViewModel.ScoreCollectionList));

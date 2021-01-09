@@ -30,13 +30,13 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var verticalCollectionView = new CollectionView
 			{
-				BackgroundColor = Color.LightBlue,
+				BackgroundColor = Colors.LightBlue,
 				EmptyView = "Empty Vertical List as String"
 			};
 
 			var horizontalCollectionView = new CollectionView
 			{
-				BackgroundColor = Color.LightCoral,
+				BackgroundColor = Colors.LightCoral,
 				ItemsLayout = new LinearItemsLayout(ItemsLayoutOrientation.Horizontal),
 				EmptyView = "Empty Horizontal List as String"
 			};

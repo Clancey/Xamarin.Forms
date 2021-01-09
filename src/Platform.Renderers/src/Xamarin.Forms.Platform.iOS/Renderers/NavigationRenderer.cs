@@ -657,7 +657,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		void UpdateBackgroundColor()
 		{
-			var color = Element.BackgroundColor == Color.Default ? ColorExtensions.BackgroundColor.ToColor() : Element.BackgroundColor;
+			var color = Element.BackgroundColor == null ? ColorExtensions.BackgroundColor.ToColor() : Element.BackgroundColor;
 			View.BackgroundColor = color.ToUIColor();
 		}
 
@@ -671,7 +671,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 				navigationBarAppearance.ConfigureWithOpaqueBackground();
 
-				if (barBackgroundColor == Color.Default)
+				if (barBackgroundColor == null)
 				{
 					navigationBarAppearance.BackgroundColor = ColorExtensions.BackgroundColor;
 
@@ -692,7 +692,7 @@ namespace Xamarin.Forms.Platform.iOS
 			else
 			{
 				// Set navigation bar background color
-				NavigationBar.BarTintColor = barBackgroundColor == Color.Default
+				NavigationBar.BarTintColor = barBackgroundColor == null
 					? UINavigationBar.Appearance.BarTintColor
 					: barBackgroundColor.ToUIColor();
 
@@ -710,7 +710,7 @@ namespace Xamarin.Forms.Platform.iOS
 			var globalTitleTextAttributes = UINavigationBar.Appearance.TitleTextAttributes;
 			var titleTextAttributes = new UIStringAttributes
 			{
-				ForegroundColor = barTextColor == Color.Default ? globalTitleTextAttributes?.ForegroundColor : barTextColor.ToUIColor(),
+				ForegroundColor = barTextColor == null ? globalTitleTextAttributes?.ForegroundColor : barTextColor.ToUIColor(),
 				Font = globalTitleTextAttributes?.Font
 			};
 
@@ -722,7 +722,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 				largeTitleTextAttributes = new UIStringAttributes
 				{
-					ForegroundColor = barTextColor == Color.Default ? globalLargeTitleTextAttributes?.ForegroundColor : barTextColor.ToUIColor(),
+					ForegroundColor = barTextColor == null ? globalLargeTitleTextAttributes?.ForegroundColor : barTextColor.ToUIColor(),
 					Font = globalLargeTitleTextAttributes?.Font
 				};
 			}
@@ -747,11 +747,11 @@ namespace Xamarin.Forms.Platform.iOS
 			}
 
 			// set Tint color (i. e. Back Button arrow and Text)
-			var iconColor = Current != null ? NavigationPage.GetIconColor(Current) : Color.Default;
+			var iconColor = Current != null ? NavigationPage.GetIconColor(Current) : null;
 			if (iconColor.IsDefault)
 				iconColor = barTextColor;
 
-			NavigationBar.TintColor = iconColor == Color.Default || NavPage.OnThisPlatform().GetStatusBarTextColorMode() == StatusBarTextColorMode.DoNotAdjust
+			NavigationBar.TintColor = iconColor == null || NavPage.OnThisPlatform().GetStatusBarTextColorMode() == StatusBarTextColorMode.DoNotAdjust
 				? UINavigationBar.Appearance.TintColor
 				: iconColor.ToUIColor();
 		}
@@ -786,10 +786,10 @@ namespace Xamarin.Forms.Platform.iOS
 #pragma warning disable 0618 //retaining legacy call to obsolete code
 			var tintColor = NavPage.Tint;
 #pragma warning restore 0618
-			NavigationBar.BarTintColor = tintColor == Color.Default
+			NavigationBar.BarTintColor = tintColor == null
 				? UINavigationBar.Appearance.BarTintColor
 				: tintColor.ToUIColor();
-			if (tintColor == Color.Default)
+			if (tintColor == null)
 				NavigationBar.TintColor = UINavigationBar.Appearance.TintColor;
 			else
 				NavigationBar.TintColor = tintColor.Luminosity > 0.5 ? UIColor.Black : UIColor.White;

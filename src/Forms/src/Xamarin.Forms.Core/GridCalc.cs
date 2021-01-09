@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Graphics;
 using System.Linq;
 
 namespace Xamarin.Forms
 {
 	public partial class Grid
 	{
-		protected override void LayoutChildren(double x, double y, double width, double height)
+		protected override void LayoutChildren(float x, float y, float width, float height)
 		{
 			if (!InternalChildren.Any())
 				return;
@@ -25,37 +26,37 @@ namespace Xamarin.Forms
 				int rs = GetRowSpan(child);
 				int cs = GetColumnSpan(child);
 
-				double posx = x + c * ColumnSpacing;
+				float posx = x + c * ColumnSpacing;
 				for (var i = 0; i < c; i++)
 					posx += structure.Columns[i].ActualWidth;
-				double posy = y + r * RowSpacing;
+				float posy = y + r * RowSpacing;
 				for (var i = 0; i < r; i++)
 					posy += structure.Rows[i].ActualHeight;
 
-				double w = structure.Columns[c].ActualWidth;
+				float w = structure.Columns[c].ActualWidth;
 				for (var i = 1; i < cs; i++)
 					w += ColumnSpacing + structure.Columns[c + i].ActualWidth;
-				double h = structure.Rows[r].ActualHeight;
+				float h = structure.Rows[r].ActualHeight;
 				for (var i = 1; i < rs; i++)
 					h += RowSpacing + structure.Rows[r + i].ActualHeight;
 
 				// in the future we can might maybe optimize by passing the already calculated size request
-				LayoutChildIntoBoundingRegion(child, new Rectangle(posx, posy, w, h));
+				LayoutChildIntoBoundingRegion(child, new RectangleF(posx, posy, w, h));
 			}
 		}
 
 		[Obsolete("OnSizeRequest is obsolete as of version 2.2.0. Please use OnMeasure instead.")]
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		protected override SizeRequest OnSizeRequest(double widthConstraint, double heightConstraint)
+		protected override SizeRequest OnSizeRequest(float widthConstraint, float heightConstraint)
 		{
 			if (!InternalChildren.Any())
-				return new SizeRequest(new Size(0, 0));
+				return new SizeRequest(new SizeF(0, 0));
 
 			// grab a snapshot of this grid, fully-measured, so we can do the layout
 			var structure = new GridStructure(this, widthConstraint, heightConstraint, true);
 
-			double columnWidthSum = 0;
-			double nonStarColumnWidthSum = 0;
+			float columnWidthSum = 0;
+			float nonStarColumnWidthSum = 0;
 			for (var index = 0; index < structure.Columns.Count; index++)
 			{
 				ColumnDefinition c = structure.Columns[index];
@@ -63,8 +64,8 @@ namespace Xamarin.Forms
 				if (!c.Width.IsStar)
 					nonStarColumnWidthSum += c.ActualWidth;
 			}
-			double rowHeightSum = 0;
-			double nonStarRowHeightSum = 0;
+			float rowHeightSum = 0;
+			float nonStarRowHeightSum = 0;
 			for (var index = 0; index < structure.Rows.Count; index++)
 			{
 				RowDefinition r = structure.Rows[index];
@@ -73,8 +74,8 @@ namespace Xamarin.Forms
 					nonStarRowHeightSum += r.ActualHeight;
 			}
 
-			var request = new Size(columnWidthSum + (structure.Columns.Count - 1) * ColumnSpacing, rowHeightSum + (structure.Rows.Count - 1) * RowSpacing);
-			var minimum = new Size(nonStarColumnWidthSum + (structure.Columns.Count - 1) * ColumnSpacing, nonStarRowHeightSum + (structure.Rows.Count - 1) * RowSpacing);
+			var request = new SizeF(columnWidthSum + (structure.Columns.Count - 1) * ColumnSpacing, rowHeightSum + (structure.Rows.Count - 1) * RowSpacing);
+			var minimum = new SizeF(nonStarColumnWidthSum + (structure.Columns.Count - 1) * ColumnSpacing, nonStarRowHeightSum + (structure.Rows.Count - 1) * RowSpacing);
 
 			var result = new SizeRequest(request, minimum);
 			return result;
@@ -100,7 +101,7 @@ namespace Xamarin.Forms
 				EnsureRowsColumnsInitialized(grid);
 			}
 
-			public GridStructure(Grid grid, double width, double height, bool requestSize = false) : this(grid)
+			public GridStructure(Grid grid, float width, float height, bool requestSize = false) : this(grid)
 			{
 				AssignAbsoluteCells();
 
@@ -115,7 +116,7 @@ namespace Xamarin.Forms
 					ContractAutoRowsIfNeeded(height, columnSpacing, rowSpacing);
 				}
 
-				double totalStarsHeight = 0;
+				float totalStarsHeight = 0;
 				for (var index = 0; index < _rows.Count; index++)
 				{
 					RowDefinition row = _rows[index];
@@ -123,7 +124,7 @@ namespace Xamarin.Forms
 						totalStarsHeight += row.Height.Value;
 				}
 
-				double totalStarsWidth = 0;
+				float totalStarsWidth = 0;
 				for (var index = 0; index < _columns.Count; index++)
 				{
 					ColumnDefinition col = _columns[index];
@@ -164,7 +165,7 @@ namespace Xamarin.Forms
 				}
 			}
 
-			void CalculateAutoCells(Grid grid, double width, double height)
+			void CalculateAutoCells(Grid grid, float width, float height)
 			{
 				// this require multiple passes. First process the 1-span, then 2, 3, ...
 				// And this needs to be run twice, just in case a lower-span column can be determined by a larger span
@@ -180,17 +181,17 @@ namespace Xamarin.Forms
 							if (row.ActualHeight >= 0) // if Actual is already set (by a smaller span), skip till pass 3
 								continue;
 
-							double actualHeight = row.ActualHeight;
-							double minimumHeight = row.MinimumHeight;
+							float actualHeight = row.ActualHeight;
+							float minimumHeight = row.MinimumHeight;
 							for (var index = 0; index < grid.InternalChildren.Count; index++)
 							{
 								var child = (View)(grid.InternalChildren[index]);
 								if (!child.IsVisible || GetRowSpan(child) != rowspan || !IsInRow(child, i) || NumberOfUnsetRowHeight(child) > 1)
 									continue;
-								double assignedWidth = GetAssignedColumnWidth(child);
-								double assignedHeight = GetAssignedRowHeight(child);
-								double widthRequest = assignedWidth + GetUnassignedWidth(width, grid.ColumnSpacing);
-								double heightRequest = double.IsPositiveInfinity(height) ? double.PositiveInfinity : assignedHeight + GetUnassignedHeight(height, grid.RowSpacing);
+								float assignedWidth = GetAssignedColumnWidth(child);
+								float assignedHeight = GetAssignedRowHeight(child);
+								float widthRequest = assignedWidth + GetUnassignedWidth(width, grid.ColumnSpacing);
+								float heightRequest = float.IsPositiveInfinity(height) ? float.PositiveInfinity : assignedHeight + GetUnassignedHeight(height, grid.RowSpacing);
 
 								SizeRequest sizeRequest = child.Measure(widthRequest, heightRequest, MeasureFlags.IncludeMargins);
 								actualHeight = Math.Max(actualHeight, sizeRequest.Request.Height - assignedHeight - grid.RowSpacing * (GetRowSpan(child) - 1));
@@ -213,17 +214,17 @@ namespace Xamarin.Forms
 							if (col.ActualWidth >= 0) // if Actual is already set (by a smaller span), skip
 								continue;
 
-							double actualWidth = col.ActualWidth;
-							double minimumWidth = col.MinimumWidth;
+							float actualWidth = col.ActualWidth;
+							float minimumWidth = col.MinimumWidth;
 							for (var index = 0; index < grid.InternalChildren.Count; index++)
 							{
 								var child = (View)(grid.InternalChildren)[index];
 								if (!child.IsVisible || GetColumnSpan(child) != colspan || !IsInColumn(child, i) || NumberOfUnsetColumnWidth(child) > 1)
 									continue;
-								double assignedWidth = GetAssignedColumnWidth(child);
-								double assignedHeight = GetAssignedRowHeight(child);
-								double widthRequest = double.IsPositiveInfinity(width) ? double.PositiveInfinity : assignedWidth + GetUnassignedWidth(width, grid.ColumnSpacing);
-								double heightRequest = assignedHeight + GetUnassignedHeight(height, grid.RowSpacing);
+								float assignedWidth = GetAssignedColumnWidth(child);
+								float assignedHeight = GetAssignedRowHeight(child);
+								float widthRequest = float.IsPositiveInfinity(width) ? float.PositiveInfinity : assignedWidth + GetUnassignedWidth(width, grid.ColumnSpacing);
+								float heightRequest = assignedHeight + GetUnassignedHeight(height, grid.RowSpacing);
 
 								SizeRequest sizeRequest = child.Measure(widthRequest, heightRequest, MeasureFlags.IncludeMargins);
 								actualWidth = Math.Max(actualWidth, sizeRequest.Request.Width - assignedWidth - (GetColumnSpan(child) - 1) * grid.ColumnSpacing);
@@ -238,10 +239,10 @@ namespace Xamarin.Forms
 				}
 			}
 
-			void CalculateStarCells(double width, double height, double totalStarsWidth, double totalStarsHeight, double columnSpacing, double rowSpacing)
+			void CalculateStarCells(float width, float height, float totalStarsWidth, float totalStarsHeight, float columnSpacing, float rowSpacing)
 			{
-				double starColWidth = GetUnassignedWidth(width, columnSpacing) / totalStarsWidth;
-				double starRowHeight = GetUnassignedHeight(height, rowSpacing) / totalStarsHeight;
+				float starColWidth = GetUnassignedWidth(width, columnSpacing) / totalStarsWidth;
+				float starRowHeight = GetUnassignedHeight(height, rowSpacing) / totalStarsHeight;
 
 				for (var index = 0; index < _columns.Count; index++)
 				{
@@ -258,9 +259,9 @@ namespace Xamarin.Forms
 				}
 			}
 
-			double ComputeColumnWidthSum()
+			float ComputeColumnWidthSum()
 			{
-				double columnwWidthSum = 0;
+				float columnwWidthSum = 0;
 				for (var index = 0; index < _columns.Count; index++)
 				{
 					ColumnDefinition c = _columns[index];
@@ -270,9 +271,9 @@ namespace Xamarin.Forms
 				return columnwWidthSum;
 			}
 
-			double ComputeRowHeightSum()
+			float ComputeRowHeightSum()
 			{
-				double rowHeightSum = 0;
+				float rowHeightSum = 0;
 				for (var index = 0; index < _rows.Count; index++)
 				{
 					RowDefinition r = _rows[index];
@@ -282,15 +283,15 @@ namespace Xamarin.Forms
 				return rowHeightSum;
 			}
 
-			Size ComputeCurrentSize(double columnSpacing, double rowSpacing)
+			SizeF ComputeCurrentSize(float columnSpacing, float rowSpacing)
 			{
 				var columnWidthSum = ComputeColumnWidthSum();
 				var rowHeightSum = ComputeRowHeightSum();
 
-				return new Size(columnWidthSum + (_columns.Count - 1) * columnSpacing, rowHeightSum + (_rows.Count - 1) * rowSpacing);
+				return new SizeF(columnWidthSum + (_columns.Count - 1) * columnSpacing, rowHeightSum + (_rows.Count - 1) * rowSpacing);
 			}
 
-			void ContractAutoColumnsIfNeeded(double targetWidth, double columnSpacing, double rowSpacing)
+			void ContractAutoColumnsIfNeeded(float targetWidth, float columnSpacing, float rowSpacing)
 			{
 				var currentSize = ComputeCurrentSize(columnSpacing, rowSpacing);
 
@@ -299,7 +300,7 @@ namespace Xamarin.Forms
 					return;
 				}
 
-				double contractionSpace = 0;
+				float contractionSpace = 0;
 				for (var index = 0; index < _columns.Count; index++)
 				{
 					ColumnDefinition c = _columns[index];
@@ -309,23 +310,23 @@ namespace Xamarin.Forms
 				if (contractionSpace > 0)
 				{
 					// contract as much as we can but no more
-					double contractionNeeded = Math.Min(contractionSpace, Math.Max(currentSize.Width - targetWidth, 0));
-					double contractFactor = contractionNeeded / contractionSpace;
+					float contractionNeeded = Math.Min(contractionSpace, Math.Max(currentSize.Width - targetWidth, 0));
+					float contractFactor = contractionNeeded / contractionSpace;
 
 					for (var index = 0; index < _columns.Count; index++)
 					{
 						ColumnDefinition col = _columns[index];
 						if (!col.Width.IsAuto)
 							continue;
-						double availableSpace = col.ActualWidth - Math.Max(col.MinimumWidth, 0);
-						double contraction = availableSpace * contractFactor;
+						float availableSpace = col.ActualWidth - Math.Max(col.MinimumWidth, 0);
+						float contraction = availableSpace * contractFactor;
 						col.ActualWidth -= contraction;
 						contractionNeeded -= contraction;
 					}
 				}
 			}
 
-			void ContractAutoRowsIfNeeded(double targetHeight, double columnSpacing, double rowSpacing)
+			void ContractAutoRowsIfNeeded(float targetHeight, float columnSpacing, float rowSpacing)
 			{
 				var currentSize = ComputeCurrentSize(columnSpacing, rowSpacing);
 
@@ -334,7 +335,7 @@ namespace Xamarin.Forms
 					return;
 				}
 
-				double contractionSpace = 0;
+				float contractionSpace = 0;
 				for (var index = 0; index < _rows.Count; index++)
 				{
 					RowDefinition r = _rows[index];
@@ -344,21 +345,21 @@ namespace Xamarin.Forms
 				if (!(contractionSpace > 0))
 					return;
 				// contract as much as we can but no more
-				double contractionNeeded = Math.Min(contractionSpace, Math.Max(currentSize.Height - targetHeight, 0));
-				double contractFactor = contractionNeeded / contractionSpace;
+				float contractionNeeded = Math.Min(contractionSpace, Math.Max(currentSize.Height - targetHeight, 0));
+				float contractFactor = contractionNeeded / contractionSpace;
 				for (var index = 0; index < _rows.Count; index++)
 				{
 					RowDefinition row = _rows[index];
 					if (!row.Height.IsAuto)
 						continue;
-					double availableSpace = row.ActualHeight - row.MinimumHeight;
-					double contraction = availableSpace * contractFactor;
+					float availableSpace = row.ActualHeight - row.MinimumHeight;
+					float contraction = availableSpace * contractFactor;
 					row.ActualHeight -= contraction;
 					contractionNeeded -= contraction;
 				}
 			}
 
-			void ContractStarColumnsIfNeeded(double targetWidth, double columnSpacing, double rowSpacing)
+			void ContractStarColumnsIfNeeded(float targetWidth, float columnSpacing, float rowSpacing)
 			{
 				var request = ComputeCurrentSize(columnSpacing, rowSpacing);
 
@@ -367,9 +368,9 @@ namespace Xamarin.Forms
 					return;
 				}
 
-				double starColumnWidth = 0;
-				double starColumnMinWidth = 0;
-				double contractionSpace = 0;
+				float starColumnWidth = 0;
+				float starColumnMinWidth = 0;
+				float contractionSpace = 0;
 
 				for (int n = 0; n < _columns.Count; n++)
 				{
@@ -403,8 +404,8 @@ namespace Xamarin.Forms
 				}
 
 				// contract as much as we can but no more
-				double contractionNeeded = Math.Min(contractionSpace, Math.Max(request.Width - targetWidth, 0));
-				double contractionFactor = contractionNeeded / contractionSpace;
+				float contractionNeeded = Math.Min(contractionSpace, Math.Max(request.Width - targetWidth, 0));
+				float contractionFactor = contractionNeeded / contractionSpace;
 				var delta = contractionFactor >= 1
 					? starColumnWidth - starColumnMinWidth
 					: contractionFactor * (starColumnWidth - starColumnMinWidth);
@@ -421,7 +422,7 @@ namespace Xamarin.Forms
 				}
 			}
 
-			void ContractStarRowsIfNeeded(double targetHeight, double columnSpacing, double rowSpacing)
+			void ContractStarRowsIfNeeded(float targetHeight, float columnSpacing, float rowSpacing)
 			{
 				var request = ComputeCurrentSize(columnSpacing, rowSpacing);
 
@@ -430,9 +431,9 @@ namespace Xamarin.Forms
 					return;
 				}
 
-				double starRowHeight = 0;
-				double starRowMinHeight = 0;
-				double contractionSpace = 0;
+				float starRowHeight = 0;
+				float starRowMinHeight = 0;
+				float contractionSpace = 0;
 
 				for (int n = 0; n < _rows.Count; n++)
 				{
@@ -465,8 +466,8 @@ namespace Xamarin.Forms
 					return;
 				}
 
-				double contractionNeeded = Math.Min(contractionSpace, Math.Max(request.Height - targetHeight, 0));
-				double contractionFactor = contractionNeeded / contractionSpace;
+				float contractionNeeded = Math.Min(contractionSpace, Math.Max(request.Height - targetHeight, 0));
+				float contractionFactor = contractionNeeded / contractionSpace;
 				var delta = contractionFactor >= 1
 					? starRowHeight - starRowMinHeight
 					: contractionFactor * (starRowHeight - starRowMinHeight);
@@ -521,7 +522,7 @@ namespace Xamarin.Forms
 				}
 			}
 
-			void ExpandLastAutoColumnIfNeeded(Grid grid, double width, bool expandToRequest)
+			void ExpandLastAutoColumnIfNeeded(Grid grid, float width, bool expandToRequest)
 			{
 				for (var index = 0; index < grid.InternalChildren.Count; index++)
 				{
@@ -534,11 +535,11 @@ namespace Xamarin.Forms
 					if (col == null)
 						continue;
 
-					double assignedWidth = GetAssignedColumnWidth(child);
-					double w = double.IsPositiveInfinity(width) ? double.PositiveInfinity : assignedWidth + GetUnassignedWidth(width, grid.ColumnSpacing);
+					float assignedWidth = GetAssignedColumnWidth(child);
+					float w = float.IsPositiveInfinity(width) ? float.PositiveInfinity : assignedWidth + GetUnassignedWidth(width, grid.ColumnSpacing);
 					SizeRequest sizeRequest = child.Measure(w, GetAssignedRowHeight(child), MeasureFlags.IncludeMargins);
-					double requiredWidth = expandToRequest ? sizeRequest.Request.Width : sizeRequest.Minimum.Width;
-					double deltaWidth = requiredWidth - assignedWidth - (GetColumnSpan(child) - 1) * grid.ColumnSpacing;
+					float requiredWidth = expandToRequest ? sizeRequest.Request.Width : sizeRequest.Minimum.Width;
+					float deltaWidth = requiredWidth - assignedWidth - (GetColumnSpan(child) - 1) * grid.ColumnSpacing;
 					if (deltaWidth > 0)
 					{
 						col.ActualWidth += deltaWidth;
@@ -546,7 +547,7 @@ namespace Xamarin.Forms
 				}
 			}
 
-			void ExpandLastAutoRowIfNeeded(Grid grid, double height, bool expandToRequest)
+			void ExpandLastAutoRowIfNeeded(Grid grid, float height, bool expandToRequest)
 			{
 				for (var index = 0; index < grid.InternalChildren.Count; index++)
 				{
@@ -559,19 +560,19 @@ namespace Xamarin.Forms
 					if (row == null)
 						continue;
 
-					double assignedHeight = GetAssignedRowHeight(child);
+					float assignedHeight = GetAssignedRowHeight(child);
 					var unassignedHeight = GetUnassignedHeight(height, grid.RowSpacing);
-					double h = double.IsPositiveInfinity(height) ? double.PositiveInfinity : assignedHeight + unassignedHeight;
+					float h = float.IsPositiveInfinity(height) ? float.PositiveInfinity : assignedHeight + unassignedHeight;
 
 					var acw = GetAssignedColumnWidth(child);
 
 					SizeRequest sizeRequest = child.Measure(acw, h, MeasureFlags.IncludeMargins);
 
-					double requiredHeight = expandToRequest
+					float requiredHeight = expandToRequest
 						? sizeRequest.Request.Height
 						: sizeRequest.Request.Height <= h ? sizeRequest.Request.Height : sizeRequest.Minimum.Height;
 
-					double deltaHeight = requiredHeight - assignedHeight - (GetRowSpan(child) - 1) * grid.RowSpacing;
+					float deltaHeight = requiredHeight - assignedHeight - (GetRowSpan(child) - 1) * grid.RowSpacing;
 					if (deltaHeight > 0)
 					{
 						row.ActualHeight += deltaHeight;
@@ -579,15 +580,15 @@ namespace Xamarin.Forms
 				}
 			}
 
-			void MeasureAndContractStarredColumns(Grid grid, double width, double height, double totalStarsWidth)
+			void MeasureAndContractStarredColumns(Grid grid, float width, float height, float totalStarsWidth)
 			{
-				double columnSpacing = grid.ColumnSpacing;
-				double rowSpacing = grid.RowSpacing;
+				float columnSpacing = grid.ColumnSpacing;
+				float rowSpacing = grid.RowSpacing;
 
-				double starColWidth;
+				float starColWidth;
 				starColWidth = MeasuredStarredColumns(grid, GetUnassignedWidth(width, columnSpacing), height, totalStarsWidth);
 
-				if (!double.IsPositiveInfinity(width) && double.IsPositiveInfinity(height))
+				if (!float.IsPositiveInfinity(width) && float.IsPositiveInfinity(height))
 				{
 					// re-zero columns so GetUnassignedWidth returns correctly
 					for (var index = 0; index < _columns.Count; index++)
@@ -610,15 +611,15 @@ namespace Xamarin.Forms
 				ContractStarColumnsIfNeeded(width, columnSpacing, rowSpacing);
 			}
 
-			void MeasureAndContractStarredRows(Grid grid, double width, double height, double totalStarsHeight)
+			void MeasureAndContractStarredRows(Grid grid, float width, float height, float totalStarsHeight)
 			{
-				double columnSpacing = grid.ColumnSpacing;
-				double rowSpacing = grid.RowSpacing;
+				float columnSpacing = grid.ColumnSpacing;
+				float rowSpacing = grid.RowSpacing;
 
-				double starRowHeight;
+				float starRowHeight;
 				starRowHeight = MeasureStarredRows(grid, width, GetUnassignedHeight(height, rowSpacing), totalStarsHeight);
 
-				if (!double.IsPositiveInfinity(height) && double.IsPositiveInfinity(width))
+				if (!float.IsPositiveInfinity(height) && float.IsPositiveInfinity(width))
 				{
 					for (var index = 0; index < _rows.Count; index++)
 					{
@@ -640,7 +641,7 @@ namespace Xamarin.Forms
 				ContractStarRowsIfNeeded(height, columnSpacing, rowSpacing);
 			}
 
-			double MeasuredStarredColumns(Grid grid, double widthConstraint, double heightConstraint, double totalStarsWidth)
+			float MeasuredStarredColumns(Grid grid, float widthConstraint, float heightConstraint, float totalStarsWidth)
 			{
 				for (var iteration = 0; iteration < 2; iteration++)
 				{
@@ -654,17 +655,17 @@ namespace Xamarin.Forms
 							if (col.ActualWidth >= 0) // if Actual is already set (by a smaller span), skip
 								continue;
 
-							double actualWidth = col.ActualWidth;
-							double minimumWidth = col.MinimumWidth;
+							float actualWidth = col.ActualWidth;
+							float minimumWidth = col.MinimumWidth;
 							for (var index = 0; index < grid.InternalChildren.Count; index++)
 							{
 								var child = (View)(grid.InternalChildren)[index];
 								if (!child.IsVisible || GetColumnSpan(child) != colspan || !IsInColumn(child, i) || NumberOfUnsetColumnWidth(child) > 1)
 									continue;
-								double assignedWidth = GetAssignedColumnWidth(child);
+								float assignedWidth = GetAssignedColumnWidth(child);
 
 								// If we already have row height info, use it when measuring
-								double assignedHeight = GetAssignedRowHeight(child);
+								float assignedHeight = GetAssignedRowHeight(child);
 								var hConstraint = assignedHeight > 0 ? assignedHeight : heightConstraint;
 
 								SizeRequest sizeRequest = child.Measure(widthConstraint, hConstraint, MeasureFlags.IncludeMargins);
@@ -681,8 +682,8 @@ namespace Xamarin.Forms
 					}
 				}
 
-				double starColRequestWidth = 0;
-				double starColMinWidth = 0;
+				float starColRequestWidth = 0;
+				float starColMinWidth = 0;
 				for (var index = 0; index < _columns.Count; index++)
 				{
 					ColumnDefinition col = _columns[index];
@@ -701,7 +702,7 @@ namespace Xamarin.Forms
 				return Math.Max(widthConstraint / totalStarsWidth, starColMinWidth);
 			}
 
-			double MeasureStarredRows(Grid grid, double widthConstraint, double heightConstraint, double totalStarsHeight)
+			float MeasureStarredRows(Grid grid, float widthConstraint, float heightConstraint, float totalStarsHeight)
 			{
 				for (var iteration = 0; iteration < 2; iteration++)
 				{
@@ -715,17 +716,17 @@ namespace Xamarin.Forms
 							if (row.ActualHeight >= 0) // if Actual is already set (by a smaller span), skip till pass 3
 								continue;
 
-							double actualHeight = row.ActualHeight;
-							double minimumHeight = row.MinimumHeight;
+							float actualHeight = row.ActualHeight;
+							float minimumHeight = row.MinimumHeight;
 							for (var index = 0; index < grid.InternalChildren.Count; index++)
 							{
 								var child = (View)(grid.InternalChildren)[index];
 								if (!child.IsVisible || GetRowSpan(child) != rowspan || !IsInRow(child, i) || NumberOfUnsetRowHeight(child) > 1)
 									continue;
-								double assignedHeight = GetAssignedRowHeight(child);
+								float assignedHeight = GetAssignedRowHeight(child);
 
 								// If we already have column width info, use it when measuring
-								double assignedWidth = GetAssignedColumnWidth(child);
+								float assignedWidth = GetAssignedColumnWidth(child);
 								var wConstraint = assignedWidth > 0 ? assignedWidth : widthConstraint;
 
 								SizeRequest sizeRequest = child.Measure(wConstraint, heightConstraint, MeasureFlags.IncludeMargins);
@@ -742,8 +743,8 @@ namespace Xamarin.Forms
 					}
 				}
 
-				double starRowRequestHeight = 0;
-				double starRowMinHeight = 0;
+				float starRowRequestHeight = 0;
+				float starRowMinHeight = 0;
 				for (var index = 0; index < _rows.Count; index++)
 				{
 					RowDefinition row = _rows[index];
@@ -816,9 +817,9 @@ namespace Xamarin.Forms
 				return n;
 			}
 
-			double GetAssignedColumnWidth(BindableObject child)
+			float GetAssignedColumnWidth(BindableObject child)
 			{
-				var actual = 0d;
+				var actual = 0f;
 				int index = GetColumn(child);
 				int span = GetColumnSpan(child);
 				for (int i = index; i < index + span; i++)
@@ -827,9 +828,9 @@ namespace Xamarin.Forms
 				return actual;
 			}
 
-			double GetAssignedRowHeight(BindableObject child)
+			float GetAssignedRowHeight(BindableObject child)
 			{
-				var actual = 0d;
+				var actual = 0f;
 				int index = GetRow(child);
 				int span = GetRowSpan(child);
 				for (int i = index; i < index + span; i++)
@@ -858,24 +859,24 @@ namespace Xamarin.Forms
 				return null;
 			}
 
-			double GetUnassignedHeight(double heightRequest, double rowSpacing)
+			float GetUnassignedHeight(float heightRequest, float rowSpacing)
 			{
-				double assigned = (_rows.Count - 1) * rowSpacing;
+				float assigned = (_rows.Count - 1) * rowSpacing;
 				for (var i = 0; i < _rows.Count; i++)
 				{
-					double actual = _rows[i].ActualHeight;
+					float actual = _rows[i].ActualHeight;
 					if (actual >= 0)
 						assigned += actual;
 				}
 				return heightRequest - assigned;
 			}
 
-			double GetUnassignedWidth(double widthRequest, double columnSpacing)
+			float GetUnassignedWidth(float widthRequest, float columnSpacing)
 			{
-				double assigned = (_columns.Count - 1) * columnSpacing;
+				float assigned = (_columns.Count - 1) * columnSpacing;
 				for (var i = 0; i < _columns.Count; i++)
 				{
-					double actual = _columns[i].ActualWidth;
+					float actual = _columns[i].ActualWidth;
 					if (actual >= 0)
 						assigned += actual;
 				}

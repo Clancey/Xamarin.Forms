@@ -18,7 +18,7 @@ namespace Xamarin.Forms.Controls.Issues
 		protected override void Init()
 		{
 			var relativeLayout = new RelativeLayout() { WidthRequest = 400, HeightRequest = 400 };
-			StackLayout = new StackLayout() { BackgroundColor = Color.Red };
+			StackLayout = new StackLayout() { BackgroundColor = Colors.Red };
 
 			TriggerButton = new Button() { Text = "Set View Width To Zero" };
 

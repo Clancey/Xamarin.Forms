@@ -58,7 +58,7 @@ namespace Xamarin.Forms.Controls.Issues
 				var grd = new Grid();
 				var boxView = new BoxView
 				{
-					BackgroundColor = Color.Transparent,
+					BackgroundColor = Colors.Transparent,
 					HorizontalOptions = LayoutOptions.FillAndExpand,
 					VerticalOptions = LayoutOptions.FillAndExpand
 				};

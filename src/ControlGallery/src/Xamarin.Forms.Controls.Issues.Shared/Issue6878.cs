@@ -57,7 +57,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			AddTopTab(TopTab);
 			AddBottomTab("Bottom tab");
-			Shell.SetBackgroundColor(this, Color.BlueViolet);
+			Shell.SetBackgroundColor(this, Colors.BlueViolet);
 		}
 
 		Button BuildClearButton()

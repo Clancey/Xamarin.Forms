@@ -11,7 +11,7 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			Navigation.PushAsync(new ContentPage
 			{
-				BackgroundColor = Color.Yellow,
+				BackgroundColor = Colors.Yellow,
 				Content = new StackLayout()
 				{
 					Children = {
@@ -35,7 +35,7 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			public PageWithTransparency()
 			{
-				this.BackgroundColor = Color.Red.MultiplyAlpha(0.2);
+				this.BackgroundColor = Colors.Red.MultiplyAlpha(0.2);
 				Content = new Label
 				{
 					HorizontalOptions = LayoutOptions.Center,

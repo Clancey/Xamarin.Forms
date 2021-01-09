@@ -3,92 +3,92 @@
 	public sealed class CompositeTransform : Transform
 	{
 		public static readonly BindableProperty CenterXProperty =
-			BindableProperty.Create(nameof(CenterX), typeof(double), typeof(CompositeTransform), 0.0,
+			BindableProperty.Create(nameof(CenterX), typeof(float), typeof(CompositeTransform), 0.0,
 				propertyChanged: OnTransformPropertyChanged);
 
 		public static readonly BindableProperty CenterYProperty =
-			BindableProperty.Create(nameof(CenterY), typeof(double), typeof(CompositeTransform), 0.0,
+			BindableProperty.Create(nameof(CenterY), typeof(float), typeof(CompositeTransform), 0.0,
 				propertyChanged: OnTransformPropertyChanged);
 
 		public static readonly BindableProperty ScaleXProperty =
-			BindableProperty.Create(nameof(ScaleX), typeof(double), typeof(CompositeTransform), 1.0, propertyChanged: OnTransformPropertyChanged);
+			BindableProperty.Create(nameof(ScaleX), typeof(float), typeof(CompositeTransform), 1.0, propertyChanged: OnTransformPropertyChanged);
 
 		public static readonly BindableProperty ScaleYProperty =
-			BindableProperty.Create(nameof(ScaleY), typeof(double), typeof(CompositeTransform), 1.0,
+			BindableProperty.Create(nameof(ScaleY), typeof(float), typeof(CompositeTransform), 1.0,
 				propertyChanged: OnTransformPropertyChanged);
 
 		public static readonly BindableProperty SkewXProperty =
-			BindableProperty.Create(nameof(SkewX), typeof(double), typeof(CompositeTransform), 0.0,
+			BindableProperty.Create(nameof(SkewX), typeof(float), typeof(CompositeTransform), 0.0,
 				propertyChanged: OnTransformPropertyChanged);
 
 		public static readonly BindableProperty SkewYProperty =
-			BindableProperty.Create(nameof(SkewY), typeof(double), typeof(CompositeTransform), 0.0,
+			BindableProperty.Create(nameof(SkewY), typeof(float), typeof(CompositeTransform), 0.0,
 				propertyChanged: OnTransformPropertyChanged);
 
 		public static readonly BindableProperty RotationProperty =
-			BindableProperty.Create(nameof(Rotation), typeof(double), typeof(CompositeTransform), 0.0,
+			BindableProperty.Create(nameof(Rotation), typeof(float), typeof(CompositeTransform), 0.0,
 				propertyChanged: OnTransformPropertyChanged);
 
 		public static readonly BindableProperty TranslateXProperty =
-			BindableProperty.Create(nameof(TranslateX), typeof(double), typeof(CompositeTransform), 0.0,
+			BindableProperty.Create(nameof(TranslateX), typeof(float), typeof(CompositeTransform), 0.0,
 				propertyChanged: OnTransformPropertyChanged);
 
 		public static readonly BindableProperty TranslateYProperty =
-			BindableProperty.Create(nameof(TranslateY), typeof(double), typeof(CompositeTransform), 0.0,
+			BindableProperty.Create(nameof(TranslateY), typeof(float), typeof(CompositeTransform), 0.0,
 				propertyChanged: OnTransformPropertyChanged);
 
-		public double CenterX
+		public float CenterX
 		{
 			set { SetValue(CenterXProperty, value); }
-			get { return (double)GetValue(CenterXProperty); }
+			get { return (float)GetValue(CenterXProperty); }
 		}
 
-		public double CenterY
+		public float CenterY
 		{
 			set { SetValue(CenterYProperty, value); }
-			get { return (double)GetValue(CenterYProperty); }
+			get { return (float)GetValue(CenterYProperty); }
 		}
 
-		public double ScaleX
+		public float ScaleX
 		{
 			set { SetValue(ScaleXProperty, value); }
-			get { return (double)GetValue(ScaleXProperty); }
+			get { return (float)GetValue(ScaleXProperty); }
 		}
 
-		public double ScaleY
+		public float ScaleY
 		{
 			set { SetValue(ScaleYProperty, value); }
-			get { return (double)GetValue(ScaleYProperty); }
+			get { return (float)GetValue(ScaleYProperty); }
 		}
 
-		public double SkewX
+		public float SkewX
 		{
 			set { SetValue(SkewXProperty, value); }
-			get { return (double)GetValue(SkewXProperty); }
+			get { return (float)GetValue(SkewXProperty); }
 		}
 
-		public double SkewY
+		public float SkewY
 		{
 			set { SetValue(SkewYProperty, value); }
-			get { return (double)GetValue(SkewYProperty); }
+			get { return (float)GetValue(SkewYProperty); }
 		}
 
-		public double Rotation
+		public float Rotation
 		{
 			set { SetValue(RotationProperty, value); }
-			get { return (double)GetValue(RotationProperty); }
+			get { return (float)GetValue(RotationProperty); }
 		}
 
-		public double TranslateX
+		public float TranslateX
 		{
 			set { SetValue(TranslateXProperty, value); }
-			get { return (double)GetValue(TranslateXProperty); }
+			get { return (float)GetValue(TranslateXProperty); }
 		}
 
-		public double TranslateY
+		public float TranslateY
 		{
 			set { SetValue(TranslateYProperty, value); }
-			get { return (double)GetValue(TranslateYProperty); }
+			get { return (float)GetValue(TranslateYProperty); }
 		}
 
 		static void OnTransformPropertyChanged(BindableObject bindable, object oldValue, object newValue)

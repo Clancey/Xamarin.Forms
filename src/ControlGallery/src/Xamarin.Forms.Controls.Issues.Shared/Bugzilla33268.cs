@@ -34,7 +34,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			Content = new StackLayout
 			{
-				BackgroundColor = Color.Green,
+				BackgroundColor = Colors.Green,
 				VerticalOptions = LayoutOptions.Start,
 				Children = {
 					fiveItemPicker

@@ -10,14 +10,14 @@ namespace Xamarin.Forms
 	{
 		public ConstraintExpression()
 		{
-			Factor = 1.0;
+			Factor = 1;
 		}
 
-		public double Constant { get; set; }
+		public float Constant { get; set; }
 
 		public string ElementName { get; set; }
 
-		public double Factor { get; set; }
+		public float Factor { get; set; }
 
 		public string Property { get; set; }
 
@@ -38,7 +38,7 @@ namespace Xamarin.Forms
 					if (string.IsNullOrEmpty(Property))
 						return null;
 					minfo = typeof(View).GetProperties().First(pi => pi.Name == Property && pi.CanRead && pi.GetMethod.IsPublic).GetMethod;
-					return Constraint.RelativeToParent(p => (double)minfo.Invoke(p, new object[] { }) * Factor + Constant);
+					return Constraint.RelativeToParent(p => (float)minfo.Invoke(p, new object[] { }) * Factor + Constant);
 				case ConstraintType.Constant:
 					return Constraint.Constant(Constant);
 				case ConstraintType.RelativeToView:
@@ -60,7 +60,7 @@ namespace Xamarin.Forms
 						view = ((INameScope)valueProvider.TargetObject).FindByName<View>(ElementName);
 					}
 					return Constraint.RelativeToView(view, delegate (RelativeLayout p, View v)
-					{ return (double)minfo.Invoke(v, new object[] { }) * Factor + Constant; });
+					{ return (float)minfo.Invoke(v, new object[] { }) * Factor + Constant; });
 			}
 		}
 	}

@@ -66,7 +66,7 @@ namespace Xamarin.Forms.Controls
 						}
 						return new FontImageSource
 						{
-							Color = Color.Black,
+							Color = Colors.Black,
 							FontFamily = fontFamily,
 							Glyph = "\uf233",
 							Size = 24,

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Graphics;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
@@ -105,7 +106,7 @@ namespace Xamarin.Forms
 		}
 
 		public static readonly BindableProperty RefreshColorProperty =
-			BindableProperty.Create(nameof(RefreshColor), typeof(Color), typeof(RefreshView), Color.Default);
+			BindableProperty.Create(nameof(RefreshColor), typeof(Color), typeof(RefreshView), null);
 
 		public Color RefreshColor
 		{
@@ -113,10 +114,10 @@ namespace Xamarin.Forms
 			set { SetValue(RefreshColorProperty, value); }
 		}
 
-		protected override SizeRequest OnMeasure(double widthConstraint, double heightConstraint)
+		protected override SizeRequest OnMeasure(float widthConstraint, float heightConstraint)
 		{
 			if (Content == null)
-				return new SizeRequest(new Size(100, 100));
+				return new SizeRequest(new SizeF(100, 100));
 
 			return base.OnMeasure(widthConstraint, heightConstraint);
 		}

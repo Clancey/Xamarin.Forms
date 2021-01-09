@@ -44,7 +44,7 @@ namespace Xamarin.Forms.Controls.Issues
 							Source = vectors[i],
 							WidthRequest = j == 1 ? 150 : 300,
 							HeightRequest = j == 2 ? 150 : 300,
-							BackgroundColor = i == 0 ? Color.Red : (i == 1 ? Color.Green : Color.Yellow),
+							BackgroundColor = i == 0 ? Colors.Red : (i == 1 ? Colors.Green : Colors.Yellow),
 							HorizontalOptions = LayoutOptions.Center,
 							Aspect = aspect
 						};

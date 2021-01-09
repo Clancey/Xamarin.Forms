@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Graphics;
 using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms.Internals;
@@ -48,9 +49,9 @@ namespace Xamarin.Forms
 
 		public static readonly BindableProperty SeparatorVisibilityProperty = BindableProperty.Create("SeparatorVisibility", typeof(SeparatorVisibility), typeof(ListView), SeparatorVisibility.Default);
 
-		public static readonly BindableProperty SeparatorColorProperty = BindableProperty.Create("SeparatorColor", typeof(Color), typeof(ListView), Color.Default);
+		public static readonly BindableProperty SeparatorColorProperty = BindableProperty.Create("SeparatorColor", typeof(Color), typeof(ListView), null);
 
-		public static readonly BindableProperty RefreshControlColorProperty = BindableProperty.Create(nameof(RefreshControlColor), typeof(Color), typeof(ListView), Color.Default);
+		public static readonly BindableProperty RefreshControlColorProperty = BindableProperty.Create(nameof(RefreshControlColor), typeof(Color), typeof(ListView), null);
 
 		public static readonly BindableProperty HorizontalScrollBarVisibilityProperty = BindableProperty.Create(nameof(HorizontalScrollBarVisibility), typeof(ScrollBarVisibility), typeof(ListView), ScrollBarVisibility.Default);
 
@@ -357,23 +358,23 @@ namespace Xamarin.Forms
 
 		[Obsolete("OnSizeRequest is obsolete as of version 2.2.0. Please use OnMeasure instead.")]
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		protected override SizeRequest OnSizeRequest(double widthConstraint, double heightConstraint)
+		protected override SizeRequest OnSizeRequest(float widthConstraint, float heightConstraint)
 		{
-			var minimumSize = new Size(40, 40);
-			Size request;
+			var minimumSize = new SizeF(40, 40);
+			SizeF request;
 
-			double width = Math.Min(Device.Info.ScaledScreenSize.Width, Device.Info.ScaledScreenSize.Height);
+			float width = Math.Min(Device.Info.ScaledScreenSize.Width, Device.Info.ScaledScreenSize.Height);
 
 			var list = ItemsSource as IList;
 			if (list != null && HasUnevenRows == false && RowHeight > 0 && !IsGroupingEnabled)
 			{
 				// we can calculate this
-				request = new Size(width, list.Count * RowHeight);
+				request = new SizeF(width, list.Count * RowHeight);
 			}
 			else
 			{
 				// probably not worth it
-				request = new Size(width, Math.Max(Device.Info.ScaledScreenSize.Width, Device.Info.ScaledScreenSize.Height));
+				request = new SizeF(width, Math.Max(Device.Info.ScaledScreenSize.Width, Device.Info.ScaledScreenSize.Height));
 			}
 
 			return new SizeRequest(request, minimumSize);

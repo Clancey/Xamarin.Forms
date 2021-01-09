@@ -79,7 +79,7 @@ namespace Xamarin.Forms.Controls
 			stack.Children.Add(textBoxScale);
 			stack.Children.Add(textBoxPoint);
 
-			var box = new Image { Source = "crimson.jpg", BackgroundColor = Color.Red, WidthRequest = 200, HeightRequest = 200, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
+			var box = new Image { Source = "crimson.jpg", BackgroundColor = Colors.Red, WidthRequest = 200, HeightRequest = 200, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
 
 			var zoomContainer = new PinchToZoomContainer();
 			zoomContainer.Content = box;

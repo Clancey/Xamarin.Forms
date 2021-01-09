@@ -66,7 +66,7 @@ namespace Xamarin.Forms.Controls.Issues
 				AutomationId = _theListView,
 				ItemsSource = new[] { _fileName },
 				HasUnevenRows = true,
-				BackgroundColor = Color.Purple
+				BackgroundColor = Colors.Purple
 			};
 
 			View[] imageControls = new View[] { _image, _button, _imageButton, _listView };
@@ -122,7 +122,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			foreach (var view in imageControls)
 			{
-				view.BackgroundColor = Color.Red;
+				view.BackgroundColor = Colors.Red;
 			}
 
 			StackLayout layout = null;

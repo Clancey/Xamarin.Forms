@@ -61,11 +61,11 @@ namespace Xamarin.Forms.Platform.GTK.Cells
 
 		protected void UpdateBackground(Gtk.Container tableViewCell, Cell cell)
 		{
-			var bgColor = Color.White.ToGtkColor();
+			var bgColor = Colors.White.ToGtkColor();
 			var element = cell.RealParent as VisualElement;
 
 			if (element != null)
-				bgColor = element.BackgroundColor == Color.Default ? bgColor : element.BackgroundColor.ToGtkColor();
+				bgColor = element.BackgroundColor == null ? bgColor : element.BackgroundColor.ToGtkColor();
 
 			UpdateBackgroundChild(cell, bgColor);
 

@@ -81,9 +81,9 @@ namespace Xamarin.Forms
 		}
 
 		[TypeConverter(typeof(FontSizeConverter))]
-		public double FontSize
+		public float FontSize
 		{
-			get { return (double)GetValue(FontSizeProperty); }
+			get { return (float)GetValue(FontSizeProperty); }
 			set { SetValue(FontSizeProperty, value); }
 		}
 
@@ -129,7 +129,7 @@ namespace Xamarin.Forms
 			set => SetValue(ClearButtonVisibilityProperty, value);
 		}
 
-		double IFontElement.FontSizeDefaultValueCreator() =>
+		float IFontElement.FontSizeDefaultValueCreator() =>
 			Device.GetNamedSize(NamedSize.Default, (Entry)this);
 
 		void IFontElement.OnFontAttributesChanged(FontAttributes oldValue, FontAttributes newValue) =>
@@ -138,7 +138,7 @@ namespace Xamarin.Forms
 		void IFontElement.OnFontFamilyChanged(string oldValue, string newValue) =>
 			InvalidateMeasureInternal(InvalidationTrigger.MeasureChanged);
 
-		void IFontElement.OnFontSizeChanged(double oldValue, double newValue) =>
+		void IFontElement.OnFontSizeChanged(float oldValue, float newValue) =>
 			InvalidateMeasureInternal(InvalidationTrigger.MeasureChanged);
 
 		void IFontElement.OnFontChanged(Font oldValue, Font newValue) =>

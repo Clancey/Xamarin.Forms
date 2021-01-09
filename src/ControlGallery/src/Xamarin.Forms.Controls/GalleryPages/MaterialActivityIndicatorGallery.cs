@@ -9,7 +9,7 @@ namespace Xamarin.Forms.Controls
 			var activityIndicator = new ActivityIndicator()
 			{
 				IsRunning = false,
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				HeightRequest = 50
 			};
 
@@ -48,7 +48,7 @@ namespace Xamarin.Forms.Controls
 			var content = new StackLayout
 			{
 				Children = { activityIndicator },
-				BackgroundColor = Color.Blue
+				BackgroundColor = Colors.Blue
 			};
 
 			var backgroundPanelPicker = new ColorPicker { Title = "Back panel Color", Color = content.BackgroundColor };
@@ -82,7 +82,7 @@ namespace Xamarin.Forms.Controls
 					{
 						HeightRequest = 1,
 						Margin = new Thickness(-10, 0),
-						Color = Color.Black
+						Color = Colors.Black
 					},
 
 					content

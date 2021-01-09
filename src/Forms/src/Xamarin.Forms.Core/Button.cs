@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Graphics;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms.Internals;
@@ -10,7 +11,7 @@ namespace Xamarin.Forms
 	public partial class Button : View, IFontElement, ITextElement, IBorderElement, IButtonController, IElementConfiguration<Button>, IPaddingElement, IImageController, IViewController, IButtonElement, IImageElement
 	{
 		const int DefaultBorderRadius = 5;
-		const double DefaultSpacing = 10;
+		const float DefaultSpacing = 10;
 
 		public static readonly BindableProperty CommandProperty = ButtonElement.CommandProperty;
 
@@ -37,7 +38,7 @@ namespace Xamarin.Forms
 
 		public static readonly BindableProperty FontAttributesProperty = FontElement.FontAttributesProperty;
 
-		public static readonly BindableProperty BorderWidthProperty = BindableProperty.Create("BorderWidth", typeof(double), typeof(Button), -1d);
+		public static readonly BindableProperty BorderWidthProperty = BindableProperty.Create("BorderWidth", typeof(float), typeof(Button), -1d);
 
 		public static readonly BindableProperty BorderColorProperty = BorderElement.BorderColorProperty;
 
@@ -109,9 +110,9 @@ namespace Xamarin.Forms
 			set { SetValue(CornerRadiusProperty, value); }
 		}
 
-		public double BorderWidth
+		public float BorderWidth
 		{
-			get { return (double)GetValue(BorderWidthProperty); }
+			get { return (float)GetValue(BorderWidthProperty); }
 			set { SetValue(BorderWidthProperty, value); }
 		}
 
@@ -165,9 +166,9 @@ namespace Xamarin.Forms
 			set { SetValue(TextElement.TextColorProperty, value); }
 		}
 
-		public double CharacterSpacing
+		public float CharacterSpacing
 		{
-			get { return (double)GetValue(TextElement.CharacterSpacingProperty); }
+			get { return (float)GetValue(TextElement.CharacterSpacingProperty); }
 			set { SetValue(TextElement.CharacterSpacingProperty, value); }
 		}
 
@@ -212,9 +213,9 @@ namespace Xamarin.Forms
 		}
 
 		[TypeConverter(typeof(FontSizeConverter))]
-		public double FontSize
+		public float FontSize
 		{
-			get { return (double)GetValue(FontSizeProperty); }
+			get { return (float)GetValue(FontSizeProperty); }
 			set { SetValue(FontSizeProperty, value); }
 		}
 
@@ -263,10 +264,10 @@ namespace Xamarin.Forms
 		void IFontElement.OnFontFamilyChanged(string oldValue, string newValue) =>
 			InvalidateMeasureInternal(InvalidationTrigger.MeasureChanged);
 
-		void IFontElement.OnFontSizeChanged(double oldValue, double newValue) =>
+		void IFontElement.OnFontSizeChanged(float oldValue, float newValue) =>
 			InvalidateMeasureInternal(InvalidationTrigger.MeasureChanged);
 
-		double IFontElement.FontSizeDefaultValueCreator() =>
+		float IFontElement.FontSizeDefaultValueCreator() =>
 			Device.GetNamedSize(NamedSize.Default, (Button)this);
 
 		void IFontElement.OnFontAttributesChanged(FontAttributes oldValue, FontAttributes newValue) =>
@@ -286,7 +287,7 @@ namespace Xamarin.Forms
 
 		Color IBorderElement.BorderColorDefaultValue => (Color)BorderColorProperty.DefaultValue;
 
-		double IBorderElement.BorderWidthDefaultValue => (double)BorderWidthProperty.DefaultValue;
+		float IBorderElement.BorderWidthDefaultValue => (float)BorderWidthProperty.DefaultValue;
 
 
 		/// <summary>
@@ -345,7 +346,7 @@ namespace Xamarin.Forms
 		{
 		}
 
-		void ITextElement.OnCharacterSpacingPropertyChanged(double oldValue, double newValue)
+		void ITextElement.OnCharacterSpacingPropertyChanged(float oldValue, float newValue)
 		{
 			InvalidateMeasure();
 		}
@@ -395,7 +396,7 @@ namespace Xamarin.Forms
 				Bottom
 			}
 
-			public ButtonContentLayout(ImagePosition position, double spacing)
+			public ButtonContentLayout(ImagePosition position, float spacing)
 			{
 				Position = position;
 				Spacing = spacing;
@@ -403,7 +404,7 @@ namespace Xamarin.Forms
 
 			public ImagePosition Position { get; }
 
-			public double Spacing { get; }
+			public float Spacing { get; }
 
 			public override string ToString() => $"Image Position = {Position}, Spacing = {Spacing}";
 		}
@@ -421,7 +422,7 @@ namespace Xamarin.Forms
 				if (parts.Length != 1 && parts.Length != 2)
 					throw new InvalidOperationException($"Cannot convert \"{value}\" into {typeof(ButtonContentLayout)}");
 
-				double spacing = DefaultSpacing;
+				float spacing = DefaultSpacing;
 				var position = ButtonContentLayout.ImagePosition.Left;
 
 				var spacingFirst = char.IsDigit(parts[0][0]);
@@ -430,7 +431,7 @@ namespace Xamarin.Forms
 				int spacingIndex = spacingFirst ? 0 : (parts.Length == 2 ? 1 : -1);
 
 				if (spacingIndex > -1)
-					spacing = double.Parse(parts[spacingIndex]);
+					spacing = float.Parse(parts[spacingIndex]);
 
 				if (positionIndex > -1)
 					position = (ButtonContentLayout.ImagePosition)Enum.Parse(typeof(ButtonContentLayout.ImagePosition), parts[positionIndex], true);

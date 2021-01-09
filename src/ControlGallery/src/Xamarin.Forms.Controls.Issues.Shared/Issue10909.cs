@@ -27,8 +27,8 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				Padding = 12,
 				Text = "If pressing the buttons opens the popup of both DatePicker and TimePicker, the test has passed.",
-				BackgroundColor = Color.Black,
-				TextColor = Color.White
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White
 			};
 
 			var datePickerFocusButton = new Button

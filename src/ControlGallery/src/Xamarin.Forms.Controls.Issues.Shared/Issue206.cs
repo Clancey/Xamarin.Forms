@@ -100,7 +100,7 @@ namespace Xamarin.Forms.Controls.Issues
 				var label = new Label();
 				label.SetBinding(Label.TextProperty, "Text");
 
-				var box = new BoxView { WidthRequest = 100, HeightRequest = 10, Color = Color.Red };
+				var box = new BoxView { WidthRequest = 100, HeightRequest = 10, Color = Colors.Red };
 
 				stackLayout.Children.Add(label);
 				stackLayout.Children.Add(box);

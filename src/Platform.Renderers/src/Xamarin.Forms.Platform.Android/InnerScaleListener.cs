@@ -39,12 +39,12 @@ namespace Xamarin.Forms.Platform.Android
 			if (Math.Abs(cur - last) < 10)
 				return false;
 
-			return _pinchDelegate(detector.ScaleFactor, new Point(_fromPixels(detector.FocusX), _fromPixels(detector.FocusY)));
+			return _pinchDelegate(detector.ScaleFactor, new PointF(_fromPixels(detector.FocusX), _fromPixels(detector.FocusY)));
 		}
 
 		public override bool OnScaleBegin(ScaleGestureDetector detector)
 		{
-			return _pinchStartedDelegate(new Point(_fromPixels(detector.FocusX), _fromPixels(detector.FocusY)));
+			return _pinchStartedDelegate(new PointF(_fromPixels(detector.FocusX), _fromPixels(detector.FocusY)));
 		}
 
 		public override void OnScaleEnd(ScaleGestureDetector detector)

@@ -28,7 +28,7 @@ namespace Xamarin.Forms.Controls
 			{
 				searchBar,
 				new ActivityIndicator{ IsRunning = true },
-				new BoxView{ BackgroundColor = Color.Red },
+				new BoxView{ BackgroundColor = Colors.Red },
 				new Button{ Text = "Button!"},
 				new DatePicker{},
 				new Editor{ Text = "Editor"},
@@ -66,9 +66,9 @@ namespace Xamarin.Forms.Controls
 							Text = "Change BarTextColor",
 							Command = new Command (() => {
 								if (toggleBarTextColor % 2 == 0) {
-									rootNavPage.BarTextColor = Color.Teal;
+									rootNavPage.BarTextColor = Colors.Teal;
 								} else {
-									rootNavPage.BarTextColor = Color.Default;
+									rootNavPage.BarTextColor = null;
 								}
 								toggleBarTextColor++;
 							})
@@ -77,9 +77,9 @@ namespace Xamarin.Forms.Controls
 							Text = "Change BarBackgroundColor",
 							Command = new Command (() => {
 								if (toggleBarBackgroundColor % 2 == 0) {
-									rootNavPage.BarBackgroundColor = Color.Navy;
+									rootNavPage.BarBackgroundColor = Colors.Navy;
 								} else {
-									rootNavPage.BarBackgroundColor = Color.Default;
+									rootNavPage.BarBackgroundColor = null;
 								}
 								toggleBarBackgroundColor++;
 
@@ -88,23 +88,23 @@ namespace Xamarin.Forms.Controls
 						new Button {
 							Text = "Change Both to default",
 							Command = new Command (() => {
-								rootNavPage.BarTextColor = Color.Default;
-								rootNavPage.BarBackgroundColor = Color.Default;
+								rootNavPage.BarTextColor = null;
+								rootNavPage.BarBackgroundColor = null;
 							})
 						},
 						new Button {
 							Text = "Make sure Tint still works",
 							Command = new Command (() => {
 	#pragma warning disable 618
-								rootNavPage.Tint = Color.Red;
+								rootNavPage.Tint = Colors.Red;
 	#pragma warning restore 618
 							})
 						},
 						new Button {
 							Text = "Black background, white text",
 							Command = new Command (() => {
-								rootNavPage.BarTextColor = Color.White;
-								rootNavPage.BarBackgroundColor = Color.Black;
+								rootNavPage.BarTextColor = Colors.White;
+								rootNavPage.BarBackgroundColor = Colors.Black;
 							})
 						},
 						new Button {
@@ -211,7 +211,7 @@ namespace Xamarin.Forms.Controls
 			var titleView = new StackLayout
 			{
 				Children = { control },
-				BackgroundColor = Color.FromHex("#ccc"),
+				BackgroundColor = Colors.FromHex("#ccc"),
 				Margin = new Thickness(15, 0),
 			};
 			return titleView;
@@ -229,7 +229,7 @@ namespace Xamarin.Forms.Controls
 			{
 				filtereditems = new ObservableCollection<string>(items);
 
-				search = new SearchBar { BackgroundColor = Color.Cornsilk, HorizontalOptions = LayoutOptions.FillAndExpand, Margin = new Thickness(10, 0) };
+				search = new SearchBar { BackgroundColor = Colors.Cornsilk, HorizontalOptions = LayoutOptions.FillAndExpand, Margin = new Thickness(10, 0) };
 				search.Effects.Add(Effect.Resolve($"{Issues.Effects.ResolutionGroupName}.SearchbarEffect"));
 				search.TextChanged += Search_TextChanged;
 
@@ -238,8 +238,8 @@ namespace Xamarin.Forms.Controls
 					ItemsSource = filtereditems
 				};
 
-				parent.BarBackgroundColor = Color.Cornsilk;
-				parent.BarTextColor = Color.Orange;
+				parent.BarBackgroundColor = Colors.Cornsilk;
+				parent.BarTextColor = Colors.Orange;
 				NavigationPage.SetBackButtonTitle(parent, "");
 
 				switch (Device.RuntimePlatform)
@@ -265,7 +265,7 @@ namespace Xamarin.Forms.Controls
 
 			void ToggleContent(NavigationPage parent)
 			{
-				StackLayout topStack = new StackLayout { Children = { button }, BackgroundColor = Color.Cornsilk };
+				StackLayout topStack = new StackLayout { Children = { button }, BackgroundColor = Colors.Cornsilk };
 				StackLayout layout = new StackLayout { Children = { topStack, list } };
 
 				if (_extended)

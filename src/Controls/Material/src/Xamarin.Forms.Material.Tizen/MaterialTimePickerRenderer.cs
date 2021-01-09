@@ -10,7 +10,7 @@ namespace Xamarin.Forms.Material.Tizen
 {
 	public class MaterialTimePickerRenderer : TimePickerRenderer
 	{
-		Color _defaultTitleColor = Color.Black;
+		Color _defaultTitleColor = Colors.Black;
 		static readonly string _defaultFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
 
 		protected override ElmSharp.Entry CreateNativeControl()

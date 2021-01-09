@@ -23,7 +23,7 @@ namespace Xamarin.Forms.Controls.Issues
 			Flyout = new ContentPage
 			{
 				Title = "Flyout",
-				BackgroundColor = Color.SkyBlue,
+				BackgroundColor = Colors.SkyBlue,
 				IconImageSource = "menuIcon",
 				Content = new StackLayout()
 				{

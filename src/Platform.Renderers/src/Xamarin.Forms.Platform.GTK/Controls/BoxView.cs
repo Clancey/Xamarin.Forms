@@ -19,7 +19,7 @@ namespace Xamarin.Forms.Platform.GTK.Controls
 
 		public void ResetColor()
 		{
-			UpdateColor(Color.Default);
+			UpdateColor(null);
 		}
 
 		public void UpdateSize(int height, int width)

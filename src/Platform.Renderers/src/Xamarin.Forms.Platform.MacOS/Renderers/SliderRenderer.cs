@@ -36,7 +36,7 @@ namespace Xamarin.Forms.Platform.MacOS
 			// Draw min track
 			var minTrackPath = NSBezierPath.FromRoundedRect(minTrackRect, radius, radius);
 
-			var defaultMinTrackColor = Color.Accent.ToNSColor();
+			var defaultMinTrackColor = Colors.Accent.ToNSColor();
 
 			if (Forms.IsMojaveOrNewer)
 				defaultMinTrackColor = NSColor.ControlAccentColor;

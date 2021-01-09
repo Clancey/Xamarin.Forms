@@ -81,7 +81,7 @@ namespace Xamarin.Forms.Platform.Tizen
 		{
 			if (SwipeDirection == 0)
 			{
-				var direction = SwipeDirectionHelper.GetSwipeDirection(new Point(moment.X1, moment.Y1), new Point(moment.X2, moment.Y2));
+				var direction = SwipeDirectionHelper.GetSwipeDirection(new PointF(moment.X1, moment.Y1), new PointF(moment.X2, moment.Y2));
 
 				if (HasRightItems && direction == SwipeDirection.Left)
 				{

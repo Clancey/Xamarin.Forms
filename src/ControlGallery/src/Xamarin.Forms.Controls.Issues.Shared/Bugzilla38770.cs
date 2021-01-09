@@ -25,20 +25,20 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			var red = new BoxView
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				WidthRequest = 50,
 				HeightRequest = 50,
 				TranslationX = 25
 			};
 			var green = new BoxView
 			{
-				BackgroundColor = Color.Green,
+				BackgroundColor = Colors.Green,
 				WidthRequest = 50,
 				HeightRequest = 50
 			};
 			var blue = new BoxView
 			{
-				BackgroundColor = Color.Blue,
+				BackgroundColor = Colors.Blue,
 				WidthRequest = 50,
 				HeightRequest = 50,
 				TranslationX = -25

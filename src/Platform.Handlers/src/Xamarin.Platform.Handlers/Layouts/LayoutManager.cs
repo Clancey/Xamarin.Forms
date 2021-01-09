@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Graphics;
 using Xamarin.Forms;
 
 namespace Xamarin.Platform.Layouts
@@ -12,10 +13,10 @@ namespace Xamarin.Platform.Layouts
 
 		public ILayout Layout { get; }
 
-		public abstract Size Measure(double widthConstraint, double heightConstraint);
-		public abstract void Arrange(Rectangle bounds);
+		public abstract SizeF Measure(float widthConstraint, float heightConstraint);
+		public abstract void Arrange(RectangleF bounds);
 
-		public static double ResolveConstraints(double externalConstraint, double desiredLength)
+		public static float ResolveConstraints(float externalConstraint, float desiredLength)
 		{
 			if (desiredLength == -1)
 			{
@@ -25,7 +26,7 @@ namespace Xamarin.Platform.Layouts
 			return Math.Min(externalConstraint, desiredLength);
 		}
 
-		public static double ResolveConstraints(double externalConstraint, double desiredLength, double measuredLength)
+		public static float ResolveConstraints(float externalConstraint, float desiredLength, float measuredLength)
 		{
 			if (desiredLength == -1)
 			{

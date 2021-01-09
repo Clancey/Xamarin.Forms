@@ -18,7 +18,7 @@ namespace Xamarin.Forms.Controls.Issues
 	{
 		protected override void Init()
 		{
-			Children.Add(new NavigationPage(new HomePage()) { Title = "Home", BarBackgroundColor = Color.Red });
+			Children.Add(new NavigationPage(new HomePage()) { Title = "Home", BarBackgroundColor = Colors.Red });
 		}
 
 		class HomePage : ContentPage
@@ -26,16 +26,16 @@ namespace Xamarin.Forms.Controls.Issues
 			public HomePage()
 			{
 				Title = "Home";
-				var grd = new Grid { BackgroundColor = Color.Brown };
+				var grd = new Grid { BackgroundColor = Colors.Brown };
 				grd.RowDefinitions.Add(new RowDefinition());
 				grd.RowDefinitions.Add(new RowDefinition());
 				grd.RowDefinitions.Add(new RowDefinition());
 
-				var boxView = new BoxView { BackgroundColor = Color.Blue };
+				var boxView = new BoxView { BackgroundColor = Colors.Blue };
 				grd.Children.Add(boxView, 0, 0);
 				var btn = new Button()
 				{
-					BackgroundColor = Color.Pink,
+					BackgroundColor = Colors.Pink,
 					Text = "NextButtonID",
 					AutomationId = "NextButtonID",
 					Command = new Command(async () =>
@@ -45,7 +45,7 @@ namespace Xamarin.Forms.Controls.Issues
 						{
 							Title = "Detail",
 							Content = btnPop,
-							BackgroundColor = Color.Yellow
+							BackgroundColor = Colors.Yellow
 						};
 						//This breaks layout when you pop!
 						NavigationPage.SetHasNavigationBar(page, false);
@@ -54,7 +54,7 @@ namespace Xamarin.Forms.Controls.Issues
 				};
 
 				grd.Children.Add(btn, 0, 1);
-				var image = new Image() { Source = "coffee.png", AutomationId = "CoffeeImageId", BackgroundColor = Color.Yellow };
+				var image = new Image() { Source = "coffee.png", AutomationId = "CoffeeImageId", BackgroundColor = Colors.Yellow };
 				image.VerticalOptions = LayoutOptions.End;
 				grd.Children.Add(image, 0, 2);
 				Content = grd;

@@ -1,4 +1,5 @@
-﻿using UIKit;
+﻿using System.Graphics;
+using UIKit;
 using Xamarin.Forms;
 
 namespace Xamarin.Platform
@@ -28,13 +29,7 @@ namespace Xamarin.Platform
 
 		public static void UpdateMinimumTrackColor(this UISlider uiSlider, ISlider slider, UIColor? defaultMinTrackColor)
 		{
-			if (slider.MinimumTrackColor == Color.Default)
-			{
-				if (defaultMinTrackColor != null)
-					uiSlider.MinimumTrackTintColor = defaultMinTrackColor;
-			}
-			else
-				uiSlider.MinimumTrackTintColor = slider.MinimumTrackColor.ToNative();
+			uiSlider.MinimumTrackTintColor = slider.MinimumTrackColor?.ToNative() ?? defaultMinTrackColor;
 		}
 
 		public static void UpdateMaximumTrackColor(this UISlider uiSlider, ISlider slider)
@@ -42,25 +37,15 @@ namespace Xamarin.Platform
 			UpdateMaximumTrackColor(uiSlider, slider, null);
 		}
 
-		public static void UpdateMaximumTrackColor(this UISlider uiSlider, ISlider slider, UIColor? defaultMaxTrackColor)
-		{
-			if (slider.MaximumTrackColor == Color.Default)
-				uiSlider.MaximumTrackTintColor = defaultMaxTrackColor;
-			else
-				uiSlider.MaximumTrackTintColor = slider.MaximumTrackColor.ToNative();
-		}
+		public static void UpdateMaximumTrackColor(this UISlider uiSlider, ISlider slider, UIColor? defaultMaxTrackColor) =>
+			uiSlider.MaximumTrackTintColor = slider.MaximumTrackColor?.ToNative() ?? defaultMaxTrackColor;
 
 		public static void UpdateThumbColor(this UISlider uiSlider, ISlider slider)
 		{
 			UpdateThumbColor(uiSlider, slider, null);
 		}
 
-		public static void UpdateThumbColor(this UISlider uiSlider, ISlider slider, UIColor? defaultThumbColor)
-		{
-			if (slider.ThumbColor == Color.Default)
-				uiSlider.ThumbTintColor = defaultThumbColor;
-			else
-				uiSlider.ThumbTintColor = slider.ThumbColor.ToNative();
-		}
+		public static void UpdateThumbColor(this UISlider uiSlider, ISlider slider, UIColor? defaultThumbColor) =>
+			uiSlider.ThumbTintColor = slider.ThumbColor?.ToNative() ?? defaultThumbColor;
 	}
 }

@@ -33,7 +33,7 @@ namespace Xamarin.Forms.Controls.Issues
 			_slidingPage = new SliderMenuPage
 			{
 				Title = "Menu",
-				BackgroundColor = Color.FromHex("1e1e1e")
+				BackgroundColor = Colors.FromHex("1e1e1e")
 			};
 			_slidingPage.MenuListView.ItemTapped += (sender, e) => OnMenuSelected(e.Item as SliderMenuItem);
 			Padding = new Thickness(0);
@@ -113,7 +113,7 @@ namespace Xamarin.Forms.Controls.Issues
 					if (_isSelected != value)
 					{
 						_isSelected = value;
-						Background = _isSelected ? Color.FromHex("101010") : Color.Transparent;
+						Background = _isSelected ? Colors.FromHex("101010") : Colors.Transparent;
 						NotifyPropertyChanged("Background");
 					}
 				}
@@ -137,7 +137,7 @@ namespace Xamarin.Forms.Controls.Issues
 					HorizontalOptions = LayoutOptions.StartAndExpand,
 					ItemTemplate = new DataTemplate(typeof(MenuCell)),
 					ItemsSource = data,
-					BackgroundColor = Color.FromHex("1e1e1e"),
+					BackgroundColor = Colors.FromHex("1e1e1e"),
 				};
 
 				MenuListView.SelectedItem = data[0];
@@ -160,7 +160,7 @@ namespace Xamarin.Forms.Controls.Issues
 				Content = new StackLayout
 				{
 					Spacing = 0,
-					BackgroundColor = Color.FromHex("1e1e1e"),
+					BackgroundColor = Colors.FromHex("1e1e1e"),
 					Padding = new Thickness(0, paddingTop, 0, 10),
 					VerticalOptions = LayoutOptions.FillAndExpand,
 					HorizontalOptions = LayoutOptions.FillAndExpand,

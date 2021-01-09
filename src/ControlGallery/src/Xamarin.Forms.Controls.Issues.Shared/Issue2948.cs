@@ -84,7 +84,7 @@ namespace Xamarin.Forms.Controls.Issues
 				{
 					HeightRequest = 300,
 					HorizontalOptions = LayoutOptions.End,
-					BackgroundColor = Color.Pink,
+					BackgroundColor = Colors.Pink,
 					AutomationId = "btnOnDetail"
 				};
 
@@ -117,23 +117,23 @@ namespace Xamarin.Forms.Controls.Issues
 							grid,
 							new BoxView {
 								HeightRequest = 100,
-								Color = Color.Red,
+								Color = Colors.Red,
 							},
 							new BoxView {
 								HeightRequest = 200,
-								Color = Color.Green,
+								Color = Colors.Green,
 							},
 							new BoxView {
 								HeightRequest = 300,
-								Color = Color.Red,
+								Color = Colors.Red,
 							},
 							new BoxView {
 								HeightRequest = 400,
-								Color = Color.Green,
+								Color = Colors.Green,
 							},
 							new BoxView {
 								HeightRequest = 500,
-								Color = Color.Red,
+								Color = Colors.Red,
 							}
 						}
 					},
@@ -151,7 +151,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 				ItemsSource = data;
 				VerticalOptions = LayoutOptions.FillAndExpand;
-				BackgroundColor = Color.Transparent;
+				BackgroundColor = Colors.Transparent;
 
 				var cell = new DataTemplate(typeof(ImageCell));
 				cell.SetBinding(TextCell.TextProperty, "Title");
@@ -169,7 +169,7 @@ namespace Xamarin.Forms.Controls.Issues
 			public MenuPage()
 			{
 				Title = "Menu";
-				BackgroundColor = Color.FromHex("333333");
+				BackgroundColor = Colors.FromHex("333333");
 
 				Menu = new MenuListView();
 
@@ -178,7 +178,7 @@ namespace Xamarin.Forms.Controls.Issues
 					Padding = new Thickness(10, 36, 0, 5),
 					Content = new Label
 					{
-						TextColor = Color.FromHex("AAAAAA"),
+						TextColor = Colors.FromHex("AAAAAA"),
 						Text = "MENU",
 					}
 				};

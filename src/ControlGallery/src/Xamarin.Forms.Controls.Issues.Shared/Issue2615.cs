@@ -28,7 +28,7 @@ namespace Xamarin.Forms.Controls.Issues
 			largeNumberLabel.FontFamily = "HelveticaNeue-Light";
 			largeNumberLabel.FontSize = 52;
 			largeNumberLabel.Text = "90";
-			largeNumberLabel.TextColor = Color.FromRgb(0.00392156885936856, 0.47843137383461, 0.996078431606293);
+			largeNumberLabel.TextColor = Colors.FromRgb(0.00392156885936856, 0.47843137383461, 0.996078431606293);
 			largeNumberLabel.HorizontalOptions = LayoutOptions.Center;
 			largeNumberLabel.VerticalOptions = LayoutOptions.Fill;
 			headerCellLayout.Children.Add(largeNumberLabel);

@@ -32,7 +32,7 @@ namespace Xamarin.Forms.Controls.Issues
 					_validationEntry,
 					new Entry
 					{
-						BackgroundColor = Color.MediumPurple
+						BackgroundColor = Colors.MediumPurple
 					},
 					new Entry(),
 					new Entry
@@ -42,7 +42,7 @@ namespace Xamarin.Forms.Controls.Issues
 					new Button
 					{
 						Text = "Change background of first label to yellow",
-						Command = new Command(() => _validationEntry.BackgroundColor = Color.Yellow)
+						Command = new Command(() => _validationEntry.BackgroundColor = Colors.Yellow)
 					}
 				}
 			};
@@ -75,9 +75,9 @@ namespace Xamarin.Forms.Controls.Issues
 			void Validate(Entry entry, string text)
 			{
 				if (text == null)
-					entry.BackgroundColor = Color.Red;
+					entry.BackgroundColor = Colors.Red;
 				else
-					entry.BackgroundColor = text.Trim() != "" ? Color.Default : Color.Red;
+					entry.BackgroundColor = text.Trim() != "" ? null : Colors.Red;
 			}
 		}
 	}

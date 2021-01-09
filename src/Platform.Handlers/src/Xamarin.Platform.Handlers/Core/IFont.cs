@@ -6,6 +6,6 @@ namespace Xamarin.Platform
 	{
 		FontAttributes FontAttributes { get; }
 		string FontFamily { get; }
-		double FontSize { get; }
+		float FontSize { get; }
 	}
 }

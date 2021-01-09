@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Graphics;
 using System.Windows.Input;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml.Diagnostics;
@@ -201,15 +202,15 @@ namespace Xamarin.Forms
 
 		public event EventHandler RemainingItemsThresholdReached;
 
-		protected override SizeRequest OnMeasure(double widthConstraint, double heightConstraint)
+		protected override SizeRequest OnMeasure(float widthConstraint, float heightConstraint)
 		{
 			// TODO hartez 2018-05-22 05:04 PM This 40,40 is what LV1 does; can we come up with something less arbitrary?
-			var minimumSize = new Size(40, 40);
+			var minimumSize = new SizeF(40, 40);
 
 			var maxWidth = Math.Min(Device.Info.ScaledScreenSize.Width, widthConstraint);
 			var maxHeight = Math.Min(Device.Info.ScaledScreenSize.Height, heightConstraint);
 
-			Size request = new Size(maxWidth, maxHeight);
+			var request = new SizeF(maxWidth, maxHeight);
 
 			return new SizeRequest(request, minimumSize);
 		}

@@ -23,8 +23,8 @@ namespace Xamarin.Forms.Controls.GalleryPages.PlatformSpecificsGalleries
 
 			var refreshView = new RefreshView
 			{
-				BackgroundColor = Color.Red,
-				RefreshColor = Color.Yellow
+				BackgroundColor = Colors.Red,
+				RefreshColor = Colors.Yellow
 			};
 
 			refreshView.SetBinding(RefreshView.CommandProperty, "RefreshCommand");

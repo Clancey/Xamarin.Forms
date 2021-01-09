@@ -66,7 +66,7 @@ namespace Xamarin.Forms.Controls.Issues
 			public HeaderCell()
 			{
 				Height = 44;
-				var label = new Label { BackgroundColor = Color.Pink };
+				var label = new Label { BackgroundColor = Colors.Pink };
 				label.SetBinding(Label.TextProperty, "GroupName");
 				View = label;
 			}
@@ -77,7 +77,7 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			public ItemCell()
 			{
-				var label = new Label { BackgroundColor = Color.Aqua };
+				var label = new Label { BackgroundColor = Colors.Aqua };
 				label.SetBinding(Label.TextProperty, ".");
 				View = label;
 			}

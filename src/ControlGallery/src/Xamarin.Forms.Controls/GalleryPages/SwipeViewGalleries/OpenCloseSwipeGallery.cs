@@ -52,7 +52,7 @@
 
 			var swipeItem = new SwipeItem
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				IconImageSource = "calculator.png",
 				Text = "File"
 			};
@@ -65,7 +65,7 @@
 
 			var swipeContent = new Grid
 			{
-				BackgroundColor = Color.Gray
+				BackgroundColor = Colors.Gray
 			};
 
 			var fileSwipeLabel = new Label

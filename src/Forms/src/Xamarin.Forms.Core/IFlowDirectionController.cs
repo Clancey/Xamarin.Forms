@@ -4,7 +4,7 @@ namespace Xamarin.Forms
 	{
 		EffectiveFlowDirection EffectiveFlowDirection { get; set; }
 
-		double Width { get; }
+		float Width { get; }
 
 		bool ApplyEffectiveFlowDirectionToChildContainer { get; }
 	}

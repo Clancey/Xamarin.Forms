@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System.Graphics;
+using Xamarin.Forms;
 
 namespace Xamarin.Platform
 {
@@ -6,22 +7,22 @@ namespace Xamarin.Platform
 	{
 		bool IsEnabled { get; }
 		Color BackgroundColor { get; }
-		Rectangle Frame { get; }
+		RectangleF Frame { get; }
 		IViewHandler? Handler { get; set; }
 		IFrameworkElement? Parent { get; }
 
-		void Arrange(Rectangle bounds);
-		Size Measure(double widthConstraint, double heightConstraint);
+		void Arrange(RectangleF bounds);
+		SizeF Measure(float widthConstraint, float heightConstraint);
 
-		Size DesiredSize { get; }
+		SizeF DesiredSize { get; }
 		bool IsMeasureValid { get; }
 		bool IsArrangeValid { get; }
 
 		void InvalidateMeasure();
 		void InvalidateArrange();
 
-		double Width { get; }
-		double Height { get; }
+		float Width { get; }
+		float Height { get; }
 
 		Thickness Margin { get; }
 	}

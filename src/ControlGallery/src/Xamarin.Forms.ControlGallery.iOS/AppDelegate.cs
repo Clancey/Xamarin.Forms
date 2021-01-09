@@ -108,12 +108,12 @@ namespace Xamarin.Forms.ControlGallery.iOS
 			// create a new window instance based on the screen size
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
 
-			UINavigationBar.Appearance.TintColor = Color.Yellow.ToUIColor ();
-			UINavigationBar.Appearance.BarTintColor = Color.Green.ToUIColor ();
+			UINavigationBar.Appearance.TintColor = Colors.Yellow.ToUIColor ();
+			UINavigationBar.Appearance.BarTintColor = Colors.Green.ToUIColor ();
 
 			//override navigation bar title with text attributes
 			UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes () {
-				TextColor = Color.Pink.ToUIColor ()
+				TextColor = Colors.Pink.ToUIColor ()
 			});
 
 			Xamarin.Calabash.Start ();

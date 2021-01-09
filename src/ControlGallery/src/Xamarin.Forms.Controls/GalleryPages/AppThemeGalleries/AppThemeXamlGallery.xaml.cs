@@ -20,7 +20,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.AppThemeGalleries
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
 			var val = value as string;
-			return val == "1" ? Color.Green : Color.Red;
+			return val == "1" ? Colors.Green : Colors.Red;
 		}
 
 		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -31,9 +31,9 @@ namespace Xamarin.Forms.Controls.GalleryPages.AppThemeGalleries
 
 	//public class CustomControl : ContentView
 	//   {
-	//       public static readonly BindableProperty TextColorProperty = BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(CustomControl), (Color)new AppThemeColor() { Light = Color.Red, Dark = Color.Green });
+	//       public static readonly BindableProperty TextColorProperty = BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(CustomControl), (Color)new AppThemeColor() { Light = Colors.Red, Dark = Colors.Green });
 	//       public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(CustomControl));
-	//       public static readonly BindableProperty BoxColorProperty = BindableProperty.Create(nameof(BoxColor), typeof(Color), typeof(CustomControl), Color.Yellow);
+	//       public static readonly BindableProperty BoxColorProperty = BindableProperty.Create(nameof(BoxColor), typeof(Color), typeof(CustomControl), Colors.Yellow);
 
 	//       private StackLayout layout = new StackLayout();
 	//       public CustomControl()

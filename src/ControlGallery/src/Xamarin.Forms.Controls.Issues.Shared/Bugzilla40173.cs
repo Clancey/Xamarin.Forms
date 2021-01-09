@@ -57,7 +57,7 @@ namespace Xamarin.Forms.Controls.Issues
 			var boxView = new BoxView
 			{
 				AutomationId = "nontransparentBoxView",
-				Color = Color.Pink.MultiplyAlpha(0.5)
+				Color = Colors.Pink.MultiplyAlpha(0.5)
 			};
 
 			// Bump up the elevation on Android so the Button is covered (FastRenderers)
@@ -94,7 +94,7 @@ namespace Xamarin.Forms.Controls.Issues
 					new BoxView
 					{
 						AutomationId = "transparentBoxView",
-						Color = Color.Pink.MultiplyAlpha(0.5),
+						Color = Colors.Pink.MultiplyAlpha(0.5),
 						InputTransparent = true
 					}
 				}
@@ -114,7 +114,7 @@ namespace Xamarin.Forms.Controls.Issues
 							new BoxView
 							{
 								AutomationId = ListTapTarget,
-								Color = Color.Pink.MultiplyAlpha(0.5)
+								Color = Colors.Pink.MultiplyAlpha(0.5)
 							}
 						}
 					}

@@ -27,7 +27,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var listView = new ListView(ListViewCachingStrategy.RecycleElement)
 			{
-				BackgroundColor = Color.Yellow,
+				BackgroundColor = Colors.Yellow,
 				AutomationId = "ListView"
 			};
 

@@ -17,8 +17,8 @@ namespace Xamarin.Forms.Controls.Issues
 #endif
 	public class Issue9694 : TestContentPage
 	{
-		readonly Color _customColor = Color.FromHex("#9999CCDD");
-		readonly Color _newCustomColor = Color.Purple;
+		readonly Color _customColor = Colors.FromHex("#9999CCDD");
+		readonly Color _newCustomColor = Colors.Purple;
 
 		public Issue9694()
 		{
@@ -28,8 +28,8 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var instructions = new Label
 			{
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White,
 				Text = "If there is no exception, the test has passed."
 			};
 
@@ -37,7 +37,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var onColorSwitch = new Switch
 			{
-				OnColor = Color.Orange
+				OnColor = Colors.Orange
 			};
 
 			var switchLayout = new StackLayout

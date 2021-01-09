@@ -173,7 +173,7 @@ namespace Xamarin.Forms.Platform.WPF
 					FontWeights.Normal,
 					FontStretches.Normal,
 					fontsource.Size,
-					(fontsource.Color != Color.Default ? fontsource.Color : Color.White).ToBrush());
+					(fontsource.Color != null ? fontsource.Color : Colors.White).ToBrush());
 			return Task.FromResult(image);
 		}
 

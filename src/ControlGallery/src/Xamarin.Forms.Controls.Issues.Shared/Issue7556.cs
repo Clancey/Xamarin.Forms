@@ -30,11 +30,11 @@ namespace Xamarin.Forms.Controls.Issues
 				{
 					Children =
 					{
-						new Label() { Margin = 20, Text = "Flyout Visible", TextColor = Color.White }
+						new Label() { Margin = 20, Text = "Flyout Visible", TextColor = Colors.White }
 					}
 				},
 				Title = "Flyout",
-				BackgroundColor = Color.Blue
+				BackgroundColor = Colors.Blue
 			};
 
 			Detail = new NavigationPage(new DetailsPage(this) { Title = "Details" });

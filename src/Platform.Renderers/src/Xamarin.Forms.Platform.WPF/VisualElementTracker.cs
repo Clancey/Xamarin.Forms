@@ -170,7 +170,7 @@ namespace Xamarin.Forms.Platform.WPF
 
 			var handled = false;
 
-			var children = (view as IGestureController)?.GetChildElements(new Point(tapPosition.X, tapPosition.Y));
+			var children = (view as IGestureController)?.GetChildElements(new PointF(tapPosition.X, tapPosition.Y));
 
 			if (children != null)
 				foreach (var recognizer in children.GetChildGesturesFor<TapGestureRecognizer>().Where(g => g.NumberOfTapsRequired == numberOfTapsRequired))

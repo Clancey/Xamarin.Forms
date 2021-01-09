@@ -48,7 +48,7 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			var newView = new Button
 			{
-				BackgroundColor = Color.FromRgba(64, 64, 64, 64),
+				BackgroundColor = Colors.FromRgba(64, 64, 64, 64),
 				Text = "Remove Me",
 				AutomationId = "btnRemoveMe"
 			};

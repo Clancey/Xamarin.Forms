@@ -51,13 +51,13 @@ namespace Xamarin.Forms.Controls
 #pragma warning restore 618
 
 			var formattedString = new FormattedString();
-			formattedString.Spans.Add(new Span { BackgroundColor = Color.Red, TextColor = Color.Olive, Text = "Span 1 " });
+			formattedString.Spans.Add(new Span { BackgroundColor = Colors.Red, TextColor = Colors.Olive, Text = "Span 1 " });
 
-			Span span = new Span { BackgroundColor = Color.Black, TextColor = Color.White, Text = "Span 2 (tap me) " };
+			Span span = new Span { BackgroundColor = Colors.Black, TextColor = Colors.White, Text = "Span 2 (tap me) " };
 			span.GestureRecognizers.Add(new TapGestureRecognizer { Command = new Command(() => DisplayAlert("Congratulations!", "This is a tapped span", "ok")) });
 			formattedString.Spans.Add(span);
 
-			formattedString.Spans.Add(new Span { BackgroundColor = Color.Pink, TextColor = Color.Purple, Text = "Span 3" });
+			formattedString.Spans.Add(new Span { BackgroundColor = Colors.Pink, TextColor = Colors.Purple, Text = "Span 3" });
 
 			var formattedTextContainer = new ViewContainer<Label>(Test.Label.FormattedText, new Label { FormattedText = formattedString });
 
@@ -70,7 +70,7 @@ namespace Xamarin.Forms.Controls
 			var lineBreakModeWordWrapContainer = new ViewContainer<Label>(Test.Label.LineBreakModeWordWrap, new Label { Text = longText, LineBreakMode = LineBreakMode.WordWrap });
 
 			var textContainer = new ViewContainer<Label>(Test.Label.Text, new Label { Text = "I should have text" });
-			var textColorContainer = new ViewContainer<Label>(Test.Label.TextColor, new Label { Text = "I should have lime text", TextColor = Color.Lime });
+			var textColorContainer = new ViewContainer<Label>(Test.Label.TextColor, new Label { Text = "I should have lime text", TextColor = Colors.Lime });
 
 			const int alignmentTestsHeightRequest = 100;
 			const int alignmentTestsWidthRequest = 100;
@@ -112,7 +112,7 @@ namespace Xamarin.Forms.Controls
 					VerticalTextAlignment = TextAlignment.Center,
 					HeightRequest = alignmentTestsHeightRequest,
 					WidthRequest = alignmentTestsWidthRequest,
-					BackgroundColor = Color.Pink
+					BackgroundColor = Colors.Pink
 				}
 			);
 
@@ -123,7 +123,7 @@ namespace Xamarin.Forms.Controls
 					VerticalTextAlignment = TextAlignment.End,
 					HeightRequest = alignmentTestsHeightRequest,
 					WidthRequest = alignmentTestsWidthRequest,
-					BackgroundColor = Color.Pink
+					BackgroundColor = Colors.Pink
 				}
 			);
 
@@ -134,7 +134,7 @@ namespace Xamarin.Forms.Controls
 					VerticalTextAlignment = TextAlignment.Start,
 					HeightRequest = alignmentTestsHeightRequest,
 					WidthRequest = alignmentTestsWidthRequest,
-					BackgroundColor = Color.Pink
+					BackgroundColor = Colors.Pink
 				}
 			);
 
@@ -233,17 +233,17 @@ namespace Xamarin.Forms.Controls
 			);
 
 			var formattedString2 = new FormattedString();
-			formattedString2.Spans.Add(new Span { BackgroundColor = Color.Red, TextColor = Color.Olive, Text = "Span 1 " });
-			var span2 = new Span { BackgroundColor = Color.Black, TextColor = Color.White, Text = "Span 2 (tap me) " };
+			formattedString2.Spans.Add(new Span { BackgroundColor = Colors.Red, TextColor = Colors.Olive, Text = "Span 1 " });
+			var span2 = new Span { BackgroundColor = Colors.Black, TextColor = Colors.White, Text = "Span 2 (tap me) " };
 			span2.GestureRecognizers.Add(new TapGestureRecognizer { Command = new Command(() => DisplayAlert("Congratulations!", "This is a tapped span", "ok")) });
 			formattedString2.Spans.Add(span2);
-			formattedString2.Spans.Add(new Span { BackgroundColor = Color.Pink, TextColor = Color.Purple, Text = "Span 3" });
+			formattedString2.Spans.Add(new Span { BackgroundColor = Colors.Pink, TextColor = Colors.Purple, Text = "Span 3" });
 
 			var paddingContainer = new ViewContainer<Label>(Test.Label.Padding,
 				new Label
 				{
 					FormattedText = formattedString2,
-					BackgroundColor = Color.Yellow,
+					BackgroundColor = Colors.Yellow,
 					Padding = new Thickness(40, 20)
 				}
 			);
@@ -275,7 +275,7 @@ namespace Xamarin.Forms.Controls
 				Text = "<h1>End aligned. Green. ä</h1>",
 				TextType = TextType.Html,
 				HorizontalTextAlignment = TextAlignment.Center,
-				TextColor = Color.Green,
+				TextColor = Colors.Green,
 			});
 
 			var gestureRecognizer = new TapGestureRecognizer();

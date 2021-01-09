@@ -14,7 +14,7 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			var grid = new Grid
 			{
-				BackgroundColor = Color.BurlyWood
+				BackgroundColor = Colors.BurlyWood
 			};
 
 			var defaultEditor = new Editor
@@ -25,7 +25,7 @@ namespace Xamarin.Forms.Controls.Issues
 			var transparentEditor = new Editor
 			{
 				Text = "I'm a transparent Editor!",
-				BackgroundColor = Color.Transparent
+				BackgroundColor = Colors.Transparent
 			};
 			Grid.SetRow(transparentEditor, 1);
 

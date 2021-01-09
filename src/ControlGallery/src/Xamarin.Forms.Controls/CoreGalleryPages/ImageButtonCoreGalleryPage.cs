@@ -35,8 +35,8 @@ namespace Xamarin.Forms.Controls
 			var borderButtonContainer = new ViewContainer<ImageButton>(Test.ImageButton.BorderColor,
 				new ImageButton
 				{
-					BackgroundColor = Color.Transparent,
-					BorderColor = Color.Red,
+					BackgroundColor = Colors.Transparent,
+					BorderColor = Colors.Red,
 					BorderWidth = 1,
 					Source = "oasissmall.jpg"
 				}
@@ -46,8 +46,8 @@ namespace Xamarin.Forms.Controls
 				new ImageButton
 				{
 					Source = "oasissmall.jpg",
-					BackgroundColor = Color.Transparent,
-					BorderColor = Color.Red,
+					BackgroundColor = Colors.Transparent,
+					BorderColor = Colors.Red,
 					CornerRadius = 20,
 					BorderWidth = 1,
 				}
@@ -57,8 +57,8 @@ namespace Xamarin.Forms.Controls
 				new ImageButton
 				{
 					Source = "oasissmall.jpg",
-					BackgroundColor = Color.Transparent,
-					BorderColor = Color.Red,
+					BackgroundColor = Colors.Transparent,
+					BorderColor = Colors.Red,
 					BorderWidth = 15,
 				}
 			);
@@ -98,7 +98,7 @@ namespace Xamarin.Forms.Controls
 				new ImageButton
 				{
 					Source = "oasissmall.jpg",
-					BackgroundColor = Color.Red,
+					BackgroundColor = Colors.Red,
 					Padding = new Thickness(20, 30, 60, 15)
 				}
 			);

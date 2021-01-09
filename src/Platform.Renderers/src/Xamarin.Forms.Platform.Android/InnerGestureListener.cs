@@ -73,7 +73,7 @@ namespace Xamarin.Forms.Platform.Android
 
 			if (HasDoubleTapHandler())
 			{
-				return _tapDelegate(2, new Point(e.GetX(), e.GetY()));
+				return _tapDelegate(2, new PointF(e.GetX(), e.GetY()));
 			}
 
 			if (HasSingleTapHandler())
@@ -81,7 +81,7 @@ namespace Xamarin.Forms.Platform.Android
 				// If we're registering double taps and we don't actually have a double-tap handler,
 				// but we _do_ have a single-tap handler, then we're really just seeing two singles in a row
 				// Fire off the delegate for the second single-tap (OnSingleTapUp already did the first one)
-				return _tapDelegate(1, new Point(e.GetX(), e.GetY()));
+				return _tapDelegate(1, new PointF(e.GetX(), e.GetY()));
 			}
 
 			return false;
@@ -148,7 +148,7 @@ namespace Xamarin.Forms.Platform.Android
 
 			// A single tap has occurred and there's no handler for double tap to worry about,
 			// so we can go ahead and run the delegate
-			return _tapDelegate(1, new Point(e.GetX(), e.GetY()));
+			return _tapDelegate(1, new PointF(e.GetX(), e.GetY()));
 		}
 
 		bool GestureDetector.IOnDoubleTapListener.OnSingleTapConfirmed(MotionEvent e)
@@ -165,7 +165,7 @@ namespace Xamarin.Forms.Platform.Android
 
 			// Since there was a double-tap handler, we had to wait for OnSingleTapConfirmed;
 			// Now that we're sure it's a single tap, we can run the delegate
-			return _tapDelegate(1, new Point(e.GetX(), e.GetY()));
+			return _tapDelegate(1, new PointF(e.GetX(), e.GetY()));
 		}
 
 		protected override void Dispose(bool disposing)

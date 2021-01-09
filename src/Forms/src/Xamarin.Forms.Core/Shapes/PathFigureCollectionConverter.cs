@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Graphics;
 using Xamarin.Forms;
 
 namespace Xamarin.Forms.Shapes
@@ -13,9 +14,9 @@ namespace Xamarin.Forms.Shapes
 		static string _pathString;
 		static int _pathLength;
 		static int _curIndex;
-		static Point _lastStart;
-		static Point _lastPoint;
-		static Point _secondLastPoint;
+		static PointF _lastStart;
+		static PointF _lastPoint;
+		static PointF _secondLastPoint;
 		static char _token;
 
 		public override object ConvertFromInvariantString(string value)
@@ -75,9 +76,9 @@ namespace Xamarin.Forms.Shapes
 			_pathLength = pathString.Length;
 			_curIndex = startIndex;
 
-			_secondLastPoint = new Point(0, 0);
-			_lastPoint = new Point(0, 0);
-			_lastStart = new Point(0, 0);
+			_secondLastPoint = new PointF(0, 0);
+			_lastPoint = new PointF(0, 0);
+			_lastStart = new PointF(0, 0);
 
 			_figureStarted = false;
 
@@ -180,7 +181,7 @@ namespace Xamarin.Forms.Shapes
 
 						do
 						{
-							Point p;
+							PointF p;
 
 							if ((cmd == 's') || (cmd == 'S'))
 							{
@@ -267,9 +268,9 @@ namespace Xamarin.Forms.Shapes
 						do
 						{
 							// A 3,4 5, 0, 0, 6,7
-							double w = ReadNumber(!AllowComma);
-							double h = ReadNumber(AllowComma);
-							double rotation = ReadNumber(AllowComma);
+							float w = ReadNumber(!AllowComma);
+							float h = ReadNumber(AllowComma);
+							float rotation = ReadNumber(AllowComma);
 							bool large = ReadBool();
 							bool sweep = ReadBool();
 
@@ -277,7 +278,7 @@ namespace Xamarin.Forms.Shapes
 
 							ArcSegment arcSegment = new ArcSegment
 							{
-								Size = new Size(w, h),
+								Size = new SizeF(w, h),
 								RotationAngle = rotation,
 								IsLargeArc = large,
 								SweepDirection = sweep ? SweepDirection.Clockwise : SweepDirection.CounterClockwise,
@@ -314,9 +315,9 @@ namespace Xamarin.Forms.Shapes
 				_figureStarted = true;
 		}
 
-		static Point Reflect()
+		static PointF Reflect()
 		{
-			return new Point(
+			return new PointF(
 				2 * _lastPoint.X - _secondLastPoint.X,
 				2 * _lastPoint.Y - _secondLastPoint.Y);
 		}
@@ -414,10 +415,10 @@ namespace Xamarin.Forms.Shapes
 			throw new FormatException(string.Format("UnexpectedToken \"{0}\" into {1}", _pathString, _curIndex - 1));
 		}
 
-		static Point ReadPoint(char cmd, bool allowcomma)
+		static PointF ReadPoint(char cmd, bool allowcomma)
 		{
-			double x = ReadNumber(allowcomma);
-			double y = ReadNumber(AllowComma);
+			var x = ReadNumber(allowcomma);
+			var y = ReadNumber(AllowComma);
 
 			if (cmd >= 'a') // 'A' < 'a'. lower case for relative
 			{
@@ -425,7 +426,7 @@ namespace Xamarin.Forms.Shapes
 				y += _lastPoint.Y;
 			}
 
-			return new Point(x, y);
+			return new PointF(x, y);
 		}
 
 		static bool IsNumber(bool allowComma)
@@ -453,7 +454,7 @@ namespace Xamarin.Forms.Shapes
 			return false;
 		}
 
-		static double ReadNumber(bool allowComma)
+		static float ReadNumber(bool allowComma)
 		{
 			if (!IsNumber(allowComma))
 			{
@@ -541,7 +542,7 @@ namespace Xamarin.Forms.Shapes
 
 				try
 				{
-					return Convert.ToDouble(subString, CultureInfo.InvariantCulture);
+					return float.Parse(subString, CultureInfo.InvariantCulture);
 				}
 				catch (FormatException)
 				{

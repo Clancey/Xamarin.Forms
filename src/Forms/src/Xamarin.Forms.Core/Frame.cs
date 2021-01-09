@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.Graphics;
 
 namespace Xamarin.Forms
 {
@@ -26,7 +27,7 @@ namespace Xamarin.Forms
 
 		Thickness IPaddingElement.PaddingDefaultValueCreator()
 		{
-			return 20d;
+			return 20f;
 		}
 
 		public bool HasShadow
@@ -58,13 +59,13 @@ namespace Xamarin.Forms
 		int IBorderElement.CornerRadius => (int)CornerRadius;
 
 		// not currently used by frame
-		double IBorderElement.BorderWidth => -1d;
+		float IBorderElement.BorderWidth => -1f;
 
 		int IBorderElement.CornerRadiusDefaultValue => (int)CornerRadiusProperty.DefaultValue;
 
 		Color IBorderElement.BorderColorDefaultValue => (Color)BorderColorProperty.DefaultValue;
 
-		double IBorderElement.BorderWidthDefaultValue => -1d;
+		float IBorderElement.BorderWidthDefaultValue => -1f;
 
 		public IPlatformElementConfiguration<T, Frame> On<T>() where T : IConfigPlatform
 		{

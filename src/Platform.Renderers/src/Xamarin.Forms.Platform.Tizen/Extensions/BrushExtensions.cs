@@ -82,7 +82,7 @@ namespace Xamarin.Forms.Platform.Tizen
 
 		public static SKColor ToSolidColor(this SolidColorBrush solidColorBrush)
 		{
-			return solidColorBrush.Color != Color.Default ? solidColorBrush.Color.ToNative().ToSKColor() : SKColor.Empty;
+			return solidColorBrush.Color != null ? solidColorBrush.Color.ToNative().ToSKColor() : SKColor.Empty;
 		}
 
 		static SKShader CreateLinearGradient(LinearGradientBrush linearGradientBrush, SKRect pathBounds)

@@ -23,7 +23,7 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			var grid = new Grid
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				HeightRequest = 400,
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				AutomationId = "MainGrid"
@@ -35,7 +35,7 @@ namespace Xamarin.Forms.Controls.Issues
 			var boxView = new BoxView
 			{
 				HorizontalOptions = LayoutOptions.FillAndExpand,
-				Color = Color.Yellow
+				Color = Colors.Yellow
 			};
 			Grid.SetRow(boxView, 0);
 
@@ -53,7 +53,7 @@ namespace Xamarin.Forms.Controls.Issues
 			var boxView2 = new BoxView
 			{
 				HorizontalOptions = LayoutOptions.FillAndExpand,
-				Color = Color.Yellow
+				Color = Colors.Yellow
 			};
 			Grid.SetRow(boxView2, 2);
 

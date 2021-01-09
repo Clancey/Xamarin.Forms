@@ -24,10 +24,10 @@ namespace Xamarin.Forms.Controls.Issues
 				{
 					new Label() { Text = "Four bell icons should be visible below", Margin = new Thickness(10)},
 
-					new Label { FontFamily = "FontAwesome", FontSize = 50, TextColor = Color.Black, Text = "\xf0f3" },
-					new Label { FontFamily = "fa-regular-400.ttf", FontSize = 50, TextColor = Color.Black, Text = "\xf0f3" },
-					new Image() { Source = new FontImageSource() { FontFamily = "FontAwesome", Glyph = "\xf0f3", Color = Color.Black, Size = 50}, HorizontalOptions = LayoutOptions.Start},
-					new Image() { Source = new FontImageSource() { FontFamily = "fa-regular-400.ttf", Glyph = "\xf0f3", Color = Color.Black, Size = 50}, HorizontalOptions = LayoutOptions.Start},
+					new Label { FontFamily = "FontAwesome", FontSize = 50, TextColor = Colors.Black, Text = "\xf0f3" },
+					new Label { FontFamily = "fa-regular-400.ttf", FontSize = 50, TextColor = Colors.Black, Text = "\xf0f3" },
+					new Image() { Source = new FontImageSource() { FontFamily = "FontAwesome", Glyph = "\xf0f3", Color = Colors.Black, Size = 50}, HorizontalOptions = LayoutOptions.Start},
+					new Image() { Source = new FontImageSource() { FontFamily = "fa-regular-400.ttf", Glyph = "\xf0f3", Color = Colors.Black, Size = 50}, HorizontalOptions = LayoutOptions.Start},
 				}
 			};
 

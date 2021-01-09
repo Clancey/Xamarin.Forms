@@ -24,8 +24,8 @@
 		void Init()
 		{
 
-			BarBackgroundColor = Color.FromHex("#03A9F4");
-			BarTextColor = Color.White;
+			BarBackgroundColor = Colors.FromHex("#03A9F4");
+			BarTextColor = Colors.White;
 		}
 	}
 

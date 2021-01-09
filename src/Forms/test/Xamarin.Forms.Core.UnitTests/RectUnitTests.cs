@@ -21,7 +21,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			Assert.AreEqual(4, rect.Width);
 			Assert.AreEqual(5, rect.Height);
 
-			rect = new Rect(new Point(2, 3), new Size(4, 5));
+			rect = new Rect(new PointF(2, 3), new Size(4, 5));
 			Assert.AreEqual(2, rect.X);
 			Assert.AreEqual(3, rect.Y);
 			Assert.AreEqual(4, rect.Width);
@@ -47,9 +47,9 @@ namespace Xamarin.Forms.Core.UnitTests
 			Assert.AreEqual(8, rect.Bottom);
 
 			Assert.AreEqual(new Size(4, 5), rect.Size);
-			Assert.AreEqual(new Point(2, 3), rect.Location);
+			Assert.AreEqual(new PointF(2, 3), rect.Location);
 
-			Assert.AreEqual(new Point(4, 5.5), rect.Center);
+			Assert.AreEqual(new PointF(4, 5.5), rect.Center);
 		}
 
 		[Test]
@@ -57,7 +57,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		{
 			var rect = new Rect(0, 0, 10, 10);
 			Assert.True(rect.Contains(5, 5));
-			Assert.True(rect.Contains(new Point(5, 5)));
+			Assert.True(rect.Contains(new PointF(5, 5)));
 			Assert.True(rect.Contains(new Rect(1, 1, 3, 3)));
 
 			Assert.True(rect.Contains(0, 0));
@@ -85,7 +85,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assert.AreEqual(new Rect(10, 10, 10, 10), rect);
 
-			rect = rect.Offset(new Point(-10, -10));
+			rect = rect.Offset(new PointF(-10, -10));
 
 			Assert.AreEqual(new Rect(0, 0, 10, 10), rect);
 		}
@@ -155,7 +155,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		{
 			var rect = new Rect
 			{
-				Location = new Point(10, 20)
+				Location = new PointF(10, 20)
 			};
 
 			Assert.AreEqual(new Rect(10, 20, 0, 0), rect);

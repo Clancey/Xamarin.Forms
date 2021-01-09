@@ -30,16 +30,16 @@ namespace Xamarin.Forms.Controls.Issues
 			var instructions = new Label
 			{
 				Padding = 12,
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White,
 				Text = "If you can see the background color of the custom Button below, the test has passed."
 			};
 
 			var button = new Issue12372Button
 			{
-				NymblDefaultColor = Color.Blue,
-				NymblPressedColor = Color.Red,
-				NymblTextColor = Color.White,
+				NymblDefaultColor = Colors.Blue,
+				NymblPressedColor = Colors.Red,
+				NymblTextColor = Colors.White,
 				Text = "Issue12372"
 			};
 
@@ -92,7 +92,7 @@ namespace Xamarin.Forms.Controls.Issues
 			 nameof(NymblDisabledTextColor),
 			 typeof(Color),
 			 typeof(Issue12372Button),
-			 Color.LightSlateGray);
+			 Colors.LightSlateGray);
 
 		public Color NymblDisabledTextColor
 		{

@@ -52,7 +52,7 @@ namespace Xamarin.Forms.Controls.Issues
 			var layout = new StackLayout
 			{
 				Padding = new Thickness(20),
-				BackgroundColor = Color.Gray
+				BackgroundColor = Colors.Gray
 			};
 
 			var button1 = new Button { Text = "Button 1" };
@@ -106,7 +106,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			layout.Children.Add(new BoxView
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				HorizontalOptions = LayoutOptions.FillAndExpand
 			});
@@ -115,7 +115,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			layout.Children.Add(new ScrollView
 			{
-				BackgroundColor = Color.Aqua,
+				BackgroundColor = Colors.Aqua,
 				Orientation = ScrollOrientation.Horizontal,
 				HeightRequest = Device.RuntimePlatform == Device.UWP ? 80 : 44,
 				Content = buttonStack

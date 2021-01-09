@@ -15,7 +15,7 @@ namespace Xamarin.Forms.Platform.GTK
 		public GtkFormsContainer()
 		{
 			VisibleWindow = false;
-			BackgroundColor = Color.Transparent;
+			BackgroundColor = Colors.Transparent;
 		}
 
 		Color BackgroundColor

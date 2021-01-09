@@ -26,7 +26,7 @@ namespace Xamarin.Forms.Platform.Android
 			if (e.Action == MotionEventActions.Down)
 			{
 				_downTime = DateTime.UtcNow;
-				_downPosition = new Point(e.RawX, e.RawY);
+				_downPosition = new PointF(e.RawX, e.RawY);
 			}
 
 			if (e.Action != MotionEventActions.Up)
@@ -45,7 +45,7 @@ namespace Xamarin.Forms.Platform.Android
 				if (currentView != newCurrentView)
 					break;
 
-				double distance = _downPosition.Distance(new Point(e.RawX, e.RawY));
+				double distance = _downPosition.Distance(new PointF(e.RawX, e.RawY));
 
 				if (distance > Context.ToPixels(20) || DateTime.UtcNow - _downTime > TimeSpan.FromMilliseconds(200))
 					break;

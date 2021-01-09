@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Graphics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -43,7 +44,7 @@ namespace Xamarin.Forms
 		readonly Lazy<PlatformConfigurationRegistry<Page>> _platformConfigurationRegistry;
 
 		bool _allocatedFlag;
-		Rectangle _containerArea;
+		RectangleF _containerArea;
 
 		bool _containerAreaSet;
 
@@ -128,7 +129,7 @@ namespace Xamarin.Forms
 		public IList<ToolbarItem> ToolbarItems { get; internal set; }
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public Rectangle ContainerArea
+		public RectangleF ContainerArea
 		{
 			get { return _containerArea; }
 			set
@@ -266,10 +267,10 @@ namespace Xamarin.Forms
 			return OnBackButtonPressed();
 		}
 
-		protected virtual void LayoutChildren(double x, double y, double width, double height)
+		protected virtual void LayoutChildren(float x, float y, float width, float height)
 		{
-			var area = new Rectangle(x, y, width, height);
-			Rectangle originalArea = area;
+			var area = new RectangleF(x, y, width, height);
+			var originalArea = area;
 			if (_containerAreaSet)
 			{
 				area = ContainerArea;
@@ -346,7 +347,7 @@ namespace Xamarin.Forms
 			base.OnParentSet();
 		}
 
-		protected override void OnSizeAllocated(double width, double height)
+		protected override void OnSizeAllocated(float width, float height)
 		{
 			_allocatedFlag = true;
 			base.OnSizeAllocated(width, height);
@@ -358,17 +359,17 @@ namespace Xamarin.Forms
 			if (!ShouldLayoutChildren())
 				return;
 
-			var startingLayout = new List<Rectangle>(LogicalChildren.Count);
+			var startingLayout = new List<RectangleF>(LogicalChildren.Count);
 			foreach (Element el in LogicalChildren)
 			{
 				if (el is VisualElement c)
 					startingLayout.Add(c.Bounds);
 			}
 
-			double x = Padding.Left;
-			double y = Padding.Top;
-			double w = Math.Max(0, Width - Padding.HorizontalThickness);
-			double h = Math.Max(0, Height - Padding.VerticalThickness);
+			float x = Padding.Left;
+			float y = Padding.Top;
+			float w = Math.Max(0, Width - Padding.HorizontalThickness);
+			float h = Math.Max(0, Height - Padding.VerticalThickness);
 
 			LayoutChildren(x, y, w, h);
 

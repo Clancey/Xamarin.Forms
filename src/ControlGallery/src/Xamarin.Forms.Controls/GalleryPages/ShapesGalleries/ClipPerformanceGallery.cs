@@ -128,7 +128,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.ShapesGalleries
 						Source = "crimson.jpg",
 						Clip = new EllipseGeometry
 						{
-							Center = new Point(25, 25),
+							Center = new PointF(25, 25),
 							RadiusX = 25,
 							RadiusY = 25
 						}

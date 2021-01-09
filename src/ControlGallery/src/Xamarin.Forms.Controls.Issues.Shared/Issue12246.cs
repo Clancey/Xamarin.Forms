@@ -41,7 +41,7 @@ namespace Xamarin.Forms.Controls.Issues
 				Visual = VisualMarker.Material,
 				Keyboard = Keyboard.Email,
 				Placeholder = "Email",
-				TextColor = Color.Purple,
+				TextColor = Colors.Purple,
 				AutomationId = Entry
 			};
 
@@ -50,7 +50,7 @@ namespace Xamarin.Forms.Controls.Issues
 				Visual = VisualMarker.Material,
 				IsPassword = true,
 				Placeholder = "Password",
-				TextColor = Color.Purple,
+				TextColor = Colors.Purple,
 				AutomationId = Password
 			};
 
@@ -59,7 +59,7 @@ namespace Xamarin.Forms.Controls.Issues
 				Visual = VisualMarker.Material,
 				IsPassword = true,
 				Placeholder = "Confirm Password",
-				TextColor = Color.Purple
+				TextColor = Colors.Purple
 			};
 
 			password.Unfocused += (sender, args) =>

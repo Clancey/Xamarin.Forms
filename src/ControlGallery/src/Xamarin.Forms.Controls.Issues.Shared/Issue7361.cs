@@ -40,8 +40,8 @@ namespace Xamarin.Forms.Controls.Issues
 				Maximum = 100,
 				Minimum = 1,
 				HorizontalOptions = LayoutOptions.FillAndExpand,
-				MinimumTrackColor = Color.LightPink,
-				MaximumTrackColor = Color.LightPink
+				MinimumTrackColor = Colors.LightPink,
+				MaximumTrackColor = Colors.LightPink
 			};
 			controlsLayout.Children.Add(TheSlider);
 

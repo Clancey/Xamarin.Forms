@@ -28,7 +28,7 @@ namespace Xamarin.Forms.Platform.MacOS
 
 		protected override void SetBackgroundColor(Color color)
 		{
-			if (Element.BackgroundColor == Color.Default)
+			if (Element.BackgroundColor == null)
 				Layer.BackgroundColor = NSColor.White.CGColor;
 			else
 				Layer.BackgroundColor = Element.BackgroundColor.ToCGColor();
@@ -45,7 +45,7 @@ namespace Xamarin.Forms.Platform.MacOS
 				{
 					var backgroundColor = solidColorBrush.Color;
 
-					if (backgroundColor == Color.Default)
+					if (backgroundColor == null)
 						Layer.BackgroundColor = NSColor.White.CGColor;
 					else
 						Layer.BackgroundColor = backgroundColor.ToCGColor();
@@ -85,7 +85,7 @@ namespace Xamarin.Forms.Platform.MacOS
 			else
 				Layer.ShadowOpacity = 0;
 
-			if (Element.BorderColor == Color.Default)
+			if (Element.BorderColor == null)
 				Layer.BorderColor = NSColor.Clear.CGColor;
 			else
 			{

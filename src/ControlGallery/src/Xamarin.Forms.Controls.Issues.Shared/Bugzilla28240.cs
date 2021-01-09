@@ -18,8 +18,8 @@ namespace Xamarin.Forms.Controls.Issues
 	{
 		protected override void Init()
 		{
-			Detail = new NavigationPage(new ContentPage { Title = "DetailPage", BackgroundColor = Color.Red });
-			Flyout = new NavigationPage(new ContentPage { Title = "MasterPage", BackgroundColor = Color.Blue }) { Title = " Flyout" };
+			Detail = new NavigationPage(new ContentPage { Title = "DetailPage", BackgroundColor = Colors.Red });
+			Flyout = new NavigationPage(new ContentPage { Title = "MasterPage", BackgroundColor = Colors.Blue }) { Title = " Flyout" };
 		}
 
 		protected override async void OnAppearing()
@@ -27,7 +27,7 @@ namespace Xamarin.Forms.Controls.Issues
 			var btn = new Button() { Text = "GO Back" };
 			btn.Clicked += async (object sender, EventArgs e) => await (Flyout as NavigationPage).PopAsync();
 
-			await (Flyout as NavigationPage).PushAsync(new ContentPage { Title = "New MasterPage", Content = btn, BackgroundColor = Color.Pink });
+			await (Flyout as NavigationPage).PushAsync(new ContentPage { Title = "New MasterPage", Content = btn, BackgroundColor = Colors.Pink });
 			base.OnAppearing();
 		}
 	}

@@ -159,7 +159,7 @@ namespace Xamarin.Forms.Platform.GTK.Controls
 						HeightRequest = 1
 					};
 
-					separator.ModifyBg(StateType.Normal, Color.Black.ToGtkColor());
+					separator.ModifyBg(StateType.Normal, Colors.Black.ToGtkColor());
 					_root.PackStart(separator, false, false, 0);
 
 					// Cells

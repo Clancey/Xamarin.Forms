@@ -36,7 +36,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.GradientGalleries
 
 		Color GetRandomColor()
 		{
-			return Color.FromRgb(_random.Next(256), _random.Next(256), _random.Next(256));
+			return Colors.FromRgb(_random.Next(256), _random.Next(256), _random.Next(256));
 		}
 	}
 }

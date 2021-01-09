@@ -33,8 +33,8 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				AutomationId = InstructionsId,
 				Padding = 12,
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White,
 				Text = "If the test works without exceptions (an orange rectangle is rendered), the test has passed."
 			};
 

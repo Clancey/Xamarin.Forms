@@ -157,7 +157,7 @@ namespace Xamarin.Forms.Controls.Issues
 			var rightSwipeItem = new SwipeItem
 			{
 				Text = "Right",
-				BackgroundColor = Color.Green,
+				BackgroundColor = Colors.Green,
 				Command = new Command(() =>
 				{
 					_leftCount++;
@@ -174,7 +174,7 @@ namespace Xamarin.Forms.Controls.Issues
 			var leftSwipeItem = new SwipeItem
 			{
 				Text = "Left",
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				Command = new Command(() =>
 				{
 					_rightCount++;
@@ -194,7 +194,7 @@ namespace Xamarin.Forms.Controls.Issues
 				Content = new StackLayout
 				{
 					AutomationId = SwipeViewId,
-					BackgroundColor = Color.Coral,
+					BackgroundColor = Colors.Coral,
 					Children =
 					{
 						new Label

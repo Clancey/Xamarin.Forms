@@ -22,7 +22,7 @@ namespace Xamarin.Forms.Xaml.UnitTests
 			{
 				if (color.Hue != value)
 				{
-					Color = Color.FromHsla(value, color.Saturation, color.Luminosity);
+					Color = Colors.FromHsla(value, color.Saturation, color.Luminosity);
 				}
 			}
 			get
@@ -37,7 +37,7 @@ namespace Xamarin.Forms.Xaml.UnitTests
 			{
 				if (color.Saturation != value)
 				{
-					Color = Color.FromHsla(color.Hue, value, color.Luminosity);
+					Color = Colors.FromHsla(color.Hue, value, color.Luminosity);
 				}
 			}
 			get
@@ -52,7 +52,7 @@ namespace Xamarin.Forms.Xaml.UnitTests
 			{
 				if (color.Luminosity != value)
 				{
-					Color = Color.FromHsla(color.Hue, color.Saturation, value);
+					Color = Colors.FromHsla(color.Hue, color.Saturation, value);
 				}
 			}
 			get

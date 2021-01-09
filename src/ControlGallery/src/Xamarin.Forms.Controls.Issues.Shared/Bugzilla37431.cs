@@ -14,8 +14,8 @@ namespace Xamarin.Forms.Controls.Issues
 	{
 		protected override void Init()
 		{
-			BarBackgroundColor = Color.White;
-			BarTextColor = Color.GhostWhite;
+			BarBackgroundColor = Colors.White;
+			BarTextColor = Colors.GhostWhite;
 
 			PushAsync(new ContentPage()
 			{

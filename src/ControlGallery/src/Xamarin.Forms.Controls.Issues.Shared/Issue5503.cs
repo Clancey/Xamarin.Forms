@@ -55,7 +55,7 @@ namespace Xamarin.Forms.Controls.Issues
 			}
 
 			Padding = new Thickness(10);
-			BackgroundColor = Color.LightGray;
+			BackgroundColor = Colors.LightGray;
 
 			var changeAppearanceButton = new Button()
 			{

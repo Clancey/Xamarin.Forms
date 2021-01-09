@@ -122,7 +122,7 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 
 			if (Control.Checked)
 			{
-				if (Element.OnColor == Color.Default)
+				if (Element.OnColor == null)
 				{
 					Control.TrackDrawable = _defaultTrackDrawable;
 				}
@@ -142,7 +142,7 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 			if (Element == null)
 				return;
 
-			if (Element.ThumbColor != Color.Default)
+			if (Element.ThumbColor != null)
 			{
 				Control.ThumbDrawable?.SetColorFilter(Element.ThumbColor, FilterMode.SrcAtop);
 				_changedThumbColor = true;

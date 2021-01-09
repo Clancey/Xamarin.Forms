@@ -36,7 +36,7 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				WidthRequest = 250,
 				HeightRequest = 50,
-				BackgroundColor = Color.DarkGoldenrod
+				BackgroundColor = Colors.DarkGoldenrod
 			};
 			entry.TextChanged += InputViewOnTextChanged;
 			stackLayout.Children.Add(entry);
@@ -45,7 +45,7 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				WidthRequest = 250,
 				HeightRequest = 50,
-				BackgroundColor = Color.AntiqueWhite
+				BackgroundColor = Colors.AntiqueWhite
 			};
 			editor.TextChanged += InputViewOnTextChanged;
 			stackLayout.Children.Add(editor);

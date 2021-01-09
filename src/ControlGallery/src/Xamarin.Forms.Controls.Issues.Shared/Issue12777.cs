@@ -32,8 +32,8 @@ namespace Xamarin.Forms.Controls.Issues
 			var instructions = new Label
 			{
 				Padding = new Thickness(12),
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White,
 				Text = "Without exceptions, the test has passed."
 			};
 
@@ -97,7 +97,7 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				Items.Add(new Issue12777Model
 				{
-					Color = Color.FromRgb(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255)),
+					Color = Colors.FromRgb(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255)),
 					Name = $"{n + 1}"
 				});
 			}

@@ -7,7 +7,7 @@ namespace Xamarin.Forms.Controls
 		public static readonly BindableProperty UseDefaultProperty = BindableProperty.Create(nameof(UseDefault), typeof(bool), typeof(ColorPicker), false,
 			propertyChanged: OnColorChanged);
 
-		public static readonly BindableProperty ColorProperty = BindableProperty.Create(nameof(Color), typeof(Color), typeof(ColorPicker), Color.Default,
+		public static readonly BindableProperty ColorProperty = BindableProperty.Create(nameof(Color), typeof(Color), typeof(ColorPicker), null,
 			propertyChanged: OnColorChanged);
 
 		public static readonly BindableProperty TitleProperty = BindableProperty.Create(nameof(Title), typeof(string), typeof(ColorPicker), "Pick a color:",
@@ -74,7 +74,7 @@ namespace Xamarin.Forms.Controls
 				BackgroundColor = Color,
 				HorizontalOptions = LayoutOptions.Fill,
 				VerticalOptions = LayoutOptions.Fill,
-				BorderColor = Color.Black,
+				BorderColor = Colors.Black,
 
 			};
 			grid.AddChild(_box, 2, 1, 1, 3);
@@ -121,7 +121,7 @@ namespace Xamarin.Forms.Controls
 
 		void OnColorSliderChanged(object sender, ValueChangedEventArgs e)
 		{
-			var color = Color.FromRgba(
+			var color = Colors.FromRgba(
 				(int)_sliders[0].Value,
 				(int)_sliders[1].Value,
 				(int)_sliders[2].Value,
@@ -141,7 +141,7 @@ namespace Xamarin.Forms.Controls
 		{
 			if (bindable is ColorPicker picker)
 			{
-				var color = picker.UseDefault ? Color.Default : picker.Color;
+				var color = picker.UseDefault ? null : picker.Color;
 				picker._hexLabel.Text = color.IsDefault ? "<default>" : ColorToHex(color);
 				picker._box.BackgroundColor = color;
 				picker.ColorPicked?.Invoke(picker, new ColorPickedEventArgs(color));

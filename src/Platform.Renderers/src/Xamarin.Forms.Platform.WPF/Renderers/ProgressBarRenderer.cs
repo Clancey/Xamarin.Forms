@@ -37,7 +37,7 @@ namespace Xamarin.Forms.Platform.WPF
 
 		void UpdateProgressColor()
 		{
-			Control.UpdateDependencyColor(WProgressBar.ForegroundProperty, Element.ProgressColor.IsDefault ? Color.DeepSkyBlue : Element.ProgressColor);
+			Control.UpdateDependencyColor(WProgressBar.ForegroundProperty, Element.ProgressColor.IsDefault ? Colors.DeepSkyBlue : Element.ProgressColor);
 		}
 
 		void UpdateProgress()

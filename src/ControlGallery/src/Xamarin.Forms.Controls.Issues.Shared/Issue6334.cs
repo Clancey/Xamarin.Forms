@@ -22,7 +22,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 		protected override void Init()
 		{
-			BackgroundColor = Color.Blue;
+			BackgroundColor = Colors.Blue;
 			var effect = Effect.Resolve($"{Issues.Effects.ResolutionGroupName}.{EffectName}");
 
 			Effects.Add(effect);

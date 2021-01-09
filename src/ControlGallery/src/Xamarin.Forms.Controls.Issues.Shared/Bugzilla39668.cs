@@ -28,7 +28,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 				cell.View = new StackLayout
 				{
-					BackgroundColor = Color.Green,
+					BackgroundColor = Colors.Green,
 					Children = {
 						new Label { Text = "Success" }
 					}

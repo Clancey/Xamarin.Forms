@@ -284,7 +284,7 @@ namespace Xamarin.Forms.Controls.Issues
 			_listView = new ListView
 			{
 				ItemsSource = _collection,
-				BackgroundColor = Color.Transparent,
+				BackgroundColor = Colors.Transparent,
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				HasUnevenRows = true,
 				ItemTemplate = new DataTemplate(typeof(CellTemplateScrollToUneven))

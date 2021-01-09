@@ -23,9 +23,9 @@ namespace Xamarin.Forms.Controls.Issues
 				base.HeightRequest = 2 * radius;
 				HorizontalOptions = LayoutOptions.Center;
 				VerticalOptions = LayoutOptions.Center;
-				BackgroundColor = Color.Aqua;
-				BorderColor = Color.White;
-				TextColor = Color.Purple;
+				BackgroundColor = Colors.Aqua;
+				BorderColor = Colors.White;
+				TextColor = Colors.Purple;
 				Text = "YAY";
 				//Image = new FileImageSource { File = "crimson.jpg" };
 			}

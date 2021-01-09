@@ -16,7 +16,7 @@ namespace Xamarin.Forms.Platform.UWP
 
 			if(checkBox.IsChecked == false)
 			{
-				checkBox.DefaultFillBrush = Color.Transparent.ToBrush();
+				checkBox.DefaultFillBrush = Colors.Transparent.ToBrush();
 			}
 			else
 			{

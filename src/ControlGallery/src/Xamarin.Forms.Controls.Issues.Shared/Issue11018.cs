@@ -36,8 +36,8 @@ namespace Xamarin.Forms.Controls.Issues
 			var instructions = new Label
 			{
 				Padding = 12,
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White,
 				Text = "If you can't see the IndicatorView, the test has passed."
 			};
 
@@ -64,8 +64,8 @@ namespace Xamarin.Forms.Controls.Issues
 			var indicatorView = new IndicatorView
 			{
 				HorizontalOptions = LayoutOptions.Center,
-				IndicatorColor = Color.Black,
-				SelectedIndicatorColor = Color.DarkGray,
+				IndicatorColor = Colors.Black,
+				SelectedIndicatorColor = Colors.DarkGray,
 				IndicatorSize = 10,
 				Count = 1,
 				HideSingle = true

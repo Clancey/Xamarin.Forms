@@ -23,7 +23,7 @@ namespace Xamarin.Forms.Controls.Issues
 			};
 			var testLabel = new Label
 			{
-				TextColor = Color.Red,
+				TextColor = Colors.Red,
 				Style = Device.Styles.BodyStyle,
 				FontSize = 20,
 				LineBreakMode = LineBreakMode.NoWrap,

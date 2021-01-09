@@ -83,7 +83,7 @@ namespace Xamarin.Forms
 
 			SetCancelEvents(bindable, true);
 
-			var fontSize = (double)newValue;
+			var fontSize = (float)newValue;
 			var fontAttributes = (FontAttributes)bindable.GetValue(FontAttributesProperty);
 			var fontFamily = (string)bindable.GetValue(FontFamilyProperty);
 
@@ -93,7 +93,7 @@ namespace Xamarin.Forms
 				bindable.SetValue(FontProperty, Font.SystemFontOfSize(fontSize, fontAttributes));
 
 			SetCancelEvents(bindable, false);
-			((IFontElement)bindable).OnFontSizeChanged((double)oldValue, (double)newValue);
+			((IFontElement)bindable).OnFontSizeChanged((float)oldValue,(float)newValue);
 		}
 
 		static object FontSizeDefaultValueCreator(BindableObject bindable)

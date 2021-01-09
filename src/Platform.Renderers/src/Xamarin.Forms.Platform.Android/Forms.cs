@@ -71,7 +71,7 @@ namespace Xamarin.Forms
 		static bool FlagsSet { get; set; }
 
 		static bool _ColorButtonNormalSet;
-		static Color _ColorButtonNormal = Color.Default;
+		static Color _ColorButtonNormal = null;
 		public static Color ColorButtonNormalOverride { get; set; }
 
 		internal static BuildVersionCodes SdkInt
@@ -472,11 +472,11 @@ namespace Xamarin.Forms
 			{
 				if (context.Theme.ResolveAttribute(global::Android.Resource.Attribute.ColorAccent, value, true) && Forms.IsLollipopOrNewer) // Android 5.0+
 				{
-					rc = Color.FromUint((uint)value.Data);
+					rc = Colors.FromUint((uint)value.Data);
 				}
 				else if (context.Theme.ResolveAttribute(context.Resources.GetIdentifier("colorAccent", "attr", context.PackageName), value, true))  // < Android 5.0
 				{
-					rc = Color.FromUint((uint)value.Data);
+					rc = Colors.FromUint((uint)value.Data);
 				}
 				else                    // fallback to old code if nothing works (don't know if that ever happens)
 				{
@@ -486,12 +486,12 @@ namespace Xamarin.Forms
 					if (sdkVersion <= 10)
 					{
 						// legacy theme button pressed color
-						rc = Color.FromHex("#fffeaa0c");
+						rc = Colors.FromHex("#fffeaa0c");
 					}
 					else
 					{
 						// Holo dark light blue
-						rc = Color.FromHex("#ff33b5e5");
+						rc = Colors.FromHex("#ff33b5e5");
 					}
 				}
 			}
@@ -502,17 +502,17 @@ namespace Xamarin.Forms
 		{
 			Color rc = ColorButtonNormalOverride;
 
-			if (ColorButtonNormalOverride == Color.Default)
+			if (ColorButtonNormalOverride == null)
 			{
 				using (var value = new TypedValue())
 				{
 					if (context.Theme.ResolveAttribute(global::Android.Resource.Attribute.ColorButtonNormal, value, true) && Forms.IsLollipopOrNewer) // Android 5.0+
 					{
-						rc = Color.FromUint((uint)value.Data);
+						rc = Colors.FromUint((uint)value.Data);
 					}
 					else if (context.Theme.ResolveAttribute(context.Resources.GetIdentifier("colorButtonNormal", "attr", context.PackageName), value, true))  // < Android 5.0
 					{
-						rc = Color.FromUint((uint)value.Data);
+						rc = Colors.FromUint((uint)value.Data);
 					}
 				}
 			}
@@ -834,13 +834,13 @@ namespace Xamarin.Forms
 						color = ContextCompat.GetColor(_context, Resource.Color.WidgetEditTextDark);
 						break;
 					default:
-						return Color.Default;
+						return null;
 				}
 
 				if (color != 0)
 					return new AColor(color).ToColor();
 
-				return Color.Default;
+				return null;
 			}
 
 			public async Task<Stream> GetStreamAsync(Uri uri, CancellationToken cancellationToken)

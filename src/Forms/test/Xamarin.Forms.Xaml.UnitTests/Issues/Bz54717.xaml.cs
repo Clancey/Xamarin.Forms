@@ -39,8 +39,8 @@ namespace Xamarin.Forms.Xaml.UnitTests
 				Application.Current = new MockApplication
 				{
 					Resources = new ResourceDictionary {
-						{"Color1", Color.Red},
-						{"Color2", Color.Blue},
+						{"Color1", Colors.Red},
+						{"Color2", Colors.Blue},
 					}
 				};
 				var layout = new Bz54717(useCompiledXaml);

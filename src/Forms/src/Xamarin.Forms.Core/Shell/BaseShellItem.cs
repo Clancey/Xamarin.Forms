@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Graphics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms.Internals;
@@ -286,7 +287,7 @@ namespace Xamarin.Forms
 		}
 
 		bool IFlowDirectionController.ApplyEffectiveFlowDirectionToChildContainer => true;
-		double IFlowDirectionController.Width => (Parent as VisualElement)?.Width ?? 0;
+		float IFlowDirectionController.Width => (Parent as VisualElement)?.Width ?? 0;
 
 		internal virtual void ApplyQueryAttributes(IDictionary<string, string> query)
 		{
@@ -380,7 +381,7 @@ namespace Xamarin.Forms
 					selectedState.Setters.Add(new Setter
 					{
 						Property = VisualElement.BackgroundColorProperty,
-						Value = new Color(0.95)
+						Value = new Color(.95f,.95f,.95f)
 
 					});
 				}
@@ -390,7 +391,7 @@ namespace Xamarin.Forms
 					normalState.Setters.Add(new Setter
 					{
 						Property = VisualElement.BackgroundColorProperty,
-						Value = Color.Transparent
+						Value = Colors.Transparent
 					});
 				}
 
@@ -418,7 +419,7 @@ namespace Xamarin.Forms
 
 				var image = new Image();
 
-				double sizeRequest = -1;
+				float sizeRequest = -1;
 				if (Device.RuntimePlatform == Device.Android)
 					sizeRequest = 24;
 				else if (Device.RuntimePlatform == Device.iOS)
@@ -452,7 +453,7 @@ namespace Xamarin.Forms
 				if (Device.RuntimePlatform == Device.Android)
 				{
 					defaultLabelClass.Setters.Add(new Setter { Property = Label.FontSizeProperty, Value = 14 });
-					defaultLabelClass.Setters.Add(new Setter { Property = Label.TextColorProperty, Value = Color.Black.MultiplyAlpha(0.87) });
+					defaultLabelClass.Setters.Add(new Setter { Property = Label.TextColorProperty, Value = Colors.Black.WithAlpha(0.87f) });
 					defaultLabelClass.Setters.Add(new Setter { Property = Label.FontFamilyProperty, Value = "sans-serif-medium" });
 					defaultLabelClass.Setters.Add(new Setter { Property = Label.MarginProperty, Value = new Thickness(20, 0, 0, 0) });
 				}

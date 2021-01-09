@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System.Graphics;
+using Xamarin.Forms;
 
 #if __IOS__
 using NativeColor = UIKit.UIColor;
@@ -10,24 +11,22 @@ namespace Xamarin.Platform.Handlers
 {
 	public partial class AbstractViewHandler<TVirtualView, TNativeView> : INativeViewHandler
 	{
-		public void SetFrame(Rectangle rect)
+		public void SetFrame(RectangleF rect)
 		{
 			if (View != null)
 				View.Frame = rect.ToCGRect();
 		}
 
-		public virtual Size GetDesiredSize(double widthConstraint, double heightConstraint)
+		public virtual SizeF GetDesiredSize(float widthConstraint, float heightConstraint)
 		{
-			var sizeThatFits = TypedNativeView?.SizeThatFits(new CoreGraphics.CGSize((float)widthConstraint, (float)heightConstraint));
+			var sizeThatFits = TypedNativeView?.SizeThatFits(new CoreGraphics.CGSize(widthConstraint,heightConstraint));
 
 			if (sizeThatFits.HasValue)
 			{
-				return new Size(
-					sizeThatFits.Value.Width == float.PositiveInfinity ? double.PositiveInfinity : sizeThatFits.Value.Width,
-					sizeThatFits.Value.Height == float.PositiveInfinity ? double.PositiveInfinity : sizeThatFits.Value.Height);
+				return new SizeF((float)sizeThatFits.Value.Width,(float)sizeThatFits.Value.Height);
 			}
 
-			return new Size(widthConstraint, heightConstraint);
+			return new SizeF(widthConstraint, heightConstraint);
 		}
 
 		void SetupContainer()

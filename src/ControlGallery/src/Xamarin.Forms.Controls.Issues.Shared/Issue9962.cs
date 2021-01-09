@@ -27,7 +27,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var boxView = new BoxView
 			{
-				BackgroundColor = Color.Blue,
+				BackgroundColor = Colors.Blue,
 				WidthRequest = 100,
 				HeightRequest = 100
 			};
@@ -43,7 +43,7 @@ namespace Xamarin.Forms.Controls.Issues
 				{
 					var color = DependencyService.Get<INativeColorService>()?.GetConvertedColor(true);
 
-					boxView.BackgroundColor = color ?? Color.Black;
+					boxView.BackgroundColor = color ?? Colors.Black;
 
 				}
 				catch (InvalidOperationException ex)
@@ -64,7 +64,7 @@ namespace Xamarin.Forms.Controls.Issues
 					var color = DependencyService.Get<INativeColorService>()?.GetConvertedColor(false);
 
 					debugLabel.Text = color?.ToString();
-					boxView.BackgroundColor = color ?? Color.Black;
+					boxView.BackgroundColor = color ?? Colors.Black;
 				}
 				catch (Exception ex)
 				{

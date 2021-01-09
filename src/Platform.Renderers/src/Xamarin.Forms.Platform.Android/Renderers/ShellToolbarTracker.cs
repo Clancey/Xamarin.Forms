@@ -53,7 +53,7 @@ namespace Xamarin.Forms.Platform.Android
 		ContainerView _titleViewContainer;
 		protected IShellContext ShellContext { get; private set; }
 		//assume the default
-		Color _tintColor = Color.Default;
+		Color _tintColor = null;
 		Toolbar _toolbar;
 		AppBarLayout _appBar;
 		float _appBarElevation;
@@ -354,8 +354,8 @@ namespace Xamarin.Forms.Platform.Android
 			DrawerArrowDrawable icon = null;
 			bool defaultDrawerArrowDrawable = false;
 
-			var tintColor = Color.White;
-			if (TintColor != Color.Default)
+			var tintColor = Colors.White;
+			if (TintColor != null)
 				tintColor = TintColor;
 
 			if (image != null)

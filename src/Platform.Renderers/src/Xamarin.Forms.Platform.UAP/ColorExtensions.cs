@@ -18,7 +18,7 @@ namespace Xamarin.Forms.Platform.UWP
 
 		public static Color ToFormsColor(this Windows.UI.Color color)
 		{
-			return Color.FromRgba(color.R, color.G, color.B, color.A);
+			return Colors.FromRgba(color.R, color.G, color.B, color.A);
 		}
 
 		public static Color ToFormsColor(this WSolidColorBrush solidColorBrush)

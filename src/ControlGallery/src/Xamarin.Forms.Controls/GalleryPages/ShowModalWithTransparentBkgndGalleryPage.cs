@@ -18,7 +18,7 @@ namespace Xamarin.Forms.Controls.GalleryPages
 
 		public ShowModalWithTransparentBkgndGalleryPage()
 		{
-			BackgroundColor = Color.LightPink;
+			BackgroundColor = Colors.LightPink;
 
 			var layout = new StackLayout();
 

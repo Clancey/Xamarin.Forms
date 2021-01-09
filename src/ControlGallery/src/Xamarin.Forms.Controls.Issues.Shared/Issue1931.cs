@@ -119,7 +119,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var listView = new ListView();
 
-			var scrollView = new ScrollView { Content = new BoxView { Color = Color.Green } };
+			var scrollView = new ScrollView { Content = new BoxView { Color = Colors.Green } };
 
 			listView.Header = scrollView;
 			listView.RowHeight = 40;

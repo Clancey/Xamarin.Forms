@@ -96,7 +96,7 @@ namespace Xamarin.Forms.Platform.UWP
 
 		void UpdateBorder()
 		{
-			if (Element.BorderColor != Color.Default)
+			if (Element.BorderColor != null)
 			{
 				Control.BorderBrush = Element.BorderColor.ToBrush();
 				Control.BorderThickness = new Windows.UI.Xaml.Thickness(1);

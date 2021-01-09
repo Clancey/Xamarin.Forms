@@ -14,7 +14,7 @@ namespace Xamarin.Forms.Platform.UWP
 
 			WBrush defaultBrush = defaultColorKey != null ? (WBrush)Windows.UI.Xaml.Application.Current.Resources[defaultColorKey] : new WSolidColorBrush(Colors.Transparent);
 
-			return color == Color.Default ? defaultBrush : color.ToBrush();
+			return color == null ? defaultBrush : color.ToBrush();
 		}
 
 		public object ConvertBack(object value, Type targetType, object parameter, string language)

@@ -22,7 +22,7 @@ namespace Xamarin.Platform
 
 			var color = view.BackgroundColor;
 
-			if (color != null && !color.IsDefault)
+			if (color != null)
 				nativeView.BackgroundColor = color.ToNative();
 		}
 	}

@@ -32,10 +32,10 @@ namespace Xamarin.Forms.Controls.Issues
 
 		void Click()
 		{
-			if (BackgroundColor == Color.DarkOrange)
-				BackgroundColor = Color.Red;
+			if (BackgroundColor == Colors.DarkOrange)
+				BackgroundColor = Colors.Red;
 			else
-				BackgroundColor = Color.DarkOrange;
+				BackgroundColor = Colors.DarkOrange;
 		}
 	}
 }

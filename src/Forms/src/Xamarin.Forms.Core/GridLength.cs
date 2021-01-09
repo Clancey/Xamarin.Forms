@@ -17,7 +17,7 @@ namespace Xamarin.Forms
 			get { return new GridLength(1, GridUnitType.Star); }
 		}
 
-		public double Value { get; }
+		public float Value { get; }
 
 		public GridUnitType GridUnitType { get; }
 
@@ -36,13 +36,13 @@ namespace Xamarin.Forms
 			get { return GridUnitType == GridUnitType.Star; }
 		}
 
-		public GridLength(double value) : this(value, GridUnitType.Absolute)
+		public GridLength(float value) : this(value, GridUnitType.Absolute)
 		{
 		}
 
-		public GridLength(double value, GridUnitType type)
+		public GridLength(float value, GridUnitType type)
 		{
-			if (value < 0 || double.IsNaN(value))
+			if (value < 0 || float.IsNaN(value))
 				throw new ArgumentException("value is less than 0 or is not a number", "value");
 			if ((int)type < (int)GridUnitType.Absolute || (int)type > (int)GridUnitType.Auto)
 				throw new ArgumentException("type is not a valid GridUnitType", "type");
@@ -58,7 +58,7 @@ namespace Xamarin.Forms
 
 		bool Equals(GridLength other)
 		{
-			return GridUnitType == other.GridUnitType && Math.Abs(Value - other.Value) < double.Epsilon;
+			return GridUnitType == other.GridUnitType && Math.Abs(Value - other.Value) < float.Epsilon;
 		}
 
 		public override int GetHashCode()
@@ -66,7 +66,7 @@ namespace Xamarin.Forms
 			return GridUnitType.GetHashCode() * 397 ^ Value.GetHashCode();
 		}
 
-		public static implicit operator GridLength(double absoluteValue)
+		public static implicit operator GridLength(float absoluteValue)
 		{
 			return new GridLength(absoluteValue);
 		}

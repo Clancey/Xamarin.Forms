@@ -32,15 +32,15 @@ namespace Xamarin.Forms.Controls.Issues
 			var instructions = new Label
 			{
 				Padding = 12,
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White,
 				Text = "If the image clips with the border of the Frame, the test has passed."
 			};
 
 			var frame = new Frame
 			{
 				IsClippedToBounds = true,
-				BorderColor = Color.Black,
+				BorderColor = Colors.Black,
 				Padding = 0,
 				CornerRadius = 24,
 				Margin = 12

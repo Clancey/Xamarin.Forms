@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using Xamarin.Forms.Internals;
 using Xamarin.Platform;
 using Xamarin.Platform.Layouts;
+using System.Graphics;
 
 namespace Xamarin.Forms
 {
@@ -29,47 +30,47 @@ namespace Xamarin.Forms
 									propertyChanged: MarginPropertyChanged);
 
 		internal static readonly BindableProperty MarginLeftProperty =
-			BindableProperty.Create("MarginLeft", typeof(double), typeof(View), default(double),
+			BindableProperty.Create("MarginLeft", typeof(float), typeof(View), default(float),
 									propertyChanged: OnMarginLeftPropertyChanged);
 
 		static void OnMarginLeftPropertyChanged(BindableObject bindable, object oldValue, object newValue)
 		{
 			var margin = (Thickness)bindable.GetValue(MarginProperty);
-			margin.Left = (double)newValue;
+			margin.Left = (float)newValue;
 			bindable.SetValue(MarginProperty, margin);
 		}
 
 		internal static readonly BindableProperty MarginTopProperty =
-			BindableProperty.Create("MarginTop", typeof(double), typeof(View), default(double),
+			BindableProperty.Create("MarginTop", typeof(float), typeof(View), default(float),
 									propertyChanged: OnMarginTopPropertyChanged);
 
 		static void OnMarginTopPropertyChanged(BindableObject bindable, object oldValue, object newValue)
 		{
 			var margin = (Thickness)bindable.GetValue(MarginProperty);
-			margin.Top = (double)newValue;
+			margin.Top = (float)newValue;
 			bindable.SetValue(MarginProperty, margin);
 		}
 
 		internal static readonly BindableProperty MarginRightProperty =
-			BindableProperty.Create("MarginRight", typeof(double), typeof(View), default(double),
+			BindableProperty.Create("MarginRight", typeof(float), typeof(View), default(float),
 									propertyChanged: OnMarginRightPropertyChanged);
 
 		static void OnMarginRightPropertyChanged(BindableObject bindable, object oldValue, object newValue)
 		{
 			var margin = (Thickness)bindable.GetValue(MarginProperty);
-			margin.Right = (double)newValue;
+			margin.Right = (float)newValue;
 			bindable.SetValue(MarginProperty, margin);
 		}
 
 		internal static readonly BindableProperty MarginBottomProperty =
-			BindableProperty.Create("MarginBottom", typeof(double), typeof(View), default(double),
+			BindableProperty.Create("MarginBottom", typeof(float), typeof(View), default(float),
 									propertyChanged: OnMarginBottomPropertyChanged);
 
 
 		static void OnMarginBottomPropertyChanged(BindableObject bindable, object oldValue, object newValue)
 		{
 			var margin = (Thickness)bindable.GetValue(MarginProperty);
-			margin.Bottom = (double)newValue;
+			margin.Bottom = (float)newValue;
 			bindable.SetValue(MarginProperty, margin);
 		}
 
@@ -132,7 +133,7 @@ namespace Xamarin.Forms
 			get { return _compositeGestureRecognizers ?? (_compositeGestureRecognizers = new ObservableCollection<IGestureRecognizer>()); }
 		}
 
-		public virtual IList<GestureElement> GetChildElements(Point point)
+		public virtual IList<GestureElement> GetChildElements(PointF point)
 		{
 			return null;
 		}
@@ -176,7 +177,7 @@ namespace Xamarin.Forms
 
 		#region IView
 
-		Rectangle IFrameworkElement.Frame => Bounds;
+		RectangleF IFrameworkElement.Frame => Bounds;
 
 		public IViewHandler Handler { get; set; }
 
@@ -188,18 +189,18 @@ namespace Xamarin.Forms
 
 		IFrameworkElement IFrameworkElement.Parent => Parent as IView;
 
-		public Size DesiredSize { get; protected set; }
+		public SizeF DesiredSize { get; protected set; }
 
 		public bool IsMeasureValid { get; protected set; }
 
 		public bool IsArrangeValid { get; protected set; }
 
-		public void Arrange(Rectangle bounds)
+		public void Arrange(RectangleF bounds)
 		{
 			Layout(bounds);
 		}
 
-		void IFrameworkElement.Arrange(Rectangle bounds) 
+		void IFrameworkElement.Arrange(RectangleF bounds) 
 		{
 			if (IsArrangeValid)
 				return;
@@ -207,13 +208,13 @@ namespace Xamarin.Forms
 			Layout(this.ComputeFrame(bounds));
 		}
 
-		protected override void OnSizeAllocated(double width, double height)
+		protected override void OnSizeAllocated(float width, float height)
 		{
 			base.OnSizeAllocated(width, height);
 			Handler?.SetFrame(Bounds);
 		}
 
-		Size IFrameworkElement.Measure(double widthConstraint, double heightConstraint)
+		SizeF IFrameworkElement.Measure(float widthConstraint, float heightConstraint)
 		{
 			if (!IsMeasureValid)
 			{
@@ -241,8 +242,8 @@ namespace Xamarin.Forms
 		protected PropertyMapper<T> GetRendererOverides<T>() where T : IView => (PropertyMapper<T>)(propertyMapper as PropertyMapper<T> ?? (propertyMapper = new PropertyMapper<T>()));
 		PropertyMapper IPropertyMapperView.GetPropertyMapperOverrides() => propertyMapper;
 
-		double IFrameworkElement.Width { get => WidthRequest; }
-		double IFrameworkElement.Height { get => HeightRequest; }
+		float IFrameworkElement.Width { get => WidthRequest; }
+		float IFrameworkElement.Height { get => HeightRequest; }
 
 		#endregion
 	}

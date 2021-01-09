@@ -30,23 +30,23 @@ namespace Xamarin.Forms.Platform.Tizen
 			Style style = null;
 			if (key == Device.Styles.TitleStyleKey)
 			{
-				style = GetStyle(50, Color.FromRgb(250, 250, 250));
+				style = GetStyle(50, Colors.FromRgb(250, 250, 250));
 			}
 			else if (key == Device.Styles.SubtitleStyleKey)
 			{
-				style = GetStyle(24, Color.FromRgb(250, 250, 250));
+				style = GetStyle(24, Colors.FromRgb(250, 250, 250));
 			}
 			else if (key == Device.Styles.CaptionStyleKey)
 			{
-				style = GetStyle(24, Color.FromRgb(115, 115, 115));
+				style = GetStyle(24, Colors.FromRgb(115, 115, 115));
 			}
 			else if (key == Device.Styles.ListItemTextStyleKey)
 			{
-				style = GetStyle(40, Color.FromRgb(0, 0, 0));
+				style = GetStyle(40, Colors.FromRgb(0, 0, 0));
 			}
 			else if (key == Device.Styles.ListItemDetailTextStyleKey)
 			{
-				style = GetStyle(24, Color.FromRgb(0, 0, 0));
+				style = GetStyle(24, Colors.FromRgb(0, 0, 0));
 			}
 			else
 			{

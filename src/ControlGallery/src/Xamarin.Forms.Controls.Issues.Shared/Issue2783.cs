@@ -17,15 +17,15 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			Frame frPatientInfo = new Frame
 			{
-				BorderColor = Color.Black,
-				BackgroundColor = Color.White,
+				BorderColor = Colors.Black,
+				BackgroundColor = Colors.White,
 				HasShadow = true,
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.Center,
 				Padding = 5,
 				Content = new AbsoluteLayout
 				{
-					BackgroundColor = Color.Red,
+					BackgroundColor = Colors.Red,
 					HeightRequest = 1000,
 					WidthRequest = 2000,
 				}

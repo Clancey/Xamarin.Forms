@@ -24,11 +24,11 @@ namespace Xamarin.Forms.Core.UnitTests
 		{
 			var gradientStops = new GradientStopCollection
 			{
-				new GradientStop { Color = Color.Red, Offset = 0.1f },
-				new GradientStop { Color = Color.Orange, Offset = 0.8f }
+				new GradientStop { Color = Colors.Red, Offset = 0.1f },
+				new GradientStop { Color = Colors.Orange, Offset = 0.8f }
 			};
 
-			LinearGradientBrush linearGradientBrush = new LinearGradientBrush(gradientStops, new Point(0, 0), new Point(0, 1));
+			LinearGradientBrush linearGradientBrush = new LinearGradientBrush(gradientStops, new PointF(0, 0), new PointF(0, 1));
 
 			Assert.AreNotEqual(0, linearGradientBrush.GradientStops.Count, "GradientStops");
 			Assert.AreEqual(0.0d, linearGradientBrush.EndPoint.X, "EndPoint.X");
@@ -43,12 +43,12 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			LinearGradientBrush linearGradientBrush = new LinearGradientBrush
 			{
-				StartPoint = new Point(0, 0),
-				EndPoint = new Point(1, 0),
+				StartPoint = new PointF(0, 0),
+				EndPoint = new PointF(1, 0),
 				GradientStops = new GradientStopCollection
 				{
-					new GradientStop { Color = Color.Orange, Offset = 0.1f },
-					new GradientStop { Color = Color.Red, Offset = 0.8f }
+					new GradientStop { Color = Colors.Orange, Offset = 0.1f },
+					new GradientStop { Color = Colors.Red, Offset = 0.8f }
 				}
 			};
 
@@ -66,12 +66,12 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			LinearGradientBrush linearGradientBrush = new LinearGradientBrush
 			{
-				StartPoint = new Point(0, 0),
-				EndPoint = new Point(1, 0),
+				StartPoint = new PointF(0, 0),
+				EndPoint = new PointF(1, 0),
 				GradientStops = new GradientStopCollection
 				{
-					new GradientStop { Color = Color.Orange, Offset = 0.1f },
-					new GradientStop { Color = Color.Red, Offset = 0.8f }
+					new GradientStop { Color = Colors.Orange, Offset = 0.1f },
+					new GradientStop { Color = Colors.Red, Offset = 0.8f }
 				}
 			};
 
@@ -83,8 +83,8 @@ namespace Xamarin.Forms.Core.UnitTests
 		{
 			LinearGradientBrush linearGradientBrush = new LinearGradientBrush
 			{
-				StartPoint = new Point(0, 0),
-				EndPoint = new Point(1, 0)
+				StartPoint = new PointF(0, 0),
+				EndPoint = new PointF(1, 0)
 			};
 
 			Assert.AreEqual(0, linearGradientBrush.StartPoint.X);
@@ -101,10 +101,10 @@ namespace Xamarin.Forms.Core.UnitTests
 			{
 				GradientStops = new GradientStopCollection
 				{
-					new GradientStop { Color = Color.Red, }
+					new GradientStop { Color = Colors.Red, }
 				},
-				StartPoint = new Point(0, 0),
-				EndPoint = new Point(1, 0)
+				StartPoint = new PointF(0, 0),
+				EndPoint = new PointF(1, 0)
 			};
 
 			Assert.IsNotNull(linearGradientBrush);
@@ -117,11 +117,11 @@ namespace Xamarin.Forms.Core.UnitTests
 			{
 				GradientStops = new GradientStopCollection
 				{
-					new GradientStop { Color = Color.Red, Offset = 0.1f },
-					new GradientStop { Color = Color.Blue, Offset = 1.0f }
+					new GradientStop { Color = Colors.Red, Offset = 0.1f },
+					new GradientStop { Color = Colors.Blue, Offset = 1.0f }
 				},
-				StartPoint = new Point(0, 0),
-				EndPoint = new Point(1, 0)
+				StartPoint = new PointF(0, 0),
+				EndPoint = new PointF(1, 0)
 			};
 
 			Assert.AreEqual(2, linearGradientBrush.GradientStops.Count);

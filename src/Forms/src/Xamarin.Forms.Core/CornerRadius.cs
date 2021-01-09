@@ -8,16 +8,16 @@ namespace Xamarin.Forms
 	{
 		bool _isParameterized;
 
-		public double TopLeft { get; }
-		public double TopRight { get; }
-		public double BottomLeft { get; }
-		public double BottomRight { get; }
+		public float TopLeft { get; }
+		public float TopRight { get; }
+		public float BottomLeft { get; }
+		public float BottomRight { get; }
 
-		public CornerRadius(double uniformRadius) : this(uniformRadius, uniformRadius, uniformRadius, uniformRadius)
+		public CornerRadius(float uniformRadius) : this(uniformRadius, uniformRadius, uniformRadius, uniformRadius)
 		{
 		}
 
-		public CornerRadius(double topLeft, double topRight, double bottomLeft, double bottomRight)
+		public CornerRadius(float topLeft, float topRight, float bottomLeft, float bottomRight)
 		{
 			_isParameterized = true;
 
@@ -27,7 +27,7 @@ namespace Xamarin.Forms
 			BottomRight = bottomRight;
 		}
 
-		public static implicit operator CornerRadius(double uniformRadius)
+		public static implicit operator CornerRadius(float uniformRadius)
 		{
 			return new CornerRadius(uniformRadius);
 		}
@@ -70,7 +70,7 @@ namespace Xamarin.Forms
 			return !left.Equals(right);
 		}
 
-		public void Deconstruct(out double topLeft, out double topRight, out double bottomLeft, out double bottomRight)
+		public void Deconstruct(out float topLeft, out float topRight, out float bottomLeft, out float bottomRight)
 		{
 			topLeft = TopLeft;
 			topRight = TopRight;

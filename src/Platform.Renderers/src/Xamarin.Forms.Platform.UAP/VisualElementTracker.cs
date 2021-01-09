@@ -451,7 +451,7 @@ namespace Xamarin.Forms.Platform.UWP
 
 			Windows.Foundation.Point translationPoint = e.Container.TransformToVisual(Container).TransformPoint(e.Position);
 
-			var scaleOriginPoint = new Point(translationPoint.X / view.Width, translationPoint.Y / view.Height);
+			var scaleOriginPoint = new PointF(translationPoint.X / view.Width, translationPoint.Y / view.Height);
 			IEnumerable<PinchGestureRecognizer> pinchGestures = view.GestureRecognizers.GetGesturesFor<PinchGestureRecognizer>();
 			foreach (PinchGestureRecognizer recognizer in pinchGestures)
 			{
@@ -486,7 +486,7 @@ namespace Xamarin.Forms.Platform.UWP
 				return;
 
 			var tapPosition = e.GetPosition(Control);
-			var children = (view as IGestureController)?.GetChildElements(new Point(tapPosition.X, tapPosition.Y));
+			var children = (view as IGestureController)?.GetChildElements(new PointF(tapPosition.X, tapPosition.Y));
 
 			if (children != null)
 				foreach (var recognizer in children.GetChildGesturesFor<TapGestureRecognizer>(g => g.NumberOfTapsRequired == 1 || g.NumberOfTapsRequired == 2))
@@ -581,7 +581,7 @@ namespace Xamarin.Forms.Platform.UWP
 				return;
 
 			var tapPosition = e.GetPosition(Control);
-			var children = (view as IGestureController)?.GetChildElements(new Point(tapPosition.X, tapPosition.Y));
+			var children = (view as IGestureController)?.GetChildElements(new PointF(tapPosition.X, tapPosition.Y));
 
 			if (children != null)
 				foreach (var recognizer in children.GetChildGesturesFor<TapGestureRecognizer>(g => g.NumberOfTapsRequired == 1))

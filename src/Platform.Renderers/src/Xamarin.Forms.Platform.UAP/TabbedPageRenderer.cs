@@ -613,7 +613,7 @@ namespace Xamarin.Forms.Platform.UWP
 					if (_defaultSelectedColor == null)
 						_defaultSelectedColor = tabBarTextBlock.Foreground;
 
-					if (Element.IsSet(TabbedPage.SelectedTabColorProperty) && Element.SelectedTabColor != Color.Default)
+					if (Element.IsSet(TabbedPage.SelectedTabColorProperty) && Element.SelectedTabColor != null)
 						tabBarTextBlock.Foreground = Element.SelectedTabColor.ToBrush();
 					else
 						tabBarTextBlock.Foreground = _defaultSelectedColor;
@@ -623,7 +623,7 @@ namespace Xamarin.Forms.Platform.UWP
 					if (_defaultUnselectedColor == null)
 						_defaultUnselectedColor = tabBarTextBlock.Foreground;
 
-					if (Element.IsSet(TabbedPage.SelectedTabColorProperty) && Element.UnselectedTabColor != Color.Default)
+					if (Element.IsSet(TabbedPage.SelectedTabColorProperty) && Element.UnselectedTabColor != null)
 						tabBarTextBlock.Foreground = Element.UnselectedTabColor.ToBrush();
 					else
 						tabBarTextBlock.Foreground = _defaultUnselectedColor;

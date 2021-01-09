@@ -182,7 +182,7 @@ namespace Xamarin.Forms.Controls.Issues
 				{
 					Text = LabelPage3,
 					HorizontalTextAlignment = TextAlignment.Center,
-					TextColor = Color.Red
+					TextColor = Colors.Red
 				};
 
 				otherLabel = new Label

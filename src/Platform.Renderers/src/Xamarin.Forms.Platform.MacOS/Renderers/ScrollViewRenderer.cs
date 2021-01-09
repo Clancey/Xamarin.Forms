@@ -209,7 +209,7 @@ namespace Xamarin.Forms.Platform.MacOS
 			}
 
 			Point scrollPoint = (e.Mode == ScrollToMode.Position)
-				? new Point(e.ScrollX, e.ScrollY)
+				? new PointF(e.ScrollX, e.ScrollY)
 				: ScrollView.GetScrollPositionForElement(e.Element as VisualElement, e.Position);
 
 			ContentView.ScrollToPoint(scrollPoint.ToPointF());
@@ -218,7 +218,7 @@ namespace Xamarin.Forms.Platform.MacOS
 
 		void UpdateBackgroundColor()
 		{
-			if (Element.BackgroundColor == Color.Default)
+			if (Element.BackgroundColor == null)
 			{
 				if (DrawsBackground)
 					DrawsBackground = false;

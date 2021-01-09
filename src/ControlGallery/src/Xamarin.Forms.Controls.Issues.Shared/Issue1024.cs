@@ -136,8 +136,8 @@ namespace Xamarin.Forms.Controls.Issues
 
 		public InputViewDataTemplateSelector()
 		{
-			EntryTemplate = new DataTemplate(() => new ViewCell { View = new Entry { BackgroundColor = Color.DarkGoldenrod, Text = "Entry" } });
-			EditorTemplate = new DataTemplate(() => new ViewCell { View = new Editor { BackgroundColor = Color.Bisque, Text = "Editor" } });
+			EntryTemplate = new DataTemplate(() => new ViewCell { View = new Entry { BackgroundColor = Colors.DarkGoldenrod, Text = "Entry" } });
+			EditorTemplate = new DataTemplate(() => new ViewCell { View = new Editor { BackgroundColor = Colors.Bisque, Text = "Editor" } });
 		}
 
 		protected override DataTemplate OnSelectTemplate(object item, BindableObject container)

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Graphics;
 using System.Linq;
 using Xamarin.Forms.Internals;
 
@@ -114,11 +115,11 @@ namespace Xamarin.Forms
 
 		[Obsolete("OnSizeRequest is obsolete as of version 2.2.0. Please use OnMeasure instead.")]
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		protected override SizeRequest OnSizeRequest(double widthConstraint, double heightConstraint)
+		protected override SizeRequest OnSizeRequest(float widthConstraint, float heightConstraint)
 		{
-			var minimumSize = new Size(40, 40);
-			double width = Math.Min(Device.Info.ScaledScreenSize.Width, Device.Info.ScaledScreenSize.Height);
-			var request = new Size(width, Math.Max(Device.Info.ScaledScreenSize.Width, Device.Info.ScaledScreenSize.Height));
+			var minimumSize = new SizeF(40, 40);
+			float width = Math.Min(Device.Info.ScaledScreenSize.Width, Device.Info.ScaledScreenSize.Height);
+			var request = new SizeF(width, Math.Max(Device.Info.ScaledScreenSize.Width, Device.Info.ScaledScreenSize.Height));
 
 			return new SizeRequest(request, minimumSize);
 		}

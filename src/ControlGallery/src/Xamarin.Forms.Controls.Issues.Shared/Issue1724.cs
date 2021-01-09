@@ -24,9 +24,9 @@ namespace Xamarin.Forms.Controls.Issues
 			int sizes = 200;
 			var radius = new ImageButton()
 			{
-				BorderColor = Color.Brown,
+				BorderColor = Colors.Brown,
 				BorderWidth = 5,
-				BackgroundColor = Color.Yellow,
+				BackgroundColor = Colors.Yellow,
 				Aspect = Aspect.Fill,
 				CornerRadius = 10,
 				Source = "coffee.png",
@@ -42,12 +42,12 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var radiusBackground = new ImageButton()
 			{
-				BorderColor = Color.Brown,
+				BorderColor = Colors.Brown,
 				BorderWidth = 5,
 				Source = "coffee.png",
 				CornerRadius = 10,
 				HorizontalOptions = LayoutOptions.Center,
-				BackgroundColor = Color.Pink,
+				BackgroundColor = Colors.Pink,
 				HeightRequest = sizes,
 				WidthRequest = sizes
 			};
@@ -65,47 +65,47 @@ namespace Xamarin.Forms.Controls.Issues
 					new ImageButton()
 					{
 						Source = "coffee.png",
-						BackgroundColor = Color.GreenYellow
+						BackgroundColor = Colors.GreenYellow
 					},
 					new Label(){ Text = "Do I have left padding? I should have left padding." },
 					new ImageButton()
 					{
 						Source = "coffee.png",
-						BackgroundColor = Color.Green,
+						BackgroundColor = Colors.Green,
 						Padding = new Thickness(100, 0, 0, 0)
 					},
 					new Label(){ Text = "Do I have top padding? I should have top padding." },
 					new ImageButton()
 					{
 						Source = "coffee.png",
-						BackgroundColor = Color.LawnGreen,
+						BackgroundColor = Colors.LawnGreen,
 						Padding = new Thickness(0, 30, 0, 0)
 					},
 					new Label(){ Text = "Do I have right padding? I should have right padding."},
 					new ImageButton()
 					{
 						Source = "coffee.png",
-						BackgroundColor = Color.LightGreen,
+						BackgroundColor = Colors.LightGreen,
 						Padding = new Thickness(0, 0, 100, 0)
 					},
 					new Label(){ Text = "Do I have bottom padding? I should have bottom padding." },
 					new ImageButton()
 					{
 						Source = "coffee.png",
-						BackgroundColor = Color.ForestGreen,
+						BackgroundColor = Colors.ForestGreen,
 						Padding = new Thickness(0, 0, 0, 30)
 					},
 					new Label(){ Text = "Do you see image from a Uri?" },
 					new ImageButton()
 					{
 						Source = "https://raw.githubusercontent.com/xamarin/Xamarin.Forms/main/Xamarin.Forms.Controls/coffee.png",
-						BackgroundColor = Color.ForestGreen
+						BackgroundColor = Colors.ForestGreen
 					},
 					new Label(){ Text = "Invalid Image Uri just to test it doesn't crash" },
 					new ImageButton()
 					{
 						Source = "http://xamarin.com/imginvalidf@#$R(P&fb.png",
-						BackgroundColor = Color.ForestGreen
+						BackgroundColor = Colors.ForestGreen
 					},
 					new Label(){ Text = "Aspect: Aspect.Fill with shadows" },
 					radius,
@@ -118,7 +118,7 @@ namespace Xamarin.Forms.Controls.Issues
 						HorizontalOptions = LayoutOptions.Center,
 						HeightRequest = sizes,
 						WidthRequest = sizes,
-						BorderColor = Color.Green,
+						BorderColor = Colors.Green,
 						BorderWidth = 10
 					},
 					new Label(){ Text = "BorderColor:Color.Green, BorderWidth:10, Aspect:Aspect.Fill" },
@@ -128,7 +128,7 @@ namespace Xamarin.Forms.Controls.Issues
 						HorizontalOptions = LayoutOptions.Center,
 						HeightRequest = sizes,
 						WidthRequest = sizes,
-						BorderColor = Color.Green,
+						BorderColor = Colors.Green,
 						BorderWidth = 10,
 						Aspect = Aspect.Fill
 					},
@@ -139,12 +139,12 @@ namespace Xamarin.Forms.Controls.Issues
 						HorizontalOptions = LayoutOptions.Center,
 						HeightRequest = sizes,
 						WidthRequest = sizes,
-						BackgroundColor = Color.Green
+						BackgroundColor = Colors.Green
 					},
 					new Label(){ Text = "BorderWidth: 5, CornerRadius:10, BorderColor:Brown" },
 					new ImageButton()
 					{
-						BorderColor = Color.Brown,
+						BorderColor = Colors.Brown,
 						BorderWidth = 5,
 						Source = "coffee.png",
 						CornerRadius = 10,
@@ -157,7 +157,7 @@ namespace Xamarin.Forms.Controls.Issues
 					{
 						Source = "coffee.png",
 						HorizontalOptions = LayoutOptions.Center,
-						BorderColor = Color.Red,
+						BorderColor = Colors.Red,
 						BorderWidth = 5,
 						CornerRadius = sizes / 2,
 						HeightRequest = sizes,

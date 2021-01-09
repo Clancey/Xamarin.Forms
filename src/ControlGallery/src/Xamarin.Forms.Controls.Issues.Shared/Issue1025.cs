@@ -17,14 +17,14 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var layout = new StackLayout
 			{
-				BackgroundColor = Color.FromHex("#dae1eb"),
+				BackgroundColor = Colors.FromHex("#dae1eb"),
 				Orientation = StackOrientation.Vertical,
 				Children = {
 					new Image {},
 					new Label {Text = "Lorem ipsum dolor" },
 					new Label {Text = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
-					new Button {BackgroundColor = Color.FromHex ("#fec240"), Text = "Create an account" },
-					new Button {BackgroundColor = Color.FromHex ("#04acdb"), Text = "Login" },
+					new Button {BackgroundColor = Colors.FromHex ("#fec240"), Text = "Create an account" },
+					new Button {BackgroundColor = Colors.FromHex ("#04acdb"), Text = "Login" },
 				}
 			};
 

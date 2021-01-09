@@ -65,7 +65,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var leftItem = new SwipeItem
 			{
-				BackgroundColor = Color.Red
+				BackgroundColor = Colors.Red
 			};
 
 			var leftItems = new SwipeItems
@@ -78,7 +78,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var rightItem = new SwipeItem
 			{
-				BackgroundColor = Color.Green
+				BackgroundColor = Colors.Green
 			};
 
 			var rightItems = new SwipeItems
@@ -91,7 +91,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var content = new Grid
 			{
-				BackgroundColor = Color.White
+				BackgroundColor = Colors.White
 			};
 
 			var contentLabel = new Label

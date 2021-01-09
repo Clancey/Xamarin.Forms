@@ -19,7 +19,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var layout = new StackLayout();
 			var box = new BoxView();
-			box.Color = Color.Aqua;
+			box.Color = Colors.Aqua;
 
 			box.On<iOS>().SetIsShadowEnabled(true);
 			box.On<iOS>().SetShadowOffset(new Size(10, 10));

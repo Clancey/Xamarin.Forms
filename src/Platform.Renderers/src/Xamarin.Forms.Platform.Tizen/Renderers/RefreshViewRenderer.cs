@@ -28,7 +28,7 @@ namespace Xamarin.Forms.Platform.Tizen
 
 			layout.Children.Add(new BoxView
 			{
-				Color = Color.White,
+				Color = Colors.White,
 				CornerRadius = new CornerRadius(IconSize),
 			}, new Rectangle(0.5, 0.5, IconSize, IconSize), AbsoluteLayoutFlags.PositionProportional);
 
@@ -51,7 +51,7 @@ namespace Xamarin.Forms.Platform.Tizen
 			}
 			set
 			{
-				PlatformConfiguration.TizenSpecific.Image.SetBlendColor(_icon, value == Color.Default ? DefaultColor : value);
+				PlatformConfiguration.TizenSpecific.Image.SetBlendColor(_icon, value == null ? DefaultColor : value);
 			}
 		}
 

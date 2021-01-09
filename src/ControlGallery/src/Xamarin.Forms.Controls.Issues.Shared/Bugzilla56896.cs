@@ -175,7 +175,7 @@ namespace Xamarin.Forms.Controls.Issues
 		}
 
 
-		Label _timeLabel = new Label { TextColor = Color.Purple, AutomationId = TimeId };
+		Label _timeLabel = new Label { TextColor = Colors.Purple, AutomationId = TimeId };
 		Stopwatch _timer = new Stopwatch();
 		ListView _listView;
 		protected override void Init()
@@ -185,7 +185,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			BindingContext = vm;
 
-			var label = new Label { TextColor = Color.Blue, AutomationId = ConstructorCountId };
+			var label = new Label { TextColor = Colors.Blue, AutomationId = ConstructorCountId };
 			label.SetBinding(Label.TextProperty, nameof(vm.ConstructorCallCount));
 
 			_listView = new ListView(ListViewCachingStrategy.RecycleElement)

@@ -35,13 +35,13 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				grid.AddChild(new Label { Text = $"Cell {sectionIndex}-{cellIndex}" }, 0, 0);
 				grid.AddChild(new Label { Text = $"Label" }, 1, 0);
-				grid.BackgroundColor = Color.Fuchsia;
+				grid.BackgroundColor = Colors.Fuchsia;
 			}
 			else
 			{
 				grid.AddChild(new Label { Text = $"Cell {sectionIndex}-{cellIndex}" }, 0, 0);
 				grid.AddChild(new Entry { Text = $"Entry" }, 1, 0);
-				grid.BackgroundColor = Color.Yellow;
+				grid.BackgroundColor = Colors.Yellow;
 			}
 
 			return new ViewCell

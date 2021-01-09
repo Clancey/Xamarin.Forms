@@ -40,7 +40,7 @@
 			var button = sender as Button;
 
 			button.Text = "AppTheme Enabled!";
-			button.TextColor = Color.Black;
+			button.TextColor = Colors.Black;
 			button.IsEnabled = false;
 		}
 	}

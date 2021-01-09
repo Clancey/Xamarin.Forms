@@ -11,12 +11,12 @@ namespace Xamarin.Forms.Controls.GalleryPages.ShapesGalleries
 		{
 			var strokeBrush = new LinearGradientBrush
 			{
-				StartPoint = new Point(0, 0),
-				EndPoint = new Point(1, 0),
+				StartPoint = new PointF(0, 0),
+				EndPoint = new PointF(1, 0),
 				GradientStops = new GradientStopCollection
 				{
-					new GradientStop { Color = Color.Orange, Offset = 0.2f },
-					new GradientStop { Color = Color.OrangeRed, Offset = 0.8f }
+					new GradientStop { Color = Colors.Orange, Offset = 0.2f },
+					new GradientStop { Color = Colors.OrangeRed, Offset = 0.8f }
 				}
 			};
 
@@ -40,7 +40,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.ShapesGalleries
 			polyline.Points.Clear();
 
 			double radius = Math.Min(Width / 2, Height / 2);
-			Point center = new Point(Width / 2, Height / 2);
+			Point center = new PointF(Width / 2, Height / 2);
 
 			PointCollection points = polyline.Points;
 			polyline.Points = null;
@@ -51,7 +51,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.ShapesGalleries
 				double radians = Math.PI * angle / 180;
 				double x = center.X + scaledRadius * Math.Cos(radians);
 				double y = center.Y + scaledRadius * Math.Sin(radians);
-				points.Add(new Point(x, y));
+				points.Add(new PointF(x, y));
 			}
 
 			polyline.Points = points;

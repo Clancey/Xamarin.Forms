@@ -1,4 +1,6 @@
-﻿namespace Xamarin.Forms.Shapes
+﻿using System.Graphics;
+
+namespace Xamarin.Forms.Shapes
 {
 	public class EllipseGeometry : Geometry
 	{
@@ -7,7 +9,7 @@
 
 		}
 
-		public EllipseGeometry(Point center, double radiusX, double radiusY)
+		public EllipseGeometry(PointF center, float radiusX, float radiusY)
 		{
 			Center = center;
 			RadiusX = radiusX;
@@ -15,7 +17,7 @@
 		}
 
 		public static readonly BindableProperty CenterProperty =
-			BindableProperty.Create(nameof(Center), typeof(Point), typeof(EllipseGeometry), new Point());
+			BindableProperty.Create(nameof(Center), typeof(PointF), typeof(EllipseGeometry), new PointF());
 
 		public static readonly BindableProperty RadiusXProperty =
 			BindableProperty.Create(nameof(RadiusX), typeof(double), typeof(EllipseGeometry), 0.0);
@@ -23,22 +25,22 @@
 		public static readonly BindableProperty RadiusYProperty =
 			BindableProperty.Create(nameof(RadiusY), typeof(double), typeof(EllipseGeometry), 0.0);
 
-		public Point Center
+		public PointF Center
 		{
 			set { SetValue(CenterProperty, value); }
-			get { return (Point)GetValue(CenterProperty); }
+			get { return (PointF)GetValue(CenterProperty); }
 		}
 
-		public double RadiusX
+		public float RadiusX
 		{
 			set { SetValue(RadiusXProperty, value); }
-			get { return (double)GetValue(RadiusXProperty); }
+			get { return (float)GetValue(RadiusXProperty); }
 		}
 
-		public double RadiusY
+		public float RadiusY
 		{
 			set { SetValue(RadiusYProperty, value); }
-			get { return (double)GetValue(RadiusYProperty); }
+			get { return (float)GetValue(RadiusYProperty); }
 		}
 	}
 }

@@ -17,7 +17,7 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			var infoLabel = new Label
 			{
-				TextColor = Color.Black,
+				TextColor = Colors.Black,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				IsVisible = false
@@ -29,8 +29,8 @@ namespace Xamarin.Forms.Controls.Issues
 					infoLabel,
 					new Button
 					{
-						BackgroundColor = Color.Black,
-						TextColor = Color.White,
+						BackgroundColor = Colors.Black,
+						TextColor = Colors.White,
 						Text = "START TEST",
 						Command = new Command(async () => {
 							var parentChildren = (infoLabel.Parent as StackLayout).Children;

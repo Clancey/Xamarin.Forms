@@ -103,7 +103,7 @@ namespace Xamarin.Forms.Platform.MacOS
 				if (Forms.IsiOS13OrNewer)
 					return UIColor.SystemBlueColor;
 
-				return Color.FromRgba(50, 79, 133, 255).ToUIColor();
+				return Colors.FromRgba(50, 79, 133, 255).ToUIColor();
 			}
 		}
 
@@ -143,7 +143,7 @@ namespace Xamarin.Forms.Platform.MacOS
 #else
 		internal static readonly NSColor Black = NSColor.Black;
 		internal static readonly NSColor SeventyPercentGrey = NSColor.FromRgba(0.7f, 0.7f, 0.7f, 1);
-		internal static readonly NSColor AccentColor = Color.FromRgba(50, 79, 133, 255).ToNSColor();
+		internal static readonly NSColor AccentColor = Colors.FromRgba(50, 79, 133, 255).ToNSColor();
 
 		internal static NSColor LabelColor
 		{
@@ -218,7 +218,7 @@ namespace Xamarin.Forms.Platform.MacOS
 				if (Forms.IsMojaveOrNewer)
 					return NSColor.SystemGrayColor;
 
-				return Color.LightGray.ToNSColor();
+				return Colors.LightGray.ToNSColor();
 			}
 		}
 #endif
@@ -318,7 +318,7 @@ namespace Xamarin.Forms.Platform.MacOS
 	{
 		public static Point ToPoint(this PointF point)
 		{
-			return new Point(point.X, point.Y);
+			return new PointF(point.X, point.Y);
 		}
 
 		public static PointF ToPointF(this Point point)

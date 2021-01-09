@@ -8,12 +8,12 @@ namespace Sample
 	{
 		public bool IsEnabled => true;
 
-		public Color BackgroundColor { get; set; } = Color.Transparent;
+		public Color BackgroundColor { get; set; } = Colors.Transparent;
 
-		public Rectangle Frame 
-		{ 
-			get; 
-			protected set; 
+		public Rectangle Frame
+		{
+			get;
+			protected set;
 		}
 
 		public IViewHandler Handler { get; set; }

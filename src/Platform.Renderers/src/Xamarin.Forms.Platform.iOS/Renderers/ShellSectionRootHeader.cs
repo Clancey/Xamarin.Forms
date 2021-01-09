@@ -12,8 +12,8 @@ namespace Xamarin.Forms.Platform.iOS
 		#region IAppearanceObserver
 
 		Color _defaultBackgroundColor = new Color(0.964);
-		Color _defaultForegroundColor = Color.Black;
-		Color _defaultUnselectedColor = Color.Black.MultiplyAlpha(0.7);
+		Color _defaultForegroundColor = Colors.Black;
+		Color _defaultUnselectedColor = Colors.Black.MultiplyAlpha(0.7);
 
 		void IAppearanceObserver.OnAppearanceChanged(ShellAppearance appearance)
 		{
@@ -179,7 +179,7 @@ namespace Xamarin.Forms.Platform.iOS
 			CollectionView.AddSubview(_bar);
 
 			_bottomShadow = new UIView(new CGRect(0, 0, 10, 1));
-			_bottomShadow.BackgroundColor = Color.Black.MultiplyAlpha(0.3).ToUIColor();
+			_bottomShadow.BackgroundColor = Colors.Black.MultiplyAlpha(0.3).ToUIColor();
 			_bottomShadow.Layer.ZPosition = 9002;
 			CollectionView.AddSubview(_bottomShadow);
 

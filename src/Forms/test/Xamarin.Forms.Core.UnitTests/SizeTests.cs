@@ -44,7 +44,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		public void TestPointFromSize([Range(0, 2)] double x, [Range(0, 2)] double y)
 		{
 			var size = new Size(x, y);
-			var point = (Point)size;
+			var point = (PointF)size;
 
 			Assert.AreEqual(x, point.X);
 			Assert.AreEqual(y, point.Y);

@@ -25,23 +25,23 @@ namespace Xamarin.Forms.Controls
 					new ColumnDefinition (),
 					new ColumnDefinition { Width = new GridLength (1, GridUnitType.Star) }
 				},
-				BackgroundColor = Color.FromRgb(0xee, 0xee, 0xee)
+				BackgroundColor = Colors.FromRgb(0xee, 0xee, 0xee)
 			};
 
 			grid.Children.Add(new Label
 			{
 				Text = "Absolute Width",
-				BackgroundColor = Color.FromRgb(0xcc, 0xcc, 0xcc),
+				BackgroundColor = Colors.FromRgb(0xcc, 0xcc, 0xcc),
 			}, 0, 0);
 			grid.Children.Add(new Label
 			{
 				Text = "Auto Width",
-				BackgroundColor = Color.FromRgb(0xcc, 0xcc, 0xcc),
+				BackgroundColor = Colors.FromRgb(0xcc, 0xcc, 0xcc),
 			}, 1, 0);
 			grid.Children.Add(new Label
 			{
 				Text = "Star",
-				BackgroundColor = Color.FromRgb(0xcc, 0xcc, 0xcc),
+				BackgroundColor = Colors.FromRgb(0xcc, 0xcc, 0xcc),
 			}, 2, 0);
 			layout.Children.Add(grid);
 
@@ -54,7 +54,7 @@ namespace Xamarin.Forms.Controls
 					new ColumnDefinition { Width = new GridLength (2, GridUnitType.Star) },
 					new ColumnDefinition { Width = new GridLength (3, GridUnitType.Star) },
 				},
-				BackgroundColor = Color.FromRgb(0xee, 0xee, 0xee),
+				BackgroundColor = Colors.FromRgb(0xee, 0xee, 0xee),
 				ColumnSpacing = 0,
 				RowSpacing = 0,
 			};
@@ -62,17 +62,17 @@ namespace Xamarin.Forms.Controls
 			grid.Children.Add(new Label
 			{
 				Text = "*",
-				BackgroundColor = Color.FromRgb(0xcc, 0xcc, 0xcc),
+				BackgroundColor = Colors.FromRgb(0xcc, 0xcc, 0xcc),
 			}, 0, 0);
 			grid.Children.Add(new Label
 			{
 				Text = "**",
-				BackgroundColor = Color.FromRgb(0xcc, 0xcc, 0xcc),
+				BackgroundColor = Colors.FromRgb(0xcc, 0xcc, 0xcc),
 			}, 1, 0);
 			grid.Children.Add(new Label
 			{
 				Text = "***",
-				BackgroundColor = Color.FromRgb(0xcc, 0xcc, 0xcc),
+				BackgroundColor = Colors.FromRgb(0xcc, 0xcc, 0xcc),
 			}, 2, 0);
 			layout.Children.Add(grid);
 
@@ -86,32 +86,32 @@ namespace Xamarin.Forms.Controls
 					new ColumnDefinition { Width = new GridLength (1, GridUnitType.Star) },
 					new ColumnDefinition { Width = new GridLength (1, GridUnitType.Star) },
 				},
-				BackgroundColor = Color.FromRgb(0xee, 0xee, 0xee)
+				BackgroundColor = Colors.FromRgb(0xee, 0xee, 0xee)
 			};
 
 			grid.Children.Add(new Label
 			{
 				Text = "Right",
-				BackgroundColor = Color.FromRgb(0xcc, 0xcc, 0xcc),
+				BackgroundColor = Colors.FromRgb(0xcc, 0xcc, 0xcc),
 				HorizontalOptions = LayoutOptions.End,
 			}, 0, 0);
 			grid.Children.Add(new Label
 			{
 				Text = "Center",
-				BackgroundColor = Color.FromRgb(0xcc, 0xcc, 0xcc),
+				BackgroundColor = Colors.FromRgb(0xcc, 0xcc, 0xcc),
 				HorizontalOptions = LayoutOptions.Center,
 
 			}, 1, 0);
 			grid.Children.Add(new Label
 			{
 				Text = "Left",
-				BackgroundColor = Color.FromRgb(0xcc, 0xcc, 0xcc),
+				BackgroundColor = Colors.FromRgb(0xcc, 0xcc, 0xcc),
 				HorizontalOptions = LayoutOptions.Start,
 			}, 2, 0);
 			grid.Children.Add(new Label
 			{
 				Text = "Fill",
-				BackgroundColor = Color.FromRgb(0xcc, 0xcc, 0xcc),
+				BackgroundColor = Colors.FromRgb(0xcc, 0xcc, 0xcc),
 				HorizontalOptions = LayoutOptions.Fill,
 			}, 3, 0);
 			layout.Children.Add(grid);
@@ -127,7 +127,7 @@ namespace Xamarin.Forms.Controls
 					new ColumnDefinition { Width = new GridLength (1, GridUnitType.Star) },
 					new ColumnDefinition { Width = new GridLength (1, GridUnitType.Star) },
 				},
-				BackgroundColor = Color.FromRgb(0xee, 0xee, 0xee),
+				BackgroundColor = Colors.FromRgb(0xee, 0xee, 0xee),
 				ColumnSpacing = 0,
 				RowSpacing = 0
 			};
@@ -137,24 +137,24 @@ namespace Xamarin.Forms.Controls
 					grid.Children.Add(new Label
 					{
 						Text = "Unit",
-						BackgroundColor = Color.FromRgb(0xcc, 0xcc, 0xcc),
+						BackgroundColor = Colors.FromRgb(0xcc, 0xcc, 0xcc),
 					}, i, j);
 
 
 			grid.Children.Add(new Label
 			{
 				Text = "Spanning 4 columns",
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 			}, 0, 4, 0, 1);
 			grid.Children.Add(new Label
 			{
 				Text = "Spanning 3 rows",
-				BackgroundColor = Color.Gray,
+				BackgroundColor = Colors.Gray,
 			}, 4, 5, 0, 3);
 			grid.Children.Add(new Label
 			{
 				Text = "a block 3x3",
-				BackgroundColor = Color.Green,
+				BackgroundColor = Colors.Green,
 			}, 1, 4, 1, 4);
 			layout.Children.Add(grid);
 
@@ -170,8 +170,8 @@ namespace Xamarin.Forms.Controls
 				}
 			};
 
-			grid.Children.Add(new BoxView { BackgroundColor = Color.Red });
-			grid.Children.Add(new BoxView { BackgroundColor = Color.Blue }, 1, 0);
+			grid.Children.Add(new BoxView { BackgroundColor = Colors.Red });
+			grid.Children.Add(new BoxView { BackgroundColor = Colors.Blue }, 1, 0);
 
 			layout.Children.Add(grid);
 			layout.Children.Add(new Button

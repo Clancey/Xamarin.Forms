@@ -22,8 +22,8 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var label = new Label
 			{
-				BackgroundColor = Color.Red,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Red,
+				TextColor = Colors.White,
 				HorizontalTextAlignment = TextAlignment.Center,
 				VerticalTextAlignment = TextAlignment.Center,
 				HeightRequest = 200,

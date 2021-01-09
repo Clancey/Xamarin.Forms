@@ -20,7 +20,7 @@ namespace Xamarin.Forms.Controls.Issues
 			var statusLabel = new Label()
 			{
 				FontSize = 40,
-				TextColor = Color.White
+				TextColor = Colors.White
 			};
 			Content = new StackLayout()
 			{
@@ -28,7 +28,7 @@ namespace Xamarin.Forms.Controls.Issues
 					statusLabel,
 					new Label {
 						Text = "Pop-ups should appear on top of the dialog. And it's got any button pressed.",
-						TextColor = Color.Yellow
+						TextColor = Colors.Yellow
 					}
 				}
 			};
@@ -39,7 +39,7 @@ namespace Xamarin.Forms.Controls.Issues
 			var result2 = await Application.Current.MainPage.DisplayActionSheet("Main page ActionSheet", "Again Yes", "Click Yes", "Yes", "Yes Yes") ?? string.Empty;
 			var testPassed = result1.Contains("Yes") && result2.Contains("Yes") && !alertTask.IsCompleted;
 			statusLabel.Text = "Test " + (testPassed ? "passed" : "failed");
-			BackgroundColor = !testPassed ? Color.DarkRed : Color.DarkGreen;
+			BackgroundColor = !testPassed ? Colors.DarkRed : Colors.DarkGreen;
 			await alertTask;
 		}
 

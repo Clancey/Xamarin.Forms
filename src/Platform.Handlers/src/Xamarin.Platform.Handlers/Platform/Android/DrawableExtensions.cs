@@ -5,6 +5,7 @@ using AColor = Android.Graphics.Color;
 using AColorFilter = Android.Graphics.ColorFilter;
 using ADrawable = Android.Graphics.Drawables.Drawable;
 using ADrawableCompat = AndroidX.Core.Graphics.Drawable.DrawableCompat;
+using Color = System.Graphics.Color;
 
 namespace Xamarin.Platform
 {
@@ -61,18 +62,18 @@ namespace Xamarin.Platform
 		}
 
 
-		public static void SetColorFilter(this ADrawable drawable, Forms.Color color, FilterMode mode, AColorFilter? defaultColorFilter)
+		public static void SetColorFilter(this ADrawable drawable, Color color, FilterMode mode, AColorFilter? defaultColorFilter)
 		{
 			if (drawable == null)
 				return;
 
-			if (color == Forms.Color.Default)
+			if (color == null)
 				SetColorFilter(drawable, defaultColorFilter);
 			else
 				drawable.SetColorFilter(color.ToNative(), mode);
 		}
 
-		public static void SetColorFilter(this ADrawable drawable, Forms.Color color, FilterMode mode)
+		public static void SetColorFilter(this ADrawable drawable, Color color, FilterMode mode)
 		{
 			if (drawable == null)
 				return;

@@ -60,7 +60,7 @@ namespace Xamarin.Forms
 
 		public bool Loop { get; set; }
 
-		public double Value { get; private set; }
+		public float Value { get; private set; }
 
 		public event EventHandler Finished;
 
@@ -91,13 +91,13 @@ namespace Xamarin.Forms
 				if (step == long.MaxValue)
 				{
 					// We're being forced to finish
-					Value = 1.0;
+					Value = 1;
 				}
 				else
 				{
 					long ms = step + _lastMilliseconds;
 
-					Value = Math.Min(1.0f, ms / (double)Length);
+					Value = Math.Min(1.0f, ms / (float)Length);
 
 					_lastMilliseconds = ms;
 				}

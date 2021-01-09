@@ -84,7 +84,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.RefreshViewGalleries
 			{
 				Items.Insert(i, new RefreshItem
 				{
-					Color = Color.FromRgb(_random.Next(0, 255), _random.Next(0, 255), _random.Next(0, 255)),
+					Color = Colors.FromRgb(_random.Next(0, 255), _random.Next(0, 255), _random.Next(0, 255)),
 					Name = DateTime.Now.AddMinutes(i).ToString("F")
 				});
 			}

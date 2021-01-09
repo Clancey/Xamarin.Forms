@@ -10,7 +10,6 @@
     <ProjectReference Include="..\..\..\Platform.Renderers\src\Xamarin.Forms.Platform.Android\Xamarin.Forms.Platform.Android.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Forms\src\Xamarin.Forms.Core\Xamarin.Forms.Core.csproj" />
     <ProjectReference Include="..\..\src\Xamarin.Platform.Handlers\Xamarin.Platform.Handlers.csproj" />
   </ItemGroup>
 </Project>

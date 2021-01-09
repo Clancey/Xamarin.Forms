@@ -132,7 +132,7 @@ namespace Xamarin.Forms.Platform.WPF
 			if (Control == null || Element == null)
 				return;
 
-			if (Element.TextColor != Color.Default)
+			if (Element.TextColor != null)
 				Control.Foreground = Element.TextColor.ToBrush();
 			else
 				Control.Foreground = Brushes.Black;

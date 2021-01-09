@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.Graphics;
 using System.Threading.Tasks;
 using Xamarin.Forms.Internals;
 
@@ -11,7 +12,7 @@ namespace Xamarin.Forms
 		#region IScrollViewController
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public Rectangle LayoutAreaOverride
+		public RectangleF LayoutAreaOverride
 		{
 			get => _layoutAreaOverride;
 			set
@@ -28,18 +29,18 @@ namespace Xamarin.Forms
 		public event EventHandler<ScrollToRequestedEventArgs> ScrollToRequested;
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public Point GetScrollPositionForElement(VisualElement item, ScrollToPosition pos)
+		public PointF GetScrollPositionForElement(VisualElement item, ScrollToPosition pos)
 		{
 			ScrollToPosition position = pos;
-			double y = GetCoordinate(item, "Y", 0);
-			double x = GetCoordinate(item, "X", 0);
+			float y = GetCoordinate(item, "Y", 0);
+			float x = GetCoordinate(item, "X", 0);
 
 			if (position == ScrollToPosition.MakeVisible)
 			{
-				var scrollBounds = new Rectangle(ScrollX, ScrollY, Width, Height);
-				var itemBounds = new Rectangle(x, y, item.Width, item.Height);
+				var scrollBounds = new RectangleF(ScrollX, ScrollY, Width, Height);
+				var itemBounds = new RectangleF(x, y, item.Width, item.Height);
 				if (scrollBounds.Contains(itemBounds))
-					return new Point(ScrollX, ScrollY);
+					return new PointF(ScrollX, ScrollY);
 				switch (Orientation)
 				{
 					case ScrollOrientation.Vertical:
@@ -64,7 +65,7 @@ namespace Xamarin.Forms
 					x = x - Width + item.Width;
 					break;
 			}
-			return new Point(x, y);
+			return new PointF(x, y);
 		}
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
@@ -75,7 +76,7 @@ namespace Xamarin.Forms
 		}
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public void SetScrolledPosition(double x, double y)
+		public void SetScrolledPosition(float x, float y)
 		{
 			if (ScrollX == x && ScrollY == y)
 				return;
@@ -90,15 +91,15 @@ namespace Xamarin.Forms
 
 		public static readonly BindableProperty OrientationProperty = BindableProperty.Create("Orientation", typeof(ScrollOrientation), typeof(ScrollView), ScrollOrientation.Vertical);
 
-		static readonly BindablePropertyKey ScrollXPropertyKey = BindableProperty.CreateReadOnly("ScrollX", typeof(double), typeof(ScrollView), 0d);
+		static readonly BindablePropertyKey ScrollXPropertyKey = BindableProperty.CreateReadOnly("ScrollX", typeof(float), typeof(ScrollView), 0d);
 
 		public static readonly BindableProperty ScrollXProperty = ScrollXPropertyKey.BindableProperty;
 
-		static readonly BindablePropertyKey ScrollYPropertyKey = BindableProperty.CreateReadOnly("ScrollY", typeof(double), typeof(ScrollView), 0d);
+		static readonly BindablePropertyKey ScrollYPropertyKey = BindableProperty.CreateReadOnly("ScrollY", typeof(float), typeof(ScrollView), 0d);
 
 		public static readonly BindableProperty ScrollYProperty = ScrollYPropertyKey.BindableProperty;
 
-		static readonly BindablePropertyKey ContentSizePropertyKey = BindableProperty.CreateReadOnly("ContentSize", typeof(Size), typeof(ScrollView), default(Size));
+		static readonly BindablePropertyKey ContentSizePropertyKey = BindableProperty.CreateReadOnly("ContentSize", typeof(SizeF), typeof(ScrollView), default(SizeF));
 
 		public static readonly BindableProperty ContentSizeProperty = ContentSizePropertyKey.BindableProperty;
 
@@ -110,7 +111,7 @@ namespace Xamarin.Forms
 
 		View _content;
 		TaskCompletionSource<bool> _scrollCompletionSource;
-		Rectangle _layoutAreaOverride;
+		RectangleF _layoutAreaOverride;
 
 		public View Content
 		{
@@ -130,9 +131,9 @@ namespace Xamarin.Forms
 			}
 		}
 
-		public Size ContentSize
+		public SizeF ContentSize
 		{
-			get { return (Size)GetValue(ContentSizeProperty); }
+			get { return (SizeF)GetValue(ContentSizeProperty); }
 			private set { SetValue(ContentSizePropertyKey, value); }
 		}
 
@@ -142,15 +143,15 @@ namespace Xamarin.Forms
 			set { SetValue(OrientationProperty, value); }
 		}
 
-		public double ScrollX
+		public float ScrollX
 		{
-			get { return (double)GetValue(ScrollXProperty); }
+			get { return (float)GetValue(ScrollXProperty); }
 			private set { SetValue(ScrollXPropertyKey, value); }
 		}
 
-		public double ScrollY
+		public float ScrollY
 		{
-			get { return (double)GetValue(ScrollYProperty); }
+			get { return (float)GetValue(ScrollYProperty); }
 			private set { SetValue(ScrollYPropertyKey, value); }
 		}
 
@@ -178,7 +179,7 @@ namespace Xamarin.Forms
 			return _platformConfigurationRegistry.Value.On<T>();
 		}
 
-		public Task ScrollToAsync(double x, double y, bool animated)
+		public Task ScrollToAsync(float x, float y, bool animated)
 		{
 			if (Orientation == ScrollOrientation.Neither)
 				return Task.FromResult(false);
@@ -209,7 +210,7 @@ namespace Xamarin.Forms
 
 		bool IFlowDirectionController.ApplyEffectiveFlowDirectionToChildContainer => false;
 
-		protected override void LayoutChildren(double x, double y, double width, double height)
+		protected override void LayoutChildren(float x, float y, float width, float height)
 		{
 			var over = ((IScrollViewController)this).LayoutAreaOverride;
 			if (!over.IsEmpty)
@@ -226,23 +227,23 @@ namespace Xamarin.Forms
 				switch (Orientation)
 				{
 					case ScrollOrientation.Horizontal:
-						size = _content.Measure(double.PositiveInfinity, height, MeasureFlags.IncludeMargins);
-						LayoutChildIntoBoundingRegion(_content, new Rectangle(x, y, GetMaxWidth(width, size), height));
-						ContentSize = new Size(GetMaxWidth(width), height);
+						size = _content.Measure(float.PositiveInfinity, height, MeasureFlags.IncludeMargins);
+						LayoutChildIntoBoundingRegion(_content, new RectangleF(x, y, GetMaxWidth(width, size), height));
+						ContentSize = new SizeF(GetMaxWidth(width), height);
 						break;
 					case ScrollOrientation.Vertical:
-						size = _content.Measure(width, double.PositiveInfinity, MeasureFlags.IncludeMargins);
-						LayoutChildIntoBoundingRegion(_content, new Rectangle(x, y, width, GetMaxHeight(height, size)));
-						ContentSize = new Size(width, GetMaxHeight(height));
+						size = _content.Measure(width, float.PositiveInfinity, MeasureFlags.IncludeMargins);
+						LayoutChildIntoBoundingRegion(_content, new RectangleF(x, y, width, GetMaxHeight(height, size)));
+						ContentSize = new SizeF(width, GetMaxHeight(height));
 						break;
 					case ScrollOrientation.Both:
-						size = _content.Measure(double.PositiveInfinity, double.PositiveInfinity, MeasureFlags.IncludeMargins);
-						LayoutChildIntoBoundingRegion(_content, new Rectangle(x, y, GetMaxWidth(width, size), GetMaxHeight(height, size)));
-						ContentSize = new Size(GetMaxWidth(width), GetMaxHeight(height));
+						size = _content.Measure(float.PositiveInfinity, float.PositiveInfinity, MeasureFlags.IncludeMargins);
+						LayoutChildIntoBoundingRegion(_content, new RectangleF(x, y, GetMaxWidth(width, size), GetMaxHeight(height, size)));
+						ContentSize = new SizeF(GetMaxWidth(width), GetMaxHeight(height));
 						break;
 					case ScrollOrientation.Neither:
-						LayoutChildIntoBoundingRegion(_content, new Rectangle(x, y, width, height));
-						ContentSize = new Size(width, height);
+						LayoutChildIntoBoundingRegion(_content, new RectangleF(x, y, width, height));
+						ContentSize = new SizeF(width, height);
 						break;
 				}
 			}
@@ -250,7 +251,7 @@ namespace Xamarin.Forms
 
 		[Obsolete("OnSizeRequest is obsolete as of version 2.2.0. Please use OnMeasure instead.")]
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		protected override SizeRequest OnSizeRequest(double widthConstraint, double heightConstraint)
+		protected override SizeRequest OnSizeRequest(float widthConstraint, float heightConstraint)
 		{
 			if (Content == null)
 				return new SizeRequest();
@@ -258,14 +259,14 @@ namespace Xamarin.Forms
 			switch (Orientation)
 			{
 				case ScrollOrientation.Horizontal:
-					widthConstraint = double.PositiveInfinity;
+					widthConstraint = float.PositiveInfinity;
 					break;
 				case ScrollOrientation.Vertical:
-					heightConstraint = double.PositiveInfinity;
+					heightConstraint = float.PositiveInfinity;
 					break;
 				case ScrollOrientation.Both:
-					widthConstraint = double.PositiveInfinity;
-					heightConstraint = double.PositiveInfinity;
+					widthConstraint = float.PositiveInfinity;
+					heightConstraint = float.PositiveInfinity;
 					break;
 				case ScrollOrientation.Neither:
 					widthConstraint = Width;
@@ -274,7 +275,7 @@ namespace Xamarin.Forms
 			}
 
 			SizeRequest contentRequest = Content.Measure(widthConstraint, heightConstraint, MeasureFlags.IncludeMargins);
-			contentRequest.Minimum = new Size(Math.Min(40, contentRequest.Minimum.Width), Math.Min(40, contentRequest.Minimum.Height));
+			contentRequest.Minimum = new SizeF(Math.Min(40, contentRequest.Minimum.Width), Math.Min(40, contentRequest.Minimum.Height));
 			return contentRequest;
 		}
 
@@ -316,31 +317,31 @@ namespace Xamarin.Forms
 			_scrollCompletionSource = new TaskCompletionSource<bool>();
 		}
 
-		double GetCoordinate(Element item, string coordinateName, double coordinate)
+		float GetCoordinate(Element item, string coordinateName, float coordinate)
 		{
 			if (item == this)
 				return coordinate;
-			coordinate += (double)typeof(VisualElement).GetProperty(coordinateName).GetValue(item, null);
+			coordinate += (float)typeof(VisualElement).GetProperty(coordinateName).GetValue(item, null);
 			var visualParentElement = item.RealParent as VisualElement;
 			return visualParentElement != null ? GetCoordinate(visualParentElement, coordinateName, coordinate) : coordinate;
 		}
 
-		double GetMaxHeight(double height)
+		float GetMaxHeight(float height)
 		{
 			return Math.Max(height, _content.Bounds.Top + Padding.Top + _content.Bounds.Bottom + Padding.Bottom);
 		}
 
-		static double GetMaxHeight(double height, SizeRequest size)
+		static float GetMaxHeight(float height, SizeRequest size)
 		{
 			return Math.Max(size.Request.Height, height);
 		}
 
-		double GetMaxWidth(double width)
+		float GetMaxWidth(float width)
 		{
 			return Math.Max(width, _content.Bounds.Left + Padding.Left + _content.Bounds.Right + Padding.Right);
 		}
 
-		static double GetMaxWidth(double width, SizeRequest size)
+		static float GetMaxWidth(float width, SizeRequest size)
 		{
 			return Math.Max(size.Request.Width, width);
 		}

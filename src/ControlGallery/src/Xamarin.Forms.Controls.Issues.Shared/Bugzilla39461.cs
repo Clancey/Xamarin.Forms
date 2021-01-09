@@ -24,11 +24,11 @@ namespace Xamarin.Forms.Controls.Issues
 				text.Append("text ");
 			}
 
-			var top = new ScrollView { Content = new Label { FontSize = 12, TextColor = Color.Red, Text = text.ToString() } };
+			var top = new ScrollView { Content = new Label { FontSize = 12, TextColor = Colors.Red, Text = text.ToString() } };
 			AbsoluteLayout.SetLayoutFlags(top, AbsoluteLayoutFlags.All);
 			AbsoluteLayout.SetLayoutBounds(top, new Rectangle(0, 0, 1, 0.5));
 
-			var bottom = new Label { FontSize = 12, TextColor = Color.Red, Text = text.ToString() };
+			var bottom = new Label { FontSize = 12, TextColor = Colors.Red, Text = text.ToString() };
 			AbsoluteLayout.SetLayoutFlags(bottom, AbsoluteLayoutFlags.All);
 			AbsoluteLayout.SetLayoutBounds(bottom, new Rectangle(0, 1, 1, 0.5));
 

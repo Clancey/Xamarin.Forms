@@ -26,7 +26,7 @@ namespace Xamarin.Forms.Controls.Issues
 				{
 					var label = new Label
 					{
-						BackgroundColor = Color.Red
+						BackgroundColor = Colors.Red
 					};
 					label.SetBinding(Label.TextProperty, new Binding("HeaderText"));
 					return label;

@@ -43,7 +43,7 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			var layout = new StackLayout();
 			var label = new Label { Text = "Click the box with left and right click" };
-			var box = new BoxView { BackgroundColor = Color.Red, WidthRequest = 100, HeightRequest = 100 };
+			var box = new BoxView { BackgroundColor = Colors.Red, WidthRequest = 100, HeightRequest = 100 };
 
 			var btn = new Button { Text = "Clear", Command = new Command(() => label.Text = "") };
 			var btnNormal = new Button
@@ -116,7 +116,7 @@ namespace Xamarin.Forms.Controls.Issues
 			SetMenu(label, menu);
 			layout.Children.Add(label);
 
-			var box = new BoxView { Color = Color.Red, WidthRequest = 100, HeightRequest = 100 };
+			var box = new BoxView { Color = Colors.Red, WidthRequest = 100, HeightRequest = 100 };
 			var menuBox = new Menu();
 			AddMenu(4, true, 2, false, menuBox, true);
 			SetMenu(box, menuBox);

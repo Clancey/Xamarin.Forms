@@ -128,14 +128,14 @@ namespace Xamarin.Forms.Core.UnitTests
 			normalState.Setters.Add(new Setter
 			{
 				Property = Label.BackgroundColorProperty,
-				Value = Color.Red,
+				Value = Colors.Red,
 				TargetName = "FlyoutItemLabel"
 			});
 
 			selectedState.Setters.Add(new Setter
 			{
 				Property = Label.BackgroundColorProperty,
-				Value = Color.Green,
+				Value = Colors.Green,
 				TargetName = "FlyoutItemLabel"
 			});
 

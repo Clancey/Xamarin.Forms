@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms.Internals;
 
@@ -289,8 +290,8 @@ namespace Xamarin.Forms
 				item.SelfSizing = (Flex.Item it, ref float w, ref float h) =>
 				{
 					var sizeConstrains = item.GetConstraints();
-					sizeConstrains.Width = (_measuring && sizeConstrains.Width == 0) ? double.PositiveInfinity : sizeConstrains.Width;
-					sizeConstrains.Height = (_measuring && sizeConstrains.Height == 0) ? double.PositiveInfinity : sizeConstrains.Height;
+					sizeConstrains.Width = (_measuring && sizeConstrains.Width == 0) ? float.PositiveInfinity : sizeConstrains.Width;
+					sizeConstrains.Height = (_measuring && sizeConstrains.Height == 0) ? float.PositiveInfinity : sizeConstrains.Height;
 					var request = view.Measure(sizeConstrains.Width, sizeConstrains.Height).Request;
 					w = (float)request.Width;
 					h = (float)request.Height;
@@ -313,9 +314,9 @@ namespace Xamarin.Forms
 			item.MarginTop = (float)mtop;
 			item.MarginRight = (float)mright;
 			item.MarginBottom = (float)mbottom;
-			var width = (double)view.GetValue(WidthRequestProperty);
+			var width = (float)view.GetValue(WidthRequestProperty);
 			item.Width = width < 0 ? float.NaN : (float)width;
-			var height = (double)view.GetValue(HeightRequestProperty);
+			var height = (float)view.GetValue(HeightRequestProperty);
 			item.Height = height < 0 ? float.NaN : (float)height;
 			item.IsVisible = (bool)view.GetValue(IsVisibleProperty);
 			if (view is FlexLayout)
@@ -390,7 +391,7 @@ namespace Xamarin.Forms
 			}
 		}
 
-		protected override void LayoutChildren(double x, double y, double width, double height)
+		protected override void LayoutChildren(float x, float y, float width, float height)
 		{
 			if (_root == null)
 				return;
@@ -399,10 +400,10 @@ namespace Xamarin.Forms
 			foreach (var child in Children)
 			{
 				var frame = GetFlexItem(child).GetFrame();
-				if (double.IsNaN(frame.X)
-					|| double.IsNaN(frame.Y)
-					|| double.IsNaN(frame.Width)
-					|| double.IsNaN(frame.Height))
+				if (float.IsNaN(frame.X)
+					|| float.IsNaN(frame.Y)
+					|| float.IsNaN(frame.Width)
+					|| float.IsNaN(frame.Height))
 					throw new Exception("something is deeply wrong");
 				frame = frame.Offset(x, y); //flex doesn't support offset on _root
 				child.Layout(frame);
@@ -410,14 +411,14 @@ namespace Xamarin.Forms
 		}
 
 		bool _measuring;
-		protected override SizeRequest OnMeasure(double widthConstraint, double heightConstraint)
+		protected override SizeRequest OnMeasure(float widthConstraint, float heightConstraint)
 		{
 			if (_root == null)
-				return new SizeRequest(new Size(widthConstraint, heightConstraint));
+				return new SizeRequest(new SizeF(widthConstraint, heightConstraint));
 
 			//All of this is a HACK as X.Flex doesn't supports measuring
-			if (!double.IsPositiveInfinity(widthConstraint) && !double.IsPositiveInfinity(heightConstraint))
-				return new SizeRequest(new Size(widthConstraint, heightConstraint));
+			if (!float.IsPositiveInfinity(widthConstraint) && !float.IsPositiveInfinity(heightConstraint))
+				return new SizeRequest(new SizeF(widthConstraint, heightConstraint));
 
 			_measuring = true;
 			//1. Set Shrink to 0, set align-self to start (to avoid stretching)
@@ -433,13 +434,13 @@ namespace Xamarin.Forms
 			Layout(widthConstraint, heightConstraint);
 
 			//2. look at the children location
-			if (double.IsPositiveInfinity(widthConstraint))
+			if (float.IsPositiveInfinity(widthConstraint))
 			{
 				widthConstraint = 0;
 				foreach (var item in _root)
 					widthConstraint = Math.Max(widthConstraint, item.Frame[0] + item.Frame[2] + item.MarginRight);
 			}
-			if (double.IsPositiveInfinity(heightConstraint))
+			if (float.IsPositiveInfinity(heightConstraint))
 			{
 				heightConstraint = 0;
 				foreach (var item in _root)
@@ -456,15 +457,15 @@ namespace Xamarin.Forms
 				}
 			}
 			_measuring = false;
-			return new SizeRequest(new Size(widthConstraint, heightConstraint));
+			return new SizeRequest(new SizeF(widthConstraint, heightConstraint));
 		}
 
-		void Layout(double width, double height)
+		void Layout(float width, float height)
 		{
 			if (_root.Parent != null)   //Layout is only computed at root level
 				return;
-			_root.Width = !double.IsPositiveInfinity((width)) ? (float)width : 0;
-			_root.Height = !double.IsPositiveInfinity((height)) ? (float)height : 0;
+			_root.Width = !float.IsPositiveInfinity((width)) ? (float)width : 0;
+			_root.Height = !float.IsPositiveInfinity((height)) ? (float)height : 0;
 			_root.Layout();
 		}
 	}
@@ -491,27 +492,27 @@ namespace Xamarin.Forms
 			parent.RemoveAt((uint)index);
 		}
 
-		public static Rectangle GetFrame(this Flex.Item item)
+		public static RectangleF GetFrame(this Flex.Item item)
 		{
-			return new Rectangle(item.Frame[0], item.Frame[1], item.Frame[2], item.Frame[3]);
+			return new RectangleF(item.Frame[0], item.Frame[1], item.Frame[2], item.Frame[3]);
 		}
 
-		public static Size GetConstraints(this Flex.Item item)
+		public static SizeF GetConstraints(this Flex.Item item)
 		{
-			var widthConstraint = -1d;
-			var heightConstraint = -1d;
+			var widthConstraint = -1f;
+			var heightConstraint = -1f;
 			var parent = item.Parent;
 			do
 			{
 				if (parent == null)
 					break;
 				if (widthConstraint < 0 && !float.IsNaN(parent.Width))
-					widthConstraint = (double)parent.Width;
+					widthConstraint = parent.Width;
 				if (heightConstraint < 0 && !float.IsNaN(parent.Height))
-					heightConstraint = (double)parent.Height;
+					heightConstraint = parent.Height;
 				parent = parent.Parent;
 			} while (widthConstraint < 0 || heightConstraint < 0);
-			return new Size(widthConstraint, heightConstraint);
+			return new SizeF(widthConstraint, heightConstraint);
 		}
 
 		public static Flex.Basis ToFlexBasis(this FlexBasis basis)

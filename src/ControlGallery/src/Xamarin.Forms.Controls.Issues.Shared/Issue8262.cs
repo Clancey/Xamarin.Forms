@@ -39,7 +39,7 @@ namespace Xamarin.Forms.Controls.Issues
 					Children = {
 						WithBounds(new Label {
 							Text = t.groupHeader, HorizontalTextAlignment = TextAlignment.Center,
-							TextColor = Color.FromUint(0xff5a5a5a), FontSize = 10
+							TextColor = Colors.FromUint(0xff5a5a5a), FontSize = 10
 						}, 0, 21.1, 310, AbsoluteLayout.AutoSize) },
 					HorizontalOptions = LayoutOptions.FillAndExpand,
 					VerticalOptions = LayoutOptions.Start,
@@ -53,7 +53,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 							WithBounds(new Image { Source = ImageSource.FromResource("Xamarin.Forms.Controls.GalleryPages.crimson.jpg", System.Reflection.Assembly.GetCallingAssembly()) }, 23.6, 14.5, 14.9, 20.7),
 
-							WithBounds(new Label { Text = item.ToString(), TextColor = Color.FromUint(0xff5a5a5a), FontSize = 10 }, 58, 18.2, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize)
+							WithBounds(new Label { Text = item.ToString(), TextColor = Colors.FromUint(0xff5a5a5a), FontSize = 10 }, 58, 18.2, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize)
 						},
 						HorizontalOptions = LayoutOptions.FillAndExpand,
 						VerticalOptions = LayoutOptions.Start,

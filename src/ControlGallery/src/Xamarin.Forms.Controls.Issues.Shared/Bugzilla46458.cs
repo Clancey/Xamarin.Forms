@@ -23,7 +23,7 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			var parentGrid = new Grid
 			{
-				BackgroundColor = Color.Yellow
+				BackgroundColor = Colors.Yellow
 			};
 			parentGrid.RowDefinitions.Add(new RowDefinition());
 			parentGrid.RowDefinitions.Add(new RowDefinition());
@@ -31,7 +31,7 @@ namespace Xamarin.Forms.Controls.Issues
 			var grid = new Grid
 			{
 				IsEnabled = false,
-				BackgroundColor = Color.Red
+				BackgroundColor = Colors.Red
 			};
 
 			grid.RowDefinitions.Add(new RowDefinition());
@@ -62,8 +62,8 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				WidthRequest = 250,
 				HeightRequest = 50,
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White,
 				Text = "Click",
 				HorizontalOptions = LayoutOptions.Center,
 				Command = new Command(() => { label.Text = "Fail"; }),
@@ -79,8 +79,8 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				WidthRequest = 250,
 				HeightRequest = 50,
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White,
 				Text = "Test transparency",
 				HorizontalOptions = LayoutOptions.Center,
 				AutomationId = "button1"

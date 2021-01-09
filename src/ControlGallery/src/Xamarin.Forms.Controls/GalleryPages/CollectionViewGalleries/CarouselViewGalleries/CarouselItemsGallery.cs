@@ -62,8 +62,8 @@ namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries.CarouselVi
 			var indicators = new IndicatorView
 			{
 				Margin = new Thickness(15, 20),
-				IndicatorColor = Color.Gray,
-				SelectedIndicatorColor = Color.Black,
+				IndicatorColor = Colors.Gray,
+				SelectedIndicatorColor = Colors.Black,
 				IndicatorsShape = IndicatorShape.Square
 			};
 
@@ -102,7 +102,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries.CarouselVi
 			{
 				_viewModel.Items.Add(new CarouselData
 				{
-					Color = Color.Red,
+					Color = Colors.Red,
 					Name = $"{_viewModel.Items.Count + 1}"
 				});
 				_viewModel.CarouselPosition = _viewModel.Items.Count - 1;
@@ -250,7 +250,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries.CarouselVi
 		{
 			return new CarouselData
 			{
-				Color = Color.FromRgb(_random.Next(0, 255), _random.Next(0, 255), _random.Next(0, 255)),
+				Color = Colors.FromRgb(_random.Next(0, 255), _random.Next(0, 255), _random.Next(0, 255)),
 				Name = $"{currentCount + 1}"
 			};
 		}

@@ -18,12 +18,12 @@ namespace Xamarin.Forms.Controls.Issues
 	{
 		protected override void Init()
 		{
-			BackgroundColor = Color.Red;
+			BackgroundColor = Colors.Red;
 
 			Content = new ListView
 			{
 				Margin = new Thickness(20),
-				BackgroundColor = Color.FromRgba(0, 0, 1, 0.5),
+				BackgroundColor = Colors.FromRgba(0, 0, 1, 0.5),
 				ItemsSource = new string[] { "Page background should be red", "ListView background should be blue with 50% alpha and so should appear purple", "[iOS, macOS] Default behavior is to make cells have the same color as the ListView, so the cells should appear 100% blue", "[Other platforms] Cells should be transparent, and appear purple", "If the cells appear pale blue, then the ListView has an extra white background", "If the cells appear dark blue, then the cells have the same blue with 50% alpha as a background", "If the ListView appears dark blue, then background colors with alpha is not supported" },
 			};
 		}

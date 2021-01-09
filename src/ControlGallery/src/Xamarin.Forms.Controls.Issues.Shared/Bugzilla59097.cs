@@ -25,7 +25,7 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			public ToPopPage()
 			{
-				var boxView = new BoxView { WidthRequest = 100, HeightRequest = 100, Color = Color.Red, AutomationId = "boxView" };
+				var boxView = new BoxView { WidthRequest = 100, HeightRequest = 100, Color = Colors.Red, AutomationId = "boxView" };
 				var tapGesture = new TapGestureRecognizer { NumberOfTapsRequired = 1, Command = new Command(PopPageBack) };
 				boxView.GestureRecognizers.Add(tapGesture);
 				var layout = new StackLayout();

@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.Graphics;
 using System.IO;
 using System.Reflection;
 using System.Threading;
@@ -24,7 +25,7 @@ namespace Xamarin.Forms.Internals
 		[Obsolete("GetMD5Hash is obsolete as of version 4.7.0")]
 		string GetMD5Hash(string input);
 
-		double GetNamedSize(NamedSize size, Type targetElementType, bool useOldSizes);
+		float GetNamedSize(NamedSize size, Type targetElementType, bool useOldSizes);
 
 		Color GetNamedColor(string name);
 

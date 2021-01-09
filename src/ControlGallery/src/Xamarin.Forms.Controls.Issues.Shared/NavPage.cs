@@ -16,7 +16,7 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			NavigationPage page = null;
 
-			var popButton1 = new Button() { Text = "Pop", BackgroundColor = Color.Blue };
+			var popButton1 = new Button() { Text = "Pop", BackgroundColor = Colors.Blue };
 			popButton1.Clicked += (s, a) => Navigation.PopModalAsync();
 
 			page = new NavigationPage(new ContentPage { Content = popButton1 });

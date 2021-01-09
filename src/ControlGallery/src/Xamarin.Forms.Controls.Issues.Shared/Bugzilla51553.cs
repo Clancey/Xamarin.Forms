@@ -21,7 +21,7 @@ namespace Xamarin.Forms.Controls.Issues
 			Flyout = new ContentPage
 			{
 				Title = "Flyout",
-				BackgroundColor = Color.Red
+				BackgroundColor = Colors.Red
 			};
 
 			Detail = new NavigationPage(new TestPage());

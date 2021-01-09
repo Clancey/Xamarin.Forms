@@ -73,9 +73,9 @@ namespace Xamarin.Forms.Controls.Issues
 				}
 			};
 
-			grid.AddChild(new Grid { BackgroundColor = Color.Green }, 0, 0);
+			grid.AddChild(new Grid { BackgroundColor = Colors.Green }, 0, 0);
 			grid.AddChild(stackLayoutWithButton, 0, 1);
-			grid.AddChild(new Grid { BackgroundColor = Color.Green }, 0, 2);
+			grid.AddChild(new Grid { BackgroundColor = Colors.Green }, 0, 2);
 
 			Content = grid;
 

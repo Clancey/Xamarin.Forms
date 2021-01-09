@@ -38,7 +38,7 @@ namespace Xamarin.Forms.Controls.Issues
 				Source = "bank.png";
 				WidthRequest = 30;
 				HeightRequest = 30;
-				BackgroundColor = Color.Red;
+				BackgroundColor = Colors.Red;
 				AnchorX = anchorx;
 				AnchorY = anchory;
 				//TranslationX = -50;

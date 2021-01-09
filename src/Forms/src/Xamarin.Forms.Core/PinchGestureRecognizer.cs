@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using Xamarin.Forms.Internals;
 
 namespace Xamarin.Forms
@@ -10,7 +11,7 @@ namespace Xamarin.Forms
 		public bool IsPinching { get; set; }
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public void SendPinch(Element sender, double delta, Point currentScalePoint)
+		public void SendPinch(Element sender, double delta, PointF currentScalePoint)
 		{
 			EventHandler<PinchGestureUpdatedEventArgs> handler = PinchUpdated;
 			if (handler != null)
@@ -43,7 +44,7 @@ namespace Xamarin.Forms
 		}
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public void SendPinchStarted(Element sender, Point initialScalePoint)
+		public void SendPinchStarted(Element sender, PointF initialScalePoint)
 		{
 			EventHandler<PinchGestureUpdatedEventArgs> handler = PinchUpdated;
 			if (handler != null)

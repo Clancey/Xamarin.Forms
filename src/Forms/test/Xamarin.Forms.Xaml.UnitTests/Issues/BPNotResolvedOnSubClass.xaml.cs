@@ -9,7 +9,7 @@ namespace Xamarin.Forms.Xaml.UnitTests
 	public partial class BPNotResolvedOnSubClass : ContentPage
 	{
 		public static readonly BindableProperty ShadowColorProperty =
-			BindableProperty.CreateAttached("ShadowColor", typeof(Color), typeof(BPNotResolvedOnSubClass), Color.Default);
+			BindableProperty.CreateAttached("ShadowColor", typeof(Color), typeof(BPNotResolvedOnSubClass), null);
 
 		public static Color GetShadowColor(Element bindable) // Change to Element instead of BindableObject o make fail
 		{

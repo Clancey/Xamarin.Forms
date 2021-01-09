@@ -14,13 +14,13 @@ namespace Xamarin.Forms.Controls.GalleryPages.SwipeViewGalleries
 
 			var noIconSwipeItem = new SwipeItem
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				Text = "File"
 			};
 
 			var noTextSwipeItem = new SwipeItem
 			{
-				BackgroundColor = Color.BlueViolet,
+				BackgroundColor = Colors.BlueViolet,
 				IconImageSource = "calculator.png"
 			};
 
@@ -30,7 +30,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.SwipeViewGalleries
 
 			var swipeContent = new Grid
 			{
-				BackgroundColor = Color.Gray
+				BackgroundColor = Colors.Gray
 			};
 
 			var swipeLabel = new Label

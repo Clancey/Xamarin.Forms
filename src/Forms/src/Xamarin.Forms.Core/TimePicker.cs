@@ -1,4 +1,5 @@
 using System;
+using System.Graphics;
 using Xamarin.Forms.Internals;
 
 namespace Xamarin.Forms
@@ -44,9 +45,9 @@ namespace Xamarin.Forms
 			set { SetValue(TextElement.TextColorProperty, value); }
 		}
 
-		public double CharacterSpacing
+		public float CharacterSpacing
 		{
-			get { return (double)GetValue(TextElement.CharacterSpacingProperty); }
+			get { return (float)GetValue(TextElement.CharacterSpacingProperty); }
 			set { SetValue(TextElement.CharacterSpacingProperty, value); }
 		}
 
@@ -69,9 +70,9 @@ namespace Xamarin.Forms
 		}
 
 		[TypeConverter(typeof(FontSizeConverter))]
-		public double FontSize
+		public float FontSize
 		{
-			get { return (double)GetValue(FontSizeProperty); }
+			get { return (float)GetValue(FontSizeProperty); }
 			set { SetValue(FontSizeProperty, value); }
 		}
 
@@ -87,13 +88,13 @@ namespace Xamarin.Forms
 		void IFontElement.OnFontFamilyChanged(string oldValue, string newValue) =>
 			InvalidateMeasureInternal(InvalidationTrigger.MeasureChanged);
 
-		void IFontElement.OnFontSizeChanged(double oldValue, double newValue) =>
+		void IFontElement.OnFontSizeChanged(float oldValue, float newValue) =>
 			InvalidateMeasureInternal(InvalidationTrigger.MeasureChanged);
 
 		void IFontElement.OnFontChanged(Font oldValue, Font newValue) =>
 			InvalidateMeasureInternal(InvalidationTrigger.MeasureChanged);
 
-		double IFontElement.FontSizeDefaultValueCreator() =>
+		float IFontElement.FontSizeDefaultValueCreator() =>
 			Device.GetNamedSize(NamedSize.Default, (TimePicker)this);
 
 		void IFontElement.OnFontAttributesChanged(FontAttributes oldValue, FontAttributes newValue) =>
@@ -108,7 +109,7 @@ namespace Xamarin.Forms
 		{
 		}
 
-		void ITextElement.OnCharacterSpacingPropertyChanged(double oldValue, double newValue)
+		void ITextElement.OnCharacterSpacingPropertyChanged(float oldValue, float newValue)
 		{
 			InvalidateMeasure();
 		}

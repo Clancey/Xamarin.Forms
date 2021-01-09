@@ -17,12 +17,12 @@ namespace Xamarin.Forms.Controls.Issues
 	{
 		protected override void Init()
 		{
-			Flyout = new ContentPage { Title = "Flyout", BackgroundColor = Color.Blue };
+			Flyout = new ContentPage { Title = "Flyout", BackgroundColor = Colors.Blue };
 			Detail = new NavigationPage(
 				new ContentPage
 				{
 					Title = "Detail",
-					BackgroundColor = Color.Red,
+					BackgroundColor = Colors.Red,
 					Content = new ContentView
 					{
 						Content = new Label

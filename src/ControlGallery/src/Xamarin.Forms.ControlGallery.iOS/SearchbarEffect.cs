@@ -17,7 +17,7 @@ namespace Xamarin.Forms.ControlGallery.iOS
 			if (_defaultBackColor == null)
 				_defaultBackColor = Control.BackgroundColor;
 
-			Control.BackgroundColor = Color.Cornsilk.ToUIColor();
+			Control.BackgroundColor = Colors.Cornsilk.ToUIColor();
 			
 			if (Control is UISearchBar searchBar)
 			{
@@ -27,7 +27,7 @@ namespace Xamarin.Forms.ControlGallery.iOS
 				if (_defaultBackImage == null)
 					_defaultBackImage = searchBar.BackgroundImage;
 
-				searchBar.BarTintColor = Color.Goldenrod.ToUIColor();
+				searchBar.BarTintColor = Colors.Goldenrod.ToUIColor();
 				searchBar.BackgroundImage = new UIImage();
 			}
 		}

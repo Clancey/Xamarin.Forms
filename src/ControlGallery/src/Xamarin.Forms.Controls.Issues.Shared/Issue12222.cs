@@ -53,7 +53,7 @@ namespace Xamarin.Forms.Controls.Issues
 			var backgroundButton = new Button
 			{
 				HeightRequest = 60,
-				BackgroundColor = Color.OrangeRed,
+				BackgroundColor = Colors.OrangeRed,
 				Text = "Button"
 			};
 
@@ -65,8 +65,8 @@ namespace Xamarin.Forms.Controls.Issues
 			var borderButton = new Button
 			{
 				HeightRequest = 60,
-				BackgroundColor = Color.OrangeRed,
-				BorderColor = Color.YellowGreen,
+				BackgroundColor = Colors.OrangeRed,
+				BorderColor = Colors.YellowGreen,
 				BorderWidth = 2,
 				Text = "Button"
 			};

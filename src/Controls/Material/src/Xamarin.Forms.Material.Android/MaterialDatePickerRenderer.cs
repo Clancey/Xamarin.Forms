@@ -48,7 +48,7 @@ namespace Xamarin.Forms.Material.Android
 		}
 
 		protected override void UpdateTextColor() => ApplyTheme();
-		void ApplyTheme() => _textInputLayout?.ApplyTheme(Element.TextColor, Color.Default);
+		void ApplyTheme() => _textInputLayout?.ApplyTheme(Element.TextColor, null);
 
 		AView ITabStop.TabStop => EditText;
 	}

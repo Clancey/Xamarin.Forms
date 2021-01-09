@@ -28,7 +28,7 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				Text = "Button",
 				HorizontalOptions = LayoutOptions.End,
-				BorderColor = Color.AliceBlue,
+				BorderColor = Colors.AliceBlue,
 				BorderWidth = 5,
 				AutomationId = "TestReady"
 			}, 0, 0);
@@ -37,7 +37,7 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				Text = "Button",
 				HorizontalOptions = LayoutOptions.Start,
-				BackgroundColor = Color.Gray
+				BackgroundColor = Colors.Gray
 			}, 1, 1);
 
 			grid.Children.Add(new Button
@@ -63,26 +63,26 @@ namespace Xamarin.Forms.Controls.Issues
 					new Button {
 						Text = "BorderWidth = 1, CornerRadius = [default],",
 						HorizontalOptions = LayoutOptions.Center,
-						BorderColor = Color.Red,
+						BorderColor = Colors.Red,
 						BorderWidth = 1,
 					},
 					new Button {
 						Text = "BorderWidth = 1, CornerRadius = 0",
 						HorizontalOptions = LayoutOptions.Center,
-						BackgroundColor = Color.Blue,
-						BorderColor = Color.Red,
+						BackgroundColor = Colors.Blue,
+						BorderColor = Colors.Red,
 						BorderWidth = 1,
 						CornerRadius = 0,
-						TextColor = Color.White
+						TextColor = Colors.White
 					},
 					new Button {
 						Text = "BorderWidth = 1, CornerRadius = 1",
 						HorizontalOptions = LayoutOptions.Center,
-						BackgroundColor = Color.Black,
-						BorderColor = Color.Red,
+						BackgroundColor = Colors.Black,
+						BorderColor = Colors.Red,
 						BorderWidth = 1,
 						CornerRadius = 1,
-						TextColor = Color.White
+						TextColor = Colors.White
 					}
 				},
 			};

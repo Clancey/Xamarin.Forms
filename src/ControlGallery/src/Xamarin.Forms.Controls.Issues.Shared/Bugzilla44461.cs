@@ -39,7 +39,7 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				Orientation = ScrollOrientation.Horizontal,
 				VerticalOptions = LayoutOptions.Center,
-				BackgroundColor = Color.Yellow,
+				BackgroundColor = Colors.Yellow,
 				HeightRequest = 50
 			};
 			grid.Children.Add(scrollView);

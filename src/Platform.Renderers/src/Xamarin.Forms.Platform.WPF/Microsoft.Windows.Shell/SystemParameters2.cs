@@ -83,7 +83,7 @@ namespace Microsoft.Windows.Shell
 
 		void _InitializeCaptionHeight()
 		{
-			Point ptCaption = new Point(0, NativeMethods.GetSystemMetrics(SM.CYCAPTION));
+			Point ptCaption = new PointF(0, NativeMethods.GetSystemMetrics(SM.CYCAPTION));
 			WindowCaptionHeight = DpiHelper.DevicePixelsToLogical(ptCaption).Y;
 		}
 
@@ -113,7 +113,7 @@ namespace Microsoft.Windows.Shell
 				NativeMethods.GetSystemMetrics(SM.CYSIZEFRAME));
 			Size frameSizeInDips = DpiHelper.DeviceSizeToLogical(frameSize);
 			int captionHeight = NativeMethods.GetSystemMetrics(SM.CYCAPTION);
-			double captionHeightInDips = DpiHelper.DevicePixelsToLogical(new Point(0, captionHeight)).Y;
+			double captionHeightInDips = DpiHelper.DevicePixelsToLogical(new PointF(0, captionHeight)).Y;
 			WindowNonClientFrameThickness = new Thickness(frameSizeInDips.Width, frameSizeInDips.Height + captionHeightInDips, frameSizeInDips.Width, frameSizeInDips.Height);
 		}
 

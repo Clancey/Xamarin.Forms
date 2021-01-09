@@ -21,7 +21,7 @@ namespace Xamarin.Forms.Platform.UAP.UnitTests
 					.Where(v => !(v is SearchBar))
 					.Where(v => !(v is Frame)))
 				{
-					element.BackgroundColor = Color.AliceBlue;
+					element.BackgroundColor = Colors.AliceBlue;
 					yield return CreateTestCase(element);
 				}
 			}
@@ -88,7 +88,7 @@ namespace Xamarin.Forms.Platform.UAP.UnitTests
 		[Description("Frame background color should match renderer background color")]
 		public async Task FrameBackgroundColorConsistent()
 		{
-			var frame = new Frame() { BackgroundColor = Color.Orange };
+			var frame = new Frame() { BackgroundColor = Colors.Orange };
 			var expectedColor = frame.BackgroundColor.ToWindowsColor();
 
 			var actualColor = await Device.InvokeOnMainThreadAsync(() =>
@@ -106,7 +106,7 @@ namespace Xamarin.Forms.Platform.UAP.UnitTests
 		[Test, Category("Color"), Category("BoxView")]
 		public async Task BoxViewColorConsistent() 
 		{
-			var box = new BoxView() { Color = Color.PapayaWhip };
+			var box = new BoxView() { Color = Colors.PapayaWhip };
 			var expectedColor = box.Color.ToWindowsColor();
 
 			var actualColor = await Device.InvokeOnMainThreadAsync(() =>

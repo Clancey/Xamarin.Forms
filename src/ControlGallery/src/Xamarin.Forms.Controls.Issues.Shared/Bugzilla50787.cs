@@ -27,7 +27,7 @@ namespace Xamarin.Forms.Controls.Issues
 	{
 		public ContentPage50787()
 		{
-			BackgroundColor = Color.FromRgb(Guid.NewGuid().GetHashCode() % 255, Guid.NewGuid().GetHashCode() % 255, Guid.NewGuid().GetHashCode() % 255);
+			BackgroundColor = Colors.FromRgb(Guid.NewGuid().GetHashCode() % 255, Guid.NewGuid().GetHashCode() % 255, Guid.NewGuid().GetHashCode() % 255);
 
 			var button = new Button
 			{
@@ -49,7 +49,7 @@ namespace Xamarin.Forms.Controls.Issues
 					new Label
 					{
 						Text = "As you push, a new page should slide in from the right. If you hit the back button or the navigation arrow, the previous animation should be reversed. Popping to root should slide in only the root page.",
-						TextColor = Color.White
+						TextColor = Colors.White
 					},
 					button,
 					button2

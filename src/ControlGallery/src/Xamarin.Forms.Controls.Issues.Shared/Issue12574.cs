@@ -50,7 +50,7 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				AutomationId = carouselAutomationId,
 				Margin = new Thickness(30),
-				BackgroundColor = Color.Yellow,
+				BackgroundColor = Colors.Yellow,
 				ItemTemplate = new DataTemplate(() =>
 				{
 

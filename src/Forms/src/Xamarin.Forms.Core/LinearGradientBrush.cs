@@ -1,4 +1,6 @@
-﻿namespace Xamarin.Forms
+﻿using System.Graphics;
+
+namespace Xamarin.Forms
 {
 	public class LinearGradientBrush : GradientBrush
 	{
@@ -12,7 +14,7 @@
 			GradientStops = gradientStops;
 		}
 
-		public LinearGradientBrush(GradientStopCollection gradientStops, Point startPoint, Point endPoint)
+		public LinearGradientBrush(GradientStopCollection gradientStops, PointF startPoint, PointF endPoint)
 		{
 			GradientStops = gradientStops;
 			StartPoint = startPoint;
@@ -29,20 +31,20 @@
 		}
 
 		public static readonly BindableProperty StartPointProperty = BindableProperty.Create(
-			nameof(StartPoint), typeof(Point), typeof(LinearGradientBrush), new Point(0, 0));
+			nameof(StartPoint), typeof(PointF), typeof(LinearGradientBrush), new PointF(0, 0));
 
-		public Point StartPoint
+		public PointF StartPoint
 		{
-			get => (Point)GetValue(StartPointProperty);
+			get => (PointF)GetValue(StartPointProperty);
 			set => SetValue(StartPointProperty, value);
 		}
 
 		public static readonly BindableProperty EndPointProperty = BindableProperty.Create(
-			nameof(EndPoint), typeof(Point), typeof(LinearGradientBrush), new Point(1, 1));
+			nameof(EndPoint), typeof(PointF), typeof(LinearGradientBrush), new PointF(1, 1));
 
-		public Point EndPoint
+		public PointF EndPoint
 		{
-			get => (Point)GetValue(EndPointProperty);
+			get => (PointF)GetValue(EndPointProperty);
 			set => SetValue(EndPointProperty, value);
 		}
 	}

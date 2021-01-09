@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Graphics;
 using System.Reflection;
 using System.Windows.Input;
 using Xamarin.Forms.Internals;
@@ -61,9 +62,9 @@ namespace Xamarin.Forms
 			set { SetValue(CornerRadiusProperty, value); }
 		}
 
-		public double BorderWidth
+		public float BorderWidth
 		{
-			get { return (double)GetValue(BorderWidthProperty); }
+			get { return (float)GetValue(BorderWidthProperty); }
 			set { SetValue(BorderWidthProperty, value); }
 		}
 
@@ -124,9 +125,9 @@ namespace Xamarin.Forms
 			}
 		}
 
-		protected override SizeRequest OnMeasure(double widthConstraint, double heightConstraint)
+		protected override SizeRequest OnMeasure(float widthConstraint, float heightConstraint)
 		{
-			SizeRequest desiredSize = base.OnMeasure(double.PositiveInfinity, double.PositiveInfinity);
+			SizeRequest desiredSize = base.OnMeasure(float.PositiveInfinity, float.PositiveInfinity);
 			return ImageElement.Measure(this, desiredSize, widthConstraint, heightConstraint);
 		}
 
@@ -136,7 +137,7 @@ namespace Xamarin.Forms
 
 		Color IBorderElement.BorderColorDefaultValue => (Color)BorderColorProperty.DefaultValue;
 
-		double IBorderElement.BorderWidthDefaultValue => (double)BorderWidthProperty.DefaultValue;
+		float IBorderElement.BorderWidthDefaultValue => (float)BorderWidthProperty.DefaultValue;
 
 		void IBorderElement.OnBorderColorPropertyChanged(Color oldValue, Color newValue)
 		{

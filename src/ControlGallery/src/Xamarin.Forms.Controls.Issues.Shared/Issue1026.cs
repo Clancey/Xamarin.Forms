@@ -18,7 +18,7 @@ namespace Xamarin.Forms.Controls.Issues
 			var scrollView =
 				new ScrollView
 				{
-					BackgroundColor = Color.FromHex("#dae1eb"),
+					BackgroundColor = Colors.FromHex("#dae1eb"),
 					Content =
 					new StackLayout
 					{
@@ -27,8 +27,8 @@ namespace Xamarin.Forms.Controls.Issues
 						Orientation = StackOrientation.Vertical,
 						Children = {
 						new Button {
-							BackgroundColor = Color.FromHex ("#006599"),
-							TextColor = Color.White,
+							BackgroundColor = Colors.FromHex ("#006599"),
+							TextColor = Colors.White,
 							Text = "Subscribe with LinkedIn",
 							WidthRequest = 262,
 							HorizontalOptions = LayoutOptions.Center,
@@ -70,8 +70,8 @@ namespace Xamarin.Forms.Controls.Issues
 							HorizontalOptions = LayoutOptions.Center,
 						},
 						new Button {
-							BackgroundColor = Color.FromHex ("#05addc"),
-							TextColor = Color.White,
+							BackgroundColor = Colors.FromHex ("#05addc"),
+							TextColor = Colors.White,
 							Text = "Create an account",
 							WidthRequest = 262,
 							HorizontalOptions = LayoutOptions.Center,
@@ -81,7 +81,7 @@ namespace Xamarin.Forms.Controls.Issues
 						},
 						new Label {
 							Text = "by subscribing, you accept the general conditions.",
-							TextColor = Color.White,
+							TextColor = Colors.White,
 #pragma warning disable 618
 							XAlign = TextAlignment.Center,
 #pragma warning restore 618

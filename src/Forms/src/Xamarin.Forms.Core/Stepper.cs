@@ -6,47 +6,47 @@ namespace Xamarin.Forms
 {
 	public class Stepper : View, IElementConfiguration<Stepper>
 	{
-		public static readonly BindableProperty MaximumProperty = BindableProperty.Create(nameof(Maximum), typeof(double), typeof(Stepper), 100.0,
-			validateValue: (bindable, value) => (double)value > ((Stepper)bindable).Minimum,
+		public static readonly BindableProperty MaximumProperty = BindableProperty.Create(nameof(Maximum), typeof(float), typeof(Stepper), 100.0,
+			validateValue: (bindable, value) => (float)value > ((Stepper)bindable).Minimum,
 			coerceValue: (bindable, value) =>
 			{
 				var stepper = (Stepper)bindable;
-				stepper.Value = stepper.Value.Clamp(stepper.Minimum, (double)value);
+				stepper.Value = stepper.Value.Clamp(stepper.Minimum, (float)value);
 				return value;
 			});
 
-		public static readonly BindableProperty MinimumProperty = BindableProperty.Create(nameof(Minimum), typeof(double), typeof(Stepper), 0.0,
-			validateValue: (bindable, value) => (double)value < ((Stepper)bindable).Maximum,
+		public static readonly BindableProperty MinimumProperty = BindableProperty.Create(nameof(Minimum), typeof(float), typeof(Stepper), 0.0,
+			validateValue: (bindable, value) => (float)value < ((Stepper)bindable).Maximum,
 			coerceValue: (bindable, value) =>
 			{
 				var stepper = (Stepper)bindable;
-				stepper.Value = stepper.Value.Clamp((double)value, stepper.Maximum);
+				stepper.Value = stepper.Value.Clamp((float)value, stepper.Maximum);
 				return value;
 			});
 
-		public static readonly BindableProperty ValueProperty = BindableProperty.Create(nameof(Value), typeof(double), typeof(Stepper), 0.0, BindingMode.TwoWay,
+		public static readonly BindableProperty ValueProperty = BindableProperty.Create(nameof(Value), typeof(float), typeof(Stepper), 0.0, BindingMode.TwoWay,
 			coerceValue: (bindable, value) =>
 			{
 				var stepper = (Stepper)bindable;
-				return Math.Round(((double)value), stepper.digits).Clamp(stepper.Minimum, stepper.Maximum);
+				return ((float)Math.Round((float)value, stepper.digits)).Clamp(stepper.Minimum, stepper.Maximum);
 			},
 			propertyChanged: (bindable, oldValue, newValue) =>
 			{
 				var stepper = (Stepper)bindable;
-				stepper.ValueChanged?.Invoke(stepper, new ValueChangedEventArgs((double)oldValue, (double)newValue));
+				stepper.ValueChanged?.Invoke(stepper, new ValueChangedEventArgs((float)oldValue, (float)newValue));
 			});
 
 		int digits = 4;
 		//'-log10(increment) + 4' as rounding digits gives us 4 significant decimal digits after the most significant one.
 		//If your increment uses more than 4 significant digits, you're holding it wrong.
-		public static readonly BindableProperty IncrementProperty = BindableProperty.Create(nameof(Increment), typeof(double), typeof(Stepper), 1.0,
-			propertyChanged: (b, o, n) => { ((Stepper)b).digits = (int)(-Math.Log10((double)n) + 4).Clamp(1, 15); });
+		public static readonly BindableProperty IncrementProperty = BindableProperty.Create(nameof(Increment), typeof(float), typeof(Stepper), 1.0,
+			propertyChanged: (b, o, n) => { ((Stepper)b).digits = (int)((float)-Math.Log10((float)n) + 4).Clamp(1, 15); });
 
 		readonly Lazy<PlatformConfigurationRegistry<Stepper>> _platformConfigurationRegistry;
 
 		public Stepper() => _platformConfigurationRegistry = new Lazy<PlatformConfigurationRegistry<Stepper>>(() => new PlatformConfigurationRegistry<Stepper>(this));
 
-		public Stepper(double min, double max, double val, double increment) : this()
+		public Stepper(float min, float max, float val, float increment) : this()
 		{
 			if (min >= max)
 				throw new ArgumentOutOfRangeException(nameof(min));
@@ -65,27 +65,27 @@ namespace Xamarin.Forms
 			Value = val.Clamp(min, max);
 		}
 
-		public double Increment
+		public float Increment
 		{
-			get => (double)GetValue(IncrementProperty);
+			get => (float)GetValue(IncrementProperty);
 			set => SetValue(IncrementProperty, value);
 		}
 
-		public double Maximum
+		public float Maximum
 		{
-			get => (double)GetValue(MaximumProperty);
+			get => (float)GetValue(MaximumProperty);
 			set => SetValue(MaximumProperty, value);
 		}
 
-		public double Minimum
+		public float Minimum
 		{
-			get => (double)GetValue(MinimumProperty);
+			get => (float)GetValue(MinimumProperty);
 			set => SetValue(MinimumProperty, value);
 		}
 
-		public double Value
+		public float Value
 		{
-			get => (double)GetValue(ValueProperty);
+			get => (float)GetValue(ValueProperty);
 			set => SetValue(ValueProperty, value);
 		}
 

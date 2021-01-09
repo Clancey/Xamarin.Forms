@@ -35,9 +35,9 @@ namespace Xamarin.Forms.Controls
 				ItemsSource = Enumerable.Range(0, 100).Select(i => new TextCellTest
 				{
 					Text = "Text " + i,
-					TextColor = i % 2 == 0 ? Color.Red : Color.Blue,
+					TextColor = i % 2 == 0 ? Colors.Red : Colors.Blue,
 					Detail = "Detail " + i,
-					DetailColor = i % 2 == 0 ? Color.Red : Color.Blue
+					DetailColor = i % 2 == 0 ? Colors.Red : Colors.Blue
 				}),
 				ItemTemplate = dataTemplate
 			};

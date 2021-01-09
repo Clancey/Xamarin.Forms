@@ -92,12 +92,12 @@ namespace Xamarin.Forms.Platform.Android
 			{
 				Color colorToSet = Element.Color;
 
-				if (colorToSet == Color.Default)
+				if (colorToSet == null)
 					colorToSet = Element.BackgroundColor;
 
 				if (_backgroundDrawable != null)
 				{
-					if (colorToSet != Color.Default)
+					if (colorToSet != null)
 						_backgroundDrawable.SetColor(colorToSet.ToAndroid());
 					else
 						_backgroundDrawable.SetColor(colorToSet.ToAndroid(Color.Transparent));
@@ -106,7 +106,7 @@ namespace Xamarin.Forms.Platform.Android
 				}
 				else
 				{
-					if (colorToSet == Color.Default)
+					if (colorToSet == null)
 						colorToSet = Element.BackgroundColor;
 
 					SetBackgroundColor(colorToSet.ToAndroid(Color.Transparent));

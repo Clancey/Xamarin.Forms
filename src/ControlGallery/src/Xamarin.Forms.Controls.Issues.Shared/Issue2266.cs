@@ -124,7 +124,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var menuList = new ListView
 			{
-				BackgroundColor = Color.Transparent,
+				BackgroundColor = Colors.Transparent,
 				ItemsSource = _pages,
 				ItemTemplate = new DataTemplate(typeof(TextCell))
 			};
@@ -132,7 +132,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			Flyout = new ContentPage
 			{
-				BackgroundColor = Color.FromHex("363636"),
+				BackgroundColor = Colors.FromHex("363636"),
 				Title = "Menu",
 				Content = menuList
 			};

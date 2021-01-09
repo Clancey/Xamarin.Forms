@@ -48,7 +48,7 @@ namespace Xamarin.Forms.Material.iOS
 
 		protected override void UpdateTintColor()
 		{
-			if (Element.Color != Color.Default)
+			if (Element.Color != null)
 			{
 				base.UpdateTintColor();
 				return;

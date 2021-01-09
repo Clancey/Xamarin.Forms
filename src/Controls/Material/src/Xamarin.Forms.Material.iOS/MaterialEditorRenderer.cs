@@ -103,9 +103,9 @@ namespace Xamarin.Forms.Material.iOS
 		}
 
 		string IMaterialEntryRenderer.Placeholder => Element?.Placeholder;
-		Color IMaterialEntryRenderer.TextColor => Element?.TextColor ?? Color.Default;
-		Color IMaterialEntryRenderer.PlaceholderColor => Element?.PlaceholderColor ?? Color.Default;
-		Color IMaterialEntryRenderer.BackgroundColor => Element?.BackgroundColor ?? Color.Default;
+		Color IMaterialEntryRenderer.TextColor => Element?.TextColor ?? null;
+		Color IMaterialEntryRenderer.PlaceholderColor => Element?.PlaceholderColor ?? null;
+		Color IMaterialEntryRenderer.BackgroundColor => Element?.BackgroundColor ?? null;
 		Brush IMaterialEntryRenderer.Background => Element?.Background ?? Brush.Default;
 	}
 }

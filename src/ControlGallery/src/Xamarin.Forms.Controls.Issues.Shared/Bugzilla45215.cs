@@ -85,7 +85,7 @@ namespace Xamarin.Forms.Controls.Issues
 				Children = { instructions, view() },
 				HorizontalOptions = LayoutOptions.Fill,
 				VerticalOptions = LayoutOptions.Fill,
-				BackgroundColor = Color.YellowGreen
+				BackgroundColor = Colors.YellowGreen
 			};
 
 			var sv = new ScrollView { Content = layout };
@@ -110,7 +110,7 @@ namespace Xamarin.Forms.Controls.Issues
 				Children = { instructions, buttonEntry, buttonEditor, buttonSearchBar },
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				VerticalOptions = LayoutOptions.FillAndExpand,
-				BackgroundColor = Color.YellowGreen
+				BackgroundColor = Colors.YellowGreen
 			};
 
 			return new ContentPage { Title = "ScrollView Tests", Content = layout };
@@ -147,7 +147,7 @@ namespace Xamarin.Forms.Controls.Issues
 				Children = { instructions, buttonEntry, buttonEditor, buttonSearchBar },
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				VerticalOptions = LayoutOptions.FillAndExpand,
-				BackgroundColor = Color.YellowGreen
+				BackgroundColor = Colors.YellowGreen
 			};
 
 			return new ContentPage { Title = "Back Nav Tests", Content = layout };

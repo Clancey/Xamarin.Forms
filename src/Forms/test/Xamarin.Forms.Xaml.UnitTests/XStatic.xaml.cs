@@ -16,7 +16,7 @@ namespace Xamarin.Forms.Xaml.UnitTests
 		public static string MockField = "Field";
 		public static string MockFieldRef = Icons.CLOSE;
 		public string InstanceProperty { get { return "InstanceProperty"; } }
-		public static readonly Color BackgroundColor = Color.Fuchsia;
+		public static readonly Color BackgroundColor = Colors.Fuchsia;
 
 		public class Nested
 		{

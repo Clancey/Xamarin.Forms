@@ -106,7 +106,7 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				IconImageSource = "bank.png";
 				Title = "Carsousel Memory Bug";
-				BackgroundColor = Color.FromHex("#000000");
+				BackgroundColor = Colors.FromHex("#000000");
 
 				Menu = new MenuListView();
 
@@ -115,7 +115,7 @@ namespace Xamarin.Forms.Controls.Issues
 					Padding = new Thickness(10, 36, 0, 5),
 					Content = new Label
 					{
-						TextColor = Color.FromHex("#FFFFFF"),
+						TextColor = Colors.FromHex("#FFFFFF"),
 						Text = "Carsousel Memory Bug",
 					}
 				};
@@ -141,7 +141,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 				ItemsSource = data;
 				VerticalOptions = LayoutOptions.FillAndExpand;
-				BackgroundColor = Color.Black;
+				BackgroundColor = Colors.Black;
 
 				var cell = new DataTemplate(typeof(ImageCell));
 				cell.SetBinding(TextCell.TextColorProperty, "TextColor");
@@ -163,7 +163,7 @@ namespace Xamarin.Forms.Controls.Issues
 					Title = "Carousel",
 					IconSource = "icon.png",
 					TargetType = typeof(HolderCarouselPages),
-					TextColor = Color.White
+					TextColor = Colors.White
 				});
 
 				Add(new MenuItem()
@@ -171,7 +171,7 @@ namespace Xamarin.Forms.Controls.Issues
 					Title = "Pic 1",
 					IconSource = "icon.png",
 					TargetType = typeof(Pic1),
-					TextColor = Color.White
+					TextColor = Colors.White
 				});
 
 				Add(new MenuItem()
@@ -179,7 +179,7 @@ namespace Xamarin.Forms.Controls.Issues
 					Title = "Pic 2",
 					IconSource = "icon.png",
 					TargetType = typeof(Pic1),
-					TextColor = Color.White
+					TextColor = Colors.White
 				});
 
 				Add(new MenuItem()
@@ -187,7 +187,7 @@ namespace Xamarin.Forms.Controls.Issues
 					Title = "Pic 3",
 					IconSource = "icon.png",
 					TargetType = typeof(Pic1),
-					TextColor = Color.White
+					TextColor = Colors.White
 				});
 			}
 		}

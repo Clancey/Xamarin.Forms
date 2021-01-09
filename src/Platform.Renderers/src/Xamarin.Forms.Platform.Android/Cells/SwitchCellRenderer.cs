@@ -92,7 +92,7 @@ namespace Xamarin.Forms.Platform.Android
 			{
 				if (switchCell.On)
 				{
-					if (switchCell.OnColor == Color.Default)
+					if (switchCell.OnColor == null)
 					{
 						aSwitch.TrackDrawable = _defaultTrackDrawable;
 					}

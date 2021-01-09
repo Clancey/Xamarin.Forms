@@ -36,7 +36,7 @@ namespace Xamarin.Forms.Controls.Issues
 				var template = new DataTemplate();
 				var content = new Grid
 				{
-					BackgroundColor = Color.LightGray
+					BackgroundColor = Colors.LightGray
 				};
 				var label = new Label();
 				label.SetBinding(Label.TextProperty, ".");

@@ -23,17 +23,17 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var instructions = new Label
 			{
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White,
 				Text = "Check/uncheck the CheckBox to enable or disable the SwipeView."
 			};
 
-			var swipeItem = new SwipeItem { BackgroundColor = Color.Red, Text = "Test", IconImageSource = "coffee.png" };
+			var swipeItem = new SwipeItem { BackgroundColor = Colors.Red, Text = "Test", IconImageSource = "coffee.png" };
 
 			var swipeView = new SwipeView
 			{
 				HeightRequest = 60,
-				BackgroundColor = Color.LightGray,
+				BackgroundColor = Colors.LightGray,
 				LeftItems = new SwipeItems(new List<SwipeItem> { swipeItem })
 				{
 					Mode = SwipeMode.Execute
@@ -43,7 +43,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var content = new Grid
 			{
-				BackgroundColor = Color.LightGoldenrodYellow
+				BackgroundColor = Colors.LightGoldenrodYellow
 			};
 
 			var info = new Label

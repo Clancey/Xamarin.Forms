@@ -20,7 +20,7 @@ namespace Xamarin.Forms.Platform.WPF
 			{
 				return framework.UpdateDependencyColor(dp, (Color)values[1]);
 			}
-			return Color.Transparent.ToBrush();
+			return Colors.Transparent.ToBrush();
 		}
 
 		public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)

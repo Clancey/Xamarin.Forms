@@ -122,8 +122,8 @@ namespace Xamarin.Forms.Platform.Tizen
 
 		void IAppearanceObserver.OnAppearanceChanged(ShellAppearance appearance)
 		{
-			var backgroundColor = (appearance as IShellAppearanceElement)?.EffectiveTabBarBackgroundColor ?? Color.Default;
-			var foregroundColor = appearance?.ForegroundColor ?? Color.Default;
+			var backgroundColor = (appearance as IShellAppearanceElement)?.EffectiveTabBarBackgroundColor ?? null;
+			var foregroundColor = appearance?.ForegroundColor ?? null;
 			ToolbarBackgroundColor = backgroundColor.IsDefault ? ShellRenderer.DefaultBackgroundColor.ToNative() : backgroundColor.ToNative();
 			ToolbarForegroundColor = foregroundColor.IsDefault ? ShellRenderer.DefaultForegroundColor.ToNative() : foregroundColor.ToNative();
 		}

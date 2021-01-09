@@ -281,7 +281,7 @@ namespace Xamarin.Forms.Platform.UWP
 
 		protected virtual void UpdateFlyoutBackgroundColor()
 		{
-			if (_shell.FlyoutBackgroundColor == Color.Default)
+			if (_shell.FlyoutBackgroundColor == null)
 			{
 				object color = null;
 				if (IsPaneOpen)

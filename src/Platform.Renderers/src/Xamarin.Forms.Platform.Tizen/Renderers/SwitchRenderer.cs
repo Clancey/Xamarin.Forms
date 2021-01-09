@@ -70,7 +70,7 @@ namespace Xamarin.Forms.Platform.Tizen
 		protected virtual void UpdateColor()
 		{
 			var color = SpecificSwitch.GetColor(Element);
-			if (color != Color.Default)
+			if (color != null)
 			{
 				Control.Color = color.ToNative();
 			}

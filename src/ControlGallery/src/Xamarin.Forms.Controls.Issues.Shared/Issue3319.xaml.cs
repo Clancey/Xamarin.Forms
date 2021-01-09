@@ -42,7 +42,7 @@ namespace Xamarin.Forms.Controls.Issues
 			BindingContext = new FavoritesViewModel();
 
 			listView.SeparatorVisibility = SeparatorVisibility.Default;
-			listView.SeparatorColor = Color.FromHex("#ababab");
+			listView.SeparatorColor = Colors.FromHex("#ababab");
 
 			listView.ItemTapped += (sender, args) =>
 			{

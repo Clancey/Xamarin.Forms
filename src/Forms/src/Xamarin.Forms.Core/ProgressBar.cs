@@ -1,4 +1,5 @@
 using System;
+using System.Graphics;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Xamarin.Forms.Internals;
@@ -7,9 +8,9 @@ namespace Xamarin.Forms
 {
 	public class ProgressBar : View, IElementConfiguration<ProgressBar>
 	{
-		public static readonly BindableProperty ProgressColorProperty = BindableProperty.Create(nameof(ProgressColor), typeof(Color), typeof(ProgressBar), Color.Default);
+		public static readonly BindableProperty ProgressColorProperty = BindableProperty.Create(nameof(ProgressColor), typeof(Color), typeof(ProgressBar), null);
 
-		public static readonly BindableProperty ProgressProperty = BindableProperty.Create(nameof(Progress), typeof(double), typeof(ProgressBar), 0d, coerceValue: (bo, v) => ((double)v).Clamp(0, 1));
+		public static readonly BindableProperty ProgressProperty = BindableProperty.Create(nameof(Progress), typeof(float), typeof(ProgressBar), 0d, coerceValue: (bo, v) => ((float)v).Clamp(0, 1));
 
 		protected override bool TabStopDefaultValueCreator() => false;
 
@@ -26,13 +27,13 @@ namespace Xamarin.Forms
 			set { SetValue(ProgressColorProperty, value); }
 		}
 
-		public double Progress
+		public float Progress
 		{
-			get { return (double)GetValue(ProgressProperty); }
+			get { return (float)GetValue(ProgressProperty); }
 			set { SetValue(ProgressProperty, value); }
 		}
 
-		public Task<bool> ProgressTo(double value, uint length, Easing easing)
+		public Task<bool> ProgressTo(float value, uint length, Easing easing)
 		{
 			var tcs = new TaskCompletionSource<bool>();
 

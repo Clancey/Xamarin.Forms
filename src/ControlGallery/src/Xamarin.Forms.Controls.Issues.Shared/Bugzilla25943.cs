@@ -53,7 +53,7 @@ namespace Xamarin.Forms.Controls.Issues
 				HeightRequest = 100,
 				Orientation = StackOrientation.Horizontal,
 				HorizontalOptions = LayoutOptions.Fill,
-				BackgroundColor = Color.AntiqueWhite,
+				BackgroundColor = Colors.AntiqueWhite,
 				Children =
 				{
 					new Label
@@ -70,7 +70,7 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				AutomationId = OuterLayout,
 				Orientation = StackOrientation.Vertical,
-				BackgroundColor = Color.Brown,
+				BackgroundColor = Colors.Brown,
 				Children =
 				{
 					_result,

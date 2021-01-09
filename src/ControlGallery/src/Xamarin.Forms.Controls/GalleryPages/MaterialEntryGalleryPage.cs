@@ -25,22 +25,22 @@ namespace Xamarin.Forms.Controls.GalleryPages
 					new Entry()
 					{
 						Placeholder = "Green Placeholder",
-						PlaceholderColor = Color.Green,
+						PlaceholderColor = Colors.Green,
 					},
 					new Entry()
 					{
 						Placeholder = "Purple Placeholder",
-						PlaceholderColor = Color.Purple,
+						PlaceholderColor = Colors.Purple,
 					},
 					new Entry()
 					{
 						Text = "Green TextColor",
-						TextColor = Color.Green
+						TextColor = Colors.Green
 					},
 					new Entry()
 					{
 						Text = "Purple TextColor",
-						TextColor = Color.Purple
+						TextColor = Colors.Purple
 					},
 					new Entry()
 					{
@@ -51,12 +51,12 @@ namespace Xamarin.Forms.Controls.GalleryPages
 					new Entry()
 					{
 						Text = "Yellow BackgroundColor",
-						BackgroundColor = Color.Yellow
+						BackgroundColor = Colors.Yellow
 					},
 					new Entry()
 					{
 						Text = "Cyan BackgroundColor",
-						BackgroundColor = Color.Cyan
+						BackgroundColor = Colors.Cyan
 					},
 					new Button()
 					{

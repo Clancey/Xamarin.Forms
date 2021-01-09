@@ -78,7 +78,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries.CarouselVi
 				ItemsSource = viewModel.Items,
 				ItemsLayout = itemsLayout,
 				ItemTemplate = itemTemplate,
-				BackgroundColor = Color.LightGray,
+				BackgroundColor = Colors.LightGray,
 				PeekAreaInsets = new Thickness(0, 0, 100, 0),
 				Margin = new Thickness(12),
 				AutomationId = "TheCarouselView"

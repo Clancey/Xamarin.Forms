@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Graphics;
 using System.Linq;
 
 namespace Xamarin.Forms.Shapes
@@ -10,7 +11,7 @@ namespace Xamarin.Forms.Shapes
 		{
 			string[] points = value.Split(new char[] { ' ', ',' });
 			var pointCollection = new PointCollection();
-			double x = 0;
+			float x = 0;
 			bool hasX = false;
 
 			foreach (string point in points)
@@ -18,7 +19,7 @@ namespace Xamarin.Forms.Shapes
 				if (string.IsNullOrWhiteSpace(point))
 					continue;
 
-				if (double.TryParse(point, NumberStyles.Number, CultureInfo.InvariantCulture, out double number))
+				if (float.TryParse(point, NumberStyles.Number, CultureInfo.InvariantCulture, out var number))
 				{
 					if (!hasX)
 					{
@@ -27,7 +28,7 @@ namespace Xamarin.Forms.Shapes
 					}
 					else
 					{
-						pointCollection.Add(new Point(x, number));
+						pointCollection.Add(new PointF(x, number));
 						hasX = false;
 					}
 				}

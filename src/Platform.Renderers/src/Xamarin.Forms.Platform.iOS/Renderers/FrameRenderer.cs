@@ -73,7 +73,7 @@ namespace Xamarin.Forms.Platform.iOS
 			_actualView.Layer.CornerRadius = cornerRadius;
 			_actualView.Layer.MasksToBounds = cornerRadius > 0;
 
-			if (Element.BackgroundColor == Color.Default)
+			if (Element.BackgroundColor == null)
 				_actualView.Layer.BackgroundColor = ColorExtensions.BackgroundColor.CGColor;
 			else
 			{
@@ -97,7 +97,7 @@ namespace Xamarin.Forms.Platform.iOS
 				}
 			}
 
-			if (Element.BorderColor == Color.Default)
+			if (Element.BorderColor == null)
 				_actualView.Layer.BorderColor = UIColor.Clear.CGColor;
 			else
 			{

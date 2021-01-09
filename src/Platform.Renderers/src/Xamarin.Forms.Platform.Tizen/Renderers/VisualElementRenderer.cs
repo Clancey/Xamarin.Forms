@@ -735,7 +735,7 @@ namespace Xamarin.Forms.Platform.Tizen
 
 		static Point ComputeAbsolutePoint(VisualElement e)
 		{
-			return new Point(ComputeAbsoluteX(e), ComputeAbsoluteY(e));
+			return new PointF(ComputeAbsoluteX(e), ComputeAbsoluteY(e));
 		}
 
 		/// <summary>

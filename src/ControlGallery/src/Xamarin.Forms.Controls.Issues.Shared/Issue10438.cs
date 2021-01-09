@@ -20,7 +20,7 @@ namespace Xamarin.Forms.Controls.Issues
 	{
 		public Issue10438()
 		{
-			BarBackgroundColor = Color.Cornsilk;
+			BarBackgroundColor = Colors.Cornsilk;
 			On<iOS>().SetPrefersLargeTitles(true);
 
 			var page = new ContentPage

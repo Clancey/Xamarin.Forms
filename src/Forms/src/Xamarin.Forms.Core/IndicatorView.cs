@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Specialized;
+using System.Graphics;
 
 namespace Xamarin.Forms
 {
@@ -24,11 +25,11 @@ namespace Xamarin.Forms
 
 		public static readonly BindableProperty HideSingleProperty = BindableProperty.Create(nameof(HideSingle), typeof(bool), typeof(IndicatorView), true);
 
-		public static readonly BindableProperty IndicatorColorProperty = BindableProperty.Create(nameof(IndicatorColor), typeof(Color), typeof(IndicatorView), Color.Default);
+		public static readonly BindableProperty IndicatorColorProperty = BindableProperty.Create(nameof(IndicatorColor), typeof(Color), typeof(IndicatorView), null);
 
-		public static readonly BindableProperty SelectedIndicatorColorProperty = BindableProperty.Create(nameof(SelectedIndicatorColor), typeof(Color), typeof(IndicatorView), Color.Default);
+		public static readonly BindableProperty SelectedIndicatorColorProperty = BindableProperty.Create(nameof(SelectedIndicatorColor), typeof(Color), typeof(IndicatorView), null);
 
-		public static readonly BindableProperty IndicatorSizeProperty = BindableProperty.Create(nameof(IndicatorSize), typeof(double), typeof(IndicatorView), 6.0);
+		public static readonly BindableProperty IndicatorSizeProperty = BindableProperty.Create(nameof(IndicatorSize), typeof(float), typeof(IndicatorView), 6.0);
 
 		public static readonly BindableProperty ItemsSourceProperty = BindableProperty.Create(nameof(ItemsSource), typeof(IEnumerable), typeof(IndicatorView), null, propertyChanged: (bindable, oldValue, newValue)
 			=> ((IndicatorView)bindable).ResetItemsSource((IEnumerable)oldValue));
@@ -94,9 +95,9 @@ namespace Xamarin.Forms
 			set => SetValue(SelectedIndicatorColorProperty, value);
 		}
 
-		public double IndicatorSize
+		public float IndicatorSize
 		{
-			get => (double)GetValue(IndicatorSizeProperty);
+			get => (float)GetValue(IndicatorSizeProperty);
 			set => SetValue(IndicatorSizeProperty, value);
 		}
 
@@ -107,7 +108,7 @@ namespace Xamarin.Forms
 		}
 
 
-		protected override SizeRequest OnMeasure(double widthConstraint, double heightConstraint)
+		protected override SizeRequest OnMeasure(float widthConstraint, float heightConstraint)
 		{
 			var baseRequest = base.OnMeasure(widthConstraint, heightConstraint);
 
@@ -116,7 +117,7 @@ namespace Xamarin.Forms
 
 			var defaultSize = IndicatorSize + DefaultPadding + DefaultPadding + 1;
 			var items = Count;
-			var sizeRequest = new SizeRequest(new Size(items * defaultSize, IndicatorSize), new Size(10, 10));
+			var sizeRequest = new SizeRequest(new SizeF(items * defaultSize, IndicatorSize), new SizeF(10, 10));
 			return sizeRequest;
 		}
 

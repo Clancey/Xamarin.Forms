@@ -77,8 +77,8 @@ namespace Xamarin.Forms.Controls.Issues
 				FontSize = 6,
 				HorizontalTextAlignment = TextAlignment.Center,
 				VerticalTextAlignment = TextAlignment.Center,
-				BackgroundColor = Color.Accent,
-				TextColor = Color.White
+				BackgroundColor = Colors.Accent,
+				TextColor = Colors.White
 			};
 
 			Content = new StackLayout { Children = { testRunRef, nextButton, _PerformanceTracker } };

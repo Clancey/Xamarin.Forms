@@ -30,7 +30,7 @@ namespace Xamarin.Forms.Controls.Issues
 				Children =
 				{
 					new Label { Text = $"This is page {number}" },
-					new BoxView { Color = Color.Red }
+					new BoxView { Color = Colors.Red }
 				}
 			};
 

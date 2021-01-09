@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System.Graphics;
+using Xamarin.Forms;
 
 namespace Xamarin.Platform
 {
@@ -12,6 +13,6 @@ namespace Xamarin.Platform
 
 		TextTransform TextTransform { get; }
 
-		double CharacterSpacing { get; }
+		float CharacterSpacing { get; }
 	}
 }

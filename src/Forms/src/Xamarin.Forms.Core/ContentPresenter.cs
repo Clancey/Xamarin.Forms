@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.Graphics;
 
 namespace Xamarin.Forms
 {
@@ -20,23 +21,23 @@ namespace Xamarin.Forms
 			set { SetValue(ContentProperty, value); }
 		}
 
-		protected override void LayoutChildren(double x, double y, double width, double height)
+		protected override void LayoutChildren(float x, float y, float width, float height)
 		{
 			for (var i = 0; i < LogicalChildrenInternal.Count; i++)
 			{
 				Element element = LogicalChildrenInternal[i];
 				var child = element as View;
 				if (child != null)
-					LayoutChildIntoBoundingRegion(child, new Rectangle(x, y, width, height));
+					LayoutChildIntoBoundingRegion(child, new RectangleF(x, y, width, height));
 			}
 		}
 
 		[Obsolete("OnSizeRequest is obsolete as of version 2.2.0. Please use OnMeasure instead.")]
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		protected override SizeRequest OnSizeRequest(double widthConstraint, double heightConstraint)
+		protected override SizeRequest OnSizeRequest(float widthConstraint, float heightConstraint)
 		{
-			double widthRequest = WidthRequest;
-			double heightRequest = HeightRequest;
+			float widthRequest = WidthRequest;
+			float heightRequest = HeightRequest;
 			var childRequest = new SizeRequest();
 			if ((widthRequest == -1 || heightRequest == -1) && Content != null)
 			{
@@ -45,7 +46,7 @@ namespace Xamarin.Forms
 
 			return new SizeRequest
 			{
-				Request = new Size { Width = widthRequest != -1 ? widthRequest : childRequest.Request.Width, Height = heightRequest != -1 ? heightRequest : childRequest.Request.Height },
+				Request = new SizeF { Width = widthRequest != -1 ? widthRequest : childRequest.Request.Width, Height = heightRequest != -1 ? heightRequest : childRequest.Request.Height },
 				Minimum = childRequest.Minimum
 			};
 		}

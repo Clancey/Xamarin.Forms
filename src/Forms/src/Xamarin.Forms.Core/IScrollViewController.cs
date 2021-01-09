@@ -1,17 +1,18 @@
 using System;
+using System.Graphics;
 
 namespace Xamarin.Forms
 {
 	public interface IScrollViewController : ILayoutController
 	{
-		Point GetScrollPositionForElement(VisualElement item, ScrollToPosition position);
+		PointF GetScrollPositionForElement(VisualElement item, ScrollToPosition position);
 
 		event EventHandler<ScrollToRequestedEventArgs> ScrollToRequested;
 
 		void SendScrollFinished();
 
-		void SetScrolledPosition(double x, double y);
+		void SetScrolledPosition(float x, float y);
 
-		Rectangle LayoutAreaOverride { get; set; }
+		RectangleF LayoutAreaOverride { get; set; }
 	}
 }

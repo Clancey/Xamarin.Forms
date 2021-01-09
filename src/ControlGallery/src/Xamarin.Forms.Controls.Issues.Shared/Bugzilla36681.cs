@@ -64,7 +64,7 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			PickerPage pickerPage = new PickerPage { Title = "Picker Page" };
 			Children.Add(pickerPage);
-			Children.Add(new ContentPage { BackgroundColor = Color.Blue, Title = "Page 2" });
+			Children.Add(new ContentPage { BackgroundColor = Colors.Blue, Title = "Page 2" });
 		}
 
 #if UITEST && __ANDROID__

@@ -42,7 +42,7 @@ namespace Xamarin.Forms.Platform.MacOS
 			var bgColor = ColorExtensions.ControlBackgroundColor;
 			var element = cell.RealParent as VisualElement;
 			if (element != null)
-				bgColor = element.BackgroundColor == Color.Default ? bgColor : element.BackgroundColor.ToNSColor();
+				bgColor = element.BackgroundColor == null ? bgColor : element.BackgroundColor.ToNSColor();
 
 			UpdateBackgroundChild(cell, bgColor);
 

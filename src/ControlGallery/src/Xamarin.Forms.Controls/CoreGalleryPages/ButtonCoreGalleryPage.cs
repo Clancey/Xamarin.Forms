@@ -29,8 +29,8 @@ namespace Xamarin.Forms.Controls
 				new Button
 				{
 					Text = "BorderColor",
-					BackgroundColor = Color.Transparent,
-					BorderColor = Color.Red,
+					BackgroundColor = Colors.Transparent,
+					BorderColor = Colors.Red,
 					BorderWidth = 1,
 				}
 			);
@@ -39,8 +39,8 @@ namespace Xamarin.Forms.Controls
 				new Button
 				{
 					Text = "BorderRadius",
-					BackgroundColor = Color.Transparent,
-					BorderColor = Color.Red,
+					BackgroundColor = Colors.Transparent,
+					BorderColor = Colors.Red,
 #pragma warning disable 0618
 					BorderRadius = 20,
 #pragma warning restore
@@ -52,8 +52,8 @@ namespace Xamarin.Forms.Controls
 				new Button
 				{
 					Text = "BorderWidth",
-					BackgroundColor = Color.Transparent,
-					BorderColor = Color.Red,
+					BackgroundColor = Colors.Transparent,
+					BorderColor = Colors.Red,
 					BorderWidth = 15,
 				}
 			);
@@ -109,7 +109,7 @@ namespace Xamarin.Forms.Controls
 				new Button
 				{
 					Text = "TextColor",
-					TextColor = Color.Pink
+					TextColor = Colors.Pink
 				}
 			);
 
@@ -117,7 +117,7 @@ namespace Xamarin.Forms.Controls
 				new Button
 				{
 					Text = "Padding",
-					BackgroundColor = Color.Red,
+					BackgroundColor = Colors.Red,
 					Padding = new Thickness(20, 30, 60, 15)
 				}
 			);

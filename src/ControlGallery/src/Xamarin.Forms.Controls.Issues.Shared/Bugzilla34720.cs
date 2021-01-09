@@ -25,7 +25,7 @@ namespace Xamarin.Forms.Controls.Issues
 				//RowHeight = SampleViewCell.RowHeight,
 				HasUnevenRows = true,
 				ItemTemplate = new DataTemplate(typeof(SampleViewCell)),
-				BackgroundColor = Color.FromHex("E0E0E0"),
+				BackgroundColor = Colors.FromHex("E0E0E0"),
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 			};
@@ -144,7 +144,7 @@ namespace Xamarin.Forms.Controls.Issues
 						Padding = new Thickness(5, 5, 5, 1),
 						RowSpacing = 1,
 						ColumnSpacing = 1,
-						BackgroundColor = Color.FromHex("FAFAFA"),
+						BackgroundColor = Colors.FromHex("FAFAFA"),
 						RowDefinitions = {
 							new RowDefinition{ Height = new GridLength (1.25, GridUnitType.Star) },
 							new RowDefinition{ Height = new GridLength (0.8, GridUnitType.Star) },
@@ -208,7 +208,7 @@ namespace Xamarin.Forms.Controls.Issues
 				{
 					var overallGrid = new Grid
 					{
-						BackgroundColor = Color.FromHex("FAFAFA"),
+						BackgroundColor = Colors.FromHex("FAFAFA"),
 						HorizontalOptions = LayoutOptions.FillAndExpand,
 						VerticalOptions = LayoutOptions.CenterAndExpand,
 						ColumnDefinitions = {

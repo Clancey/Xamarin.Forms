@@ -274,7 +274,7 @@ namespace Xamarin.Forms.Platform.MacOS
 		NSColor GetBackgroundColor()
 		{
 			var backgroundNSColor = NSColor.Clear;
-			if (Navigation != null && Navigation.BarBackgroundColor != Color.Default)
+			if (Navigation != null && Navigation.BarBackgroundColor != null)
 				backgroundNSColor = Navigation.BarBackgroundColor.ToNSColor();
 			return backgroundNSColor;
 		}
@@ -282,7 +282,7 @@ namespace Xamarin.Forms.Platform.MacOS
 		NSColor GetTitleColor()
 		{
 			var titleNSColor = NSColor.Black;
-			if (Navigation != null && Navigation?.BarTextColor != Color.Default)
+			if (Navigation != null && Navigation?.BarTextColor != null)
 				titleNSColor = Navigation.BarTextColor.ToNSColor();
 
 			return titleNSColor;

@@ -43,7 +43,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.SwipeViewGalleries
 
 			var deleteSwipeItem = new SwipeItem
 			{
-				BackgroundColor = Color.Orange,
+				BackgroundColor = Colors.Orange,
 				IconImageSource = "calculator.png",
 				Text = "SwipeItem1"
 			};
@@ -59,7 +59,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.SwipeViewGalleries
 
 			var swipeContent = new Grid
 			{
-				BackgroundColor = Color.Gray
+				BackgroundColor = Colors.Gray
 			};
 
 			var swipeLabel = new Label
@@ -93,7 +93,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.SwipeViewGalleries
 
 				var newSwipeItem = new SwipeItem
 				{
-					BackgroundColor = Color.FromRgb(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255)),
+					BackgroundColor = Colors.FromRgb(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255)),
 					IconImageSource = "calculator.png",
 					Text = $"SwipeItem{swipeItemsCount + 1}"
 				};

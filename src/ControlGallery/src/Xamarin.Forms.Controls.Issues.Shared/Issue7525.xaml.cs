@@ -18,7 +18,7 @@ namespace Xamarin.Forms.Controls.Issues
 	{
 		public Test1View()
 		{
-			BackgroundColor = Color.Red;
+			BackgroundColor = Colors.Red;
 		}
 	}
 	[Preserve(AllMembers = true)]
@@ -26,7 +26,7 @@ namespace Xamarin.Forms.Controls.Issues
 	{
 		public Test2View()
 		{
-			BackgroundColor = Color.Blue;
+			BackgroundColor = Colors.Blue;
 		}
 	}
 	[Preserve(AllMembers = true)]
@@ -34,7 +34,7 @@ namespace Xamarin.Forms.Controls.Issues
 	{
 		public Test3View()
 		{
-			BackgroundColor = Color.Green;
+			BackgroundColor = Colors.Green;
 		}
 	}
 

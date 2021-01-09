@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Graphics;
 
 namespace Xamarin.Forms.Shapes
 {
@@ -13,20 +14,20 @@ namespace Xamarin.Forms.Shapes
 	[TypeConverter(typeof(MatrixTypeConverter))]
 	public struct Matrix
 	{
-		internal double _m11;
-		internal double _m12;
-		internal double _m21;
-		internal double _m22;
-		internal double _offsetX;
-		internal double _offsetY;
+		internal float _m11;
+		internal float _m12;
+		internal float _m21;
+		internal float _m22;
+		internal float _offsetX;
+		internal float _offsetY;
 		internal MatrixTypes _type;
 		internal int _padding;
 
 		static Matrix IdentityMatrix = CreateIdentity();
 
-		public Matrix(double m11, double m12,
-					  double m21, double m22,
-					  double offsetX, double offsetY)
+		public Matrix(float m11, float m12,
+					  float m21, float m22,
+					  float offsetX, float offsetY)
 		{
 			_m11 = m11;
 			_m12 = m12;
@@ -78,67 +79,67 @@ namespace Xamarin.Forms.Shapes
 			this = matrix * this;
 		}
 
-		public void Rotate(double angle)
+		public void Rotate(float angle)
 		{
-			angle %= 360.0;
-			this *= CreateRotationRadians(angle * (Math.PI / 180.0));
+			angle %= 360f;
+			this *= CreateRotationRadians(angle * (float)(Math.PI / 180.0));
 		}
 
-		public void RotatePrepend(double angle)
+		public void RotatePrepend(float angle)
 		{
-			angle %= 360.0;
-			this = CreateRotationRadians(angle * (Math.PI / 180.0)) * this;
+			angle %= 360f;
+			this = CreateRotationRadians(angle * (float)(Math.PI / 180.0)) * this;
 		}
 
-		public void RotateAt(double angle, double centerX, double centerY)
+		public void RotateAt(float angle, float centerX, float centerY)
 		{
-			angle %= 360.0;
-			this *= CreateRotationRadians(angle * (Math.PI / 180.0), centerX, centerY);
+			angle %= 360f;
+			this *= CreateRotationRadians(angle * (float)(Math.PI / 180.0), centerX, centerY);
 		}
 
-		public void RotateAtPrepend(double angle, double centerX, double centerY)
+		public void RotateAtPrepend(float angle, float centerX, float centerY)
 		{
-			angle %= 360.0;
-			this = CreateRotationRadians(angle * (Math.PI / 180.0), centerX, centerY) * this;
+			angle %= 360f;
+			this = CreateRotationRadians(angle * (float)(Math.PI / 180.0), centerX, centerY) * this;
 		}
 
-		public void Scale(double scaleX, double scaleY)
+		public void Scale(float scaleX, float scaleY)
 		{
 			this *= CreateScaling(scaleX, scaleY);
 		}
 
-		public void ScalePrepend(double scaleX, double scaleY)
+		public void ScalePrepend(float scaleX, float scaleY)
 		{
 			this = CreateScaling(scaleX, scaleY) * this;
 		}
 
-		public void ScaleAt(double scaleX, double scaleY, double centerX, double centerY)
+		public void ScaleAt(float scaleX, float scaleY, float centerX, float centerY)
 		{
 			this *= CreateScaling(scaleX, scaleY, centerX, centerY);
 		}
 
-		public void ScaleAtPrepend(double scaleX, double scaleY, double centerX, double centerY)
+		public void ScaleAtPrepend(float scaleX, float scaleY, float centerX, float centerY)
 		{
 			this = CreateScaling(scaleX, scaleY, centerX, centerY) * this;
 		}
 
-		public void Skew(double skewX, double skewY)
+		public void Skew(float skewX, float skewY)
+		{
+			skewX %= 360f;
+			skewY %= 360f;
+			this *= CreateSkewRadians(skewX * (float)(Math.PI / 180.0),
+									  skewY * (float)(Math.PI / 180.0));
+		}
+
+		public void SkewPrepend(float skewX, float skewY)
 		{
 			skewX %= 360;
 			skewY %= 360;
-			this *= CreateSkewRadians(skewX * (Math.PI / 180.0),
-									  skewY * (Math.PI / 180.0));
+			this = CreateSkewRadians(skewX * (float)(Math.PI / 180.0),
+									 skewY * (float)(Math.PI / 180.0)) * this;
 		}
 
-		public void SkewPrepend(double skewX, double skewY)
-		{
-			skewX %= 360;
-			skewY %= 360;
-			this = CreateSkewRadians(skewX * (Math.PI / 180.0),
-									 skewY * (Math.PI / 180.0)) * this;
-		}
-
-		public void Translate(double offsetX, double offsetY)
+		public void Translate(float offsetX, float offsetY)
 		{
 			//
 			// / a b 0 \   / 1 0 0 \    / a      b       0 \
@@ -169,36 +170,36 @@ namespace Xamarin.Forms.Shapes
 			}
 		}
 
-		public void TranslatePrepend(double offsetX, double offsetY)
+		public void TranslatePrepend(float offsetX, float offsetY)
 		{
 			this = CreateTranslation(offsetX, offsetY) * this;
 		}
 
-		public Point Transform(Point point)
+		public PointF Transform(PointF point)
 		{
-			Point newPoint = point;
+			PointF newPoint = point;
 
-			double x = newPoint.X;
-			double y = newPoint.Y;
+			var x = newPoint.X;
+			var y = newPoint.Y;
 
 			MultiplyPoint(ref x, ref y);
 
-			return new Point(x, y);
+			return new PointF(x, y);
 		}
 
-		public void Transform(Point[] points)
+		public void Transform(PointF[] points)
 		{
 			if (points != null)
 			{
 				for (int i = 0; i < points.Length; i++)
 				{
 					var point = points[i];
-					double x = point.X;
-					double y = point.Y;
+					var x = point.X;
+					var y = point.Y;
 
 					MultiplyPoint(ref x, ref y);
 
-					points[i] = new Point(x, y);
+					points[i] = new PointF(x, y);
 				}
 			}
 		}
@@ -207,8 +208,8 @@ namespace Xamarin.Forms.Shapes
 		{
 			Vector2 newVector = vector;
 
-			double x = newVector.X;
-			double y = newVector.Y;
+			float x = newVector.X;
+			float y = newVector.Y;
 
 			MultiplyVector(ref x, ref y);
 
@@ -222,8 +223,8 @@ namespace Xamarin.Forms.Shapes
 				for (int i = 0; i < vectors.Length; i++)
 				{
 					var vector = vectors[i];
-					double x = vector.X;
-					double y = vector.Y;
+					float x = vector.X;
+					float y = vector.Y;
 
 					MultiplyVector(ref x, ref y);
 
@@ -232,7 +233,7 @@ namespace Xamarin.Forms.Shapes
 			}
 		}
 
-		public double Determinant
+		public float Determinant
 		{
 			get
 			{
@@ -240,7 +241,7 @@ namespace Xamarin.Forms.Shapes
 				{
 					case MatrixTypes.Identity:
 					case MatrixTypes.Translation:
-						return 1.0;
+						return 1;
 					case MatrixTypes.Scaling:
 					case MatrixTypes.Scaling | MatrixTypes.Translation:
 						return _m11 * _m22;
@@ -254,7 +255,7 @@ namespace Xamarin.Forms.Shapes
 
 		public void Invert()
 		{
-			double determinant = Determinant;
+			float determinant = Determinant;
 
 			if (determinant == 0)
 			{
@@ -267,8 +268,8 @@ namespace Xamarin.Forms.Shapes
 					break;
 				case MatrixTypes.Scaling:
 					{
-						_m11 = 1.0 / _m11;
-						_m22 = 1.0 / _m22;
+						_m11 = 1f / _m11;
+						_m22 = 1f / _m22;
 					}
 					break;
 				case MatrixTypes.Translation:
@@ -277,15 +278,15 @@ namespace Xamarin.Forms.Shapes
 					break;
 				case MatrixTypes.Scaling | MatrixTypes.Translation:
 					{
-						_m11 = 1.0 / _m11;
-						_m22 = 1.0 / _m22;
+						_m11 = 1 / _m11;
+						_m22 = 1 / _m22;
 						_offsetX = -_offsetX * _m11;
 						_offsetY = -_offsetY * _m22;
 					}
 					break;
 				default:
 					{
-						double invdet = 1.0 / determinant;
+						float invdet = 1 / determinant;
 						SetMatrix(_m22 * invdet,
 								  -_m12 * invdet,
 								  -_m21 * invdet,
@@ -298,13 +299,13 @@ namespace Xamarin.Forms.Shapes
 			}
 		}
 
-		public double M11
+		public float M11
 		{
 			get
 			{
 				if (_type == MatrixTypes.Identity)
 				{
-					return 1.0;
+					return 1;
 				}
 				else
 				{
@@ -331,7 +332,7 @@ namespace Xamarin.Forms.Shapes
 			}
 		}
 
-		public double M12
+		public float M12
 		{
 			get
 			{
@@ -361,7 +362,7 @@ namespace Xamarin.Forms.Shapes
 			}
 		}
 
-		public double M21
+		public float M21
 		{
 			get
 			{
@@ -391,13 +392,13 @@ namespace Xamarin.Forms.Shapes
 			}
 		}
 
-		public double M22
+		public float M22
 		{
 			get
 			{
 				if (_type == MatrixTypes.Identity)
 				{
-					return 1.0;
+					return 1;
 				}
 				else
 				{
@@ -424,7 +425,7 @@ namespace Xamarin.Forms.Shapes
 			}
 		}
 
-		public double OffsetX
+		public float OffsetX
 		{
 			get
 			{
@@ -457,7 +458,7 @@ namespace Xamarin.Forms.Shapes
 			}
 		}
 
-		public double OffsetY
+		public float OffsetY
 		{
 			get
 			{
@@ -490,7 +491,7 @@ namespace Xamarin.Forms.Shapes
 			}
 		}
 
-		internal void MultiplyVector(ref double x, ref double y)
+		internal void MultiplyVector(ref float x, ref float y)
 		{
 			switch (_type)
 			{
@@ -503,8 +504,8 @@ namespace Xamarin.Forms.Shapes
 					y *= _m22;
 					break;
 				default:
-					double xadd = y * _m21;
-					double yadd = x * _m12;
+					float xadd = y * _m21;
+					float yadd = x * _m12;
 					x *= _m11;
 					x += xadd;
 					y *= _m22;
@@ -513,7 +514,7 @@ namespace Xamarin.Forms.Shapes
 			}
 		}
 
-		internal void MultiplyPoint(ref double x, ref double y)
+		internal void MultiplyPoint(ref float x, ref float y)
 		{
 			switch (_type)
 			{
@@ -534,8 +535,8 @@ namespace Xamarin.Forms.Shapes
 					y += _offsetY;
 					break;
 				default:
-					double xadd = y * _m21 + _offsetX;
-					double yadd = x * _m12 + _offsetY;
+					float xadd = y * _m21 + _offsetX;
+					float yadd = x * _m12 + _offsetY;
 					x *= _m11;
 					x += xadd;
 					y *= _m22;
@@ -544,19 +545,19 @@ namespace Xamarin.Forms.Shapes
 			}
 		}
 
-		internal static Matrix CreateRotationRadians(double angle)
+		internal static Matrix CreateRotationRadians(float angle)
 		{
 			return CreateRotationRadians(angle, 0, 0);
 		}
 
-		internal static Matrix CreateRotationRadians(double angle, double centerX, double centerY)
+		internal static Matrix CreateRotationRadians(float angle, float centerX, float centerY)
 		{
 			Matrix matrix = new Matrix();
 
-			double sin = Math.Sin(angle);
-			double cos = Math.Cos(angle);
-			double dx = (centerX * (1.0 - cos)) + (centerY * sin);
-			double dy = (centerY * (1.0 - cos)) - (centerX * sin);
+			float sin = (float)Math.Sin(angle);
+			float cos = (float)Math.Cos(angle);
+			float dx = (float)(centerX * (1.0 - cos)) + (centerY * sin);
+			float dy = (float)(centerY * (1.0 - cos)) - (centerX * sin);
 
 			matrix.SetMatrix(cos, sin,
 							  -sin, cos,
@@ -566,7 +567,7 @@ namespace Xamarin.Forms.Shapes
 			return matrix;
 		}
 
-		internal static Matrix CreateScaling(double scaleX, double scaleY, double centerX, double centerY)
+		internal static Matrix CreateScaling(float scaleX, float scaleY, float centerX, float centerY)
 		{
 			Matrix matrix = new Matrix();
 
@@ -578,7 +579,7 @@ namespace Xamarin.Forms.Shapes
 			return matrix;
 		}
 
-		internal static Matrix CreateScaling(double scaleX, double scaleY)
+		internal static Matrix CreateScaling(float scaleX, float scaleY)
 		{
 			Matrix matrix = new Matrix();
 			matrix.SetMatrix(scaleX, 0,
@@ -588,13 +589,13 @@ namespace Xamarin.Forms.Shapes
 			return matrix;
 		}
 
-		internal static Matrix CreateSkewRadians(double skewX, double skewY)
+		internal static Matrix CreateSkewRadians(float skewX, float skewY)
 		{
 			Matrix matrix = new Matrix();
 
-			matrix.SetMatrix(1.0, Math.Tan(skewY),
-							 Math.Tan(skewX), 1.0,
-							 0.0, 0.0,
+			matrix.SetMatrix(1, (float)Math.Tan(skewY),
+							 (float)Math.Tan(skewX), 1,
+							 0, 0,
 							 MatrixTypes.Unknown);
 
 			return matrix;
@@ -605,7 +606,7 @@ namespace Xamarin.Forms.Shapes
 		/// </summary>
 		/// <param name='offsetX'>The offset in X</param>
 		/// <param name='offsetY'>The offset in Y</param>
-		internal static Matrix CreateTranslation(double offsetX, double offsetY)
+		internal static Matrix CreateTranslation(float offsetX, float offsetY)
 		{
 			Matrix matrix = new Matrix();
 
@@ -627,9 +628,9 @@ namespace Xamarin.Forms.Shapes
 			return matrix;
 		}
 
-		void SetMatrix(double m11, double m12,
-							   double m21, double m22,
-							   double offsetX, double offsetY,
+		void SetMatrix(float m11, float m12,
+							   float m21, float m22,
+							   float offsetX, float offsetY,
 							   MatrixTypes type)
 		{
 			_m11 = m11;
@@ -671,7 +672,7 @@ namespace Xamarin.Forms.Shapes
 
 	internal static class MatrixUtil
 	{
-		internal static void TransformRect(ref Xamarin.Forms.Rectangle rect, ref Matrix matrix)
+		internal static void TransformRect(ref RectangleF rect, ref Matrix matrix)
 		{
 			if (rect.IsEmpty)
 			{
@@ -718,10 +719,10 @@ namespace Xamarin.Forms.Shapes
 
 			if (matrixType == MatrixTypes.Unknown)
 			{
-				Point point0 = matrix.Transform(new Point(rect.Right, rect.Top));
-				Point point1 = matrix.Transform(new Point(rect.Right, rect.Top));
-				Point point2 = matrix.Transform(new Point(rect.Right, rect.Bottom));
-				Point point3 = matrix.Transform(new Point(rect.Left, rect.Bottom));
+				var point0 = matrix.Transform(new PointF(rect.Right, rect.Top));
+				var point1 = matrix.Transform(new PointF(rect.Right, rect.Top));
+				var point2 = matrix.Transform(new PointF(rect.Right, rect.Bottom));
+				var point3 = matrix.Transform(new PointF(rect.Left, rect.Bottom));
 
 				rect.X = Math.Min(Math.Min(point0.X, point1.X), Math.Min(point2.X, point3.X));
 				rect.Y = Math.Min(Math.Min(point0.Y, point1.Y), Math.Min(point2.Y, point3.Y));
@@ -763,8 +764,8 @@ namespace Xamarin.Forms.Shapes
 			// Check for the first value being a translate
 			if (type1 == MatrixTypes.Translation)
 			{
-				double offsetX = matrix1._offsetX;
-				double offsetY = matrix1._offsetY;
+				float offsetX = matrix1._offsetX;
+				float offsetY = matrix1._offsetY;
 
 				matrix1 = matrix2;
 
@@ -837,7 +838,7 @@ namespace Xamarin.Forms.Shapes
 			}
 		}
 
-		internal static void PrependOffset(ref Matrix matrix, double offsetX, double offsetY)
+		internal static void PrependOffset(ref Matrix matrix, float offsetX, float offsetY)
 		{
 			if (matrix._type == MatrixTypes.Identity)
 			{

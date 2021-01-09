@@ -29,7 +29,7 @@ namespace Xamarin.Forms.Controls.Issues
 			var frame = new Frame()
 			{
 				Visual = VisualMarker.Material,
-				BackgroundColor = Color.White,
+				BackgroundColor = Colors.White,
 				AutomationId = "NoContentFrame"
 			};
 

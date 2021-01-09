@@ -212,8 +212,8 @@ namespace Xamarin.Forms.Platform.Tizen
 			{
 				MinimumWidthRequest = 200,
 				HorizontalOptions = LayoutOptions.FillAndExpand,
-				BackgroundColor = Color.FromRgb(250, 250, 250),
-				TextColor = Color.Black,
+				BackgroundColor = Colors.FromRgb(250, 250, 250),
+				TextColor = Colors.Black,
 				Keyboard = args.Keyboard,
 			};
 
@@ -234,7 +234,7 @@ namespace Xamarin.Forms.Platform.Tizen
 					new Label
 					{
 						LineBreakMode = LineBreakMode.CharacterWrap,
-						TextColor = Device.Idiom == TargetIdiom.Watch ? Color.White : Color.Accent,
+						TextColor = Device.Idiom == TargetIdiom.Watch ? Colors.White : Colors.Accent,
 						Text = args.Message,
 						HorizontalOptions = LayoutOptions.FillAndExpand,
 						HorizontalTextAlignment = TextAlignment.Center,

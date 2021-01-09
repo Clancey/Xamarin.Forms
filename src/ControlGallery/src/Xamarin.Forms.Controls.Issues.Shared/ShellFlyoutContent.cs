@@ -150,7 +150,7 @@ namespace Xamarin.Forms.Controls.Issues
 								{
 									FlyoutContent = null;
 								}),
-								TextColor = Color.White
+								TextColor = Colors.White
 							});
 						}
 					}

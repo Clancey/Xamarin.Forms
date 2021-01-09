@@ -67,9 +67,9 @@ namespace Xamarin.Forms
 
 		[Obsolete("OnSizeRequest is obsolete as of version 2.2.0. Please use OnMeasure instead.")]
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		protected override SizeRequest OnSizeRequest(double widthConstraint, double heightConstraint)
+		protected override SizeRequest OnSizeRequest(float widthConstraint, float heightConstraint)
 		{
-			SizeRequest desiredSize = base.OnSizeRequest(double.PositiveInfinity, double.PositiveInfinity);
+			SizeRequest desiredSize = base.OnSizeRequest(float.PositiveInfinity, float.PositiveInfinity);
 			return ImageElement.Measure(this, desiredSize, widthConstraint, heightConstraint);
 		}
 

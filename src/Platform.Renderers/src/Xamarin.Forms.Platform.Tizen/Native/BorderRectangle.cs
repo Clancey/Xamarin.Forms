@@ -35,7 +35,7 @@ namespace Xamarin.Forms.Platform.Tizen.Native
 			radius[2] = Math.Min(bottomLeft, maxR);
 			radius[3] = Math.Min(bottomRight, maxR);
 
-			Point first = new Point(-1, -1);
+			Point first = new PointF(-1, -1);
 			for (int i = 0; i <= radius[0]; i++)
 			{
 				int x = i;

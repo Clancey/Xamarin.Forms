@@ -80,17 +80,17 @@ namespace Xamarin.Forms.Controls.Issues
 				{
 					if (!_flag)
 					{
-						grid.BackgroundColor = Color.Red;
-						contentView.BackgroundColor = Color.Blue;
-						stackLayout.BackgroundColor = Color.Yellow;
-						relativeLayout.BackgroundColor = Color.Green;
+						grid.BackgroundColor = Colors.Red;
+						contentView.BackgroundColor = Colors.Blue;
+						stackLayout.BackgroundColor = Colors.Yellow;
+						relativeLayout.BackgroundColor = Colors.Green;
 					}
 					else
 					{
-						grid.BackgroundColor = Color.Default;
-						contentView.BackgroundColor = Color.Default;
-						stackLayout.BackgroundColor = Color.Default;
-						relativeLayout.BackgroundColor = Color.Default;
+						grid.BackgroundColor = null;
+						contentView.BackgroundColor = null;
+						stackLayout.BackgroundColor = null;
+						relativeLayout.BackgroundColor = null;
 					}
 
 					_flag = !_flag;

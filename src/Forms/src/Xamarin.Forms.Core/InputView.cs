@@ -1,4 +1,5 @@
 using System;
+using System.Graphics;
 using Xamarin.Forms.Internals;
 
 namespace Xamarin.Forms
@@ -79,9 +80,9 @@ namespace Xamarin.Forms
 			set => SetValue(TextColorProperty, value);
 		}
 
-		public double CharacterSpacing
+		public float CharacterSpacing
 		{
-			get => (double)GetValue(CharacterSpacingProperty);
+			get => (float)GetValue(CharacterSpacingProperty);
 			set => SetValue(CharacterSpacingProperty, value);
 		}
 
@@ -102,7 +103,7 @@ namespace Xamarin.Forms
 		{
 		}
 
-		void ITextElement.OnCharacterSpacingPropertyChanged(double oldValue, double newValue)
+		void ITextElement.OnCharacterSpacingPropertyChanged(float oldValue, float newValue)
 		{
 			InvalidateMeasure();
 		}

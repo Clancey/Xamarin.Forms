@@ -192,7 +192,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 				Label title = new Label
 				{
-					TextColor = Color.White,
+					TextColor = Colors.White,
 					VerticalOptions = LayoutOptions.Center
 				};
 
@@ -202,7 +202,7 @@ namespace Xamarin.Forms.Controls.Issues
 				{
 					HorizontalOptions = LayoutOptions.FillAndExpand,
 					HeightRequest = 23,
-					BackgroundColor = Color.Pink,
+					BackgroundColor = Colors.Pink,
 					Orientation = StackOrientation.Horizontal,
 					Padding = new Thickness(Sizes.GroupingSidePadding, 0, 0, 0),
 					Children = { title }

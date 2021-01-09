@@ -28,7 +28,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			ArcSegment arcSegment = new ArcSegment
 			{
-				Point = new Point(10, 100),
+				Point = new PointF(10, 100),
 				Size = new Size(100, 50),
 				RotationAngle = angle,
 				IsLargeArc = isLargeArc
@@ -63,7 +63,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void TestRoundLineGeometryConstruction()
 		{
-			var lineGeometry = new LineGeometry(new Point(0, 0), new Point(100, 100));
+			var lineGeometry = new LineGeometry(new PointF(0, 0), new PointF(100, 100));
 
 			Assert.IsNotNull(lineGeometry);
 			Assert.AreEqual(0, lineGeometry.StartPoint.X);
@@ -75,7 +75,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void TestEllipseGeometryConstruction()
 		{
-			var ellipseGeometry = new EllipseGeometry(new Point(50, 50), 10, 20);
+			var ellipseGeometry = new EllipseGeometry(new PointF(50, 50), 10, 20);
 
 			Assert.IsNotNull(ellipseGeometry);
 			Assert.AreEqual(50, ellipseGeometry.Center.X);

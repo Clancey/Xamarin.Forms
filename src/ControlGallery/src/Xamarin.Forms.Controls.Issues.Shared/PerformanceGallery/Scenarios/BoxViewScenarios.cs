@@ -10,7 +10,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.PerformanceGallery.Scenarios
 		public BoxViewScenario1()
 		: base("[BoxView] Color set in ctor")
 		{
-			View = new BoxView { Color = Color.Red };
+			View = new BoxView { Color = Colors.Red };
 		}
 	}
 }

@@ -28,8 +28,8 @@ namespace Xamarin.Forms.Controls.Issues
 			var instructions = new Label
 			{
 				Padding = 12,
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White,
 				Text = "Go to system settings and change the theme. Go back to the App to see that only one theme has been registered. Repeat the process again. When you return to the App you must have registered two theme changes."
 			};
 

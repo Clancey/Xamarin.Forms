@@ -20,7 +20,7 @@ namespace Xamarin.Forms.Controls.Issues
 			Content = new Slider
 			{
 				AutomationId = "SliderId",
-				BackgroundColor = Color.Blue,
+				BackgroundColor = Colors.Blue,
 				Maximum = 255,
 				Minimum = 0,
 			};

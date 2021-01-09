@@ -19,7 +19,7 @@ namespace Xamarin.Forms.Controls.Issues
 						rightSwipeFired,
 						leftSwipeFired
 					},
-				BackgroundColor = Color.Green
+				BackgroundColor = Colors.Green
 			};
 
 			int right = 0;

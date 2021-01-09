@@ -27,7 +27,7 @@
 
 		internal static bool IsDefaultOrTransparent(this Color color)
 		{
-			return color == Color.Transparent || color == Color.Default;
+			return color == Colors.Transparent || color == null;
 		}
 
 	}

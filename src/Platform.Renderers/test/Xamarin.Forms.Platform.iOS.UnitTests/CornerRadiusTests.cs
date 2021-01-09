@@ -15,7 +15,7 @@ namespace Xamarin.Forms.Platform.iOS.UnitTests
 				HeightRequest = 100,
 				WidthRequest = 200,
 				CornerRadius = 15,
-				BackgroundColor = Color.CadetBlue
+				BackgroundColor = Colors.CadetBlue
 			};
 
 			await CheckCornerRadius(boxView);
@@ -24,7 +24,7 @@ namespace Xamarin.Forms.Platform.iOS.UnitTests
 		[Test, Category("CornerRadius"), Category("Button")]
 		public async Task ButtonCornerRadius()
 		{
-			var backgroundColor = Color.CadetBlue;
+			var backgroundColor = Colors.CadetBlue;
 
 			var button = new Button
 			{
@@ -40,7 +40,7 @@ namespace Xamarin.Forms.Platform.iOS.UnitTests
 		[Test, Category("CornerRadius"), Category("Frame")]
 		public async Task FrameCornerRadius()
 		{
-			var backgroundColor = Color.CadetBlue;
+			var backgroundColor = Colors.CadetBlue;
 
 			var frame = new Frame
 			{
@@ -48,7 +48,7 @@ namespace Xamarin.Forms.Platform.iOS.UnitTests
 				WidthRequest = 200,
 				CornerRadius = 40,
 				BackgroundColor = backgroundColor,
-				BorderColor = Color.Brown,
+				BorderColor = Colors.Brown,
 				Content = new Label { Text = "Hey" }
 			};
 
@@ -58,7 +58,7 @@ namespace Xamarin.Forms.Platform.iOS.UnitTests
 		[Test, Category("CornerRadius"), Category("ImageButton")]
 		public async Task ImageButtonCornerRadius()
 		{
-			var backgroundColor = Color.CadetBlue;
+			var backgroundColor = Colors.CadetBlue;
 
 			var button = new ImageButton
 			{

@@ -9,7 +9,7 @@ namespace Xamarin.Forms
 	{
 		public override object ConvertFromInvariantString(string value)
 		{
-			if (value != null && double.TryParse(value, NumberStyles.Number, CultureInfo.InvariantCulture, out var size))
+			if (value != null && float.TryParse(value, NumberStyles.Number, CultureInfo.InvariantCulture, out var size))
 				return Constraint.Constant(size);
 
 			throw new InvalidOperationException(string.Format("Cannot convert \"{0}\" into {1}", value, typeof(Constraint)));

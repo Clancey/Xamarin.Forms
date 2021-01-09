@@ -44,8 +44,8 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var button = new Button
 			{
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White,
 				Text = "Quickly Double Tap This Button",
 				HeightRequest = 200,
 				HorizontalOptions = LayoutOptions.Center,

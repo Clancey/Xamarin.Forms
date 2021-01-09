@@ -149,7 +149,7 @@ namespace Xamarin.Forms.Platform.MacOS
 			var backgroundColor = model.BackgroundColor;
 			var background = model.Background;
 
-			var shouldDrawImage = backgroundColor == Color.Default && background == null;
+			var shouldDrawImage = backgroundColor == null && background == null;
 
 			if (!shouldDrawImage)
 			{
@@ -177,7 +177,7 @@ namespace Xamarin.Forms.Platform.MacOS
 			var uiButton = Control;
 			var button = Element;
 
-			if (button.BorderColor != Color.Default)
+			if (button.BorderColor != null)
 				uiButton.Layer.BorderColor = button.BorderColor.ToCGColor();
 
 			uiButton.Layer.BorderWidth = (float)button.BorderWidth;
@@ -210,7 +210,7 @@ namespace Xamarin.Forms.Platform.MacOS
 		{
 			var color = Element.TextColor;
 			var text = Internals.TextTransformUtilites.GetTransformedText(Element.Text, Element.TextTransform) ?? "";
-			if (color == Color.Default)
+			if (color == null)
 			{
 				Control.Title = text;
 			}
@@ -234,8 +234,8 @@ namespace Xamarin.Forms.Platform.MacOS
 
 		void UpdateBordered()
 		{
-			bool hasBackground = Element.BackgroundColor != Color.Default || !Brush.IsNullOrEmpty(Element.Background);
-			bool hasBorder = Element.BorderColor != Color.Default && Element.BorderWidth > 0;
+			bool hasBackground = Element.BackgroundColor != null || !Brush.IsNullOrEmpty(Element.Background);
+			bool hasBorder = Element.BorderColor != null && Element.BorderWidth > 0;
 			Control.Bordered = !(hasBackground || hasBorder);
 		}
 

@@ -16,9 +16,9 @@ namespace Xamarin.Forms
 				return GridLength.Auto;
 			if (string.Compare(value, "*", StringComparison.OrdinalIgnoreCase) == 0)
 				return new GridLength(1, GridUnitType.Star);
-			if (value.EndsWith("*", StringComparison.Ordinal) && double.TryParse(value.Substring(0, value.Length - 1), NumberStyles.Number, CultureInfo.InvariantCulture, out var length))
+			if (value.EndsWith("*", StringComparison.Ordinal) && float.TryParse(value.Substring(0, value.Length - 1), NumberStyles.Number, CultureInfo.InvariantCulture, out var length))
 				return new GridLength(length, GridUnitType.Star);
-			if (double.TryParse(value, NumberStyles.Number, CultureInfo.InvariantCulture, out length))
+			if (float.TryParse(value, NumberStyles.Number, CultureInfo.InvariantCulture, out length))
 				return new GridLength(length);
 
 			throw new FormatException();

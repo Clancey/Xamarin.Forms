@@ -15,9 +15,9 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			_listView = new ListView
 			{
-				BackgroundColor = Color.Transparent,
+				BackgroundColor = Colors.Transparent,
 				IsPullToRefreshEnabled = true,
-				RefreshControlColor = Color.Cyan
+				RefreshControlColor = Colors.Cyan
 			};
 			_listView.Refreshing += HandleListViewRefreshing;
 			Content = new StackLayout()

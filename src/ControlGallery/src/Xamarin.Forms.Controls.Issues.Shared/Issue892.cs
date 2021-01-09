@@ -145,7 +145,7 @@ namespace Xamarin.Forms.Controls.Issues
 		public NestedNavPageRootView(string pageTitle)
 		{
 			Title = pageTitle;
-			BackgroundColor = Color.FromHex("#666");
+			BackgroundColor = Colors.FromHex("#666");
 
 			var label = new Label
 			{
@@ -180,7 +180,7 @@ namespace Xamarin.Forms.Controls.Issues
 		public NestedNavPageOneLevel()
 		{
 			Title = "One pushed";
-			BackgroundColor = Color.FromHex("#999");
+			BackgroundColor = Colors.FromHex("#999");
 
 			var label = new Label
 			{
@@ -209,18 +209,18 @@ namespace Xamarin.Forms.Controls.Issues
 		public NestedNavPageTwoLevels()
 		{
 			Title = "Two pushed";
-			BackgroundColor = Color.FromHex("#BBB");
+			BackgroundColor = Colors.FromHex("#BBB");
 
 			var label = new Label
 			{
 				Text = "Not Tapped",
-				TextColor = Color.Red
+				TextColor = Colors.Red
 			};
 
 			var label2 = new Label
 			{
 				Text = "You are at the end of the line",
-				TextColor = Color.Red
+				TextColor = Colors.Red
 			};
 
 			Content = new StackLayout

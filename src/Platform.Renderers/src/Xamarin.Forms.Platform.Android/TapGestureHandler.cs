@@ -22,7 +22,7 @@ namespace Xamarin.Forms.Platform.Android
 			if (TapGestureRecognizers(2).Any())
 				return;
 
-			OnTap(1, new Point(-1, -1));
+			OnTap(1, new PointF(-1, -1));
 		}
 
 		public bool OnTap(int count, Point point)

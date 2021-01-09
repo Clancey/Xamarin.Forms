@@ -28,8 +28,8 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			var instructions = new Label
 			{
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White,
 				Text = "Press the DownloadFile button and then the Animate button. Verify that the gif is downloaded and animate without problems."
 			};
 

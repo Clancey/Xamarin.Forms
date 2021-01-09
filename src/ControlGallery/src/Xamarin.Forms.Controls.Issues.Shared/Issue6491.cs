@@ -23,7 +23,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var button = new Button
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				WidthRequest = 200
 			};
 

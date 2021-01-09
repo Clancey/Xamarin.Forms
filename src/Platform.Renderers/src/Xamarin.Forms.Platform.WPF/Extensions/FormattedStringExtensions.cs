@@ -19,10 +19,10 @@ namespace Xamarin.Forms.Platform.WPF
 		{
 			var run = new Run { Text = span.Text ?? string.Empty };
 
-			if (span.TextColor != Color.Default)
+			if (span.TextColor != null)
 				run.Foreground = span.TextColor.ToBrush();
 
-			if (span.BackgroundColor != Color.Default)
+			if (span.BackgroundColor != null)
 				run.Background = span.BackgroundColor.ToBrush();
 
 			if (!span.IsDefault())

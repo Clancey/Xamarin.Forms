@@ -45,8 +45,8 @@ namespace Xamarin.Forms.Controls.GalleryPages
 
 			_polygon = new Maps.Polygon
 			{
-				StrokeColor = Color.FromHex("#002868"),
-				FillColor = Color.FromHex("#88BF0A30"),
+				StrokeColor = Colors.FromHex("#002868"),
+				FillColor = Colors.FromHex("#88BF0A30"),
 				Geopath =
 				{
 					new Position(37, -102.05),
@@ -60,8 +60,8 @@ namespace Xamarin.Forms.Controls.GalleryPages
 			{
 				Center = new Position(42.352364, -71.067177),
 				Radius = Distance.FromMiles(100.0),
-				StrokeColor = Color.FromRgb(31, 174, 206),
-				FillColor = Color.FromRgba(31, 174, 206, 127)
+				StrokeColor = Colors.FromRgb(31, 174, 206),
+				FillColor = Colors.FromRgba(31, 174, 206, 127)
 			};
 
 			Map.MapElements.Add(_polyline);

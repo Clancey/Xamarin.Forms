@@ -181,7 +181,7 @@ namespace Xamarin.Forms.Platform.UWP
 
 			if (cancelColor.IsDefault)
 			{
-				BrushHelpers.UpdateColor(Color.Default, ref _defaultDeleteButtonBackgroundColorBrush,
+				BrushHelpers.UpdateColor(null, ref _defaultDeleteButtonBackgroundColorBrush,
 					() => _cancelButton.BackgroundBrush, brush => _cancelButton.BackgroundBrush = brush);
 			}
 			else

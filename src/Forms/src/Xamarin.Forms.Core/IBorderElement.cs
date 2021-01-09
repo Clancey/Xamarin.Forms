@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Graphics;
 
 namespace Xamarin.Forms
 {
@@ -10,7 +11,7 @@ namespace Xamarin.Forms
 		int CornerRadius { get; }
 		Color BackgroundColor { get; }
 		Brush Background { get; }
-		double BorderWidth { get; }
+		float BorderWidth { get; }
 
 		//note to implementor: but implement the methods explicitly
 		void OnBorderColorPropertyChanged(Color oldValue, Color newValue);
@@ -21,6 +22,6 @@ namespace Xamarin.Forms
 		bool IsBorderWidthSet();
 		int CornerRadiusDefaultValue { get; }
 		Color BorderColorDefaultValue { get; }
-		double BorderWidthDefaultValue { get; }
+		float BorderWidthDefaultValue { get; }
 	}
 }

@@ -32,7 +32,7 @@ namespace Xamarin.Forms.Controls.Issues
 				{
 					new Grid
 					{
-						Children = { new Label() { Text = ClickMeString, BackgroundColor = Color.Blue, HeightRequest = 300, WidthRequest = 300 } }
+						Children = { new Label() { Text = ClickMeString, BackgroundColor = Colors.Blue, HeightRequest = 300, WidthRequest = 300 } }
 					}
 				}
 			};

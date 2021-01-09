@@ -105,7 +105,7 @@ namespace Xamarin.Forms.Platform.UWP
 		{
 			if (Control != null)
 			{
-				if (Element.MinimumTrackColor == Color.Default)
+				if (Element.MinimumTrackColor == null)
 					Control.Foreground = defaultforegroundcolor;
 				else
 					Control.Foreground = Element.MinimumTrackColor.ToBrush();
@@ -116,7 +116,7 @@ namespace Xamarin.Forms.Platform.UWP
 		{
 			if (Control != null)
 			{
-				if (Element.MaximumTrackColor == Color.Default)
+				if (Element.MaximumTrackColor == null)
 					Control.Background = defaultbackgroundcolor;
 				else
 					Control.Background = Element.MaximumTrackColor.ToBrush();

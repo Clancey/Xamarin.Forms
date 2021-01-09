@@ -1,10 +1,11 @@
 using System;
 using System.Globalization;
+using System.Graphics;
 
 namespace Xamarin.Forms
 {
 	[Xaml.ProvideCompiled("Xamarin.Forms.Core.XamlC.RectangleTypeConverter")]
-	[Xaml.TypeConversion(typeof(Rectangle))]
+	[Xaml.TypeConversion(typeof(RectangleF))]
 	public class RectangleTypeConverter : TypeConverter
 	{
 		public override object ConvertFromInvariantString(string value)
@@ -13,19 +14,19 @@ namespace Xamarin.Forms
 			{
 				string[] xywh = value.Split(',');
 				if (xywh.Length == 4
-					&& double.TryParse(xywh[0], NumberStyles.Number, CultureInfo.InvariantCulture, out double x)
-					&& double.TryParse(xywh[1], NumberStyles.Number, CultureInfo.InvariantCulture, out double y)
-					&& double.TryParse(xywh[2], NumberStyles.Number, CultureInfo.InvariantCulture, out double w)
-					&& double.TryParse(xywh[3], NumberStyles.Number, CultureInfo.InvariantCulture, out double h))
-					return new Rectangle(x, y, w, h);
+					&& float.TryParse(xywh[0], NumberStyles.Number, CultureInfo.InvariantCulture, out float x)
+					&& float.TryParse(xywh[1], NumberStyles.Number, CultureInfo.InvariantCulture, out float y)
+					&& float.TryParse(xywh[2], NumberStyles.Number, CultureInfo.InvariantCulture, out float w)
+					&& float.TryParse(xywh[3], NumberStyles.Number, CultureInfo.InvariantCulture, out float h))
+					return new RectangleF(x, y, w, h);
 			}
 
-			throw new InvalidOperationException(string.Format("Cannot convert \"{0}\" into {1}", value, typeof(Rectangle)));
+			throw new InvalidOperationException(string.Format("Cannot convert \"{0}\" into {1}", value, typeof(RectangleF)));
 		}
 
 		public override string ConvertToInvariantString(object value)
 		{
-			if (!(value is Rectangle r))
+			if (!(value is RectangleF r))
 				throw new NotSupportedException();
 			return $"{r.X.ToString(CultureInfo.InvariantCulture)}, {r.Y.ToString(CultureInfo.InvariantCulture)}, {r.Width.ToString(CultureInfo.InvariantCulture)}, {r.Height.ToString(CultureInfo.InvariantCulture)}";
 		}

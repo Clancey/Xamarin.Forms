@@ -30,9 +30,9 @@ namespace Xamarin.Forms.Controls.Issues
 			Entry entry = new Entry
 			{
 				Placeholder = "Placeholder text...",
-				PlaceholderColor = Color.Green,
+				PlaceholderColor = Colors.Green,
 				Text = "Typed Text ",
-				TextColor = Color.Red
+				TextColor = Colors.Red
 			};
 
 			Label label = new Label

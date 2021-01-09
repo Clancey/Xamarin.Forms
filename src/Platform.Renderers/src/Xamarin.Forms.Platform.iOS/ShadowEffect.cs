@@ -20,7 +20,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 			if (layer != null)
 			{
-				layer.ShadowColor = Color.Transparent.ToCGColor();
+				layer.ShadowColor = Colors.Transparent.ToCGColor();
 				layer.ShadowOpacity = 0;
 			}
 		}

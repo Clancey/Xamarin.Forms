@@ -57,7 +57,7 @@ namespace Xamarin.Forms.Controls
 
 			Shell.SetSearchHandler(this, new MySearchHandler());
 
-			//BackgroundColor = Color.Blue;
+			//BackgroundColor = Colors.Blue;
 
 			_pushButton.Clicked += PushClicked;
 			_popButton.Clicked += PopClicked;

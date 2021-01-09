@@ -160,7 +160,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		protected override void SetBackgroundColor(Color color)
 		{
-			if (Element.BackgroundColor != Color.Default)
+			if (Element.BackgroundColor != null)
 				BackgroundColor = Element.BackgroundColor.ToUIColor();
 			else
 				BackgroundColor = ColorExtensions.BackgroundColor;
@@ -408,7 +408,7 @@ namespace Xamarin.Forms.Platform.iOS
 		{
 			var emptyContentView = new UIView
 			{
-				BackgroundColor = Color.Default.ToUIColor()
+				BackgroundColor = null.ToUIColor()
 			};
 
 			return emptyContentView;
@@ -666,7 +666,7 @@ namespace Xamarin.Forms.Platform.iOS
 		{
 			var luminosity = 0.2126 * backgroundColor.R + 0.7152 * backgroundColor.G + 0.0722 * backgroundColor.B;
 
-			return luminosity < 0.75 ? Color.White : Color.Black;
+			return luminosity < 0.75 ? Colors.White : Colors.Black;
 		}
 
 		async void UpdateSwipeItemIconImage(UIButton swipeButton, SwipeItem swipeItem)
@@ -762,7 +762,7 @@ namespace Xamarin.Forms.Platform.iOS
 			{
 				ResetSwipeToInitialPosition();
 
-				_swipeDirection = SwipeDirectionHelper.GetSwipeDirection(new Point(_initialPoint.X, _initialPoint.Y), new Point(point.X, point.Y));
+				_swipeDirection = SwipeDirectionHelper.GetSwipeDirection(new PointF(_initialPoint.X, _initialPoint.Y), new PointF(point.X, point.Y));
 
 				UpdateSwipeItems();
 			}

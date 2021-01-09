@@ -77,8 +77,8 @@ namespace Xamarin.Forms.Controls.Issues
 				{
 					AutomationId = Success,
 					Padding = 12,
-					BackgroundColor = Color.Black,
-					TextColor = Color.White,
+					BackgroundColor = Colors.Black,
+					TextColor = Colors.White,
 					Text = "If navigated tapping an item from the CollectionView, the test has passed."
 				};
 

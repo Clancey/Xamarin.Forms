@@ -40,7 +40,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.GradientGalleries
 		{
 			var backgroundColor = GetColorFromString(e.NewTextValue);
 
-			if (backgroundColor != Color.Default)
+			if (backgroundColor != null)
 			{
 				GradientView.BackgroundColor = backgroundColor;
 				BackgroundColorEntry.BackgroundColor = backgroundColor;
@@ -52,7 +52,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.GradientGalleries
 		{
 			var borderColor = GetColorFromString(e.NewTextValue);
 
-			if (borderColor != Color.Default)
+			if (borderColor != null)
 			{
 				GradientView.BorderColor = borderColor;
 				BorderColorEntry.BackgroundColor = borderColor;
@@ -178,32 +178,32 @@ namespace Xamarin.Forms.Controls.GalleryPages.GradientGalleries
 		Point GetPointFromString(string value)
 		{
 			if (string.IsNullOrEmpty(value))
-				return new Point();
+				return new PointF();
 
 			try
 			{
 				var parts = value.Split(',');
 
-				return new Point(Convert.ToDouble(parts[0]), Convert.ToDouble(parts[1]));
+				return new PointF(Convert.ToDouble(parts[0]), Convert.ToDouble(parts[1]));
 			}
 			catch (Exception)
 			{
-				return new Point();
+				return new PointF();
 			}
 		}
 
 		Color GetColorFromString(string value)
 		{
 			if (string.IsNullOrEmpty(value))
-				return Color.Default;
+				return null;
 
 			try
 			{
-				return Color.FromHex(value[0].Equals('#') ? value : $"#{value}");
+				return Colors.FromHex(value[0].Equals('#') ? value : $"#{value}");
 			}
 			catch (Exception)
 			{
-				return Color.Default;
+				return null;
 			}
 		}
 	}

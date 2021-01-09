@@ -55,7 +55,7 @@ namespace Xamarin.Forms.Controls
 					AutomationId = "bxvHello",
 					WidthRequest = 40,
 					HeightRequest = 40,
-					BackgroundColor = Color.Red
+					BackgroundColor = Colors.Red
 				});
 				rootLayout.Children.Add(new Button { AutomationId = "btnHello", Text = "Hello" });
 				rootLayout.Children.Add(new DatePicker { AutomationId = "dtPicker", Date = DateTime.Parse("01/01/2014") });

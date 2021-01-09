@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Graphics;
 using System.Linq;
 using Xamarin.Forms.Internals;
 using Xamarin.Platform;
@@ -12,7 +13,7 @@ namespace Xamarin.Forms
 		public static readonly BindableProperty OrientationProperty = BindableProperty.Create(nameof(Orientation), typeof(StackOrientation), typeof(StackLayout), StackOrientation.Vertical,
 			propertyChanged: (bindable, oldvalue, newvalue) => ((StackLayout)bindable).InvalidateLayout());
 
-		public static readonly BindableProperty SpacingProperty = BindableProperty.Create(nameof(Spacing), typeof(double), typeof(StackLayout), 6d,
+		public static readonly BindableProperty SpacingProperty = BindableProperty.Create(nameof(Spacing), typeof(float), typeof(StackLayout), 6d,
 			propertyChanged: (bindable, oldvalue, newvalue) => ((StackLayout)bindable).InvalidateLayout());
 
 		LayoutInformation _layoutInformation = new LayoutInformation();
@@ -35,13 +36,13 @@ namespace Xamarin.Forms
 			set { SetValue(OrientationProperty, value); }
 		}
 
-		public double Spacing
+		public float Spacing
 		{
-			get { return (double)GetValue(SpacingProperty); }
+			get { return (float)GetValue(SpacingProperty); }
 			set { SetValue(SpacingProperty, value); }
 		}
 
-		protected override void LayoutChildren(double x, double y, double width, double height)
+		protected override void LayoutChildren(float x, float y, float width, float height)
 		{
 			if (!HasVisibleChildren())
 			{
@@ -70,7 +71,7 @@ namespace Xamarin.Forms
 		}
 
 		// IFrameworkElement Measure
-		Size IFrameworkElement.Measure(double widthConstraint, double heightConstraint)
+		SizeF IFrameworkElement.Measure(float widthConstraint, float heightConstraint)
 		{
 			if (!IsMeasureValid)
 #pragma warning disable CS0618 // Type or member is obsolete
@@ -82,7 +83,7 @@ namespace Xamarin.Forms
 
 		[Obsolete("OnSizeRequest is obsolete as of version 2.2.0. Please use OnMeasure instead.")]
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		protected override SizeRequest OnSizeRequest(double widthConstraint, double heightConstraint)
+		protected override SizeRequest OnSizeRequest(float widthConstraint, float heightConstraint)
 		{
 			if (!HasVisibleChildren())
 			{
@@ -107,7 +108,7 @@ namespace Xamarin.Forms
 			base.InvalidateMeasureInternal(trigger);
 		}
 
-		void AlignOffAxis(LayoutInformation layout, StackOrientation orientation, double widthConstraint, double heightConstraint)
+		void AlignOffAxis(LayoutInformation layout, StackOrientation orientation, float widthConstraint, float heightConstraint)
 		{
 			for (var i = 0; i < layout.Plots?.Length; i++)
 			{
@@ -124,12 +125,12 @@ namespace Xamarin.Forms
 			}
 		}
 
-		void CalculateLayout(LayoutInformation layout, double x, double y, double widthConstraint, double heightConstraint, bool processExpanders)
+		void CalculateLayout(LayoutInformation layout, float x, float y, float widthConstraint, float heightConstraint, bool processExpanders)
 		{
-			layout.Constraint = new Size(widthConstraint, heightConstraint);
+			layout.Constraint = new SizeF(widthConstraint, heightConstraint);
 			layout.Expanders = 0;
 			layout.CompressionSpace = 0;
-			layout.Plots = new Rectangle[Children.Count];
+			layout.Plots = new RectangleF[Children.Count];
 			layout.Requests = new SizeRequest[Children.Count];
 
 			StackOrientation orientation = Orientation;
@@ -144,17 +145,17 @@ namespace Xamarin.Forms
 			}
 		}
 
-		void CalculateNaiveLayout(LayoutInformation layout, StackOrientation orientation, double x, double y, double widthConstraint, double heightConstraint)
+		void CalculateNaiveLayout(LayoutInformation layout, StackOrientation orientation, float x, float y, float widthConstraint, float heightConstraint)
 		{
 			layout.CompressionSpace = 0;
 
-			double xOffset = x;
-			double yOffset = y;
-			double boundsWidth = 0;
-			double boundsHeight = 0;
-			double minimumWidth = 0;
-			double minimumHeight = 0;
-			double spacing = Spacing;
+			float xOffset = x;
+			float yOffset = y;
+			float boundsWidth = 0;
+			float boundsHeight = 0;
+			float minimumWidth = 0;
+			float minimumHeight = 0;
+			float spacing = Spacing;
 			if (orientation == StackOrientation.Vertical)
 			{
 				View expander = null;
@@ -174,9 +175,9 @@ namespace Xamarin.Forms
 						}
 						expander = child;
 					}
-					SizeRequest request = child.Measure(widthConstraint, double.PositiveInfinity, MeasureFlags.IncludeMargins);
+					SizeRequest request = child.Measure(widthConstraint, float.PositiveInfinity, MeasureFlags.IncludeMargins);
 
-					var bounds = new Rectangle(x, yOffset, request.Request.Width, request.Request.Height);
+					var bounds = new RectangleF(x, yOffset, request.Request.Width, request.Request.Height);
 					layout.Plots[i] = bounds;
 					layout.Requests[i] = request;
 					layout.CompressionSpace += Math.Max(0, request.Request.Height - request.Minimum.Height);
@@ -209,9 +210,9 @@ namespace Xamarin.Forms
 						}
 						expander = child;
 					}
-					SizeRequest request = child.Measure(double.PositiveInfinity, heightConstraint, MeasureFlags.IncludeMargins);
+					SizeRequest request = child.Measure(float.PositiveInfinity, heightConstraint, MeasureFlags.IncludeMargins);
 
-					var bounds = new Rectangle(xOffset, y, request.Request.Width, request.Request.Height);
+					var bounds = new RectangleF(xOffset, y, request.Request.Width, request.Request.Height);
 					layout.Plots[i] = bounds;
 					layout.Requests[i] = request;
 					layout.CompressionSpace += Math.Max(0, request.Request.Width - request.Minimum.Width);
@@ -227,13 +228,13 @@ namespace Xamarin.Forms
 					ComputeConstraintForView(expander, layout.Expanders == 1);
 			}
 
-			layout.Bounds = new Rectangle(x, y, boundsWidth, boundsHeight);
-			layout.MinimumSize = new Size(minimumWidth, minimumHeight);
+			layout.Bounds = new RectangleF(x, y, boundsWidth, boundsHeight);
+			layout.MinimumSize = new SizeF(minimumWidth, minimumHeight);
 		}
 
-		void CompressHorizontalLayout(LayoutInformation layout, double widthConstraint, double heightConstraint)
+		void CompressHorizontalLayout(LayoutInformation layout, float widthConstraint, float heightConstraint)
 		{
-			double xOffset = 0;
+			float xOffset = 0;
 
 			if (widthConstraint >= layout.Bounds.Width)
 			{
@@ -241,9 +242,9 @@ namespace Xamarin.Forms
 				return;
 			}
 
-			double requiredCompression = layout.Bounds.Width - widthConstraint;
-			double compressionSpace = layout.CompressionSpace;
-			double compressionPressure = (requiredCompression / layout.CompressionSpace).Clamp(0, 1);
+			float requiredCompression = layout.Bounds.Width - widthConstraint;
+			float compressionSpace = layout.CompressionSpace;
+			float compressionPressure = (requiredCompression / layout.CompressionSpace).Clamp(0, 1);
 
 			for (var i = 0; i < layout.Plots.Length; i++)
 			{
@@ -251,21 +252,21 @@ namespace Xamarin.Forms
 				if (!child.IsVisible)
 					continue;
 
-				Size minimum = layout.Requests[i].Minimum;
+				var minimum = layout.Requests[i].Minimum;
 
 				layout.Plots[i].X -= xOffset;
 
-				Rectangle plot = layout.Plots[i];
-				double availableSpace = plot.Width - minimum.Width;
+				var plot = layout.Plots[i];
+				float availableSpace = plot.Width - minimum.Width;
 				if (availableSpace <= 0)
 					continue;
 
 				compressionSpace -= availableSpace;
 
-				double compression = availableSpace * compressionPressure;
+				float compression = availableSpace * compressionPressure;
 				xOffset += compression;
 
-				double newWidth = plot.Width - compression;
+				float newWidth = plot.Width - compression;
 				SizeRequest newRequest = child.Measure(newWidth, heightConstraint, MeasureFlags.IncludeMargins);
 
 				layout.Requests[i] = newRequest;
@@ -274,7 +275,7 @@ namespace Xamarin.Forms
 
 				if (newRequest.Request.Width < newWidth)
 				{
-					double delta = newWidth - newRequest.Request.Width;
+					float delta = newWidth - newRequest.Request.Width;
 					newWidth = newRequest.Request.Width;
 					xOffset += delta;
 					requiredCompression = requiredCompression - xOffset;
@@ -288,7 +289,7 @@ namespace Xamarin.Forms
 			}
 		}
 
-		void CompressNaiveLayout(LayoutInformation layout, StackOrientation orientation, double widthConstraint, double heightConstraint)
+		void CompressNaiveLayout(LayoutInformation layout, StackOrientation orientation, float widthConstraint, float heightConstraint)
 		{
 			if (layout.CompressionSpace <= 0)
 				return;
@@ -303,9 +304,9 @@ namespace Xamarin.Forms
 			}
 		}
 
-		void CompressVerticalLayout(LayoutInformation layout, double widthConstraint, double heightConstraint)
+		void CompressVerticalLayout(LayoutInformation layout, float widthConstraint, float heightConstraint)
 		{
-			double yOffset = 0;
+			float yOffset = 0;
 
 			if (heightConstraint >= layout.Bounds.Height)
 			{
@@ -313,9 +314,9 @@ namespace Xamarin.Forms
 				return;
 			}
 
-			double requiredCompression = layout.Bounds.Height - heightConstraint;
-			double compressionSpace = layout.CompressionSpace;
-			double compressionPressure = (requiredCompression / layout.CompressionSpace).Clamp(0, 1);
+			float requiredCompression = layout.Bounds.Height - heightConstraint;
+			float compressionSpace = layout.CompressionSpace;
+			float compressionPressure = (requiredCompression / layout.CompressionSpace).Clamp(0, 1);
 
 			for (var i = 0; i < layout.Plots.Length; i++)
 			{
@@ -323,21 +324,21 @@ namespace Xamarin.Forms
 				if (!child.IsVisible)
 					continue;
 
-				Size minimum = layout.Requests[i].Minimum;
+				var minimum = layout.Requests[i].Minimum;
 
 				layout.Plots[i].Y -= yOffset;
 
-				Rectangle plot = layout.Plots[i];
-				double availableSpace = plot.Height - minimum.Height;
+				var plot = layout.Plots[i];
+				float availableSpace = plot.Height - minimum.Height;
 				if (availableSpace <= 0)
 					continue;
 
 				compressionSpace -= availableSpace;
 
-				double compression = availableSpace * compressionPressure;
+				float compression = availableSpace * compressionPressure;
 				yOffset += compression;
 
-				double newHeight = plot.Height - compression;
+				float newHeight = plot.Height - compression;
 				SizeRequest newRequest = child.Measure(widthConstraint, newHeight, MeasureFlags.IncludeMargins);
 
 				layout.Requests[i] = newRequest;
@@ -346,7 +347,7 @@ namespace Xamarin.Forms
 
 				if (newRequest.Request.Height < newHeight)
 				{
-					double delta = newHeight - newRequest.Request.Height;
+					float delta = newHeight - newRequest.Request.Height;
 					newHeight = newRequest.Request.Height;
 					yOffset += delta;
 					requiredCompression = requiredCompression - yOffset;
@@ -411,26 +412,26 @@ namespace Xamarin.Forms
 			return false;
 		}
 
-		void ProcessExpanders(LayoutInformation layout, StackOrientation orientation, double x, double y, double widthConstraint, double heightConstraint)
+		void ProcessExpanders(LayoutInformation layout, StackOrientation orientation, float x, float y, float widthConstraint, float heightConstraint)
 		{
 			if (layout.Expanders <= 0)
 				return;
 
 			if (orientation == StackOrientation.Vertical)
 			{
-				double extraSpace = heightConstraint - layout.Bounds.Height;
+				float extraSpace = heightConstraint - layout.Bounds.Height;
 				if (extraSpace <= 0)
 					return;
 
-				double spacePerExpander = extraSpace / layout.Expanders;
-				double yOffset = 0;
+				float spacePerExpander = extraSpace / layout.Expanders;
+				float yOffset = 0;
 
 				for (var i = 0; i < LogicalChildrenInternal.Count; i++)
 				{
 					var child = (View)LogicalChildrenInternal[i];
 					if (!child.IsVisible)
 						continue;
-					Rectangle plot = layout.Plots[i];
+					var plot = layout.Plots[i];
 					plot.Y += yOffset;
 
 					if (child.VerticalOptions.Expands)
@@ -446,19 +447,19 @@ namespace Xamarin.Forms
 			}
 			else
 			{
-				double extraSpace = widthConstraint - layout.Bounds.Width;
+				float extraSpace = widthConstraint - layout.Bounds.Width;
 				if (extraSpace <= 0)
 					return;
 
-				double spacePerExpander = extraSpace / layout.Expanders;
-				double xOffset = 0;
+				float spacePerExpander = extraSpace / layout.Expanders;
+				float xOffset = 0;
 
 				for (var i = 0; i < LogicalChildrenInternal.Count; i++)
 				{
 					var child = (View)LogicalChildrenInternal[i];
 					if (!child.IsVisible)
 						continue;
-					Rectangle plot = layout.Plots[i];
+					var plot = layout.Plots[i];
 					plot.X += xOffset;
 
 					if (child.HorizontalOptions.Expands)
@@ -476,12 +477,12 @@ namespace Xamarin.Forms
 
 		class LayoutInformation
 		{
-			public Rectangle Bounds;
-			public double CompressionSpace;
-			public Size Constraint;
+			public RectangleF Bounds;
+			public float CompressionSpace;
+			public SizeF Constraint;
 			public int Expanders;
-			public Size MinimumSize;
-			public Rectangle[] Plots;
+			public SizeF MinimumSize;
+			public RectangleF[] Plots;
 			public SizeRequest[] Requests;
 		}
 	}

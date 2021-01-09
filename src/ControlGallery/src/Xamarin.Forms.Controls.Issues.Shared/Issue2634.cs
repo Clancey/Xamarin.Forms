@@ -24,8 +24,8 @@ namespace Xamarin.Forms.Controls.Issues
 				var bvBackground = new Frame
 				{
 					Content = new Label { Text = "" },
-					BorderColor = Color.FromRgb(0x06, 0x68, 0xCF),
-					BackgroundColor = Color.FromRgba(0f, 0f, 0f, 0.4f),
+					BorderColor = Colors.FromRgb(0x06, 0x68, 0xCF),
+					BackgroundColor = Colors.FromRgba(0f, 0f, 0f, 0.4f),
 					HasShadow = true
 				};
 
@@ -74,13 +74,13 @@ namespace Xamarin.Forms.Controls.Issues
 						new ColumnDefinition { Width = new GridLength (1, GridUnitType.Star)  },
 						new ColumnDefinition { Width = new GridLength (60, GridUnitType.Absolute)  }
 					},
-					BackgroundColor = Color.Transparent,
+					BackgroundColor = Colors.Transparent,
 					ColumnSpacing = 1,
 					RowSpacing = 1,
 					Padding = 0
 				};
-				Color textColor = Color.Blue;
-				Color dataColor = Color.Black;
+				Color textColor = Colors.Blue;
+				Color dataColor = Colors.Black;
 
 				var slFirstName = new StackLayout { Orientation = StackOrientation.Vertical };
 				var lblFirstNameLabel = new Label
@@ -231,7 +231,7 @@ namespace Xamarin.Forms.Controls.Issues
 				#endregion
 
 				string breakText = "_______________________________________________________________________________________________________________________________________________________________________________";
-				var lblBreakLine = new Label { LineBreakMode = LineBreakMode.NoWrap, TextColor = Color.Red };
+				var lblBreakLine = new Label { LineBreakMode = LineBreakMode.NoWrap, TextColor = Colors.Red };
 				lblBreakLine.Text = breakText;
 				addGrid.Children.Add(lblBreakLine, 0, 3, 2, 3);
 
@@ -295,7 +295,7 @@ namespace Xamarin.Forms.Controls.Issues
 						VerticalOptions = LayoutOptions.Center
 					};
 
-					Color txtColor = Color.Blue;
+					Color txtColor = Colors.Blue;
 					Font dataFont = Font.SystemFontOfSize(NamedSize.Medium);
 					var nameData = new Label
 					{

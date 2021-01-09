@@ -21,7 +21,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var arcSegment1 = new ArcSegment();
 			Assert.IsNotNull(arcSegment1);
 
-			var arcSegment2 = new ArcSegment(new Point(0, 0), new Size(100, 100), 90, SweepDirection.Clockwise, false);
+			var arcSegment2 = new ArcSegment(new PointF(0, 0), new Size(100, 100), 90, SweepDirection.Clockwise, false);
 			Assert.IsNotNull(arcSegment2);
 			Assert.AreEqual(90, arcSegment2.RotationAngle);
 			Assert.AreEqual(100, arcSegment2.Size.Height);
@@ -34,7 +34,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var bezierSegment1 = new BezierSegment();
 			Assert.IsNotNull(bezierSegment1);
 
-			var bezierSegment2 = new BezierSegment(new Point(0, 0), new Point(50, 50), new Point(100, 100));
+			var bezierSegment2 = new BezierSegment(new PointF(0, 0), new PointF(50, 50), new PointF(100, 100));
 			Assert.IsNotNull(bezierSegment2);
 			Assert.AreEqual(0, bezierSegment2.Point1.X);
 			Assert.AreEqual(0, bezierSegment2.Point1.Y);
@@ -50,7 +50,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var lineSegment1 = new LineSegment();
 			Assert.IsNotNull(lineSegment1);
 
-			var lineSegment2 = new LineSegment(new Point(25, 50));
+			var lineSegment2 = new LineSegment(new PointF(25, 50));
 			Assert.IsNotNull(lineSegment2);
 			Assert.AreEqual(25, lineSegment2.Point.X);
 			Assert.AreEqual(50, lineSegment2.Point.Y);
@@ -120,7 +120,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var quadraticBezierSegment1 = new QuadraticBezierSegment();
 			Assert.IsNotNull(quadraticBezierSegment1);
 
-			var quadraticBezierSegment2 = new QuadraticBezierSegment(new Point(0, 0), new Point(100, 100));
+			var quadraticBezierSegment2 = new QuadraticBezierSegment(new PointF(0, 0), new PointF(100, 100));
 			Assert.IsNotNull(quadraticBezierSegment2);
 			Assert.AreEqual(0, quadraticBezierSegment2.Point1.X);
 			Assert.AreEqual(0, quadraticBezierSegment2.Point1.Y);

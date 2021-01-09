@@ -1,4 +1,6 @@
-﻿namespace Xamarin.Forms
+﻿using System.Graphics;
+
+namespace Xamarin.Forms
 {
 	public class RadialGradientBrush : GradientBrush
 	{
@@ -18,7 +20,7 @@
 			Radius = radius;
 		}
 
-		public RadialGradientBrush(GradientStopCollection gradientStops, Point center, double radius)
+		public RadialGradientBrush(GradientStopCollection gradientStops, PointF center, double radius)
 		{
 			GradientStops = gradientStops;
 			Center = center;
@@ -35,11 +37,11 @@
 		}
 
 		public static readonly BindableProperty CenterProperty = BindableProperty.Create(
-			nameof(Center), typeof(Point), typeof(RadialGradientBrush), new Point(0.5, 0.5));
+			nameof(Center), typeof(PointF), typeof(RadialGradientBrush), new PointF(0.5f, 0.5f));
 
-		public Point Center
+		public PointF Center
 		{
-			get => (Point)GetValue(CenterProperty);
+			get => (PointF)GetValue(CenterProperty);
 			set => SetValue(CenterProperty, value);
 		}
 

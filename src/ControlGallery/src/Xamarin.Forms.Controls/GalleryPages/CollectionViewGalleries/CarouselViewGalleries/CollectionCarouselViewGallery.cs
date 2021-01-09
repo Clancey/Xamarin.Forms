@@ -37,7 +37,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries.CarouselVi
 			var carouselView = new CarouselView
 			{
 				HeightRequest = 300,
-				BackgroundColor = Color.Pink,
+				BackgroundColor = Colors.Pink,
 				ItemsLayout = itemsLayout,
 				ItemTemplate = itemTemplate,
 				IsScrollAnimated = true,
@@ -185,7 +185,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries.CarouselVi
 			{
 				items.Add(new CarouselData
 				{
-					Color = Color.FromRgb(_random.Next(0, 255), _random.Next(0, 255), _random.Next(0, 255)),
+					Color = Colors.FromRgb(_random.Next(0, 255), _random.Next(0, 255), _random.Next(0, 255)),
 					Name = $"NewObservable {n + 1}"
 				});
 			}
@@ -203,7 +203,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries.CarouselVi
 			{
 				Items.Add(new CarouselData
 				{
-					Color = Color.FromRgb(_random.Next(0, 255), _random.Next(0, 255), _random.Next(0, 255)),
+					Color = Colors.FromRgb(_random.Next(0, 255), _random.Next(0, 255), _random.Next(0, 255)),
 					Name = $"NewItemsObservable {n + 1}"
 				});
 			}
@@ -223,7 +223,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries.CarouselVi
 			 {
 				 Items.Add(new CarouselData
 				 {
-					 Color = Color.FromRgb(_random.Next(0, 255), _random.Next(0, 255), _random.Next(0, 255)),
+					 Color = Colors.FromRgb(_random.Next(0, 255), _random.Next(0, 255), _random.Next(0, 255)),
 					 Name = $"Thead {n + 1}"
 				 });
 			 }

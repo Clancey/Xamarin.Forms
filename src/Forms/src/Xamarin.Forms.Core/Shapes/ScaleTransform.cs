@@ -7,13 +7,13 @@
 
 		}
 
-		public ScaleTransform(double scaleX, double scaleY)
+		public ScaleTransform(float scaleX, float scaleY)
 		{
 			ScaleX = scaleX;
 			ScaleY = scaleY;
 		}
 
-		public ScaleTransform(double scaleX, double scaleY, double centerX, double centerY)
+		public ScaleTransform(float scaleX, float scaleY, float centerX, float centerY)
 		{
 			ScaleX = scaleX;
 			ScaleY = scaleY;
@@ -22,43 +22,43 @@
 		}
 
 		public static readonly BindableProperty ScaleXProperty =
-			BindableProperty.Create(nameof(ScaleX), typeof(double), typeof(ScaleTransform), 1.0,
+			BindableProperty.Create(nameof(ScaleX), typeof(float), typeof(ScaleTransform), 1.0,
 				propertyChanged: OnTransformPropertyChanged);
 
 		public static readonly BindableProperty ScaleYProperty =
-			BindableProperty.Create(nameof(ScaleY), typeof(double), typeof(ScaleTransform), 1.0,
+			BindableProperty.Create(nameof(ScaleY), typeof(float), typeof(ScaleTransform), 1.0,
 				propertyChanged: OnTransformPropertyChanged);
 
 		public static readonly BindableProperty CenterXProperty =
-			BindableProperty.Create(nameof(CenterX), typeof(double), typeof(ScaleTransform), 0.0,
+			BindableProperty.Create(nameof(CenterX), typeof(float), typeof(ScaleTransform), 0.0,
 				propertyChanged: OnTransformPropertyChanged);
 
 		public static readonly BindableProperty CenterYProperty =
-			BindableProperty.Create(nameof(CenterY), typeof(double), typeof(ScaleTransform), 0.0,
+			BindableProperty.Create(nameof(CenterY), typeof(float), typeof(ScaleTransform), 0.0,
 				propertyChanged: OnTransformPropertyChanged);
 
-		public double ScaleX
+		public float ScaleX
 		{
 			set { SetValue(ScaleXProperty, value); }
-			get { return (double)GetValue(ScaleXProperty); }
+			get { return (float)GetValue(ScaleXProperty); }
 		}
 
-		public double ScaleY
+		public float ScaleY
 		{
 			set { SetValue(ScaleYProperty, value); }
-			get { return (double)GetValue(ScaleYProperty); }
+			get { return (float)GetValue(ScaleYProperty); }
 		}
 
-		public double CenterX
+		public float CenterX
 		{
 			set { SetValue(CenterXProperty, value); }
-			get { return (double)GetValue(CenterXProperty); }
+			get { return (float)GetValue(CenterXProperty); }
 		}
 
-		public double CenterY
+		public float CenterY
 		{
 			set { SetValue(CenterYProperty, value); }
-			get { return (double)GetValue(CenterYProperty); }
+			get { return (float)GetValue(CenterYProperty); }
 		}
 
 		static void OnTransformPropertyChanged(BindableObject bindable, object oldValue, object newValue)

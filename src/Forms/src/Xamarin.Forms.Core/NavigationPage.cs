@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Graphics;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms.Internals;
@@ -19,7 +20,7 @@ namespace Xamarin.Forms
 
 		[Obsolete("TintProperty is obsolete as of version 1.2.0. Please use BarBackgroundColorProperty and BarTextColorProperty to change NavigationPage bar color properties.")]
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public static readonly BindableProperty TintProperty = BindableProperty.Create("Tint", typeof(Color), typeof(NavigationPage), Color.Default);
+		public static readonly BindableProperty TintProperty = BindableProperty.Create("Tint", typeof(Color), typeof(NavigationPage), null);
 
 		public static readonly BindableProperty BarBackgroundColorProperty = BarElement.BarBackgroundColorProperty;
 
@@ -33,7 +34,7 @@ namespace Xamarin.Forms
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public static readonly BindableProperty TitleIconProperty = TitleIconImageSourceProperty;
 
-		public static readonly BindableProperty IconColorProperty = BindableProperty.CreateAttached("IconColor", typeof(Color), typeof(NavigationPage), Color.Default);
+		public static readonly BindableProperty IconColorProperty = BindableProperty.CreateAttached("IconColor", typeof(Color), typeof(NavigationPage), null);
 
 		public static readonly BindableProperty TitleViewProperty = BindableProperty.CreateAttached("TitleView", typeof(View), typeof(NavigationPage), null, propertyChanging: TitleViewPropertyChanging);
 
@@ -174,7 +175,7 @@ namespace Xamarin.Forms
 		{
 			if (bindable == null)
 			{
-				return Color.Default;
+				return null;
 			}
 
 			return (Color)bindable.GetValue(IconColorProperty);

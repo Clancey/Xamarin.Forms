@@ -31,7 +31,7 @@ namespace Xamarin.Forms.Controls.Issues
 				WidthRequest = 200,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
-				BackgroundColor = Color.Transparent,
+				BackgroundColor = Colors.Transparent,
 				AutomationId = "Coffee"
 			};
 

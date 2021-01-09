@@ -30,11 +30,11 @@ namespace Xamarin.Forms.Controls.GalleryPages.AppThemeGalleries
 				Text = "TextColor through SetAppThemeColor"
 			};
 
-			onThemeLabel.SetBinding(Label.TextColorProperty, new AppThemeBinding() { Light = Color.Green, Dark = Color.Red });
+			onThemeLabel.SetBinding(Label.TextColorProperty, new AppThemeBinding() { Light = Colors.Green, Dark = Colors.Red });
 
-			onThemeLabel1.SetOnAppTheme(Label.TextColorProperty, Color.Green, Color.Red);
+			onThemeLabel1.SetOnAppTheme(Label.TextColorProperty, Colors.Green, Colors.Red);
 
-			onThemeLabel2.SetAppThemeColor(Label.TextColorProperty, Color.Green, Color.Red);
+			onThemeLabel2.SetAppThemeColor(Label.TextColorProperty, Colors.Green, Colors.Red);
 
 			var stackLayout = new StackLayout
 			{

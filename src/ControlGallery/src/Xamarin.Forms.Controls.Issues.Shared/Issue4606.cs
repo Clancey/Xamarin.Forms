@@ -44,8 +44,8 @@ namespace Xamarin.Forms.Controls.Issues
 								HeightRequest = 50,
 								WidthRequest = 50,
 								CornerRadius = 25,
-								BackgroundColor = Color.Purple,
-								BorderColor = Color.Green,
+								BackgroundColor = Colors.Purple,
+								BorderColor = Colors.Green,
 								ImageSource = "coffee.png"
 							},
 							new ImageButton()
@@ -53,8 +53,8 @@ namespace Xamarin.Forms.Controls.Issues
 								HeightRequest = 50,
 								WidthRequest = 50,
 								CornerRadius = 25,
-								BackgroundColor = Color.Purple,
-								BorderColor = Color.Green,
+								BackgroundColor = Colors.Purple,
+								BorderColor = Colors.Green,
 								Source = "coffee.png"
 							}
 						}
@@ -70,8 +70,8 @@ namespace Xamarin.Forms.Controls.Issues
 								HeightRequest = 50,
 								WidthRequest = 50,
 								CornerRadius = 25,
-								BackgroundColor = Color.Purple,
-								BorderColor = Color.Green,
+								BackgroundColor = Colors.Purple,
+								BorderColor = Colors.Green,
 								ImageSource = "coffee.png"
 							},
 							new ImageButton()
@@ -79,8 +79,8 @@ namespace Xamarin.Forms.Controls.Issues
 								HeightRequest = 50,
 								WidthRequest = 50,
 								CornerRadius = 25,
-								BackgroundColor = Color.Purple,
-								BorderColor = Color.Green,
+								BackgroundColor = Colors.Purple,
+								BorderColor = Colors.Green,
 								Source = "coffee.png"
 							}
 						}
@@ -91,13 +91,13 @@ namespace Xamarin.Forms.Controls.Issues
 					},
 					new BoxView()
 					{
-						BackgroundColor = Color.Red,
+						BackgroundColor = Colors.Red,
 						HeightRequest = 2
 					},
 					new Button()
 					{
-						BorderColor = Color.Red,
-						BackgroundColor = Color.White,
+						BorderColor = Colors.Red,
+						BackgroundColor = Colors.White,
 						CornerRadius = 25,
 						BorderWidth = 2
 					},
@@ -107,13 +107,13 @@ namespace Xamarin.Forms.Controls.Issues
 					},
 					new BoxView()
 					{
-						BackgroundColor = Color.Red,
+						BackgroundColor = Colors.Red,
 						HeightRequest = 5
 					},
 					new Button()
 					{
-						BorderColor = Color.Red,
-						BackgroundColor = Color.White,
+						BorderColor = Colors.Red,
+						BackgroundColor = Colors.White,
 						CornerRadius = 25,
 						BorderWidth = 5
 					},
@@ -123,13 +123,13 @@ namespace Xamarin.Forms.Controls.Issues
 					},
 					new BoxView()
 					{
-						BackgroundColor = Color.Red,
+						BackgroundColor = Colors.Red,
 						HeightRequest = 1
 					},
 					new Button()
 					{
-						BorderColor = Color.Red,
-						BackgroundColor = Color.White,
+						BorderColor = Colors.Red,
+						BackgroundColor = Colors.White,
 						CornerRadius = 25,
 						BorderWidth = 1
 					}

@@ -152,7 +152,7 @@ namespace Xamarin.Forms.Material.Android
 				return;
 
 			Color backgroundColor = Element.MaximumTrackColor;
-			if (backgroundColor == Color.Default)
+			if (backgroundColor == null)
 				backgroundColor = Element.BackgroundColor;
 			Color progressColor = Element.MinimumTrackColor;
 			Color thumbColor = Element.ThumbColor;

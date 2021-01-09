@@ -18,15 +18,15 @@ namespace Xamarin.Forms
 					switch (thickness.Length)
 					{
 						case 2:
-							if (double.TryParse(thickness[0], NumberStyles.Number, CultureInfo.InvariantCulture, out double h)
-								&& double.TryParse(thickness[1], NumberStyles.Number, CultureInfo.InvariantCulture, out double v))
+							if (float.TryParse(thickness[0], NumberStyles.Number, CultureInfo.InvariantCulture, out float h)
+								&& float.TryParse(thickness[1], NumberStyles.Number, CultureInfo.InvariantCulture, out float v))
 								return new Thickness(h, v);
 							break;
 						case 4:
-							if (double.TryParse(thickness[0], NumberStyles.Number, CultureInfo.InvariantCulture, out double l)
-								&& double.TryParse(thickness[1], NumberStyles.Number, CultureInfo.InvariantCulture, out double t)
-								&& double.TryParse(thickness[2], NumberStyles.Number, CultureInfo.InvariantCulture, out double r)
-								&& double.TryParse(thickness[3], NumberStyles.Number, CultureInfo.InvariantCulture, out double b))
+							if (float.TryParse(thickness[0], NumberStyles.Number, CultureInfo.InvariantCulture, out float l)
+								&& float.TryParse(thickness[1], NumberStyles.Number, CultureInfo.InvariantCulture, out float t)
+								&& float.TryParse(thickness[2], NumberStyles.Number, CultureInfo.InvariantCulture, out float r)
+								&& float.TryParse(thickness[3], NumberStyles.Number, CultureInfo.InvariantCulture, out float b))
 								return new Thickness(l, t, r, b);
 							break;
 					}
@@ -37,28 +37,28 @@ namespace Xamarin.Forms
 					switch (thickness.Length)
 					{
 						case 2:
-							if (double.TryParse(thickness[0], NumberStyles.Number, CultureInfo.InvariantCulture, out double v)
-								&& double.TryParse(thickness[1], NumberStyles.Number, CultureInfo.InvariantCulture, out double h))
+							if (float.TryParse(thickness[0], NumberStyles.Number, CultureInfo.InvariantCulture, out float v)
+								&& float.TryParse(thickness[1], NumberStyles.Number, CultureInfo.InvariantCulture, out float h))
 								return new Thickness(h, v);
 							break;
 						case 3:
-							if (double.TryParse(thickness[0], NumberStyles.Number, CultureInfo.InvariantCulture, out double t)
-								&& double.TryParse(thickness[1], NumberStyles.Number, CultureInfo.InvariantCulture, out h)
-								&& double.TryParse(thickness[2], NumberStyles.Number, CultureInfo.InvariantCulture, out double b))
+							if (float.TryParse(thickness[0], NumberStyles.Number, CultureInfo.InvariantCulture, out float t)
+								&& float.TryParse(thickness[1], NumberStyles.Number, CultureInfo.InvariantCulture, out h)
+								&& float.TryParse(thickness[2], NumberStyles.Number, CultureInfo.InvariantCulture, out float b))
 								return new Thickness(h, t, h, b);
 							break;
 						case 4:
-							if (double.TryParse(thickness[0], NumberStyles.Number, CultureInfo.InvariantCulture, out t)
-								&& double.TryParse(thickness[1], NumberStyles.Number, CultureInfo.InvariantCulture, out double r)
-								&& double.TryParse(thickness[2], NumberStyles.Number, CultureInfo.InvariantCulture, out b)
-								&& double.TryParse(thickness[3], NumberStyles.Number, CultureInfo.InvariantCulture, out double l))
+							if (float.TryParse(thickness[0], NumberStyles.Number, CultureInfo.InvariantCulture, out t)
+								&& float.TryParse(thickness[1], NumberStyles.Number, CultureInfo.InvariantCulture, out float r)
+								&& float.TryParse(thickness[2], NumberStyles.Number, CultureInfo.InvariantCulture, out b)
+								&& float.TryParse(thickness[3], NumberStyles.Number, CultureInfo.InvariantCulture, out float l))
 								return new Thickness(l, t, r, b);
 							break;
 					}
 				}
 				else
 				{ //single uniform thickness
-					if (double.TryParse(value, NumberStyles.Number, CultureInfo.InvariantCulture, out double l))
+					if (float.TryParse(value, NumberStyles.Number, CultureInfo.InvariantCulture, out float l))
 						return new Thickness(l);
 				}
 			}

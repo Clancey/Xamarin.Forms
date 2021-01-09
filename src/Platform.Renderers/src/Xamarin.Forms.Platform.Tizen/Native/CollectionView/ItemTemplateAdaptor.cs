@@ -26,13 +26,13 @@ namespace Xamarin.Forms.Platform.Tizen.Native
 			{
 				var label = new XLabel
 				{
-					TextColor = Color.Black,
+					TextColor = Colors.Black,
 				};
 				label.SetBinding(XLabel.TextProperty, new Binding(".", converter: new ToTextConverter()));
 
 				return new StackLayout
 				{
-					BackgroundColor = Color.White,
+					BackgroundColor = Colors.White,
 					Padding = 30,
 					Children =
 					{

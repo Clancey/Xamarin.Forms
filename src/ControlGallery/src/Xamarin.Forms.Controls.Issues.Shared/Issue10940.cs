@@ -32,14 +32,14 @@ namespace Xamarin.Forms.Controls.Issues
 			var instructions = new Label
 			{
 				Padding = 12,
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White,
 				Text = "Swipe to the left and verify that opening the SwipeView the CustomEntry is created only one time."
 			};
 
 			var customSwipeView = new CustomSwipeView
 			{
-				BackgroundColor = Color.LightGray,
+				BackgroundColor = Colors.LightGray,
 				HeightRequest = 200
 			};
 
@@ -47,7 +47,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var swipeItemViewContent = new Grid
 			{
-				BackgroundColor = Color.White,
+				BackgroundColor = Colors.White,
 				WidthRequest = 150
 			};
 

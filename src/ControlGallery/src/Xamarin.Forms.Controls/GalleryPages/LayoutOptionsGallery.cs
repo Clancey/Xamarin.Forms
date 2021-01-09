@@ -18,7 +18,7 @@ namespace Xamarin.Forms.Controls
 		{
 			var mainLayout = new StackLayout
 			{
-				BackgroundColor = Color.Silver,
+				BackgroundColor = Colors.Silver,
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				Children = {
 					BuildLayoutRegion (),
@@ -81,7 +81,7 @@ namespace Xamarin.Forms.Controls
 
 			var result = new StackLayout
 			{
-				BackgroundColor = Color.Gray,
+				BackgroundColor = Colors.Gray,
 				Children = {
 					horizontalButton,
 					verticalButton

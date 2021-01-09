@@ -26,7 +26,7 @@ namespace Xamarin.Forms.Controls.Issues
 			grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Star });
 			grid.RowDefinitions.Add(new RowDefinition { Height = 40 });
 
-			var boxView = new BoxView { BackgroundColor = Color.Red };
+			var boxView = new BoxView { BackgroundColor = Colors.Red };
 			var backgroundContainer = new Grid();
 			Forms.CompressedLayout.SetIsHeadless(backgroundContainer, true);
 			backgroundContainer.Children.Add(boxView);

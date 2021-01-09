@@ -17,7 +17,7 @@ namespace Xamarin.Forms.Controls.Issues
 	{
 		protected override void Init()
 		{
-			BackgroundColor = Color.Maroon;
+			BackgroundColor = Colors.Maroon;
 			PushAsync(new FlyoutPage
 			{
 				Title = "Bugzilla Issue 44476",

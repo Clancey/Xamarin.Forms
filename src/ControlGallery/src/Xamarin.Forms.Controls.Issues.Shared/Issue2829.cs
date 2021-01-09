@@ -72,8 +72,8 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				ViewCell cell = new ViewCell();
 				AttachedStateEffectLabel label = new AttachedStateEffectLabel();
-				label.TextColor = Color.Black;
-				label.BackgroundColor = Color.White;
+				label.TextColor = Colors.Black;
+				label.BackgroundColor = Colors.White;
 				label.SetBinding(Label.TextProperty, "Text");
 				attachedStateEffectList.Add(label);
 				label.BindingContextChanged += (_, __) =>

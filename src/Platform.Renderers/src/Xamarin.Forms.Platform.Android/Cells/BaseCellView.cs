@@ -74,7 +74,7 @@ namespace Xamarin.Forms.Platform.Android
 				AddView(textLayout, layoutParams);
 
 			SetMinimumHeight((int)context.ToPixels(DefaultMinHeight));
-			_androidDefaultTextColor = Color.FromUint((uint)_mainText.CurrentTextColor);
+			_androidDefaultTextColor = Colors.FromUint((uint)_mainText.CurrentTextColor);
 
 			if ((int)Forms.SdkInt > 16)
 			{
@@ -134,7 +134,7 @@ namespace Xamarin.Forms.Platform.Android
 		public void SetDefaultMainTextColor(Color defaultColor)
 		{
 			_defaultMainTextColor = defaultColor;
-			if (_mainTextColor == Color.Default)
+			if (_mainTextColor == null)
 				_mainText.SetTextColor(defaultColor.ToAndroid());
 		}
 
@@ -143,8 +143,8 @@ namespace Xamarin.Forms.Platform.Android
 			if (_detailTextColor == color)
 				return;
 
-			if (_defaultDetailColor == Color.Default)
-				_defaultDetailColor = Color.FromUint((uint)_detailText.CurrentTextColor);
+			if (_defaultDetailColor == null)
+				_defaultDetailColor = Colors.FromUint((uint)_detailText.CurrentTextColor);
 
 			_detailTextColor = color;
 			_detailText.SetTextColor(color.ToAndroid(_defaultDetailColor));
@@ -169,7 +169,7 @@ namespace Xamarin.Forms.Platform.Android
 
 		public void SetMainTextColor(Color color)
 		{
-			Color defaultColorToSet = _defaultMainTextColor == Color.Default ? _androidDefaultTextColor : _defaultMainTextColor;
+			Color defaultColorToSet = _defaultMainTextColor == null ? _androidDefaultTextColor : _defaultMainTextColor;
 
 			_mainTextColor = color;
 			_mainText.SetTextColor(color.ToAndroid(defaultColorToSet));

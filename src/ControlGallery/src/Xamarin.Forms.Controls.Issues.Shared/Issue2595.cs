@@ -58,15 +58,15 @@ namespace Xamarin.Forms.Controls.Issues
 				Content = new ScrollView
 				{
 
-					BackgroundColor = Color.Red,
+					BackgroundColor = Colors.Red,
 
 					Content = new StackLayout
 					{
-						BackgroundColor = Color.BlueViolet,
+						BackgroundColor = Colors.BlueViolet,
 						Children = {
 							(Label = new Label {
 								Text = "this text should disappear after 1 sec",
-								BackgroundColor = Color.LightBlue,
+								BackgroundColor = Colors.LightBlue,
 								HorizontalOptions = LayoutOptions.StartAndExpand,
 							})
 						}

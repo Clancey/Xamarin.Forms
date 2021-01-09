@@ -36,8 +36,8 @@ namespace Xamarin.Forms.Controls.Issues
 				}
 			};
 
-			BarBackgroundColor = Color.Green;
-			BarTextColor = Color.Red;
+			BarBackgroundColor = Colors.Green;
+			BarTextColor = Colors.Red;
 
 			On<iOS>().SetPrefersLargeTitles(true);
 

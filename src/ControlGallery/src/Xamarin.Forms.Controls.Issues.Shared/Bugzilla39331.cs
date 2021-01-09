@@ -33,15 +33,15 @@ namespace Xamarin.Forms.Controls.Issues
 				VerticalOptions = LayoutOptions.FillAndExpand,
 			};
 
-			BackgroundColor = Color.FromUint(0xFFDBDBDB);
+			BackgroundColor = Colors.FromUint(0xFFDBDBDB);
 
 			_btnLogin = new Button
 			{
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 
 				Text = "Press me",
-				BackgroundColor = Color.FromUint(0xFF6E932D),
-				TextColor = Color.White,
+				BackgroundColor = Colors.FromUint(0xFF6E932D),
+				TextColor = Colors.White,
 			};
 			_btnLogin.Clicked += BtnLogin_Clicked;
 			layout.Children.Add(_btnLogin, new Rectangle(0.5f, 0.5f, 0.25f, 0.25f), AbsoluteLayoutFlags.All);

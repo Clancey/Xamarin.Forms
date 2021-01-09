@@ -1,4 +1,6 @@
-﻿namespace Xamarin.Forms.Shapes
+﻿using System.Graphics;
+
+namespace Xamarin.Forms.Shapes
 {
 	public class LineSegment : PathSegment
 	{
@@ -7,18 +9,18 @@
 
 		}
 
-		public LineSegment(Point point)
+		public LineSegment(PointF point)
 		{
 			Point = point;
 		}
 
 		public static readonly BindableProperty PointProperty =
-			BindableProperty.Create(nameof(Point), typeof(Point), typeof(LineSegment), new Point(0, 0));
+			BindableProperty.Create(nameof(PointF), typeof(PointF), typeof(LineSegment), new PointF(0, 0));
 
-		public Point Point
+		public PointF Point
 		{
 			set { SetValue(PointProperty, value); }
-			get { return (Point)GetValue(PointProperty); }
+			get { return (PointF)GetValue(PointProperty); }
 		}
 	}
 }

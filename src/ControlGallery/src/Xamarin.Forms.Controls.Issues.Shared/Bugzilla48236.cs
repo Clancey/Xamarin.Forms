@@ -19,7 +19,7 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			var stepper = new Stepper
 			{
-				BackgroundColor = Color.Green,
+				BackgroundColor = Colors.Green,
 				Minimum = 0,
 				Maximum = 10
 			};
@@ -35,11 +35,11 @@ namespace Xamarin.Forms.Controls.Issues
 					stepper,
 					new Button
 					{
-						BackgroundColor = Color.Aqua,
+						BackgroundColor = Colors.Aqua,
 						Text = "Change Stepper Color to Yellow",
 						Command = new Command(() =>
 						{
-							stepper.BackgroundColor = Color.Yellow;
+							stepper.BackgroundColor = Colors.Yellow;
 						})
 					}
 				}

@@ -23,8 +23,8 @@ namespace Xamarin.Forms.Controls
 			var clearSelectedTabColorButton = new Button { Text = "Button" };
 			clearSelectedTabColorButton.Clicked += (s, a) =>
 			{
-				UnselectedTabColor = Color.Default;
-				SelectedTabColor = Color.Default;
+				UnselectedTabColor = null;
+				SelectedTabColor = null;
 			};
 
 			var tabTwo = new ContentPage
@@ -35,7 +35,7 @@ namespace Xamarin.Forms.Controls
 					Children = {
 						new Label { Text = "Hello" },
 						new AbsoluteLayout {
-							BackgroundColor = Color.Red,
+							BackgroundColor = Colors.Red,
 							VerticalOptions = LayoutOptions.FillAndExpand,
 							HorizontalOptions = LayoutOptions.FillAndExpand
 						}, clearSelectedTabColorButton
@@ -43,8 +43,8 @@ namespace Xamarin.Forms.Controls
 				}
 			};
 
-			UnselectedTabColor = Color.HotPink;
-			SelectedTabColor = Color.Green;
+			UnselectedTabColor = Colors.HotPink;
+			SelectedTabColor = Colors.Green;
 
 			Children.Add(tabOne);
 			Children.Add(tabTwo);

@@ -20,13 +20,13 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			Button button = new Button
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				CornerRadius = 32,
 				BorderWidth = 0,
 				FontSize = 36,
 				HeightRequest = 64,
 				HorizontalOptions = LayoutOptions.Center,
-				TextColor = Color.White,
+				TextColor = Colors.White,
 				VerticalOptions = LayoutOptions.Center,
 				WidthRequest = 64,
 				AutomationId = "TestReady"
@@ -36,13 +36,13 @@ namespace Xamarin.Forms.Controls.Issues
 
 			FlatButton flatButton = new FlatButton
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				CornerRadius = 32,
 				BorderWidth = 0,
 				FontSize = 36,
 				HeightRequest = 64,
 				HorizontalOptions = LayoutOptions.Center,
-				TextColor = Color.White,
+				TextColor = Colors.White,
 				VerticalOptions = LayoutOptions.Center,
 				WidthRequest = 64
 			};

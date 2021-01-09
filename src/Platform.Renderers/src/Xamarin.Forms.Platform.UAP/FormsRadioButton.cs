@@ -65,7 +65,7 @@ namespace Xamarin.Forms.Platform.UWP
 
 			if (_contentPresenter != null)
 				_contentPresenter.Background = BackgroundColor;
-			Background = Color.Transparent.ToBrush();
+			Background = Colors.Transparent.ToBrush();
 		}
 
 		void UpdateBorderRadius()

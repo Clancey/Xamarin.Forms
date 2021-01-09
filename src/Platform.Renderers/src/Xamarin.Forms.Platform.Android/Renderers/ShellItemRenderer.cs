@@ -205,7 +205,7 @@ namespace Xamarin.Forms.Platform.Android
 					{
 						if (!image.IsDisposed())
 						{
-							var color = Color.Black.MultiplyAlpha(0.6).ToAndroid();
+							var color = Colors.Black.MultiplyAlpha(0.6).ToAndroid();
 							icon.SetTint(color);
 							image.SetImageDrawable(icon);
 						}

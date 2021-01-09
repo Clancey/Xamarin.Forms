@@ -193,7 +193,7 @@ namespace Xamarin.Forms.Controls.Issues
 			Grid.SetColumn(col2, 1);
 
 			col1.Children.Add(MenuButton(nameof(Image), () => new Image { Source = ImageSource.FromFile("oasis.jpg") }));
-			col1.Children.Add(MenuButton(nameof(Frame), () => new Frame { BackgroundColor = Color.DarkGoldenrod }));
+			col1.Children.Add(MenuButton(nameof(Frame), () => new Frame { BackgroundColor = Colors.DarkGoldenrod }));
 			col1.Children.Add(MenuButton(nameof(Entry), () => new Entry()));
 			col1.Children.Add(MenuButton(nameof(Editor), () => new Editor()));
 			col1.Children.Add(MenuButton(nameof(Button), () => new Button { Text = "Test" }));
@@ -212,7 +212,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			col2.Children.Add(MenuButton(nameof(Switch), () => new Switch()));
 			col2.Children.Add(MenuButton(nameof(Stepper), () => new Stepper()));
-			col2.Children.Add(MenuButton(nameof(BoxView), () => new BoxView { BackgroundColor = Color.DarkMagenta, WidthRequest = 100, HeightRequest = 100 }));
+			col2.Children.Add(MenuButton(nameof(BoxView), () => new BoxView { BackgroundColor = Colors.DarkMagenta, WidthRequest = 100, HeightRequest = 100 }));
 
 			col2.Children.Add(MenuButton(nameof(DatePicker), () => new DatePicker()));
 			col2.Children.Add(MenuButton(nameof(TimePicker), () => new TimePicker()));

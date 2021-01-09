@@ -26,7 +26,7 @@ namespace Xamarin.Forms.Controls.Issues
 					{
 						Children = {
 							new Label { Text = "Rotate the device to Landscape and back to Portrait. If the app hangs, this test has failed." },
-							new BoxView {  Color = Color.Red, HeightRequest = 200, WidthRequest = 200 }
+							new BoxView {  Color = Colors.Red, HeightRequest = 200, WidthRequest = 200 }
 						}
 					}
 				});
@@ -36,7 +36,7 @@ namespace Xamarin.Forms.Controls.Issues
 					{
 						Children = {
 							new Label { Text = "Rotate the device to Landscape and back to Portrait. If the app hangs, this test has failed." },
-							new BoxView {  Color = Color.Green, HeightRequest = 200, WidthRequest = 200 }
+							new BoxView {  Color = Colors.Green, HeightRequest = 200, WidthRequest = 200 }
 						}
 					}
 				});

@@ -1,13 +1,15 @@
+using System.Graphics;
+
 namespace Xamarin.Forms
 {
 	static class TextElement
 	{
 		public static readonly BindableProperty TextColorProperty =
-			BindableProperty.Create(nameof(ITextElement.TextColor), typeof(Color), typeof(ITextElement), Color.Default,
+			BindableProperty.Create(nameof(ITextElement.TextColor), typeof(Color), typeof(ITextElement), null,
 									propertyChanged: OnTextColorPropertyChanged);
 
 		public static readonly BindableProperty CharacterSpacingProperty =
-			BindableProperty.Create(nameof(ITextElement.CharacterSpacing), typeof(double), typeof(ITextElement), 0.0d,
+			BindableProperty.Create(nameof(ITextElement.CharacterSpacing), typeof(float), typeof(ITextElement), 0.0d,
 				propertyChanged: OnCharacterSpacingPropertyChanged);
 
 		static void OnTextColorPropertyChanged(BindableObject bindable, object oldValue, object newValue)
@@ -17,7 +19,7 @@ namespace Xamarin.Forms
 
 		static void OnCharacterSpacingPropertyChanged(BindableObject bindable, object oldValue, object newValue)
 		{
-			((ITextElement)bindable).OnCharacterSpacingPropertyChanged((double)oldValue, (double)newValue);
+			((ITextElement)bindable).OnCharacterSpacingPropertyChanged((float)oldValue, (float)newValue);
 		}
 
 		public static readonly BindableProperty TextTransformProperty =

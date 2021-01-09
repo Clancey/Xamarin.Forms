@@ -122,7 +122,7 @@ namespace Xamarin.Forms.Platform.MacOS
 			var bgColor = ColorExtensions.ControlBackgroundColor;
 			var element = _cell.RealParent as VisualElement;
 			if (element != null)
-				bgColor = element.BackgroundColor == Color.Default ? bgColor : element.BackgroundColor.ToNSColor();
+				bgColor = element.BackgroundColor == null ? bgColor : element.BackgroundColor.ToNSColor();
 
 			Layer.BackgroundColor = bgColor.CGColor;
 		}
@@ -135,7 +135,7 @@ namespace Xamarin.Forms.Platform.MacOS
 			var textColor = ColorExtensions.TextColor;
 			var textCell = _cell.RealParent as TextCell;
 			if (textCell != null)
-				textColor = textCell.TextColor == Color.Default ? textColor : textCell.TextColor.ToNSColor();
+				textColor = textCell.TextColor == null ? textColor : textCell.TextColor.ToNSColor();
 
 			TextLabel.TextColor = textColor;
 
@@ -145,7 +145,7 @@ namespace Xamarin.Forms.Platform.MacOS
 			var detailTextColor = ColorExtensions.SecondaryLabelColor;
 			var element = _cell.RealParent as TextCell;
 			if (element != null)
-				detailTextColor = element.TextColor == Color.Default ? textColor : element.TextColor.ToNSColor();
+				detailTextColor = element.TextColor == null ? textColor : element.TextColor.ToNSColor();
 
 			DetailTextLabel.TextColor = detailTextColor;
 		}

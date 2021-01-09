@@ -23,7 +23,7 @@ namespace Xamarin.Forms.Platform.Android
 		float _lastTextSize = -1f;
 		Typeface _lastTypeface;
 
-		Color _lastUpdateColor = Color.Default;
+		Color _lastUpdateColor = null;
 		FormsTextView _view;
 		bool _wasFormatted;
 
@@ -284,7 +284,7 @@ namespace Xamarin.Forms.Platform.Android
 				if (_wasFormatted)
 				{
 					_view.SetTextColor(_labelTextColorDefault);
-					_lastUpdateColor = Color.Default;
+					_lastUpdateColor = null;
 				}
 
 				switch (Element.TextType)

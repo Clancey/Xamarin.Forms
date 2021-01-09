@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Graphics;
 using System.Text;
 
 namespace Xamarin.Forms
@@ -46,7 +47,7 @@ namespace Xamarin.Forms
 				return new SolidColorBrush(color);
 			}
 
-			return new SolidColorBrush(Color.Default);
+			return new SolidColorBrush(null);
 		}
 
 		public override string ConvertToInvariantString(object value) => throw new NotSupportedException();
@@ -193,7 +194,7 @@ namespace Xamarin.Forms
 				};
 			}
 
-			void CreateRadialGradient(Point center)
+			void CreateRadialGradient(PointF center)
 			{
 				_gradient = new RadialGradientBrush
 				{
@@ -224,33 +225,33 @@ namespace Xamarin.Forms
 					AddGradientStop(color, offset);
 			}
 
-			Tuple<Point, Point> GetCoordinatesByAngle(double angle)
+			Tuple<PointF, PointF> GetCoordinatesByAngle(double angle)
 			{
-				Point startPoint;
-				Point endPoint;
+				PointF startPoint;
+				PointF endPoint;
 
 				switch (angle)
 				{
 					case 90:
-						startPoint = new Point(0, 1);
-						endPoint = new Point(0, 0);
+						startPoint = new PointF(0, 1);
+						endPoint = new PointF(0, 0);
 						break;
 					case 180:
-						startPoint = new Point(1, 0);
-						endPoint = new Point(0, 0);
+						startPoint = new PointF(1, 0);
+						endPoint = new PointF(0, 0);
 						break;
 					case 270:
-						startPoint = new Point(0, 0);
-						endPoint = new Point(0, 1);
+						startPoint = new PointF(0, 0);
+						endPoint = new PointF(0, 1);
 						break;
 					default:
 					case 360:
-						startPoint = new Point(0, 0);
-						endPoint = new Point(1, 0);
+						startPoint = new PointF(0, 0);
+						endPoint = new PointF(1, 0);
 						break;
 				}
 
-				return new Tuple<Point, Point>(startPoint, endPoint);
+				return new Tuple<PointF, PointF>(startPoint, endPoint);
 			}
 
 			bool TryParseAngle(string part, out double angle)
@@ -271,7 +272,7 @@ namespace Xamarin.Forms
 				return false;
 			}
 
-			Point GetGradientCenter()
+			PointF GetGradientCenter()
 			{
 				_position++;
 
@@ -295,7 +296,7 @@ namespace Xamarin.Forms
 						var hasPositionX = TryParseOffset(directionX, out var positionX);
 						var hasPositionY = TryParseOffset(directionY, out var positionY);
 
-						var position = new Point(0.5, 0.5);
+						var position = new PointF(0.5f, 0.5f);
 
 						if (!hasPositionX && !string.IsNullOrEmpty(directionX))
 							position = GetGradientPositionByDirection(directionX);
@@ -303,28 +304,28 @@ namespace Xamarin.Forms
 						if (!hasPositionY && !string.IsNullOrEmpty(directionY))
 							position = GetGradientPositionByDirection(directionY);
 
-						return new Point(hasPositionX ? positionX : position.X, hasPositionY ? positionY : position.Y);
+						return new PointF(hasPositionX ? positionX : position.X, hasPositionY ? positionY : position.Y);
 					}
 				}
 
-				return new Point(0.5, 0.5);
+				return new PointF(0.5f, 0.5f);
 			}
 
-			Point GetGradientPositionByDirection(string direction)
+			PointF GetGradientPositionByDirection(string direction)
 			{
 				switch (direction)
 				{
 					case "left":
-						return new Point(0, 0.5);
+						return new PointF(0, 0.5f);
 					case "right":
-						return new Point(1, 0.5);
+						return new PointF(1, 0.5f);
 					case "top":
-						return new Point(0.5, 0);
+						return new PointF(0.5f, 0);
 					case "bottom":
-						return new Point(0.5, 1);
+						return new PointF(0.5f, 1);
 					default:
 					case "center":
-						return new Point(0.5, 0.5);
+						return new PointF(0.5f, 0.5f);
 				}
 			}
 

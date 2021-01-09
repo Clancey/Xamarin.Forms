@@ -1,15 +1,15 @@
 ﻿using System.Linq;
-using Xamarin.Forms;
+using System.Graphics;
 
 namespace Xamarin.Platform
 {
 	internal static class RectExtensions
 	{
-		public static bool Contains(this Rectangle rect, Point point) =>
+		public static bool Contains(this RectangleF rect, PointF point) =>
 			point.X >= 0 && point.X <= rect.Width &&
 			point.Y >= 0 && point.Y <= rect.Height;
 
-		public static bool ContainsAny(this Rectangle rect, Point[] points)
+		public static bool ContainsAny(this RectangleF rect, PointF[] points)
 			=> points.Any(x => rect.Contains(x));
 	}
 }

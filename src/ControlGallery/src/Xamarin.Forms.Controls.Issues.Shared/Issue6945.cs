@@ -33,7 +33,7 @@ namespace Xamarin.Forms.Controls.Issues
 				AnchorY = 0,
 				HeightRequest = 150,
 				WidthRequest = 150,
-				Color = Color.Red,
+				Color = Colors.Red,
 				TranslationX = 101,
 				TranslationY = 201,
 				AutomationId = BoxViewId

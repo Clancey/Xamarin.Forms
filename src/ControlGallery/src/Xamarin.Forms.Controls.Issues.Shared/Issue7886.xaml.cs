@@ -40,7 +40,7 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			public ModalPage()
 			{
-				BackgroundColor = Color.Orange;
+				BackgroundColor = Colors.Orange;
 
 				var tbi = new ToolbarItem("Done", null, () => Navigation.PopModalAsync())
 				{

@@ -37,13 +37,13 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			Application.Current.MainPage = new ContentPage
 			{
-				BackgroundColor = Color.White,
+				BackgroundColor = Colors.White,
 				Content = new Label
 				{
 					Text = "This text should be in bounds in landscape mode.",
 					HorizontalTextAlignment = TextAlignment.End,
 					VerticalTextAlignment = TextAlignment.Center,
-					TextColor = Color.Black
+					TextColor = Colors.Black
 				}
 			};
 		}

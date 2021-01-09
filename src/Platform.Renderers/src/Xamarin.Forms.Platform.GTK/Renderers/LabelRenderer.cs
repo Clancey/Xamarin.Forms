@@ -152,7 +152,7 @@ namespace Xamarin.Forms.Platform.GTK.Renderers
 			if (Control == null)
 				return;
 
-			var textColor = Element.TextColor != Color.Default ? Element.TextColor : Color.Black;
+			var textColor = Element.TextColor != null ? Element.TextColor : Colors.Black;
 
 			Control.ModifyFg(StateType.Normal, textColor.ToGtkColor());
 		}

@@ -72,7 +72,7 @@ namespace Xamarin.Forms.Platform.MacOS
 			if (Control == null)
 				return;
 
-			Control.Cell.BackgroundColor = color == Color.Default ? _defaultBackgroundColor : color.ToNSColor();
+			Control.Cell.BackgroundColor = color == null ? _defaultBackgroundColor : color.ToNSColor();
 		}
 
 		protected override void Dispose(bool disposing)
@@ -146,7 +146,7 @@ namespace Xamarin.Forms.Platform.MacOS
 			}
 
 			var color = Element.TextColor;
-			if (color != Color.Default && Control.SelectedItem != null)
+			if (color != null && Control.SelectedItem != null)
 			{
 				NSAttributedString textWithColor = new NSAttributedString(Control.SelectedItem.Title, foregroundColor: color.ToNSColor(), paragraphStyle: new NSMutableParagraphStyle() { Alignment = NSTextAlignment.Left });
 				Control.SelectedItem.AttributedTitle = textWithColor;

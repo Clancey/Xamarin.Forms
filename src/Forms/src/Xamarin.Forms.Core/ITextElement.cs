@@ -1,4 +1,5 @@
 using System;
+using System.Graphics;
 using Xamarin.Forms.Internals;
 
 namespace Xamarin.Forms
@@ -11,10 +12,10 @@ namespace Xamarin.Forms
 		//note to implementor: but implement this method explicitly
 		void OnTextColorPropertyChanged(Color oldValue, Color newValue);
 
-		double CharacterSpacing { get; }
+		float CharacterSpacing { get; }
 
 		//note to implementor: but implement these methods explicitly
-		void OnCharacterSpacingPropertyChanged(double oldValue, double newValue);
+		void OnCharacterSpacingPropertyChanged(float oldValue, float newValue);
 
 		TextTransform TextTransform { get; set; }
 

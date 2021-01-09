@@ -143,7 +143,7 @@ namespace Xamarin.Forms.Platform.Android
 
 		protected void SetDefaultBackgroundColor(IVisualElementRenderer renderer)
 		{
-			if (ChildView.BackgroundColor == Color.Default)
+			if (ChildView.BackgroundColor == null)
 			{
 				TypedArray colors = Context.Theme.ObtainStyledAttributes(new[] { global::Android.Resource.Attribute.ColorBackground });
 				renderer.View.SetBackgroundColor(new global::Android.Graphics.Color(colors.GetColor(0, 0)));

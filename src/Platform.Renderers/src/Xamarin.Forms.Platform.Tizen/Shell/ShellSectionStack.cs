@@ -137,9 +137,9 @@ namespace Xamarin.Forms.Platform.Tizen
 			if (_navBar == null)
 				return;
 
-			var titleColor = (appearance as IShellAppearanceElement)?.EffectiveTabBarTitleColor ?? Xamarin.Forms.Color.Default;
-			var backgroundColor = appearance?.BackgroundColor ?? Xamarin.Forms.Color.Default;
-			var foregroundColor = appearance?.ForegroundColor ?? Xamarin.Forms.Color.Default;
+			var titleColor = (appearance as IShellAppearanceElement)?.EffectiveTabBarTitleColor ?? Xamarin.Forms.null;
+			var backgroundColor = appearance?.BackgroundColor ?? Xamarin.Forms.null;
+			var foregroundColor = appearance?.ForegroundColor ?? Xamarin.Forms.null;
 
 			_navBar.TitleColor = titleColor.IsDefault ? ShellRenderer.DefaultTitleColor.ToNative() : titleColor.ToNative();
 			_navBar.BackgroundColor = backgroundColor.IsDefault ? ShellRenderer.DefaultBackgroundColor.ToNative() : backgroundColor.ToNative();

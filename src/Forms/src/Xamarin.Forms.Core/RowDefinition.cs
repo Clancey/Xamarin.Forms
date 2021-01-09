@@ -18,9 +18,9 @@ namespace Xamarin.Forms
 			set { SetValue(HeightProperty, value); }
 		}
 
-		internal double ActualHeight { get; set; }
+		internal float ActualHeight { get; set; }
 
-		internal double MinimumHeight { get; set; }
+		internal float MinimumHeight { get; set; }
 
 		public event EventHandler SizeChanged;
 

@@ -112,7 +112,7 @@ namespace Xamarin.Forms.Platform.GTK.Helpers
 				var destructionButton =
 					messageDialog.AddButton(destruction, ResponseType.Reject) as Gtk.Button;
 
-				var destructionColor = Color.Red.ToGtkColor();
+				var destructionColor = Colors.Red.ToGtkColor();
 				destructionButton.Child.ModifyFg(StateType.Normal, destructionColor);
 				destructionButton.Child.ModifyFg(StateType.Prelight, destructionColor);
 				destructionButton.Child.ModifyFg(StateType.Active, destructionColor);

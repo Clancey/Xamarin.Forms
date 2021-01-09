@@ -24,7 +24,7 @@ namespace Xamarin.Forms.Platform.UWP
 		{
 			var run = new Run { Text = span.Text ?? string.Empty };
 
-			if (span.TextColor != Color.Default)
+			if (span.TextColor != null)
 				run.Foreground = span.TextColor.ToBrush();
 
 			if (!span.IsDefault())
@@ -242,7 +242,7 @@ namespace Xamarin.Forms.Platform.UWP
 				return;
 
 			Label label = Element;
-			if (label != null && label.TextColor != Color.Default)
+			if (label != null && label.TextColor != null)
 			{
 				textBlock.Foreground = label.TextColor.ToBrush();
 			}

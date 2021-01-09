@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Graphics;
 using Xamarin.Forms.Internals;
 
 namespace Xamarin.Forms
@@ -10,7 +11,7 @@ namespace Xamarin.Forms
 	{
 		public static readonly BindableProperty LayoutFlagsProperty = BindableProperty.CreateAttached("LayoutFlags", typeof(AbsoluteLayoutFlags), typeof(AbsoluteLayout), AbsoluteLayoutFlags.None);
 
-		public static readonly BindableProperty LayoutBoundsProperty = BindableProperty.CreateAttached("LayoutBounds", typeof(Rectangle), typeof(AbsoluteLayout), new Rectangle(0, 0, AutoSize, AutoSize));
+		public static readonly BindableProperty LayoutBoundsProperty = BindableProperty.CreateAttached("LayoutBounds", typeof(RectangleF), typeof(AbsoluteLayout), new RectangleF(0, 0, AutoSize, AutoSize));
 
 		readonly AbsoluteElementCollection _children;
 		readonly Lazy<PlatformConfigurationRegistry<AbsoluteLayout>> _platformConfigurationRegistry;
@@ -27,7 +28,7 @@ namespace Xamarin.Forms
 			return _platformConfigurationRegistry.Value.On<T>();
 		}
 
-		public static double AutoSize => -1;
+		public static float AutoSize => -1;
 
 		public new IAbsoluteList<View> Children
 		{
@@ -35,9 +36,9 @@ namespace Xamarin.Forms
 		}
 
 		[TypeConverter(typeof(BoundsTypeConverter))]
-		public static Rectangle GetLayoutBounds(BindableObject bindable)
+		public static RectangleF GetLayoutBounds(BindableObject bindable)
 		{
-			return (Rectangle)bindable.GetValue(LayoutBoundsProperty);
+			return (RectangleF)bindable.GetValue(LayoutBoundsProperty);
 		}
 
 		public static AbsoluteLayoutFlags GetLayoutFlags(BindableObject bindable)
@@ -45,7 +46,7 @@ namespace Xamarin.Forms
 			return (AbsoluteLayoutFlags)bindable.GetValue(LayoutFlagsProperty);
 		}
 
-		public static void SetLayoutBounds(BindableObject bindable, Rectangle bounds)
+		public static void SetLayoutBounds(BindableObject bindable, RectangleF bounds)
 		{
 			bindable.SetValue(LayoutBoundsProperty, bounds);
 		}
@@ -55,11 +56,11 @@ namespace Xamarin.Forms
 			bindable.SetValue(LayoutFlagsProperty, flags);
 		}
 
-		protected override void LayoutChildren(double x, double y, double width, double height)
+		protected override void LayoutChildren(float x, float y, float width, float height)
 		{
 			foreach (View child in LogicalChildrenInternal)
 			{
-				Rectangle rect = ComputeLayoutForRegion(child, new Size(width, height));
+				var rect = ComputeLayoutForRegion(child, new SizeF(width, height));
 				rect.X += x;
 				rect.Y += y;
 
@@ -84,10 +85,10 @@ namespace Xamarin.Forms
 
 		[Obsolete("OnSizeRequest is obsolete as of version 2.2.0. Please use OnMeasure instead.")]
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		protected override SizeRequest OnSizeRequest(double widthConstraint, double heightConstraint)
+		protected override SizeRequest OnSizeRequest(float widthConstraint, float heightConstraint)
 		{
-			var bestFitSize = new Size();
-			var minimum = new Size();
+			var bestFitSize = new SizeF();
+			var minimum = new SizeF();
 			foreach (View child in LogicalChildrenInternal)
 			{
 				SizeRequest desiredSize = ComputeBoundingRegionDesiredSize(child);
@@ -115,7 +116,7 @@ namespace Xamarin.Forms
 			}
 
 			var result = LayoutConstraint.None;
-			Rectangle layoutBounds = GetLayoutBounds(view);
+			var layoutBounds = GetLayoutBounds(view);
 			if ((layoutFlags & AbsoluteLayoutFlags.HeightProportional) != 0)
 			{
 				bool widthLocked = layoutBounds.Width != AutoSize;
@@ -152,12 +153,12 @@ namespace Xamarin.Forms
 
 		static SizeRequest ComputeBoundingRegionDesiredSize(View view)
 		{
-			var width = 0.0;
-			var height = 0.0;
+			var width = 0f;
+			var height = 0f;
 
-			var sizeRequest = new Lazy<SizeRequest>(() => view.Measure(double.PositiveInfinity, double.PositiveInfinity, MeasureFlags.IncludeMargins));
+			var sizeRequest = new Lazy<SizeRequest>(() => view.Measure(float.PositiveInfinity, float.PositiveInfinity, MeasureFlags.IncludeMargins));
 
-			Rectangle bounds = GetLayoutBounds(view);
+			var bounds = GetLayoutBounds(view);
 			AbsoluteLayoutFlags absFlags = GetLayoutFlags(view);
 			bool widthIsProportional = (absFlags & AbsoluteLayoutFlags.WidthProportional) != 0;
 			bool heightIsProportional = (absFlags & AbsoluteLayoutFlags.HeightProportional) != 0;
@@ -175,8 +176,8 @@ namespace Xamarin.Forms
 				height += bounds.Y;
 			}
 
-			double minWidth = width;
-			double minHeight = height;
+			float minWidth = width;
+			float minHeight = height;
 
 			if (!widthIsProportional && bounds.Width != AutoSize)
 			{
@@ -193,7 +194,7 @@ namespace Xamarin.Forms
 			else
 			{
 				// proportional size
-				width += sizeRequest.Value.Request.Width / Math.Max(0.25, bounds.Width);
+				width += sizeRequest.Value.Request.Width / Math.Max(0.25f, bounds.Width);
 				//minWidth += 0;
 			}
 
@@ -212,19 +213,19 @@ namespace Xamarin.Forms
 			else
 			{
 				// proportional size
-				height += sizeRequest.Value.Request.Height / Math.Max(0.25, bounds.Height);
+				height += sizeRequest.Value.Request.Height / Math.Max(0.25f, bounds.Height);
 				//minHeight += 0;
 			}
 
-			return new SizeRequest(new Size(width, height), new Size(minWidth, minHeight));
+			return new SizeRequest(new SizeF(width, height), new SizeF(minWidth, minHeight));
 		}
 
-		static Rectangle ComputeLayoutForRegion(View view, Size region)
+		static RectangleF ComputeLayoutForRegion(View view, SizeF region)
 		{
-			var result = new Rectangle();
+			var result = new RectangleF();
 
 			SizeRequest sizeRequest;
-			Rectangle bounds = GetLayoutBounds(view);
+			var bounds = GetLayoutBounds(view);
 			AbsoluteLayoutFlags absFlags = GetLayoutFlags(view);
 			bool widthIsProportional = (absFlags & AbsoluteLayoutFlags.WidthProportional) != 0;
 			bool heightIsProportional = (absFlags & AbsoluteLayoutFlags.HeightProportional) != 0;
@@ -295,9 +296,9 @@ namespace Xamarin.Forms
 
 		public interface IAbsoluteList<T> : IList<T> where T : View
 		{
-			void Add(View view, Rectangle bounds, AbsoluteLayoutFlags flags = AbsoluteLayoutFlags.None);
+			void Add(View view, RectangleF bounds, AbsoluteLayoutFlags flags = AbsoluteLayoutFlags.None);
 
-			void Add(View view, Point position);
+			void Add(View view, PointF position);
 		}
 
 		class AbsoluteElementCollection : ElementCollection<View>, IAbsoluteList<View>
@@ -309,16 +310,16 @@ namespace Xamarin.Forms
 
 			internal AbsoluteLayout Parent { get; set; }
 
-			public void Add(View view, Rectangle bounds, AbsoluteLayoutFlags flags = AbsoluteLayoutFlags.None)
+			public void Add(View view, RectangleF bounds, AbsoluteLayoutFlags flags = AbsoluteLayoutFlags.None)
 			{
 				SetLayoutBounds(view, bounds);
 				SetLayoutFlags(view, flags);
 				Add(view);
 			}
 
-			public void Add(View view, Point position)
+			public void Add(View view, PointF position)
 			{
-				SetLayoutBounds(view, new Rectangle(position.X, position.Y, AutoSize, AutoSize));
+				SetLayoutBounds(view, new RectangleF(position.X, position.Y, AutoSize, AutoSize));
 				Add(view);
 			}
 		}

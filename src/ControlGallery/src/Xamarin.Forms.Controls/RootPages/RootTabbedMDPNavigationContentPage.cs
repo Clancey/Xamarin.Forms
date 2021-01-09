@@ -25,7 +25,7 @@ namespace Xamarin.Forms.Controls
 						Children = {
 								new Label {Text = "Flyout"},
 								new AbsoluteLayout {
-									BackgroundColor = Color.Red,
+									BackgroundColor = Colors.Red,
 									VerticalOptions = LayoutOptions.FillAndExpand,
 									HorizontalOptions = LayoutOptions.FillAndExpand
 								},
@@ -48,7 +48,7 @@ namespace Xamarin.Forms.Controls
 					Children = {
 						new Label { Text = "Hello" },
 						new AbsoluteLayout {
-							BackgroundColor = Color.Red,
+							BackgroundColor = Colors.Red,
 							VerticalOptions = LayoutOptions.FillAndExpand,
 							HorizontalOptions = LayoutOptions.FillAndExpand
 						}

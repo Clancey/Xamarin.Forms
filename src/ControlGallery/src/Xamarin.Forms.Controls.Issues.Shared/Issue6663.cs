@@ -19,7 +19,7 @@ namespace Xamarin.Forms.Controls.Issues
 		public Issue6663()
 		{
 			Title = "Issue 6663";
-			BackgroundColor = Color.Green;
+			BackgroundColor = Colors.Green;
 
 			var layout = new StackLayout();
 
@@ -50,7 +50,7 @@ namespace Xamarin.Forms.Controls.Issues
 		public Issue663SecondPage()
 		{
 			Title = "Issue 6663 SecondPage";
-			BackgroundColor = Color.Red;
+			BackgroundColor = Colors.Red;
 
 			var layout = new StackLayout();
 

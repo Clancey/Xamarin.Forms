@@ -1,4 +1,6 @@
-﻿namespace Xamarin.Forms.Shapes
+﻿using System.Graphics;
+
+namespace Xamarin.Forms.Shapes
 {
 	public class RectangleGeometry : Geometry
 	{
@@ -7,18 +9,18 @@
 
 		}
 
-		public RectangleGeometry(Rect rect)
+		public RectangleGeometry(RectangleF rect)
 		{
 			Rect = rect;
 		}
 
 		public static readonly BindableProperty RectProperty =
-			BindableProperty.Create(nameof(Rect), typeof(Rect), typeof(RectangleGeometry), new Rect());
+			BindableProperty.Create(nameof(Rect), typeof(RectangleF), typeof(RectangleGeometry), new RectangleF());
 
-		public Rect Rect
+		public RectangleF Rect
 		{
 			set { SetValue(RectProperty, value); }
-			get { return (Rect)GetValue(RectProperty); }
+			get { return (RectangleF)GetValue(RectProperty); }
 		}
 	}
 }

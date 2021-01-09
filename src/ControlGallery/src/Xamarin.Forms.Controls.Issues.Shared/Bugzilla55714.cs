@@ -19,8 +19,8 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			var editor = new Editor
 			{
-				TextColor = Color.Yellow,
-				BackgroundColor = Color.Black
+				TextColor = Colors.Yellow,
+				BackgroundColor = Colors.Black
 			};
 
 			Content = new StackLayout
@@ -36,7 +36,7 @@ namespace Xamarin.Forms.Controls.Issues
 					new Button
 					{
 						Text = "Change Editor text color to white",
-						Command = new Command(() => editor.TextColor = Color.White)
+						Command = new Command(() => editor.TextColor = Colors.White)
 					}
 				}
 			};

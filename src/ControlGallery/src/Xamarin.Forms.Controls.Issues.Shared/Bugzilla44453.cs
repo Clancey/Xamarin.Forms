@@ -42,8 +42,8 @@ namespace Xamarin.Forms.Controls.Issues
 			};
 			Detail = new NavigationPage(content)
 			{
-				BarBackgroundColor = Color.Green,
-				BarTextColor = Color.White
+				BarBackgroundColor = Colors.Green,
+				BarTextColor = Colors.White
 			};
 
 			Detail.ToolbarItems.Add(new ToolbarItem("Test Secondary Item", null, delegate

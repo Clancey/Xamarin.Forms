@@ -15,7 +15,7 @@ namespace Xamarin.Forms.Controls.Issues
 		public Bugzilla29229()
 		{
 			var absLayout = new AbsoluteLayout();
-			absLayout.BackgroundColor = Color.Red;
+			absLayout.BackgroundColor = Colors.Red;
 			absLayout.Scale = 1;
 
 			var cPx = new ListView();

@@ -485,7 +485,7 @@ namespace Xamarin.Forms.Platform.iOS
 			if (Tabbed == null || TabBar == null || TabBar.Items == null)
 				return;
 
-			if (Tabbed.IsSet(TabbedPage.SelectedTabColorProperty) && Tabbed.SelectedTabColor != Color.Default)
+			if (Tabbed.IsSet(TabbedPage.SelectedTabColorProperty) && Tabbed.SelectedTabColor != null)
 			{
 				if (Forms.IsiOS10OrNewer)
 					TabBar.TintColor = Tabbed.SelectedTabColor.ToUIColor();
@@ -504,7 +504,7 @@ namespace Xamarin.Forms.Platform.iOS
 			if (!Forms.IsiOS10OrNewer)
 				return;
 
-			if (Tabbed.IsSet(TabbedPage.UnselectedTabColorProperty) && Tabbed.UnselectedTabColor != Color.Default)
+			if (Tabbed.IsSet(TabbedPage.UnselectedTabColorProperty) && Tabbed.UnselectedTabColor != null)
 				TabBar.UnselectedItemTintColor = Tabbed.UnselectedTabColor.ToUIColor();
 			else
 				TabBar.UnselectedItemTintColor = UITabBar.Appearance.TintColor;

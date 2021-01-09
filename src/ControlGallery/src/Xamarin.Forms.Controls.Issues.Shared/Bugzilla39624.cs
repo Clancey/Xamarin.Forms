@@ -16,11 +16,11 @@ namespace Xamarin.Forms.Controls.Issues
 			var instructions =
 				"Flip through each page of the carousel from 1 to 5; the pages should display in order. Then flip backward to page 1; if any of the pages display out of order, the test has failed.";
 
-			Children.Add(GeneratePage("Page 1", Color.Red, instructions));
-			Children.Add(GeneratePage("Page 2", Color.Green, instructions));
-			Children.Add(GeneratePage("Page 3", Color.Blue, instructions));
-			Children.Add(GeneratePage("Page 4", Color.Purple, instructions));
-			Children.Add(GeneratePage("Page 5", Color.Black, instructions));
+			Children.Add(GeneratePage("Page 1", Colors.Red, instructions));
+			Children.Add(GeneratePage("Page 2", Colors.Green, instructions));
+			Children.Add(GeneratePage("Page 3", Colors.Blue, instructions));
+			Children.Add(GeneratePage("Page 4", Colors.Purple, instructions));
+			Children.Add(GeneratePage("Page 5", Colors.Black, instructions));
 
 			CurrentPageChanged += (sender, args) => Debug.WriteLine(CurrentPage.Title);
 		}
@@ -32,8 +32,8 @@ namespace Xamarin.Forms.Controls.Issues
 				Content = new StackLayout
 				{
 					Children = {
-						new Label { Text = title, FontSize = 24, TextColor = Color.White },
-						new Label { Text = instructions, TextColor = Color.White }
+						new Label { Text = title, FontSize = 24, TextColor = Colors.White },
+						new Label { Text = instructions, TextColor = Colors.White }
 					}
 				},
 				BackgroundColor = color,

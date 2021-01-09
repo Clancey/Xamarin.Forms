@@ -66,7 +66,7 @@ namespace Xamarin.Forms.Platform.GTK
 		public Color GetNamedColor(string name)
 		{
 			// Not supported on this platform
-			return Color.Default;
+			return null;
 		}
 
 		public async Task<Stream> GetStreamAsync(Uri uri, CancellationToken cancellationToken)

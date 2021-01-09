@@ -27,7 +27,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var grid = new Grid
 			{
-				BackgroundColor = Color.Blue,
+				BackgroundColor = Colors.Blue,
 				IsEnabled = true,
 				WidthRequest = 250,
 				HeightRequest = 50,
@@ -40,7 +40,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var contentView = new ContentView
 			{
-				BackgroundColor = Color.Green,
+				BackgroundColor = Colors.Green,
 				IsEnabled = true,
 				WidthRequest = 250,
 				HeightRequest = 50,
@@ -53,7 +53,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var stackLayout = new StackLayout
 			{
-				BackgroundColor = Color.Orange,
+				BackgroundColor = Colors.Orange,
 				IsEnabled = true,
 				WidthRequest = 250,
 				HeightRequest = 50,

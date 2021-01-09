@@ -31,7 +31,7 @@ namespace Xamarin.Forms.Controls.Issues
 			var e = new Editor
 			{
 				IsEnabled = false,
-				BackgroundColor = Color.Aqua
+				BackgroundColor = Colors.Aqua
 			};
 
 			layout.Children.Add(e);

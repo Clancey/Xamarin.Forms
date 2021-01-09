@@ -136,10 +136,10 @@ namespace Xamarin.Forms.Platform.Android
 
 		#endregion IAppearanceObserver
 
-		public static readonly Color DefaultBackgroundColor = Color.FromRgb(33, 150, 243);
-		public static readonly Color DefaultForegroundColor = Color.White;
-		public static readonly Color DefaultTitleColor = Color.White;
-		public static readonly Color DefaultUnselectedColor = Color.FromRgba(255, 255, 255, 180);
+		public static readonly Color DefaultBackgroundColor = Colors.FromRgb(33, 150, 243);
+		public static readonly Color DefaultForegroundColor = Colors.White;
+		public static readonly Color DefaultTitleColor = Colors.White;
+		public static readonly Color DefaultUnselectedColor = Colors.FromRgba(255, 255, 255, 180);
 
 		bool _disposed;
 		IShellFlyoutRenderer _flyoutRenderer;
@@ -343,7 +343,7 @@ namespace Xamarin.Forms.Platform.Android
 				}
 				else
 				{
-					color = Color.FromHex("#03A9F4").ToAndroid();
+					color = Colors.FromHex("#03A9F4").ToAndroid();
 				}
 
 				if (!(decorView.Background is SplitDrawable splitDrawable) ||

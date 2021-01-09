@@ -23,7 +23,7 @@ namespace Xamarin.Forms.Controls.Tests
 			listview.Header = new Label()
 			{
 				Text = header,
-				TextColor = Color.Red,
+				TextColor = Colors.Red,
 #pragma warning disable 618
 				XAlign = TextAlignment.Center
 #pragma warning restore 618
@@ -52,7 +52,7 @@ namespace Xamarin.Forms.Controls.Tests
 		[Description("ButtonRenderer UpdateTextColor function crash")]
 		public async Task Bugzilla35738()
 		{
-			var customButton = new TestClasses.CustomButton() { Text = "This is a custom button", TextColor = Color.Fuchsia };
+			var customButton = new TestClasses.CustomButton() { Text = "This is a custom button", TextColor = Colors.Fuchsia };
 			await TestingPlatform.CreateRenderer(customButton);
 		}
 

@@ -25,7 +25,7 @@ namespace Xamarin.Forms.Controls.Issues
 		protected override void Init()
 		{
 			ListView list = new ListView();
-			list.BackgroundColor = Color.Yellow;
+			list.BackgroundColor = Colors.Yellow;
 			list.ItemsSource =
 				Enumerable
 				.Range(0, 1000)

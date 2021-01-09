@@ -20,7 +20,7 @@ namespace Xamarin.Forms.Controls
 
 			var firstTab = new ContentPage
 			{
-				//BackgroundColor = Color.Yellow,
+				//BackgroundColor = Colors.Yellow,
 				Title = "Testing 123",
 				Content = new SwapHierachyStackLayout(hierarchy)
 			};
@@ -38,7 +38,7 @@ namespace Xamarin.Forms.Controls
 					Children = {
 						new Label { Text = "Hello" },
 						new AbsoluteLayout {
-							BackgroundColor = Color.Red,
+							BackgroundColor = Colors.Red,
 							VerticalOptions = LayoutOptions.FillAndExpand,
 							HorizontalOptions = LayoutOptions.FillAndExpand
 						},

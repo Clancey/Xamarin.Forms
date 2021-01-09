@@ -28,7 +28,7 @@ namespace Xamarin.Forms.Controls.Issues
 					Color.Maroon,
 					Color.Navy
 				},
-				BackgroundColor = Color.Gray,
+				BackgroundColor = Colors.Gray,
 				ItemTemplate = new DataTemplate(typeof(_40139ViewCell))
 			};
 
@@ -57,22 +57,22 @@ namespace Xamarin.Forms.Controls.Issues
 				{
 					Text = "abc",
 					VerticalOptions = LayoutOptions.Center,
-					TextColor = Color.White,
+					TextColor = Colors.White,
 					FontFamily = "Consolas",
 					FontSize = 24,
-					BackgroundColor = Color.Chartreuse
+					BackgroundColor = Colors.Chartreuse
 				};
 
 				var entry = new Entry
 				{
 					Placeholder = "Placeholder",
-					TextColor = Color.Coral
+					TextColor = Colors.Coral
 				};
 
 				var button = new Button
 				{
 					Text = "Button",
-					TextColor = Color.Coral
+					TextColor = Colors.Coral
 				};
 
 				var layout = new StackLayout();

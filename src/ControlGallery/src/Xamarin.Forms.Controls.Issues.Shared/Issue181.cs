@@ -18,12 +18,12 @@ namespace Xamarin.Forms.Controls.Issues
 			Title = "Issue 181";
 			Content = new Frame
 			{
-				BorderColor = Color.Red,
+				BorderColor = Colors.Red,
 				BackgroundColor = new Color(1.0, 1.0, 0.0),
 				Content = new Label
 				{
 					Text = "I should have red text",
-					TextColor = Color.Red,
+					TextColor = Colors.Red,
 					BackgroundColor = new Color(0.5, 0.5, 0.5),
 #pragma warning disable 618
 					XAlign = TextAlignment.Center,

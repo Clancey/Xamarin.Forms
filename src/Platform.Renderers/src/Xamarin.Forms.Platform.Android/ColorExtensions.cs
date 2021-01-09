@@ -20,7 +20,7 @@ namespace Xamarin.Forms.Platform.Android
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public static AColor ToAndroid(this Color self, int defaultColorResourceId)
 		{
-			if (self == Color.Default)
+			if (self == null)
 			{
 				return new AColor(ContextCompat.GetColor(Forms.Context, defaultColorResourceId));
 			}
@@ -30,7 +30,7 @@ namespace Xamarin.Forms.Platform.Android
 
 		public static AColor ToAndroid(this Color self, int defaultColorResourceId, Context context)
 		{
-			if (self == Color.Default)
+			if (self == null)
 			{
 				return new AColor(ContextCompat.GetColor(context, defaultColorResourceId));
 			}
@@ -40,7 +40,7 @@ namespace Xamarin.Forms.Platform.Android
 
 		public static AColor ToAndroid(this Color self, Color defaultColor)
 		{
-			if (self == Color.Default)
+			if (self == null)
 				return defaultColor.ToAndroid();
 
 			return ToAndroid(self);
@@ -54,7 +54,7 @@ namespace Xamarin.Forms.Platform.Android
 
 		public static Color ToColor(this AColor color)
 		{
-			return Color.FromUint((uint)color.ToArgb());
+			return Colors.FromUint((uint)color.ToArgb());
 		}
 
 		internal static ColorStateList ToDefaultColorStateList(this Color color)

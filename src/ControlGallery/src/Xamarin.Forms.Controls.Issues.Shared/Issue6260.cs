@@ -33,7 +33,7 @@ namespace Xamarin.Forms.Controls.Issues
 			var button = new Button()
 			{
 				Text = "Click me",
-				BackgroundColor = Color.Green,
+				BackgroundColor = Colors.Green,
 
 			};
 

@@ -28,14 +28,14 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var instructions = new Label
 			{
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White,
 				Text = "Swipe left and right several times and verify that the layout is always correct."
 			};
 
 			var leftSwipeItem = new SwipeItem
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				IconImageSource = "calculator.png",
 				Text = "Delete"
 			};
@@ -44,7 +44,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var rightSwipeItem = new SwipeItem
 			{
-				BackgroundColor = Color.LightGoldenrodYellow,
+				BackgroundColor = Colors.LightGoldenrodYellow,
 				IconImageSource = "calculator.png",
 				Text = "Edit"
 			};
@@ -59,7 +59,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var swipeContent = new Grid
 			{
-				BackgroundColor = Color.Gray
+				BackgroundColor = Colors.Gray
 			};
 
 			var swipeLabel = new Label

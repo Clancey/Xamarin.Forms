@@ -107,7 +107,7 @@ namespace Xamarin.Forms.Controls
 				var label = new Label
 				{
 					VerticalOptions = LayoutOptions.CenterAndExpand,
-					TextColor = Color.Red
+					TextColor = Colors.Red
 				};
 
 				label.SetBinding(Label.TextProperty, "Name");

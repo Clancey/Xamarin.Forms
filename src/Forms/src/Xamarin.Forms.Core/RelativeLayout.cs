@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Graphics;
 using System.Linq;
 using System.Linq.Expressions;
 using Xamarin.Forms.Internals;
@@ -152,7 +153,7 @@ namespace Xamarin.Forms
 			bindable.SetValue(YConstraintProperty, value);
 		}
 
-		protected override void LayoutChildren(double x, double y, double width, double height)
+		protected override void LayoutChildren(float x, float y, float width, float height)
 		{
 			foreach (View child in ChildrenInSolveOrder)
 			{
@@ -181,17 +182,17 @@ namespace Xamarin.Forms
 
 		[Obsolete("OnSizeRequest is obsolete as of version 2.2.0. Please use OnMeasure instead.")]
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		protected override SizeRequest OnSizeRequest(double widthConstraint, double heightConstraint)
+		protected override SizeRequest OnSizeRequest(float widthConstraint, float heightConstraint)
 		{
-			double mockWidth = double.IsPositiveInfinity(widthConstraint) ? ParentView.Width : widthConstraint;
-			double mockHeight = double.IsPositiveInfinity(heightConstraint) ? ParentView.Height : heightConstraint;
-			MockBounds(new Rectangle(0, 0, mockWidth, mockHeight));
+			float mockWidth = float.IsPositiveInfinity(widthConstraint) ? ParentView.Width : widthConstraint;
+			float mockHeight = float.IsPositiveInfinity(heightConstraint) ? ParentView.Height : heightConstraint;
+			MockBounds(new RectangleF(0, 0, mockWidth, mockHeight));
 
-			var boundsRectangle = new Rectangle();
+			var boundsRectangle = new RectangleF();
 			var set = false;
 			foreach (View child in ChildrenInSolveOrder)
 			{
-				Rectangle bounds = SolveView(child);
+				var bounds = SolveView(child);
 				child.MockBounds(bounds);
 				if (!set)
 				{
@@ -212,7 +213,7 @@ namespace Xamarin.Forms
 
 			UnmockBounds();
 
-			return new SizeRequest(new Size(boundsRectangle.Right, boundsRectangle.Bottom));
+			return new SizeRequest(new SizeF(boundsRectangle.Right, boundsRectangle.Bottom));
 		}
 
 		bool CanSolveView(View view, Dictionary<View, bool> solveTable)
@@ -252,7 +253,7 @@ namespace Xamarin.Forms
 		{
 			var parents = new List<View>();
 
-			Func<double> x;
+			Func<float> x;
 			if (xConstraint != null)
 			{
 				x = () => xConstraint.Compute(this);
@@ -262,7 +263,7 @@ namespace Xamarin.Forms
 			else
 				x = () => 0;
 
-			Func<double> y;
+			Func<float> y;
 			if (yConstraint != null)
 			{
 				y = () => yConstraint.Compute(this);
@@ -272,8 +273,8 @@ namespace Xamarin.Forms
 			else
 				y = () => 0;
 
-			Func<double> width;
-			Func<double> height = null;
+			Func<float> width;
+			Func<float> height = null;
 
 			if (widthConstraint != null)
 			{
@@ -293,11 +294,11 @@ namespace Xamarin.Forms
 			else
 				height = () => view.Measure(widthConstraint != null ? width() : Width, Height, MeasureFlags.IncludeMargins).Request.Height;
 
-			BoundsConstraint bounds = BoundsConstraint.FromExpression(() => new Rectangle(x(), y(), width(), height()), parents.Distinct().ToArray());
+			BoundsConstraint bounds = BoundsConstraint.FromExpression(() => new RectangleF(x(), y(), width(), height()), parents.Distinct().ToArray());
 			SetBoundsConstraint(view, bounds);
 		}
 
-		static Rectangle SolveView(View view)
+		static RectangleF SolveView(View view)
 		{
 			BoundsConstraint boundsConstraint = GetBoundsConstraint(view);
 
@@ -313,9 +314,9 @@ namespace Xamarin.Forms
 
 		public interface IRelativeList<T> : IList<T> where T : View
 		{
-			void Add(T view, Expression<Func<Rectangle>> bounds);
+			void Add(T view, Expression<Func<RectangleF>> bounds);
 
-			void Add(T view, Expression<Func<double>> x = null, Expression<Func<double>> y = null, Expression<Func<double>> width = null, Expression<Func<double>> height = null);
+			void Add(T view, Expression<Func<float>> x = null, Expression<Func<float>> y = null, Expression<Func<float>> width = null, Expression<Func<float>> height = null);
 
 			void Add(T view, Constraint xConstraint = null, Constraint yConstraint = null, Constraint widthConstraint = null, Constraint heightConstraint = null);
 		}
@@ -329,7 +330,7 @@ namespace Xamarin.Forms
 
 			internal RelativeLayout Parent { get; set; }
 
-			public void Add(View view, Expression<Func<Rectangle>> bounds)
+			public void Add(View view, Expression<Func<RectangleF>> bounds)
 			{
 				if (bounds == null)
 					throw new ArgumentNullException(nameof(bounds));
@@ -338,12 +339,12 @@ namespace Xamarin.Forms
 				base.Add(view);
 			}
 
-			public void Add(View view, Expression<Func<double>> x = null, Expression<Func<double>> y = null, Expression<Func<double>> width = null, Expression<Func<double>> height = null)
+			public void Add(View view, Expression<Func<float>> x = null, Expression<Func<float>> y = null, Expression<Func<float>> width = null, Expression<Func<float>> height = null)
 			{
-				Func<double> xCompiled = x != null ? x.Compile() : () => 0;
-				Func<double> yCompiled = y != null ? y.Compile() : () => 0;
-				Func<double> widthCompiled = width != null ? width.Compile() : () => view.Measure(Parent.Width, Parent.Height, MeasureFlags.IncludeMargins).Request.Width;
-				Func<double> heightCompiled = height != null ? height.Compile() : () => view.Measure(Parent.Width, Parent.Height, MeasureFlags.IncludeMargins).Request.Height;
+				Func<float> xCompiled = x != null ? x.Compile() : () => 0;
+				Func<float> yCompiled = y != null ? y.Compile() : () => 0;
+				Func<float> widthCompiled = width != null ? width.Compile() : () => view.Measure(Parent.Width, Parent.Height, MeasureFlags.IncludeMargins).Request.Width;
+				Func<float> heightCompiled = height != null ? height.Compile() : () => view.Measure(Parent.Width, Parent.Height, MeasureFlags.IncludeMargins).Request.Height;
 
 				var parents = new List<View>();
 				parents.AddRange(ExpressionSearch.Default.FindObjects<View>(x));
@@ -351,7 +352,7 @@ namespace Xamarin.Forms
 				parents.AddRange(ExpressionSearch.Default.FindObjects<View>(width));
 				parents.AddRange(ExpressionSearch.Default.FindObjects<View>(height));
 
-				BoundsConstraint bounds = BoundsConstraint.FromExpression(() => new Rectangle(xCompiled(), yCompiled(), widthCompiled(), heightCompiled()), fromExpression: true, parents: parents.Distinct().ToArray());
+				BoundsConstraint bounds = BoundsConstraint.FromExpression(() => new RectangleF(xCompiled(), yCompiled(), widthCompiled(), heightCompiled()), fromExpression: true, parents: parents.Distinct().ToArray());
 
 				SetBoundsConstraint(view, bounds);
 

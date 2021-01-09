@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Graphics;
 
 namespace Xamarin.Forms
 {
 	public class PinchGestureUpdatedEventArgs : EventArgs
 	{
-		public PinchGestureUpdatedEventArgs(GestureStatus status, double scale, Point origin) : this(status)
+		public PinchGestureUpdatedEventArgs(GestureStatus status, double scale, PointF origin) : this(status)
 		{
 			ScaleOrigin = origin;
 			Scale = scale;
@@ -17,7 +18,7 @@ namespace Xamarin.Forms
 
 		public double Scale { get; } = 1;
 
-		public Point ScaleOrigin { get; }
+		public PointF ScaleOrigin { get; }
 
 		public GestureStatus Status { get; }
 	}

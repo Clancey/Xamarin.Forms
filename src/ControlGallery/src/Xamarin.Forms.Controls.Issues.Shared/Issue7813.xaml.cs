@@ -70,7 +70,7 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				items.Add(new Issue7813Model
 				{
-					Color = Color.FromRgb(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255)),
+					Color = Colors.FromRgb(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255)),
 					Name = $"{n + 1}"
 				});
 			}

@@ -36,7 +36,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			Content = new StackLayout
 			{
-				BackgroundColor = Color.CadetBlue,
+				BackgroundColor = Colors.CadetBlue,
 				Spacing = 10,
 				VerticalOptions = LayoutOptions.Fill,
 				Children =
@@ -52,7 +52,7 @@ With Soft Input Mode set to Resize, tapping the Entry at the bottom of the scree
 						FontSize = 12f,
 						HeightRequest = 500,
 						Text = @"Meh",
-						BackgroundColor = Color.Crimson
+						BackgroundColor = Colors.Crimson
 					},
 					new Entry()
 				}

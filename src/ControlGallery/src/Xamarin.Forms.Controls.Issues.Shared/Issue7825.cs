@@ -16,7 +16,7 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				Content = new BoxView()
 				{
-					BackgroundColor = Color.Red
+					BackgroundColor = Colors.Red
 				},
 				VerticalOptions = LayoutOptions.FillAndExpand
 			};

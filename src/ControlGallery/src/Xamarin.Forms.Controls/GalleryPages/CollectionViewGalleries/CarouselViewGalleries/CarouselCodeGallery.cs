@@ -49,7 +49,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries.CarouselVi
 				ItemsLayout = itemsLayout,
 				ItemTemplate = itemTemplate,
 				Margin = new Thickness(0, 10, 0, 10),
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				AutomationId = "TheCarouselView",
 				//Loop = false
 			};
@@ -77,7 +77,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries.CarouselVi
 				Minimum = 0,
 				Value = 30,
 				WidthRequest = 100,
-				BackgroundColor = Color.Pink
+				BackgroundColor = Colors.Pink
 			};
 
 			padi.ValueChanged += (s, e) =>
@@ -173,7 +173,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries.CarouselVi
 			var horizontalLine = new Grid
 			{
 				HeightRequest = 1,
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				VerticalOptions = LayoutOptions.Center
 			};
 
@@ -182,7 +182,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries.CarouselVi
 			var verticalLine = new Grid
 			{
 				WidthRequest = 1,
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				HorizontalOptions = LayoutOptions.Center
 			};
 

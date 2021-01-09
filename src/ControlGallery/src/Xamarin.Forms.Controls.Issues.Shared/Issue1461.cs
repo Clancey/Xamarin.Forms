@@ -230,13 +230,13 @@ namespace Xamarin.Forms.Controls.Issues
 						new Label {
 							Text = "Flyout Label",
 							AutomationId = "Master_Label",
-							BackgroundColor = Color.Gray
+							BackgroundColor = Colors.Gray
 						},
 						btn
 					},
-						BackgroundColor = Color.WhiteSmoke
+						BackgroundColor = Colors.WhiteSmoke
 					},
-				BackgroundColor = Color.Gray
+				BackgroundColor = Colors.Gray
 			};
 
 			if (initState.HasValue)

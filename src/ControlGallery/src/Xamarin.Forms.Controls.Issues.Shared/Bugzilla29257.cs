@@ -65,11 +65,11 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			public TestPage()
 			{
-				Children.Add(new ContentPage { Content = new Label { Text = "This is page 1", BackgroundColor = Color.Red } });
-				Children.Add(new ContentPage { Content = new Label { Text = "This is page 2", BackgroundColor = Color.Green } });
-				Children.Add(new ContentPage { Content = new Label { Text = "This is page 3", BackgroundColor = Color.Blue } });
-				Children.Add(new ContentPage { Content = new Label { Text = "This is page 4", BackgroundColor = Color.Pink } });
-				Children.Add(new ContentPage { Content = new Label { Text = "This is page 5", BackgroundColor = Color.Yellow } });
+				Children.Add(new ContentPage { Content = new Label { Text = "This is page 1", BackgroundColor = Colors.Red } });
+				Children.Add(new ContentPage { Content = new Label { Text = "This is page 2", BackgroundColor = Colors.Green } });
+				Children.Add(new ContentPage { Content = new Label { Text = "This is page 3", BackgroundColor = Colors.Blue } });
+				Children.Add(new ContentPage { Content = new Label { Text = "This is page 4", BackgroundColor = Colors.Pink } });
+				Children.Add(new ContentPage { Content = new Label { Text = "This is page 5", BackgroundColor = Colors.Yellow } });
 
 			}
 

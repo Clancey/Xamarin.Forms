@@ -49,7 +49,7 @@ namespace Xamarin.Forms.Platform.iOS
 				return;
 			}
 
-			if (ImageButton.BorderColor != Color.Default)
+			if (ImageButton.BorderColor != null)
 				control.Layer.BorderColor = ImageButton.BorderColor.ToCGColor();
 
 			control.Layer.BorderWidth = Math.Max(0f, (float)ImageButton.BorderWidth);

@@ -33,7 +33,7 @@ namespace Xamarin.Forms.Xaml.UnitTests
 		{
 			EnumerateButtons((Button button) =>
 			{
-				button.TextColor = Color.Red;
+				button.TextColor = Colors.Red;
 				button.FontAttributes = FontAttributes.Bold;
 			});
 		}

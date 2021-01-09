@@ -67,7 +67,7 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			return new ContentPage
 			{
-				BackgroundColor = Color.LightBlue,
+				BackgroundColor = Colors.LightBlue,
 				Content = new Label { Text = "If you're seeing this, then the test was a success.", AutomationId = Success }
 			};
 		}

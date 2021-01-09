@@ -28,15 +28,15 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var instructions = new Label
 			{
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White,
 				Text = "If the buttons below have the same size, the test has passed."
 			};
 			layout.Children.Add(instructions, 0, 0);
 
 			var button = new Button
 			{
-				BackgroundColor = Color.Gray,
+				BackgroundColor = Colors.Gray,
 				HorizontalOptions = LayoutOptions.Center,
 				ImageSource = "calculator.png",
 				Text = "Text"
@@ -45,7 +45,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var accesibilityButton = new Button
 			{
-				BackgroundColor = Color.Gray,
+				BackgroundColor = Colors.Gray,
 				HorizontalOptions = LayoutOptions.Center,
 				ImageSource = "calculator.png",
 				Text = "Text"

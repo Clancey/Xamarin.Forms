@@ -22,7 +22,7 @@ namespace Xamarin.Forms.Controls.Issues
 			Flyout = new ContentPage
 			{
 				Title = "Menu",
-				BackgroundColor = Color.Blue
+				BackgroundColor = Colors.Blue
 			};
 
 			Detail = new DetailPage41778();
@@ -37,7 +37,7 @@ namespace Xamarin.Forms.Controls.Issues
 				{
 					Spacing = 20,
 					Margin = 20,
-					BackgroundColor = Color.Beige,
+					BackgroundColor = Colors.Beige,
 					Orientation = StackOrientation.Vertical,
 					HorizontalOptions = LayoutOptions.FillAndExpand,
 					VerticalOptions = LayoutOptions.CenterAndExpand

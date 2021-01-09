@@ -189,7 +189,7 @@ namespace Xamarin.Forms.DualScreen
             var ttv = view.ContainerElement.TransformToVisual(Window.Current.Content);
             Windows.Foundation.Point screenCoords = ttv.TransformPoint(new Windows.Foundation.Point(0, 0));
 
-            return new Point(screenCoords.X, screenCoords.Y);
+            return new PointF(screenCoords.X, screenCoords.Y);
         }
 
 		public object WatchForChangesOnLayout(VisualElement visualElement, Action action)

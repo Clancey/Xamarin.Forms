@@ -63,7 +63,7 @@ namespace Xamarin.Forms.DualScreen.UnitTests
 		public void LayoutShiftedOffCenterWideMode()
 		{
 			TestDualScreenServicePortrait testDualScreenService = new TestDualScreenServicePortrait();
-			testDualScreenService.SetLocationOnScreen(new Point(400, 0));
+			testDualScreenService.SetLocationOnScreen(new PointF(400, 0));
 			var result = CreateTwoPaneView(testDualScreenService);
 
 			result.Layout(new Rectangle(400, 0, 500, testDualScreenService.DeviceInfo.ScaledScreenSize.Height));
@@ -79,7 +79,7 @@ namespace Xamarin.Forms.DualScreen.UnitTests
 		public void LayoutShiftedOffCenterTallMode()
 		{
 			var testDualScreenService = new TestDualScreenServiceLandscape();
-			testDualScreenService.SetLocationOnScreen(new Point(0, 400));
+			testDualScreenService.SetLocationOnScreen(new PointF(0, 400));
 			var result = CreateTwoPaneView(testDualScreenService);
 
 			result.Layout(new Rectangle(0, 400, testDualScreenService.DeviceInfo.ScaledScreenSize.Width, 500));
@@ -96,7 +96,7 @@ namespace Xamarin.Forms.DualScreen.UnitTests
 		public void PortraitLayoutStartUnderneathHinge()
 		{
 			TestDualScreenServicePortrait testDualScreenService = new TestDualScreenServicePortrait();
-			testDualScreenService.SetLocationOnScreen(new Point(500, 0));
+			testDualScreenService.SetLocationOnScreen(new PointF(500, 0));
 			var result = CreateTwoPaneView(dualScreenService: testDualScreenService);
 
 			result.Layout(new Rectangle(500, 0, 400, testDualScreenService.DeviceInfo.ScaledScreenSize.Height));
@@ -110,7 +110,7 @@ namespace Xamarin.Forms.DualScreen.UnitTests
 		public void PortraitLayoutEndsUnderneathHinge()
 		{
 			TestDualScreenServicePortrait testDualScreenService = new TestDualScreenServicePortrait();
-			testDualScreenService.SetLocationOnScreen(new Point(100, 0));
+			testDualScreenService.SetLocationOnScreen(new PointF(100, 0));
 			var result = CreateTwoPaneView(dualScreenService: testDualScreenService);
 
 			result.Layout(new Rectangle(100, 0, 400, testDualScreenService.DeviceInfo.ScaledScreenSize.Height));
@@ -125,7 +125,7 @@ namespace Xamarin.Forms.DualScreen.UnitTests
 		public void LandscapeLayoutStartUnderneathHinge()
 		{
 			var testDualScreenService = new TestDualScreenServiceLandscape();
-			testDualScreenService.SetLocationOnScreen(new Point(0, 500));
+			testDualScreenService.SetLocationOnScreen(new PointF(0, 500));
 			var result = CreateTwoPaneView(dualScreenService: testDualScreenService);
 			result.Layout(new Rectangle(0, 500, testDualScreenService.DeviceInfo.ScaledScreenSize.Width, 400));
 
@@ -138,7 +138,7 @@ namespace Xamarin.Forms.DualScreen.UnitTests
 		public void LandscapeLayoutEndsUnderneathHinge()
 		{
 			var testDualScreenService = new TestDualScreenServiceLandscape();
-			testDualScreenService.SetLocationOnScreen(new Point(0, 100));
+			testDualScreenService.SetLocationOnScreen(new PointF(0, 100));
 			var result = CreateTwoPaneView(dualScreenService: testDualScreenService);
 
 			result.Layout(new Rectangle(0, 100, testDualScreenService.DeviceInfo.ScaledScreenSize.Width, 400));
@@ -155,7 +155,7 @@ namespace Xamarin.Forms.DualScreen.UnitTests
 			Grid grid = new Grid();
 			TestDualScreenServicePortrait testDualScreenServicePortrait = new TestDualScreenServicePortrait();
 			var twoPaneViewNested = CreateTwoPaneView(testDualScreenServicePortrait);
-			testDualScreenServicePortrait.SetLocationOnScreen(new Point(400, 0));
+			testDualScreenServicePortrait.SetLocationOnScreen(new PointF(400, 0));
 			twoPaneViewNested.HeightRequest = 200;
 			twoPaneViewNested.WidthRequest = 200;
 			twoPaneViewNested.HorizontalOptions = LayoutOptions.Center;
@@ -182,7 +182,7 @@ namespace Xamarin.Forms.DualScreen.UnitTests
 		{
 			var testDualScreenService = new TestDualScreenServiceLandscape();
 			testDualScreenService.IsSpanned = true;
-			testDualScreenService.SetLocationOnScreen(new Point(0, 400));
+			testDualScreenService.SetLocationOnScreen(new PointF(0, 400));
 			var result = new StackLayout() { IsPlatformEnabled = true };
 
 			result.Layout(new Rectangle(0, 400, testDualScreenService.ScaledScreenSize.Width, 200));
@@ -208,7 +208,7 @@ namespace Xamarin.Forms.DualScreen.UnitTests
 		{
 			var testDualScreenService = new TestDualScreenServicePortrait();
 			testDualScreenService.IsSpanned = true;
-			testDualScreenService.SetLocationOnScreen(new Point(400, 0));
+			testDualScreenService.SetLocationOnScreen(new PointF(400, 0));
 			var result = new StackLayout() { IsPlatformEnabled = true };
 
 			result.Layout(new Rectangle(400, 0, 200, testDualScreenService.ScaledScreenSize.Height));

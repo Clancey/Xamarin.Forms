@@ -29,7 +29,7 @@ namespace Xamarin.Forms.Controls
 					new Button { Text = MasterPageTitle, Command = new Command (() => {
 						var page = new FlyoutPage {
 							Title = MasterPageTitle,
-							Flyout = new ContentPage { Title = "Flyout", BackgroundColor = Color.Red },
+							Flyout = new ContentPage { Title = "Flyout", BackgroundColor = Colors.Red },
 							Detail =  new NavAppearingPage(initalPage)
 						};
 						SetMainPage (page);

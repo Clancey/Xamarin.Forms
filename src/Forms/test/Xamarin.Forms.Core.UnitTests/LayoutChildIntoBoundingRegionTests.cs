@@ -106,7 +106,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assume.That(view.HorizontalOptions.Alignment == LayoutAlignment.Center,
 					"view.HorizontalOptions.Alignment should be Center");
-			Assume.That(view.HorizontalOptions.Alignment.ToDouble() == 0.5,
+			Assume.That(view.HorizontalOptions.Alignment.ToFloat() == 0.5,
 					"view.HorizontalOptions.Alignment.ToDouble() should be 0.5");
 			Assume.That(view.VerticalOptions.Alignment == LayoutAlignment.Fill,
 					"view.VerticalOptions.Alignment should be Fill");
@@ -138,7 +138,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assume.That(view.HorizontalOptions.Alignment == LayoutAlignment.Center,
 					"view.HorizontalOptions.Alignment should be Center");
-			Assume.That(view.HorizontalOptions.Alignment.ToDouble() == 0.5,
+			Assume.That(view.HorizontalOptions.Alignment.ToFloat() == 0.5,
 					"view.HorizontalOptions.Alignment.ToDouble() should be 0.5");
 			Assume.That(view.VerticalOptions.Alignment == LayoutAlignment.Fill,
 					"view.VerticalOptions.Alignment should be Fill");
@@ -168,7 +168,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assume.That(view.HorizontalOptions.Alignment == LayoutAlignment.Center,
 					"view.HorizontalOptions.Alignment should be Center");
-			Assume.That(view.HorizontalOptions.Alignment.ToDouble() == 0.5,
+			Assume.That(view.HorizontalOptions.Alignment.ToFloat() == 0.5,
 					"view.HorizontalOptions.Alignment.ToDouble() should be 0.5");
 			Assume.That(view.VerticalOptions.Alignment == LayoutAlignment.Fill,
 					"view.VerticalOptions.Alignment should be Fill");
@@ -198,7 +198,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assume.That(view.HorizontalOptions.Alignment == LayoutAlignment.Center,
 					"view.HorizontalOptions.Alignment should be Center");
-			Assume.That(view.HorizontalOptions.Alignment.ToDouble() == 0.5,
+			Assume.That(view.HorizontalOptions.Alignment.ToFloat() == 0.5,
 					"view.HorizontalOptions.Alignment.ToDouble() should be 0.5");
 			Assume.That(view.VerticalOptions.Alignment == LayoutAlignment.Fill,
 					"view.VerticalOptions.Alignment should be Fill");
@@ -228,7 +228,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assume.That(view.HorizontalOptions.Alignment == LayoutAlignment.End,
 					"view.HorizontalOptions.Alignment should be End");
-			Assume.That(view.HorizontalOptions.Alignment.ToDouble() == 1,
+			Assume.That(view.HorizontalOptions.Alignment.ToFloat() == 1,
 					"view.HorizontalOptions.Alignment.ToDouble() should be 1");
 			Assume.That(view.VerticalOptions.Alignment == LayoutAlignment.Fill,
 					"view.VerticalOptions.Alignment should be Fill");
@@ -258,7 +258,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assume.That(view.HorizontalOptions.Alignment == LayoutAlignment.End,
 					"view.HorizontalOptions.Alignment should be End");
-			Assume.That(view.HorizontalOptions.Alignment.ToDouble() == 1,
+			Assume.That(view.HorizontalOptions.Alignment.ToFloat() == 1,
 					"view.HorizontalOptions.Alignment.ToDouble() should be 1");
 			Assume.That(view.VerticalOptions.Alignment == LayoutAlignment.Fill,
 					"view.VerticalOptions.Alignment should be Fill");
@@ -288,7 +288,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assume.That(view.HorizontalOptions.Alignment == LayoutAlignment.End,
 					"view.HorizontalOptions.Alignment should be End");
-			Assume.That(view.HorizontalOptions.Alignment.ToDouble() == 1,
+			Assume.That(view.HorizontalOptions.Alignment.ToFloat() == 1,
 					"view.HorizontalOptions.Alignment.ToDouble() should be 1");
 			Assume.That(view.VerticalOptions.Alignment == LayoutAlignment.Fill,
 					"view.VerticalOptions.Alignment should be Fill");
@@ -318,7 +318,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assume.That(view.HorizontalOptions.Alignment == LayoutAlignment.End,
 					"view.HorizontalOptions.Alignment should be End");
-			Assume.That(view.HorizontalOptions.Alignment.ToDouble() == 1,
+			Assume.That(view.HorizontalOptions.Alignment.ToFloat() == 1,
 					"view.HorizontalOptions.Alignment.ToDouble() should be 1");
 			Assume.That(view.VerticalOptions.Alignment == LayoutAlignment.Fill,
 					"view.VerticalOptions.Alignment should be Fill");
@@ -348,7 +348,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assume.That(view.HorizontalOptions.Alignment == LayoutAlignment.Start,
 					"view.HorizontalOptions.Alignment should be Start");
-			Assume.That(view.HorizontalOptions.Alignment.ToDouble() == 0,
+			Assume.That(view.HorizontalOptions.Alignment.ToFloat() == 0,
 					"view.HorizontalOptions.Alignment.ToDouble() should be 0");
 			Assume.That(view.VerticalOptions.Alignment == LayoutAlignment.Fill,
 					"view.VerticalOptions.Alignment should be Fill");
@@ -378,7 +378,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assume.That(view.HorizontalOptions.Alignment == LayoutAlignment.Start,
 					"view.HorizontalOptions.Alignment should be Start");
-			Assume.That(view.HorizontalOptions.Alignment.ToDouble() == 0,
+			Assume.That(view.HorizontalOptions.Alignment.ToFloat() == 0,
 					"view.HorizontalOptions.Alignment.ToDouble() should be 0");
 			Assume.That(view.VerticalOptions.Alignment == LayoutAlignment.Fill,
 					"view.VerticalOptions.Alignment should be Fill");
@@ -408,7 +408,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assume.That(view.HorizontalOptions.Alignment == LayoutAlignment.Start,
 					"view.HorizontalOptions.Alignment should be Start");
-			Assume.That(view.HorizontalOptions.Alignment.ToDouble() == 0,
+			Assume.That(view.HorizontalOptions.Alignment.ToFloat() == 0,
 					"view.HorizontalOptions.Alignment.ToDouble() should be 0");
 			Assume.That(view.VerticalOptions.Alignment == LayoutAlignment.Fill,
 					"view.VerticalOptions.Alignment should be Fill");
@@ -438,7 +438,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assume.That(view.HorizontalOptions.Alignment == LayoutAlignment.Start,
 					"view.HorizontalOptions.Alignment should be Start");
-			Assume.That(view.HorizontalOptions.Alignment.ToDouble() == 0,
+			Assume.That(view.HorizontalOptions.Alignment.ToFloat() == 0,
 					"view.HorizontalOptions.Alignment.ToDouble() should be 0");
 			Assume.That(view.VerticalOptions.Alignment == LayoutAlignment.Fill,
 					"view.VerticalOptions.Alignment should be Fill");
@@ -469,7 +469,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assume.That(view.VerticalOptions.Alignment == LayoutAlignment.Center,
 					"view.VerticalOptions.Alignment should be Center");
-			Assume.That(view.VerticalOptions.Alignment.ToDouble() == 0.5,
+			Assume.That(view.VerticalOptions.Alignment.ToFloat() == 0.5,
 					"view.VerticalOptions.Alignment.ToDouble() should be 0.5");
 			Assume.That(view.HorizontalOptions.Alignment == LayoutAlignment.Fill,
 					"view.HorizontalOptions.Alignment should be Fill");
@@ -500,7 +500,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assume.That(view.VerticalOptions.Alignment == LayoutAlignment.Center,
 					"view.VerticalOptions.Alignment should be Center");
-			Assume.That(view.VerticalOptions.Alignment.ToDouble() == 0.5,
+			Assume.That(view.VerticalOptions.Alignment.ToFloat() == 0.5,
 					"view.VerticalOptions.Alignment.ToDouble() should be 0.5");
 			Assume.That(view.HorizontalOptions.Alignment == LayoutAlignment.Fill,
 					"view.HorizontalOptions.Alignment should be Fill");
@@ -530,7 +530,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assume.That(view.VerticalOptions.Alignment == LayoutAlignment.Center,
 					"view.VerticalOptions.Alignment should be Center");
-			Assume.That(view.VerticalOptions.Alignment.ToDouble() == 0.5,
+			Assume.That(view.VerticalOptions.Alignment.ToFloat() == 0.5,
 					"view.VerticalOptions.Alignment.ToDouble() should be 0.5");
 			Assume.That(view.HorizontalOptions.Alignment == LayoutAlignment.Fill,
 					"view.HorizontalOptions.Alignment should be Fill");
@@ -560,7 +560,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assume.That(view.VerticalOptions.Alignment == LayoutAlignment.Center,
 					"view.VerticalOptions.Alignment should be Center");
-			Assume.That(view.VerticalOptions.Alignment.ToDouble() == 0.5,
+			Assume.That(view.VerticalOptions.Alignment.ToFloat() == 0.5,
 					"view.VerticalOptions.Alignment.ToDouble() should be 0.5");
 			Assume.That(view.HorizontalOptions.Alignment == LayoutAlignment.Fill,
 					"view.HorizontalOptions.Alignment should be Fill");
@@ -590,7 +590,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assume.That(view.VerticalOptions.Alignment == LayoutAlignment.End,
 					"view.VerticalOptions.Alignment should be End");
-			Assume.That(view.VerticalOptions.Alignment.ToDouble() == 1,
+			Assume.That(view.VerticalOptions.Alignment.ToFloat() == 1,
 					"view.VerticalOptions.Alignment.ToDouble() should be 1");
 			Assume.That(view.HorizontalOptions.Alignment == LayoutAlignment.Fill,
 					"view.HorizontalOptions.Alignment should be Fill");
@@ -620,7 +620,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assume.That(view.VerticalOptions.Alignment == LayoutAlignment.End,
 					"view.VerticalOptions.Alignment should be End");
-			Assume.That(view.VerticalOptions.Alignment.ToDouble() == 1,
+			Assume.That(view.VerticalOptions.Alignment.ToFloat() == 1,
 					"view.VerticalOptions.Alignment.ToDouble() should be 1");
 			Assume.That(view.HorizontalOptions.Alignment == LayoutAlignment.Fill,
 					"view.HorizontalOptions.Alignment should be Fill");
@@ -650,7 +650,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assume.That(view.VerticalOptions.Alignment == LayoutAlignment.End,
 					"view.VerticalOptions.Alignment should be End");
-			Assume.That(view.VerticalOptions.Alignment.ToDouble() == 1,
+			Assume.That(view.VerticalOptions.Alignment.ToFloat() == 1,
 					"view.VerticalOptions.Alignment.ToDouble() should be 1");
 			Assume.That(view.HorizontalOptions.Alignment == LayoutAlignment.Fill,
 					"view.HorizontalOptions.Alignment should be Fill");
@@ -680,7 +680,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assume.That(view.VerticalOptions.Alignment == LayoutAlignment.End,
 					"view.VerticalOptions.Alignment should be End");
-			Assume.That(view.VerticalOptions.Alignment.ToDouble() == 1,
+			Assume.That(view.VerticalOptions.Alignment.ToFloat() == 1,
 					"view.VerticalOptions.Alignment.ToDouble() should be 1");
 			Assume.That(view.HorizontalOptions.Alignment == LayoutAlignment.Fill,
 					"view.HorizontalOptions.Alignment should be Fill");
@@ -710,7 +710,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assume.That(view.VerticalOptions.Alignment == LayoutAlignment.Start,
 					"view.VerticalOptions.Alignment should be Start");
-			Assume.That(view.VerticalOptions.Alignment.ToDouble() == 0,
+			Assume.That(view.VerticalOptions.Alignment.ToFloat() == 0,
 					"view.VerticalOptions.Alignment.ToDouble() should be 0");
 			Assume.That(view.HorizontalOptions.Alignment == LayoutAlignment.Fill,
 					"view.HorizontalOptions.Alignment should be Fill");
@@ -740,7 +740,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assume.That(view.VerticalOptions.Alignment == LayoutAlignment.Start,
 					"view.VerticalOptions.Alignment should be Start");
-			Assume.That(view.VerticalOptions.Alignment.ToDouble() == 0,
+			Assume.That(view.VerticalOptions.Alignment.ToFloat() == 0,
 					"view.VerticalOptions.Alignment.ToDouble() should be 0");
 			Assume.That(view.HorizontalOptions.Alignment == LayoutAlignment.Fill,
 					"view.HorizontalOptions.Alignment should be Fill");
@@ -770,7 +770,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assume.That(view.VerticalOptions.Alignment == LayoutAlignment.Start,
 					"view.VerticalOptions.Alignment should be Start");
-			Assume.That(view.VerticalOptions.Alignment.ToDouble() == 0,
+			Assume.That(view.VerticalOptions.Alignment.ToFloat() == 0,
 					"view.VerticalOptions.Alignment.ToDouble() should be 0");
 			Assume.That(view.HorizontalOptions.Alignment == LayoutAlignment.Fill,
 					"view.HorizontalOptions.Alignment should be Fill");
@@ -800,7 +800,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assume.That(view.VerticalOptions.Alignment == LayoutAlignment.Start,
 					"view.VerticalOptions.Alignment should be Start");
-			Assume.That(view.VerticalOptions.Alignment.ToDouble() == 0,
+			Assume.That(view.VerticalOptions.Alignment.ToFloat() == 0,
 					"view.VerticalOptions.Alignment.ToDouble() should be 0");
 			Assume.That(view.HorizontalOptions.Alignment == LayoutAlignment.Fill,
 					"view.HorizontalOptions.Alignment should be Fill");

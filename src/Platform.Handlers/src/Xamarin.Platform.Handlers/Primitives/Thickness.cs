@@ -1,24 +1,25 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using System.Graphics;
 
 namespace Xamarin.Forms
 {
 	[DebuggerDisplay("Left={Left}, Top={Top}, Right={Right}, Bottom={Bottom}, HorizontalThickness={HorizontalThickness}, VerticalThickness={VerticalThickness}")]
 	public struct Thickness
 	{
-		public double Left { get; set; }
+		public float Left { get; set; }
 
-		public double Top { get; set; }
+		public float Top { get; set; }
 
-		public double Right { get; set; }
+		public float Right { get; set; }
 
-		public double Bottom { get; set; }
+		public float Bottom { get; set; }
 
-		public double HorizontalThickness
+		public float HorizontalThickness
 		{
 			get { return Left + Right; }
 		}
 
-		public double VerticalThickness
+		public float VerticalThickness
 		{
 			get { return Top + Bottom; }
 		}
@@ -28,15 +29,15 @@ namespace Xamarin.Forms
 			get { return Left == 0 && Top == 0 && Right == 0 && Bottom == 0; }
 		}
 
-		public Thickness(double uniformSize) : this(uniformSize, uniformSize, uniformSize, uniformSize)
+		public Thickness(float uniformSize) : this(uniformSize, uniformSize, uniformSize, uniformSize)
 		{
 		}
 
-		public Thickness(double horizontalSize, double verticalSize) : this(horizontalSize, verticalSize, horizontalSize, verticalSize)
+		public Thickness(float horizontalSize, float verticalSize) : this(horizontalSize, verticalSize, horizontalSize, verticalSize)
 		{
 		}
 
-		public Thickness(double left, double top, double right, double bottom) : this()
+		public Thickness(float left, float top, float right, float bottom) : this()
 		{
 			Left = left;
 			Top = top;
@@ -44,12 +45,12 @@ namespace Xamarin.Forms
 			Bottom = bottom;
 		}
 
-		public static implicit operator Thickness(Size size)
+		public static implicit operator Thickness(SizeF size)
 		{
 			return new Thickness(size.Width, size.Height, size.Width, size.Height);
 		}
 
-		public static implicit operator Thickness(double uniformSize)
+		public static implicit operator Thickness(float uniformSize)
 		{
 			return new Thickness(uniformSize);
 		}
@@ -88,7 +89,7 @@ namespace Xamarin.Forms
 			return !left.Equals(right);
 		}
 
-		public void Deconstruct(out double left, out double top, out double right, out double bottom)
+		public void Deconstruct(out float left, out float top, out float right, out float bottom)
 		{
 			left = Left;
 			top = Top;

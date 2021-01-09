@@ -18,8 +18,8 @@ namespace Xamarin.Forms.Controls.Issues
 	{
 		protected override void Init()
 		{
-			BarBackgroundColor = Color.Blue;
-			BarTextColor = Color.White;
+			BarBackgroundColor = Colors.Blue;
+			BarTextColor = Colors.White;
 
 			PlatformConfiguration.iOSSpecific.NavigationPage.SetHideNavigationBarSeparator(this, true);
 
@@ -34,7 +34,7 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			Title = "Issue 9456";
 
-			BackgroundColor = Color.Blue;
+			BackgroundColor = Colors.Blue;
 
 			var layout = new StackLayout
 			{
@@ -43,7 +43,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var instructions = new Label
 			{
-				TextColor = Color.White,
+				TextColor = Colors.White,
 				Text = "If the NavigationBarSeparator is hidden, the test has passed."
 			};
 

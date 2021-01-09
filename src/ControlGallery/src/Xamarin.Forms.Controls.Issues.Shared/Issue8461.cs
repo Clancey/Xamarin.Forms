@@ -78,7 +78,7 @@ namespace Xamarin.Forms.Controls.Issues
 						AutomationId = LayoutId,
 						HorizontalOptions = LayoutOptions.FillAndExpand,
 						VerticalOptions = LayoutOptions.FillAndExpand,
-						BackgroundColor = Color.Red
+						BackgroundColor = Colors.Red
 					},
 					instructions
 				}

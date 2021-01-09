@@ -93,11 +93,11 @@ namespace Xamarin.Forms.Controls
 			BindingContext = new AbsolutePositioningExplorationViewModel();
 			var absLayout = new AbsoluteLayout
 			{
-				BackgroundColor = Color.Gray,
+				BackgroundColor = Colors.Gray,
 				VerticalOptions = LayoutOptions.FillAndExpand
 			};
 
-			var rect = new BoxView { Color = Color.Lime };
+			var rect = new BoxView { Color = Colors.Lime };
 
 			var xSlider = new Slider();
 			var ySlider = new Slider();

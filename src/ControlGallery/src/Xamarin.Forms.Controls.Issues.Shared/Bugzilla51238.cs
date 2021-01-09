@@ -34,7 +34,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var transparentLayer = new Grid();
 			transparentLayer.IsVisible = false;
-			transparentLayer.BackgroundColor = Color.Lime;
+			transparentLayer.BackgroundColor = Colors.Lime;
 			transparentLayer.Opacity = 0.5;
 
 			var label = new Label

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Graphics;
 using Xamarin.Forms;
 
 namespace Xamarin.Platform.Layouts
@@ -10,7 +11,7 @@ namespace Xamarin.Platform.Layouts
 		{
 		}
 
-		public override Size Measure(double widthConstraint, double heightConstraint)
+		public override SizeF Measure(float widthConstraint, float heightConstraint)
 		{
 			var heightMeasureConstraint = ResolveConstraints(heightConstraint, Stack.Height);
 
@@ -18,19 +19,19 @@ namespace Xamarin.Platform.Layouts
 
 			var finalWidth = ResolveConstraints(widthConstraint, Stack.Width, measure.Width);
 
-			return new Size(finalWidth, measure.Height);
+			return new SizeF(finalWidth, measure.Height);
 		}
 
-		public override void Arrange(Rectangle bounds) => Arrange(Stack.Spacing, Stack.Children);
+		public override void Arrange(RectangleF bounds) => Arrange(Stack.Spacing, Stack.Children);
 
-		static Size Measure(double heightConstraint, int spacing, IReadOnlyList<IView> views)
+		static SizeF Measure(float heightConstraint, int spacing, IReadOnlyList<IView> views)
 		{
-			double totalRequestedWidth = 0;
-			double requestedHeight = 0;
+			float totalRequestedWidth = 0;
+			float requestedHeight = 0;
 
 			foreach (var child in views)
 			{
-				var measure = child.IsMeasureValid ? child.DesiredSize : child.Measure(double.PositiveInfinity, heightConstraint);
+				var measure = child.IsMeasureValid ? child.DesiredSize : child.Measure(float.PositiveInfinity, heightConstraint);
 				totalRequestedWidth += measure.Width;
 				requestedHeight = Math.Max(requestedHeight, measure.Height);
 			}
@@ -38,16 +39,16 @@ namespace Xamarin.Platform.Layouts
 			var accountForSpacing = MeasureSpacing(spacing, views.Count);
 			totalRequestedWidth += accountForSpacing;
 
-			return new Size(totalRequestedWidth, requestedHeight);
+			return new SizeF(totalRequestedWidth, requestedHeight);
 		}
 
 		static void Arrange(int spacing, IEnumerable<IView> views)
 		{
-			double stackWidth = 0;
+			float stackWidth = 0;
 
 			foreach (var child in views)
 			{
-				var destination = new Rectangle(stackWidth, 0, child.DesiredSize.Width, child.DesiredSize.Height);
+				var destination = new RectangleF(stackWidth, 0, child.DesiredSize.Width, child.DesiredSize.Height);
 				child.Arrange(destination);
 
 				stackWidth += destination.Width + spacing;

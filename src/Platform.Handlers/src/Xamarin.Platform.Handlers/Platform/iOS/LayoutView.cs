@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Graphics;
 using CoreGraphics;
 using UIKit;
 using Xamarin.Forms;
@@ -17,7 +18,7 @@ namespace Xamarin.Platform
 			var width = size.Width;
 			var height = size.Height;
 
-			var crossPlatformSize = CrossPlatformMeasure(width, height);
+			var crossPlatformSize = CrossPlatformMeasure((float)width, (float)height);
 
 			return base.SizeThatFits(crossPlatformSize.ToCGSize());
 		}
@@ -29,11 +30,11 @@ namespace Xamarin.Platform
 			var width = Frame.Width;
 			var height = Frame.Height;
 
-			CrossPlatformMeasure?.Invoke(width, height);
+			CrossPlatformMeasure?.Invoke((float)width, (float)height);
 			CrossPlatformArrange?.Invoke(Frame.ToRectangle());
 		}
 
-		internal Func<double, double, Size>? CrossPlatformMeasure { get; set; }
-		internal Action<Rectangle>? CrossPlatformArrange { get; set; }
+		internal Func<float, float, SizeF>? CrossPlatformMeasure { get; set; }
+		internal Action<RectangleF>? CrossPlatformArrange { get; set; }
 	}
 }

@@ -30,11 +30,11 @@ namespace Xamarin.Forms.Controls
 		{
 			base.Build(stackLayout);
 
-			var colorContainer = new ViewContainer<BoxView>(Test.BoxView.Color, new BoxView { Color = Color.Pink });
+			var colorContainer = new ViewContainer<BoxView>(Test.BoxView.Color, new BoxView { Color = Colors.Pink });
 
 			Add(colorContainer);
 
-			var cornerRadiusContainer = new ViewContainer<BoxView>(Test.BoxView.CornerRadius, new BoxView { Color = Color.Red, CornerRadius = new CornerRadius(0, 12, 12, 0) });
+			var cornerRadiusContainer = new ViewContainer<BoxView>(Test.BoxView.CornerRadius, new BoxView { Color = Colors.Red, CornerRadius = new CornerRadius(0, 12, 12, 0) });
 
 			Add(cornerRadiusContainer);
 		}

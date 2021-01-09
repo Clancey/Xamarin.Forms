@@ -419,7 +419,7 @@ namespace Xamarin.Forms.Platform.MacOS
 		{
 			if (View.Layer == null)
 				return;
-			var color = Element.BackgroundColor == Color.Default ? Color.White : Element.BackgroundColor;
+			var color = Element.BackgroundColor == null ? Colors.White : Element.BackgroundColor;
 			View.Layer.BackgroundColor = color.ToCGColor();
 		}
 

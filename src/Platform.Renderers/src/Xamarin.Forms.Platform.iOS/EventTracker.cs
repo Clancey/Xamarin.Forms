@@ -108,7 +108,7 @@ namespace Xamarin.Forms.Platform.MacOS
 				return null;
 
 			var originPoint = sender.LocationInView(eventTracker._renderer.NativeView);
-			var childGestures = view.GetChildElements(new Point(originPoint.X, originPoint.Y));
+			var childGestures = view.GetChildElements(new PointF(originPoint.X, originPoint.Y));
 			return childGestures;
 		}
 
@@ -326,7 +326,7 @@ namespace Xamarin.Forms.Platform.MacOS
 #else
 						originPoint = NSApplication.SharedApplication.KeyWindow.ContentView.ConvertPointToView(originPoint, eventTracker._renderer.NativeView);
 #endif
-						var scaledPoint = new Point(originPoint.X / view.Width, originPoint.Y / view.Height);
+						var scaledPoint = new PointF(originPoint.X / view.Width, originPoint.Y / view.Height);
 
 						switch (r.State)
 						{

@@ -32,7 +32,7 @@ namespace Xamarin.Forms.Controls.Issues
 			_label = new Label
 			{
 				HeightRequest = 400,
-				BackgroundColor = Color.Gold,
+				BackgroundColor = Colors.Gold,
 				Text = "I should be centered in the gold area",
 				VerticalTextAlignment = TextAlignment.Center,
 				HorizontalTextAlignment = TextAlignment.Center

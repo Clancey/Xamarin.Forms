@@ -94,7 +94,7 @@ namespace Xamarin.Forms.Controls.Issues
 			var tabOne = new ContentPage
 			{
 				Title = "Tab 1 Title",
-				BackgroundColor = Color.FromHex("#666"),
+				BackgroundColor = Colors.FromHex("#666"),
 				Content = new StackLayout
 				{
 					Children = {
@@ -109,7 +109,7 @@ namespace Xamarin.Forms.Controls.Issues
 			var tabTwo = new ContentPage
 			{
 				Title = "Tab 2 Title",
-				BackgroundColor = Color.FromHex("#BBB"),
+				BackgroundColor = Colors.FromHex("#BBB"),
 				Content = new StackLayout
 				{
 					Children = {
@@ -133,13 +133,13 @@ namespace Xamarin.Forms.Controls.Issues
 		public NestedNavTabPageOneLevel()
 		{
 			Title = "One pushed";
-			BackgroundColor = Color.FromHex("#999");
+			BackgroundColor = Colors.FromHex("#999");
 
 			Content = new StackLayout
 			{
 				Children = {
 					new Label {
-						TextColor = Color.Red,
+						TextColor = Colors.Red,
 						Text = "I have been pushed"
 					}
 				}

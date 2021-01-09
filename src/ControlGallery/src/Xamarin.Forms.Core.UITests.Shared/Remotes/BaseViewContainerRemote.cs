@@ -242,7 +242,7 @@ namespace Xamarin.Forms.Core.UITests
 				return true;
 #else
 				uint intColor = (uint)((float)prop);
-				Color color = Color.FromUint(intColor);
+				Color color = Colors.FromUint(intColor);
 				result = (T)((object)color);
 				return true;
 #endif

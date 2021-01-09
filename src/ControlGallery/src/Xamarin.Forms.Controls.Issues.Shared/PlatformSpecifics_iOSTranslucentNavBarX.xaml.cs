@@ -23,7 +23,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 		protected override void Init()
 		{
-			var button = new Button { Text = "Toggle Translucent", BackgroundColor = Color.Yellow };
+			var button = new Button { Text = "Toggle Translucent", BackgroundColor = Colors.Yellow };
 
 			button.Clicked += (sender, args) => On<iOS>().SetIsNavigationBarTranslucent(!On<iOS>().IsNavigationBarTranslucent());
 

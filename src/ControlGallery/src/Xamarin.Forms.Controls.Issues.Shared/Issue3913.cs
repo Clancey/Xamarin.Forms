@@ -17,7 +17,7 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			Margin = new Thickness(5),
 			Text = "Hello from Xamarin Forms",
-			BackgroundColor = Color.Red,
+			BackgroundColor = Colors.Red,
 			VerticalOptions = LayoutOptions.StartAndExpand,
 			HeightRequest = 100,
 			HorizontalOptions = LayoutOptions.Fill

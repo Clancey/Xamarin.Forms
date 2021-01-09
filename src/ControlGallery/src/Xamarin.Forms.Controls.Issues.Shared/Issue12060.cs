@@ -43,7 +43,7 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				HeightRequest = 200,
 				WidthRequest = 1000,
-				BackgroundColor = Color.Purple,
+				BackgroundColor = Colors.Purple,
 				GestureRecognizers =
 				{
 					drag
@@ -67,7 +67,7 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				HeightRequest = 200,
 				WidthRequest = 1000,
-				BackgroundColor = Color.Pink,
+				BackgroundColor = Colors.Pink,
 				AutomationId = "DropBox"
 			};
 

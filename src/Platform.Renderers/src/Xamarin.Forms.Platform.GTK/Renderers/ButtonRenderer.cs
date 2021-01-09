@@ -95,7 +95,7 @@ namespace Xamarin.Forms.Platform.GTK.Renderers
 			{
 				Control.ResetBackgroundColor();
 			}
-			else if (Element.BackgroundColor != Color.Transparent)
+			else if (Element.BackgroundColor != Colors.Transparent)
 			{
 				Control.SetBackgroundColor(Element.BackgroundColor.ToGtkColor());
 			}
@@ -164,7 +164,7 @@ namespace Xamarin.Forms.Platform.GTK.Renderers
 			{
 				Control.ResetBorderColor();
 			}
-			else if (Element.BorderColor != Color.Transparent)
+			else if (Element.BorderColor != Colors.Transparent)
 			{
 				Control.SetBorderColor(Element.BorderColor.ToGtkColor());
 			}

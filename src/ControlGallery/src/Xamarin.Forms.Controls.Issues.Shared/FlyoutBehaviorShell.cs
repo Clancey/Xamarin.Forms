@@ -54,7 +54,7 @@ namespace Xamarin.Forms.Controls.Issues
 				Content = new StackLayout()
 				{
 					VerticalOptions = LayoutOptions.FillAndExpand,
-					BackgroundColor = Color.Red,
+					BackgroundColor = Colors.Red,
 					Children =
 					{
 						new Button()

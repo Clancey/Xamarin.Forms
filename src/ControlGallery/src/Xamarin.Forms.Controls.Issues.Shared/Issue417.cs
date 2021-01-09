@@ -36,7 +36,7 @@ namespace Xamarin.Forms.Controls.Issues
 			public FirstPage()
 			{
 				Title = "First Page";
-				BackgroundColor = Color.Black;
+				BackgroundColor = Colors.Black;
 
 				var nextPageBtn = new Button
 				{
@@ -62,7 +62,7 @@ namespace Xamarin.Forms.Controls.Issues
 				};
 
 				nextPage2Btn.Clicked += (s, e) => NavRoot.Navigation.PushAsync(new NextPage2());
-				BackgroundColor = Color.Black;
+				BackgroundColor = Colors.Black;
 				Content = nextPage2Btn;
 
 			}
@@ -80,7 +80,7 @@ namespace Xamarin.Forms.Controls.Issues
 				};
 
 				popToRootButton.Clicked += (s, e) => NavRoot.PopToRootAsync();
-				BackgroundColor = Color.Black;
+				BackgroundColor = Colors.Black;
 				Content = popToRootButton;
 			}
 		}

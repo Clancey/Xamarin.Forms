@@ -166,7 +166,7 @@ namespace Xamarin.Forms.Platform.GTK
 
 		private void UpdateBarTextColor()
 		{
-			if (Navigation != null && Navigation.BarTextColor != Color.Default)
+			if (Navigation != null && Navigation.BarTextColor != null)
 			{
 				var textColor = Navigation.BarTextColor.ToGtkColor();
 

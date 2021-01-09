@@ -20,7 +20,7 @@ namespace Xamarin.Forms.Controls
 
 			var colorContainer = new ViewContainer<ActivityIndicator>(Test.ActivityIndicator.Color, new ActivityIndicator
 			{
-				Color = Color.Lime,
+				Color = Colors.Lime,
 				IsRunning = true
 
 			});

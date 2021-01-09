@@ -23,7 +23,7 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			Children.Add(new ContentPage
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				Content = new Label
 				{
 					Text = "Page One"
@@ -31,7 +31,7 @@ namespace Xamarin.Forms.Controls.Issues
 			});
 			Children.Add(new ContentPage
 			{
-				BackgroundColor = Color.Green,
+				BackgroundColor = Colors.Green,
 				Content = new Label
 				{
 					Text = "Page Two"
@@ -49,7 +49,7 @@ namespace Xamarin.Forms.Controls.Issues
 				{
 					page.Children.Add(new ContentPage
 					{
-						BackgroundColor = Color.Blue,
+						BackgroundColor = Colors.Blue,
 						Content = new Label
 						{
 							Text = "Page Two - Added"
@@ -57,7 +57,7 @@ namespace Xamarin.Forms.Controls.Issues
 					});
 					page.Children.Add(new ContentPage
 					{
-						BackgroundColor = Color.Gray,
+						BackgroundColor = Colors.Gray,
 						Content = new Label
 						{
 							Text = "Page Three - Added"

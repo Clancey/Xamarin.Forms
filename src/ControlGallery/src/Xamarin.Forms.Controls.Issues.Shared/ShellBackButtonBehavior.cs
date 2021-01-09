@@ -51,7 +51,7 @@ namespace Xamarin.Forms.Controls.Issues
 			Label _commandResult = new Label()
 			{
 				AutomationId = CommandResultId,
-				BackgroundColor = Color.LightBlue,
+				BackgroundColor = Colors.LightBlue,
 				Text = "Label"
 			};
 

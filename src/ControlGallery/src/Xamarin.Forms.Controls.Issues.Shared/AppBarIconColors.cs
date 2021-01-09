@@ -46,8 +46,8 @@ namespace Xamarin.Forms.Controls.Issues
 	{
 		public NavigationPageWithAppBarColors(Page root) : base(root)
 		{
-			BarBackgroundColor = Color.Purple;
-			BarTextColor = Color.White;
+			BarBackgroundColor = Colors.Purple;
+			BarTextColor = Colors.White;
 			Title = root.Title;
 			IconImageSource = root.IconImageSource;
 		}

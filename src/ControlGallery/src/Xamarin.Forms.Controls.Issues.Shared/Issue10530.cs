@@ -31,7 +31,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var swipeViewContent = new Grid
 			{
-				BackgroundColor = Color.LightGray,
+				BackgroundColor = Colors.LightGray,
 				HeightRequest = 60
 			};
 
@@ -52,7 +52,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var swipeItemContent = new Grid
 			{
-				BackgroundColor = Color.Orange,
+				BackgroundColor = Colors.Orange,
 				WidthRequest = 100
 			};
 
@@ -61,7 +61,7 @@ namespace Xamarin.Forms.Controls.Issues
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.Center,
 				Text = "Retry",
-				TextColor = Color.White
+				TextColor = Colors.White
 			};
 
 			swipeItemContent.Children.Add(swipeItemLabel);

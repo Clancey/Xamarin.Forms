@@ -17,10 +17,10 @@ namespace Xamarin.Forms
 
 		public static readonly BindableProperty ColumnSpanProperty = BindableProperty.CreateAttached("ColumnSpan", typeof(int), typeof(Grid), 1, validateValue: (bindable, value) => (int)value >= 1);
 
-		public static readonly BindableProperty RowSpacingProperty = BindableProperty.Create("RowSpacing", typeof(double), typeof(Grid), 6d,
+		public static readonly BindableProperty RowSpacingProperty = BindableProperty.Create("RowSpacing", typeof(float), typeof(Grid), 6d,
 			propertyChanged: (bindable, oldValue, newValue) => ((Grid)bindable).InvalidateMeasureInternal(InvalidationTrigger.MeasureChanged));
 
-		public static readonly BindableProperty ColumnSpacingProperty = BindableProperty.Create("ColumnSpacing", typeof(double), typeof(Grid), 6d,
+		public static readonly BindableProperty ColumnSpacingProperty = BindableProperty.Create("ColumnSpacing", typeof(float), typeof(Grid), 6d,
 			propertyChanged: (bindable, oldValue, newValue) => ((Grid)bindable).InvalidateMeasureInternal(InvalidationTrigger.MeasureChanged));
 
 		public static readonly BindableProperty ColumnDefinitionsProperty = BindableProperty.Create("ColumnDefinitions", typeof(ColumnDefinitionCollection), typeof(Grid), null,
@@ -78,9 +78,9 @@ namespace Xamarin.Forms
 			set { SetValue(ColumnDefinitionsProperty, value); }
 		}
 
-		public double ColumnSpacing
+		public float ColumnSpacing
 		{
-			get { return (double)GetValue(ColumnSpacingProperty); }
+			get { return (float)GetValue(ColumnSpacingProperty); }
 			set { SetValue(ColumnSpacingProperty, value); }
 		}
 
@@ -91,9 +91,9 @@ namespace Xamarin.Forms
 			set { SetValue(RowDefinitionsProperty, value); }
 		}
 
-		public double RowSpacing
+		public float RowSpacing
 		{
-			get { return (double)GetValue(RowSpacingProperty); }
+			get { return (float)GetValue(RowSpacingProperty); }
 			set { SetValue(RowSpacingProperty, value); }
 		}
 

@@ -156,7 +156,7 @@ namespace Xamarin.Forms.Platform.UWP
 			if (!(Cell is SwitchCell switchCell))
 				return;
 
-			var color = switchCell.OnColor == Color.Default
+			var color = switchCell.OnColor == null
 				? _defaultOnColor
 				: new WSolidColorBrush(switchCell.OnColor.ToWindowsColor());
 

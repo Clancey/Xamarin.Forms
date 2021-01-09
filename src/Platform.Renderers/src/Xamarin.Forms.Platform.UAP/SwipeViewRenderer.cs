@@ -473,7 +473,7 @@ namespace Xamarin.Forms.Platform.UWP
 		{
 			var luminosity = 0.2126 * backgroundColor.R + 0.7152 * backgroundColor.G + 0.0722 * backgroundColor.B;
 
-			return luminosity < 0.75 ? Color.White : Color.Black;
+			return luminosity < 0.75 ? Colors.White : Colors.Black;
 		}
 
 		void OnCloseRequested(object sender, EventArgs e)

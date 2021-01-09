@@ -46,7 +46,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries.CarouselVi
 			{
 				ItemsLayout = itemsLayout,
 				ItemTemplate = itemTemplate,
-				BackgroundColor = Color.LightGray,
+				BackgroundColor = Colors.LightGray,
 				AutomationId = "TheCarouselView"
 			};
 
@@ -63,8 +63,8 @@ namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries.CarouselVi
 			{
 				HorizontalOptions = LayoutOptions.Center,
 				Margin = new Thickness(12, 6, 12, 12),
-				IndicatorColor = Color.Gray,
-				SelectedIndicatorColor = Color.Black,
+				IndicatorColor = Colors.Gray,
+				SelectedIndicatorColor = Colors.Black,
 				IndicatorsShape = IndicatorShape.Square,
 				AutomationId = "TheIndicatorView",
 				Count = 5,
@@ -98,13 +98,13 @@ namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries.CarouselVi
 				switch (selectedIndex)
 				{
 					case 0:
-						indicatorView.IndicatorColor = Color.Black;
+						indicatorView.IndicatorColor = Colors.Black;
 						break;
 					case 1:
-						indicatorView.IndicatorColor = Color.Blue;
+						indicatorView.IndicatorColor = Colors.Blue;
 						break;
 					case 2:
-						indicatorView.IndicatorColor = Color.Red;
+						indicatorView.IndicatorColor = Colors.Red;
 						break;
 				}
 			};
@@ -127,7 +127,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries.CarouselVi
 			{
 				ItemsSource = templates,
 				WidthRequest = 150,
-				TextColor = Color.Black
+				TextColor = Colors.Black
 			};
 
 			templatePicker.SelectedIndexChanged += (s, e) =>
@@ -196,7 +196,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries.CarouselVi
 				Text = "DEL First",
 				FontSize = 8,
 				AutomationId = "btnRemoveFirst",
-				BackgroundColor = Color.LightGray,
+				BackgroundColor = Colors.LightGray,
 				Padding = new Thickness(5),
 				Command = new Command(() =>
 				{
@@ -210,7 +210,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries.CarouselVi
 				Text = "Prev",
 				FontSize = 8,
 				AutomationId = "btnPrev",
-				BackgroundColor = Color.LightGray,
+				BackgroundColor = Colors.LightGray,
 				Padding = new Thickness(5),
 				Command = new Command(() =>
 				{
@@ -226,7 +226,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries.CarouselVi
 				Text = "Next",
 				FontSize = 8,
 				AutomationId = "btnNext",
-				BackgroundColor = Color.LightGray,
+				BackgroundColor = Colors.LightGray,
 				Padding = new Thickness(5),
 				Command = new Command(() =>
 				{
@@ -243,7 +243,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries.CarouselVi
 				Text = "DEL Last",
 				FontSize = 8,
 				AutomationId = "btnRemoveLast",
-				BackgroundColor = Color.LightGray,
+				BackgroundColor = Colors.LightGray,
 				Padding = new Thickness(5),
 				Command = new Command(() =>
 				{

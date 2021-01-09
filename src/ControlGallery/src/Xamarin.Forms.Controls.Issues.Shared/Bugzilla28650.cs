@@ -42,7 +42,7 @@ namespace Xamarin.Forms.Controls.Issues
 					Source = ImageSource.FromFile(caret_image),
 					HeightRequest = 20,
 					Aspect = Aspect.AspectFit,
-					BackgroundColor = Color.Green
+					BackgroundColor = Colors.Green
 				};
 
 				_viewLayout = new StackLayout
@@ -103,14 +103,14 @@ namespace Xamarin.Forms.Controls.Issues
 						FontSize = 14,
 						Text = "1",
 						LineBreakMode = LineBreakMode.WordWrap,
-						BackgroundColor = Color.Red
+						BackgroundColor = Colors.Red
 					}, new Label
 					{
 						HorizontalOptions = LayoutOptions.FillAndExpand,
 						FontSize = 14,
 						Text = "2",
 						LineBreakMode = LineBreakMode.WordWrap,
-						BackgroundColor = Color.Blue
+						BackgroundColor = Colors.Blue
 					}
 				},
 			}, column, currentRow++);
@@ -126,14 +126,14 @@ namespace Xamarin.Forms.Controls.Issues
 						FontSize = 14,
 						Text = "1",
 						LineBreakMode = LineBreakMode.WordWrap,
-						BackgroundColor = Color.Red
+						BackgroundColor = Colors.Red
 					}, new Label
 					{
 						HorizontalOptions = LayoutOptions.Start,
 						FontSize = 14,
 						Text = "2",
 						LineBreakMode = LineBreakMode.WordWrap,
-						BackgroundColor = Color.Blue
+						BackgroundColor = Colors.Blue
 					}
 				},
 			}, column, currentRow++);
@@ -159,7 +159,7 @@ namespace Xamarin.Forms.Controls.Issues
 						Source = ImageSource.FromFile(caret_image),
 						HeightRequest = 20,
 						Aspect = Aspect.AspectFit,
-						BackgroundColor = Color.Green
+						BackgroundColor = Colors.Green
 					}
 				},
 			};

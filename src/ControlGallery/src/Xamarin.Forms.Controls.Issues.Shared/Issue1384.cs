@@ -14,7 +14,7 @@ namespace Xamarin.Forms.Controls.Issues
 	{
 		public Issue1384()
 		{
-			var grid = new Grid { BackgroundColor = Color.Red, VerticalOptions = LayoutOptions.Start };
+			var grid = new Grid { BackgroundColor = Colors.Red, VerticalOptions = LayoutOptions.Start };
 			grid.Children.Add(new Image { Source = "photo.jpg", Aspect = Aspect.AspectFit });
 			grid.Children.Add(new Label
 			{
@@ -33,7 +33,7 @@ namespace Xamarin.Forms.Controls.Issues
 				VerticalOptions = LayoutOptions.Start,
 				HorizontalOptions = LayoutOptions.End,
 				HeightRequest = 30,
-				TextColor = Color.White
+				TextColor = Colors.White
 			});
 			grid.Children.Add(new Label
 			{
@@ -47,8 +47,8 @@ namespace Xamarin.Forms.Controls.Issues
 #pragma warning restore 618
 				VerticalOptions = LayoutOptions.End,
 				HeightRequest = 40,
-				TextColor = Color.White,
-				BackgroundColor = Color.Green,
+				TextColor = Colors.White,
+				BackgroundColor = Colors.Green,
 			});
 			Content = grid;
 		}

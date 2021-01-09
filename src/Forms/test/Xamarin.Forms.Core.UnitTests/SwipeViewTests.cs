@@ -23,7 +23,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			var swipeItem = new SwipeItem
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				Text = "Text"
 			};
 
@@ -43,7 +43,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			var swipeItem = new SwipeItem
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				Text = "Text"
 			};
 
@@ -66,7 +66,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			var swipeItem = new SwipeItem
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				Text = "Text"
 			};
 
@@ -89,7 +89,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			var swipeItem = new SwipeItem
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				Text = "Text"
 			};
 
@@ -108,7 +108,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			var swipeItem = new SwipeItem
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				Text = "Text"
 			};
 
@@ -127,7 +127,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			var swipeItem = new SwipeItem
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				Text = "Text"
 			};
 
@@ -146,7 +146,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			var swipeItem = new SwipeItem
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				Text = "Text"
 			};
 
@@ -172,7 +172,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			var swipeItem = new SwipeItem
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				Text = "Text"
 			};
 
@@ -198,7 +198,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			var swipeItem = new SwipeItem
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				Text = "Text"
 			};
 
@@ -220,7 +220,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var swipeView = new SwipeView();
 
 			var swipeItemViewContent = new Grid();
-			swipeItemViewContent.BackgroundColor = Color.Red;
+			swipeItemViewContent.BackgroundColor = Colors.Red;
 
 			swipeItemViewContent.Children.Add(new Label
 			{

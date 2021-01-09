@@ -33,7 +33,7 @@ namespace Xamarin.Forms.Controls.Issues
 			};
 			modal.Clicked += async (object sender, EventArgs e) =>
 			{
-				var page = new ContentPage() { BackgroundColor = Color.Red };
+				var page = new ContentPage() { BackgroundColor = Colors.Red };
 
 				await Navigation.PushModalAsync(page);
 

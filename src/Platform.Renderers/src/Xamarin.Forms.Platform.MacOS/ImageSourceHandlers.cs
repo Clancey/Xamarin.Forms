@@ -75,7 +75,7 @@ namespace Xamarin.Forms.Platform.MacOS
 
 	public sealed class FontImageSourceHandler : IImageSourceHandler
 	{
-		readonly Color _defaultColor = Color.White;
+		readonly Color _defaultColor = Colors.White;
 
 		public Task<NSImage> LoadImageAsync(
 			ImageSource imagesource,

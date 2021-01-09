@@ -27,7 +27,7 @@
 					background = null;
 					break;
 				case 1:
-					backgroundColor = Color.Red;
+					backgroundColor = Colors.Red;
 					background = null;
 					break;
 				case 2:
@@ -50,7 +50,7 @@
 
 		void UpdateBackgroundColor(Color? color)
 		{
-			var backgroundColor = color ?? Color.Default;
+			var backgroundColor = color ?? null;
 
 			ActivityIndicator.BackgroundColor = backgroundColor;
 			Button.BackgroundColor = backgroundColor;

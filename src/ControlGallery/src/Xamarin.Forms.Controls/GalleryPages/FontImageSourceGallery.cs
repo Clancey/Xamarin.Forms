@@ -10,7 +10,7 @@ namespace Xamarin.Forms.Controls
 			{
 				HeightRequest = 1696,
 				WidthRequest = 320,
-				BackgroundColor = Color.Black
+				BackgroundColor = Colors.Black
 			};
 			grid.AddRowDef(count: 53);
 			grid.AddColumnDef(count: 10);
@@ -56,7 +56,7 @@ namespace Xamarin.Forms.Controls
 						FontFamily = fontFamily,
 						Size = 20
 					},
-					BackgroundColor = Color.Black,
+					BackgroundColor = Colors.Black,
 					VerticalOptions = LayoutOptions.Center,
 					HorizontalOptions = LayoutOptions.Center,
 				}, i % 10, i / 10);
@@ -85,7 +85,7 @@ namespace Xamarin.Forms.Controls
 				{
 					FontFamily = fontFamily,
 					Glyph = '\uf101'.ToString(),
-					Color = Color.Red
+					Color = Colors.Red
 				},
 			};
 			var tb3 = new ToolbarItem
@@ -95,7 +95,7 @@ namespace Xamarin.Forms.Controls
 				{
 					FontFamily = fontFamily,
 					Glyph = '\uf2c7'.ToString(),
-					Color = Color.Yellow
+					Color = Colors.Yellow
 				},
 			};
 			ToolbarItems.Add(tb1);

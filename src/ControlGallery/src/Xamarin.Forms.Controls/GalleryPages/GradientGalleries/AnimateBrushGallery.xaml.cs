@@ -25,8 +25,8 @@ namespace Xamarin.Forms.Controls.GalleryPages.GradientGalleries
 		{
 			var linearGradientBrush = new LinearGradientBrush
 			{
-				StartPoint = new Point(GetRandomInt(), GetRandomInt()),
-				EndPoint = new Point(GetRandomInt(), GetRandomInt()),
+				StartPoint = new PointF(GetRandomInt(), GetRandomInt()),
+				EndPoint = new PointF(GetRandomInt(), GetRandomInt()),
 				GradientStops = new GradientStopCollection
 					{
 						new GradientStop { Color = GetRandomColor() },
@@ -44,7 +44,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.GradientGalleries
 
 		Color GetRandomColor()
 		{
-			return Color.FromRgb(_random.Next(256), _random.Next(256), _random.Next(256));
+			return Colors.FromRgb(_random.Next(256), _random.Next(256), _random.Next(256));
 		}
 	}
 }

@@ -25,7 +25,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var pinkStyle = new Style(typeof(Span))
 			{
 				Setters = {
-					new Setter { Property = Span.TextColorProperty, Value = Color.Pink },
+					new Setter { Property = Span.TextColorProperty, Value = Colors.Pink },
 				},
 				Class = "pink",
 				ApplyToDerivedTypes = true,

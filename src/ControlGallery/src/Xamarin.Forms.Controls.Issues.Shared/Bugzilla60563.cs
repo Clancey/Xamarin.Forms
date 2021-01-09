@@ -64,7 +64,7 @@ namespace Xamarin.Forms.Controls.Issues
 				var button = new Button
 				{
 					Text = "Go To List",
-					BackgroundColor = Color.Beige,
+					BackgroundColor = Colors.Beige,
 					HeightRequest = 40,
 					WidthRequest = 100,
 					VerticalOptions = LayoutOptions.Center,

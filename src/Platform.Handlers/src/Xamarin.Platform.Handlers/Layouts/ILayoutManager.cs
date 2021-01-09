@@ -1,10 +1,11 @@
-﻿using Xamarin.Forms;
+﻿using System.Graphics;
+using Xamarin.Forms;
 
 namespace Xamarin.Platform.Layouts
 {
 	public interface ILayoutManager
 	{
-		Size Measure(double widthConstraint, double heightConstraint);
-		void Arrange(Rectangle bounds);
+		SizeF Measure(float widthConstraint, float heightConstraint);
+		void Arrange(RectangleF bounds);
 	}
 }

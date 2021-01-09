@@ -49,10 +49,10 @@ namespace Xamarin.Forms.Controls.Issues
 
 			Testing = new ObservableCollection<Grouping<string, SamplePack>>(sorted);
 
-			var groupLabel = new Label { FontSize = 18, TextColor = Color.FromHex("#1f1f1f"), HorizontalOptions = LayoutOptions.Start, HorizontalTextAlignment = TextAlignment.Start };
+			var groupLabel = new Label { FontSize = 18, TextColor = Colors.FromHex("#1f1f1f"), HorizontalOptions = LayoutOptions.Start, HorizontalTextAlignment = TextAlignment.Start };
 			groupLabel.SetBinding(Label.TextProperty, new Binding("Key", stringFormat: "{0} Music"));
 
-			var itemLabel = new Label { TextColor = Color.Black };
+			var itemLabel = new Label { TextColor = Colors.Black };
 			itemLabel.SetBinding(Label.TextProperty, new Binding("Info"));
 
 			ListView TestingList = new ListView()
@@ -66,7 +66,7 @@ namespace Xamarin.Forms.Controls.Issues
 					{
 						Spacing = 0,
 						Padding = 10,
-						BackgroundColor = Color.Blue,
+						BackgroundColor = Colors.Blue,
 						Children = {
 							new StackLayout{ Padding=5, BackgroundColor=Color.White, HeightRequest=30,  Children = { groupLabel } }
 						}

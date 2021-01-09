@@ -204,7 +204,7 @@ namespace Xamarin.Forms.ControlGallery.WindowsUniversal
 			}
 			public static Color ToColor(Windows.UI.Color color)
 			{
-				return Color.FromRgba(color.R, color.G, color.B, color.A);
+				return Colors.FromRgba(color.R, color.G, color.B, color.A);
 			}
 		}
 	}

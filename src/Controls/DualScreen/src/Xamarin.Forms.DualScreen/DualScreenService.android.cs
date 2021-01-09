@@ -201,7 +201,7 @@ namespace Xamarin.Forms.DualScreen
 
 				int[] location = new int[2];
 				androidView.GetLocationOnScreen(location);
-				return new Point(androidView.Context.FromPixels(location[0]), androidView.Context.FromPixels(location[1]));
+				return new PointF(androidView.Context.FromPixels(location[0]), androidView.Context.FromPixels(location[1]));
 			}
 
 			public object WatchForChangesOnLayout(VisualElement visualElement, Action action)

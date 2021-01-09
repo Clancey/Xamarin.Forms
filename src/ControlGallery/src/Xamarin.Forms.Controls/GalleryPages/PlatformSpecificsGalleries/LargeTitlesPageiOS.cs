@@ -54,7 +54,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.PlatformSpecificsGalleries
 						Command = new Command( () =>{
 							var navPage = (Parent as NavigationPage);
 							navPage.On<iOS>().SetPrefersLargeTitles(true);
-							var page = new ContentPage { Title = "New Title", BackgroundColor = Color.Red };
+							var page = new ContentPage { Title = "New Title", BackgroundColor = Colors.Red };
 							page.On<iOS>().SetUseSafeArea(true);
 							var listView = new ListView(ListViewCachingStrategy.RecycleElementAndDataTemplate)
 							{
@@ -68,8 +68,8 @@ namespace Xamarin.Forms.Controls.GalleryPages.PlatformSpecificsGalleries
 								return cell;
 							});
 							listView.ItemsSource = Enumerable.Range(1, 40);
-							listView.Header = new Label { BackgroundColor = Color.Pink , Text = "I'm a header, background is red"};
-							listView.Footer = new Label { BackgroundColor = Color.Yellow , Text = "I'm a footer, you should see no white below me"};
+							listView.Header = new Label { BackgroundColor = Colors.Pink , Text = "I'm a header, background is red"};
+							listView.Footer = new Label { BackgroundColor = Colors.Yellow , Text = "I'm a footer, you should see no white below me"};
 							page.Content = listView;
 							navPage.PushAsync(page);
 						} )

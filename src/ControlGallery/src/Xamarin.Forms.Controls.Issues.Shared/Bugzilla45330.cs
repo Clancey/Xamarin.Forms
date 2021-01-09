@@ -46,7 +46,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 				View = new StackLayout()
 				{
-					BackgroundColor = Color.Transparent,
+					BackgroundColor = Colors.Transparent,
 					Padding = new Thickness(0, 1, 0, 1),
 					Children = { new Label { Text = item.UniqueId } }
 				};

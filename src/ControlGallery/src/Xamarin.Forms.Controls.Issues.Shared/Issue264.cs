@@ -73,7 +73,7 @@ namespace Xamarin.Forms.Controls.Issues
 	{
 		public AboutPage()
 		{
-			BackgroundColor = Color.Bisque;
+			BackgroundColor = Colors.Bisque;
 			Content = new Button { Text = "Close", Command = new Command(() => Navigation.PopModalAsync()) };
 
 		}

@@ -1,4 +1,6 @@
-﻿namespace Xamarin.Forms
+﻿using System.Graphics;
+
+namespace Xamarin.Forms
 {
 	[TypeConverter(typeof(BrushTypeConverter))]
 	public class SolidColorBrush : Brush
@@ -18,12 +20,12 @@
 			get
 			{
 				var solidColorBrush = this;
-				return solidColorBrush == null || solidColorBrush.Color.IsDefault;
+				return solidColorBrush == null || solidColorBrush.Color == null;
 			}
 		}
 
 		public static readonly BindableProperty ColorProperty = BindableProperty.Create(
-			nameof(Color), typeof(Color), typeof(SolidColorBrush), Color.Default);
+			nameof(Color), typeof(Color), typeof(SolidColorBrush), null);
 
 		public Color Color
 		{

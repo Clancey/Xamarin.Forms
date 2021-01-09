@@ -36,7 +36,7 @@ namespace Xamarin.Forms.ControlGallery.iOS
 			var gradientLayer = new CAGradientLayer
 			{
 				Bounds = NavigationBar.Bounds,
-				Colors = new CGColor[] { Color.Blue.ToCGColor(), Color.Purple.ToCGColor() },
+				Colors = new CGColor[] { Colors.Blue.ToCGColor(), Colors.Purple.ToCGColor() },
 				EndPoint = new CGPoint(0.0, 0.5),
 				StartPoint = new CGPoint(1.0, 0.5)
 			};

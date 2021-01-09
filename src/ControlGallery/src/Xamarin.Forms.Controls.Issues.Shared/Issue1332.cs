@@ -17,12 +17,12 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var red = new Frame
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				Content = new Frame
 				{
-					BorderColor = Color.Black,
+					BorderColor = Colors.Black,
 					HeightRequest = layoutHeight,
-					BackgroundColor = Color.Transparent
+					BackgroundColor = Colors.Transparent
 				}
 			};
 			AbsoluteLayout.SetLayoutBounds(red, new Rectangle(0, 0, layoutWidth, layoutHeight));

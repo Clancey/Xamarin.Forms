@@ -8,7 +8,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.PlatformSpecificsGalleries
 	{
 		public NavigationPageiOS(Page root, ICommand restore) : base(root)
 		{
-			BackgroundColor = Color.Pink;
+			BackgroundColor = Colors.Pink;
 			On<iOS>().EnableTranslucentNavigationBar();
 			CurrentPage.On<iOS>().SetPreferredStatusBarUpdateAnimation(UIStatusBarAnimation.Fade);
 		}

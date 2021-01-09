@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Graphics;
 using System.Linq.Expressions;
 using Xamarin.Forms.Internals;
 
@@ -7,7 +8,7 @@ namespace Xamarin.Forms
 {
 	public class BoundsConstraint
 	{
-		Func<Rectangle> _measureFunc;
+		Func<RectangleF> _measureFunc;
 
 		BoundsConstraint()
 		{
@@ -16,14 +17,14 @@ namespace Xamarin.Forms
 		internal bool CreatedFromExpression { get; set; }
 		internal IEnumerable<View> RelativeTo { get; set; }
 
-		public static BoundsConstraint FromExpression(Expression<Func<Rectangle>> expression, IEnumerable<View> parents = null)
+		public static BoundsConstraint FromExpression(Expression<Func<RectangleF>> expression, IEnumerable<View> parents = null)
 		{
 			return FromExpression(expression, false, parents);
 		}
 
-		internal static BoundsConstraint FromExpression(Expression<Func<Rectangle>> expression, bool fromExpression, IEnumerable<View> parents = null)
+		internal static BoundsConstraint FromExpression(Expression<Func<RectangleF>> expression, bool fromExpression, IEnumerable<View> parents = null)
 		{
-			Func<Rectangle> compiled = expression.Compile();
+			Func<RectangleF> compiled = expression.Compile();
 			var result = new BoundsConstraint
 			{
 				_measureFunc = compiled,
@@ -34,7 +35,7 @@ namespace Xamarin.Forms
 			return result;
 		}
 
-		internal Rectangle Compute()
+		internal RectangleF Compute()
 		{
 			return _measureFunc();
 		}

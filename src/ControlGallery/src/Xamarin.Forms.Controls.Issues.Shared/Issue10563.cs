@@ -75,7 +75,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var swipeItem = new SwipeItem
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				IconImageSource = "calculator.png",
 				Text = "Issue 10563"
 			};
@@ -88,7 +88,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var swipeContent = new Grid
 			{
-				BackgroundColor = Color.Gray
+				BackgroundColor = Colors.Gray
 			};
 
 			var swipeLabel = new Label

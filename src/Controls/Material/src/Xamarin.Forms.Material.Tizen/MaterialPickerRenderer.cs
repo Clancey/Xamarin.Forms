@@ -9,7 +9,7 @@ namespace Xamarin.Forms.Material.Tizen
 {
 	public class MaterialPickerRenderer : PickerRenderer
 	{
-		Color _defaultTitleColor = Color.Black;
+		Color _defaultTitleColor = Colors.Black;
 
 		protected override ElmSharp.Entry CreateNativeControl()
 		{

@@ -30,8 +30,8 @@ namespace Xamarin.Forms.Controls.Issues
 			var instructions = new Label
 			{
 				Padding = 12,
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White,
 				Text = "Scroll to the end and try to set focus to the last Entry. If you can tap the Entry and set the focus, the test has passed."
 			};
 

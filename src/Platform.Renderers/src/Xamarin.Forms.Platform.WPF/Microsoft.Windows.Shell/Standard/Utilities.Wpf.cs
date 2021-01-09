@@ -185,7 +185,7 @@ namespace Standard
 		[SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
 		public static Color ColorFromArgbDword(uint color)
 		{
-			return Color.FromArgb(
+			return Colors.FromArgb(
 				(byte)((color & 0xFF000000) >> 24),
 				(byte)((color & 0x00FF0000) >> 16),
 				(byte)((color & 0x0000FF00) >> 8),

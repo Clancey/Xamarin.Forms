@@ -86,7 +86,7 @@ namespace Xamarin.Forms.Platform.MacOS
 			if (Control == null)
 				return;
 
-			if (color == Color.Default)
+			if (color == null)
 				Control.BackgroundColor = _defaultBackgroundColor;
 			else
 				Control.BackgroundColor = color.ToNSColor();

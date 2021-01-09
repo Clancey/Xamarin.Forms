@@ -28,7 +28,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 		Frame CreateFrame()
 		{
-			var frame = new Frame() { CornerRadius = 10, BackgroundColor = Color.SeaGreen };
+			var frame = new Frame() { CornerRadius = 10, BackgroundColor = Colors.SeaGreen };
 
 			var flexLayout = new FlexLayout()
 			{

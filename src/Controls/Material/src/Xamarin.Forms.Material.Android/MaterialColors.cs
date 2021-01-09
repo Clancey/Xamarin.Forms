@@ -66,9 +66,9 @@ internal static class MaterialColors
 	{
 		var platformTextColor = GetEntryTextColor(textColor);
 
-		if (backgroundColor == Color.Default)
+		if (backgroundColor == null)
 		{
-			if (textColor != Color.Default)
+			if (textColor != null)
 				return WithAlpha(platformTextColor, 0.0392f);
 			else
 				return WithAlpha(MaterialColors.Light.PrimaryColorVariant, 0.0392f);
@@ -83,7 +83,7 @@ internal static class MaterialColors
 		PlatformColor floatingColor;
 		float inlineAlpha = kFilledTextFieldOnSurfaceAlpha + kFilledPlaceHolderOffset;
 
-		if (placeholderColor == Color.Default)
+		if (placeholderColor == null)
 		{
 			inlineColor = WithAlpha(MaterialColors.Light.OnSurfaceColor, inlineAlpha);
 			floatingColor = MaterialColors.Light.PrimaryColor;
@@ -105,7 +105,7 @@ internal static class MaterialColors
 
 	public static PlatformColor GetEntryTextColor(Color textColor)
 	{
-		return textColor != Color.Default ? ToPlatformColor(textColor) : MaterialColors.Light.PrimaryColor;
+		return textColor != null ? ToPlatformColor(textColor) : MaterialColors.Light.PrimaryColor;
 	}
 
 	public static PlatformColor GetCheckBoxColor(bool isChecked, bool isEnabled)

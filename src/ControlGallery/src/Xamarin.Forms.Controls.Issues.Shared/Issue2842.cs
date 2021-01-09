@@ -29,7 +29,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			grid.Children.Add(new Label { Text = "I am initially visible." }, 0, 0);
 
-			Label target = new Label { Text = "Success", AutomationId = "lblSuccess", IsVisible = false, TextColor = Color.Red };
+			Label target = new Label { Text = "Success", AutomationId = "lblSuccess", IsVisible = false, TextColor = Colors.Red };
 
 			grid.Children.Add(target, 0, 1);
 

@@ -45,13 +45,13 @@ namespace Xamarin.Forms.Controls.Issues
 #pragma warning disable 618
 				Font = Font.SystemFontOfSize(30, FontAttributes.Bold),
 #pragma warning restore 618
-				TextColor = Color.White,
+				TextColor = Colors.White,
 			};
 
 			var nameView = new AbsoluteLayout
 			{
 				HeightRequest = 170,
-				BackgroundColor = Color.Black,
+				BackgroundColor = Colors.Black,
 				Children = {
 					{image, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All},
 					{name, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All}

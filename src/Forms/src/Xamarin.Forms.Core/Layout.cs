@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Graphics;
 using System.Linq;
 using Xamarin.Forms.Internals;
 
@@ -63,7 +64,7 @@ namespace Xamarin.Forms
 		bool _allocatedFlag;
 
 		bool _hasDoneLayout;
-		Size _lastLayoutSize = new Size(-1, -1);
+		SizeF _lastLayoutSize = new SizeF(-1, -1);
 
 		ReadOnlyCollection<Element> _logicalChildren;
 
@@ -111,18 +112,18 @@ namespace Xamarin.Forms
 
 		[Obsolete("OnSizeRequest is obsolete as of version 2.2.0. Please use OnMeasure instead.")]
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public sealed override SizeRequest GetSizeRequest(double widthConstraint, double heightConstraint)
+		public sealed override SizeRequest GetSizeRequest(float widthConstraint, float heightConstraint)
 		{
 			SizeRequest size = base.GetSizeRequest(widthConstraint - Padding.HorizontalThickness, heightConstraint - Padding.VerticalThickness);
-			return new SizeRequest(new Size(size.Request.Width + Padding.HorizontalThickness, size.Request.Height + Padding.VerticalThickness),
-				new Size(size.Minimum.Width + Padding.HorizontalThickness, size.Minimum.Height + Padding.VerticalThickness));
+			return new SizeRequest(new SizeF(size.Request.Width + Padding.HorizontalThickness, size.Request.Height + Padding.VerticalThickness),
+				new SizeF(size.Minimum.Width + Padding.HorizontalThickness, size.Minimum.Height + Padding.VerticalThickness));
 		}
 
-		public static void LayoutChildIntoBoundingRegion(VisualElement child, Rectangle region)
+		public static void LayoutChildIntoBoundingRegion(VisualElement child, RectangleF region)
 		{
 			bool isRightToLeft = false;
 			if (child.Parent is IFlowDirectionController parent && (isRightToLeft = parent.ApplyEffectiveFlowDirectionToChildContainer && parent.EffectiveFlowDirection.IsRightToLeft()))
-				region = new Rectangle(parent.Width - region.Right, region.Y, region.Width, region.Height);
+				region = new RectangleF(parent.Width - region.Right, region.Y, region.Width, region.Height);
 
 			if (!(child is View view))
 			{
@@ -134,8 +135,8 @@ namespace Xamarin.Forms
 			if (horizontalOptions.Alignment != LayoutAlignment.Fill)
 			{
 				SizeRequest request = child.Measure(region.Width, region.Height, MeasureFlags.IncludeMargins);
-				double diff = Math.Max(0, region.Width - request.Request.Width);
-				double horizontalAlign = horizontalOptions.Alignment.ToDouble();
+				float diff = Math.Max(0, region.Width - request.Request.Width);
+				float horizontalAlign = horizontalOptions.Alignment.ToFloat();
 				if (isRightToLeft)
 					horizontalAlign = 1 - horizontalAlign;
 				region.X += (int)(diff * horizontalAlign);
@@ -146,8 +147,8 @@ namespace Xamarin.Forms
 			if (verticalOptions.Alignment != LayoutAlignment.Fill)
 			{
 				SizeRequest request = child.Measure(region.Width, region.Height, MeasureFlags.IncludeMargins);
-				double diff = Math.Max(0, region.Height - request.Request.Height);
-				region.Y += (int)(diff * verticalOptions.Alignment.ToDouble());
+				float diff = Math.Max(0, region.Height - request.Request.Height);
+				region.Y += (int)(diff * verticalOptions.Alignment.ToFloat());
 				region.Height -= diff;
 			}
 
@@ -186,7 +187,7 @@ namespace Xamarin.Forms
 				ForceLayout();
 		}
 
-		protected abstract void LayoutChildren(double x, double y, double width, double height);
+		protected abstract void LayoutChildren(float x, float y, float width, float height);
 
 		protected void OnChildMeasureInvalidated(object sender, EventArgs e)
 		{
@@ -199,7 +200,7 @@ namespace Xamarin.Forms
 		{
 		}
 
-		protected override void OnSizeAllocated(double width, double height)
+		protected override void OnSizeAllocated(float width, float height)
 		{
 			_allocatedFlag = true;
 			base.OnSizeAllocated(width, height);
@@ -217,34 +218,34 @@ namespace Xamarin.Forms
 			if (!ShouldLayoutChildren())
 				return;
 
-			var oldBounds = new Rectangle[LogicalChildrenInternal.Count];
+			var oldBounds = new RectangleF[LogicalChildrenInternal.Count];
 			for (var index = 0; index < oldBounds.Length; index++)
 			{
 				var c = (VisualElement)LogicalChildrenInternal[index];
 				oldBounds[index] = c.Bounds;
 			}
 
-			double width = Width;
-			double height = Height;
+			float width = Width;
+			float height = Height;
 
-			double x = Padding.Left;
-			double y = Padding.Top;
-			double w = Math.Max(0, width - Padding.HorizontalThickness);
-			double h = Math.Max(0, height - Padding.VerticalThickness);
+			float x = Padding.Left;
+			float y = Padding.Top;
+			float w = Math.Max(0, width - Padding.HorizontalThickness);
+			float h = Math.Max(0, height - Padding.VerticalThickness);
 
 			var isHeadless = CompressedLayout.GetIsHeadless(this);
 			var headlessOffset = CompressedLayout.GetHeadlessOffset(this);
 			for (var i = 0; i < LogicalChildrenInternal.Count; i++)
-				CompressedLayout.SetHeadlessOffset((VisualElement)LogicalChildrenInternal[i], isHeadless ? new Point(headlessOffset.X + Bounds.X, headlessOffset.Y + Bounds.Y) : new Point());
+				CompressedLayout.SetHeadlessOffset((VisualElement)LogicalChildrenInternal[i], isHeadless ? new PointF(headlessOffset.X + Bounds.X, headlessOffset.Y + Bounds.Y) : new PointF());
 
-			_lastLayoutSize = new Size(width, height);
+			_lastLayoutSize = new SizeF(width, height);
 
 			LayoutChildren(x, y, w, h);
 
 			for (var i = 0; i < oldBounds.Length; i++)
 			{
-				Rectangle oldBound = oldBounds[i];
-				Rectangle newBound = ((VisualElement)LogicalChildrenInternal[i]).Bounds;
+				var oldBound = oldBounds[i];
+				var newBound = ((VisualElement)LogicalChildrenInternal[i]).Bounds;
 				if (oldBound != newBound)
 				{
 					LayoutChanged?.Invoke(this, EventArgs.Empty);
@@ -253,11 +254,11 @@ namespace Xamarin.Forms
 			}
 		}
 
-		internal static void LayoutChildIntoBoundingRegion(View child, Rectangle region, SizeRequest childSizeRequest)
+		internal static void LayoutChildIntoBoundingRegion(View child, RectangleF region, SizeRequest childSizeRequest)
 		{
 			bool isRightToLeft = false;
 			if (child.Parent is IFlowDirectionController parent && (isRightToLeft = parent.ApplyEffectiveFlowDirectionToChildContainer && parent.EffectiveFlowDirection.IsRightToLeft()))
-				region = new Rectangle(parent.Width - region.Right, region.Y, region.Width, region.Height);
+				region = new RectangleF(parent.Width - region.Right, region.Y, region.Width, region.Height);
 
 			if (region.Size != childSizeRequest.Request)
 			{
@@ -267,8 +268,8 @@ namespace Xamarin.Forms
 				if (horizontalOptions.Alignment != LayoutAlignment.Fill)
 				{
 					SizeRequest request = canUseAlreadyDoneRequest ? childSizeRequest : child.Measure(region.Width, region.Height, MeasureFlags.IncludeMargins);
-					double diff = Math.Max(0, region.Width - request.Request.Width);
-					double horizontalAlign = horizontalOptions.Alignment.ToDouble();
+					float diff = Math.Max(0, region.Width - request.Request.Width);
+					float horizontalAlign = horizontalOptions.Alignment.ToFloat();
 					if (isRightToLeft)
 						horizontalAlign = 1 - horizontalAlign;
 					region.X += (int)(diff * horizontalAlign);
@@ -279,8 +280,8 @@ namespace Xamarin.Forms
 				if (verticalOptions.Alignment != LayoutAlignment.Fill)
 				{
 					SizeRequest request = canUseAlreadyDoneRequest ? childSizeRequest : child.Measure(region.Width, region.Height, MeasureFlags.IncludeMargins);
-					double diff = Math.Max(0, region.Height - request.Request.Height);
-					region.Y += (int)(diff * verticalOptions.Alignment.ToDouble());
+					float diff = Math.Max(0, region.Height - request.Request.Height);
+					region.Y += (int)(diff * verticalOptions.Alignment.ToFloat());
 					region.Height -= diff;
 				}
 			}
@@ -371,7 +372,7 @@ namespace Xamarin.Forms
 			foreach (KeyValuePair<Layout, int> kvp in copy)
 			{
 				Layout layout = kvp.Key;
-				double width = layout.Width, height = layout.Height;
+				float width = layout.Width, height = layout.Height;
 				if (!layout._allocatedFlag && width >= 0 && height >= 0)
 				{
 					layout.SizeAllocated(width, height);
@@ -384,7 +385,7 @@ namespace Xamarin.Forms
 			base.OnIsVisibleChanged(oldValue, newValue);
 			if (newValue)
 			{
-				if (_lastLayoutSize != new Size(Width, Height))
+				if (_lastLayoutSize != new SizeF(Width, Height))
 				{
 					UpdateChildrenLayout();
 				}

@@ -82,7 +82,7 @@ namespace Xamarin.Forms.Platform.GTK.Controls
 				// Draw Shadow
 				if (_hasShadow)
 				{
-					var color = Color.Black;
+					var color = Colors.Black;
 					cr.SetSourceRGBA(color.R, color.G, color.B, color.A);
 					cr.Rectangle(Allocation.Left + _shadowWidth, Allocation.Top + _shadowWidth, Allocation.Width + _shadowWidth, Allocation.Height + _shadowWidth);
 					cr.Fill();

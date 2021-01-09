@@ -50,8 +50,8 @@ namespace Xamarin.Forms.Platform.Tizen.SkiaSharp
 			var canvas = e.Surface.Canvas;
 			var bound = e.Info.Rect;
 			canvas.Clear();
-			var bgColor = Element.BackgroundColor == Color.Default ? s_defaultColor : SKColor.Parse(Element.BackgroundColor.ToHex());
-			var borderColor = Element.BorderColor == Color.Default ? s_defaultColor : SKColor.Parse(Element.BorderColor.ToHex());
+			var bgColor = Element.BackgroundColor == null ? s_defaultColor : SKColor.Parse(Element.BackgroundColor.ToHex());
+			var borderColor = Element.BorderColor == null ? s_defaultColor : SKColor.Parse(Element.BorderColor.ToHex());
 			var roundRect = CreateRoundRect(bound);
 
 			using (var paint = new SKPaint

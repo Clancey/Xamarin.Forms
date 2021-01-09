@@ -3,6 +3,7 @@ using Android.Content.Res;
 using Xamarin.Forms;
 using AColor = Android.Graphics.Color;
 using AndroidX.Core.Content;
+using System.Graphics;
 
 namespace Xamarin.Platform
 {
@@ -12,12 +13,12 @@ namespace Xamarin.Platform
 
 		public static AColor ToNative(this Color self)
 		{
-			return new AColor((byte)(byte.MaxValue * self.R), (byte)(byte.MaxValue * self.G), (byte)(byte.MaxValue * self.B), (byte)(byte.MaxValue * self.A));
+			return new AColor((byte)(byte.MaxValue * self.Red), (byte)(byte.MaxValue * self.Green), (byte)(byte.MaxValue * self.Blue), (byte)(byte.MaxValue * self.Alpha));
 		}
 				
 		public static AColor ToNative(this Color self, int defaultColorResourceId, Context context)
 		{
-			if (self == Color.Default)
+			if (self == null)
 			{
 				return new AColor(ContextCompat.GetColor(context, defaultColorResourceId));
 			}
@@ -25,13 +26,8 @@ namespace Xamarin.Platform
 			return ToNative(self);
 		}
 
-		public static AColor ToNative(this Color self, Color defaultColor)
-		{
-			if (self == Color.Default)
-				return defaultColor.ToNative();
-
-			return ToNative(self);
-		}
+		public static AColor ToNative(this Color self, Color defaultColor) =>
+			self?.ToNative() ?? defaultColor.ToNative();
 
 		public static ColorStateList ToAndroidPreserveDisabled(this Color color, ColorStateList defaults)
 		{
@@ -39,9 +35,7 @@ namespace Xamarin.Platform
 			return new ColorStateList(States, new[] { color.ToNative().ToArgb(), disabled });
 		}
 
-		public static Color ToColor(this AColor color)
-		{
-			return Color.FromUint((uint)color.ToArgb());
-		}
+		public static Color ToColor(this AColor color) =>
+			new Color(color.R, color.G, color.B, color.A);
 	}
 }

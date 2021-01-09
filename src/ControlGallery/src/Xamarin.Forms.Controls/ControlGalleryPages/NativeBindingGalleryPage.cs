@@ -24,7 +24,7 @@ namespace Xamarin.Forms.Controls
 			var vm = new NestedNativeViewModel();
 			vm.FormsLabel = "Forms Label Binding";
 			vm.NativeLabel = "Native Label Binding";
-			vm.NativeLabelColor = Color.Red;
+			vm.NativeLabelColor = Colors.Red;
 			vm.Age = 45;
 
 			Layout = new StackLayout { Padding = 20, VerticalOptions = LayoutOptions.FillAndExpand };
@@ -41,7 +41,7 @@ namespace Xamarin.Forms.Controls
 				vm = new NestedNativeViewModel();
 				vm.FormsLabel = "Forms Label Binding Changed";
 				vm.NativeLabel = "Native Label Binding Changed";
-				vm.NativeLabelColor = Color.Pink;
+				vm.NativeLabelColor = Colors.Pink;
 				vm.Age = 10;
 
 				BindingContext = ViewModel = vm;

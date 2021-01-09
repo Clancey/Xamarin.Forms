@@ -521,7 +521,7 @@ namespace Xamarin.Forms.Platform.Tizen
 
 			public class ColorClass
 			{
-				public static readonly Color DefaultColor = Color.FromHex("#6200EE");
+				public static readonly Color DefaultColor = Colors.FromHex("#6200EE");
 			}
 		}
 		#endregion
@@ -587,9 +587,9 @@ namespace Xamarin.Forms.Platform.Tizen
 
 			public class ColorClass
 			{
-				public static readonly Color DefaultBackgroundColor = Color.FromRgb(33, 150, 243);
-				public static readonly Color DefaultForegroundColor = Color.White;
-				public static readonly Color DefaultTitleColor = Color.White;
+				public static readonly Color DefaultBackgroundColor = Colors.FromRgb(33, 150, 243);
+				public static readonly Color DefaultForegroundColor = Colors.White;
+				public static readonly Color DefaultTitleColor = Colors.White;
 				public static readonly EColor DefaultNavigationViewBackgroundColor = EColor.White;
 				public static readonly EColor DefaultDrawerDimBackgroundColor = new EColor(0, 0, 0, 82);
 
@@ -624,10 +624,10 @@ namespace Xamarin.Forms.Platform.Tizen
 
 			public class ColorClass
 			{
-				public static readonly Color DefaultProgressLabelColor = Color.FromHex("#eeeeeeee");
-				public static readonly Color DefaultProgressBarColor = Color.FromHex($"#4286f4");
-				public static readonly Color DefaultProgressAreaColor = Color.FromHex("#80000000");
-				public static readonly Color DefaultProgressAreaBackgroundColor = Color.FromHex("#50000000");
+				public static readonly Color DefaultProgressLabelColor = Colors.FromHex("#eeeeeeee");
+				public static readonly Color DefaultProgressBarColor = Colors.FromHex($"#4286f4");
+				public static readonly Color DefaultProgressAreaColor = Colors.FromHex("#80000000");
+				public static readonly Color DefaultProgressAreaBackgroundColor = Colors.FromHex("#50000000");
 			}
 		}
 		#endregion

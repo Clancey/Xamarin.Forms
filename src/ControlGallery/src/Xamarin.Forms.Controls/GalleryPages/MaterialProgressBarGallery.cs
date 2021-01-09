@@ -68,7 +68,7 @@ namespace Xamarin.Forms.Controls
 					{
 						HeightRequest = 1,
 						Margin = new Thickness(-10, 0),
-						Color = Color.Black
+						Color = Colors.Black
 					},
 
 					progressBar,

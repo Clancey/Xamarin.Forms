@@ -106,7 +106,7 @@ namespace Xamarin.Forms.Platform.UWP
 		public Color GetNamedColor(string name)
 		{
 			if (!Windows.UI.Xaml.Application.Current?.Resources.ContainsKey(name) ?? true)
-				return Color.Default;
+				return null;
 
 			return ((Windows.UI.Color)Windows.UI.Xaml.Application.Current?.Resources[name]).ToFormsColor();
 		}

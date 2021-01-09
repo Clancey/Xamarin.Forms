@@ -14,7 +14,7 @@ namespace Xamarin.Forms.Controls.Issues
 				Children =
 				{
 					new Label() { Text = "Start typing - text should be red immediately as you typing" },
-					new Entry { TextColor = Color.Red },
+					new Entry { TextColor = Colors.Red },
 				}
 			};
 		}

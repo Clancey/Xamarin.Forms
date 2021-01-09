@@ -35,7 +35,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var customSwitch = new CustomSwitch
 			{
-				CustomColor = Color.Red
+				CustomColor = Colors.Red
 			};
 
 			layout.Children.Add(instructions);
@@ -49,7 +49,7 @@ namespace Xamarin.Forms.Controls.Issues
 	public class CustomSwitch : Switch
 	{
 		public static readonly BindableProperty CustomColorProperty =
-			BindableProperty.Create(nameof(CustomColor), typeof(Color), typeof(CustomSwitch), Color.Black);
+			BindableProperty.Create(nameof(CustomColor), typeof(Color), typeof(CustomSwitch), Colors.Black);
 
 		public Color CustomColor
 		{

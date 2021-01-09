@@ -70,7 +70,7 @@ namespace Xamarin.Forms.Controls.Issues
 					HorizontalOptions = LayoutOptions.Fill,
 					VerticalOptions = LayoutOptions.Fill,
 					AutomationId = "ClickMe",
-					BackgroundColor = Color.Green
+					BackgroundColor = Colors.Green
 				});
 		}
 

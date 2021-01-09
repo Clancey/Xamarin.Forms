@@ -8,7 +8,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.PlatformSpecificsGalleries
 		public ModalFormSheetPageiOS()
 		{
 			Title = "Modal FormSheet";
-			BackgroundColor = Color.Azure;
+			BackgroundColor = Colors.Azure;
 
 			On<iOS>().SetModalPresentationStyle(UIModalPresentationStyle.FormSheet);
 

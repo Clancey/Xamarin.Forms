@@ -94,7 +94,7 @@ namespace Xamarin.Forms.Platform.MacOS
 
 			if (Control == null)
 				return;
-			Control.BackgroundColor = color == Color.Default ? ColorExtensions.ControlBackgroundColor : color.ToNSColor();
+			Control.BackgroundColor = color == null ? ColorExtensions.ControlBackgroundColor : color.ToNSColor();
 
 			UpdateCancelButton();
 		}

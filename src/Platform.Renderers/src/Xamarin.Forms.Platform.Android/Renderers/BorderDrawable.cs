@@ -77,7 +77,7 @@ namespace Xamarin.Forms.Platform.Android
 				_normalBitmap.Width != width)
 				Reset();
 
-			if (!_drawOutlineWithBackground && BorderElement.BackgroundColor == Color.Default)
+			if (!_drawOutlineWithBackground && BorderElement.BackgroundColor == null)
 				return;
 
 			Bitmap bitmap = null;
@@ -142,7 +142,7 @@ namespace Xamarin.Forms.Platform.Android
 		{
 		}
 
-		public Color BackgroundColor => BorderElement.BackgroundColor == Color.Default ? _defaultColor : BorderElement.BackgroundColor;
+		public Color BackgroundColor => BorderElement.BackgroundColor == null ? _defaultColor : BorderElement.BackgroundColor;
 		public Color PressedBackgroundColor => BackgroundColor.AddLuminosity(-.12);//<item name="highlight_alpha_material_light" format="float" type="dimen">0.12</item>
 
 		protected override void Dispose(bool disposing)

@@ -15,7 +15,7 @@
 
 			var fileSwipeItem = new SwipeItem
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				IconImageSource = "calculator.png",
 				Text = "File"
 			};
@@ -28,7 +28,7 @@
 
 			var fileSwipeContent = new Grid
 			{
-				BackgroundColor = Color.Gray
+				BackgroundColor = Colors.Gray
 			};
 
 			var fileSwipeLabel = new Label
@@ -52,7 +52,7 @@
 
 			var urlSwipeItem = new SwipeItem
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				IconImageSource = "https://image.flaticon.com/icons/png/512/61/61848.png",
 				Text = "Url"
 			};
@@ -65,7 +65,7 @@
 
 			var urlSwipeContent = new Grid
 			{
-				BackgroundColor = Color.Gray
+				BackgroundColor = Colors.Gray
 			};
 
 			var urlSwipeLabel = new Label
@@ -105,7 +105,7 @@
 
 			var fontSwipeItem = new SwipeItem
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				IconImageSource = new FontImageSource
 				{
 					Glyph = "\uf101",
@@ -123,7 +123,7 @@
 
 			var fontSwipeContent = new Grid
 			{
-				BackgroundColor = Color.Gray
+				BackgroundColor = Colors.Gray
 			};
 
 			var fontSwipeLabel = new Label

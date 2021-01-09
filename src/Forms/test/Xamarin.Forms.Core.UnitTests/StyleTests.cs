@@ -51,7 +51,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			{
 				Setters = {
 					new Setter { Property = Label.TextProperty, Value = "foo" },
-					new Setter { Property = VisualElement.BackgroundColorProperty, Value = Color.Pink },
+					new Setter { Property = VisualElement.BackgroundColorProperty, Value = Colors.Pink },
 				}
 			};
 
@@ -88,7 +88,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			Assert.AreEqual("FOO", label.Text);
 
 			label.Resources = new ResourceDictionary {
-				{"qux", Color.Pink}
+				{"qux", Colors.Pink}
 			};
 			Assert.AreEqual(Color.Pink, label.BackgroundColor);
 
@@ -120,7 +120,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			label0.BindingContext = label1.BindingContext = new { foo = "FOO" };
 			label0.Resources = label1.Resources = new ResourceDictionary {
-				{"qux", Color.Pink}
+				{"qux", Colors.Pink}
 			};
 
 			Assert.AreEqual("FOO", label0.Text);
@@ -193,12 +193,12 @@ namespace Xamarin.Forms.Core.UnitTests
 		{
 			var rd = new ResourceDictionary {
 				new Style (typeof(Label)) { Setters = {
-						new Setter { Property = Label.TextColorProperty, Value = Color.Pink },
+						new Setter { Property = Label.TextColorProperty, Value = Colors.Pink },
 					}
 				},
 				{ "foo", "FOO" },
 				{"labelStyle", new Style (typeof(Label)) { Setters = {
-							new Setter { Property = Label.TextColorProperty, Value = Color.Purple }
+							new Setter { Property = Label.TextColorProperty, Value = Colors.Purple }
 						}
 					}
 				}
@@ -213,12 +213,12 @@ namespace Xamarin.Forms.Core.UnitTests
 		{
 			var rd = new ResourceDictionary {
 				new Style (typeof(Label)) { Setters = {
-						new Setter { Property = Label.TextColorProperty, Value = Color.Pink },
+						new Setter { Property = Label.TextColorProperty, Value = Colors.Pink },
 					}
 				},
 				{ "foo", "FOO" },
 				{"labelStyle", new Style (typeof(Label)) { Setters = {
-							new Setter { Property = Label.TextColorProperty, Value = Color.Purple }
+							new Setter { Property = Label.TextColorProperty, Value = Colors.Purple }
 						}
 					}
 				}
@@ -229,7 +229,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assert.AreEqual(label.TextColor, Label.TextColorProperty.DefaultValue);
 			layout.Resources = rd;
-			Assert.AreEqual(label.TextColor, Color.Pink);
+			Assert.AreEqual(label.TextColor, Colors.Pink);
 		}
 
 		[Test]
@@ -237,12 +237,12 @@ namespace Xamarin.Forms.Core.UnitTests
 		{
 			var rd = new ResourceDictionary {
 				new Style (typeof(Label)) { Setters = {
-						new Setter { Property = Label.TextColorProperty, Value = Color.Pink },
+						new Setter { Property = Label.TextColorProperty, Value = Colors.Pink },
 					}
 				},
 				{ "foo", "FOO" },
 				{"labelStyle", new Style (typeof(Label)) { Setters = {
-							new Setter { Property = Label.TextColorProperty, Value = Color.Purple }
+							new Setter { Property = Label.TextColorProperty, Value = Colors.Purple }
 						}
 					}
 				}
@@ -254,7 +254,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assert.AreEqual(label.TextColor, Label.TextColorProperty.DefaultValue);
 			layout.Children.Add(label);
-			Assert.AreEqual(label.TextColor, Color.Pink);
+			Assert.AreEqual(label.TextColor, Colors.Pink);
 		}
 
 		[Test]
@@ -262,12 +262,12 @@ namespace Xamarin.Forms.Core.UnitTests
 		{
 			var rd = new ResourceDictionary {
 				new Style (typeof(Label)) { Setters = {
-						new Setter { Property = Label.TextColorProperty, Value = Color.Pink },
+						new Setter { Property = Label.TextColorProperty, Value = Colors.Pink },
 					}
 				},
 				{ "foo", "FOO" },
 				{"labelStyle", new Style (typeof(Label)) { Setters = {
-							new Setter { Property = Label.TextColorProperty, Value = Color.Purple }
+							new Setter { Property = Label.TextColorProperty, Value = Colors.Purple }
 						}
 					}
 				}
@@ -277,7 +277,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			label.SetDynamicResource(VisualElement.StyleProperty, "labelStyle");
 			var layout = new StackLayout { Children = { label }, Resources = rd };
 
-			Assert.AreEqual(label.TextColor, Color.Purple);
+			Assert.AreEqual(label.TextColor, Colors.Purple);
 		}
 
 		[Test]
@@ -285,12 +285,12 @@ namespace Xamarin.Forms.Core.UnitTests
 		{
 			var rd = new ResourceDictionary {
 				new Style (typeof(Label)) { Setters = {
-						new Setter { Property = Label.TextColorProperty, Value = Color.Pink },
+						new Setter { Property = Label.TextColorProperty, Value = Colors.Pink },
 					}
 				},
 				{ "foo", "FOO" },
 				{"labelStyle", new Style (typeof(Label)) { Setters = {
-							new Setter { Property = Label.TextColorProperty, Value = Color.Purple }
+							new Setter { Property = Label.TextColorProperty, Value = Colors.Purple }
 						}
 					}
 				}
@@ -300,9 +300,9 @@ namespace Xamarin.Forms.Core.UnitTests
 			label.SetDynamicResource(VisualElement.StyleProperty, "labelStyle");
 			var layout = new StackLayout { Children = { label }, Resources = rd };
 
-			Assert.AreEqual(label.TextColor, Color.Purple);
+			Assert.AreEqual(label.TextColor, Colors.Purple);
 			label.Style = null;
-			Assert.AreEqual(label.TextColor, Color.Pink);
+			Assert.AreEqual(label.TextColor, Colors.Pink);
 		}
 
 		[Test]
@@ -312,22 +312,22 @@ namespace Xamarin.Forms.Core.UnitTests
 			{
 				Setters = {
 					new Setter {Property = Label.TextProperty, Value = "foo"},
-					new Setter {Property = Label.TextColorProperty, Value = Color.Pink}
+					new Setter {Property = Label.TextColorProperty, Value = Colors.Pink}
 				}
 			};
 			var baseStyle1 = new Style(typeof(Label))
 			{
 				Setters = {
 					new Setter {Property = Label.TextProperty, Value = "bar"},
-					new Setter {Property = Label.TextColorProperty, Value = Color.Purple}
+					new Setter {Property = Label.TextColorProperty, Value = Colors.Purple}
 				}
 			};
 			var style = new Style(typeof(Label))
 			{
 				BaseResourceKey = "basestyle",
 				Setters = {
-					new Setter { Property = Label.BackgroundColorProperty, Value = Color.Red },
-					new Setter { Property = Label.TextColorProperty, Value = Color.Red },
+					new Setter { Property = Label.BackgroundColorProperty, Value = Colors.Red },
+					new Setter { Property = Label.TextColorProperty, Value = Colors.Red },
 				}
 			};
 
@@ -425,7 +425,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				}
 			};
 
-			var label = new Label { TextColor = Color.White, Style = style };
+			var label = new Label { TextColor = Colors.White, Style = style };
 			Assert.AreEqual(Color.White, label.TextColor);
 		}
 
@@ -436,14 +436,14 @@ namespace Xamarin.Forms.Core.UnitTests
 			var style = new Style(typeof(Entry))
 			{
 				Setters = {
-					new Setter { Property = Entry.TextColorProperty, Value = Color.Yellow }
+					new Setter { Property = Entry.TextColorProperty, Value = Colors.Yellow }
 				},
 				Triggers = {
 					new Trigger (typeof(Entry)) {
 						Property = VisualElement.IsEnabledProperty,
 						Value = false,
 						Setters = {
-							new Setter { Property = Entry.TextColorProperty, Value = Color.Red }
+							new Setter { Property = Entry.TextColorProperty, Value = Colors.Red }
 						},
 					}
 				},
@@ -530,7 +530,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var style = new Style(typeof(Label))
 			{
 				Setters = {
-					new Setter { Property = Label.TextColorProperty, Value = Color.Red }
+					new Setter { Property = Label.TextColorProperty, Value = Colors.Red }
 				},
 			};
 			var view = new ContentView
@@ -558,7 +558,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var style = new Style(typeof(Label))
 			{
 				Setters = {
-					new Setter { Property = Label.TextColorProperty, Value = Color.Red }
+					new Setter { Property = Label.TextColorProperty, Value = Colors.Red }
 				},
 			};
 			var view = new ContentView
@@ -585,7 +585,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var style = new Style(typeof(Label))
 			{
 				Setters = {
-					new Setter { Property = Label.TextColorProperty, Value = Color.Red },
+					new Setter { Property = Label.TextColorProperty, Value = Colors.Red },
 				},
 				CanCascade = true
 			};
@@ -607,7 +607,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var buttonStyle = new Style(typeof(Button))
 			{
 				Setters = {
-					new Setter { Property = Button.TextColorProperty, Value = Color.Pink },
+					new Setter { Property = Button.TextColorProperty, Value = Colors.Pink },
 				},
 				Class = "pink",
 				ApplyToDerivedTypes = true,
@@ -615,7 +615,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var labelStyle = new Style(typeof(Label))
 			{
 				Setters = {
-					new Setter { Property = Button.BackgroundColorProperty, Value = Color.Pink },
+					new Setter { Property = Button.BackgroundColorProperty, Value = Colors.Pink },
 				},
 				Class = "pink",
 				ApplyToDerivedTypes = false,
@@ -653,16 +653,16 @@ namespace Xamarin.Forms.Core.UnitTests
 			};
 
 			Assert.AreEqual(Color.Pink, button.TextColor);
-			Assert.AreEqual(Color.Default, button.BackgroundColor);
+			Assert.AreEqual(null, button.BackgroundColor);
 
 			Assert.AreEqual(Color.Pink, myButton.TextColor);
-			Assert.AreEqual(Color.Default, myButton.BackgroundColor);
+			Assert.AreEqual(null, myButton.BackgroundColor);
 
 			Assert.AreEqual(Color.Pink, label.BackgroundColor);
-			Assert.AreEqual(Color.Default, label.TextColor);
+			Assert.AreEqual(null, label.TextColor);
 
-			Assert.AreEqual(Color.Default, myLabel.BackgroundColor);
-			Assert.AreEqual(Color.Default, myLabel.TextColor);
+			Assert.AreEqual(null, myLabel.BackgroundColor);
+			Assert.AreEqual(null, myLabel.TextColor);
 		}
 
 		[Test]
@@ -671,7 +671,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var buttonStyle = new Style(typeof(Button))
 			{
 				Setters = {
-					new Setter { Property = Button.TextColorProperty, Value = Color.Pink },
+					new Setter { Property = Button.TextColorProperty, Value = Colors.Pink },
 				},
 				Class = "pink",
 				ApplyToDerivedTypes = true,
@@ -679,7 +679,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var labelStyle = new Style(typeof(Label))
 			{
 				Setters = {
-					new Setter { Property = Button.BackgroundColorProperty, Value = Color.Pink },
+					new Setter { Property = Button.BackgroundColorProperty, Value = Colors.Pink },
 				},
 				Class = "pink",
 				ApplyToDerivedTypes = false,
@@ -708,10 +708,10 @@ namespace Xamarin.Forms.Core.UnitTests
 			};
 
 			Assert.AreEqual(Color.Pink, button.TextColor);
-			Assert.AreEqual(Color.Default, button.BackgroundColor);
+			Assert.AreEqual(null, button.BackgroundColor);
 
 			Assert.AreEqual(Color.Pink, label.BackgroundColor);
-			Assert.AreEqual(Color.Default, label.TextColor);
+			Assert.AreEqual(null, label.TextColor);
 		}
 
 		[Test]
@@ -720,7 +720,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var buttonStyle = new Style(typeof(Button))
 			{
 				Setters = {
-						new Setter { Property = Button.TextColorProperty, Value = Color.Pink },
+						new Setter { Property = Button.TextColorProperty, Value = Colors.Pink },
 					},
 				Class = "pink",
 				ApplyToDerivedTypes = true,
@@ -728,7 +728,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var labelStyle = new Style(typeof(Label))
 			{
 				Setters = {
-						new Setter { Property = Button.BackgroundColorProperty, Value = Color.Pink },
+						new Setter { Property = Button.BackgroundColorProperty, Value = Colors.Pink },
 					},
 				Class = "pink",
 				ApplyToDerivedTypes = false,
@@ -756,10 +756,10 @@ namespace Xamarin.Forms.Core.UnitTests
 			(cv.Content as StackLayout).Children.Add(label);
 
 			Assert.AreEqual(Color.Pink, button.TextColor);
-			Assert.AreEqual(Color.Default, button.BackgroundColor);
+			Assert.AreEqual(null, button.BackgroundColor);
 
 			Assert.AreEqual(Color.Pink, label.BackgroundColor);
-			Assert.AreEqual(Color.Default, label.TextColor);
+			Assert.AreEqual(null, label.TextColor);
 		}
 
 		[Test]
@@ -768,7 +768,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var pinkStyle = new Style(typeof(Button))
 			{
 				Setters = {
-					new Setter { Property = Button.TextColorProperty, Value = Color.Pink },
+					new Setter { Property = Button.TextColorProperty, Value = Colors.Pink },
 				},
 				Class = "pink",
 				ApplyToDerivedTypes = true,
@@ -801,24 +801,24 @@ namespace Xamarin.Forms.Core.UnitTests
 		{
 			var label0 = new Label
 			{
-				TextColor = Color.Pink
+				TextColor = Colors.Pink
 			};
 			var label1 = new Label();
 
 			Assume.That(label0.TextColor, Is.EqualTo(Color.Pink));
-			Assume.That(label1.TextColor, Is.EqualTo(Color.Default));
+			Assume.That(label1.TextColor, Is.EqualTo(null));
 
 			var rd0 = new ResourceDictionary {
 				new Style (typeof(Label)) {
 					Setters = {
-						new Setter {Property = Label.TextColorProperty, Value = Color.Olive}
+						new Setter {Property = Label.TextColorProperty, Value = Colors.Olive}
 					}
 				}
 			};
 			var rd1 = new ResourceDictionary {
 				new Style (typeof(Label)) {
 					Setters = {
-						new Setter {Property = Label.TextColorProperty, Value = Color.Lavender}
+						new Setter {Property = Label.TextColorProperty, Value = Colors.Lavender}
 					}
 				}
 			};
@@ -837,7 +837,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			mockApp.MainPage = new ContentPage { Content = layout };
 			//Assert.That(label0.TextColor, Is.EqualTo(Color.Pink));
-			//Assert.That(label1.TextColor, Is.EqualTo(Color.Default));
+			//Assert.That(label1.TextColor, Is.EqualTo(null));
 
 			Assert.That(label0.TextColor, Is.EqualTo(Color.Pink));
 			Assert.That(label1.TextColor, Is.EqualTo(Color.Olive));
@@ -959,7 +959,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			{
 				Setters = {
 					new Setter { Property = Label.TextProperty, Value = "foo" },
-					new Setter { Property = VisualElement.BackgroundColorProperty, Value = Color.Pink },
+					new Setter { Property = VisualElement.BackgroundColorProperty, Value = Colors.Pink },
 				}
 			};
 
@@ -986,7 +986,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			{
 				Setters = {
 					new Setter { Property = Label.TextProperty, Value = "foo" },
-					new Setter { Property = VisualElement.BackgroundColorProperty, Value = Color.Pink },
+					new Setter { Property = VisualElement.BackgroundColorProperty, Value = Colors.Pink },
 				}
 			};
 

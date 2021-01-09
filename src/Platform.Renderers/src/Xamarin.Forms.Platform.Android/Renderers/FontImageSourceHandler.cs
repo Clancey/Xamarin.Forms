@@ -21,7 +21,7 @@ namespace Xamarin.Forms.Platform.Android
 				var paint = new Paint
 				{
 					TextSize = TypedValue.ApplyDimension(ComplexUnitType.Dip, (float)fontsource.Size, context.Resources.DisplayMetrics),
-					Color = (fontsource.Color != Color.Default ? fontsource.Color : Color.White).ToAndroid(),
+					Color = (fontsource.Color != null ? fontsource.Color : Colors.White).ToAndroid(),
 					TextAlign = Paint.Align.Left,
 					AntiAlias = true,
 				};

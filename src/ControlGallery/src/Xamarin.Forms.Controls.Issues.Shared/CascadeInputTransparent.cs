@@ -137,7 +137,7 @@ namespace Xamarin.Forms.Controls.Issues
 				VerticalOptions = LayoutOptions.Fill,
 				InputTransparent = true,
 				CascadeInputTransparent = cascades,
-				BackgroundColor = Color.Blue,
+				BackgroundColor = Colors.Blue,
 				Opacity = 0.2
 			};
 

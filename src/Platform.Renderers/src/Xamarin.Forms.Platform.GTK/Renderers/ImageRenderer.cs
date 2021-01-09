@@ -261,9 +261,9 @@ namespace Xamarin.Forms.Platform.GTK.Renderers
 				{
 					var fontFamily = GetFontFamily(fontImageSource);
 					var font = new DrawingFont(fontFamily, (int)fontImageSource.Size * .5f);
-					var fontColor = fontImageSource.Color != Color.Default
+					var fontColor = fontImageSource.Color != null
 						? fontImageSource.Color
-						: Color.White;
+						: Colors.White;
 					g.DrawString(fontImageSource.Glyph, font, new SolidBrush(fontColor), 0, 0);
 				}
 

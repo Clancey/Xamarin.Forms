@@ -36,7 +36,7 @@ namespace Xamarin.Forms.Controls.Issues
 					var label = new Label();
 
 					var trigger = new DataTrigger(typeof(Label)) { Binding = new Binding(nameof(ItemViewModel.Pink)), Value = true };
-					trigger.Setters.Add(new Setter { Value = Color.Magenta, Property = Label.TextColorProperty });
+					trigger.Setters.Add(new Setter { Value = Colors.Magenta, Property = Label.TextColorProperty });
 					label.Triggers.Add(trigger);
 
 					label.SetBinding(Label.TextProperty, nameof(ItemViewModel.Id));
@@ -79,7 +79,7 @@ namespace Xamarin.Forms.Controls.Issues
 					});
 
 				stackLayout.Children.Remove(instructions);
-				instructions.TextColor = Color.Green;
+				instructions.TextColor = Colors.Green;
 				stackLayout.Children.Insert(0, instructions);
 			};
 		}

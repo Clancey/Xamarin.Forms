@@ -73,7 +73,7 @@ namespace Xamarin.Forms.Platform.Tizen
 			if (initialize && Element.ProgressColor.IsDefault)
 				return;
 
-			Control.Color = Element.ProgressColor == Color.Default ? s_defaultColor : Element.ProgressColor.ToNative();
+			Control.Color = Element.ProgressColor == null ? s_defaultColor : Element.ProgressColor.ToNative();
 		}
 
 		void UpdateProgress()

@@ -74,10 +74,10 @@ namespace Xamarin.Forms.Controls.XamStore
 		{
 			var searchHandler = new CustomSearchHandler();
 
-			searchHandler.BackgroundColor = Color.Orange;
-			searchHandler.CancelButtonColor = Color.Pink;
-			searchHandler.TextColor = Color.White;
-			searchHandler.PlaceholderColor = Color.Yellow;
+			searchHandler.BackgroundColor = Colors.Orange;
+			searchHandler.CancelButtonColor = Colors.Pink;
+			searchHandler.TextColor = Colors.White;
+			searchHandler.PlaceholderColor = Colors.Yellow;
 			searchHandler.HorizontalTextAlignment = TextAlignment.Center;
 			searchHandler.ShowsResults = true;
 

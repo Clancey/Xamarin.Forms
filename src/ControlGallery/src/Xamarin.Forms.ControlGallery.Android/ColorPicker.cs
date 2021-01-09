@@ -28,7 +28,7 @@ namespace Xamarin.Forms.ControlGallery.Android
 
 		public ColorPickerView(Context context, int minWidth, int minHeight) : base(context)
 		{
-			SelectedColor = Color.Black.ToAndroid();
+			SelectedColor = Colors.Black.ToAndroid();
 
 			SetMinimumHeight(minHeight);
 			SetMinimumWidth(minWidth);

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Graphics;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms.Internals;
 
@@ -19,11 +20,11 @@ namespace Xamarin.Forms
 
 		Page _detail;
 
-		Rectangle _detailBounds;
+		RectangleF _detailBounds;
 
 		Page _flyout;
 
-		Rectangle _flyoutBounds;
+		RectangleF _flyoutBounds;
 
 		public Page Detail
 		{
@@ -96,7 +97,7 @@ namespace Xamarin.Forms
 		public bool CanChangeIsPresented { get; set; } = true;
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public Rectangle DetailBounds
+		public RectangleF DetailBounds
 		{
 			get { return _detailBounds; }
 			set
@@ -109,7 +110,7 @@ namespace Xamarin.Forms
 		}
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public Rectangle FlyoutBounds
+		public RectangleF FlyoutBounds
 		{
 			get { return _flyoutBounds; }
 			set
@@ -153,7 +154,7 @@ namespace Xamarin.Forms
 			return behavior != FlyoutLayoutBehavior.Split && !isSplitOnLandscape && !isSplitOnPortrait;
 		}
 
-		protected override void LayoutChildren(double x, double y, double width, double height)
+		protected override void LayoutChildren(float x, float y, float width, float height)
 		{
 			if (Flyout == null || Detail == null)
 				throw new InvalidOperationException("Flyout and Detail must be set before using a FlyoutPage");
@@ -272,7 +273,7 @@ namespace Xamarin.Forms
 		}
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public Rectangle MasterBounds
+		public RectangleF MasterBounds
 		{
 			get => base.FlyoutBounds;
 			set => FlyoutBounds = value;

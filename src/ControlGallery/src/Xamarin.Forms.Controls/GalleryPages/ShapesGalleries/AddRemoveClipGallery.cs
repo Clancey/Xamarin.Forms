@@ -40,7 +40,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.ShapesGalleries
 
 			_grid = new Grid
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				HorizontalOptions = LayoutOptions.Center,
 				HeightRequest = 150,
 				WidthRequest = 150
@@ -84,7 +84,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.ShapesGalleries
 		{
 			var ellipseGeometry = new EllipseGeometry
 			{
-				Center = new Point(75, 75),
+				Center = new PointF(75, 75),
 				RadiusX = 60,
 				RadiusY = 60
 			};

@@ -64,7 +64,7 @@ namespace Xamarin.Forms.Platform.WPF
 
 			if (Brush.IsNullOrEmpty(background))
 			{
-				Color color = Element.Color != Color.Default ? Element.Color : Element.BackgroundColor;
+				Color color = Element.Color != null ? Element.Color : Element.BackgroundColor;
 				_border.UpdateDependencyColor(Border.BackgroundProperty, color);
 			}
 			else

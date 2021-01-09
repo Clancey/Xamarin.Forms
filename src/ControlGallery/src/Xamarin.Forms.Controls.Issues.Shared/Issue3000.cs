@@ -56,14 +56,14 @@ namespace Xamarin.Forms.Controls.Issues
 			layout.Orientation = StackOrientation.Horizontal;
 			layout.Children.Add(new Label() { Text = "LEFT" });
 			for (int i = 0; i < 80; i++)
-				layout.Children.Add(new Image() { BackgroundColor = Color.Pink, Source = "coffee.png" });
+				layout.Children.Add(new Image() { BackgroundColor = Colors.Pink, Source = "coffee.png" });
 			layout.Children.Add(new Label() { Text = "RIGHT" });
 
 
 
 			StackLayout layoutDown = new StackLayout();
 			for (int i = 0; i < 80; i++)
-				layoutDown.Children.Add(new Image() { BackgroundColor = Color.Pink, Source = "coffee.png" });
+				layoutDown.Children.Add(new Image() { BackgroundColor = Colors.Pink, Source = "coffee.png" });
 
 			view.FlowDirection = FlowDirection.RightToLeft;
 			parent.Children.Insert(0, new Button()

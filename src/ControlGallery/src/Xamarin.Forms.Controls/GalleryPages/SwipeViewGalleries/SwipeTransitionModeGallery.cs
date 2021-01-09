@@ -23,8 +23,8 @@ namespace Xamarin.Forms.Controls.GalleryPages.SwipeViewGalleries
 
 			var instructions = new Label
 			{
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White,
 				Text = "This Gallery use a Platform Specific only available for Android and iOS."
 			};
 
@@ -49,7 +49,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.SwipeViewGalleries
 
 			var deleteSwipeItem = new SwipeItem
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				IconImageSource = "calculator.png",
 				Text = "Delete"
 			};
@@ -62,7 +62,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.SwipeViewGalleries
 
 			var leftSwipeContent = new Grid
 			{
-				BackgroundColor = Color.Gray
+				BackgroundColor = Colors.Gray
 			};
 
 			var leftSwipeLabel = new Label
@@ -86,7 +86,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.SwipeViewGalleries
 
 			var rightSwipeContent = new Grid
 			{
-				BackgroundColor = Color.Gray
+				BackgroundColor = Colors.Gray
 			};
 
 			var rightSwipeLabel = new Label
@@ -110,7 +110,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.SwipeViewGalleries
 
 			var topSwipeContent = new Grid
 			{
-				BackgroundColor = Color.Gray
+				BackgroundColor = Colors.Gray
 			};
 
 			var topSwipeLabel = new Label
@@ -134,7 +134,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.SwipeViewGalleries
 
 			var bottomSwipeContent = new Grid
 			{
-				BackgroundColor = Color.Gray
+				BackgroundColor = Colors.Gray
 			};
 
 			var bottomSwipeLabel = new Label

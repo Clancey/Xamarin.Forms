@@ -23,8 +23,8 @@ namespace Xamarin.Forms.Platform.Android.UnitTests
 		{
 			Button myButton = new Button()
 			{
-				BackgroundColor = Color.Green,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Green,
+				TextColor = Colors.White,
 				BindingContext = new object(),
 				Text = "test text",
 				IsEnabled = false
@@ -34,7 +34,7 @@ namespace Xamarin.Forms.Platform.Android.UnitTests
 			var textColors = await GetControlProperty(myButton, (b) => b.TextColors);
 			var disabledColor = textColors.GetColorForState(new[] { -global::Android.Resource.Attribute.StateEnabled }, AColor.Green);
 
-			int compareTo = Color.White.ToAndroid();
+			int compareTo = Colors.White.ToAndroid();
 			Assert.AreNotEqual(compareTo, disabledColor);
 		}
 

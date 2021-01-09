@@ -99,7 +99,7 @@ namespace Xamarin.Forms.Platform.MacOS
 
 		void UpdateBackgroundView()
 		{
-			if (Element.BackgroundColor == Color.Default)
+			if (Element.BackgroundColor == null)
 			{
 				if (TableView.BackgroundColor != NSColor.Clear)
 					TableView.BackgroundColor = NSColor.Clear;

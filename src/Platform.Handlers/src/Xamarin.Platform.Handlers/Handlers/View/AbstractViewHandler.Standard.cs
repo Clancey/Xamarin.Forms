@@ -1,16 +1,17 @@
-﻿using Xamarin.Forms;
+﻿using System.Graphics;
+using Xamarin.Forms;
 
 namespace Xamarin.Platform.Handlers
 {
 	public abstract partial class AbstractViewHandler<TVirtualView, TNativeView>
 	{
-		public void SetFrame(Rectangle rect)
+		public void SetFrame(RectangleF rect)
 		{
 
 		}
 
-		public virtual Size GetDesiredSize(double widthConstraint, double heightConstraint)
-			=> Size.Zero;
+		public virtual SizeF GetDesiredSize(float widthConstraint, float heightConstraint)
+			=> SizeF.Zero;
 
 		void SetupContainer()
 		{

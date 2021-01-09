@@ -332,7 +332,7 @@ namespace Xamarin.Forms.Controls.Issues
 				{
 					var item = BindingContext as ListItem;
 					if (item != null && !string.IsNullOrEmpty(item.BackgroundColor))
-						View.BackgroundColor = Color.FromHex(item.BackgroundColor);
+						View.BackgroundColor = Colors.FromHex(item.BackgroundColor);
 				}
 			}
 
@@ -348,7 +348,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 						if (!string.IsNullOrWhiteSpace(item.TextColor))
 						{
-							transformedColor = Color.FromHex(item.TextColor);
+							transformedColor = Colors.FromHex(item.TextColor);
 
 							_mainLabel.TextColor = transformedColor;
 							_secondaryLabel.TextColor = transformedColor;
@@ -367,14 +367,14 @@ namespace Xamarin.Forms.Controls.Issues
 
 						if (!string.IsNullOrWhiteSpace(item.BackgroundColor))
 						{
-							transformedColor = Color.FromHex(item.BackgroundColor);
+							transformedColor = Colors.FromHex(item.BackgroundColor);
 							View.BackgroundColor = transformedColor;
 						}
 
 						if (!string.IsNullOrWhiteSpace(item.CircleColor))
 						{
 							_statusCircle.Text = "\u25CF "; // ascii circle
-							_statusCircle.TextColor = Color.FromHex(item.CircleColor);
+							_statusCircle.TextColor = Colors.FromHex(item.CircleColor);
 							_statusCircle.FontSize = 30;
 						}
 					}

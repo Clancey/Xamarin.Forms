@@ -24,7 +24,7 @@ namespace Xamarin.Forms.Controls.Issues
 				AutomationId = "TestReady",
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.Center,
-				BackgroundColor = Color.Blue,
+				BackgroundColor = Colors.Blue,
 				HeightRequest = 100,
 				WidthRequest = 100,
 				CornerRadius = 50

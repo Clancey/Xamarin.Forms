@@ -32,6 +32,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Graphics;
 
 namespace Xamarin.Forms
 {
@@ -47,11 +48,10 @@ namespace Xamarin.Forms
 			{ typeof(Color), typeof(ColorTypeConverter) },
 			{ typeof(Font), typeof(FontTypeConverter) },
 			{ typeof(Keyboard), typeof(KeyboardTypeConverter) },
-			{ typeof(Rectangle), typeof(RectangleTypeConverter) },
-			{ typeof(Size), typeof(SizeTypeConverter) },
+			{ typeof(RectangleF), typeof(RectangleTypeConverter) },
+			{ typeof(SizeF), typeof(SizeTypeConverter) },
 			{ typeof(Thickness), typeof(ThicknessTypeConverter) },
-			{ typeof(Rect), typeof(RectTypeConverter) },
-			{ typeof(Point), typeof(PointTypeConverter) },
+			{ typeof(PointF), typeof(PointTypeConverter) },
 		};
 
 		public static readonly TypeConverterAttribute Default = new TypeConverterAttribute();

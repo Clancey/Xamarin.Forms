@@ -10,7 +10,7 @@ namespace Xamarin.Forms.Controls
 
 		public Bugzilla44596SplashPage(Action finishedLoading)
 		{
-			BackgroundColor = Color.Blue;
+			BackgroundColor = Colors.Blue;
 			FinishedLoading = finishedLoading;
 		}
 

@@ -26,7 +26,7 @@ namespace Xamarin.Forms.Controls
 		{
 			AutomationId = "ChoosePageScrollView";
 
-			BackgroundColor = Color.Blue;
+			BackgroundColor = Colors.Blue;
 
 			var buttons = new[] {
 				new SwapRootButton ("Content", new Command (() => Application.Current.MainPage = new RootContentPage ("Content"))),

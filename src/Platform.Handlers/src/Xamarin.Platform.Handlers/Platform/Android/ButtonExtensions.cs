@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Graphics;
 using System.Text;
 using Android.Content.Res;
 using AndroidX.AppCompat.Widget;
@@ -11,10 +12,10 @@ namespace Xamarin.Platform
 	{
 		public static void UpdateColor(this AndroidX.AppCompat.Widget.AppCompatButton button, Color color, ColorStateList? defaultColor)
 		{
-			if (color.IsDefault)
-				button.SetTextColor(defaultColor);
-			else
+			if (color != null)
 				button.SetTextColor(color.ToNative());
+			else
+				button.SetTextColor(defaultColor);
 		}
 
 		public static void UpdateColor(this AppCompatButton appCompatButton, IButton button) =>
@@ -26,6 +27,6 @@ namespace Xamarin.Platform
 		public static void UpdateText(this AppCompatButton appCompatButton, IButton button) =>
 			appCompatButton.Text = button.Text;
 
-		static Color Cleanse(this Color color, Color defaultColor) => color.IsDefault ? defaultColor : color;
+		static Color Cleanse(this Color color, Color defaultColor) => color ?? defaultColor;
 	}
 }

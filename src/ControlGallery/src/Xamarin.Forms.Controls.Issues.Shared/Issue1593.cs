@@ -22,7 +22,7 @@ namespace Xamarin.Forms.Controls.Issues
 #pragma warning disable 618
 				Font = Font.SystemFontOfSize(NamedSize.Large),
 #pragma warning restore 618
-				TextColor = Color.White
+				TextColor = Colors.White
 			};
 
 			#region Season Filter
@@ -33,7 +33,7 @@ namespace Xamarin.Forms.Controls.Issues
 #pragma warning disable 618
 				Font = Font.SystemFontOfSize(NamedSize.Small),
 #pragma warning restore 618
-				TextColor = Color.White
+				TextColor = Colors.White
 			};
 
 			var seasonPicker = new Picker
@@ -61,7 +61,7 @@ namespace Xamarin.Forms.Controls.Issues
 #pragma warning disable 618
 				Font = Font.SystemFontOfSize(NamedSize.Small),
 #pragma warning restore 618
-				TextColor = Color.White
+				TextColor = Colors.White
 			};
 
 			var sportPicker = new Picker
@@ -112,7 +112,7 @@ namespace Xamarin.Forms.Controls.Issues
 					"Test 14",
 					"Test 15",
 				},
-				BackgroundColor = Color.Gray,
+				BackgroundColor = Colors.Gray,
 				ItemTemplate = new DataTemplate(() =>
 				{
 					var leagueName = new Label
@@ -120,8 +120,8 @@ namespace Xamarin.Forms.Controls.Issues
 #pragma warning disable 618
 						Font = Font.SystemFontOfSize(NamedSize.Large),
 #pragma warning restore 618
-						BackgroundColor = Color.Transparent,
-						TextColor = Color.White,
+						BackgroundColor = Colors.Transparent,
+						TextColor = Colors.White,
 						VerticalOptions = LayoutOptions.CenterAndExpand,
 						LineBreakMode = LineBreakMode.WordWrap
 					};
@@ -130,7 +130,7 @@ namespace Xamarin.Forms.Controls.Issues
 					var row = new StackLayout
 					{
 						Padding = new Thickness(5, 0, 5, 0),
-						BackgroundColor = Color.Transparent,
+						BackgroundColor = Colors.Transparent,
 						Orientation = StackOrientation.Horizontal,
 						VerticalOptions = LayoutOptions.CenterAndExpand,
 						Children = {

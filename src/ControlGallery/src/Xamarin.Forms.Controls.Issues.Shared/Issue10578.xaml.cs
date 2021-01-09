@@ -44,8 +44,8 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				Padding = 12,
 				Margin = 12,
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White,
 				Text = "If the NavigationBar Separator is hidden, the test has passed."
 			};
 

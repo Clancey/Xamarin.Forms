@@ -7,30 +7,30 @@
 
 		}
 
-		public TranslateTransform(double x, double y)
+		public TranslateTransform(float x, float y)
 		{
 			X = x;
 			Y = y;
 		}
 
 		public static readonly BindableProperty XProperty =
-			BindableProperty.Create(nameof(X), typeof(double), typeof(TranslateTransform), 0.0,
+			BindableProperty.Create(nameof(X), typeof(float), typeof(TranslateTransform), 0.0,
 				propertyChanged: OnTransformPropertyChanged);
 
 		public static readonly BindableProperty YProperty =
-			BindableProperty.Create(nameof(Y), typeof(double), typeof(TranslateTransform), 0.0,
+			BindableProperty.Create(nameof(Y), typeof(float), typeof(TranslateTransform), 0.0,
 				propertyChanged: OnTransformPropertyChanged);
 
-		public double X
+		public float X
 		{
 			set { SetValue(XProperty, value); }
-			get { return (double)GetValue(XProperty); }
+			get { return (float)GetValue(XProperty); }
 		}
 
-		public double Y
+		public float Y
 		{
 			set { SetValue(YProperty, value); }
-			get { return (double)GetValue(YProperty); }
+			get { return (float)GetValue(YProperty); }
 		}
 
 		static void OnTransformPropertyChanged(BindableObject bindable, object oldValue, object newValue)

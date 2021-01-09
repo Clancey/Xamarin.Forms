@@ -12,7 +12,7 @@ namespace Xamarin.Forms.Platform.WPF.Converters
 				return c.ToBrush();
 			}
 
-			return Color.White.ToBrush();
+			return Colors.White.ToBrush();
 		}
 
 		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

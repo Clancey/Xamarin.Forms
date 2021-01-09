@@ -34,10 +34,10 @@ namespace Xamarin.Forms.Controls.Issues
 			var contentView = new ContentView
 			{
 				Padding = 16,
-				BackgroundColor = Color.Gray,
+				BackgroundColor = Colors.Gray,
 				Content = new Label
 				{
-					BackgroundColor = Color.Aqua,
+					BackgroundColor = Colors.Aqua,
 					Text = longString,
 					LineBreakMode = LineBreakMode.TailTruncation
 				}
@@ -48,23 +48,23 @@ namespace Xamarin.Forms.Controls.Issues
 			contentView = new ContentView
 			{
 				Padding = 16,
-				BackgroundColor = Color.Gray,
+				BackgroundColor = Colors.Gray,
 				Content = new RelativeLayout
 				{
-					BackgroundColor = Color.Navy,
+					BackgroundColor = Colors.Navy,
 					Children = {
 						{new Label {
-							BackgroundColor = Color.Blue,
+							BackgroundColor = Colors.Blue,
 							Text = longString,
 							LineBreakMode = LineBreakMode.TailTruncation
 						}, Forms.Constraint.Constant (0)},
 						{new Label {
-							BackgroundColor = Color.Fuchsia,
+							BackgroundColor = Colors.Fuchsia,
 							Text = longString,
 							LineBreakMode = LineBreakMode.TailTruncation
 						}, Forms.Constraint.Constant (0), Forms.Constraint.Constant (40)},
 						{new Label {
-							BackgroundColor = Color.Fuchsia,
+							BackgroundColor = Colors.Fuchsia,
 							Text = longString,
 							LineBreakMode = LineBreakMode.TailTruncation
 						}, Forms.Constraint.Constant (10), Forms.Constraint.Constant (80)},
@@ -77,25 +77,25 @@ namespace Xamarin.Forms.Controls.Issues
 			contentView = new ContentView
 			{
 				Padding = 16,
-				BackgroundColor = Color.Gray,
+				BackgroundColor = Colors.Gray,
 				IsClippedToBounds = true,
 				Content = _container = new RelativeLayout
 				{
 					IsClippedToBounds = true,
-					BackgroundColor = Color.Navy,
+					BackgroundColor = Colors.Navy,
 					Children = {
 						{_testLabel = new Label {
-							BackgroundColor = Color.Blue,
+							BackgroundColor = Colors.Blue,
 							Text = longString,
 							LineBreakMode = LineBreakMode.TailTruncation
 						}, Forms.Constraint.Constant (0)},
 						{new Label {
-							BackgroundColor = Color.Fuchsia,
+							BackgroundColor = Colors.Fuchsia,
 							Text = longString,
 							LineBreakMode = LineBreakMode.TailTruncation
 						}, Forms.Constraint.Constant (0), Forms.Constraint.Constant (40)},
 						{new Label {
-							BackgroundColor = Color.Fuchsia,
+							BackgroundColor = Colors.Fuchsia,
 							Text = longString,
 							LineBreakMode = LineBreakMode.TailTruncation
 						}, Forms.Constraint.Constant (10), Forms.Constraint.Constant (80)},

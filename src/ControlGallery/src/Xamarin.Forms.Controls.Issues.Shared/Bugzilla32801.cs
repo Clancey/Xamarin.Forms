@@ -43,7 +43,7 @@ namespace Xamarin.Forms.Controls.Issues
 				{
 					Text = "Add Level",
 					AutomationId = "btnAdd",
-					BackgroundColor = Color.Aqua
+					BackgroundColor = Colors.Aqua
 				};
 
 				buttonAdd.Clicked += (sender, e) => Navigation.PushAsync(new TestDemoPage(_level + 1));
@@ -52,7 +52,7 @@ namespace Xamarin.Forms.Controls.Issues
 				{
 					Text = "Show Navigation Stack",
 					AutomationId = "btnStack",
-					BackgroundColor = Color.Aqua
+					BackgroundColor = Colors.Aqua
 				};
 
 				buttonStack.Clicked += (object sender, EventArgs e) =>

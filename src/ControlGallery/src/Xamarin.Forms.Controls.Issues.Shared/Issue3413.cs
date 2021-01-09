@@ -24,7 +24,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var searchBar = new SearchBar
 			{
-				BackgroundColor = Color.Yellow,
+				BackgroundColor = Colors.Yellow,
 				Text = "i m on a vertical stacklayout",
 				AutomationId = "srb_vertical"
 			};
@@ -38,7 +38,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var searchBar1 = new SearchBar
 			{
-				BackgroundColor = Color.Yellow,
+				BackgroundColor = Colors.Yellow,
 				Text = "i m on a horizontal stacklayout",
 				AutomationId = "srb_horizontal"
 			};
@@ -48,7 +48,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var searchBar2 = new SearchBar
 			{
-				BackgroundColor = Color.Blue,
+				BackgroundColor = Colors.Blue,
 				Text = "i m with expand",
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				AutomationId = "srb_grid"

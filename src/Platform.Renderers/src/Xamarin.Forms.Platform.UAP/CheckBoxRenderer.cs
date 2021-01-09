@@ -6,7 +6,7 @@ namespace Xamarin.Forms.Platform.UWP
 {
 	public class CheckBoxRenderer : ViewRenderer<CheckBox, FormsCheckBox>
 	{
-		static WBrush _tintDefaultBrush = Color.Blue.ToBrush();
+		static WBrush _tintDefaultBrush = Colors.Blue.ToBrush();
 		bool _disposed = false;
 
 		protected virtual FormsCheckBox CreateNativeControl()

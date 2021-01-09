@@ -52,7 +52,7 @@ namespace Xamarin.Forms.Material.Android
 
 		void ApplyTheme()
 		{
-			_textInputLayout?.ApplyTheme(Element.TextColor, Color.Default);
+			_textInputLayout?.ApplyTheme(Element.TextColor, null);
 		}
 
 		AView ITabStop.TabStop => EditText;

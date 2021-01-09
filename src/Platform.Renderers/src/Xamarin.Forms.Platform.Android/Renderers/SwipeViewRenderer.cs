@@ -113,7 +113,7 @@ namespace Xamarin.Forms.Platform.Android
 
 		protected override void UpdateBackgroundColor()
 		{
-			if (Element.BackgroundColor != Color.Default)
+			if (Element.BackgroundColor != null)
 				SetBackgroundColor(Element.BackgroundColor.ToAndroid());
 			else
 				Control?.SetWindowBackground();
@@ -231,7 +231,7 @@ namespace Xamarin.Forms.Platform.Android
 			if (_initialPoint == null)
 				return false;
 
-			var interceptPoint = new Point(e.GetX() / _density, e.GetY() / _density);
+			var interceptPoint = new PointF(e.GetX() / _density, e.GetY() / _density);
 
 			var diffX = interceptPoint.X - _initialPoint.X;
 			var diffY = interceptPoint.Y - _initialPoint.Y;
@@ -371,7 +371,7 @@ namespace Xamarin.Forms.Platform.Android
 		AView CreateEmptyContent()
 		{
 			var emptyContentView = new AView(_context);
-			emptyContentView.SetBackgroundColor(Color.Default.ToAndroid());
+			emptyContentView.SetBackgroundColor(null.ToAndroid());
 
 			return emptyContentView;
 		}
@@ -513,7 +513,7 @@ namespace Xamarin.Forms.Platform.Android
 			{
 				ResetSwipeToInitialPosition();
 
-				_swipeDirection = SwipeDirectionHelper.GetSwipeDirection(new Point(_initialPoint.X, _initialPoint.Y), new Point(point.X, point.Y));
+				_swipeDirection = SwipeDirectionHelper.GetSwipeDirection(new PointF(_initialPoint.X, _initialPoint.Y), new PointF(point.X, point.Y));
 
 				UpdateSwipeItems();
 			}
@@ -882,7 +882,7 @@ namespace Xamarin.Forms.Platform.Android
 		{
 			var luminosity = 0.2126 * backgroundColor.R + 0.7152 * backgroundColor.G + 0.0722 * backgroundColor.B;
 
-			return luminosity < 0.75 ? Color.White : Color.Black;
+			return luminosity < 0.75 ? Colors.White : Colors.Black;
 		}
 
 		void UnsubscribeSwipeItemEvents()

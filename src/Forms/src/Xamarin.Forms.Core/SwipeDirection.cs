@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 
 namespace Xamarin.Forms
 {
@@ -18,7 +19,7 @@ namespace Xamarin.Forms.Internals
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public static class SwipeDirectionHelper
 	{
-		public static SwipeDirection GetSwipeDirection(Point initialPoint, Point endPoint)
+		public static SwipeDirection GetSwipeDirection(PointF initialPoint, PointF endPoint)
 		{
 			var angle = GetAngleFromPoints(initialPoint.X, initialPoint.Y, endPoint.X, endPoint.Y);
 			return GetSwipeDirectionFromAngle(angle);

@@ -32,7 +32,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			colorToggle.Clicked += (sender, args) =>
 			{
-				vm.Color = vm.Color.IsDefault ? Color.Green : Color.Default;
+				vm.Color = vm.Color.IsDefault ? Colors.Green : null;
 			};
 
 			Content = new StackLayout()
@@ -50,7 +50,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			public ModalActivityIndicatorModel()
 			{
-				_color = Color.Default;
+				_color = null;
 			}
 
 			public bool IsBusy
@@ -103,7 +103,7 @@ namespace Xamarin.Forms.Controls.Issues
 					view: new BoxView
 					{
 						Opacity = .4,
-						BackgroundColor = Color.FromHex("#ccc")
+						BackgroundColor = Colors.FromHex("#ccc")
 					},
 					widthConstraint: Forms.Constraint.RelativeToParent((parent) =>
 					{
@@ -117,7 +117,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 				var content = new StackLayout
 				{
-					BackgroundColor = Color.White,
+					BackgroundColor = Colors.White,
 					Spacing = 10,
 					Padding = new Thickness(
 						horizontalSize: 10,

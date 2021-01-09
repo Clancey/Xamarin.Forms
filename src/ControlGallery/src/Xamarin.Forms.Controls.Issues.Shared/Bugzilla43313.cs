@@ -48,7 +48,7 @@ namespace Xamarin.Forms.Controls.Issues
 			_listView = new ListView
 			{
 				HasUnevenRows = true,
-				BackgroundColor = Color.Transparent,
+				BackgroundColor = Colors.Transparent,
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				ItemTemplate = CellTemplate()
 			};
@@ -143,7 +143,7 @@ namespace Xamarin.Forms.Controls.Issues
 					View = new StackLayout
 					{
 						Padding = new Thickness(0, 5, 0, 5),
-						BackgroundColor = Color.Transparent,
+						BackgroundColor = Colors.Transparent,
 						Children =
 							{
 								label
@@ -171,7 +171,7 @@ namespace Xamarin.Forms.Controls.Issues
 					View = new StackLayout
 					{
 						Padding = new Thickness(0, 5, 0, 5),
-						BackgroundColor = Color.Transparent,
+						BackgroundColor = Colors.Transparent,
 						Children =
 							{
 								label

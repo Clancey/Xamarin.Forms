@@ -21,9 +21,9 @@ namespace Xamarin.Forms.Controls.GalleryPages.PlatformTestsGallery
 		const string SuccessText = "SUCCESS";
 		bool _runFailed;
 		bool _runInconclusive;
-		readonly Color _successColor = Color.Green;
-		readonly Color _failColor = Color.Red;
-		readonly Color _inconclusiveColor = Color.Goldenrod;
+		readonly Color _successColor = Colors.Green;
+		readonly Color _failColor = Colors.Red;
+		readonly Color _inconclusiveColor = Colors.Goldenrod;
 
 		int _finishedAssemblyCount = 0;
 		int _testsRunCount = 0;

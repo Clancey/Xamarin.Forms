@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using System.Runtime.CompilerServices;
 
 namespace Xamarin.Forms.Internals
@@ -22,14 +23,14 @@ namespace Xamarin.Forms.Internals
 			}
 		}
 
-		public virtual double DisplayRound(double value) =>
-			Math.Round(value);
+		public virtual float DisplayRound(float value) =>
+			(float)Math.Round(value);
 
-		public abstract Size PixelScreenSize { get; }
+		public abstract SizeF PixelScreenSize { get; }
 
-		public abstract Size ScaledScreenSize { get; }
+		public abstract SizeF ScaledScreenSize { get; }
 
-		public abstract double ScalingFactor { get; }
+		public abstract float ScalingFactor { get; }
 
 		public void Dispose()
 		{

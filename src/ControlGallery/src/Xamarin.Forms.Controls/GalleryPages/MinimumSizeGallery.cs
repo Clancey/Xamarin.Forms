@@ -19,8 +19,8 @@ namespace Xamarin.Forms.Controls
 						Intent = TableIntent.Settings,
 						Root = new TableRoot {
 							new TableSection ("SECTION 1") {
-								new TextCell { Text = "Cell 1", Detail = "Red Text", TextColor = Color.Red },
-								new TextCell { Text = "Detail Red", Detail = "Detail", DetailColor = Color.Red },
+								new TextCell { Text = "Cell 1", Detail = "Red Text", TextColor = Colors.Red },
+								new TextCell { Text = "Detail Red", Detail = "Detail", DetailColor = Colors.Red },
 								new TextCell { Text = "Cell 3" },
 								new TextCell { Text = "Cell 4" }
 							},

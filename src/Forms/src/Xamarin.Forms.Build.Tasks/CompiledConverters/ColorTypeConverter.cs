@@ -23,7 +23,7 @@ namespace Xamarin.Forms.Core.XamlC
 
 				if (value.StartsWith("#", StringComparison.Ordinal))
 				{
-					var color = Color.FromHex(value);
+					var color = Colors.FromHex(value);
 					yield return Instruction.Create(OpCodes.Ldc_R8, color.R);
 					yield return Instruction.Create(OpCodes.Ldc_R8, color.G);
 					yield return Instruction.Create(OpCodes.Ldc_R8, color.B);

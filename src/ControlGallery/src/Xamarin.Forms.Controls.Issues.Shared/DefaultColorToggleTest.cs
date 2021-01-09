@@ -26,18 +26,18 @@ namespace Xamarin.Forms.Controls.Issues
 		static ContentPage PasswordPage()
 		{
 			var passwordColorDefaultToggle = new Entry() { IsPassword = true, Text = "Default Password Color" };
-			var passwordColorInit = new Entry() { IsPassword = true, Text = "Should Be Red", TextColor = Color.Red };
+			var passwordColorInit = new Entry() { IsPassword = true, Text = "Should Be Red", TextColor = Colors.Red };
 			var passwordToggleButton = new Button() { Text = "Toggle Password Box (Default)" };
 			passwordToggleButton.Clicked += (sender, args) =>
 			{
 				if (passwordColorDefaultToggle.TextColor.IsDefault)
 				{
-					passwordColorDefaultToggle.TextColor = Color.Red;
+					passwordColorDefaultToggle.TextColor = Colors.Red;
 					passwordToggleButton.Text = "Toggle Password Box (Red)";
 				}
 				else
 				{
-					passwordColorDefaultToggle.TextColor = Color.Default;
+					passwordColorDefaultToggle.TextColor = null;
 					passwordToggleButton.Text = "Toggle Password Box (Default)";
 				}
 			};
@@ -67,12 +67,12 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				if (searchbarTextColorDefaultToggle.TextColor.IsDefault)
 				{
-					searchbarTextColorDefaultToggle.TextColor = Color.Fuchsia;
+					searchbarTextColorDefaultToggle.TextColor = Colors.Fuchsia;
 					searchbarTextColorDefaultToggle.Text = "Should Be Fuchsia";
 				}
 				else
 				{
-					searchbarTextColorDefaultToggle.TextColor = Color.Default;
+					searchbarTextColorDefaultToggle.TextColor = null;
 					searchbarTextColorDefaultToggle.Text = "Default SearchBar Text Color";
 				}
 			};
@@ -83,12 +83,12 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				if (searchbarPlaceholderColorDefaultToggle.PlaceholderColor.IsDefault)
 				{
-					searchbarPlaceholderColorDefaultToggle.PlaceholderColor = Color.Lime;
+					searchbarPlaceholderColorDefaultToggle.PlaceholderColor = Colors.Lime;
 					searchbarPlaceholderColorDefaultToggle.Placeholder = "Should Be Lime";
 				}
 				else
 				{
-					searchbarPlaceholderColorDefaultToggle.PlaceholderColor = Color.Default;
+					searchbarPlaceholderColorDefaultToggle.PlaceholderColor = null;
 					searchbarPlaceholderColorDefaultToggle.Placeholder = "Default Placeholder Color";
 				}
 			};
@@ -123,14 +123,14 @@ namespace Xamarin.Forms.Controls.Issues
 			var buttonColorInitted = new Button
 			{
 				Text = "This Should Always Be Red",
-				TextColor = Color.Red
+				TextColor = Colors.Red
 			};
 
 			const string disabledText = "Button is Disabled; Should have default disabled color.";
 			var buttonColorDisabled = new Button
 			{
 				Text = disabledText,
-				TextColor = Color.Green,
+				TextColor = Colors.Green,
 				IsEnabled = false
 			};
 
@@ -154,14 +154,14 @@ namespace Xamarin.Forms.Controls.Issues
 
 			buttonColorDefaultToggle.Clicked += (s, e) =>
 			{
-				if (buttonColorDefaultToggle.TextColor == Color.Default)
+				if (buttonColorDefaultToggle.TextColor == null)
 				{
-					buttonColorDefaultToggle.TextColor = Color.Red;
+					buttonColorDefaultToggle.TextColor = Colors.Red;
 					buttonColorDefaultToggle.Text = "Custom Color (Click To Toggle)";
 				}
 				else
 				{
-					buttonColorDefaultToggle.TextColor = Color.Default;
+					buttonColorDefaultToggle.TextColor = null;
 					buttonColorDefaultToggle.Text = defaultLabel;
 				}
 
@@ -197,21 +197,21 @@ namespace Xamarin.Forms.Controls.Issues
 			var labelColorInitted = new Label
 			{
 				Text = "Should Always Be Blue",
-				TextColor = Color.Blue
+				TextColor = Colors.Blue
 			};
 
 			labelColorDefaultToggle.GestureRecognizers.Add(new TapGestureRecognizer
 			{
 				Command = new Command(o =>
 				{
-					if (labelColorDefaultToggle.TextColor == Color.Default)
+					if (labelColorDefaultToggle.TextColor == null)
 					{
-						labelColorDefaultToggle.TextColor = Color.Green;
+						labelColorDefaultToggle.TextColor = Colors.Green;
 						labelColorDefaultToggle.Text = "Custom Label Color (Tap To Toggle)";
 					}
 					else
 					{
-						labelColorDefaultToggle.TextColor = Color.Default;
+						labelColorDefaultToggle.TextColor = null;
 						labelColorDefaultToggle.Text = defaultText;
 					}
 				})
@@ -235,8 +235,8 @@ namespace Xamarin.Forms.Controls.Issues
 
 		static ContentPage EntryPage()
 		{
-			var entryTextColorInit = new Entry { Text = "Should Always Be Red", TextColor = Color.Red };
-			var entryPlaceholderColorInit = new Entry { Placeholder = "Should Always Be Lime", PlaceholderColor = Color.Lime };
+			var entryTextColorInit = new Entry { Text = "Should Always Be Red", TextColor = Colors.Red };
+			var entryPlaceholderColorInit = new Entry { Placeholder = "Should Always Be Lime", PlaceholderColor = Colors.Lime };
 
 			const string defaultEntryColor = "Default Entry Text Color";
 			var entryTextColorDefaultToggle = new Entry { Text = defaultEntryColor };
@@ -246,12 +246,12 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				if (entryTextColorDefaultToggle.TextColor.IsDefault)
 				{
-					entryTextColorDefaultToggle.TextColor = Color.Fuchsia;
+					entryTextColorDefaultToggle.TextColor = Colors.Fuchsia;
 					entryTextColorDefaultToggle.Text = "Should Be Fuchsia";
 				}
 				else
 				{
-					entryTextColorDefaultToggle.TextColor = Color.Default;
+					entryTextColorDefaultToggle.TextColor = null;
 					entryTextColorDefaultToggle.Text = defaultEntryColor;
 				}
 			};
@@ -264,12 +264,12 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				if (entryPlaceholderColorDefaultToggle.PlaceholderColor.IsDefault)
 				{
-					entryPlaceholderColorDefaultToggle.PlaceholderColor = Color.Lime;
+					entryPlaceholderColorDefaultToggle.PlaceholderColor = Colors.Lime;
 					entryPlaceholderColorDefaultToggle.Placeholder = "Should Be Lime";
 				}
 				else
 				{
-					entryPlaceholderColorDefaultToggle.PlaceholderColor = Color.Default;
+					entryPlaceholderColorDefaultToggle.PlaceholderColor = null;
 					entryPlaceholderColorDefaultToggle.Placeholder = defaultPlaceholderColorText;
 				}
 			};
@@ -296,7 +296,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 		static ContentPage TimePickerPage()
 		{
-			var timePickerInit = new TimePicker { Time = new TimeSpan(11, 34, 00), TextColor = Color.Red };
+			var timePickerInit = new TimePicker { Time = new TimeSpan(11, 34, 00), TextColor = Colors.Red };
 			var timePickerColorDefaultToggle = new TimePicker { Time = new TimeSpan(11, 34, 00) };
 
 			var defaultText = "Should have default color text";
@@ -307,12 +307,12 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				if (timePickerColorDefaultToggle.TextColor.IsDefault)
 				{
-					timePickerColorDefaultToggle.TextColor = Color.Fuchsia;
+					timePickerColorDefaultToggle.TextColor = Colors.Fuchsia;
 					timePickerColorLabel.Text = "Should have fuchsia text";
 				}
 				else
 				{
-					timePickerColorDefaultToggle.TextColor = Color.Default;
+					timePickerColorDefaultToggle.TextColor = null;
 					timePickerColorLabel.Text = defaultText;
 				}
 			};
@@ -322,7 +322,7 @@ namespace Xamarin.Forms.Controls.Issues
 			var timePickerColorDisabled = new TimePicker
 			{
 				IsEnabled = false,
-				TextColor = Color.Green
+				TextColor = Colors.Green
 			};
 
 			var buttonToggleEnabled = new Button()
@@ -367,7 +367,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 		static ContentPage DatePickerPage()
 		{
-			var pickerInit = new DatePicker { Date = new DateTime(1978, 12, 24), TextColor = Color.Red };
+			var pickerInit = new DatePicker { Date = new DateTime(1978, 12, 24), TextColor = Colors.Red };
 			var pickerColorDefaultToggle = new DatePicker { Date = new DateTime(1978, 12, 24) };
 
 			var defaultText = "Should have default color text";
@@ -378,12 +378,12 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				if (pickerColorDefaultToggle.TextColor.IsDefault)
 				{
-					pickerColorDefaultToggle.TextColor = Color.Fuchsia;
+					pickerColorDefaultToggle.TextColor = Colors.Fuchsia;
 					pickerColorLabel.Text = "Should have fuchsia text";
 				}
 				else
 				{
-					pickerColorDefaultToggle.TextColor = Color.Default;
+					pickerColorDefaultToggle.TextColor = null;
 					pickerColorLabel.Text = defaultText;
 				}
 			};
@@ -393,7 +393,7 @@ namespace Xamarin.Forms.Controls.Issues
 			var pickerColorDisabled = new DatePicker
 			{
 				IsEnabled = false,
-				TextColor = Color.Green
+				TextColor = Colors.Green
 			};
 
 			var buttonToggleEnabled = new Button()
@@ -438,7 +438,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 		static ContentPage PickerPage()
 		{
-			var pickerInit = new Picker { TextColor = Color.Red, Items = { "Item 1", "Item 2", "Item 3" }, SelectedIndex = 1 };
+			var pickerInit = new Picker { TextColor = Colors.Red, Items = { "Item 1", "Item 2", "Item 3" }, SelectedIndex = 1 };
 
 			var pickerColorDefaultToggle = new Picker { Items = { "Item 1", "Item 2", "Item 3" }, SelectedIndex = 1 };
 
@@ -450,12 +450,12 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				if (pickerColorDefaultToggle.TextColor.IsDefault)
 				{
-					pickerColorDefaultToggle.TextColor = Color.Fuchsia;
+					pickerColorDefaultToggle.TextColor = Colors.Fuchsia;
 					pickerColorLabel.Text = "Should have fuchsia text";
 				}
 				else
 				{
-					pickerColorDefaultToggle.TextColor = Color.Default;
+					pickerColorDefaultToggle.TextColor = null;
 					pickerColorLabel.Text = defaultText;
 				}
 			};
@@ -465,7 +465,7 @@ namespace Xamarin.Forms.Controls.Issues
 			var pickerColorDisabled = new Picker
 			{
 				IsEnabled = false,
-				TextColor = Color.Green,
+				TextColor = Colors.Green,
 				Items = { "Item 1", "Item 2", "Item 3" },
 				SelectedIndex = 1
 			};

@@ -59,7 +59,7 @@ namespace Xamarin.Forms.Platform.Android
 
 		public static ICharSequence GetTitle(Color titleColor, string title)
 		{
-			if (titleColor == Color.Default)
+			if (titleColor == null)
 				return new Java.Lang.String(title);
 
 			var spannableTitle = new SpannableString(title ?? "");

@@ -71,7 +71,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		void UpdateColor()
 		{
-			Control.Color = Element.Color == Color.Default ? null : Element.Color.ToUIColor();
+			Control.Color = Element.Color == null ? null : Element.Color.ToUIColor();
 		}
 
 		void UpdateIsRunning()

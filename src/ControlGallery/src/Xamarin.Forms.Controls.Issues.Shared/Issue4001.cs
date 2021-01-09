@@ -24,10 +24,10 @@ namespace Xamarin.Forms.Controls.Issues
 					new Button
 					{
 						HeightRequest = 100,
-						BackgroundColor = Color.Red,
+						BackgroundColor = Colors.Red,
 						FontSize = 25,
 						FontAttributes = FontAttributes.Bold,
-						TextColor = Color.Black,
+						TextColor = Colors.Black,
 						Text = "Click Me and wait at least 5 sec [No crash expected]",
 						Command = new Command(() => {
 							Navigation.PushAsync(new ContentPage());

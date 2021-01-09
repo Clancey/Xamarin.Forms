@@ -31,7 +31,7 @@ namespace Xamarin.Forms.Controls.Issues
 				{
 					new Label
 					{
-						BackgroundColor = Color.CadetBlue,
+						BackgroundColor = Colors.CadetBlue,
 						HorizontalOptions = LayoutOptions.Start,
 						VerticalOptions = LayoutOptions.CenterAndExpand,
 						VerticalTextAlignment = TextAlignment.Center,
@@ -39,7 +39,7 @@ namespace Xamarin.Forms.Controls.Issues
 					},
 					new Slider
 					{
-						BackgroundColor = Color.Green,
+						BackgroundColor = Colors.Green,
 						HorizontalOptions = LayoutOptions.FillAndExpand,
 						VerticalOptions = LayoutOptions.CenterAndExpand,
 						Minimum = 0,

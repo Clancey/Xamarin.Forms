@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Graphics;
 using Xamarin.Forms.Internals;
 
 namespace Xamarin.Forms
@@ -36,19 +37,19 @@ namespace Xamarin.Forms
 			ImageSourceChanging(oldSource);
 		}
 
-		public static SizeRequest Measure(IImageElement ImageElementManager, SizeRequest desiredSize, double widthConstraint, double heightConstraint)
+		public static SizeRequest Measure(IImageElement ImageElementManager, SizeRequest desiredSize, float widthConstraint, float heightConstraint)
 		{
-			double desiredAspect = desiredSize.Request.Width / desiredSize.Request.Height;
-			double constraintAspect = widthConstraint / heightConstraint;
+			float desiredAspect = desiredSize.Request.Width / desiredSize.Request.Height;
+			float constraintAspect = widthConstraint / heightConstraint;
 
-			double desiredWidth = desiredSize.Request.Width;
-			double desiredHeight = desiredSize.Request.Height;
+			float desiredWidth = desiredSize.Request.Width;
+			float desiredHeight = desiredSize.Request.Height;
 
 			if (desiredWidth == 0 || desiredHeight == 0)
-				return new SizeRequest(new Size(0, 0));
+				return new SizeRequest(new SizeF(0, 0));
 
-			double width = desiredWidth;
-			double height = desiredHeight;
+			float width = desiredWidth;
+			float height = desiredHeight;
 			if (constraintAspect > desiredAspect)
 			{
 				// constraint area is proportionally wider than image
@@ -88,7 +89,7 @@ namespace Xamarin.Forms
 				height = desiredHeight * (width / desiredWidth);
 			}
 
-			return new SizeRequest(new Size(width, height));
+			return new SizeRequest(new SizeF(width, height));
 		}
 
 		public static void OnBindingContextChanged(IImageElement image, VisualElement visualElement)

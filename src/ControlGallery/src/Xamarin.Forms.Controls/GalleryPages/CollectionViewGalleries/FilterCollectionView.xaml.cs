@@ -33,7 +33,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.CollectionViewGalleries
 				CollectionView.EmptyView = new Label
 				{
 					Text = "Nothing to see here",
-					TextColor = Color.Coral,
+					TextColor = Colors.Coral,
 					HorizontalTextAlignment = TextAlignment.Center,
 					VerticalTextAlignment = TextAlignment.Center,
 					HorizontalOptions = LayoutOptions.Fill,

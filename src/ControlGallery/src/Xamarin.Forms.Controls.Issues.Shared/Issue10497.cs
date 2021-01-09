@@ -25,8 +25,8 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var instructions = new Label
 			{
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White,
 				Text = "If loading the page you don't see the scrollbar in each CollectionView Item, the test has passed."
 			};
 

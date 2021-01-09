@@ -94,14 +94,14 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			public GroupHeaderTemplate()
 			{
-				var title = new Label { TextColor = Color.White, FontSize = 16 };
+				var title = new Label { TextColor = Colors.White, FontSize = 16 };
 				title.SetBinding(Label.TextProperty, new Binding("GroupName", BindingMode.OneWay));
 
 				View = new StackLayout
 				{
 					Padding = new Thickness(8, 0),
 					VerticalOptions = LayoutOptions.StartAndExpand,
-					BackgroundColor = Color.FromHex("#6D91BA"),
+					BackgroundColor = Colors.FromHex("#6D91BA"),
 					Orientation = StackOrientation.Horizontal,
 					Children = { title },
 				};

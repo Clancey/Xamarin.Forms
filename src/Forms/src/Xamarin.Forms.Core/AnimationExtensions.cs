@@ -61,7 +61,7 @@ namespace Xamarin.Forms
 			return true;
 		}
 
-		public static void Animate(this IAnimatable self, string name, Animation animation, uint rate = 16, uint length = 250, Easing easing = null, Action<double, bool> finished = null,
+		public static void Animate(this IAnimatable self, string name, Animation animation, uint rate = 16, uint length = 250, Easing easing = null, Action<float, bool> finished = null,
 								   Func<bool> repeat = null)
 		{
 			if (repeat == null)
@@ -79,19 +79,19 @@ namespace Xamarin.Forms
 			}
 		}
 
-		public static void Animate(this IAnimatable self, string name, Action<double> callback, double start, double end, uint rate = 16, uint length = 250, Easing easing = null,
-								   Action<double, bool> finished = null, Func<bool> repeat = null)
+		public static void Animate(this IAnimatable self, string name, Action<float> callback, float start, float end, uint rate = 16, uint length = 250, Easing easing = null,
+								   Action<float, bool> finished = null, Func<bool> repeat = null)
 		{
 			self.Animate(name, Interpolate(start, end), callback, rate, length, easing, finished, repeat);
 		}
 
-		public static void Animate(this IAnimatable self, string name, Action<double> callback, uint rate = 16, uint length = 250, Easing easing = null, Action<double, bool> finished = null,
+		public static void Animate(this IAnimatable self, string name, Action<float> callback, uint rate = 16, uint length = 250, Easing easing = null, Action<float, bool> finished = null,
 								   Func<bool> repeat = null)
 		{
 			self.Animate(name, x => x, callback, rate, length, easing, finished, repeat);
 		}
 
-		public static void Animate<T>(this IAnimatable self, string name, Func<double, T> transform, Action<T> callback,
+		public static void Animate<T>(this IAnimatable self, string name, Func<float, T> transform, Action<T> callback,
 			uint rate = 16, uint length = 250, Easing easing = null,
 			Action<T, bool> finished = null, Func<bool> repeat = null)
 		{
@@ -107,7 +107,7 @@ namespace Xamarin.Forms
 		}
 
 
-		public static void AnimateKinetic(this IAnimatable self, string name, Func<double, double, bool> callback, double velocity, double drag, Action finished = null)
+		public static void AnimateKinetic(this IAnimatable self, string name, Func<float, float, bool> callback, float velocity, float drag, Action finished = null)
 		{
 			Action animate = () => AnimateKineticInternal(self, name, callback, velocity, drag, finished);
 			DoAction(self, animate);
@@ -119,9 +119,9 @@ namespace Xamarin.Forms
 			return s_animations.ContainsKey(key);
 		}
 
-		public static Func<double, double> Interpolate(double start, double end = 1.0f, double reverseVal = 0.0f, bool reverse = false)
+		public static Func<float, float> Interpolate(float start, float end = 1.0f, float reverseVal = 0.0f, bool reverse = false)
 		{
-			double target = reverse ? reverseVal : end;
+			float target = reverse ? reverseVal : end;
 			return x => start + (target - start) * x;
 		}
 
@@ -163,15 +163,15 @@ namespace Xamarin.Forms
 			s_kinetics.Remove(key);
 		}
 
-		static void AnimateInternal<T>(IAnimatable self, string name, Func<double, T> transform, Action<T> callback,
+		static void AnimateInternal<T>(IAnimatable self, string name, Func<float, T> transform, Action<T> callback,
 			uint rate, uint length, Easing easing, Action<T, bool> finished, Func<bool> repeat)
 		{
 			var key = new AnimatableKey(self, name);
 
 			AbortAnimation(key);
 
-			Action<double> step = f => callback(transform(f));
-			Action<double, bool> final = null;
+			Action<float> step = f => callback(transform(f));
+			Action<float, bool> final = null;
 			if (finished != null)
 				final = (f, b) => finished(transform(f), b);
 
@@ -194,13 +194,13 @@ namespace Xamarin.Forms
 			tweener.Start();
 		}
 
-		static void AnimateKineticInternal(IAnimatable self, string name, Func<double, double, bool> callback, double velocity, double drag, Action finished = null)
+		static void AnimateKineticInternal(IAnimatable self, string name, Func<float, float, bool> callback, float velocity, float drag, Action finished = null)
 		{
 			var key = new AnimatableKey(self, name);
 
 			AbortKinetic(key);
 
-			double sign = velocity / Math.Abs(velocity);
+			float sign = velocity / Math.Abs(velocity);
 			velocity = Math.Abs(velocity);
 
 			int tick = Ticker.Default.Insert(step =>
@@ -307,8 +307,8 @@ namespace Xamarin.Forms
 
 		class Info
 		{
-			public Action<double> Callback;
-			public Action<double, bool> Finished;
+			public Action<float> Callback;
+			public Action<float, bool> Finished;
 			public Func<bool> Repeat;
 			public Tweener Tweener;
 

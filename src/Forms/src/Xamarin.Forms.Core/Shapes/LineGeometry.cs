@@ -1,4 +1,6 @@
-﻿namespace Xamarin.Forms.Shapes
+﻿using System.Graphics;
+
+namespace Xamarin.Forms.Shapes
 {
 	public class LineGeometry : Geometry
 	{
@@ -7,28 +9,28 @@
 
 		}
 
-		public LineGeometry(Point startPoint, Point endPoint)
+		public LineGeometry(PointF startPoint, PointF endPoint)
 		{
 			StartPoint = startPoint;
 			EndPoint = endPoint;
 		}
 
 		public static readonly BindableProperty StartPointProperty =
-			BindableProperty.Create(nameof(StartPoint), typeof(Point), typeof(LineGeometry), new Point());
+			BindableProperty.Create(nameof(StartPoint), typeof(PointF), typeof(LineGeometry), new PointF());
 
 		public static readonly BindableProperty EndPointProperty =
-			BindableProperty.Create(nameof(EndPoint), typeof(Point), typeof(LineGeometry), new Point());
+			BindableProperty.Create(nameof(EndPoint), typeof(PointF), typeof(LineGeometry), new PointF());
 
-		public Point StartPoint
+		public PointF StartPoint
 		{
 			set { SetValue(StartPointProperty, value); }
-			get { return (Point)GetValue(StartPointProperty); }
+			get { return (PointF)GetValue(StartPointProperty); }
 		}
 
-		public Point EndPoint
+		public PointF EndPoint
 		{
 			set { SetValue(EndPointProperty, value); }
-			get { return (Point)GetValue(EndPointProperty); }
+			get { return (PointF)GetValue(EndPointProperty); }
 		}
 	}
 }

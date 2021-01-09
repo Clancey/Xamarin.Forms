@@ -23,8 +23,8 @@ namespace Xamarin.Forms.Controls.Issues
 			var sb1 = new SearchBar { Text = "This should have a red cancel button." };
 			var sb2 = new SearchBar { Text = "This should have a blue cancel button." };
 
-			sb1.CancelButtonColor = Color.Red;
-			sb2.CancelButtonColor = Color.Blue;
+			sb1.CancelButtonColor = Colors.Red;
+			sb2.CancelButtonColor = Colors.Blue;
 
 			layout.Children.Add(instructions);
 			layout.Children.Add(sb1);

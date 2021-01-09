@@ -60,7 +60,7 @@ namespace Xamarin.Forms.Controls.Issues
 			collectionView.ItemTemplate = new DataTemplate(() =>
 			{
 				var grid = new Grid();
-				grid.BackgroundColor = Color.FromRgb(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255));
+				grid.BackgroundColor = Colors.FromRgb(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255));
 				var lbl1 = new Label();
 				lbl1.SetBinding(Label.TextProperty, "Name");
 				grid.Children.Add(lbl1);

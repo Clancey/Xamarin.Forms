@@ -14,12 +14,12 @@ namespace Xamarin.Forms.Platform.Android.UnitTests
 			{
 				return new LinearGradientBrush
 				{
-					StartPoint = new Point(0, 0),
-					EndPoint = new Point(0, 1),
+					StartPoint = new PointF(0, 0),
+					EndPoint = new PointF(0, 1),
 					GradientStops = new GradientStopCollection
 					{
-						new GradientStop { Color = Color.Red, Offset = 0.5f },
-						new GradientStop { Color = Color.Green, Offset = 1.0f }
+						new GradientStop { Color = Colors.Red, Offset = 0.5f },
+						new GradientStop { Color = Colors.Green, Offset = 1.0f }
 					}
 				};
 			}
@@ -35,12 +35,12 @@ namespace Xamarin.Forms.Platform.Android.UnitTests
 			var screenshotHeight = screenshot.Height;
 			var screenshotWidth = screenshot.Width;
 
-			var expectedTopColor = Color.Red.ToAndroid();
+			var expectedTopColor = Colors.Red.ToAndroid();
 			var resultTopColor = screenshot.ColorAtPoint(screenshotWidth / 2, 1);
 
 			Assert.IsTrue(AreColorsSimilar(expectedTopColor, resultTopColor, Tolerance));
 
-			var expectedBottomColor = Color.Green.ToAndroid();
+			var expectedBottomColor = Colors.Green.ToAndroid();
 			var resultBottomColor = screenshot.ColorAtPoint(screenshotWidth / 2, screenshotHeight - 1);
 
 			Assert.IsTrue(AreColorsSimilar(expectedBottomColor, resultBottomColor, Tolerance));
@@ -56,12 +56,12 @@ namespace Xamarin.Forms.Platform.Android.UnitTests
 			var screenshotHeight = screenshot.Height;
 			var screenshotWidth = screenshot.Width;
 
-			var expectedTopColor = Color.Red.ToAndroid();
+			var expectedTopColor = Colors.Red.ToAndroid();
 			var resultTopColor = screenshot.ColorAtPoint(screenshotWidth / 2, 1);
 
 			Assert.IsTrue(AreColorsSimilar(expectedTopColor, resultTopColor, Tolerance));
 			
-			var expectedBottomColor = Color.Green.ToAndroid();
+			var expectedBottomColor = Colors.Green.ToAndroid();
 			var resultBottomColor = screenshot.ColorAtPoint(screenshotWidth / 2, screenshotHeight - 1);
 
 			Assert.IsTrue(AreColorsSimilar(expectedBottomColor, resultBottomColor, Tolerance));

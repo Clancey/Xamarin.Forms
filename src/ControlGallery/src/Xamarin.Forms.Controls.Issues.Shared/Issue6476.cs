@@ -11,8 +11,8 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			var stackLayout = new StackLayout() { Margin = 25 };
 			stackLayout.Children.Add(new Label { Text = "Visually verify that all buttons have a corner radius and that no background color extends beyond the border." });
-			stackLayout.Children.Add(new Button { CornerRadius = 10, BorderColor = Color.Red, Text = "Enabled" });
-			stackLayout.Children.Add(new Button { CornerRadius = 10, BorderColor = Color.Red, Text = "Disabled", IsEnabled = false });
+			stackLayout.Children.Add(new Button { CornerRadius = 10, BorderColor = Colors.Red, Text = "Enabled" });
+			stackLayout.Children.Add(new Button { CornerRadius = 10, BorderColor = Colors.Red, Text = "Disabled", IsEnabled = false });
 			Content = stackLayout;
 		}
 	}

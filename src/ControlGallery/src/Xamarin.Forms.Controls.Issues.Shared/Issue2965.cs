@@ -33,7 +33,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 				Children = {
 					new ContentPage {
-						BackgroundColor = Color.Green,
+						BackgroundColor = Colors.Green,
 						Content = new StackLayout {
 							Children = {
 								new Button {
@@ -46,13 +46,13 @@ namespace Xamarin.Forms.Controls.Issues
 						}
 					},
 					new ContentPage {
-						BackgroundColor = Color.Red
+						BackgroundColor = Colors.Red
 					},
 					new ContentPage {
-						BackgroundColor = Color.Lime,
+						BackgroundColor = Colors.Lime,
 					},
 					new ContentPage {
-						BackgroundColor = Color.Purple,
+						BackgroundColor = Colors.Purple,
 					},
 				}
 			};

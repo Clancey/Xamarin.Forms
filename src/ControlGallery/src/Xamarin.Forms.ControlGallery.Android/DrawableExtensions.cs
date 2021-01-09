@@ -73,7 +73,7 @@ namespace Xamarin.Forms.Platform.Android
 			if (drawable == null)
 				return;
 
-			if (color == Color.Default)
+			if (color == null)
 			{
 				SetColorFilter(drawable, defaultColorFilter);
 				return;

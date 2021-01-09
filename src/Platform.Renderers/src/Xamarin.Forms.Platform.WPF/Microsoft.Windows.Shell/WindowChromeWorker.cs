@@ -67,7 +67,7 @@ namespace Microsoft.Windows.Shell
 		private bool _isFixedUp = false;
 		private bool _isUserResizing = false;
 		private bool _hasUserMovedWindow = false;
-		private Point _windowPosAtStartOfUserMove = default(Point);
+		private Point _windowPosAtStartOfUserMove = default(PointF);
 
 		/// <summary>Object that describes the current modifications being made to the chrome.</summary>
 		private WindowChrome _chromeInfo;
@@ -500,7 +500,7 @@ namespace Microsoft.Windows.Shell
 
 					RECT adjustedDeviceRc = _GetAdjustedWindowRect(new RECT { Bottom = 100, Right = 100 });
 					Point adjustedTopLeft = DpiHelper.DevicePixelsToLogical(
-						new Point(
+						new PointF(
 							wp.rcNormalPosition.Left - adjustedDeviceRc.Left,
 							wp.rcNormalPosition.Top - adjustedDeviceRc.Top));
 
@@ -548,8 +548,8 @@ namespace Microsoft.Windows.Shell
 				}
 
 				RECT adjustedOffset = _GetAdjustedWindowRect(new RECT { Bottom = 100, Right = 100 });
-				Point windowTopLeft = new Point(_window.Left, _window.Top);
-				windowTopLeft -= (Vector)DpiHelper.DevicePixelsToLogical(new Point(adjustedOffset.Left, adjustedOffset.Top));
+				Point windowTopLeft = new PointF(_window.Left, _window.Top);
+				windowTopLeft -= (Vector)DpiHelper.DevicePixelsToLogical(new PointF(adjustedOffset.Left, adjustedOffset.Top));
 
 				return _window.RestoreBounds.Location != windowTopLeft;
 			}
@@ -837,7 +837,7 @@ namespace Microsoft.Windows.Shell
 		private IntPtr _HandleNCHitTest(WM uMsg, IntPtr wParam, IntPtr lParam, out bool handled)
 		{
 			// Let the system know if we consider the mouse to be in our effective non-client area.
-			var mousePosScreen = Utility.GetPoint(lParam); //new Point(Utility.GET_X_LPARAM(lParam), Utility.GET_Y_LPARAM(lParam));
+			var mousePosScreen = Utility.GetPoint(lParam); //new PointF(Utility.GET_X_LPARAM(lParam), Utility.GET_Y_LPARAM(lParam));
 			Rect windowPosition = _GetWindowRect();
 
 			Point mousePosWindow = mousePosScreen;
@@ -899,7 +899,7 @@ namespace Microsoft.Windows.Shell
 			// to bring up the system menu.
 			if (HT.CAPTION == (HT)(Environment.Is64BitProcess ? wParam.ToInt64() : wParam.ToInt32()))
 			{
-				//SystemCommands.ShowSystemMenuPhysicalCoordinates(_window, new Point(Utility.GET_X_LPARAM(lParam), Utility.GET_Y_LPARAM(lParam)));
+				//SystemCommands.ShowSystemMenuPhysicalCoordinates(_window, new PointF(Utility.GET_X_LPARAM(lParam), Utility.GET_Y_LPARAM(lParam)));
 				SystemCommands.ShowSystemMenuPhysicalCoordinates(_window, Utility.GetPoint(lParam));
 			}
 			handled = false;
@@ -1083,7 +1083,7 @@ namespace Microsoft.Windows.Shell
 				// try to account for that and not update the start position.
 				if (!_IsWindowDocked)
 				{
-					_windowPosAtStartOfUserMove = new Point(_window.Left, _window.Top);
+					_windowPosAtStartOfUserMove = new PointF(_window.Left, _window.Top);
 				}
 				// Realistically we also don't want to update the start position when moving from one docked state to another (or to and from maximized),
 				// but it's tricky to detect and this is already a workaround for a bug that's fixed in newer versions of the framework.
@@ -1490,7 +1490,7 @@ namespace Microsoft.Windows.Shell
 				{
 					double shortestDimension = Math.Min(windowSize.Width, windowSize.Height);
 
-					double topLeftRadius = DpiHelper.LogicalPixelsToDevice(new Point(_chromeInfo.CornerRadius.TopLeft, 0)).X;
+					double topLeftRadius = DpiHelper.LogicalPixelsToDevice(new PointF(_chromeInfo.CornerRadius.TopLeft, 0)).X;
 					topLeftRadius = Math.Min(topLeftRadius, shortestDimension / 2);
 
 					if (_IsUniform(_chromeInfo.CornerRadius))
@@ -1506,7 +1506,7 @@ namespace Microsoft.Windows.Shell
 						// of the window.
 						hrgn = _CreateRoundRectRgn(new Rect(0, 0, windowSize.Width / 2 + topLeftRadius, windowSize.Height / 2 + topLeftRadius), topLeftRadius);
 
-						double topRightRadius = DpiHelper.LogicalPixelsToDevice(new Point(_chromeInfo.CornerRadius.TopRight, 0)).X;
+						double topRightRadius = DpiHelper.LogicalPixelsToDevice(new PointF(_chromeInfo.CornerRadius.TopRight, 0)).X;
 						topRightRadius = Math.Min(topRightRadius, shortestDimension / 2);
 						Rect topRightRegionRect = new Rect(0, 0, windowSize.Width / 2 + topRightRadius, windowSize.Height / 2 + topRightRadius);
 						topRightRegionRect.Offset(windowSize.Width / 2 - topRightRadius, 0);
@@ -1514,7 +1514,7 @@ namespace Microsoft.Windows.Shell
 
 						_CreateAndCombineRoundRectRgn(hrgn, topRightRegionRect, topRightRadius);
 
-						double bottomLeftRadius = DpiHelper.LogicalPixelsToDevice(new Point(_chromeInfo.CornerRadius.BottomLeft, 0)).X;
+						double bottomLeftRadius = DpiHelper.LogicalPixelsToDevice(new PointF(_chromeInfo.CornerRadius.BottomLeft, 0)).X;
 						bottomLeftRadius = Math.Min(bottomLeftRadius, shortestDimension / 2);
 						Rect bottomLeftRegionRect = new Rect(0, 0, windowSize.Width / 2 + bottomLeftRadius, windowSize.Height / 2 + bottomLeftRadius);
 						bottomLeftRegionRect.Offset(0, windowSize.Height / 2 - bottomLeftRadius);
@@ -1522,7 +1522,7 @@ namespace Microsoft.Windows.Shell
 
 						_CreateAndCombineRoundRectRgn(hrgn, bottomLeftRegionRect, bottomLeftRadius);
 
-						double bottomRightRadius = DpiHelper.LogicalPixelsToDevice(new Point(_chromeInfo.CornerRadius.BottomRight, 0)).X;
+						double bottomRightRadius = DpiHelper.LogicalPixelsToDevice(new PointF(_chromeInfo.CornerRadius.BottomRight, 0)).X;
 						bottomRightRadius = Math.Min(bottomRightRadius, shortestDimension / 2);
 						Rect bottomRightRegionRect = new Rect(0, 0, windowSize.Width / 2 + bottomRightRadius, windowSize.Height / 2 + bottomRightRadius);
 						bottomRightRegionRect.Offset(windowSize.Width / 2 - bottomRightRadius, windowSize.Height / 2 - bottomRightRadius);

@@ -26,7 +26,7 @@ namespace Xamarin.Forms.Platform.Tizen
 		{
 			var geometry = Platform.GetRenderer(sender).NativeView.Geometry;
 			var zoomData = (GestureLayer.ZoomData)data;
-			_currentScalePoint = new Point((zoomData.X - geometry.X) / (double)geometry.Width, (zoomData.Y - geometry.Y) / (double)geometry.Height);
+			_currentScalePoint = new PointF((zoomData.X - geometry.X) / (double)geometry.Width, (zoomData.Y - geometry.Y) / (double)geometry.Height);
 			_originalPinchScale = sender.Scale;
 			_previousPinchRadius = zoomData.Radius;
 			(Recognizer as IPinchGestureController)?.SendPinchStarted(sender, _currentScalePoint);

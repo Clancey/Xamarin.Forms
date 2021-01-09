@@ -9,13 +9,13 @@ namespace Xamarin.Forms.Shapes
 
 		}
 
-		public SkewTransform(double angleX, double angleY)
+		public SkewTransform(float angleX, float angleY)
 		{
 			AngleX = angleX;
 			AngleY = angleY;
 		}
 
-		public SkewTransform(double angleX, double angleY, double centerX, double centerY)
+		public SkewTransform(float angleX, float angleY, float centerX, float centerY)
 		{
 			AngleX = angleX;
 			AngleY = angleY;
@@ -24,43 +24,43 @@ namespace Xamarin.Forms.Shapes
 		}
 
 		public static readonly BindableProperty AngleXProperty =
-			BindableProperty.Create(nameof(AngleX), typeof(double), typeof(SkewTransform), 0.0,
+			BindableProperty.Create(nameof(AngleX), typeof(float), typeof(SkewTransform), 0.0,
 				propertyChanged: OnTransformPropertyChanged);
 
 		public static readonly BindableProperty AngleYProperty =
-			BindableProperty.Create(nameof(AngleY), typeof(double), typeof(SkewTransform), 0.0,
+			BindableProperty.Create(nameof(AngleY), typeof(float), typeof(SkewTransform), 0.0,
 				propertyChanged: OnTransformPropertyChanged);
 
 		public static readonly BindableProperty CenterXProperty =
-			BindableProperty.Create(nameof(CenterX), typeof(double), typeof(SkewTransform), 0.0,
+			BindableProperty.Create(nameof(CenterX), typeof(float), typeof(SkewTransform), 0.0,
 				propertyChanged: OnTransformPropertyChanged);
 
 		public static readonly BindableProperty CenterYProperty =
-			BindableProperty.Create(nameof(CenterY), typeof(double), typeof(SkewTransform), 0.0,
+			BindableProperty.Create(nameof(CenterY), typeof(float), typeof(SkewTransform), 0.0,
 				propertyChanged: OnTransformPropertyChanged);
 
-		public double AngleX
+		public float AngleX
 		{
 			set { SetValue(AngleXProperty, value); }
-			get { return (double)GetValue(AngleXProperty); }
+			get { return (float)GetValue(AngleXProperty); }
 		}
 
-		public double AngleY
+		public float AngleY
 		{
 			set { SetValue(AngleYProperty, value); }
-			get { return (double)GetValue(AngleYProperty); }
+			get { return (float)GetValue(AngleYProperty); }
 		}
 
-		public double CenterX
+		public float CenterX
 		{
 			set { SetValue(CenterXProperty, value); }
-			get { return (double)GetValue(CenterXProperty); }
+			get { return (float)GetValue(CenterXProperty); }
 		}
 
-		public double CenterY
+		public float CenterY
 		{
 			set { SetValue(CenterYProperty, value); }
-			get { return (double)GetValue(CenterYProperty); }
+			get { return (float)GetValue(CenterYProperty); }
 		}
 
 		static void OnTransformPropertyChanged(BindableObject bindable, object oldValue, object newValue)
@@ -70,10 +70,10 @@ namespace Xamarin.Forms.Shapes
 
 		void OnTransformPropertyChanged()
 		{
-			double radiansX = Math.PI * AngleX / 180;
-			double radiansY = Math.PI * AngleY / 180;
-			double tanX = Math.Tan(radiansX);
-			double tanY = Math.Tan(radiansY);
+			float radiansX = (float)Math.PI * AngleX / 180;
+			float radiansY = (float)Math.PI * AngleY / 180;
+			float tanX = (float)Math.Tan(radiansX);
+			float tanY = (float)Math.Tan(radiansY);
 
 			Value = new Matrix(1, tanY, tanX, 1, -CenterY * tanX, -CenterX * tanY);
 		}

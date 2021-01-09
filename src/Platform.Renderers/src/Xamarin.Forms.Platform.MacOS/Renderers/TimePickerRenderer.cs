@@ -80,7 +80,7 @@ namespace Xamarin.Forms.Platform.MacOS
 
 			if (Control == null)
 				return;
-			Control.BackgroundColor = color == Color.Default ? _defaultBackgroundColor : color.ToNSColor();
+			Control.BackgroundColor = color == null ? _defaultBackgroundColor : color.ToNSColor();
 		}
 
 		void ControlFocusChanged(object sender, BoolEventArgs e)

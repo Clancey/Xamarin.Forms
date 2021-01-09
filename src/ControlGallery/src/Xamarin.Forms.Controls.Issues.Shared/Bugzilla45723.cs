@@ -27,7 +27,7 @@ namespace Xamarin.Forms.Controls.Issues
 	{
 		public EditorAndButtonReproPage()
 		{
-			BackgroundColor = Color.Gray;
+			BackgroundColor = Colors.Gray;
 			Padding = 50;
 			var editor = new Editor { HorizontalOptions = LayoutOptions.FillAndExpand };
 			var editorButton = new Button { Text = "OK", HorizontalOptions = LayoutOptions.End };

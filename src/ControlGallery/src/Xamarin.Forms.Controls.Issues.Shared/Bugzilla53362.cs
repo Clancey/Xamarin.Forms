@@ -12,9 +12,9 @@ namespace Xamarin.Forms.Controls.Issues
 	{
 		protected override void Init()
 		{
-			var label1 = new Label { Text = "auto sized row", TextColor = Color.Silver, HorizontalOptions = LayoutOptions.Center, BackgroundColor = Color.Purple };
-			var label2 = new Label { Text = "row size 20", TextColor = Color.Silver, HorizontalOptions = LayoutOptions.Center, BackgroundColor = Color.Purple };
-			var label3 = new Label { Text = "row size 25", TextColor = Color.Silver, HorizontalOptions = LayoutOptions.Center, BackgroundColor = Color.Purple };
+			var label1 = new Label { Text = "auto sized row", TextColor = Colors.Silver, HorizontalOptions = LayoutOptions.Center, BackgroundColor = Colors.Purple };
+			var label2 = new Label { Text = "row size 20", TextColor = Colors.Silver, HorizontalOptions = LayoutOptions.Center, BackgroundColor = Colors.Purple };
+			var label3 = new Label { Text = "row size 25", TextColor = Colors.Silver, HorizontalOptions = LayoutOptions.Center, BackgroundColor = Colors.Purple };
 
 			var grid = new Grid
 			{

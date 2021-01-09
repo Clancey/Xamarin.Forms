@@ -37,7 +37,7 @@ namespace Xamarin.Forms.Controls.Issues
 					Orientation = StackOrientation.Vertical,
 					Spacing = 5,
 					Padding = 10,
-					BackgroundColor = Color.Beige
+					BackgroundColor = Colors.Beige
 				};
 
 

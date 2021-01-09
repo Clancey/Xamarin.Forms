@@ -12,7 +12,7 @@ namespace Xamarin.Forms.Controls.Issues
 			var grid = new Grid()
 			{
 				Padding = new Thickness(10),
-				BackgroundColor = Color.Aquamarine,
+				BackgroundColor = Colors.Aquamarine,
 				IsTabStop = false
 			};
 			grid.AddChild(new Button

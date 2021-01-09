@@ -1,4 +1,5 @@
-﻿using Android.Content;
+﻿using System.Graphics;
+using Android.Content;
 using Android.Views;
 using Xamarin.Forms;
 
@@ -10,7 +11,7 @@ namespace Xamarin.Platform.Handlers
 
 		public Context? Context { get; private set; }
 
-		public void SetFrame(Rectangle frame)
+		public void SetFrame(RectangleF frame)
 		{
 			var nativeView = View;
 
@@ -46,16 +47,16 @@ namespace Xamarin.Platform.Handlers
 			nativeView.Layout((int)left, (int)top, (int)right, (int)bottom);
 		}
 
-		public virtual Size GetDesiredSize(double widthConstraint, double heightConstraint)
+		public virtual SizeF GetDesiredSize(float widthConstraint, float heightConstraint)
 		{
 			if (TypedNativeView == null)
 			{
-				return Size.Zero;
+				return SizeF.Zero;
 			}
 
 			if (Context == null)
 			{
-				return new Size(widthConstraint, heightConstraint);
+				return new SizeF(widthConstraint, heightConstraint);
 			}
 
 			var deviceWidthConstraint = Context.ToPixels(widthConstraint);

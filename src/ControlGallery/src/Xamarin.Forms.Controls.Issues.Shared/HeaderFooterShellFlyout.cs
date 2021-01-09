@@ -134,8 +134,8 @@ namespace Xamarin.Forms.Controls.Issues
 
 					var headerLabel = (VisualElement)FlyoutHeader;
 					var footerLabel = (VisualElement)FlyoutFooter;
-					headerLabel.BackgroundColor = Color.LightBlue;
-					footerLabel.BackgroundColor = Color.LightBlue;
+					headerLabel.BackgroundColor = Colors.LightBlue;
+					footerLabel.BackgroundColor = Colors.LightBlue;
 
 					if (headerLabel.HeightRequest == 60)
 					{

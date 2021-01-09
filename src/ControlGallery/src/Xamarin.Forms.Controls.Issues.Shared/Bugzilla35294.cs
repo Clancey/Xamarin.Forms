@@ -15,7 +15,7 @@ namespace Xamarin.Forms.Controls.Issues
 			FontSize = 16,
 			Text = "This is an example.... what is wrong with this? ",
 			HorizontalOptions = LayoutOptions.Center,
-			TextColor = Color.Black,
+			TextColor = Colors.Black,
 		};
 
 		protected override void Init()
@@ -27,12 +27,12 @@ namespace Xamarin.Forms.Controls.Issues
 				Font = Font.BoldSystemFontOfSize(40),
 #pragma warning restore 618
 				HorizontalOptions = LayoutOptions.Center,
-				TextColor = Color.Black
+				TextColor = Colors.Black
 			};
 
 			StackLayout stack = new StackLayout
 			{
-				BackgroundColor = Color.White,
+				BackgroundColor = Colors.White,
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				Spacing = 10,
 
@@ -41,7 +41,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			Content = new ScrollView
 			{
-				BackgroundColor = Color.Blue,
+				BackgroundColor = Colors.Blue,
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				Orientation = ScrollOrientation.Vertical,
 				Content = stack

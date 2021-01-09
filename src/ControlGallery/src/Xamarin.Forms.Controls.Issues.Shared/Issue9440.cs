@@ -28,7 +28,7 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				var label = new Label
 				{
-					TextColor = Color.Black,
+					TextColor = Colors.Black,
 					HorizontalOptions = LayoutOptions.FillAndExpand,
 					HorizontalTextAlignment = TextAlignment.End
 				};

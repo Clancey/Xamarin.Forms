@@ -31,7 +31,7 @@ namespace Xamarin.Forms.Controls.Issues
 					VerticalOptions = LayoutOptions.End,
 					ImageSource = "coffee.png",
 					Padding = new Thickness(10),
-					BackgroundColor = Color.Green,
+					BackgroundColor = Colors.Green,
 					AutomationId = "TestReady"
 				};
 				// Add BorderWidth to ImageButtons to match border of Button and allow for easier size comparisons
@@ -42,7 +42,7 @@ namespace Xamarin.Forms.Controls.Issues
 					BorderWidth = 2,
 					Source = "coffee.png",
 					Padding = new Thickness(10),
-					BackgroundColor = Color.Purple
+					BackgroundColor = Colors.Purple
 				};
 				ImageButton ib2 = new ImageButton
 				{
@@ -51,7 +51,7 @@ namespace Xamarin.Forms.Controls.Issues
 					BorderWidth = 2,
 					Source = "coffee.png",
 					Padding = new Thickness(10),
-					BackgroundColor = Color.Red
+					BackgroundColor = Colors.Red
 				};
 				Grid mainG = new Grid
 				{

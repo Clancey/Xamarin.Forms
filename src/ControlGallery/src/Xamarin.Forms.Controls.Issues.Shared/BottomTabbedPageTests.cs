@@ -32,13 +32,13 @@ namespace Xamarin.Forms.Controls.Issues
 			On<Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
 
 			pageCountLabel = new Label() { AutomationId = "PageCount" };
-			var popButton1 = new Button() { Text = "Pop", BackgroundColor = Color.Blue };
+			var popButton1 = new Button() { Text = "Pop", BackgroundColor = Colors.Blue };
 			popButton1.Clicked += (s, a) => Navigation.PopModalAsync();
 
-			var popButton2 = new Button() { Text = "Pop 2", BackgroundColor = Color.Blue };
+			var popButton2 = new Button() { Text = "Pop 2", BackgroundColor = Colors.Blue };
 			popButton2.Clicked += (s, a) => Navigation.PopModalAsync();
 
-			var longerTest = new Button() { Text = "Manual Color Tests", BackgroundColor = Color.Blue };
+			var longerTest = new Button() { Text = "Manual Color Tests", BackgroundColor = Colors.Blue };
 
 			Children.Add(new ContentPage() { Title = "Page 1", Content = popButton1, IconImageSource = "coffee.png" });
 			Children.Add(new ContentPage() { Title = "Page 2", Content = popButton2, IconImageSource = "bank.png" });
@@ -54,14 +54,14 @@ namespace Xamarin.Forms.Controls.Issues
 				Text = "Change Bar Text",
 				Command = new Command(() =>
 				{
-					if (BarTextColor == Color.Default)
+					if (BarTextColor == null)
 					{
-						BarTextColor = Color.HotPink;
+						BarTextColor = Colors.HotPink;
 						btnChangeBarText.Text = $"Bar Text: HotPink";
 					}
 					else
 					{
-						BarTextColor = Color.Default;
+						BarTextColor = null;
 						btnChangeBarText.Text = $"Bar Text: Default";
 					}
 				})
@@ -74,7 +74,7 @@ namespace Xamarin.Forms.Controls.Issues
 				Command = new Command(() =>
 				{
 #pragma warning disable CS0618 // Type or member is obsolete
-					if (On<Android>().GetBarItemColor() == Color.Default)
+					if (On<Android>().GetBarItemColor() == null)
 #pragma warning restore CS0618 // Type or member is obsolete
 
 					{
@@ -86,7 +86,7 @@ namespace Xamarin.Forms.Controls.Issues
 					else
 					{
 #pragma warning disable CS0618 // Type or member is obsolete
-						On<Android>().SetBarItemColor(Color.Default);
+						On<Android>().SetBarItemColor(null);
 #pragma warning restore CS0618 // Type or member is obsolete
 						btnChangeBarItemColorText.Text = $"Item Color: Default";
 					}
@@ -100,7 +100,7 @@ namespace Xamarin.Forms.Controls.Issues
 				Command = new Command(() =>
 				{
 #pragma warning disable CS0618 // Type or member is obsolete
-					if (On<Android>().GetBarSelectedItemColor() == Color.Default)
+					if (On<Android>().GetBarSelectedItemColor() == null)
 #pragma warning restore CS0618 // Type or member is obsolete
 
 					{
@@ -112,7 +112,7 @@ namespace Xamarin.Forms.Controls.Issues
 					else
 					{
 #pragma warning disable CS0618 // Type or member is obsolete
-						On<Android>().SetBarSelectedItemColor(Color.Default);
+						On<Android>().SetBarSelectedItemColor(null);
 #pragma warning restore CS0618 // Type or member is obsolete
 						btnChangeBarSelectedItemColorText.Text = $"Selected Item Color: Default";
 					}
@@ -160,10 +160,10 @@ namespace Xamarin.Forms.Controls.Issues
 							Text = "Change Bar Background Color",
 							Command = new Command(()=>
 							{
-								if(BarBackgroundColor == Color.Default)
-									BarBackgroundColor = Color.Fuchsia;
+								if(BarBackgroundColor == null)
+									BarBackgroundColor = Colors.Fuchsia;
 								else
-									BarBackgroundColor = Color.Default;
+									BarBackgroundColor = null;
 							})
 						},
 						btnAddPage,

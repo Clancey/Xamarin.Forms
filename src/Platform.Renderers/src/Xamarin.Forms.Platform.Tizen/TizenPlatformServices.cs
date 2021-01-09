@@ -91,7 +91,7 @@ namespace Xamarin.Forms.Platform.Tizen
 		public Color GetNamedColor(string name)
 		{
 			// Not supported on this platform
-			return Color.Default;
+			return null;
 		}
 
 		public void OpenUriAction(Uri uri)

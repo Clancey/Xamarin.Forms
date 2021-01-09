@@ -17,14 +17,14 @@ namespace Xamarin.Forms.Controls
 			var tableSectionContainer = new ViewContainer<TableView>(Test.TableView.TableSection, new TableView());
 			var section = new TableSection("Test")
 			{
-				TextColor = Color.Red
+				TextColor = Colors.Red
 			};
 
 			section.Add(new TextCell { Text = "Worked!" });
 
 			var section1 = new TableSection("Testing")
 			{
-				TextColor = Color.Green
+				TextColor = Colors.Green
 			};
 
 			section1.Add(new TextCell { Text = "Workeding!" });

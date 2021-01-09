@@ -133,14 +133,14 @@ namespace Xamarin.Forms.Controls.Issues
 		public ModuleMediaListHeaderTemplate()
 		{
 #pragma warning disable 618
-			var title = new Label { TextColor = Color.White, YAlign = TextAlignment.Center };
+			var title = new Label { TextColor = Colors.White, YAlign = TextAlignment.Center };
 #pragma warning restore 618
 			title.SetBinding(Label.TextProperty, new Binding("SectionName", BindingMode.OneWay));
 
 			View = new StackLayout
 			{
 				Padding = new Thickness(8, 0),
-				BackgroundColor = Color.FromHex("#999999"),
+				BackgroundColor = Colors.FromHex("#999999"),
 				Orientation = StackOrientation.Horizontal,
 				Children = { title },
 			};

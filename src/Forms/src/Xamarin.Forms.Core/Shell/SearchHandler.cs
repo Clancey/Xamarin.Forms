@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Graphics;
 using System.Windows.Input;
 using Xamarin.Forms.Internals;
 using static Xamarin.Forms.VisualElement;
@@ -170,16 +171,16 @@ namespace Xamarin.Forms
 			set { SetValue(FontFamilyProperty, value); }
 		}
 
-		public double CharacterSpacing
+		public float CharacterSpacing
 		{
-			get { return (double)GetValue(TextElement.CharacterSpacingProperty); }
+			get { return (float)GetValue(TextElement.CharacterSpacingProperty); }
 			set { SetValue(TextElement.CharacterSpacingProperty, value); }
 		}
 
 		[TypeConverter(typeof(FontSizeConverter))]
-		public double FontSize
+		public float FontSize
 		{
-			get { return (double)GetValue(FontSizeProperty); }
+			get { return (float)GetValue(FontSizeProperty); }
 			set { SetValue(FontSizeProperty, value); }
 		}
 
@@ -187,11 +188,11 @@ namespace Xamarin.Forms
 		{
 		}
 
-		void IFontElement.OnFontSizeChanged(double oldValue, double newValue)
+		void IFontElement.OnFontSizeChanged(float oldValue, float newValue)
 		{
 		}
 
-		double IFontElement.FontSizeDefaultValueCreator() =>
+		float IFontElement.FontSizeDefaultValueCreator() =>
 			Device.GetNamedSize(NamedSize.Default, typeof(SearchHandler));
 
 		void IFontElement.OnFontAttributesChanged(FontAttributes oldValue, FontAttributes newValue)
@@ -214,7 +215,7 @@ namespace Xamarin.Forms
 			set => SetValue(PlaceholderElement.PlaceholderProperty, value);
 		}
 
-		public static readonly BindableProperty BackgroundColorProperty = BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(SearchHandler), Color.Default);
+		public static readonly BindableProperty BackgroundColorProperty = BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(SearchHandler), null);
 
 		public Color BackgroundColor
 		{
@@ -531,7 +532,7 @@ namespace Xamarin.Forms
 			((SearchHandler)bindable).OnCommandParameterChanged();
 		}
 
-		void ITextElement.OnCharacterSpacingPropertyChanged(double oldValue, double newValue)
+		void ITextElement.OnCharacterSpacingPropertyChanged(float oldValue, float newValue)
 		{
 
 		}

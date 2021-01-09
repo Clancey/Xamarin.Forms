@@ -156,7 +156,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		{
 			var nav = new NavigationPage();
 
-			Assert.AreEqual(Color.Default, nav.Tint);
+			Assert.AreEqual(null, nav.Tint);
 
 			bool signaled = false;
 			nav.PropertyChanged += (sender, args) =>

@@ -38,7 +38,7 @@ namespace Xamarin.Forms.Controls
 				{
 					Content = new StackLayout
 					{
-						BackgroundColor = Color.Red,
+						BackgroundColor = Colors.Red,
 						Children = {
 							new Label {
 								Text = "Second Page"

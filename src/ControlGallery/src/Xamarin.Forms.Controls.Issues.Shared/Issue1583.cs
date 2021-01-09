@@ -20,7 +20,7 @@ namespace Xamarin.Forms.Controls.Issues
 		protected override void Init()
 		{
 			Title = "Test";
-			BackgroundColor = Color.Pink;
+			BackgroundColor = Colors.Pink;
 			Content = new Label { Text = "Hello", AutomationId = "lblHello" };
 			NavigationPage.SetTitleIconImageSource(this, "bank.png");
 		}

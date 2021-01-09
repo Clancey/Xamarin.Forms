@@ -55,7 +55,7 @@ namespace Xamarin.Forms.Xaml.UnitTests
 
 		public object ProvideValue(IServiceProvider serviceProvider)
 		{
-			return Color.FromRgb(R, G, B);
+			return Colors.FromRgb(R, G, B);
 		}
 	}
 

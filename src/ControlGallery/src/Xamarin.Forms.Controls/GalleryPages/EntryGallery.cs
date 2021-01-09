@@ -61,17 +61,17 @@ namespace Xamarin.Forms.Controls
 
 			toggleColorButton.Clicked += (sender, e) =>
 			{
-				if (normal.TextColor == Color.Default)
+				if (normal.TextColor == null)
 				{
-					normal.TextColor = Color.Red;
-					password.TextColor = Color.Red;
-					numericPassword.TextColor = Color.Red;
+					normal.TextColor = Colors.Red;
+					password.TextColor = Colors.Red;
+					numericPassword.TextColor = Colors.Red;
 				}
 				else
 				{
-					normal.TextColor = Color.Default;
-					password.TextColor = Color.Default;
-					numericPassword.TextColor = Color.Default;
+					normal.TextColor = null;
+					password.TextColor = null;
+					numericPassword.TextColor = null;
 				}
 			};
 

@@ -54,9 +54,9 @@ namespace Xamarin.Forms
 		}
 
 		[TypeConverter(typeof(FontSizeConverter))]
-		public double FontSize
+		public float FontSize
 		{
-			get { return (double)GetValue(FontSizeProperty); }
+			get { return (float)GetValue(FontSizeProperty); }
 			set { SetValue(FontSizeProperty, value); }
 		}
 
@@ -73,7 +73,7 @@ namespace Xamarin.Forms
 			UpdateAutoSizeOption();
 		}
 
-		void IFontElement.OnFontSizeChanged(double oldValue, double newValue)
+		void IFontElement.OnFontSizeChanged(float oldValue, float newValue)
 		{
 			UpdateAutoSizeOption();
 		}
@@ -83,7 +83,7 @@ namespace Xamarin.Forms
 			UpdateAutoSizeOption();
 		}
 
-		double IFontElement.FontSizeDefaultValueCreator() =>
+		float IFontElement.FontSizeDefaultValueCreator() =>
 			Device.GetNamedSize(NamedSize.Default, (Editor)this);
 
 		void IFontElement.OnFontAttributesChanged(FontAttributes oldValue, FontAttributes newValue)

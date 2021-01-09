@@ -22,7 +22,7 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			var grid = new Grid
 			{
-				BackgroundColor = Color.FromHex("#32d2c8")
+				BackgroundColor = Colors.FromHex("#32d2c8")
 			};
 
 			grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
@@ -47,10 +47,10 @@ namespace Xamarin.Forms.Controls.Issues
 		static void AddToLayout(StackLayout layout, int i, string fontFamily)
 		{
 			var text = $"Xamarin Forms FontSize:{i}";
-			layout.Children.Add(new Label { Text = text, FontSize = i, FontFamily = fontFamily, TextColor = Color.White });
-			layout.Children.Add(new Label { Text = text, FontSize = i, FontFamily = fontFamily, FontAttributes = FontAttributes.Bold, TextColor = Color.White });
-			layout.Children.Add(new Label { Text = text, FontSize = i, FontFamily = fontFamily, FontAttributes = FontAttributes.Italic, TextColor = Color.White });
-			layout.Children.Add(new Label { Text = text, FontSize = i, FontFamily = fontFamily, FontAttributes = FontAttributes.Italic | FontAttributes.Bold, TextColor = Color.White });
+			layout.Children.Add(new Label { Text = text, FontSize = i, FontFamily = fontFamily, TextColor = Colors.White });
+			layout.Children.Add(new Label { Text = text, FontSize = i, FontFamily = fontFamily, FontAttributes = FontAttributes.Bold, TextColor = Colors.White });
+			layout.Children.Add(new Label { Text = text, FontSize = i, FontFamily = fontFamily, FontAttributes = FontAttributes.Italic, TextColor = Colors.White });
+			layout.Children.Add(new Label { Text = text, FontSize = i, FontFamily = fontFamily, FontAttributes = FontAttributes.Italic | FontAttributes.Bold, TextColor = Colors.White });
 		}
 	}
 }

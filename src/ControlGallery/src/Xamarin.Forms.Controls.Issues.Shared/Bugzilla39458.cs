@@ -27,14 +27,14 @@ namespace Xamarin.Forms.Controls.Issues
 					VerticalOptions = LayoutOptions.Center,
 					HorizontalOptions = LayoutOptions.Center,
 					FontSize = 21,
-					TextColor = Color.White,
+					TextColor = Colors.White,
 					Text = $"This is page {pageNumber}"
 				};
 				var TestBtn = new Button
 				{
 					Text = "Go to Page 2",
 					IsEnabled = false,
-					BackgroundColor = Color.White
+					BackgroundColor = Colors.White
 				};
 
 				if (pageNumber != 2)
@@ -65,15 +65,15 @@ namespace Xamarin.Forms.Controls.Issues
 		protected override void Init()
 		{
 			var firstPage = new ChildPage(1);
-			firstPage.BackgroundColor = Color.Blue;
+			firstPage.BackgroundColor = Colors.Blue;
 			Children.Add(firstPage);
 
 			var secondPage = new DesiredPage(2);
-			secondPage.BackgroundColor = Color.Red;
+			secondPage.BackgroundColor = Colors.Red;
 			Children.Add(secondPage);
 
 			var thirdPage = new ChildPage(3);
-			thirdPage.BackgroundColor = Color.Green;
+			thirdPage.BackgroundColor = Colors.Green;
 			Children.Add(thirdPage);
 
 			CurrentPage = secondPage;

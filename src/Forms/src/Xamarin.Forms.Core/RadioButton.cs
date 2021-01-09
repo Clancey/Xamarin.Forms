@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Graphics;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Shapes;
 
@@ -101,9 +102,9 @@ namespace Xamarin.Forms
 			set { SetValue(TextColorProperty, value); }
 		}
 
-		public double CharacterSpacing
+		public float CharacterSpacing
 		{
-			get { return (double)GetValue(CharacterSpacingProperty); }
+			get { return (float)GetValue(CharacterSpacingProperty); }
 			set { SetValue(CharacterSpacingProperty, value); }
 		}
 
@@ -126,15 +127,15 @@ namespace Xamarin.Forms
 		}
 
 		[TypeConverter(typeof(FontSizeConverter))]
-		public double FontSize
+		public float FontSize
 		{
-			get { return (double)GetValue(FontSizeProperty); }
+			get { return (float)GetValue(FontSizeProperty); }
 			set { SetValue(FontSizeProperty, value); }
 		}
 
-		public double BorderWidth
+		public float BorderWidth
 		{
-			get { return (double)GetValue(BorderWidthProperty); }
+			get { return (float)GetValue(BorderWidthProperty); }
 			set { SetValue(BorderWidthProperty, value); }
 		}
 
@@ -181,13 +182,13 @@ namespace Xamarin.Forms
 		{
 		}
 
-		void ITextElement.OnCharacterSpacingPropertyChanged(double oldValue, double newValue)
+		void ITextElement.OnCharacterSpacingPropertyChanged(float oldValue, float newValue)
 			=> InvalidateMeasureInternal(InvalidationTrigger.MeasureChanged);
 
 		void IFontElement.OnFontFamilyChanged(string oldValue, string newValue) =>
 			InvalidateMeasureInternal(InvalidationTrigger.MeasureChanged);
 
-		void IFontElement.OnFontSizeChanged(double oldValue, double newValue) =>
+		void IFontElement.OnFontSizeChanged(float oldValue, float newValue) =>
 			InvalidateMeasureInternal(InvalidationTrigger.MeasureChanged);
 
 		void IFontElement.OnFontAttributesChanged(FontAttributes oldValue, FontAttributes newValue) =>
@@ -196,7 +197,7 @@ namespace Xamarin.Forms
 		void IFontElement.OnFontChanged(Font oldValue, Font newValue) =>
 			InvalidateMeasureInternal(InvalidationTrigger.MeasureChanged);
 
-		double IFontElement.FontSizeDefaultValueCreator() =>
+		float IFontElement.FontSizeDefaultValueCreator() =>
 			Device.GetNamedSize(NamedSize.Default, this);
 
 		public virtual string UpdateFormsText(string source, TextTransform textTransform)
@@ -206,7 +207,7 @@ namespace Xamarin.Forms
 
 		Color IBorderElement.BorderColorDefaultValue => (Color)BorderElement.BorderColorProperty.DefaultValue;
 
-		double IBorderElement.BorderWidthDefaultValue => (double)BorderElement.BorderWidthProperty.DefaultValue;
+		float IBorderElement.BorderWidthDefaultValue => (float)BorderElement.BorderWidthProperty.DefaultValue;
 
 		void IBorderElement.OnBorderColorPropertyChanged(Color oldValue, Color newValue)
 		{
@@ -225,7 +226,7 @@ namespace Xamarin.Forms
 			base.ChangeVisualState();
 		}
 
-		protected override SizeRequest OnMeasure(double widthConstraint, double heightConstraint)
+		protected override SizeRequest OnMeasure(float widthConstraint, float heightConstraint)
 		{
 			if (UsingRenderer)
 			{

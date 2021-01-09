@@ -49,8 +49,8 @@ namespace Xamarin.Forms.Controls.Issues
 
 		void LoadDark()
 		{
-			BarTextColor = Color.White;
-			BarBackgroundColor = Color.Black;
+			BarTextColor = Colors.White;
+			BarBackgroundColor = Colors.Black;
 			CurrentPage.Title = "Dark NavBar";
 
 			System.Diagnostics.Debug.WriteLine($"BarTextColor.Luminosity: {BarTextColor.Luminosity}");
@@ -58,8 +58,8 @@ namespace Xamarin.Forms.Controls.Issues
 
 		void LoadLight()
 		{
-			BarTextColor = Color.Black;
-			BarBackgroundColor = Color.White;
+			BarTextColor = Colors.Black;
+			BarBackgroundColor = Colors.White;
 			CurrentPage.Title = "Light NavBar";
 
 			System.Diagnostics.Debug.WriteLine($"BarTextColor.Luminosity: {BarTextColor.Luminosity}");

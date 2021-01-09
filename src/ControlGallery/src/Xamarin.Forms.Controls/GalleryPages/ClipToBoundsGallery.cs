@@ -10,9 +10,9 @@ namespace Xamarin.Forms.Controls
 	{
 		public ClipToBoundsGallery()
 		{
-			var child1 = new BoxView { Color = Color.Red };
-			var child2 = new BoxView { Color = Color.Blue };
-			var button = new Button { Text = "Clip", BackgroundColor = Color.Green };
+			var child1 = new BoxView { Color = Colors.Red };
+			var child2 = new BoxView { Color = Colors.Blue };
+			var button = new Button { Text = "Clip", BackgroundColor = Colors.Green };
 
 			Padding = new Thickness(55);
 			var layout = new AbsoluteLayout

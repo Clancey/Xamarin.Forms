@@ -28,7 +28,7 @@ namespace Xamarin.Forms.Controls
 							Children = {
 								new Label { Text = "Page Two" },
 								new BoxView {
-									Color = Color.Gray,
+									Color = Colors.Gray,
 									VerticalOptions = LayoutOptions.FillAndExpand,
 									HorizontalOptions = LayoutOptions.FillAndExpand
 								},

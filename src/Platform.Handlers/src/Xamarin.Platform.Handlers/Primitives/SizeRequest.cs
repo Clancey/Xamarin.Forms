@@ -1,21 +1,22 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using System.Graphics;
 
 namespace Xamarin.Forms
 {
 	[DebuggerDisplay("Request={Request.Width}x{Request.Height}, Minimum={Minimum.Width}x{Minimum.Height}")]
 	public struct SizeRequest
 	{
-		public Size Request { get; set; }
+		public SizeF Request { get; set; }
 
-		public Size Minimum { get; set; }
+		public SizeF Minimum { get; set; }
 
-		public SizeRequest(Size request, Size minimum)
+		public SizeRequest(SizeF request, SizeF minimum)
 		{
 			Request = request;
 			Minimum = minimum;
 		}
 
-		public SizeRequest(Size request)
+		public SizeRequest(SizeF request)
 		{
 			Request = request;
 			Minimum = request;

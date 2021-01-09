@@ -96,7 +96,7 @@ namespace Xamarin.Forms.Controls.Issues
 				var nameLabel = new Label();
 				var verticaLayout = new StackLayout();
 				Forms.CompressedLayout.SetIsHeadless(verticaLayout, TestPage.ShouldUseCompressedLayout);
-				var horizontalLayout = new StackLayout() { BackgroundColor = Color.Olive };
+				var horizontalLayout = new StackLayout() { BackgroundColor = Colors.Olive };
 
 				nameLabel.SetBinding(Label.TextProperty, new Binding("Name"));
 

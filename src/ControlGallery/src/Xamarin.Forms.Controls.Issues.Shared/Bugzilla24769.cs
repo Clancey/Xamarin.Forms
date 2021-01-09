@@ -43,7 +43,7 @@ namespace Xamarin.Forms.Controls.Issues
 				ItemTemplate = new DataTemplate(typeof(ListCell))
 			};
 
-			BackgroundColor = Color.Maroon;
+			BackgroundColor = Colors.Maroon;
 
 			Content = new StackLayout
 			{
@@ -74,7 +74,7 @@ namespace Xamarin.Forms.Controls.Issues
 				new StackLayout
 				{
 					HorizontalOptions = LayoutOptions.Fill,
-					BackgroundColor = Color.Gray,
+					BackgroundColor = Colors.Gray,
 					Children = {
 						label,
 						progress

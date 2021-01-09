@@ -69,7 +69,7 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			double result;
 			bool isValid = double.TryParse(args.NewTextValue, out result);
-			((Entry)sender).TextColor = isValid ? Color.Default : Color.Red;
+			((Entry)sender).TextColor = isValid ? null : Colors.Red;
 		}
 	}
 #if UITEST
@@ -84,12 +84,12 @@ namespace Xamarin.Forms.Controls.Issues
 			var entry = new Entry
 			{
 				Placeholder = "Enter a System.Double; text will be red when invalid",
-				PlaceholderColor = Color.Green,
+				PlaceholderColor = Colors.Green,
 			};
 			var entry2 = new Entry
 			{
 				Placeholder = "This entry starts with blue text when typing",
-				TextColor = Color.Blue
+				TextColor = Colors.Blue
 			};
 
 			Bugzilla41054NumericValidationBehavior.SetAttachBehavior(entry, true);
@@ -106,12 +106,12 @@ namespace Xamarin.Forms.Controls.Issues
 					new Button
 					{
 						Text = "Change first entry placeholder color to purple",
-						Command = new Command(() => entry.PlaceholderColor = Color.Purple)
+						Command = new Command(() => entry.PlaceholderColor = Colors.Purple)
 					},
 					new Button
 					{
 						Text = "Change second entry text color to orange",
-						Command = new Command(() => entry2.TextColor = Color.Orange)
+						Command = new Command(() => entry2.TextColor = Colors.Orange)
 					}
 				}
 			};

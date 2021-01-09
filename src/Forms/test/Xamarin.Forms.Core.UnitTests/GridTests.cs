@@ -406,7 +406,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			sl.Children.Add(label1);
 			sl.Children.Add(label2);
 
-			var bv = new BoxView { WidthRequest = 50, BackgroundColor = Color.Blue, IsPlatformEnabled = true };
+			var bv = new BoxView { WidthRequest = 50, BackgroundColor = Colors.Blue, IsPlatformEnabled = true };
 
 			outerGrid.Children.Add(sl);
 			outerGrid.Children.Add(bv);
@@ -1939,7 +1939,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var grid = new Grid
 			{
 				IsPlatformEnabled = true,
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				VerticalOptions = LayoutOptions.Start,
 				Children = {
 					content
@@ -1975,7 +1975,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var grid = new Grid
 			{
 				IsPlatformEnabled = true,
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				VerticalOptions = LayoutOptions.Start,
 				Children = {
 					content
@@ -2009,7 +2009,7 @@ namespace Xamarin.Forms.Core.UnitTests
 					new ColumnDefinition {Width = GridLength.Auto},
 				}
 			};
-			grid.Children.Add(new Label { BackgroundColor = Color.Lime, Text = "Foo", IsPlatformEnabled = true });
+			grid.Children.Add(new Label { BackgroundColor = Colors.Lime, Text = "Foo", IsPlatformEnabled = true });
 			grid.Children.Add(new Label { Text = "Bar", IsPlatformEnabled = true }, 0, 1);
 			grid.Children.Add(new Label { Text = "Baz", XAlign = TextAlignment.End, IsPlatformEnabled = true }, 1, 0);
 			grid.Children.Add(new Label { Text = "Qux", XAlign = TextAlignment.End, IsPlatformEnabled = true }, 1, 1);
@@ -2310,7 +2310,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var grid = new Grid
 			{
 				IsPlatformEnabled = true,
-				BackgroundColor = Color.Red
+				BackgroundColor = Colors.Red
 			};
 
 			grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
@@ -2364,7 +2364,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var grid = new Grid
 			{
 				IsPlatformEnabled = true,
-				BackgroundColor = Color.Red
+				BackgroundColor = Colors.Red
 			};
 
 			grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });

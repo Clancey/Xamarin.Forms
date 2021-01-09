@@ -26,35 +26,35 @@ namespace Xamarin.Forms.Controls.Issues
 					new Button()
 					{
 						ImageSource = "coffee.png",
-						BackgroundColor = Color.GreenYellow,
+						BackgroundColor = Colors.GreenYellow,
 						Text = "No padding? Height 100",
 						HeightRequest = 100,
 					},
 					new Button()
 					{
 						ImageSource = "coffee.png",
-						BackgroundColor = Color.Green,
+						BackgroundColor = Colors.Green,
 						Padding = new Thickness(100, 0, 0, 0),
 						Text = "Do I have left padding? I should have left padding.",
 					},
 					new Button()
 					{
 						ImageSource = "coffee.png",
-						BackgroundColor = Color.LawnGreen,
+						BackgroundColor = Colors.LawnGreen,
 						Padding = new Thickness(0, 30, 0, 0),
 						Text = "Do I have top padding? I should have top padding."
 					},
 					new Button()
 					{
 						ImageSource = "coffee.png",
-						BackgroundColor = Color.LightGreen,
+						BackgroundColor = Colors.LightGreen,
 						Padding = new Thickness(0, 0, 100, 0),
 						Text = "Do I have right padding? I should have right padding."
 					},
 					new Button()
 					{
 						ImageSource = "coffee.png",
-						BackgroundColor = Color.ForestGreen,
+						BackgroundColor = Colors.ForestGreen,
 						Padding = new Thickness(0, 0, 0, 30),
 						Text = "Do I have bottom padding? I should have bottom padding."
 					}

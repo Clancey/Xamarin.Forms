@@ -37,7 +37,7 @@ namespace Xamarin.Forms.Platform.GTK
 					result.Setters.Add(new Setter { Property = Label.FontSizeProperty, Value = 20 });
 					break;
 				case BodyStyleKey:
-					result.Setters.Add(new Setter { Property = Label.TextColorProperty, Value = Color.Blue });
+					result.Setters.Add(new Setter { Property = Label.TextColorProperty, Value = Colors.Blue });
 					break;
 				case CaptionStyleKey:
 					break;

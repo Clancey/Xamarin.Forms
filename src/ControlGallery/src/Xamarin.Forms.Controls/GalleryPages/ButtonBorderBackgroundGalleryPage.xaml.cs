@@ -26,7 +26,7 @@ namespace Xamarin.Forms.Controls
 					void SetBackground(View view)
 					{
 						if (view is Button button && !button.IsSet(Button.BackgroundColorProperty))
-							view.BackgroundColor = Color.LightGray;
+							view.BackgroundColor = Colors.LightGray;
 
 						if (view is Layout layout)
 						{

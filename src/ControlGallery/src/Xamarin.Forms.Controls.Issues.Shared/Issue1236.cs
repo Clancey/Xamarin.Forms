@@ -19,7 +19,7 @@ namespace Xamarin.Forms.Controls.Issues
 	{
 		protected override void Init()
 		{
-			Content = new Label { HeightRequest = 30, WidthRequest = 200, BackgroundColor = Color.Purple.WithLuminosity(.7) };
+			Content = new Label { HeightRequest = 30, WidthRequest = 200, BackgroundColor = Colors.Purple.WithLuminosity(.7) };
 			Content.SetBinding(Label.TextProperty, ".");
 
 			DelayUpdatingBindingContext();

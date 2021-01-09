@@ -24,13 +24,13 @@ namespace Xamarin.Forms.Controls.Issues
 			var layout = new StackLayout
 			{
 				Padding = new Thickness(20),
-				BackgroundColor = Color.Gray,
+				BackgroundColor = Colors.Gray,
 				AutomationId = "TestReady"
 			};
 
 			layout.Children.Add(new BoxView
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				HorizontalOptions = LayoutOptions.FillAndExpand
 			});

@@ -60,7 +60,7 @@ namespace Xamarin.Forms.Controls.Issues
 														{
 															Content = new StackLayout
 															{
-																BackgroundColor = Color.White,
+																BackgroundColor = Colors.White,
 																Children =
 																{
 																	new Label

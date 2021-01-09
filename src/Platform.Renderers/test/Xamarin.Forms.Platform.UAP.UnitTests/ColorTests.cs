@@ -11,13 +11,13 @@ namespace Xamarin.Forms.Platform.UAP.UnitTests
 		{
 			// 11:15, restate my assumptions...
 
-			var windowsRed = Color.Red.ToWindowsColor();
+			var windowsRed = Colors.Red.ToWindowsColor();
 			Assert.That(windowsRed.R, Is.EqualTo(255));
 
-			var windowsBlue = Color.Blue.ToWindowsColor();
+			var windowsBlue = Colors.Blue.ToWindowsColor();
 			Assert.That(windowsBlue.B, Is.EqualTo(255));
 
-			var windowsGreen = Color.Green.ToWindowsColor();
+			var windowsGreen = Colors.Green.ToWindowsColor();
 			Assert.That(windowsGreen.G, Is.EqualTo(128));
 		}
 	}

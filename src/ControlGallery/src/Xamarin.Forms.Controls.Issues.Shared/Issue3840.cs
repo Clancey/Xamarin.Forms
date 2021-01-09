@@ -52,7 +52,7 @@ namespace Xamarin.Forms.Controls.Issues
 							}),
 							HorizontalOptions = LayoutOptions.Start
 						},
-						new BoxView { Color = Color.Red, HeightRequest = 500 },
+						new BoxView { Color = Colors.Red, HeightRequest = 500 },
 						new Button()
 						{
 							Text = "Click Me Second",
@@ -67,8 +67,8 @@ namespace Xamarin.Forms.Controls.Issues
 							}),
 							HorizontalOptions = LayoutOptions.Start
 						},
-						new BoxView { Color = Color.Gray, HeightRequest = 500 },
-						new BoxView { Color = Color.Yellow, HeightRequest = 500 }
+						new BoxView { Color = Colors.Gray, HeightRequest = 500 },
+						new BoxView { Color = Colors.Yellow, HeightRequest = 500 }
 					}
 				}
 			};

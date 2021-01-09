@@ -20,7 +20,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 		void BtnSetBkgndColorRed_Clicked(object sender, System.EventArgs e)
 		{
-			BackgroundColor = Color.Red;
+			BackgroundColor = Colors.Red;
 		}
 
 		void BtnSetBkgndImg_Clicked(object sender, System.EventArgs e)

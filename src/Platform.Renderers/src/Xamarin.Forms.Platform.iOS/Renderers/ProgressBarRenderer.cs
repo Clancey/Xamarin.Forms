@@ -51,12 +51,12 @@ namespace Xamarin.Forms.Platform.iOS
 			if (Control == null)
 				return;
 
-			Control.TrackTintColor = color != Color.Default ? color.ToUIColor() : null;
+			Control.TrackTintColor = color != null ? color.ToUIColor() : null;
 		}
 
 		void UpdateProgressColor()
 		{
-			Control.ProgressTintColor = Element.ProgressColor == Color.Default ? null : Element.ProgressColor.ToUIColor();
+			Control.ProgressTintColor = Element.ProgressColor == null ? null : Element.ProgressColor.ToUIColor();
 		}
 
 		void UpdateProgress()

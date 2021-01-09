@@ -52,14 +52,14 @@ namespace Xamarin.Forms.Controls.Issues
 
 			if (Device.RuntimePlatform == Device.iOS)
 			{
-				var red = new Button { Text = "Red", TextColor = Color.Red };
+				var red = new Button { Text = "Red", TextColor = Colors.Red };
 				red.Clicked += (sender, e) => _entry.On<PlatformConfiguration.iOS>().SetCursorColor(Color.Red);
 
-				var blue = new Button { Text = "Blue", TextColor = Color.Blue };
+				var blue = new Button { Text = "Blue", TextColor = Colors.Blue };
 				blue.Clicked += (sender, e) => _entry.On<PlatformConfiguration.iOS>().SetCursorColor(Color.Blue);
 
 				var defaultColor = new Button { Text = "Default" };
-				defaultColor.Clicked += (sender, e) => _entry.On<PlatformConfiguration.iOS>().SetCursorColor(Color.Default);
+				defaultColor.Clicked += (sender, e) => _entry.On<PlatformConfiguration.iOS>().SetCursorColor(null);
 
 				layout.Children.Add(red);
 				layout.Children.Add(blue);

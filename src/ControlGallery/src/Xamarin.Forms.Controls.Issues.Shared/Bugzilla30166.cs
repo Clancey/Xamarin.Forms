@@ -18,7 +18,7 @@ namespace Xamarin.Forms.Controls.Issues
 	{
 		protected override void Init()
 		{
-			BarBackgroundColor = Color.Red;
+			BarBackgroundColor = Colors.Red;
 
 			Navigation.PushAsync(new ContentPage
 			{

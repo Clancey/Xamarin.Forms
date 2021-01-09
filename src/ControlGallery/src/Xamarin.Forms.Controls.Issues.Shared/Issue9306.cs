@@ -92,11 +92,11 @@ namespace Xamarin.Forms.Controls.Issues
 				Content = new Label
 				{
 					Text = "Right",
-					TextColor = Color.White,
+					TextColor = Colors.White,
 					HorizontalOptions = LayoutOptions.Center,
 					VerticalOptions = LayoutOptions.Center
 				},
-				BackgroundColor = Color.Green,
+				BackgroundColor = Colors.Green,
 				WidthRequest = 80,
 				Command = new Command(() =>
 				{
@@ -115,7 +115,7 @@ namespace Xamarin.Forms.Controls.Issues
 				Content = new StackLayout
 				{
 					AutomationId = SwipeViewId,
-					BackgroundColor = Color.LightSkyBlue,
+					BackgroundColor = Colors.LightSkyBlue,
 					Children =
 					{
 						new Label

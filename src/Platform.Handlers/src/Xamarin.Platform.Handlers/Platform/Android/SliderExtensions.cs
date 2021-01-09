@@ -2,7 +2,7 @@
 using Android.Graphics;
 using Android.Widget;
 using Xamarin.Forms;
-
+using Color = System.Graphics.Color;
 namespace Xamarin.Platform
 {
 	public static class SliderExtensions
@@ -32,7 +32,7 @@ namespace Xamarin.Platform
 
 		public static void UpdateMinimumTrackColor(this SeekBar seekBar, ISlider slider, ColorStateList? defaultProgressTintList, PorterDuff.Mode? defaultProgressTintMode)
 		{
-			if (slider.MinimumTrackColor == Forms.Color.Default)
+			if (slider.MinimumTrackColor == null)
 			{
 				if (defaultProgressTintList != null)
 					seekBar.ProgressTintList = defaultProgressTintList;
@@ -52,7 +52,7 @@ namespace Xamarin.Platform
 
 		public static void UpdateMaximumTrackColor(this SeekBar seekBar, ISlider slider, ColorStateList? defaultProgressBackgroundTintList, PorterDuff.Mode? defaultProgressBackgroundTintMode)
 		{
-			if (slider.MaximumTrackColor == Forms.Color.Default)
+			if (slider.MaximumTrackColor == null)
 			{
 				if (defaultProgressBackgroundTintList != null)
 					seekBar.ProgressBackgroundTintList = defaultProgressBackgroundTintList;

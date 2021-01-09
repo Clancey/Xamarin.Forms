@@ -31,7 +31,7 @@ namespace Xamarin.Forms.Controls.Issues
 						HorizontalOptions = LayoutOptions.CenterAndExpand,
 						HorizontalTextAlignment = TextAlignment.Center,
 						Text = "MUST BE BOLD",
-						TextColor = Color.Black,
+						TextColor = Colors.Black,
 						FontSize = 50,
 						FontAttributes = FontAttributes.Bold,
 						Style = Device.Styles.ListItemDetailTextStyle,

@@ -30,7 +30,7 @@ namespace Xamarin.Forms.Controls.Issues
 			var statusLabel = new Label
 			{
 				Text = "Current TextTransform is None",
-				BackgroundColor = Color.Aqua,
+				BackgroundColor = Colors.Aqua,
 				TextTransform = transform
 			};
 			var but = new Button

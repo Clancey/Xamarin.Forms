@@ -5,8 +5,8 @@ namespace Xamarin.Forms.Internals
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	interface ILineHeightElement
 	{
-		double LineHeight { get; }
+		float LineHeight { get; }
 
-		void OnLineHeightChanged(double oldValue, double newValue);
+		void OnLineHeightChanged(float oldValue, float newValue);
 	}
 }

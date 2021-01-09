@@ -18,7 +18,7 @@ namespace Xamarin.Forms.Platform.WPF
 
 			if (e.NewValue is WSolidColorBrush solidBrush && solidBrush.Color.A == 0)
 			{
-				checkBox.BorderBrush = Color.Black.ToBrush();
+				checkBox.BorderBrush = Colors.Black.ToBrush();
 			}
 			else if (e.NewValue is WSolidColorBrush b)
 			{
@@ -28,7 +28,7 @@ namespace Xamarin.Forms.Platform.WPF
 
 		public FormsCheckBox()
 		{
-			BorderBrush = Color.Black.ToBrush();
+			BorderBrush = Colors.Black.ToBrush();
 		}
 
 		public WBrush TintBrush

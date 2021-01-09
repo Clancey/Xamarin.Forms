@@ -26,8 +26,8 @@ namespace Xamarin.Forms.Controls.Issues
 
 			stackLayout.Children.Add(new Switch()
 			{
-				ThumbColor = Color.Red,
-				OnColor = Color.Yellow,
+				ThumbColor = Colors.Red,
+				OnColor = Colors.Yellow,
 				AutomationId = switchId
 			});
 

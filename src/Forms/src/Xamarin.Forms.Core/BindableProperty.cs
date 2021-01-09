@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
+using System.Graphics;
 using System.Linq.Expressions;
 using System.Reflection;
 using Xamarin.Forms.Internals;

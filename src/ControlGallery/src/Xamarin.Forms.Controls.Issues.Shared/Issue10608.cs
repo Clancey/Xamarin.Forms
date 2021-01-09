@@ -40,8 +40,8 @@ namespace Xamarin.Forms.Controls.Issues
 									{
 										Text = "Learn More",
 										Margin = new Thickness(0,10,0,0),
-										BackgroundColor = Color.Purple,
-										TextColor = Color.White,
+										BackgroundColor = Colors.Purple,
+										TextColor = Colors.White,
 										AutomationId = "LearnMoreButton"
 									}
 								}

@@ -60,7 +60,7 @@ namespace Xamarin.Forms.Controls.Issues
 								Text = "Random Shell Background Color",
 								AutomationId = ChangeShellColorButton,
 								Command = new Command(() =>
-									Shell.SetBackgroundColor(this, Color.FromRgb(random.Next(0,255), random.Next(0,255), random.Next(0,255))))
+									Shell.SetBackgroundColor(this, Colors.FromRgb(random.Next(0,255), random.Next(0,255), random.Next(0,255))))
 							},
 						}
 				}

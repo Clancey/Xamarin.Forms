@@ -28,14 +28,14 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var layout = new StackLayout
 			{
-				BackgroundColor = Color.LightGreen
+				BackgroundColor = Colors.LightGreen
 			};
 
 			var instructions = new Label
 			{
 				Padding = 12,
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White,
 				Text = "Type something in the SearchBar and tap the search button."
 			};
 
@@ -60,14 +60,14 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			var layout = new StackLayout
 			{
-				BackgroundColor = Color.LightCoral
+				BackgroundColor = Colors.LightCoral
 			};
 
 			var instructions = new Label
 			{
 				Padding = 12,
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White,
 				Text = "If you can read this message (after changing the MainPage), the test has passed.",
 				Margin = new Thickness(0, 36, 0, 0)
 			};

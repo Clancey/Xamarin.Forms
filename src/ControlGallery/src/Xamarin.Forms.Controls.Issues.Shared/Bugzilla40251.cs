@@ -106,7 +106,7 @@ namespace Xamarin.Forms.Controls.Issues
 					HorizontalOptions = LayoutOptions.Center,
 					VerticalOptions = LayoutOptions.Center,
 					Text = "Button",
-					BackgroundColor = Color.Black,
+					BackgroundColor = Colors.Black,
 					WidthRequest = 250,
 					HeightRequest = 50
 				}

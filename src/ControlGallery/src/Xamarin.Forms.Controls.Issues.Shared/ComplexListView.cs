@@ -81,7 +81,7 @@ namespace Xamarin.Forms.Controls.Issues
 			var button = new Button
 			{
 				Text = "X",
-				BackgroundColor = Color.Gray,
+				BackgroundColor = Colors.Gray,
 				HorizontalOptions = LayoutOptions.EndAndExpand
 			};
 			button.SetBinding(Button.CommandParameterProperty, new Binding("."));

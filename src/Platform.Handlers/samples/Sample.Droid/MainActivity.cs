@@ -6,6 +6,7 @@ using AndroidX.AppCompat.App;
 using Xamarin.Forms;
 using AndroidX.Core.Widget;
 using Xamarin.Platform;
+using Android.Graphics;
 
 namespace Sample.Droid
 {
@@ -17,7 +18,7 @@ namespace Sample.Droid
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
-
+			Canvas canvas;
 			Xamarin.Essentials.Platform.Init(this, savedInstanceState);
 
 			SetContentView(Resource.Layout.activity_main);

@@ -11,7 +11,7 @@ namespace Xamarin.Forms.Maps
 			nameof(StrokeColor),
 			typeof(Color),
 			typeof(MapElement),
-			Color.Default);
+			null);
 
 		public static readonly BindableProperty StrokeWidthProperty = BindableProperty.Create(
 			nameof(StrokeWidth),

@@ -29,7 +29,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 		protected override void Init()
 		{
-			var boxview = new BoxView { BackgroundColor = Color.Aqua, AutomationId = "Victory" };
+			var boxview = new BoxView { BackgroundColor = Colors.Aqua, AutomationId = "Victory" };
 
 			var contentView = new ContentView
 			{

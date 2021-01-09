@@ -50,7 +50,7 @@ namespace Xamarin.Forms.Controls.Issues
 				initialColor = myframe.BackgroundColor;
 
 			if (myframe.BackgroundColor == initialColor.Value)
-				myframe.BackgroundColor = Color.HotPink;
+				myframe.BackgroundColor = Colors.HotPink;
 			else
 				myframe.BackgroundColor = initialColor.Value;
 		}

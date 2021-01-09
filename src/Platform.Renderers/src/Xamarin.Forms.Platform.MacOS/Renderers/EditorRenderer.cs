@@ -85,9 +85,9 @@ namespace Xamarin.Forms.Platform.MacOS
 			if (Control == null)
 				return;
 
-			Control.BackgroundColor = color == Color.Default ? NSColor.Clear : color.ToNSColor();
+			Control.BackgroundColor = color == null ? NSColor.Clear : color.ToNSColor();
 
-			if (color == Color.Transparent)
+			if (color == Colors.Transparent)
 			{
 				Control.DrawsBackground = false;
 				Control.Bezeled = false;

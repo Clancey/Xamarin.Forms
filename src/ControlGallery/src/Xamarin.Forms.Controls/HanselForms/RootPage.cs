@@ -95,7 +95,7 @@ namespace Xamarin.Forms.Controls
 			ListViewMenu = new ListView(ListViewCachingStrategy.RecycleElement)
 			{
 				HasUnevenRows = true,
-				SeparatorColor = Color.Transparent,
+				SeparatorColor = Colors.Transparent,
 				ItemTemplate = new DataTemplate(typeof(MenuViewCell))
 			};
 			ListViewMenu.ItemsSource = menuItems = new List<HomeMenuItem>
@@ -134,7 +134,7 @@ namespace Xamarin.Forms.Controls
 			grd.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 			grd.RowDefinitions.Add(new RowDefinition { Height = 5 });
 
-			var boxView = new BoxView { BackgroundColor = Color.FromHex("#03A9F4") };
+			var boxView = new BoxView { BackgroundColor = Colors.FromHex("#03A9F4") };
 			Grid.SetRowSpan(boxView, 4);
 			Grid.SetColumnSpan(boxView, 3);
 

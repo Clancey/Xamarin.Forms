@@ -16,8 +16,8 @@ namespace Xamarin.Forms.Controls.GalleryPages.SwipeViewGalleries
 
 			var instructions = new Label
 			{
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White,
 				Text = "RemainOpen is used as SwipeBehaviorOnInvoked, tapping on a SwipeItem will not close it."
 			};
 
@@ -32,7 +32,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.SwipeViewGalleries
 
 			var swipeItem1 = new SwipeItem
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				IconImageSource = "calculator.png",
 				Text = "Test 1",
 				IsVisible = false
@@ -42,7 +42,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.SwipeViewGalleries
 
 			var swipeItem2 = new SwipeItem
 			{
-				BackgroundColor = Color.Orange,
+				BackgroundColor = Colors.Orange,
 				IconImageSource = "coffee.png",
 				Text = "Test 2"
 			};
@@ -56,7 +56,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.SwipeViewGalleries
 
 			var swipeContent = new Grid
 			{
-				BackgroundColor = Color.Gray
+				BackgroundColor = Colors.Gray
 			};
 
 			var fileSwipeLabel = new Label

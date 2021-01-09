@@ -59,8 +59,8 @@ namespace Xamarin.Forms.Controls.Issues
 				var newInstructions = new Label
 				{
 					Padding = 12,
-					BackgroundColor = Color.Black,
-					TextColor = Color.White,
+					BackgroundColor = Colors.Black,
+					TextColor = Colors.White,
 					Text = "If you can read this text, the test has passed."
 				};
 

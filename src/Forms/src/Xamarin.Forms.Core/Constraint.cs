@@ -8,7 +8,7 @@ namespace Xamarin.Forms
 	[TypeConverter(typeof(ConstraintTypeConverter))]
 	public sealed class Constraint
 	{
-		Func<RelativeLayout, double> _measureFunc;
+		Func<RelativeLayout, float> _measureFunc;
 
 		Constraint()
 		{
@@ -16,16 +16,16 @@ namespace Xamarin.Forms
 
 		internal IEnumerable<View> RelativeTo { get; set; }
 
-		public static Constraint Constant(double size)
+		public static Constraint Constant(float size)
 		{
 			var result = new Constraint { _measureFunc = parent => size };
 
 			return result;
 		}
 
-		public static Constraint FromExpression(Expression<Func<double>> expression)
+		public static Constraint FromExpression(Expression<Func<float>> expression)
 		{
-			Func<double> compiled = expression.Compile();
+			Func<float> compiled = expression.Compile();
 			var result = new Constraint
 			{
 				_measureFunc = layout => compiled(),
@@ -35,21 +35,21 @@ namespace Xamarin.Forms
 			return result;
 		}
 
-		public static Constraint RelativeToParent(Func<RelativeLayout, double> measure)
+		public static Constraint RelativeToParent(Func<RelativeLayout, float> measure)
 		{
 			var result = new Constraint { _measureFunc = measure };
 
 			return result;
 		}
 
-		public static Constraint RelativeToView(View view, Func<RelativeLayout, View, double> measure)
+		public static Constraint RelativeToView(View view, Func<RelativeLayout, View, float> measure)
 		{
 			var result = new Constraint { _measureFunc = layout => measure(layout, view), RelativeTo = new[] { view } };
 
 			return result;
 		}
 
-		internal double Compute(RelativeLayout parent)
+		internal float Compute(RelativeLayout parent)
 		{
 			return _measureFunc(parent);
 		}

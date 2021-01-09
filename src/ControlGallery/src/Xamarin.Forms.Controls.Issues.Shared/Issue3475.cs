@@ -108,7 +108,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 		public CompressionPage(bool shouldUseLayoutCompression = false)
 		{
-			_summaryLabel = new Label { HorizontalOptions = LayoutOptions.Center, BackgroundColor = Color.Silver, AutomationId = Issue3475.ElapsedLabelId };
+			_summaryLabel = new Label { HorizontalOptions = LayoutOptions.Center, BackgroundColor = Colors.Silver, AutomationId = Issue3475.ElapsedLabelId };
 			var backButton = new Button { AutomationId = Issue3475.BackButtonId, Text = "Back", Command = new Command(() => Navigation.PopAsync()) };
 			_scrollStack = new StackLayout();
 

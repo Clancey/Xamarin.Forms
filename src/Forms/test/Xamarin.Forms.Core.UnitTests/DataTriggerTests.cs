@@ -124,7 +124,7 @@ namespace Xamarin.Forms.Core.UnitTests
 						Binding = new Binding ("."),
 						Value = "Complete",
 						Setters = {
-							new Setter { Property = BoxView.ColorProperty, Value = Color.Green },
+							new Setter { Property = BoxView.ColorProperty, Value = Colors.Green },
 							new Setter { Property = VisualElement.OpacityProperty, Value = .5 },
 						}
 					},
@@ -132,14 +132,14 @@ namespace Xamarin.Forms.Core.UnitTests
 						Binding = new Binding ("."),
 						Value = "MissingInfo",
 						Setters = {
-							new Setter { Property = BoxView.ColorProperty, Value = Color.Yellow },
+							new Setter { Property = BoxView.ColorProperty, Value = Colors.Yellow },
 						}
 					},
 					new DataTrigger (typeof(BoxView)) {
 						Binding = new Binding ("."),
 						Value = "Error",
 						Setters = {
-							new Setter { Property = BoxView.ColorProperty, Value = Color.Red },
+							new Setter { Property = BoxView.ColorProperty, Value = Colors.Red },
 						}
 					},
 				}

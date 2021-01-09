@@ -65,12 +65,12 @@ namespace Xamarin.Forms.Controls.Issues
 			Flyout = new ContentPage
 			{
 				Title = "IsPresentedChanged Test",
-				BackgroundColor = Color.Green,
+				BackgroundColor = Colors.Green,
 				Content = stacklayout1
 			};
 			Detail = new ContentPage
 			{
-				BackgroundColor = Color.Gray,
+				BackgroundColor = Colors.Gray,
 				Content = stacklayout
 			};
 			FlyoutLayoutBehavior = FlyoutLayoutBehavior.Popover;

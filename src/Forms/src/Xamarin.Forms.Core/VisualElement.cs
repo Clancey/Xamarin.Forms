@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Graphics;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Shapes;
@@ -18,47 +19,47 @@ namespace Xamarin.Forms
 		public static readonly BindableProperty IsEnabledProperty = BindableProperty.Create("IsEnabled", typeof(bool),
 			typeof(VisualElement), true, propertyChanged: OnIsEnabledPropertyChanged);
 
-		static readonly BindablePropertyKey XPropertyKey = BindableProperty.CreateReadOnly("X", typeof(double), typeof(VisualElement), default(double));
+		static readonly BindablePropertyKey XPropertyKey = BindableProperty.CreateReadOnly("X", typeof(float), typeof(VisualElement), default(float));
 
 		public static readonly BindableProperty XProperty = XPropertyKey.BindableProperty;
 
-		static readonly BindablePropertyKey YPropertyKey = BindableProperty.CreateReadOnly("Y", typeof(double), typeof(VisualElement), default(double));
+		static readonly BindablePropertyKey YPropertyKey = BindableProperty.CreateReadOnly("Y", typeof(float), typeof(VisualElement), default(float));
 
 		public static readonly BindableProperty YProperty = YPropertyKey.BindableProperty;
 
-		public static readonly BindableProperty AnchorXProperty = BindableProperty.Create("AnchorX", typeof(double), typeof(VisualElement), .5d);
+		public static readonly BindableProperty AnchorXProperty = BindableProperty.Create("AnchorX", typeof(float), typeof(VisualElement), .5d);
 
-		public static readonly BindableProperty AnchorYProperty = BindableProperty.Create("AnchorY", typeof(double), typeof(VisualElement), .5d);
+		public static readonly BindableProperty AnchorYProperty = BindableProperty.Create("AnchorY", typeof(float), typeof(VisualElement), .5d);
 
-		public static readonly BindableProperty TranslationXProperty = BindableProperty.Create("TranslationX", typeof(double), typeof(VisualElement), 0d);
+		public static readonly BindableProperty TranslationXProperty = BindableProperty.Create("TranslationX", typeof(float), typeof(VisualElement), 0d);
 
-		public static readonly BindableProperty TranslationYProperty = BindableProperty.Create("TranslationY", typeof(double), typeof(VisualElement), 0d);
+		public static readonly BindableProperty TranslationYProperty = BindableProperty.Create("TranslationY", typeof(float), typeof(VisualElement), 0d);
 
-		static readonly BindablePropertyKey WidthPropertyKey = BindableProperty.CreateReadOnly("Width", typeof(double), typeof(VisualElement), -1d,
-			coerceValue: (bindable, value) => double.IsNaN((double)value) ? 0d : value);
+		static readonly BindablePropertyKey WidthPropertyKey = BindableProperty.CreateReadOnly("Width", typeof(float), typeof(VisualElement), -1d,
+			coerceValue: (bindable, value) => float.IsNaN((float)value) ? 0d : value);
 
 		public static readonly BindableProperty WidthProperty = WidthPropertyKey.BindableProperty;
 
-		static readonly BindablePropertyKey HeightPropertyKey = BindableProperty.CreateReadOnly("Height", typeof(double), typeof(VisualElement), -1d,
-			coerceValue: (bindable, value) => double.IsNaN((double)value) ? 0d : value);
+		static readonly BindablePropertyKey HeightPropertyKey = BindableProperty.CreateReadOnly("Height", typeof(float), typeof(VisualElement), -1d,
+			coerceValue: (bindable, value) => float.IsNaN((float)value) ? 0d : value);
 
 		public static readonly BindableProperty HeightProperty = HeightPropertyKey.BindableProperty;
 
-		public static readonly BindableProperty RotationProperty = BindableProperty.Create("Rotation", typeof(double), typeof(VisualElement), default(double));
+		public static readonly BindableProperty RotationProperty = BindableProperty.Create("Rotation", typeof(float), typeof(VisualElement), default(float));
 
-		public static readonly BindableProperty RotationXProperty = BindableProperty.Create("RotationX", typeof(double), typeof(VisualElement), default(double));
+		public static readonly BindableProperty RotationXProperty = BindableProperty.Create("RotationX", typeof(float), typeof(VisualElement), default(float));
 
-		public static readonly BindableProperty RotationYProperty = BindableProperty.Create("RotationY", typeof(double), typeof(VisualElement), default(double));
+		public static readonly BindableProperty RotationYProperty = BindableProperty.Create("RotationY", typeof(float), typeof(VisualElement), default(float));
 
-		public static readonly BindableProperty ScaleProperty = BindableProperty.Create(nameof(Scale), typeof(double), typeof(VisualElement), 1d);
+		public static readonly BindableProperty ScaleProperty = BindableProperty.Create(nameof(Scale), typeof(float), typeof(VisualElement), 1d);
 
-		public static readonly BindableProperty ScaleXProperty = BindableProperty.Create(nameof(ScaleX), typeof(double), typeof(VisualElement), 1d);
+		public static readonly BindableProperty ScaleXProperty = BindableProperty.Create(nameof(ScaleX), typeof(float), typeof(VisualElement), 1d);
 
-		public static readonly BindableProperty ScaleYProperty = BindableProperty.Create(nameof(ScaleY), typeof(double), typeof(VisualElement), 1d);
+		public static readonly BindableProperty ScaleYProperty = BindableProperty.Create(nameof(ScaleY), typeof(float), typeof(VisualElement), 1d);
 
 		internal static readonly BindableProperty TransformProperty = BindableProperty.Create("Transform", typeof(string), typeof(VisualElement), null, propertyChanged: OnTransformChanged);
 
-		public static readonly BindableProperty ClipProperty = BindableProperty.Create(nameof(Clip), typeof(Geometry), typeof(VisualElement), null,
+		public static readonly BindableProperty ClipProperty = BindableProperty.Create(nameof(Clip), typeof(Shapes.Geometry), typeof(VisualElement), null,
 			propertyChanging: (bindable, oldvalue, newvalue) =>
 			{
 				if (oldvalue != null)
@@ -151,38 +152,38 @@ namespace Xamarin.Forms
 					throw new FormatException("Format for transform is 'none | transform(value) [transform(value) ]*'");
 				var transformName = transform.Substring(0, transform.IndexOf('('));
 				var value = transform.Substring(transform.IndexOf('(') + 1, transform.IndexOf(')') - transform.IndexOf('(') - 1);
-				double translationX, translationY, scaleX, scaleY, rotateX, rotateY, rotate;
-				if (transformName.StartsWith("translateX", StringComparison.OrdinalIgnoreCase) && double.TryParse(value, out translationX))
+				float translationX, translationY, scaleX, scaleY, rotateX, rotateY, rotate;
+				if (transformName.StartsWith("translateX", StringComparison.OrdinalIgnoreCase) && float.TryParse(value, out translationX))
 					bindable.SetValue(TranslationXProperty, translationX);
-				else if (transformName.StartsWith("translateY", StringComparison.OrdinalIgnoreCase) && double.TryParse(value, out translationY))
+				else if (transformName.StartsWith("translateY", StringComparison.OrdinalIgnoreCase) && float.TryParse(value, out translationY))
 					bindable.SetValue(TranslationYProperty, translationY);
 				else if (transformName.StartsWith("translate", StringComparison.OrdinalIgnoreCase))
 				{
 					var translate = value.Split(',');
-					if (double.TryParse(translate[0], out translationX) && double.TryParse(translate[1], out translationY))
+					if (float.TryParse(translate[0], out translationX) && float.TryParse(translate[1], out translationY))
 					{
 						bindable.SetValue(TranslationXProperty, translationX);
 						bindable.SetValue(TranslationYProperty, translationY);
 					}
 				}
-				else if (transformName.StartsWith("scaleX", StringComparison.OrdinalIgnoreCase) && double.TryParse(value, out scaleX))
+				else if (transformName.StartsWith("scaleX", StringComparison.OrdinalIgnoreCase) && float.TryParse(value, out scaleX))
 					bindable.SetValue(ScaleXProperty, scaleX);
-				else if (transformName.StartsWith("scaleY", StringComparison.OrdinalIgnoreCase) && double.TryParse(value, out scaleY))
+				else if (transformName.StartsWith("scaleY", StringComparison.OrdinalIgnoreCase) && float.TryParse(value, out scaleY))
 					bindable.SetValue(ScaleYProperty, scaleY);
 				else if (transformName.StartsWith("scale", StringComparison.OrdinalIgnoreCase))
 				{
 					var scale = value.Split(',');
-					if (double.TryParse(scale[0], out scaleX) && double.TryParse(scale[1], out scaleY))
+					if (float.TryParse(scale[0], out scaleX) && float.TryParse(scale[1], out scaleY))
 					{
 						bindable.SetValue(ScaleXProperty, scaleX);
 						bindable.SetValue(ScaleYProperty, scaleY);
 					}
 				}
-				else if (transformName.StartsWith("rotateX", StringComparison.OrdinalIgnoreCase) && double.TryParse(value, out rotateX))
+				else if (transformName.StartsWith("rotateX", StringComparison.OrdinalIgnoreCase) && float.TryParse(value, out rotateX))
 					bindable.SetValue(RotationXProperty, rotateX);
-				else if (transformName.StartsWith("rotateY", StringComparison.OrdinalIgnoreCase) && double.TryParse(value, out rotateY))
+				else if (transformName.StartsWith("rotateY", StringComparison.OrdinalIgnoreCase) && float.TryParse(value, out rotateY))
 					bindable.SetValue(RotationYProperty, rotateY);
-				else if (transformName.StartsWith("rotate", StringComparison.OrdinalIgnoreCase) && double.TryParse(value, out rotate))
+				else if (transformName.StartsWith("rotate", StringComparison.OrdinalIgnoreCase) && float.TryParse(value, out rotate))
 					bindable.SetValue(RotationProperty, rotate);
 				else
 					throw new FormatException("Invalid transform name");
@@ -190,15 +191,15 @@ namespace Xamarin.Forms
 		}
 
 		internal static readonly BindableProperty TransformOriginProperty =
-			BindableProperty.Create("TransformOrigin", typeof(Point), typeof(VisualElement), new Point(.5d, .5d),
-									propertyChanged: (b, o, n) => { (((VisualElement)b).AnchorX, ((VisualElement)b).AnchorY) = (Point)n; });
+			BindableProperty.Create("TransformOrigin", typeof(PointF), typeof(VisualElement), new PointF(.5f, .5f),
+									propertyChanged: (b, o, n) => { (((VisualElement)b).AnchorX, ((VisualElement)b).AnchorY) = (PointF)n; });
 
 		public static readonly BindableProperty IsVisibleProperty = BindableProperty.Create("IsVisible", typeof(bool), typeof(VisualElement), true,
 			propertyChanged: (bindable, oldvalue, newvalue) => ((VisualElement)bindable).OnIsVisibleChanged((bool)oldvalue, (bool)newvalue));
 
-		public static readonly BindableProperty OpacityProperty = BindableProperty.Create("Opacity", typeof(double), typeof(VisualElement), 1d, coerceValue: (bindable, value) => ((double)value).Clamp(0, 1));
+		public static readonly BindableProperty OpacityProperty = BindableProperty.Create("Opacity", typeof(float), typeof(VisualElement), 1f, coerceValue: (bindable, value) => ((float)value).Clamp(0, 1));
 
-		public static readonly BindableProperty BackgroundColorProperty = BindableProperty.Create("BackgroundColor", typeof(Color), typeof(VisualElement), Color.Default);
+		public static readonly BindableProperty BackgroundColorProperty = BindableProperty.Create("BackgroundColor", typeof(Color), typeof(VisualElement), null);
 
 		public static readonly BindableProperty BackgroundProperty = BindableProperty.Create(nameof(Background), typeof(Brush), typeof(VisualElement), Brush.Default,
 			propertyChanging: (bindable, oldvalue, newvalue) =>
@@ -267,13 +268,13 @@ namespace Xamarin.Forms
 		public static readonly BindableProperty TriggersProperty = TriggersPropertyKey.BindableProperty;
 
 
-		public static readonly BindableProperty WidthRequestProperty = BindableProperty.Create("WidthRequest", typeof(double), typeof(VisualElement), -1d, propertyChanged: OnRequestChanged);
+		public static readonly BindableProperty WidthRequestProperty = BindableProperty.Create("WidthRequest", typeof(float), typeof(VisualElement), -1d, propertyChanged: OnRequestChanged);
 
-		public static readonly BindableProperty HeightRequestProperty = BindableProperty.Create("HeightRequest", typeof(double), typeof(VisualElement), -1d, propertyChanged: OnRequestChanged);
+		public static readonly BindableProperty HeightRequestProperty = BindableProperty.Create("HeightRequest", typeof(float), typeof(VisualElement), -1d, propertyChanged: OnRequestChanged);
 
-		public static readonly BindableProperty MinimumWidthRequestProperty = BindableProperty.Create("MinimumWidthRequest", typeof(double), typeof(VisualElement), -1d, propertyChanged: OnRequestChanged);
+		public static readonly BindableProperty MinimumWidthRequestProperty = BindableProperty.Create("MinimumWidthRequest", typeof(float), typeof(VisualElement), -1d, propertyChanged: OnRequestChanged);
 
-		public static readonly BindableProperty MinimumHeightRequestProperty = BindableProperty.Create("MinimumHeightRequest", typeof(double), typeof(VisualElement), -1d, propertyChanged: OnRequestChanged);
+		public static readonly BindableProperty MinimumHeightRequestProperty = BindableProperty.Create("MinimumHeightRequest", typeof(float), typeof(VisualElement), -1d, propertyChanged: OnRequestChanged);
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public static readonly BindablePropertyKey IsFocusedPropertyKey = BindableProperty.CreateReadOnly("IsFocused",
@@ -341,7 +342,7 @@ namespace Xamarin.Forms
 
 		EffectiveFlowDirection IVisualElementController.EffectiveFlowDirection => FlowController.EffectiveFlowDirection;
 
-		readonly Dictionary<Size, SizeRequest> _measureCache = new Dictionary<Size, SizeRequest>();
+		readonly Dictionary<SizeF, SizeRequest> _measureCache = new Dictionary<SizeF, SizeRequest>();
 
 
 
@@ -354,13 +355,13 @@ namespace Xamarin.Forms
 
 		bool _isPlatformEnabled;
 
-		double _mockHeight = -1;
+		float _mockHeight = -1;
 
-		double _mockWidth = -1;
+		float _mockWidth = -1;
 
-		double _mockX = -1;
+		float _mockX = -1;
 
-		double _mockY = -1;
+		float _mockY = -1;
 
 		LayoutConstraint _selfConstraint;
 
@@ -368,15 +369,15 @@ namespace Xamarin.Forms
 		{
 		}
 
-		public double AnchorX
+		public float AnchorX
 		{
-			get { return (double)GetValue(AnchorXProperty); }
+			get { return (float)GetValue(AnchorXProperty); }
 			set { SetValue(AnchorXProperty, value); }
 		}
 
-		public double AnchorY
+		public float AnchorY
 		{
-			get { return (double)GetValue(AnchorYProperty); }
+			get { return (float)GetValue(AnchorYProperty); }
 			set { SetValue(AnchorYProperty, value); }
 		}
 
@@ -398,9 +399,9 @@ namespace Xamarin.Forms
 			get { return (IList<Behavior>)GetValue(BehaviorsProperty); }
 		}
 
-		public Rectangle Bounds
+		public RectangleF Bounds
 		{
-			get { return new Rectangle(X, Y, Width, Height); }
+			get { return new RectangleF(X, Y, Width, Height); }
 			private set
 			{
 				if (value.X == X && value.Y == Y && value.Height == Height && value.Width == Width)
@@ -413,15 +414,15 @@ namespace Xamarin.Forms
 			}
 		}
 
-		public double Height
+		public float Height
 		{
-			get { return _mockHeight == -1 ? (double)GetValue(HeightProperty) : _mockHeight; }
+			get { return _mockHeight == -1 ? (float)GetValue(HeightProperty) : _mockHeight; }
 			private set { SetValue(HeightPropertyKey, value); }
 		}
 
-		public double HeightRequest
+		public float HeightRequest
 		{
-			get { return (double)GetValue(HeightRequestProperty); }
+			get { return (float)GetValue(HeightRequestProperty); }
 			set { SetValue(HeightRequestProperty, value); }
 		}
 
@@ -446,57 +447,57 @@ namespace Xamarin.Forms
 			set { SetValue(IsVisibleProperty, value); }
 		}
 
-		public double MinimumHeightRequest
+		public float MinimumHeightRequest
 		{
-			get { return (double)GetValue(MinimumHeightRequestProperty); }
+			get { return (float)GetValue(MinimumHeightRequestProperty); }
 			set { SetValue(MinimumHeightRequestProperty, value); }
 		}
 
-		public double MinimumWidthRequest
+		public float MinimumWidthRequest
 		{
-			get { return (double)GetValue(MinimumWidthRequestProperty); }
+			get { return (float)GetValue(MinimumWidthRequestProperty); }
 			set { SetValue(MinimumWidthRequestProperty, value); }
 		}
 
-		public double Opacity
+		public float Opacity
 		{
-			get { return (double)GetValue(OpacityProperty); }
+			get { return (float)GetValue(OpacityProperty); }
 			set { SetValue(OpacityProperty, value); }
 		}
 
-		public double Rotation
+		public float Rotation
 		{
-			get { return (double)GetValue(RotationProperty); }
+			get { return (float)GetValue(RotationProperty); }
 			set { SetValue(RotationProperty, value); }
 		}
 
-		public double RotationX
+		public float RotationX
 		{
-			get { return (double)GetValue(RotationXProperty); }
+			get { return (float)GetValue(RotationXProperty); }
 			set { SetValue(RotationXProperty, value); }
 		}
 
-		public double RotationY
+		public float RotationY
 		{
-			get { return (double)GetValue(RotationYProperty); }
+			get { return (float)GetValue(RotationYProperty); }
 			set { SetValue(RotationYProperty, value); }
 		}
 
-		public double Scale
+		public float Scale
 		{
-			get => (double)GetValue(ScaleProperty);
+			get => (float)GetValue(ScaleProperty);
 			set => SetValue(ScaleProperty, value);
 		}
 
-		public double ScaleX
+		public float ScaleX
 		{
-			get => (double)GetValue(ScaleXProperty);
+			get => (float)GetValue(ScaleXProperty);
 			set => SetValue(ScaleXProperty, value);
 		}
 
-		public double ScaleY
+		public float ScaleY
 		{
-			get => (double)GetValue(ScaleYProperty);
+			get => (float)GetValue(ScaleYProperty);
 			set => SetValue(ScaleYProperty, value);
 		}
 
@@ -520,48 +521,48 @@ namespace Xamarin.Forms
 
 		protected virtual bool TabStopDefaultValueCreator() => true;
 
-		public double TranslationX
+		public float TranslationX
 		{
-			get { return (double)GetValue(TranslationXProperty); }
+			get { return (float)GetValue(TranslationXProperty); }
 			set { SetValue(TranslationXProperty, value); }
 		}
 
-		public double TranslationY
+		public float TranslationY
 		{
-			get { return (double)GetValue(TranslationYProperty); }
+			get { return (float)GetValue(TranslationYProperty); }
 			set { SetValue(TranslationYProperty, value); }
 		}
 
 		public IList<TriggerBase> Triggers => (IList<TriggerBase>)GetValue(TriggersProperty);
 
-		public double Width
+		public float Width
 		{
-			get { return _mockWidth == -1 ? (double)GetValue(WidthProperty) : _mockWidth; }
+			get { return _mockWidth == -1 ? (float)GetValue(WidthProperty) : _mockWidth; }
 			private set { SetValue(WidthPropertyKey, value); }
 		}
 
-		public double WidthRequest
+		public float WidthRequest
 		{
-			get { return (double)GetValue(WidthRequestProperty); }
+			get { return (float)GetValue(WidthRequestProperty); }
 			set { SetValue(WidthRequestProperty, value); }
 		}
 
-		public double X
+		public float X
 		{
-			get { return _mockX == -1 ? (double)GetValue(XProperty) : _mockX; }
+			get { return _mockX == -1 ? (float)GetValue(XProperty) : _mockX; }
 			private set { SetValue(XPropertyKey, value); }
 		}
 
-		public double Y
+		public float Y
 		{
-			get { return _mockY == -1 ? (double)GetValue(YProperty) : _mockY; }
+			get { return _mockY == -1 ? (float)GetValue(YProperty) : _mockY; }
 			private set { SetValue(YPropertyKey, value); }
 		}
 
 		[TypeConverter(typeof(PathGeometryConverter))]
-		public Geometry Clip
+		public Shapes.Geometry Clip
 		{
-			get { return (Geometry)GetValue(ClipProperty); }
+			get { return (Shapes.Geometry)GetValue(ClipProperty); }
 			set { SetValue(ClipProperty, value); }
 		}
 
@@ -727,14 +728,14 @@ namespace Xamarin.Forms
 
 		[Obsolete("OnSizeRequest is obsolete as of version 2.2.0. Please use OnMeasure instead.")]
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public virtual SizeRequest GetSizeRequest(double widthConstraint, double heightConstraint)
+		public virtual SizeRequest GetSizeRequest(float widthConstraint, float heightConstraint)
 		{
-			var constraintSize = new Size(widthConstraint, heightConstraint);
+			var constraintSize = new SizeF(widthConstraint, heightConstraint);
 			if (_measureCache.TryGetValue(constraintSize, out SizeRequest cachedResult))
 				return cachedResult;
 
-			double widthRequest = WidthRequest;
-			double heightRequest = HeightRequest;
+			float widthRequest = WidthRequest;
+			float heightRequest = HeightRequest;
 			if (widthRequest >= 0)
 				widthConstraint = Math.Min(widthConstraint, widthRequest);
 			if (heightRequest >= 0)
@@ -742,8 +743,8 @@ namespace Xamarin.Forms
 
 			SizeRequest result = OnMeasure(widthConstraint, heightConstraint);
 			bool hasMinimum = result.Minimum != result.Request;
-			Size request = result.Request;
-			Size minimum = result.Minimum;
+			var request = result.Request;
+			var minimum = result.Minimum;
 
 			if (heightRequest != -1)
 			{
@@ -759,8 +760,8 @@ namespace Xamarin.Forms
 					minimum.Width = widthRequest;
 			}
 
-			double minimumHeightRequest = MinimumHeightRequest;
-			double minimumWidthRequest = MinimumWidthRequest;
+			float minimumHeightRequest = MinimumHeightRequest;
+			float minimumWidthRequest = MinimumWidthRequest;
 
 			if (minimumHeightRequest != -1)
 				minimum.Height = minimumHeightRequest;
@@ -778,9 +779,9 @@ namespace Xamarin.Forms
 			return r;
 		}
 
-		public void Layout(Rectangle bounds) => Bounds = bounds;
+		public void Layout(RectangleF bounds) => Bounds = bounds;
 
-		public SizeRequest Measure(double widthConstraint, double heightConstraint, MeasureFlags flags = MeasureFlags.None)
+		public SizeRequest Measure(float widthConstraint, float heightConstraint, MeasureFlags flags = MeasureFlags.None)
 		{
 			bool includeMargins = (flags & MeasureFlags.IncludeMargins) != 0;
 			Thickness margin = default(Thickness);
@@ -797,8 +798,8 @@ namespace Xamarin.Forms
 
 			if (includeMargins && !margin.IsEmpty)
 			{
-				result.Minimum = new Size(result.Minimum.Width + margin.HorizontalThickness, result.Minimum.Height + margin.VerticalThickness);
-				result.Request = new Size(result.Request.Width + margin.HorizontalThickness, result.Request.Height + margin.VerticalThickness);
+				result.Minimum = new SizeF(result.Minimum.Width + margin.HorizontalThickness, result.Minimum.Height + margin.VerticalThickness);
+				result.Request = new SizeF(result.Request.Width + margin.HorizontalThickness, result.Request.Height + margin.VerticalThickness);
 			}
 
 			return result;
@@ -848,28 +849,28 @@ namespace Xamarin.Forms
 		protected void OnChildrenReordered()
 			=> ChildrenReordered?.Invoke(this, EventArgs.Empty);
 
-		protected virtual SizeRequest OnMeasure(double widthConstraint, double heightConstraint)
+		protected virtual SizeRequest OnMeasure(float widthConstraint, float heightConstraint)
 		{
 #pragma warning disable 0618 // retain until OnSizeRequest removed
 			return OnSizeRequest(widthConstraint, heightConstraint);
 #pragma warning restore 0618
 		}
 
-		protected virtual void OnSizeAllocated(double width, double height)
+		protected virtual void OnSizeAllocated(float width, float height)
 		{
 		}
 
 		[Obsolete("OnSizeRequest is obsolete as of version 2.2.0. Please use OnMeasure instead.")]
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		protected virtual SizeRequest OnSizeRequest(double widthConstraint, double heightConstraint)
+		protected virtual SizeRequest OnSizeRequest(float widthConstraint, float heightConstraint)
 		{
 			if (!IsPlatformEnabled)
-				return new SizeRequest(new Size(-1, -1));
+				return new SizeRequest(new SizeF(-1, -1));
 
 			return Device.PlatformServices.GetNativeSize(this, widthConstraint, heightConstraint);
 		}
 
-		protected void SizeAllocated(double width, double height) => OnSizeAllocated(width, height);
+		protected void SizeAllocated(float width, float height) => OnSizeAllocated(width, height);
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public event EventHandler<EventArg<VisualElement>> BatchCommitted;
@@ -922,7 +923,7 @@ namespace Xamarin.Forms
 					}
 		}
 
-		internal void MockBounds(Rectangle bounds)
+		internal void MockBounds(RectangleF bounds)
 		{
 #if NETSTANDARD2_0
 			(_mockX, _mockY, _mockWidth, _mockHeight) = bounds;
@@ -1093,7 +1094,7 @@ namespace Xamarin.Forms
 			PropertyPropagationExtensions.PropagatePropertyChanged(propertyName, this, LogicalChildren);
 		}
 
-		void SetSize(double width, double height)
+		void SetSize(float width, float height)
 		{
 			if (Width == width && Height == height)
 				return;

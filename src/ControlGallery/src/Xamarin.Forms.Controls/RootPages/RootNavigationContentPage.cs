@@ -17,7 +17,7 @@ namespace Xamarin.Forms.Controls
 
 			var content = new ContentPage
 			{
-				BackgroundColor = Color.Yellow,
+				BackgroundColor = Colors.Yellow,
 				Title = "Testing 123",
 				Content = new SwapHierachyStackLayout(hierarchy)
 			};

@@ -110,12 +110,12 @@ namespace Xamarin.Forms.Platform.WPF
 
 		protected override void UpdateBackground()
 		{
-			Control.BackgroundColor = Element.BackgroundColor != Color.Default ? Element.BackgroundColor.ToBrush() : (WBrush)System.Windows.Application.Current.Resources["ButtonBackgroundThemeBrush"];
+			Control.BackgroundColor = Element.BackgroundColor != null ? Element.BackgroundColor.ToBrush() : (WBrush)System.Windows.Application.Current.Resources["ButtonBackgroundThemeBrush"];
 		}
 
 		void UpdateBorderColor()
 		{
-			Control.BorderBrush = Element.BorderColor != Color.Default ? Element.BorderColor.ToBrush() : (WBrush)System.Windows.Application.Current.Resources["ButtonBorderThemeBrush"];
+			Control.BorderBrush = Element.BorderColor != null ? Element.BorderColor.ToBrush() : (WBrush)System.Windows.Application.Current.Resources["ButtonBorderThemeBrush"];
 		}
 
 		void UpdateBorderRadius()
@@ -151,7 +151,7 @@ namespace Xamarin.Forms.Platform.WPF
 
 		void UpdateTextColor()
 		{
-			Control.Foreground = Element.TextColor != Color.Default ? Element.TextColor.ToBrush() : (WBrush)System.Windows.Application.Current.Resources["DefaultTextForegroundThemeBrush"];
+			Control.Foreground = Element.TextColor != null ? Element.TextColor.ToBrush() : (WBrush)System.Windows.Application.Current.Resources["DefaultTextForegroundThemeBrush"];
 		}
 
 		void UpdatePadding()

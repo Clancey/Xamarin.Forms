@@ -23,7 +23,7 @@ namespace Xamarin.Forms.Controls.Issues
 			SearchBar searchBar = new SearchBar
 			{
 				Placeholder = "Enter anything",
-				CancelButtonColor = Color.Red
+				CancelButtonColor = Colors.Red
 			};
 
 			Label reproSteps = new Label

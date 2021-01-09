@@ -328,7 +328,7 @@ namespace Xamarin.Forms.Platform.iOS
 					if (_defaultMoreTextLabelTextColor == null)
 						_defaultMoreTextLabelTextColor = cell.TextLabel.TextColor;
 
-					cell.TextLabel.TextColor = Color.FromRgb(213, 213, 213).ToUIColor();
+					cell.TextLabel.TextColor = Colors.FromRgb(213, 213, 213).ToUIColor();
 				}
 				else if(!cell.UserInteractionEnabled)
 				{

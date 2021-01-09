@@ -1,9 +1,10 @@
 using System;
 using System.Globalization;
+using System.Graphics;
 
 namespace Xamarin.Forms
 {
-	[Xaml.TypeConversion(typeof(Point))]
+	[Xaml.TypeConversion(typeof(PointF))]
 	public class PointTypeConverter : TypeConverter
 	{
 		public override object ConvertFromInvariantString(string value)
@@ -11,16 +12,16 @@ namespace Xamarin.Forms
 			if (value != null)
 			{
 				string[] xy = value.Split(',');
-				if (xy.Length == 2 && double.TryParse(xy[0], NumberStyles.Number, CultureInfo.InvariantCulture, out var x) && double.TryParse(xy[1], NumberStyles.Number, CultureInfo.InvariantCulture, out var y))
-					return new Point(x, y);
+				if (xy.Length == 2 && float.TryParse(xy[0], NumberStyles.Number, CultureInfo.InvariantCulture, out var x) && float.TryParse(xy[1], NumberStyles.Number, CultureInfo.InvariantCulture, out var y))
+					return new PointF(x, y);
 			}
 
-			throw new InvalidOperationException(string.Format("Cannot convert \"{0}\" into {1}", value, typeof(Point)));
+			throw new InvalidOperationException(string.Format("Cannot convert \"{0}\" into {1}", value, typeof(PointF)));
 		}
 
 		public override string ConvertToInvariantString(object value)
 		{
-			if (!(value is Point p))
+			if (!(value is PointF p))
 				throw new NotSupportedException();
 			return $"{p.X.ToString(CultureInfo.InvariantCulture)}, {p.Y.ToString(CultureInfo.InvariantCulture)}";
 		}

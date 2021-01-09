@@ -1,4 +1,5 @@
 using System;
+using System.Graphics;
 
 namespace Xamarin.Forms
 {
@@ -6,9 +7,9 @@ namespace Xamarin.Forms
 	{
 		bool CanChangeIsPresented { get; set; }
 
-		Rectangle DetailBounds { get; set; }
+		RectangleF DetailBounds { get; set; }
 
-		Rectangle FlyoutBounds { get; set; }
+		RectangleF FlyoutBounds { get; set; }
 
 		bool ShouldShowSplitMode { get; }
 
@@ -22,9 +23,9 @@ namespace Xamarin.Forms
 	{
 		bool CanChangeIsPresented { get; set; }
 
-		Rectangle DetailBounds { get; set; }
+		RectangleF DetailBounds { get; set; }
 
-		Rectangle MasterBounds { get; set; }
+		RectangleF MasterBounds { get; set; }
 
 		bool ShouldShowSplitMode { get; }
 

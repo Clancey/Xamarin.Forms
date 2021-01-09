@@ -24,8 +24,8 @@ namespace Xamarin.Forms.Core.UnitTests
 		public void TestDynamicResourceOverride()
 		{
 			Application.Current.Resources = new ResourceDictionary();
-			Application.Current.Resources.Add("GreenColor", Color.Green);
-			Application.Current.Resources.Add("RedColor", Color.Red);
+			Application.Current.Resources.Add("GreenColor", Colors.Green);
+			Application.Current.Resources.Add("RedColor", Colors.Red);
 
 			var setter = new Setter()
 			{

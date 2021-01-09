@@ -29,8 +29,8 @@ namespace Xamarin.Forms.Controls.Issues
 			var instructions = new Label
 			{
 				Padding = 12,
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White,
 				Text = "Tap the rating control. If you can modify the number of selected stars, the test has passed."
 			};
 
@@ -75,28 +75,28 @@ namespace Xamarin.Forms.Controls.Issues
 
 		readonly List<Point> _originalFullStarPoints = new List<Point>()
 		{
-			new Point(96,1.12977573),
-			new Point(66.9427701,60.0061542),
-			new Point(1.96882894,69.4474205),
-			new Point(48.9844145,115.27629),
-			new Point(37.8855403,179.987692),
-			new Point(96,149.435112),
-			new Point(154.11446,179.987692),
-			new Point(143.015586,115.27629),
-			new Point(190.031171,69.4474205),
-			new Point(125.05723,60.0061542),
-			new Point(96,1.12977573),
+			new PointF(96,1.12977573),
+			new PointF(66.9427701,60.0061542),
+			new PointF(1.96882894,69.4474205),
+			new PointF(48.9844145,115.27629),
+			new PointF(37.8855403,179.987692),
+			new PointF(96,149.435112),
+			new PointF(154.11446,179.987692),
+			new PointF(143.015586,115.27629),
+			new PointF(190.031171,69.4474205),
+			new PointF(125.05723,60.0061542),
+			new PointF(96,1.12977573),
 		};
 
 		readonly List<Point> _originalHalfStarPoints = new List<Point>()
 		{
-			new Point(96,1.12977573),
-			new Point(66.9427701,60.0061542),
-			new Point(1.96882894,69.4474205),
-			new Point(48.9844145,115.27629),
-			new Point(37.8855403,179.987692),
-			new Point(96,149.435112),
-			new Point(96,1.12977573)
+			new PointF(96,1.12977573),
+			new PointF(66.9427701,60.0061542),
+			new PointF(1.96882894,69.4474205),
+			new PointF(48.9844145,115.27629),
+			new PointF(37.8855403,179.987692),
+			new PointF(96,149.435112),
+			new PointF(96,1.12977573)
 		};
 
 		readonly PointCollection _fullStarPoints = new PointCollection();
@@ -147,7 +147,7 @@ namespace Xamarin.Forms.Controls.Issues
 				var x = point.X * _ratio;
 				var y = point.Y * _ratio;
 
-				var p = new Point(x, y);
+				var p = new PointF(x, y);
 
 				calculated.Add(p);
 			}

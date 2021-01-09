@@ -9,12 +9,12 @@ namespace Xamarin.Forms.Shapes
 
 		}
 
-		public RotateTransform(double angle)
+		public RotateTransform(float angle)
 		{
 			Angle = angle;
 		}
 
-		public RotateTransform(double angle, double centerX, double centerY)
+		public RotateTransform(float angle, float centerX, float centerY)
 		{
 			Angle = angle;
 			CenterX = centerX;
@@ -22,33 +22,33 @@ namespace Xamarin.Forms.Shapes
 		}
 
 		public static readonly BindableProperty AngleProperty =
-			BindableProperty.Create(nameof(Angle), typeof(double), typeof(RotateTransform), 0.0,
+			BindableProperty.Create(nameof(Angle), typeof(float), typeof(RotateTransform), 0.0,
 				propertyChanged: OnTransformPropertyChanged);
 
 		public static readonly BindableProperty CenterXProperty =
-			BindableProperty.Create(nameof(CenterX), typeof(double), typeof(RotateTransform), 0.0,
+			BindableProperty.Create(nameof(CenterX), typeof(float), typeof(RotateTransform), 0.0,
 				propertyChanged: OnTransformPropertyChanged);
 
 		public static readonly BindableProperty CenterYProperty =
-			BindableProperty.Create(nameof(CenterY), typeof(double), typeof(RotateTransform), 0.0,
+			BindableProperty.Create(nameof(CenterY), typeof(float), typeof(RotateTransform), 0.0,
 				propertyChanged: OnTransformPropertyChanged);
 
-		public double Angle
+		public float Angle
 		{
 			set { SetValue(AngleProperty, value); }
-			get { return (double)GetValue(AngleProperty); }
+			get { return (float)GetValue(AngleProperty); }
 		}
 
-		public double CenterX
+		public float CenterX
 		{
 			set { SetValue(CenterXProperty, value); }
-			get { return (double)GetValue(CenterXProperty); }
+			get { return (float)GetValue(CenterXProperty); }
 		}
 
-		public double CenterY
+		public float CenterY
 		{
 			set { SetValue(CenterYProperty, value); }
-			get { return (double)GetValue(CenterYProperty); }
+			get { return (float)GetValue(CenterYProperty); }
 		}
 
 		static void OnTransformPropertyChanged(BindableObject bindable, object oldValue, object newValue)
@@ -58,9 +58,9 @@ namespace Xamarin.Forms.Shapes
 
 		void OnTransformPropertyChanged()
 		{
-			double radians = Math.PI * Angle / 180;
-			double sin = Math.Sin(radians);
-			double cos = Math.Cos(radians);
+			float radians = (float)Math.PI * Angle / 180;
+			float sin = (float)Math.Sin(radians);
+			float cos = (float)Math.Cos(radians);
 
 			Value = new Matrix(cos, sin, -sin, cos, CenterX * (1 - cos) + CenterY * sin, CenterY * (1 - cos) - CenterX * sin);
 		}

@@ -12,7 +12,7 @@ namespace Xamarin.Forms.Controls
 
 		public EntryReturnTypeGalleryPage()
 		{
-			BackgroundColor = Color.LightBlue;
+			BackgroundColor = Colors.LightBlue;
 			var layout = new StackLayout
 			{
 				VerticalOptions = LayoutOptions.StartAndExpand

@@ -62,7 +62,7 @@ namespace Xamarin.Forms.Controls.Issues
 				Content = new ScrollView()
 				{
 					HeightRequest = 2000,
-					BackgroundColor = Color.Green,
+					BackgroundColor = Colors.Green,
 					Content = scrollViewContent,
 					AutomationId = "LayoutContainer"
 				},

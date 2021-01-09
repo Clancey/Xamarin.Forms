@@ -12,7 +12,7 @@ namespace Xamarin.Forms.Xaml.UnitTests
 		public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
 		{
 			count++;
-			return Color.Blue;
+			return Colors.Blue;
 		}
 
 		public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

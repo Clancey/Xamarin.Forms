@@ -130,7 +130,7 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				Items.Add(new Issue7678IosModel
 				{
-					Color = Color.FromRgb(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255)),
+					Color = Colors.FromRgb(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255)),
 					Name = $"{n + 1}"
 				});
 			}
@@ -254,7 +254,7 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				items.Add(new Issue7678DroidModel
 				{
-					Color = Color.FromRgb(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255)),
+					Color = Colors.FromRgb(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255)),
 					Name = $"{n + 1}"
 				});
 			}

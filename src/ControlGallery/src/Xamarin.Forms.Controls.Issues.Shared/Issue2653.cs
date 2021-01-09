@@ -38,7 +38,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 		protected override void Init()
 		{
-			layout = new Grid { BackgroundColor = Color.Red, VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.FillAndExpand };
+			layout = new Grid { BackgroundColor = Colors.Red, VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.FillAndExpand };
 
 			layout.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Star });
 			layout.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Star });
@@ -50,7 +50,7 @@ namespace Xamarin.Forms.Controls.Issues
 					{
 						Margin = 10,
 						Text = FailureText,
-						BackgroundColor = Color.White
+						BackgroundColor = Colors.White
 					}
 				}
 			});
@@ -58,9 +58,9 @@ namespace Xamarin.Forms.Controls.Issues
 			layout.Children.Add(new Button()
 			{
 				Text = ButtonText,
-				BackgroundColor = Color.Green,
+				BackgroundColor = Colors.Green,
 				Margin = 10,
-				TextColor = Color.White,
+				TextColor = Colors.White,
 				Command = new Command(() =>
 				{
 					if (!AddBoxView())
@@ -122,7 +122,7 @@ namespace Xamarin.Forms.Controls.Issues
 									{
 										Margin = 10,
 										Text = "If you can't see me test has failed",
-										BackgroundColor = Color.White
+										BackgroundColor = Colors.White
 									}
 								}
 							});
@@ -140,7 +140,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			bv = new BoxView
 			{
-				Color = Color.Purple,
+				Color = Colors.Purple,
 				WidthRequest = 3000,
 				HeightRequest = 3000,
 				HorizontalOptions = LayoutOptions.Center,

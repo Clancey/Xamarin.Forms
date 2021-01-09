@@ -36,7 +36,7 @@ namespace Xamarin.Forms.Controls
 			var refreshColorContainer = new ViewContainer<RefreshView>(Test.RefreshView.RefreshColor, new RefreshView
 			{
 				Content = CreateContent(),
-				RefreshColor = Color.Red
+				RefreshColor = Colors.Red
 			});
 
 			refreshColorContainer.View.SetBinding(RefreshView.CommandProperty, "RefreshCommand");
@@ -49,7 +49,7 @@ namespace Xamarin.Forms.Controls
 		{
 			var scrollView = new ScrollView
 			{
-				BackgroundColor = Color.Green,
+				BackgroundColor = Colors.Green,
 				HeightRequest = 250
 			};
 
@@ -59,7 +59,7 @@ namespace Xamarin.Forms.Controls
 			{
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.Center,
-				TextColor = Color.White
+				TextColor = Colors.White
 			};
 
 			refreshLabel.SetBinding(Label.TextProperty, "Info");

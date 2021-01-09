@@ -21,13 +21,13 @@ namespace Xamarin.Forms.Controls.Issues
 			var tabOne = new ContentPage
 			{
 				Title = "Page One",
-				BackgroundColor = Color.Blue,
+				BackgroundColor = Colors.Blue,
 			};
 
 			var tabTwo = new ContentPage
 			{
 				Title = "Page Two",
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				Content = new Label
 				{
 					AutomationId = "SecondPageLabel",
@@ -48,7 +48,7 @@ namespace Xamarin.Forms.Controls.Issues
 					Children.Add(new ContentPage
 					{
 						Title = "Reset page",
-						BackgroundColor = Color.Green,
+						BackgroundColor = Colors.Green,
 						Content = new Label
 						{
 							AutomationId = "ResetPageLabel",

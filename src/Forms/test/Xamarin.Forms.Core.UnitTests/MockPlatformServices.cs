@@ -80,13 +80,13 @@ namespace Xamarin.Forms.Core.UnitTests
 			switch (name)
 			{
 				case "SystemBlue":
-					return Color.FromRgb(0, 122, 255);
+					return Colors.FromRgb(0, 122, 255);
 				case "SystemChromeHighColor":
-					return Color.FromHex("#FF767676");
+					return Colors.FromHex("#FF767676");
 				case "HoloBlueBright":
-					return Color.FromHex("#ff00ddff");
+					return Colors.FromHex("#ff00ddff");
 				default:
-					return Color.Default;
+					return null;
 			}
 		}
 

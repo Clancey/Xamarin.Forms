@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Graphics;
 
 namespace Xamarin.Forms.Shapes
 {
@@ -14,7 +15,7 @@ namespace Xamarin.Forms.Shapes
 			BindableProperty.Create(nameof(Segments), typeof(PathSegmentCollection), typeof(PathFigure), null);
 
 		public static readonly BindableProperty StartPointProperty =
-			BindableProperty.Create(nameof(StartPoint), typeof(Point), typeof(PathFigure), new Point(0, 0));
+			BindableProperty.Create(nameof(StartPoint), typeof(PointF), typeof(PathFigure), new PointF(0, 0));
 
 		public static readonly BindableProperty IsClosedProperty =
 			BindableProperty.Create(nameof(IsClosed), typeof(bool), typeof(PathFigure), false);
@@ -28,10 +29,10 @@ namespace Xamarin.Forms.Shapes
 			get { return (PathSegmentCollection)GetValue(SegmentsProperty); }
 		}
 
-		public Point StartPoint
+		public PointF StartPoint
 		{
 			set { SetValue(StartPointProperty, value); }
-			get { return (Point)GetValue(StartPointProperty); }
+			get { return (PointF)GetValue(StartPointProperty); }
 		}
 
 		public bool IsClosed

@@ -47,7 +47,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var tableView = new TableView
 			{
-				BackgroundColor = Color.Wheat,
+				BackgroundColor = Colors.Wheat,
 				HasUnevenRows = true,
 				RowHeight = 100
 			};
@@ -80,7 +80,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			Children.Add(new ContentPage
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				Content = new StackLayout
 				{
 					Children = { GenerateNewPicker(), tableView }
@@ -89,7 +89,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			Children.Add(new ContentPage
 			{
-				BackgroundColor = Color.Blue,
+				BackgroundColor = Colors.Blue,
 				Content = new StackLayout
 				{
 					Children = { GenerateNewPicker() }
@@ -114,7 +114,7 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				View = new StackLayout
 				{
-					BackgroundColor = Color.Pink,
+					BackgroundColor = Colors.Pink,
 					Children = {
 						label,
 						picker,

@@ -27,7 +27,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.PlatformSpecificsGalleries
 					minimal,
 					new StackLayout()
 					{
-						BackgroundColor = Color.Red,
+						BackgroundColor = Colors.Red,
 						Children =
 						{
 							prominentBackground,

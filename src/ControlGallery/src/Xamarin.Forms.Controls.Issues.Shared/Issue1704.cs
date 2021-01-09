@@ -253,7 +253,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			_imageSource.Focused += (object sender, FocusEventArgs e) =>
 			{
-				_imageSource.TextColor = Color.Default;
+				_imageSource.TextColor = null;
 			};
 
 			_loadImageButton = new Button { Text = "Load Image" };
@@ -283,7 +283,7 @@ namespace Xamarin.Forms.Controls.Issues
 					}
 					catch (Exception)
 					{
-						_imageSource.TextColor = Color.Red;
+						_imageSource.TextColor = Colors.Red;
 						_loadImageButton.IsEnabled = true;
 						_imageSource.IsEnabled = true;
 						_loadingIndicator.IsVisible = false;

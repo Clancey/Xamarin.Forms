@@ -27,7 +27,7 @@ namespace Xamarin.Forms.Controls
 			{
 				FontFamily = GetFontFamily(),
 				Glyph = '\uf101'.ToString(),
-				Color = Color.Red
+				Color = Colors.Red
 			};
 
 			var tb2 = new ToolbarItem("tb2 font", null, () =>

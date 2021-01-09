@@ -92,7 +92,7 @@ namespace Xamarin.Forms.Controls.Issues
 			public View1A()
 			{
 
-				BackgroundColor = Color.Olive;
+				BackgroundColor = Colors.Olive;
 				var scrollView = new ScrollView();
 				var sb = new StringBuilder();
 				for (var i = 0; i < 100; i++)
@@ -115,7 +115,7 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			public View1B()
 			{
-				BackgroundColor = Color.Navy;
+				BackgroundColor = Colors.Navy;
 			}
 
 			public override void Activating()
@@ -140,7 +140,7 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			public View2()
 			{
-				BackgroundColor = Color.Teal;
+				BackgroundColor = Colors.Teal;
 #pragma warning disable 618
 				Content = new Label { Text = "View 2", HorizontalOptions = LayoutOptions.Center, VerticalOptions = LayoutOptions.Center, XAlign = TextAlignment.Center, };
 #pragma warning restore 618
@@ -152,7 +152,7 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			public ErrorView(Exception ex)
 			{
-				BackgroundColor = Color.Maroon;
+				BackgroundColor = Colors.Maroon;
 				Content = new ScrollView { Content = new Label { Text = ex.ToString() } };
 			}
 		}

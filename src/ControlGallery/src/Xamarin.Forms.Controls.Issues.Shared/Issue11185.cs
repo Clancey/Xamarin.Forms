@@ -25,7 +25,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			for (int i = 0; i < 20; i++)
 			{
-				layout.Children.Add(new BoxView { WidthRequest = 100, HeightRequest = 100, BackgroundColor = Color.LightCoral });
+				layout.Children.Add(new BoxView { WidthRequest = 100, HeightRequest = 100, BackgroundColor = Colors.LightCoral });
 			}
 
 			Content = new ScrolView11185

@@ -15,8 +15,8 @@ namespace Xamarin.Forms.Controls
 			Content = _stack = new StackLayout { Padding = new Size(20, 20) };
 
 			//BackgroundColor = new Color (0.5, 0.5, 0.5);
-			BackgroundColor = Color.FromHex("#8a2be2");
-			//BackgroundColor = Color.Aqua;
+			BackgroundColor = Colors.FromHex("#8a2be2");
+			//BackgroundColor = Colors.Aqua;
 
 			var frame = new Frame
 			{

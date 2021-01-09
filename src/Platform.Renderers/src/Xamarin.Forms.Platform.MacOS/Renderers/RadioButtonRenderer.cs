@@ -75,7 +75,7 @@ namespace Xamarin.Forms.Platform.MacOS
 		void UpdateBackgroundVisibility()
 		{
 			var model = Element;
-			var shouldDrawImage = model.BackgroundColor == Color.Default;
+			var shouldDrawImage = model.BackgroundColor == null;
 			if (!shouldDrawImage)
 				Control.Cell.BackgroundColor = model.BackgroundColor.ToNSColor();
 		}
@@ -85,7 +85,7 @@ namespace Xamarin.Forms.Platform.MacOS
 			var uiButton = Control;
 			var button = Element;
 
-			if (button.BorderColor != Color.Default)
+			if (button.BorderColor != null)
 				uiButton.Layer.BorderColor = button.BorderColor.ToCGColor();
 
 			uiButton.Layer.BorderWidth = (float)button.BorderWidth;
@@ -105,7 +105,7 @@ namespace Xamarin.Forms.Platform.MacOS
 			var text = Element.ContentAsString();
 
 			var color = Element.TextColor;
-			if (color == Color.Default)
+			if (color == null)
 			{
 				Control.Title = text ?? "";
 			}

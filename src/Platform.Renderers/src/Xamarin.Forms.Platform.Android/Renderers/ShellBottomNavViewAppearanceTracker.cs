@@ -29,7 +29,7 @@ namespace Xamarin.Forms.Platform.Android
 				bottomView.ItemIconTintList = _defaultList;
 			}
 
-			SetBackgroundColor(bottomView, Color.White);
+			SetBackgroundColor(bottomView, Colors.White);
 		}
 
 		public virtual void SetAppearance(BottomNavigationView bottomView, IShellAppearanceElement appearance)
@@ -64,11 +64,11 @@ namespace Xamarin.Forms.Platform.Android
 			var oldBackground = bottomView.Background;
 			var colorDrawable = oldBackground as ColorDrawable;
 			var colorChangeRevealDrawable = oldBackground as ColorChangeRevealDrawable;
-			AColor lastColor = colorChangeRevealDrawable?.EndColor ?? colorDrawable?.Color ?? Color.Default.ToAndroid();
+			AColor lastColor = colorChangeRevealDrawable?.EndColor ?? colorDrawable?.Color ?? null.ToAndroid();
 			AColor newColor;
 
-			if (color == Color.Default)
-				newColor = Color.White.ToAndroid();
+			if (color == null)
+				newColor = Colors.White.ToAndroid();
 			else
 				newColor = color.ToAndroid();
 
@@ -95,7 +95,7 @@ namespace Xamarin.Forms.Platform.Android
 				if (child == null)
 					return;
 
-				var touchPoint = new Point(child.Left + (child.Right - child.Left) / 2, child.Top + (child.Bottom - child.Top) / 2);
+				var touchPoint = new PointF(child.Left + (child.Right - child.Left) / 2, child.Top + (child.Bottom - child.Top) / 2);
 
 				bottomView.SetBackground(new ColorChangeRevealDrawable(lastColor, newColor, touchPoint));
 			}

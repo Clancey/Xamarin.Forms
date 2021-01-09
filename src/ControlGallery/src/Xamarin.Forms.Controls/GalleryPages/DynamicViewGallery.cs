@@ -13,10 +13,10 @@ namespace Xamarin.Forms.Controls
 			{
 				{ nameof(ActivityIndicator), (() => new ActivityIndicator() { IsRunning = false }, null) },
 				{ nameof(Frame), (() => new Frame {
-						BackgroundColor = Color.Blue,
+						BackgroundColor = Colors.Blue,
 						Content = new BoxView
 						{
-							BackgroundColor = Color.Yellow,
+							BackgroundColor = Colors.Yellow,
 							TranslationX = 50
 						}
 					}, null) },
@@ -98,7 +98,7 @@ namespace Xamarin.Forms.Controls
 					{
 						HeightRequest = 1,
 						Margin = new Thickness(-10, 0),
-						Color = Color.Black
+						Color = Colors.Black
 					}
 				}
 			};
@@ -172,7 +172,7 @@ namespace Xamarin.Forms.Controls
 				}
 				else
 				{
-					//_propertyLayout.Children.Add(new Label { Text = $"//TODO: {property.Name} ({property.PropertyType})", TextColor = Color.Gray });
+					//_propertyLayout.Children.Add(new Label { Text = $"//TODO: {property.Name} ({property.PropertyType})", TextColor = Colors.Gray });
 				}
 			}
 
@@ -281,8 +281,8 @@ namespace Xamarin.Forms.Controls
 				actions.AddChild(new Button
 				{
 					Text = "X",
-					TextColor = Color.White,
-					BackgroundColor = Color.DarkRed,
+					TextColor = Colors.White,
+					BackgroundColor = Colors.DarkRed,
 					WidthRequest = 28,
 					HeightRequest = 28,
 					Margin = 0,

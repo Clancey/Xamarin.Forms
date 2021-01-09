@@ -17,7 +17,7 @@ namespace Xamarin.Forms
 		ObservableCollection<MenuItem> _contextActions;
 		readonly Lazy<ElementConfiguration> _elementConfiguration;
 
-		double _height = -1;
+		float _height = -1;
 
 		bool _nextCallToForceUpdateSizeQueued;
 
@@ -84,7 +84,7 @@ namespace Xamarin.Forms
 
 		public bool IsContextActionsLegacyModeEnabled { get; set; } = false;
 
-		public double Height
+		public float Height
 		{
 			get { return _height; }
 			set
@@ -106,7 +106,7 @@ namespace Xamarin.Forms
 			set { SetValue(IsEnabledProperty, value); }
 		}
 
-		public double RenderHeight
+		public float RenderHeight
 		{
 			get
 			{
@@ -122,7 +122,7 @@ namespace Xamarin.Forms
 			}
 		}
 
-		double IFlowDirectionController.Width => (Parent as VisualElement)?.Width ?? 0;
+		float IFlowDirectionController.Width => (Parent as VisualElement)?.Width ?? 0;
 
 		public event EventHandler Appearing;
 

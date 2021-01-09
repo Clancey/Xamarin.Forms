@@ -220,7 +220,7 @@ namespace Xamarin.Forms.Platform.Android
 				oldElement.PropertyChanged -= _propertyChangeHandler;
 			}
 
-			Color currentColor = oldElement?.BackgroundColor ?? Color.Default;
+			Color currentColor = oldElement?.BackgroundColor ?? null;
 
 			if (element.BackgroundColor != currentColor)
 				UpdateBackgroundColor();

@@ -609,14 +609,14 @@ namespace Xamarin.Forms
 			{
 				case "mobile":
 					// [Tizen_3.0]Basic_Interaction_GUI_[REF].xlsx Theme 001 (Default) 1st HSB: 188 70 80
-					return Color.FromRgba(61, 185, 204, 255);
+					return Colors.FromRgba(61, 185, 204, 255);
 				case "tv":
-					return Color.FromRgba(15, 15, 15, 230);
+					return Colors.FromRgba(15, 15, 15, 230);
 				case "wearable":
 					// Theme A (Default) 1st HSB: 207 75 16
-					return Color.FromRgba(10, 27, 41, 255);
+					return Colors.FromRgba(10, 27, 41, 255);
 				default:
-					return Color.Black;
+					return Colors.Black;
 			}
 		}
 

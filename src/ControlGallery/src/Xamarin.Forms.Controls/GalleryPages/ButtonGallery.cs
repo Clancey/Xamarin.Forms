@@ -55,16 +55,16 @@ namespace Xamarin.Forms.Controls
 			var themedButton = new Button
 			{
 				Text = "Accent Button",
-				BackgroundColor = Color.Accent,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Accent,
+				TextColor = Colors.White,
 				ClassId = "AccentButton",
 				Font = font
 			};
 			var borderButton = new Button
 			{
 				Text = "Border Button",
-				BorderColor = Color.Black,
-				BackgroundColor = Color.Purple,
+				BorderColor = Colors.Black,
+				BackgroundColor = Colors.Purple,
 				BorderWidth = 5,
 #pragma warning disable 0618
 				BorderRadius = 5
@@ -74,7 +74,7 @@ namespace Xamarin.Forms.Controls
 			var busy = new Button { Text = "Toggle Busy" };
 			var alert = new Button { Text = "Alert" };
 			var alertSingle = new Button { Text = "Alert Single" };
-			var image = new Button { Text = "Image Button", ImageSource = new FileImageSource { File = "bank.png" }, BackgroundColor = Color.Blue.WithLuminosity(.8) };
+			var image = new Button { Text = "Image Button", ImageSource = new FileImageSource { File = "bank.png" }, BackgroundColor = Colors.Blue.WithLuminosity(.8) };
 			AutomationProperties.SetName(image, "Image Automation Name");
 			var gif = new Button { ImageSource = "GifOne.gif" };
 			var automation = new Button { Text = "Display Name" };
@@ -109,11 +109,11 @@ namespace Xamarin.Forms.Controls
 				alert.Text = result ? "Accepted" : "Cancelled";
 			};
 
-			borderButton.Clicked += (sender, args) => borderButton.BackgroundColor = Color.Default;
+			borderButton.Clicked += (sender, args) => borderButton.BackgroundColor = null;
 
 			Content = new ScrollView
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				Content = new StackLayout
 				{
 					Padding = new Size(20, 20),
@@ -132,9 +132,9 @@ namespace Xamarin.Forms.Controls
 						transparent,
 						themedButton,
 						borderButton,
-						new Button {Text = "Thin Border", BorderWidth = 1, BackgroundColor=Color.White, BorderColor = Color.Black, TextColor = Color.Black},
-						new Button {Text = "Thinner Border", BorderWidth = .5, BackgroundColor=Color.White, BorderColor = Color.Black, TextColor = Color.Black},
-						new Button {Text = "BorderWidth == 0", BorderWidth = 0, BackgroundColor=Color.White, BorderColor = Color.Black, TextColor = Color.Black},
+						new Button {Text = "Thin Border", BorderWidth = 1, BackgroundColor=Color.White, BorderColor = Colors.Black, TextColor = Colors.Black},
+						new Button {Text = "Thinner Border", BorderWidth = .5, BackgroundColor=Color.White, BorderColor = Colors.Black, TextColor = Colors.Black},
+						new Button {Text = "BorderWidth == 0", BorderWidth = 0, BackgroundColor=Color.White, BorderColor = Colors.Black, TextColor = Colors.Black},
 						timer,
 						busy,
 						alert,

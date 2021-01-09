@@ -118,10 +118,10 @@ namespace Xamarin.Forms.Platform.UWP
 			if (Element == null || Control?.Visualizer == null)
 				return;
 
-			if (Element.BackgroundColor != Color.Default)
+			if (Element.BackgroundColor != null)
 				Control.Visualizer.Background = Element.BackgroundColor.ToBrush();
 			else
-				Control.Visualizer.Background = Color.White.ToBrush();
+				Control.Visualizer.Background = Colors.White.ToBrush();
 		}
 
 		void UpdateContent()
@@ -158,7 +158,7 @@ namespace Xamarin.Forms.Platform.UWP
 			if (Control?.Visualizer == null)
 				return;
 
-			Control.Visualizer.Foreground = Element.RefreshColor != Color.Default
+			Control.Visualizer.Foreground = Element.RefreshColor != null
 				? Element.RefreshColor.ToBrush()
 				: (WBrush)Windows.UI.Xaml.Application.Current.Resources["DefaultTextForegroundThemeBrush"];
 

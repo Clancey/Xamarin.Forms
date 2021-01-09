@@ -4,14 +4,14 @@ namespace Xamarin.Forms
 {
 	internal static class LayoutAlignmentExtensions
 	{
-		public static double ToDouble(this LayoutAlignment align)
+		public static float ToFloat(this LayoutAlignment align)
 		{
 			switch (align)
 			{
 				case LayoutAlignment.Start:
 					return 0;
 				case LayoutAlignment.Center:
-					return 0.5;
+					return 0.5f;
 				case LayoutAlignment.End:
 					return 1;
 			}

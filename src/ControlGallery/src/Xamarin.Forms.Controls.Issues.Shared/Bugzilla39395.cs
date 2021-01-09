@@ -22,7 +22,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			Content = new StackLayout
 			{
-				BackgroundColor = Color.Gray,
+				BackgroundColor = Colors.Gray,
 				Children = {
 					instructions,
 					new ListView {

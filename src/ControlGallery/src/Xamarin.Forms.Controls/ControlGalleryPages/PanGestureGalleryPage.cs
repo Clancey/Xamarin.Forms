@@ -109,7 +109,7 @@ namespace Xamarin.Forms.Controls
 		{
 			var box = new Image
 			{
-				BackgroundColor = Color.Gray,
+				BackgroundColor = Colors.Gray,
 				WidthRequest = 2000,
 				HeightRequest = 2000,
 				VerticalOptions = LayoutOptions.Center,

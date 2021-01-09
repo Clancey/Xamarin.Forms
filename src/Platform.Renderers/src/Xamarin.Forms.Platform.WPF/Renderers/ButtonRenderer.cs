@@ -29,10 +29,10 @@ namespace Xamarin.Forms.Platform.WPF
 
 				UpdateContent();
 
-				if (Element.TextColor != Color.Default)
+				if (Element.TextColor != null)
 					UpdateTextColor();
 
-				if (Element.BorderColor != Color.Default)
+				if (Element.BorderColor != null)
 					UpdateBorderColor();
 
 				if (Element.IsSet(Button.BorderWidthProperty) && Element.BorderWidth != (double)Button.BorderWidthProperty.DefaultValue)

@@ -22,7 +22,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			Label issueTestLabel1 = new Label
 			{
-				TextColor = Color.Red,
+				TextColor = Colors.Red,
 				HorizontalTextAlignment = TextAlignment.Center,
 				FontSize = 40,
 				Text = "\uf0c9"
@@ -43,7 +43,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			Label issueTestLabel2 = new Label
 			{
-				TextColor = Color.Gray,
+				TextColor = Colors.Gray,
 				HorizontalTextAlignment = TextAlignment.Center,
 				FontSize = 40,
 				Text = "\uf0e9"
@@ -65,7 +65,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			Label issueTestLabel3 = new Label
 			{
-				TextColor = Color.Red,
+				TextColor = Colors.Red,
 				HorizontalTextAlignment = TextAlignment.Center,
 				FontSize = 40,
 				Text = "Hello, I'm in Pick Ax font"
@@ -99,7 +99,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			Span span = new Span()
 			{
-				TextColor = Color.Red,
+				TextColor = Colors.Red,
 				FontSize = 40,
 				Text = "Hello, I'm in Pick Ax font"
 			};
@@ -115,7 +115,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			Span span1 = new Span()
 			{
-				TextColor = Color.Blue,
+				TextColor = Colors.Blue,
 				FontSize = 30,
 				Text = " - without font but blue"
 			};
@@ -133,7 +133,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			Button issueTestButton1 = new Button
 			{
-				TextColor = Color.Red,
+				TextColor = Colors.Red,
 				FontSize = 40,
 				Text = "Hello, I'm in Button - Pick Ax font"
 			};

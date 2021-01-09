@@ -503,7 +503,7 @@ namespace Xamarin.Forms.Platform.iOS
 			if (Element.IsSet(Specifics.CursorColorProperty))
 			{
 				var color = Element.OnThisPlatform().GetCursorColor();
-				if (color == Color.Default)
+				if (color == null)
 					control.TintColor = _defaultCursorColor;
 				else
 					control.TintColor = color.ToUIColor();

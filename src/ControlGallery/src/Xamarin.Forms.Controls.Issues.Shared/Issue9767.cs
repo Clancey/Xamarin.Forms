@@ -55,7 +55,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			resetBarBackgroundButton.Clicked += (sender, args) =>
 			{
-				BarBackgroundColor = Color.Default;
+				BarBackgroundColor = null;
 			};
 
 			var resetBarTextButton = new Button
@@ -65,7 +65,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			resetBarTextButton.Clicked += (sender, args) =>
 			{
-				BarTextColor = Color.Default;
+				BarTextColor = null;
 			};
 
 			var navigateButton = new Button

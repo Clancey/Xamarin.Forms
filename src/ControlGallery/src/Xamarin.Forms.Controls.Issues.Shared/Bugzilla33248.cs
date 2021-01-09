@@ -21,12 +21,12 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			var editor = new Editor
 			{
-				BackgroundColor = Color.Yellow,
+				BackgroundColor = Colors.Yellow,
 				HeightRequest = 300
 			};
 			var entry = new Entry
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				HeightRequest = 100
 			};
 

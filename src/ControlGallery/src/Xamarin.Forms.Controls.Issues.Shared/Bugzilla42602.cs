@@ -25,7 +25,7 @@ namespace Xamarin.Forms.Controls.Issues
 			//background white 800 x 600 square
 			content = new AbsoluteLayout()
 			{
-				BackgroundColor = Color.White,
+				BackgroundColor = Colors.White,
 				WidthRequest = 800,
 				HeightRequest = 800,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
@@ -34,8 +34,8 @@ namespace Xamarin.Forms.Controls.Issues
 
 			//test TextBoxView 400 x 400, color gray, should have a red ellipse and a red "hello world"
 
-			var test = new TextBoxView() { WidthRequest = 300, HeightRequest = 300, BackgroundColor = Color.Blue };
-			content.Children.Add(test, new Point((content.WidthRequest - test.WidthRequest) / 2f, (content.HeightRequest - test.HeightRequest) / 2f));
+			var test = new TextBoxView() { WidthRequest = 300, HeightRequest = 300, BackgroundColor = Colors.Blue };
+			content.Children.Add(test, new PointF((content.WidthRequest - test.WidthRequest) / 2f, (content.HeightRequest - test.HeightRequest) / 2f));
 
 			Content = content;
 		}

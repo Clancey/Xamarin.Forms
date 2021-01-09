@@ -14,8 +14,8 @@ namespace Xamarin.Forms.Controls
 		{
 			var scenarioLabel = new Label
 			{
-				BackgroundColor = Color.Blue,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Blue,
+				TextColor = Colors.White,
 				HorizontalTextAlignment = TextAlignment.Center,
 				HeightRequest = 25,
 				AutomationId = ScenarioId
@@ -25,8 +25,8 @@ namespace Xamarin.Forms.Controls
 
 			var renderTimeLabel = new Label
 			{
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White,
 				HorizontalTextAlignment = TextAlignment.Center,
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				HeightRequest = 25,
@@ -36,8 +36,8 @@ namespace Xamarin.Forms.Controls
 
 			var expectedLabel = new Label
 			{
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White,
 				HorizontalTextAlignment = TextAlignment.Center,
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				HeightRequest = 25,
@@ -47,8 +47,8 @@ namespace Xamarin.Forms.Controls
 
 			var outcomeLabel = new Label
 			{
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White,
 				HorizontalTextAlignment = TextAlignment.Center,
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				HeightRequest = 25,

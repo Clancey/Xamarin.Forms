@@ -43,7 +43,7 @@ namespace Xamarin.Forms.Controls.Issues
 					grd.Children.Add(new Button
 					{
 						Text = "Back",
-						BackgroundColor = Color.Red,
+						BackgroundColor = Colors.Red,
 						Command = new Command(() => Navigation.PopModalAsync())
 					});
 					cp2.Content = grd;

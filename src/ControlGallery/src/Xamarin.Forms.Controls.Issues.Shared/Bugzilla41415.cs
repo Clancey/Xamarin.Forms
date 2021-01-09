@@ -21,7 +21,7 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			var grid = new Grid
 			{
-				BackgroundColor = Color.Yellow,
+				BackgroundColor = Colors.Yellow,
 				WidthRequest = 1000,
 				HeightRequest = 1000,
 				Children =
@@ -30,7 +30,7 @@ namespace Xamarin.Forms.Controls.Issues
 					{
 						WidthRequest =  200,
 						HeightRequest = 200,
-						BackgroundColor = Color.Red,
+						BackgroundColor = Colors.Red,
 						HorizontalOptions = LayoutOptions.Center,
 						VerticalOptions = LayoutOptions.Center
 					}

@@ -23,12 +23,12 @@ namespace Xamarin.Forms.Controls.GalleryPages.DragAndDropGalleries
 			Image imageSource = new Image()
 			{
 				Source = "coffee.png",
-				BackgroundColor = Color.Green
+				BackgroundColor = Colors.Green
 			};
 
 			Image imageDestination = new Image()
 			{
-				BackgroundColor = Color.Purple,
+				BackgroundColor = Colors.Purple,
 				HeightRequest = 50,
 				WidthRequest = 50
 			};

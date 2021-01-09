@@ -51,7 +51,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			_collectionView = new CollectionView
 			{
-				BackgroundColor = Color.LightGreen,
+				BackgroundColor = Colors.LightGreen,
 				ItemTemplate = CreateDataGridTemplate(),
 				SelectionMode = SelectionMode.None
 			};
@@ -75,7 +75,7 @@ namespace Xamarin.Forms.Controls.Issues
 				var cell = new Label();
 				cell.SetBinding(Label.TextProperty, "Text");
 				cell.FontSize = 20;
-				cell.BackgroundColor = Color.LightBlue;
+				cell.BackgroundColor = Colors.LightBlue;
 				grid.Children.Add(cell);
 
 				return grid;

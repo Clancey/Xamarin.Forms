@@ -40,7 +40,7 @@ namespace Xamarin.Forms.Controls.Issues
 			label1.SetBinding(Label.TextProperty, new Binding("."));
 			var hint = Device.RuntimePlatform == Device.iOS ? "Tip: swipe left for context action" : "Tip: long press for context action";
 			var label2 = new Label { Text = hint };
-			var grid = new Grid() { BackgroundColor = Color.Gray };
+			var grid = new Grid() { BackgroundColor = Colors.Gray };
 			grid.RowDefinitions.Add(new RowDefinition());
 			grid.RowDefinitions.Add(new RowDefinition());
 			grid.Children.Add(label1, 0, 0);

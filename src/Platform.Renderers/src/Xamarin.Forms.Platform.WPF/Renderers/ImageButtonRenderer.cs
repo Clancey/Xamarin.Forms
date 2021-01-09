@@ -47,7 +47,7 @@ namespace Xamarin.Forms.Platform.WPF
 					SetNativeControl(_button);
 				}
 
-				if (Element.BorderColor != Color.Default)
+				if (Element.BorderColor != null)
 					UpdateBorderColor();
 
 				if (Element.BorderWidth != 0)

@@ -1,4 +1,6 @@
-﻿namespace Xamarin.Forms.Shapes
+﻿using System.Graphics;
+
+namespace Xamarin.Forms.Shapes
 {
 	public class ArcSegment : PathSegment
 	{
@@ -7,7 +9,7 @@
 
 		}
 
-		public ArcSegment(Point point, Size size, double rotationAngle, SweepDirection sweepDirection, bool isLargeArc)
+		public ArcSegment(PointF point, SizeF size, float rotationAngle, SweepDirection sweepDirection, bool isLargeArc)
 		{
 			Point = point;
 			Size = size;
@@ -17,13 +19,13 @@
 		}
 
 		public static readonly BindableProperty PointProperty =
-			BindableProperty.Create(nameof(Point), typeof(Point), typeof(ArcSegment), new Point(0, 0));
+			BindableProperty.Create(nameof(PointF), typeof(PointF), typeof(ArcSegment), new PointF(0, 0));
 
 		public static readonly BindableProperty SizeProperty =
-			BindableProperty.Create(nameof(Size), typeof(Size), typeof(ArcSegment), new Size(0, 0));
+			BindableProperty.Create(nameof(Size), typeof(SizeF), typeof(ArcSegment), new SizeF(0, 0));
 
 		public static readonly BindableProperty RotationAngleProperty =
-			BindableProperty.Create(nameof(RotationAngle), typeof(double), typeof(ArcSegment), 0.0);
+			BindableProperty.Create(nameof(RotationAngle), typeof(float), typeof(ArcSegment), 0.0);
 
 		public static readonly BindableProperty SweepDirectionProperty =
 			BindableProperty.Create(nameof(SweepDirection), typeof(SweepDirection), typeof(ArcSegment), SweepDirection.CounterClockwise);
@@ -31,23 +33,23 @@
 		public static readonly BindableProperty IsLargeArcProperty =
 			BindableProperty.Create(nameof(IsLargeArc), typeof(bool), typeof(ArcSegment), false);
 
-		public Point Point
+		public PointF Point
 		{
 			set { SetValue(PointProperty, value); }
-			get { return (Point)GetValue(PointProperty); }
+			get { return (PointF)GetValue(PointProperty); }
 		}
 
 		[TypeConverter(typeof(SizeTypeConverter))]
-		public Size Size
+		public SizeF Size
 		{
 			set { SetValue(SizeProperty, value); }
-			get { return (Size)GetValue(SizeProperty); }
+			get { return (SizeF)GetValue(SizeProperty); }
 		}
 
-		public double RotationAngle
+		public float RotationAngle
 		{
 			set { SetValue(RotationAngleProperty, value); }
-			get { return (double)GetValue(RotationAngleProperty); }
+			get { return (float)GetValue(RotationAngleProperty); }
 		}
 
 		public SweepDirection SweepDirection

@@ -53,9 +53,9 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var customSwitch = new Issue7249Switch
 			{
-				SwitchOffColor = Color.Red,
-				SwitchOnColor = Color.Green,
-				SwitchThumbColor = Color.Yellow,
+				SwitchOffColor = Colors.Red,
+				SwitchOnColor = Colors.Green,
+				SwitchThumbColor = Colors.Yellow,
 				HorizontalOptions = LayoutOptions.Start,
 				IsToggled = false
 			};
@@ -76,7 +76,7 @@ namespace Xamarin.Forms.Controls.Issues
 		public static readonly BindableProperty SwitchOffColorProperty =
 		  BindableProperty.Create(nameof(SwitchOffColor),
 			  typeof(Color), typeof(CustomSwitch),
-			  Color.Default);
+			  null);
 
 		public Color SwitchOffColor
 		{
@@ -87,7 +87,7 @@ namespace Xamarin.Forms.Controls.Issues
 		public static readonly BindableProperty SwitchOnColorProperty =
 		  BindableProperty.Create(nameof(SwitchOnColor),
 			  typeof(Color), typeof(CustomSwitch),
-			  Color.Default);
+			  null);
 
 		public Color SwitchOnColor
 		{
@@ -98,7 +98,7 @@ namespace Xamarin.Forms.Controls.Issues
 		public static readonly BindableProperty SwitchThumbColorProperty =
 		  BindableProperty.Create(nameof(SwitchThumbColor),
 			  typeof(Color), typeof(CustomSwitch),
-			  Color.Default);
+			  null);
 
 		public Color SwitchThumbColor
 		{

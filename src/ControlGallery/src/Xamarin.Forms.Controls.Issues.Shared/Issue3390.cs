@@ -25,7 +25,7 @@ namespace Xamarin.Forms.Controls.Issues
 				WidthRequest = 50,
 				HeightRequest = 50,
 				CornerRadius = 25,
-				BackgroundColor = Color.Accent
+				BackgroundColor = Colors.Accent
 			};
 
 			btn.Command = new Command(async () =>

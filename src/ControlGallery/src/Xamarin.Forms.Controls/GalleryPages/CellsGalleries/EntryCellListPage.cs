@@ -38,9 +38,9 @@ namespace Xamarin.Forms.Controls
 				ItemsSource = Enumerable.Range(0, 100).Select(i => new EntryCellTest
 				{
 					Label = "Label " + i,
-					LabelColor = i % 2 == 0 ? Color.Red : Color.Blue,
+					LabelColor = i % 2 == 0 ? Colors.Red : Colors.Blue,
 					Placeholder = "Placeholder " + i,
-					PlaceholderColor = i % 2 == 0 ? Color.Red : Color.Blue,
+					PlaceholderColor = i % 2 == 0 ? Colors.Red : Colors.Blue,
 				}),
 				ItemTemplate = dataTemplate
 			};

@@ -70,7 +70,7 @@ namespace Xamarin.Forms.Controls
 			toCrashButton.Clicked += (sender, args) =>
 			{
 				if (toggle)
-					Detail = new ContentPage { BackgroundColor = Color.Green, };
+					Detail = new ContentPage { BackgroundColor = Colors.Green, };
 				else
 					Detail = detailPage;
 
@@ -88,13 +88,13 @@ namespace Xamarin.Forms.Controls
 		{
 			AutomationId = "NavigationPageRoot";
 
-			BarBackgroundColor = Color.Maroon;
-			BarTextColor = Color.Yellow;
+			BarBackgroundColor = Colors.Maroon;
+			BarTextColor = Colors.Yellow;
 
 			Device.StartTimer(TimeSpan.FromSeconds(2), () =>
 			{
-				BarBackgroundColor = Color.Default;
-				BarTextColor = Color.Default;
+				BarBackgroundColor = null;
+				BarTextColor = null;
 
 				return false;
 			});
@@ -134,13 +134,13 @@ namespace Xamarin.Forms.Controls
 
 			Device.StartTimer(TimeSpan.FromSeconds(6), () =>
 			{
-				BarBackgroundColor = Color.Maroon;
-				BarTextColor = Color.Yellow;
+				BarBackgroundColor = Colors.Maroon;
+				BarTextColor = Colors.Yellow;
 
 				Device.StartTimer(TimeSpan.FromSeconds(6), () =>
 				{
-					BarBackgroundColor = Color.Default;
-					BarTextColor = Color.Default;
+					BarBackgroundColor = null;
+					BarTextColor = null;
 
 					return false;
 				});
@@ -154,8 +154,8 @@ namespace Xamarin.Forms.Controls
 			{
 				Title = "Rubriques",
 				IconImageSource = "coffee.png",
-				BarBackgroundColor = Color.Blue,
-				BarTextColor = Color.Aqua
+				BarBackgroundColor = Colors.Blue,
+				BarTextColor = Colors.Aqua
 			});
 
 			Children.Add(new NavigationPage(new Page())

@@ -36,7 +36,7 @@ namespace Xamarin.Forms.Platform.MacOS
 
 				var backgroundColor = solidColorBrush.Color;
 
-				if (backgroundColor == Color.Default)
+				if (backgroundColor == null)
 					control.Layer.BackgroundColor = NSColor.Clear.CGColor;
 				else
 					control.Layer.BackgroundColor = backgroundColor.ToCGColor();

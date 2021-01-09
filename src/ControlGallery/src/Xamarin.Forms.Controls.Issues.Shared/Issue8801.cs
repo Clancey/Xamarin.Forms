@@ -90,7 +90,7 @@ namespace Xamarin.Forms.Controls.Issues
 			public PopupStackLayout()
 			{
 				this.viewPositionService = DependencyService.Get<IViewPositionService>();
-				this.BackgroundColor = Color.Red;
+				this.BackgroundColor = Colors.Red;
 
 				showButton = new Button()
 				{
@@ -103,7 +103,7 @@ namespace Xamarin.Forms.Controls.Issues
 				{
 					BindingContext = this.BindingContext,
 					AutomationId = Guid.NewGuid().ToString(),
-					BackgroundColor = Color.Blue,
+					BackgroundColor = Colors.Blue,
 					IsVisible = false,
 					Margin = this.Margin,
 					HorizontalOptions = LayoutOptions.Start,

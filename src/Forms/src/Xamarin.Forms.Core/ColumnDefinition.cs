@@ -18,9 +18,9 @@ namespace Xamarin.Forms
 			set { SetValue(WidthProperty, value); }
 		}
 
-		internal double ActualWidth { get; set; }
+		internal float ActualWidth { get; set; }
 
-		internal double MinimumWidth { get; set; }
+		internal float MinimumWidth { get; set; }
 
 		public event EventHandler SizeChanged;
 

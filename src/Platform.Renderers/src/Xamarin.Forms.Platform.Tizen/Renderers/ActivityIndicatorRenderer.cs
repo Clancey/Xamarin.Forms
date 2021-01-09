@@ -31,7 +31,7 @@ namespace Xamarin.Forms.Platform.Tizen
 			if (initialize && Element.Color.IsDefault)
 				return;
 
-			Control.Color = (Element.Color == Color.Default) ? s_defaultColor : Element.Color.ToNative();
+			Control.Color = (Element.Color == null) ? s_defaultColor : Element.Color.ToNative();
 		}
 
 		void UpdateIsRunning()

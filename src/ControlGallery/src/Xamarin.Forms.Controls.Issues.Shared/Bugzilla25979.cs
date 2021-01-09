@@ -36,7 +36,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 				Content = new StackLayout
 				{
-					BackgroundColor = Color.Red,
+					BackgroundColor = Colors.Red,
 					Children = {
 						new Label { Text = "Page 1", FontSize=Device.GetNamedSize(NamedSize.Large, typeof(Label)) },
 						b
@@ -67,7 +67,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 				Content = new StackLayout
 				{
-					BackgroundColor = Color.Red,
+					BackgroundColor = Colors.Red,
 					Children = {
 						new Label { Text = "Page 2", FontSize=Device.GetNamedSize(NamedSize.Large, typeof(Label)) },
 						b

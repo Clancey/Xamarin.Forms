@@ -17,7 +17,7 @@ namespace Xamarin.Forms.Platform.WPF
 		public FrameRenderer()
 		{
 			_rounding = new Border();
-			_rounding.Background = Color.White.ToBrush();
+			_rounding.Background = Colors.White.ToBrush();
 			_rounding.SnapsToDevicePixels = true;
 			var wb = new System.Windows.Data.Binding(nameof(Border.ActualWidth));
 			wb.RelativeSource = new RelativeSource(RelativeSourceMode.FindAncestor)
@@ -84,14 +84,14 @@ namespace Xamarin.Forms.Platform.WPF
 
 		void UpdateBorder()
 		{
-			if (Element.BorderColor != Color.Default)
+			if (Element.BorderColor != null)
 			{
 				Control.UpdateDependencyColor(Border.BorderBrushProperty, Element.BorderColor);
 				Control.BorderThickness = new System.Windows.Thickness(1);
 			}
 			else
 			{
-				Control.UpdateDependencyColor(Border.BorderBrushProperty, Color.Transparent);
+				Control.UpdateDependencyColor(Border.BorderBrushProperty, Colors.Transparent);
 				Control.BorderThickness = new System.Windows.Thickness(0);
 			}
 		}

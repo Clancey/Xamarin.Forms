@@ -62,7 +62,7 @@ namespace Xamarin.Forms.Platform.GTK.Controls
 		public ListViewSeparator()
 		{
 			HeightRequest = 1;
-			ModifyBg(StateType.Normal, Color.Gray.ToGtkColor());    // Default Color: Gray
+			ModifyBg(StateType.Normal, Colors.Gray.ToGtkColor());    // Default Color: Gray
 			VisibleWindow = false;
 		}
 	}
@@ -143,7 +143,7 @@ namespace Xamarin.Forms.Platform.GTK.Controls
 			base.Destroy();
 		}
 
-		public static Gdk.Color DefaultSelectionColor = Color.FromHex("#3498DB").ToGtkColor();
+		public static Gdk.Color DefaultSelectionColor = Colors.FromHex("#3498DB").ToGtkColor();
 
 		public Widget Header
 		{

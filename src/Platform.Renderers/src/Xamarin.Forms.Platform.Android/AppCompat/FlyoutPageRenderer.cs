@@ -490,7 +490,7 @@ namespace Xamarin.Forms.Platform.Android
 				SetLockMode(isShowingSplit ? LockModeLockedOpen : LockModeUnlocked);
 				unchecked
 				{
-					SetScrimColor(isShowingSplit ? Color.Transparent.ToAndroid() : (int)DefaultScrimColor);
+					SetScrimColor(isShowingSplit ? Colors.Transparent.ToAndroid() : (int)DefaultScrimColor);
 				}
 			}
 		}

@@ -115,7 +115,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 		protected override void Init()
 		{
-			_results = new Label { Margin = 10, FontAttributes = FontAttributes.Bold, BackgroundColor = Color.Silver, HorizontalTextAlignment = TextAlignment.Center };
+			_results = new Label { Margin = 10, FontAttributes = FontAttributes.Bold, BackgroundColor = Colors.Silver, HorizontalTextAlignment = TextAlignment.Center };
 
 			var errorMessage = new Label();
 
@@ -132,7 +132,7 @@ namespace Xamarin.Forms.Controls.Issues
 					"Pressing the 'Valid Image' button should display an image of a coffee cup. Every other button should cause the message 'Error logged' to appear at the top of the page."
 			};
 
-			_image = new Image { BackgroundColor = Color.Bisque, HeightRequest = 20 };
+			_image = new Image { BackgroundColor = Colors.Bisque, HeightRequest = 20 };
 
 			var loadingState = new Label();
 			loadingState.SetBinding(Label.TextProperty, new Binding(Image.IsLoadingProperty.PropertyName, BindingMode.Default, new LoadingConverter()));

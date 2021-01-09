@@ -31,8 +31,8 @@ namespace Xamarin.Forms.Controls.Issues
 			var instructions = new Label
 			{
 				Padding = 12,
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White,
 				Text = "Tap the button, if the Polygon is updated, the test has passed."
 			};
 
@@ -46,8 +46,8 @@ namespace Xamarin.Forms.Controls.Issues
 				Text = "Update points collection"
 			};
 
-			var points1 = new PointCollection() { new Point(10, 10), new Point(100, 50), new Point(100, 95), new Point(10, 95) };
-			var points2 = new PointCollection() { new Point(10, 5), new Point(100, 70), new Point(100, 95), new Point(10, 95) };
+			var points1 = new PointCollection() { new PointF(10, 10), new PointF(100, 50), new PointF(100, 95), new PointF(10, 95) };
+			var points2 = new PointCollection() { new PointF(10, 5), new PointF(100, 70), new PointF(100, 95), new PointF(10, 95) };
 
 			var polygon = new Polygon
 			{

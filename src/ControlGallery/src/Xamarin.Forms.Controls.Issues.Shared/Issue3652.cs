@@ -32,7 +32,7 @@ namespace Xamarin.Forms.Controls.Issues
 					{
 						Text = "Remove the items using the context menu. Then add 3 more items and try to delete them as well. " +
 						"If all items are deleted successfully, then the test is passed.",
-						BackgroundColor = Color.Aqua
+						BackgroundColor = Colors.Aqua
 					},
 					new Button {
 						Command = model.AddListItemCommand,

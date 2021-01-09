@@ -36,7 +36,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			_statusFrame = new Frame
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				Padding = 15,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
@@ -49,7 +49,7 @@ namespace Xamarin.Forms.Controls.Issues
 					? SuccessMessage
 					: "EFFECT IS DEATTACHED";
 
-				_statusFrame.BackgroundColor = Color.LightGreen;
+				_statusFrame.BackgroundColor = Colors.LightGreen;
 			};
 
 			Content = new StackLayout

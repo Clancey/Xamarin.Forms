@@ -18,7 +18,7 @@ namespace Xamarin.Forms.Controls.Issues
 			var stackLayout = new StackLayout
 			{
 				VerticalOptions = LayoutOptions.Center,
-				BackgroundColor = Color.Beige
+				BackgroundColor = Colors.Beige
 			};
 
 			var label = new Label

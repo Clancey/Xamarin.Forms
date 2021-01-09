@@ -25,13 +25,13 @@ namespace Xamarin.Forms.Controls.GalleryPages.DragAndDropGalleries
 			stackLayout.Children.Add(CreateControls<Image>((drag, drop) =>
 			{
 				drag.HeightRequest = 50;
-				drag.BackgroundColor = Color.Green;
+				drag.BackgroundColor = Colors.Green;
 			}));
 
 			stackLayout.Children.Add(CreateControls<Image>((drag, drop) =>
 			{
 				drag.Source = "coffee.png";
-				drag.BackgroundColor = Color.Green;
+				drag.BackgroundColor = Colors.Green;
 			}));
 
 			stackLayout.Children.Add(CreateControls<Entry>(dragElementText: "Some text"));
@@ -90,7 +90,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.DragAndDropGalleries
 
 			dragRecognizer.DragStarting += (_, args) =>
 			{
-				DraggingColor = Color.Purple;
+				DraggingColor = Colors.Purple;
 				OnPropertyChanged(nameof(DraggingColor));
 
 				if (view is StackDrag sd)
@@ -101,7 +101,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.DragAndDropGalleries
 
 			dragRecognizer.DropCompleted += (_, __) =>
 			{
-				DraggingColor = Color.Default;
+				DraggingColor = null;
 				OnPropertyChanged(nameof(DraggingColor));
 			};
 

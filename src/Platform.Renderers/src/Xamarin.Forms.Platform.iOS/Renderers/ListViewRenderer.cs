@@ -133,7 +133,7 @@ namespace Xamarin.Forms.Platform.iOS
 				{
 					var backgroundColor = solidColorBrush.Color;
 
-					if (backgroundColor == Color.Default)
+					if (backgroundColor == null)
 						_backgroundUIView.BackgroundColor = UIColor.White;
 					else
 						_backgroundUIView.BackgroundColor = backgroundColor.ToUIColor();
@@ -774,7 +774,7 @@ namespace Xamarin.Forms.Platform.iOS
 			var color = Element.RefreshControlColor;
 
 			if (_tableViewController != null)
-				_tableViewController.UpdateRefreshControlColor(color == Color.Default ? null : color.ToUIColor());
+				_tableViewController.UpdateRefreshControlColor(color == null ? null : color.ToUIColor());
 		}
 
 		void UpdateVerticalScrollBarVisibility()

@@ -30,8 +30,8 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var frame = new Frame
 			{
-				BackgroundColor = Color.Red,
-				BorderColor = Color.Black,
+				BackgroundColor = Colors.Red,
+				BorderColor = Colors.Black,
 				CornerRadius = 24,
 				Margin = 12
 			};
@@ -39,7 +39,7 @@ namespace Xamarin.Forms.Controls.Issues
 			var label = new Label
 			{
 				HorizontalTextAlignment = TextAlignment.Center,
-				TextColor = Color.White,
+				TextColor = Colors.White,
 				Text = "Issue 11031"
 			};
 

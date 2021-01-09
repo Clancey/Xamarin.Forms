@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Runtime.CompilerServices;
 using Android.Content;
 using Android.Util;
@@ -9,7 +9,7 @@ using Xamarin.Forms;
 using AActivity = Android.App.Activity;
 using AApplicationInfoFlags = Android.Content.PM.ApplicationInfoFlags;
 using AFragmentManager = AndroidX.Fragment.App.FragmentManager;
-using Size = Xamarin.Forms.Size;
+using SizeF = System.Graphics.SizeF;
 
 namespace Xamarin.Platform
 {
@@ -33,9 +33,9 @@ namespace Xamarin.Platform
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static Size FromPixels(this Context context, double width, double height)
+		public static SizeF FromPixels(this Context context, double width, double height)
 		{
-			return new Size(context.FromPixels(width), context.FromPixels(height));
+			return new SizeF((float)context.FromPixels(width), (float)context.FromPixels(height));
 		}
 
 		public static void HideKeyboard(this Context self, global::Android.Views.View view)

@@ -50,7 +50,7 @@ namespace Xamarin.Forms.Platform.WPF
 
 		void UpdateColor()
 		{
-			Control.UpdateDependencyColor(FormsProgressRing.ForegroundProperty, Element.Color != Color.Default ? Element.Color : Color.Accent);
+			Control.UpdateDependencyColor(FormsProgressRing.ForegroundProperty, Element.Color != null ? Element.Color : Colors.Accent);
 		}
 
 		void UpdateIsActive()

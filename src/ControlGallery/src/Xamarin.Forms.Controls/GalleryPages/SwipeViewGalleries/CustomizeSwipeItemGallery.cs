@@ -64,7 +64,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.SwipeViewGalleries
 
 			var deleteSwipeItem = new SwipeItem
 			{
-				BackgroundColor = Color.FromHex(colors[swipeItemBackgroundColorPicker.SelectedIndex]),
+				BackgroundColor = Colors.FromHex(colors[swipeItemBackgroundColorPicker.SelectedIndex]),
 				IconImageSource = swipeItemIconPicker.SelectedItem.ToString(),
 				Text = swipeItemTextEntry.Text
 			};
@@ -80,7 +80,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.SwipeViewGalleries
 
 			var swipeContent = new Grid
 			{
-				BackgroundColor = Color.Gray
+				BackgroundColor = Colors.Gray
 			};
 
 			var swipeLabel = new Label
@@ -109,7 +109,7 @@ namespace Xamarin.Forms.Controls.GalleryPages.SwipeViewGalleries
 
 			swipeItemBackgroundColorPicker.SelectedIndexChanged += (sender, e) =>
 			{
-				deleteSwipeItem.BackgroundColor = Color.FromHex(colors[swipeItemBackgroundColorPicker.SelectedIndex]);
+				deleteSwipeItem.BackgroundColor = Colors.FromHex(colors[swipeItemBackgroundColorPicker.SelectedIndex]);
 			};
 
 			swipeItemIconPicker.SelectedIndexChanged += (sender, e) =>

@@ -34,8 +34,8 @@ namespace Xamarin.Forms.Controls.Issues
 				Text = "Toggle placeholder color",
 				Command = new Command(() =>
 				{
-					entry.PlaceholderColor = entry.PlaceholderColor.IsDefault ? Color.Red : (Color)Entry.PlaceholderColorProperty.DefaultValue;
-					editor.PlaceholderColor = editor.PlaceholderColor.IsDefault ? Color.Red : (Color)Editor.PlaceholderColorProperty.DefaultValue;
+					entry.PlaceholderColor = entry.PlaceholderColor.IsDefault ? Colors.Red : (Color)Entry.PlaceholderColorProperty.DefaultValue;
+					editor.PlaceholderColor = editor.PlaceholderColor.IsDefault ? Colors.Red : (Color)Editor.PlaceholderColorProperty.DefaultValue;
 				})
 			});
 

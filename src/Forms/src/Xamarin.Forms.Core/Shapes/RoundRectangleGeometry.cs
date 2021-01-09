@@ -1,4 +1,6 @@
-﻿namespace Xamarin.Forms.Shapes
+﻿using System.Graphics;
+
+namespace Xamarin.Forms.Shapes
 {
 	public class RoundRectangleGeometry : GeometryGroup
 	{
@@ -7,14 +9,14 @@
 
 		}
 
-		public RoundRectangleGeometry(CornerRadius cornerRadius, Rect rect)
+		public RoundRectangleGeometry(CornerRadius cornerRadius, RectangleF rect)
 		{
 			CornerRadius = cornerRadius;
 			Rect = rect;
 		}
 
 		public static readonly BindableProperty RectProperty =
-		   BindableProperty.Create(nameof(Rect), typeof(Rect), typeof(RoundRectangleGeometry), new Rect(),
+		   BindableProperty.Create(nameof(Rect), typeof(RectangleF), typeof(RoundRectangleGeometry), new RectangleF(),
 			   propertyChanged: OnRectChanged);
 
 		static void OnRectChanged(BindableObject bindable, object oldValue, object newValue)
@@ -22,10 +24,10 @@
 			(bindable as RoundRectangleGeometry)?.UpdateGeometry();
 		}
 
-		public Rect Rect
+		public RectangleF Rect
 		{
 			set { SetValue(RectProperty, value); }
-			get { return (Rect)GetValue(RectProperty); }
+			get { return (RectangleF)GetValue(RectProperty); }
 		}
 
 		public static readonly BindableProperty CornerRadiusProperty =
@@ -61,33 +63,33 @@
 
 			if (CornerRadius.TopLeft > 0)
 				roundedRectGeometry.Children.Add(
-					new EllipseGeometry(new Point(Rect.Location.X + CornerRadius.TopLeft, Rect.Location.Y + CornerRadius.TopLeft), CornerRadius.TopLeft, CornerRadius.TopLeft));
+					new EllipseGeometry(new PointF(Rect.Location.X + CornerRadius.TopLeft, Rect.Location.Y + CornerRadius.TopLeft), CornerRadius.TopLeft, CornerRadius.TopLeft));
 
 			if (CornerRadius.TopRight > 0)
 				roundedRectGeometry.Children.Add(
-					new EllipseGeometry(new Point(Rect.Location.X + Rect.Width - CornerRadius.TopRight, Rect.Location.Y + CornerRadius.TopRight), CornerRadius.TopRight, CornerRadius.TopRight));
+					new EllipseGeometry(new PointF(Rect.Location.X + Rect.Width - CornerRadius.TopRight, Rect.Location.Y + CornerRadius.TopRight), CornerRadius.TopRight, CornerRadius.TopRight));
 
 			if (CornerRadius.BottomRight > 0)
 				roundedRectGeometry.Children.Add(
-					new EllipseGeometry(new Point(Rect.Location.X + Rect.Width - CornerRadius.BottomRight, Rect.Location.Y + Rect.Height - CornerRadius.BottomRight), CornerRadius.BottomRight, CornerRadius.BottomRight));
+					new EllipseGeometry(new PointF(Rect.Location.X + Rect.Width - CornerRadius.BottomRight, Rect.Location.Y + Rect.Height - CornerRadius.BottomRight), CornerRadius.BottomRight, CornerRadius.BottomRight));
 
 			if (CornerRadius.BottomLeft > 0)
 				roundedRectGeometry.Children.Add(
-					new EllipseGeometry(new Point(Rect.Location.X + CornerRadius.BottomLeft, Rect.Location.Y + Rect.Height - CornerRadius.BottomLeft), CornerRadius.BottomLeft, CornerRadius.BottomLeft));
+					new EllipseGeometry(new PointF(Rect.Location.X + CornerRadius.BottomLeft, Rect.Location.Y + Rect.Height - CornerRadius.BottomLeft), CornerRadius.BottomLeft, CornerRadius.BottomLeft));
 
 			PathFigure pathFigure = new PathFigure
 			{
 				IsClosed = true,
-				StartPoint = new Point(Rect.Location.X + CornerRadius.TopLeft, Rect.Location.Y),
+				StartPoint = new PointF(Rect.Location.X + CornerRadius.TopLeft, Rect.Location.Y),
 				Segments = new PathSegmentCollection
 				{
-					new LineSegment { Point = new Point(Rect.Location.X + Rect.Width - CornerRadius.TopRight, Rect.Location.Y) },
-					new LineSegment { Point = new Point(Rect.Location.X + Rect.Width, Rect.Location.Y + CornerRadius.TopRight) },
-					new LineSegment { Point = new Point(Rect.Location.X + Rect.Width, Rect.Location.Y + Rect.Height - CornerRadius.BottomRight) },
-					new LineSegment { Point = new Point(Rect.Location.X + Rect.Width - CornerRadius.BottomRight, Rect.Location.Y + Rect.Height) },
-					new LineSegment { Point = new Point(Rect.Location.X + CornerRadius.BottomLeft, Rect.Location.Y + Rect.Height) },
-					new LineSegment { Point = new Point(Rect.Location.X, Rect.Location.Y + Rect.Height - CornerRadius.BottomLeft) },
-					new LineSegment { Point = new Point(Rect.Location.X, Rect.Location.Y + CornerRadius.TopLeft) }
+					new LineSegment { Point = new PointF(Rect.Location.X + Rect.Width - CornerRadius.TopRight, Rect.Location.Y) },
+					new LineSegment { Point = new PointF(Rect.Location.X + Rect.Width, Rect.Location.Y + CornerRadius.TopRight) },
+					new LineSegment { Point = new PointF(Rect.Location.X + Rect.Width, Rect.Location.Y + Rect.Height - CornerRadius.BottomRight) },
+					new LineSegment { Point = new PointF(Rect.Location.X + Rect.Width - CornerRadius.BottomRight, Rect.Location.Y + Rect.Height) },
+					new LineSegment { Point = new PointF(Rect.Location.X + CornerRadius.BottomLeft, Rect.Location.Y + Rect.Height) },
+					new LineSegment { Point = new PointF(Rect.Location.X, Rect.Location.Y + Rect.Height - CornerRadius.BottomLeft) },
+					new LineSegment { Point = new PointF(Rect.Location.X, Rect.Location.Y + CornerRadius.TopLeft) }
 				}
 			};
 

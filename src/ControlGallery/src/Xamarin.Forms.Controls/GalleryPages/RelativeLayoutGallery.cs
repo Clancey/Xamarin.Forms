@@ -14,7 +14,7 @@ namespace Xamarin.Forms.Controls
 
 			var box1 = new ContentView
 			{
-				BackgroundColor = Color.Gray,
+				BackgroundColor = Colors.Gray,
 				Content = new Label
 				{
 					Text = "0"
@@ -30,7 +30,7 @@ namespace Xamarin.Forms.Controls
 				var relativeTo = last; // local copy
 				var box = new ContentView
 				{
-					BackgroundColor = Color.Gray,
+					BackgroundColor = Colors.Gray,
 					Content = new Label
 					{
 						Text = (i + 1).ToString()

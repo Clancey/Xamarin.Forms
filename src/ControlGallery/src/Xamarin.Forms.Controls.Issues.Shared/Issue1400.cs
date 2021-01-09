@@ -44,7 +44,7 @@ namespace Xamarin.Forms.Controls.Issues
 			List = new ListView();
 			List.HorizontalOptions = LayoutOptions.FillAndExpand;
 			List.VerticalOptions = LayoutOptions.FillAndExpand;
-			List.BackgroundColor = Color.Yellow;
+			List.BackgroundColor = Colors.Yellow;
 			List.ItemTemplate = new DataTemplate(typeof(VCTest));
 			List.GroupHeaderTemplate = new DataTemplate(typeof(VCHeader));
 			List.IsGroupingEnabled = true;

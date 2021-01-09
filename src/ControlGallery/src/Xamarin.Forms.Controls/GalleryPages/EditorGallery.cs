@@ -86,7 +86,7 @@ namespace Xamarin.Forms.Controls
 		public EditorGalleryPage(string title, Keyboard keyboard)
 		{
 			Title = title;
-			BackgroundColor = Color.Red;
+			BackgroundColor = Colors.Red;
 			Padding = new Thickness(20);
 
 			var label = new Label

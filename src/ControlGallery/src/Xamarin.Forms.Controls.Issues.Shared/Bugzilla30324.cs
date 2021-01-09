@@ -23,7 +23,7 @@ namespace Xamarin.Forms.Controls.Issues
 		protected override void Init()
 		{
 			FlyoutPage page = new FlyoutPage();
-			page.Flyout = new Page() { Title = "Flyout", BackgroundColor = Color.Red };
+			page.Flyout = new Page() { Title = "Flyout", BackgroundColor = Colors.Red };
 			_lbl = new Label();
 
 			var otherPage = new ContentPage()
@@ -79,7 +79,7 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				System.Diagnostics.Debug.WriteLine("Disappear detail");
 				_lbl.Text = "Disappear detail";
-				page.Detail.BackgroundColor = Color.Green;
+				page.Detail.BackgroundColor = Colors.Green;
 				_count++;
 			};
 			page.Flyout.Appearing += (sender, e) =>

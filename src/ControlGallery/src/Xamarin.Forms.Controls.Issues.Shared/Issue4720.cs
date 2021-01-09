@@ -74,7 +74,7 @@ namespace Xamarin.Forms.Controls.Issues
 					Source = new UrlWebViewSource { Url = "https://www.microsoft.com/" },
 					HorizontalOptions = LayoutOptions.FillAndExpand,
 					VerticalOptions = LayoutOptions.FillAndExpand,
-					BackgroundColor = Color.Red
+					BackgroundColor = Colors.Red
 
 				};
 

@@ -41,8 +41,8 @@ namespace Xamarin.Forms.Controls.Issues
 			var instructions = new Label
 			{
 				Padding = 12,
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
+				BackgroundColor = Colors.Black,
+				TextColor = Colors.White,
 				Text = "Swipe to the right and tap the SwipeItem. Verify that the command has only been executed once."
 			};
 
@@ -50,7 +50,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var swipeContent = new Grid
 			{
-				BackgroundColor = Color.LightGray,
+				BackgroundColor = Colors.LightGray,
 				HeightRequest = 80
 			};
 
@@ -67,7 +67,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var swipeItem = new SwipeItem
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				Text = "Execute Command",
 				Command = ExecuteMe
 			};

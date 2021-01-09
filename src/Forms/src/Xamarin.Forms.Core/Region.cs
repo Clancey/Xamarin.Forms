@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Graphics;
 
 namespace Xamarin.Forms
 {
@@ -9,22 +10,22 @@ namespace Xamarin.Forms
 		// As such the internals of how it keeps shapes is hidden, so that future internal changes can occur to support shapes
 		// such as circles if required, without affecting anything else.
 
-		IReadOnlyList<Rectangle> Regions { get; }
+		IReadOnlyList<RectangleF> Regions { get; }
 		readonly Thickness _inflation;
 
-		Region(IList<Rectangle> positions) : this()
+		Region(IList<RectangleF> positions) : this()
 		{
-			Regions = new ReadOnlyCollection<Rectangle>(positions);
+			Regions = new ReadOnlyCollection<RectangleF>(positions);
 		}
 
-		Region(IList<Rectangle> positions, Thickness inflation) : this(positions)
+		Region(IList<RectangleF> positions, Thickness inflation) : this(positions)
 		{
 			_inflation = inflation;
 		}
 
-		public static Region FromLines(double[] lineHeights, double maxWidth, double startX, double endX, double startY)
+		public static Region FromLines(float[] lineHeights, float maxWidth, float startX, float endX, float startY)
 		{
-			var positions = new List<Rectangle>();
+			var positions = new List<RectangleF>();
 			var endLine = lineHeights.Length - 1;
 			var lineHeightTotal = startY;
 
@@ -32,28 +33,28 @@ namespace Xamarin.Forms
 				if (endLine != 0) // MultiLine
 				{
 					if (i == 0) // First Line
-						positions.Add(new Rectangle(startX, lineHeightTotal, maxWidth - startX, lineHeights[i]));
+						positions.Add(new RectangleF(startX, lineHeightTotal, maxWidth - startX, lineHeights[i]));
 
 					else if (i != endLine) // Middle Line
-						positions.Add(new Rectangle(0, lineHeightTotal, maxWidth, lineHeights[i]));
+						positions.Add(new RectangleF(0, lineHeightTotal, maxWidth, lineHeights[i]));
 
 					else // End Line
-						positions.Add(new Rectangle(0, lineHeightTotal, endX, lineHeights[i]));
+						positions.Add(new RectangleF(0, lineHeightTotal, endX, lineHeights[i]));
 
 					lineHeightTotal += lineHeights[i];
 				}
 				else // SingleLine
-					positions.Add(new Rectangle(startX, lineHeightTotal, endX - startX, lineHeights[i]));
+					positions.Add(new RectangleF(startX, lineHeightTotal, endX - startX, lineHeights[i]));
 
 			return new Region(positions);
 		}
 
-		public bool Contains(Point pt)
+		public bool Contains(PointF pt)
 		{
 			return Contains(pt.X, pt.Y);
 		}
 
-		public bool Contains(double x, double y)
+		public bool Contains(float x, float y)
 		{
 			if (Regions == null)
 				return false;
@@ -73,17 +74,17 @@ namespace Xamarin.Forms
 			return Inflate(_inflation.Left * -1, _inflation.Top * -1, _inflation.Right * -1, _inflation.Bottom * -1);
 		}
 
-		public Region Inflate(double size)
+		public Region Inflate(float size)
 		{
 			return Inflate(size, size, size, size);
 		}
 
-		public Region Inflate(double left, double top, double right, double bottom)
+		public Region Inflate(float left, float top, float right, float bottom)
 		{
 			if (Regions == null)
 				return this;
 
-			Rectangle[] rectangles = new Rectangle[Regions.Count];
+			RectangleF[] rectangles = new RectangleF[Regions.Count];
 			for (int i = 0; i < Regions.Count; i++)
 			{
 				var region = Regions[i];

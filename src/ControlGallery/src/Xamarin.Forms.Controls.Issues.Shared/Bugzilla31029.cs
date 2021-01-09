@@ -26,7 +26,7 @@ namespace Xamarin.Forms.Controls.Issues
 
 			btn.Clicked += (sender, e) =>
 			{
-				var source = GenerateBmp(60, 60, Color.Red);
+				var source = GenerateBmp(60, 60, Colors.Red);
 				generatedImage.Source = source;
 
 			};
@@ -53,7 +53,7 @@ namespace Xamarin.Forms.Controls.Issues
 			{
 				for (int j = 0; j < cols; j++)
 				{
-					bmpMaker.SetPixel(i, j, Color.White);
+					bmpMaker.SetPixel(i, j, Colors.White);
 				}
 			}
 			//draw a square

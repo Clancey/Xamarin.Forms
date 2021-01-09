@@ -1,11 +1,12 @@
 using System;
+using System.Graphics;
 
 namespace Xamarin.Forms
 {
 	public abstract class TableSectionBase : BindableObject
 	{
 		public static readonly BindableProperty TitleProperty = BindableProperty.Create("Title", typeof(string), typeof(TableSectionBase), null);
-		public static readonly BindableProperty TextColorProperty = BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(TableSectionBase), Color.Default);
+		public static readonly BindableProperty TextColorProperty = BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(TableSectionBase), null);
 
 		/// <summary>
 		///     Constructs a Section without an empty header.

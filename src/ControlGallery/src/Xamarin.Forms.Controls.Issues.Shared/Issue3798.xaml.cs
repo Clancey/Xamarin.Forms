@@ -50,7 +50,7 @@ namespace Xamarin.Forms.Controls.Issues
 			//Uncomment the below code to test ListView SeparatorVisibility (Updating dynamically)
 			//listView.SeparatorVisibility = _showRedSeparator ? SeparatorVisibility.None : SeparatorVisibility.Default;
 #if APP
-			listView.SeparatorColor = _showRedSeparator ? Color.Red : Color.Green;
+			listView.SeparatorColor = _showRedSeparator ? Colors.Red : Colors.Green;
 #endif
 			((ListView)sender).SelectedItem = null; // de-select the row
 

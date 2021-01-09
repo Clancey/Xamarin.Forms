@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Graphics;
 using System.IO;
 using System.Reflection;
 using System.Threading;
@@ -168,12 +169,12 @@ namespace Xamarin.Forms
 			return ret;
 		}
 
-		public static double GetNamedSize(NamedSize size, Element targetElement)
+		public static float GetNamedSize(NamedSize size, Element targetElement)
 		{
 			return GetNamedSize(size, targetElement.GetType());
 		}
 
-		public static double GetNamedSize(NamedSize size, Type targetElementType)
+		public static float GetNamedSize(NamedSize size, Type targetElementType)
 		{
 			return GetNamedSize(size, targetElementType, false);
 		}
@@ -246,7 +247,7 @@ namespace Xamarin.Forms
 		}
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public static double GetNamedSize(NamedSize size, Type targetElementType, bool useOldSizes)
+		public static float GetNamedSize(NamedSize size, Type targetElementType, bool useOldSizes)
 		{
 			return PlatformServices.GetNamedSize(size, targetElementType, useOldSizes);
 		}

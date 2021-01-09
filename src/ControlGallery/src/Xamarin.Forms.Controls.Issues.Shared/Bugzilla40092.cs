@@ -27,7 +27,7 @@ namespace Xamarin.Forms.Controls.Issues
 		{
 			AbsoluteLayout mainLayout = new AbsoluteLayout()
 			{
-				BackgroundColor = Color.White,
+				BackgroundColor = Colors.White,
 				AutomationId = White
 			};
 
@@ -36,13 +36,13 @@ namespace Xamarin.Forms.Controls.Issues
 
 			var thePage = new ContentView
 			{
-				BackgroundColor = Color.Red,
+				BackgroundColor = Colors.Red,
 				Content = mainLayout
 			};
 
 			BoxView view = new BoxView()
 			{
-				Color = Color.Black,
+				Color = Colors.Black,
 				AutomationId = Black
 			};
 

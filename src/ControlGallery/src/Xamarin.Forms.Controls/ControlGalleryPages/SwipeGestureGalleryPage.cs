@@ -56,7 +56,7 @@ namespace Xamarin.Forms.Controls
 		{
 			var box = new Image
 			{
-				BackgroundColor = Color.Gray,
+				BackgroundColor = Colors.Gray,
 				WidthRequest = 500,
 				HeightRequest = 500,
 				VerticalOptions = LayoutOptions.Center,

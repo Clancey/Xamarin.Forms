@@ -35,9 +35,9 @@ namespace Xamarin.Forms
 		readonly List<Animation> _children;
 		readonly Easing _easing;
 		readonly Action _finished;
-		readonly Action<double> _step;
-		double _beginAt;
-		double _finishAt;
+		readonly Action<float> _step;
+		float _beginAt;
+		float _finishAt;
 		bool _finishedTriggered;
 
 		public Animation()
@@ -47,13 +47,13 @@ namespace Xamarin.Forms
 			_step = f => { };
 		}
 
-		public Animation(Action<double> callback, double start = 0.0f, double end = 1.0f, Easing easing = null, Action finished = null)
+		public Animation(Action<float> callback, float start = 0.0f, float end = 1.0f, Easing easing = null, Action finished = null)
 		{
 			_children = new List<Animation>();
 			_easing = easing ?? Easing.Linear;
 			_finished = finished;
 
-			Func<double, double> transform = AnimationExtensions.Interpolate(start, end);
+			Func<float, float> transform = AnimationExtensions.Interpolate(start, end);
 			_step = f => callback(transform(f));
 		}
 
@@ -62,7 +62,7 @@ namespace Xamarin.Forms
 			return _children.GetEnumerator();
 		}
 
-		public void Add(double beginAt, double finishAt, Animation animation)
+		public void Add(float beginAt, float finishAt, Animation animation)
 		{
 			if (beginAt < 0 || beginAt > 1)
 				throw new ArgumentOutOfRangeException("beginAt");
@@ -78,14 +78,14 @@ namespace Xamarin.Forms
 			_children.Add(animation);
 		}
 
-		public void Commit(IAnimatable owner, string name, uint rate = 16, uint length = 250, Easing easing = null, Action<double, bool> finished = null, Func<bool> repeat = null)
+		public void Commit(IAnimatable owner, string name, uint rate = 16, uint length = 250, Easing easing = null, Action<float, bool> finished = null, Func<bool> repeat = null)
 		{
 			owner.Animate(name, this, rate, length, easing, finished, repeat);
 		}
 
-		public Action<double> GetCallback()
+		public Action<float> GetCallback()
 		{
-			Action<double> result = f =>
+			Action<float> result = f =>
 			{
 				_step(_easing.Ease(f));
 				foreach (Animation animation in _children)
@@ -93,12 +93,12 @@ namespace Xamarin.Forms
 					if (animation._finishedTriggered)
 						continue;
 
-					double val = Math.Max(0.0f, Math.Min(1.0f, (f - animation._beginAt) / (animation._finishAt - animation._beginAt)));
+					float val = Math.Max(0.0f, Math.Min(1.0f, (f - animation._beginAt) / (animation._finishAt - animation._beginAt)));
 
 					if (val <= 0.0f) // not ready to process yet
 						continue;
 
-					Action<double> callback = animation.GetCallback();
+					Action<float> callback = animation.GetCallback();
 					callback(val);
 
 					if (val >= 1.0f)
@@ -118,13 +118,13 @@ namespace Xamarin.Forms
 				anim._finishedTriggered = false;
 		}
 
-		public Animation Insert(double beginAt, double finishAt, Animation animation)
+		public Animation Insert(float beginAt, float finishAt, Animation animation)
 		{
 			Add(beginAt, finishAt, animation);
 			return this;
 		}
 
-		public Animation WithConcurrent(Animation animation, double beginAt = 0.0f, double finishAt = 1.0f)
+		public Animation WithConcurrent(Animation animation, float beginAt = 0.0f, float finishAt = 1.0f)
 		{
 			animation._beginAt = beginAt;
 			animation._finishAt = finishAt;
@@ -132,7 +132,7 @@ namespace Xamarin.Forms
 			return this;
 		}
 
-		public Animation WithConcurrent(Action<double> callback, double start = 0.0f, double end = 1.0f, Easing easing = null, double beginAt = 0.0f, double finishAt = 1.0f)
+		public Animation WithConcurrent(Action<float> callback, float start = 0.0f, float end = 1.0f, Easing easing = null, float beginAt = 0.0f, float finishAt = 1.0f)
 		{
 			var child = new Animation(callback, start, end, easing);
 			child._beginAt = beginAt;

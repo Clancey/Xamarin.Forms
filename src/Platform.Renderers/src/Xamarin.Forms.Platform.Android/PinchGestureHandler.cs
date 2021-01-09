@@ -30,7 +30,7 @@ namespace Xamarin.Forms.Platform.Android
 			if (pinchGesture == null)
 				return true;
 
-			var scalePointTransformed = new Point(scalePoint.X / view.Width, scalePoint.Y / view.Height);
+			var scalePointTransformed = new PointF(scalePoint.X / view.Width, scalePoint.Y / view.Height);
 			pinchGesture.SendPinch(view, 1 + (scale - 1) * _pinchStartingScale, scalePointTransformed);
 
 			return true;
@@ -60,7 +60,7 @@ namespace Xamarin.Forms.Platform.Android
 
 			_pinchStartingScale = view.Scale;
 
-			var scalePointTransformed = new Point(scalePoint.X / view.Width, scalePoint.Y / view.Height);
+			var scalePointTransformed = new PointF(scalePoint.X / view.Width, scalePoint.Y / view.Height);
 
 			pinchGesture.SendPinchStarted(view, scalePointTransformed);
 			return true;

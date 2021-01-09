@@ -33,8 +33,8 @@ namespace Xamarin.Forms.Controls
 				new RadioButton
 				{
 					Content = "BorderColor",
-					BackgroundColor = Color.Transparent,
-					BorderColor = Color.Red,
+					BackgroundColor = Colors.Transparent,
+					BorderColor = Colors.Red,
 					BorderWidth = 1,
 				}
 			);
@@ -43,8 +43,8 @@ namespace Xamarin.Forms.Controls
 				new RadioButton
 				{
 					Content = "BorderRadius",
-					BackgroundColor = Color.Transparent,
-					BorderColor = Color.Red,
+					BackgroundColor = Colors.Transparent,
+					BorderColor = Colors.Red,
 					BorderWidth = 1,
 				}
 			);
@@ -53,8 +53,8 @@ namespace Xamarin.Forms.Controls
 				new RadioButton
 				{
 					Content = "BorderWidth",
-					BackgroundColor = Color.Transparent,
-					BorderColor = Color.Red,
+					BackgroundColor = Colors.Transparent,
+					BorderColor = Colors.Red,
 					BorderWidth = 15,
 				}
 			);
@@ -79,7 +79,7 @@ namespace Xamarin.Forms.Controls
 				new RadioButton
 				{
 					Content = "TextColor",
-					TextColor = Color.Pink
+					TextColor = Colors.Pink
 				}
 			);
 
@@ -87,7 +87,7 @@ namespace Xamarin.Forms.Controls
 				new RadioButton
 				{
 					Content = "Padding",
-					BackgroundColor = Color.Red,
+					BackgroundColor = Colors.Red,
 					Padding = new Thickness(20, 30, 60, 15)
 				}
 			);

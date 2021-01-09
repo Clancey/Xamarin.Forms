@@ -6,10 +6,10 @@ namespace Xamarin.Forms.Controls.TabIndexTest
 {
 	public static class Colors
 	{
-		public static Color Cerulean = Color.FromRgb(0, 115, 209);
-		public static Color Gray = Color.FromRgb(216, 221, 230);
-		public static Color White = Color.White;
-		public static Color Black = Color.Black;
+		public static Color Cerulean = Colors.FromRgb(0, 115, 209);
+		public static Color Gray = Colors.FromRgb(216, 221, 230);
+		public static Color White = Colors.White;
+		public static Color Black = Colors.Black;
 	}
 	[Flags]
 	public enum DaysOfWeek

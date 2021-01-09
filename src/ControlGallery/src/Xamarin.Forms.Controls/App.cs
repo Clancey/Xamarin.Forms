@@ -52,10 +52,10 @@ namespace Xamarin.Forms.Controls
 			SetMainPage(new Bugzilla44596SplashPage(async () =>
 			{
 				var newTabbedPage = new TabbedPage();
-				newTabbedPage.Children.Add(new ContentPage { BackgroundColor = Color.Red, Content = new Label { Text = "Success" } });
+				newTabbedPage.Children.Add(new ContentPage { BackgroundColor = Colors.Red, Content = new Label { Text = "Success" } });
 				MainPage = new FlyoutPage
 				{
-					Flyout = new ContentPage { Title = "Flyout", BackgroundColor = Color.Red },
+					Flyout = new ContentPage { Title = "Flyout", BackgroundColor = Colors.Red },
 					Detail = newTabbedPage
 				};
 
@@ -85,10 +85,10 @@ namespace Xamarin.Forms.Controls
 			//SetMainPage(new Bugzilla44596SplashPage(() =>
 			//{
 			//	var newTabbedPage = new TabbedPage();
-			//	newTabbedPage.Children.Add(new ContentPage { BackgroundColor = Color.Red, Content = new Label { Text = "yay" } });
+			//	newTabbedPage.Children.Add(new ContentPage { BackgroundColor = Colors.Red, Content = new Label { Text = "yay" } });
 			//	MainPage = new FlyoutPage
 			//	{
-			//		Flyout = new ContentPage { Title = "Flyout", BackgroundColor = Color.Red },
+			//		Flyout = new ContentPage { Title = "Flyout", BackgroundColor = Colors.Red },
 			//		Detail = newTabbedPage
 			//	};
 			//}));
@@ -109,9 +109,9 @@ namespace Xamarin.Forms.Controls
 
 		public Page CreateDefaultMainPage()
 		{
-			var layout = new StackLayout { BackgroundColor = Color.Red };
+			var layout = new StackLayout { BackgroundColor = Colors.Red };
 			layout.Children.Add(new Label { Text = "This is master Page" });
-			var master = new ContentPage { Title = "Flyout", Content = layout, BackgroundColor = Color.SkyBlue, IconImageSource = "menuIcon" };
+			var master = new ContentPage { Title = "Flyout", Content = layout, BackgroundColor = Colors.SkyBlue, IconImageSource = "menuIcon" };
 			master.On<iOS>().SetUseSafeArea(true);
 			var mdp = new FlyoutPage
 			{
