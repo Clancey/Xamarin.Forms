@@ -239,7 +239,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		public void VisualElementGoesToCorrectStateWhenAvailable()
 		{
 			var label = new Label();
-			double targetBottomMargin = 1.5;
+			float targetBottomMargin = 1.5f;
 
 			var group = new VisualStateGroup();
 			var list = new VisualStateGroupList();
@@ -258,7 +258,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void VisualElementGoesToCorrectStateWhenAvailableFromSetter()
 		{
-			double targetBottomMargin = 1.5;
+			float targetBottomMargin = 1.5f;
 
 			var group = new VisualStateGroup();
 			var list = new VisualStateGroupList();
@@ -288,8 +288,8 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void VisualElementGoesToCorrectStateWhenSetterHasTarget()
 		{
-			double defaultMargin = default(double);
-			double targetMargin = 1.5;
+			float defaultMargin = default(float);
+			float targetMargin = 1.5f;
 
 			var label1 = new Label();
 			var label2 = new Label();
@@ -397,7 +397,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			watch.Stop();
 
-			double iterations = states;
+			float iterations = states;
 			var random = new Random();
 
 			for (int n = 0; n < iterations; n++)

@@ -25,7 +25,7 @@ namespace Xamarin.Forms.Shapes
 			BindableProperty.Create(nameof(Size), typeof(SizeF), typeof(ArcSegment), new SizeF(0, 0));
 
 		public static readonly BindableProperty RotationAngleProperty =
-			BindableProperty.Create(nameof(RotationAngle), typeof(float), typeof(ArcSegment), 0.0);
+			BindableProperty.Create(nameof(RotationAngle), typeof(float), typeof(ArcSegment), 0f);
 
 		public static readonly BindableProperty SweepDirectionProperty =
 			BindableProperty.Create(nameof(SweepDirection), typeof(SweepDirection), typeof(ArcSegment), SweepDirection.CounterClockwise);

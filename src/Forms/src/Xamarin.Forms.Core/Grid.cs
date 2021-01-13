@@ -17,10 +17,10 @@ namespace Xamarin.Forms
 
 		public static readonly BindableProperty ColumnSpanProperty = BindableProperty.CreateAttached("ColumnSpan", typeof(int), typeof(Grid), 1, validateValue: (bindable, value) => (int)value >= 1);
 
-		public static readonly BindableProperty RowSpacingProperty = BindableProperty.Create("RowSpacing", typeof(float), typeof(Grid), 6d,
+		public static readonly BindableProperty RowSpacingProperty = BindableProperty.Create("RowSpacing", typeof(float), typeof(Grid), 6f,
 			propertyChanged: (bindable, oldValue, newValue) => ((Grid)bindable).InvalidateMeasureInternal(InvalidationTrigger.MeasureChanged));
 
-		public static readonly BindableProperty ColumnSpacingProperty = BindableProperty.Create("ColumnSpacing", typeof(float), typeof(Grid), 6d,
+		public static readonly BindableProperty ColumnSpacingProperty = BindableProperty.Create("ColumnSpacing", typeof(float), typeof(Grid), 6f,
 			propertyChanged: (bindable, oldValue, newValue) => ((Grid)bindable).InvalidateMeasureInternal(InvalidationTrigger.MeasureChanged));
 
 		public static readonly BindableProperty ColumnDefinitionsProperty = BindableProperty.Create("ColumnDefinitions", typeof(ColumnDefinitionCollection), typeof(Grid), null,

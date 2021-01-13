@@ -10,7 +10,7 @@ namespace Xamarin.Forms
 	{
 		public static readonly BindableProperty ProgressColorProperty = BindableProperty.Create(nameof(ProgressColor), typeof(Color), typeof(ProgressBar), null);
 
-		public static readonly BindableProperty ProgressProperty = BindableProperty.Create(nameof(Progress), typeof(float), typeof(ProgressBar), 0d, coerceValue: (bo, v) => ((float)v).Clamp(0, 1));
+		public static readonly BindableProperty ProgressProperty = BindableProperty.Create(nameof(Progress), typeof(float), typeof(ProgressBar), 0f, coerceValue: (bo, v) => ((float)v).Clamp(0, 1));
 
 		protected override bool TabStopDefaultValueCreator() => false;
 

@@ -91,11 +91,11 @@ namespace Xamarin.Forms
 
 		public static readonly BindableProperty OrientationProperty = BindableProperty.Create("Orientation", typeof(ScrollOrientation), typeof(ScrollView), ScrollOrientation.Vertical);
 
-		static readonly BindablePropertyKey ScrollXPropertyKey = BindableProperty.CreateReadOnly("ScrollX", typeof(float), typeof(ScrollView), 0d);
+		static readonly BindablePropertyKey ScrollXPropertyKey = BindableProperty.CreateReadOnly("ScrollX", typeof(float), typeof(ScrollView), 0f);
 
 		public static readonly BindableProperty ScrollXProperty = ScrollXPropertyKey.BindableProperty;
 
-		static readonly BindablePropertyKey ScrollYPropertyKey = BindableProperty.CreateReadOnly("ScrollY", typeof(float), typeof(ScrollView), 0d);
+		static readonly BindablePropertyKey ScrollYPropertyKey = BindableProperty.CreateReadOnly("ScrollY", typeof(float), typeof(ScrollView), 0f);
 
 		public static readonly BindableProperty ScrollYProperty = ScrollYPropertyKey.BindableProperty;
 

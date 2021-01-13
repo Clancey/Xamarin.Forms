@@ -13,7 +13,7 @@ namespace Xamarin.Forms
 		public static readonly BindableProperty OrientationProperty = BindableProperty.Create(nameof(Orientation), typeof(StackOrientation), typeof(StackLayout), StackOrientation.Vertical,
 			propertyChanged: (bindable, oldvalue, newvalue) => ((StackLayout)bindable).InvalidateLayout());
 
-		public static readonly BindableProperty SpacingProperty = BindableProperty.Create(nameof(Spacing), typeof(float), typeof(StackLayout), 6d,
+		public static readonly BindableProperty SpacingProperty = BindableProperty.Create(nameof(Spacing), typeof(float), typeof(StackLayout), 6f,
 			propertyChanged: (bindable, oldvalue, newvalue) => ((StackLayout)bindable).InvalidateLayout());
 
 		LayoutInformation _layoutInformation = new LayoutInformation();

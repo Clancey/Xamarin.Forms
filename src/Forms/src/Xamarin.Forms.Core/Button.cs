@@ -38,7 +38,7 @@ namespace Xamarin.Forms
 
 		public static readonly BindableProperty FontAttributesProperty = FontElement.FontAttributesProperty;
 
-		public static readonly BindableProperty BorderWidthProperty = BindableProperty.Create("BorderWidth", typeof(float), typeof(Button), -1d);
+		public static readonly BindableProperty BorderWidthProperty = BindableProperty.Create("BorderWidth", typeof(float), typeof(Button), -1f);
 
 		public static readonly BindableProperty BorderColorProperty = BorderElement.BorderColorProperty;
 

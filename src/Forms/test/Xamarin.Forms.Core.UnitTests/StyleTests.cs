@@ -390,7 +390,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				},
 				Triggers = {
 					new Trigger (typeof (VisualElement)) {Property = Entry.IsPasswordProperty, Value=true, Setters = {
-							new Setter {Property = VisualElement.ScaleProperty, Value = 2d},
+							new Setter {Property = VisualElement.ScaleProperty, Value = 2f},
 						}}
 				},
 				Behaviors = {
@@ -400,10 +400,10 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			var entry = new Entry { Style = style };
 			Assert.AreEqual("foo", entry.Text);
-			Assert.AreEqual(1d, entry.Scale);
+			Assert.AreEqual(1f, entry.Scale);
 
 			entry.IsPassword = true;
-			Assert.AreEqual(2d, entry.Scale);
+			Assert.AreEqual(2f, entry.Scale);
 
 			Assert.True(behavior.attached);
 
@@ -411,7 +411,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assert.AreEqual(Entry.TextProperty.DefaultValue, entry.Text);
 			Assert.True(entry.IsPassword);
-			Assert.AreEqual(1d, entry.Scale);
+			Assert.AreEqual(1f, entry.Scale);
 			Assert.True(behavior.detached);
 		}
 

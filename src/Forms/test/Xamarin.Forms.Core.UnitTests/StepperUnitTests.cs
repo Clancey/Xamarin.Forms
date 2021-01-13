@@ -146,9 +146,9 @@ namespace Xamarin.Forms.Core.UnitTests
 			Assert.True(fired);
 		}
 
-		[TestCase(100.0, 0.5)]
-		[TestCase(10.0, 25.0)]
-		[TestCase(0, 39.5)]
+		[TestCase(100, 0.5f)]
+		[TestCase(10, 25)]
+		[TestCase(0, 39.5f)]
 		public void StepperValueChangedEventArgs(float initialValue, float finalValue)
 		{
 			var stepper = new Stepper
@@ -219,12 +219,12 @@ namespace Xamarin.Forms.Core.UnitTests
 			for (var i = 0; i < steps; i++)
 				stepper.Value += stepper.Increment;
 
-			Assert.AreEqual(Math.Round(stepper.Increment * steps, digits), stepper.Value);
+			Assert.AreEqual((float)Math.Round(stepper.Increment * steps, digits), stepper.Value);
 
 			for (var i = 0; i < steps; i++)
 				stepper.Value -= stepper.Increment;
 
-			Assert.AreEqual(0.0, stepper.Value);
+			Assert.AreEqual(0f, stepper.Value);
 		}
 
 		[Test]
@@ -234,16 +234,16 @@ namespace Xamarin.Forms.Core.UnitTests
 			var increment = .1f;
 			var stepper = new Stepper(0, 10, 4.99f, increment);
 
-			Assert.AreEqual(4.99, stepper.Value);
+			Assert.AreEqual(4.99f, stepper.Value);
 
 			stepper.Value += stepper.Increment;
-			Assert.AreEqual(5.09, stepper.Value);
+			Assert.AreEqual(5.09f, stepper.Value);
 			stepper.Value += stepper.Increment;
-			Assert.AreEqual(5.19, stepper.Value);
+			Assert.AreEqual(5.19f, stepper.Value);
 			stepper.Value += stepper.Increment;
-			Assert.AreEqual(5.29, stepper.Value);
+			Assert.AreEqual(5.29f, stepper.Value);
 			stepper.Value += stepper.Increment;
-			Assert.AreEqual(5.39, stepper.Value);
+			Assert.AreEqual(5.39f, stepper.Value);
 		}
 	}
 }

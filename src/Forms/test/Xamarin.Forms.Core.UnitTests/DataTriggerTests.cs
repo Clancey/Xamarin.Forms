@@ -126,7 +126,7 @@ namespace Xamarin.Forms.Core.UnitTests
 						Value = "Complete",
 						Setters = {
 							new Setter { Property = BoxView.ColorProperty, Value = Colors.Green },
-							new Setter { Property = VisualElement.OpacityProperty, Value = .5 },
+							new Setter { Property = VisualElement.OpacityProperty, Value = .5f },
 						}
 					},
 					new DataTrigger (typeof(BoxView)) {
@@ -148,7 +148,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			boxview.BindingContext = "Complete";
 			Assert.AreEqual(Colors.Green, boxview.Color);
-			Assert.AreEqual(.5, boxview.Opacity);
+			Assert.AreEqual(.5f, boxview.Opacity);
 
 			boxview.BindingContext = "MissingInfo";
 			Assert.AreEqual(Colors.Yellow, boxview.Color);

@@ -8,7 +8,7 @@ namespace Xamarin.Forms
 {
 	public partial class Slider : View, ISliderController, IElementConfiguration<Slider>
 	{
-		public static readonly BindableProperty MinimumProperty = BindableProperty.Create("Minimum", typeof(float), typeof(Slider), 0d, validateValue: (bindable, value) =>
+		public static readonly BindableProperty MinimumProperty = BindableProperty.Create("Minimum", typeof(float), typeof(Slider), 0f, validateValue: (bindable, value) =>
 		{
 			var slider = (Slider)bindable;
 			return (float)value < slider.Maximum;
@@ -19,7 +19,7 @@ namespace Xamarin.Forms
 			return value;
 		});
 
-		public static readonly BindableProperty MaximumProperty = BindableProperty.Create("Maximum", typeof(float), typeof(Slider), 1d, validateValue: (bindable, value) =>
+		public static readonly BindableProperty MaximumProperty = BindableProperty.Create("Maximum", typeof(float), typeof(Slider), 1f, validateValue: (bindable, value) =>
 		{
 			var slider = (Slider)bindable;
 			return (float)value > slider.Minimum;
@@ -30,7 +30,7 @@ namespace Xamarin.Forms
 			return value;
 		});
 
-		public static readonly BindableProperty ValueProperty = BindableProperty.Create("Value", typeof(float), typeof(Slider), 0d, BindingMode.TwoWay, coerceValue: (bindable, value) =>
+		public static readonly BindableProperty ValueProperty = BindableProperty.Create("Value", typeof(float), typeof(Slider), 0f, BindingMode.TwoWay, coerceValue: (bindable, value) =>
 		{
 			var slider = (Slider)bindable;
 			return ((float)value).Clamp(slider.Minimum, slider.Maximum);

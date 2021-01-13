@@ -7,7 +7,7 @@ namespace Xamarin.Forms
 {
 	public class Stepper : View, IElementConfiguration<Stepper>
 	{
-		public static readonly BindableProperty MaximumProperty = BindableProperty.Create(nameof(Maximum), typeof(float), typeof(Stepper), 100.0,
+		public static readonly BindableProperty MaximumProperty = BindableProperty.Create(nameof(Maximum), typeof(float), typeof(Stepper), 100f,
 			validateValue: (bindable, value) => (float)value > ((Stepper)bindable).Minimum,
 			coerceValue: (bindable, value) =>
 			{
@@ -16,7 +16,7 @@ namespace Xamarin.Forms
 				return value;
 			});
 
-		public static readonly BindableProperty MinimumProperty = BindableProperty.Create(nameof(Minimum), typeof(float), typeof(Stepper), 0.0,
+		public static readonly BindableProperty MinimumProperty = BindableProperty.Create(nameof(Minimum), typeof(float), typeof(Stepper), 0f,
 			validateValue: (bindable, value) => (float)value < ((Stepper)bindable).Maximum,
 			coerceValue: (bindable, value) =>
 			{
@@ -25,7 +25,7 @@ namespace Xamarin.Forms
 				return value;
 			});
 
-		public static readonly BindableProperty ValueProperty = BindableProperty.Create(nameof(Value), typeof(float), typeof(Stepper), 0.0, BindingMode.TwoWay,
+		public static readonly BindableProperty ValueProperty = BindableProperty.Create(nameof(Value), typeof(float), typeof(Stepper), 0f, BindingMode.TwoWay,
 			coerceValue: (bindable, value) =>
 			{
 				var stepper = (Stepper)bindable;
@@ -40,7 +40,7 @@ namespace Xamarin.Forms
 		int digits = 4;
 		//'-log10(increment) + 4' as rounding digits gives us 4 significant decimal digits after the most significant one.
 		//If your increment uses more than 4 significant digits, you're holding it wrong.
-		public static readonly BindableProperty IncrementProperty = BindableProperty.Create(nameof(Increment), typeof(float), typeof(Stepper), 1.0,
+		public static readonly BindableProperty IncrementProperty = BindableProperty.Create(nameof(Increment), typeof(float), typeof(Stepper), 1.0f,
 			propertyChanged: (b, o, n) => { ((Stepper)b).digits = (int)((float)-Math.Log10((float)n) + 4).Clamp(1, 15); });
 
 		readonly Lazy<PlatformConfigurationRegistry<Stepper>> _platformConfigurationRegistry;

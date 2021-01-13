@@ -53,7 +53,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		{
 			SolidColorBrush solidColorBrush = new SolidColorBrush(Colors.Red);
 			Assert.IsNotNull(solidColorBrush.Color);
-			Assert.AreEqual("#FFFF0000", solidColorBrush.Color.ToHexString());
+			Assert.AreEqual("#FFFF0000", solidColorBrush.Color.ToHexStringIncludingAlpha());
 		}
 
 		[Test]
@@ -61,11 +61,11 @@ namespace Xamarin.Forms.Core.UnitTests
 		{
 			SolidColorBrush black = Brush.Black;
 			Assert.IsNotNull(black.Color);
-			Assert.AreEqual("#FF000000", black.Color.ToHexString());
+			Assert.AreEqual("#FF000000", black.Color.ToHexStringIncludingAlpha());
 
 			SolidColorBrush white = Brush.White;
 			Assert.IsNotNull(white.Color);
-			Assert.AreEqual("#FFFFFFFF", white.Color.ToHexString());
+			Assert.AreEqual("#FFFFFFFF", white.Color.ToHexStringIncludingAlpha());
 		}
 	}
 }

@@ -9,7 +9,7 @@ namespace Xamarin.Forms
 									propertyChanged: OnTextColorPropertyChanged);
 
 		public static readonly BindableProperty CharacterSpacingProperty =
-			BindableProperty.Create(nameof(ITextElement.CharacterSpacing), typeof(float), typeof(ITextElement), 0.0d,
+			BindableProperty.Create(nameof(ITextElement.CharacterSpacing), typeof(float), typeof(ITextElement), 0.0f,
 				propertyChanged: OnCharacterSpacingPropertyChanged);
 
 		static void OnTextColorPropertyChanged(BindableObject bindable, object oldValue, object newValue)

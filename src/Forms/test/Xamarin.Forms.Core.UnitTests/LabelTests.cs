@@ -144,7 +144,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var label = new Label();
 
 			label.FontSize = 10.7f;
-			Assert.AreEqual(label.FontSize, 10.7);
+			Assert.AreEqual(label.FontSize, 10.7f);
 		}
 
 
@@ -197,20 +197,20 @@ namespace Xamarin.Forms.Core.UnitTests
 		{
 			var label = new Label();
 
-			Assert.AreEqual(10.0, label.FontSize);
+			Assert.AreEqual(10f, label.FontSize);
 
-			label.SetValue(Label.FontSizeProperty, 1.0, true);
-			Assert.AreEqual(1.0, label.FontSize);
+			label.SetValue(Label.FontSizeProperty, 1f, true);
+			Assert.AreEqual(1f, label.FontSize);
 		}
 
 		[Test]
 		public void ManuallySetFontSizeNotOverridenByStyle()
 		{
 			var label = new Label();
-			Assume.That(label.FontSize, Is.EqualTo(10.0));
+			Assume.That(label.FontSize, Is.EqualTo(10));
 
-			label.SetValue(Label.FontSizeProperty, 2.0, false);
-			Assert.AreEqual(2.0, label.FontSize);
+			label.SetValue(Label.FontSizeProperty, 2, false);
+			Assert.AreEqual(2, label.FontSize);
 
 			label.SetValue(Label.FontSizeProperty, 1.0, true);
 			Assert.AreEqual(2.0, label.FontSize);

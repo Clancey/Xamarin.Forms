@@ -440,8 +440,8 @@ namespace Xamarin.Forms.Core.UnitTests
 		}
 
 		[Test]
-		[TestCase(0.1), TestCase(0.2), TestCase(0.3), TestCase(0.4), TestCase(0.5)]
-		[TestCase(0.6), TestCase(0.7), TestCase(0.8), TestCase(0.9)]
+		[TestCase(0.1f), TestCase(0.2f), TestCase(0.3f), TestCase(0.4f), TestCase(0.5f)]
+		[TestCase(0.6f), TestCase(0.7f), TestCase(0.8f), TestCase(0.9f)]
 		public void AbsoluteColumnShouldNotBloatStarredColumns(float firstColumnWidth)
 		{
 			// This is a re-creation of the layout from Issue 12292

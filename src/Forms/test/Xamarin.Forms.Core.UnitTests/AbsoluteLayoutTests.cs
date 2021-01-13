@@ -87,8 +87,8 @@ namespace Xamarin.Forms.Core.UnitTests
 			Assert.That(child.Height, Is.EqualTo(50).Within(0.0001));
 		}
 
-		[TestCase(30, 40, 0.2, 0.3)]
-		[TestCase(35, 45, 0.5, 0.5)]
+		[TestCase(30, 40, 0.2f, 0.3f)]
+		[TestCase(35, 45, 0.5f, 0.5f)]
 		[TestCase(35, 45, 0, 0)]
 		[TestCase(35, 45, 1, 1)]
 		public void RelativePositionAbsoluteSize(float width, float height, float relX, float relY)

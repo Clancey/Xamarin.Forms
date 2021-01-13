@@ -54,11 +54,11 @@ namespace Xamarin.Forms.Core.UnitTests
 				yield return new object[] { RadioButton.HorizontalOptionsProperty, LayoutOptions.End };
 				yield return new object[] { RadioButton.BackgroundColorProperty, Colors.Red };
 				yield return new object[] { RadioButton.MarginProperty, new Thickness(1, 2, 3, 4) };
-				yield return new object[] { RadioButton.OpacityProperty, 0.67 };
-				yield return new object[] { RadioButton.RotationProperty, 0.3 };
-				yield return new object[] { RadioButton.ScaleProperty, 0.8};
-				yield return new object[] { RadioButton.ScaleXProperty, 0.9 };
-				yield return new object[] { RadioButton.ScaleYProperty, 0.95 };
+				yield return new object[] { RadioButton.OpacityProperty, 0.67f };
+				yield return new object[] { RadioButton.RotationProperty, 0.3f };
+				yield return new object[] { RadioButton.ScaleProperty, 0.8f};
+				yield return new object[] { RadioButton.ScaleXProperty, 0.9f };
+				yield return new object[] { RadioButton.ScaleYProperty, 0.95f };
 				yield return new object[] { RadioButton.TranslationXProperty, 123 };
 				yield return new object[] { RadioButton.TranslationYProperty, 321 };
 			}
