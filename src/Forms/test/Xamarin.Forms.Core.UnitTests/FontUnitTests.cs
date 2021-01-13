@@ -18,11 +18,11 @@ namespace Xamarin.Forms.Core.UnitTests
 		}
 
 		[Test]
-		public void TestFontForSizeDouble()
+		public void TestFontForSizeFloat()
 		{
 			var font = Font.OfSize("Foo", 12.7f);
 			Assert.AreEqual("Foo", font.FontFamily);
-			Assert.AreEqual(12.7, font.FontSize);
+			Assert.AreEqual(12.7f, font.FontSize);
 			Assert.AreEqual((NamedSize)0, font.NamedSize);
 		}
 
