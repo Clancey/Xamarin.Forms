@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Threading.Tasks;
@@ -19,8 +19,8 @@ namespace Xamarin.Forms.Core.UnitTests
 			Device.PlatformServices = new MockPlatformServices(getNativeSizeFunc: (ve, widthConstraint, heightConstraint) =>
 			{
 				if (widthConstraint < 30)
-					return new SizeRequest(new Size(40, 50));
-				return new SizeRequest(new Size(20, 100));
+					return new SizeRequest(new SizeF(40, 50));
+				return new SizeRequest(new SizeF(20, 100));
 			});
 		}
 
@@ -60,7 +60,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			Assert.True(fired);
 
 			var result = view.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity).Request;
-			Assert.AreEqual(new Size(200, 300), result);
+			Assert.AreEqual(new SizeF(200, 300), result);
 		}
 
 		[Test]
@@ -679,8 +679,8 @@ namespace Xamarin.Forms.Core.UnitTests
 			view.MinimumWidthRequest = 100;
 
 			var result = view.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity);
-			Assert.AreEqual(new Size(200, 20), result.Request);
-			Assert.AreEqual(new Size(100, 20), result.Minimum);
+			Assert.AreEqual(new SizeF(200, 20), result.Request);
+			Assert.AreEqual(new SizeF(100, 20), result.Minimum);
 		}
 
 		[Test]
@@ -696,8 +696,8 @@ namespace Xamarin.Forms.Core.UnitTests
 			view.MinimumHeightRequest = 100;
 
 			var result = view.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity);
-			Assert.AreEqual(new Size(20, 200), result.Request);
-			Assert.AreEqual(new Size(20, 100), result.Minimum);
+			Assert.AreEqual(new SizeF(20, 200), result.Request);
+			Assert.AreEqual(new SizeF(20, 100), result.Minimum);
 		}
 
 		[Test]
@@ -833,7 +833,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			view.WidthRequest = 20;
 			var request = view.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity);
 
-			Assert.AreEqual(new Size(20, 50), request.Request);
+			Assert.AreEqual(new SizeF(20, 50), request.Request);
 		}
 
 		[Test]
@@ -842,8 +842,8 @@ namespace Xamarin.Forms.Core.UnitTests
 			Device.PlatformServices = new MockPlatformServices(getNativeSizeFunc: (ve, widthConstraint, heightConstraint) =>
 			{
 				if (heightConstraint < 30)
-					return new SizeRequest(new Size(40, 50));
-				return new SizeRequest(new Size(20, 100));
+					return new SizeRequest(new SizeF(40, 50));
+				return new SizeRequest(new SizeF(20, 100));
 			});
 
 			var view = new View();
@@ -851,7 +851,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			view.HeightRequest = 20;
 			var request = view.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity);
 
-			Assert.AreEqual(new Size(40, 20), request.Request);
+			Assert.AreEqual(new SizeF(40, 20), request.Request);
 		}
 
 		[Test]

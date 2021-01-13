@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -77,7 +77,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			ScrollView scroll = new ScrollView { Content = view };
 			scroll.Layout(new Rectangle(0, 0, 50, 50));
 
-			Assert.AreEqual(new Size(50, 100), scroll.ContentSize);
+			Assert.AreEqual(new SizeF(50, 100), scroll.ContentSize);
 
 			bool changed = false;
 			scroll.PropertyChanged += (sender, e) =>
@@ -93,7 +93,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			view.HeightRequest = 200;
 
 			Assert.True(changed);
-			Assert.AreEqual(new Size(50, 200), scroll.ContentSize);
+			Assert.AreEqual(new SizeF(50, 200), scroll.ContentSize);
 		}
 
 		[Test]
@@ -104,7 +104,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			ScrollView scroll = new ScrollView { Content = view, Orientation = ScrollOrientation.Both };
 			scroll.Layout(new Rectangle(0, 0, 50, 50));
 
-			Assert.AreEqual(new Size(100, 100), scroll.ContentSize);
+			Assert.AreEqual(new SizeF(100, 100), scroll.ContentSize);
 
 			bool changed = false;
 			scroll.PropertyChanged += (sender, e) =>
@@ -120,7 +120,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			view.HeightRequest = 200;
 
 			Assert.True(changed);
-			Assert.AreEqual(new Size(100, 200), scroll.ContentSize);
+			Assert.AreEqual(new SizeF(100, 200), scroll.ContentSize);
 		}
 
 		[Test]
@@ -135,7 +135,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			};
 			scroll.Layout(new Rectangle(0, 0, 50, 50));
 
-			Assert.AreEqual(new Size(100, 50), scroll.ContentSize);
+			Assert.AreEqual(new SizeF(100, 50), scroll.ContentSize);
 
 			bool changed = false;
 			scroll.PropertyChanged += (sender, e) =>
@@ -151,7 +151,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			view.WidthRequest = 200;
 
 			Assert.True(changed);
-			Assert.AreEqual(new Size(200, 50), scroll.ContentSize);
+			Assert.AreEqual(new SizeF(200, 50), scroll.ContentSize);
 		}
 
 		[Test]
@@ -166,7 +166,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			};
 			scroll.Layout(new Rectangle(0, 0, 50, 50));
 
-			Assert.AreEqual(new Size(100, 100), scroll.ContentSize);
+			Assert.AreEqual(new SizeF(100, 100), scroll.ContentSize);
 
 			bool changed = false;
 			scroll.PropertyChanged += (sender, e) =>
@@ -182,7 +182,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			view.WidthRequest = 200;
 
 			Assert.True(changed);
-			Assert.AreEqual(new Size(200, 100), scroll.ContentSize);
+			Assert.AreEqual(new SizeF(200, 100), scroll.ContentSize);
 		}
 
 		[Test]
@@ -245,7 +245,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			view.HeightRequest = 200;
 
 			Assert.False(changed);
-			Assert.AreEqual(new Size(100, 50), scroll.ContentSize);
+			Assert.AreEqual(new SizeF(100, 50), scroll.ContentSize);
 		}
 
 		[Test]
@@ -486,7 +486,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			};
 			scroll.Layout(new Rectangle(0, 0, 100, 100));
 
-			Assert.AreEqual(new Size(300, 100), scroll.ContentSize);
+			Assert.AreEqual(new SizeF(300, 100), scroll.ContentSize);
 			Assert.AreEqual(100, scroll.Height);
 			Assert.AreEqual(100, scroll.Width);
 		}
@@ -503,7 +503,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			};
 			scroll.Layout(new Rectangle(0, 0, 100, 100));
 
-			Assert.AreEqual(new Size(100, 300), scroll.ContentSize);
+			Assert.AreEqual(new SizeF(100, 300), scroll.ContentSize);
 			Assert.AreEqual(100, scroll.Height);
 			Assert.AreEqual(100, scroll.Width);
 		}
@@ -520,7 +520,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			};
 			scroll.Layout(new Rectangle(0, 0, 100, 100));
 
-			Assert.AreEqual(new Size(300, 300), scroll.ContentSize);
+			Assert.AreEqual(new SizeF(300, 300), scroll.ContentSize);
 			Assert.AreEqual(100, scroll.Height);
 			Assert.AreEqual(100, scroll.Width);
 		}

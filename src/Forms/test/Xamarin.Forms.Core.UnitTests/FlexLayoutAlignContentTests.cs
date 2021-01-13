@@ -9,7 +9,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void TestAlignContentFlexStart()
 		{
-			Device.PlatformServices = new MockPlatformServices(getNativeSizeFunc: (visual, width, height) => new SizeRequest(new Size(50, 10)));
+			Device.PlatformServices = new MockPlatformServices(getNativeSizeFunc: (visual, width, height) => new SizeRequest(new SizeF(50, 10)));
 			var layout = new FlexLayout
 			{
 				IsPlatformEnabled = true,
@@ -50,7 +50,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void TestAlignContentFlexStartWithoutHeightOnChildren()
 		{
-			Device.PlatformServices = new MockPlatformServices(getNativeSizeFunc: (visual, width, height) => new SizeRequest(new Size(50, 10)));
+			Device.PlatformServices = new MockPlatformServices(getNativeSizeFunc: (visual, width, height) => new SizeRequest(new SizeF(50, 10)));
 			var layout = new FlexLayout
 			{
 				WidthRequest = 100,
@@ -88,7 +88,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void TestAlignContentFlexStartWithFlex()
 		{
-			Device.PlatformServices = new MockPlatformServices(getNativeSizeFunc: (visual, width, height) => new SizeRequest(new Size(0, 0)));
+			Device.PlatformServices = new MockPlatformServices(getNativeSizeFunc: (visual, width, height) => new SizeRequest(new SizeF(0, 0)));
 
 			var layout = new FlexLayout
 			{
@@ -142,7 +142,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void TestAlignContentFlexEnd()
 		{
-			Device.PlatformServices = new MockPlatformServices(getNativeSizeFunc: (visual, width, height) => new SizeRequest(new Size(50, 10)));
+			Device.PlatformServices = new MockPlatformServices(getNativeSizeFunc: (visual, width, height) => new SizeRequest(new SizeF(50, 10)));
 			var layout = new FlexLayout
 			{
 				IsPlatformEnabled = true,
@@ -191,7 +191,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void TestAlignContentStretch()
 		{
-			Device.PlatformServices = new MockPlatformServices(getNativeSizeFunc: (visual, width, height) => new SizeRequest(new Size(0, 0)));
+			Device.PlatformServices = new MockPlatformServices(getNativeSizeFunc: (visual, width, height) => new SizeRequest(new SizeF(0, 0)));
 			var layout = new FlexLayout
 			{
 				IsPlatformEnabled = true,
@@ -258,7 +258,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void TestAlignContentSpaceBetween()
 		{
-			Device.PlatformServices = new MockPlatformServices(getNativeSizeFunc: (visual, width, height) => new SizeRequest(new Size(50, 10)));
+			Device.PlatformServices = new MockPlatformServices(getNativeSizeFunc: (visual, width, height) => new SizeRequest(new SizeF(50, 10)));
 			var layout = new FlexLayout
 			{
 				IsPlatformEnabled = true,
@@ -298,7 +298,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void TestAlignContentSpaceAround()
 		{
-			Device.PlatformServices = new MockPlatformServices(getNativeSizeFunc: (visual, width, height) => new SizeRequest(new Size(50, 10)));
+			Device.PlatformServices = new MockPlatformServices(getNativeSizeFunc: (visual, width, height) => new SizeRequest(new SizeF(50, 10)));
 			var layout = new FlexLayout
 			{
 				IsPlatformEnabled = true,
@@ -684,7 +684,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void TestAlignContentStretchRowWithFixedHeight()
 		{
-			Device.PlatformServices = new MockPlatformServices(getNativeSizeFunc: (visual, width, height) => new SizeRequest(new Size(0, 0)));
+			Device.PlatformServices = new MockPlatformServices(getNativeSizeFunc: (visual, width, height) => new SizeRequest(new SizeF(0, 0)));
 			var layout = new FlexLayout
 			{
 				IsPlatformEnabled = true,

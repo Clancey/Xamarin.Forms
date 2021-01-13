@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Graphics;
 using System.IO.IsolatedStorage;
 using System.Reflection;
 using System.Security.Cryptography;
@@ -24,13 +25,13 @@ namespace Xamarin.Forms.Core.UnitTests
 		Action<Action> invokeOnMainThread;
 		Action<Uri> openUriAction;
 		Func<Uri, CancellationToken, Task<Stream>> getStreamAsync;
-		Func<VisualElement, double, double, SizeRequest> getNativeSizeFunc;
+		Func<VisualElement, float, float, SizeRequest> getNativeSizeFunc;
 		readonly bool useRealisticLabelMeasure;
 		readonly bool _isInvokeRequired;
 
 		public MockPlatformServices(Action<Action> invokeOnMainThread = null, Action<Uri> openUriAction = null,
 			Func<Uri, CancellationToken, Task<Stream>> getStreamAsync = null,
-			Func<VisualElement, double, double, SizeRequest> getNativeSizeFunc = null,
+			Func<VisualElement, float, float, SizeRequest> getNativeSizeFunc = null,
 			bool useRealisticLabelMeasure = false, bool isInvokeRequired = false)
 		{
 			this.invokeOnMainThread = invokeOnMainThread;
@@ -55,7 +56,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			return 'a' + v - 10;
 		}
 
-		public double GetNamedSize(NamedSize size, Type targetElement, bool useOldSizes)
+		public float GetNamedSize(NamedSize size, Type targetElement, bool useOldSizes)
 		{
 			switch (size)
 			{
@@ -80,7 +81,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			switch (name)
 			{
 				case "SystemBlue":
-					return Colors.FromRgb(0, 122, 255);
+					return new Color(0, 122, 255);
 				case "SystemChromeHighColor":
 					return new Color("#FF767676");
 				case "HoloBlueBright":
@@ -195,7 +196,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 		}
 
-		public SizeRequest GetNativeSize(VisualElement view, double widthConstraint, double heightConstraint)
+		public SizeRequest GetNativeSize(VisualElement view, float widthConstraint, float heightConstraint)
 		{
 			if (getNativeSizeFunc != null)
 				return getNativeSizeFunc(view, widthConstraint, heightConstraint);
@@ -204,19 +205,19 @@ namespace Xamarin.Forms.Core.UnitTests
 			var label = view as Label;
 			if (label != null && useRealisticLabelMeasure)
 			{
-				var letterSize = new Size(5, 10);
+				var letterSize = new SizeF(5, 10);
 				var w = label.Text.Length * letterSize.Width;
 				var h = letterSize.Height;
-				if (!double.IsPositiveInfinity(widthConstraint) && w > widthConstraint)
+				if (!float.IsPositiveInfinity(widthConstraint) && w > widthConstraint)
 				{
 					h = ((int)w / (int)widthConstraint) * letterSize.Height;
 					w = widthConstraint - (widthConstraint % letterSize.Width);
 
 				}
-				return new SizeRequest(new Size(w, h), new Size(Math.Min(10, w), h));
+				return new SizeRequest(new SizeF(w, h), new SizeF(Math.Min(10, w), h));
 			}
 
-			return new SizeRequest(new Size(100, 20));
+			return new SizeRequest(new SizeF(100, 20));
 		}
 
 		public OSAppTheme RequestedTheme { get; set; }

@@ -29,7 +29,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			ArcSegment arcSegment = new ArcSegment
 			{
 				Point = new PointF(10, 100),
-				Size = new Size(100, 50),
+				Size = new SizeF(100, 50),
 				RotationAngle = angle,
 				IsLargeArc = isLargeArc
 			};

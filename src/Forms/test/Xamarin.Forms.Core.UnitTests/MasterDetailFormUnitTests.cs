@@ -1,5 +1,5 @@
-using System;
-
+﻿using System;
+using System.Graphics;
 using NUnit.Framework;
 using Xamarin.Forms.Internals;
 
@@ -11,17 +11,17 @@ namespace Xamarin.Forms.Core.UnitTests
 		{
 			CurrentOrientation = DeviceOrientation.Portrait;
 		}
-		public override Size PixelScreenSize
+		public override SizeF PixelScreenSize
 		{
-			get { return new Size(100, 200); }
+			get { return new SizeF(100, 200); }
 		}
 
-		public override Size ScaledScreenSize
+		public override SizeF ScaledScreenSize
 		{
-			get { return new Size(50, 100); }
+			get { return new SizeF(50, 100); }
 		}
 
-		public override double ScalingFactor
+		public override float ScalingFactor
 		{
 			get { return 2; }
 		}

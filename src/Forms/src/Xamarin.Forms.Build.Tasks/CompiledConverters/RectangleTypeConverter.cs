@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
+using System.Graphics;
 using System.Linq;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
@@ -15,20 +16,20 @@ namespace Xamarin.Forms.Core.XamlC
 			var module = context.Body.Method.Module;
 
 			if (string.IsNullOrEmpty(value))
-				throw new BuildException(BuildExceptionCode.Conversion, node, null, value, typeof(Rectangle));
-			double x, y, w, h;
+				throw new BuildException(BuildExceptionCode.Conversion, node, null, value, typeof(RectangleF));
+			float x, y, w, h;
 			var xywh = value.Split(',');
 			if (xywh.Length != 4 ||
-				!double.TryParse(xywh[0], NumberStyles.Number, CultureInfo.InvariantCulture, out x) ||
-				!double.TryParse(xywh[1], NumberStyles.Number, CultureInfo.InvariantCulture, out y) ||
-				!double.TryParse(xywh[2], NumberStyles.Number, CultureInfo.InvariantCulture, out w) ||
-				!double.TryParse(xywh[3], NumberStyles.Number, CultureInfo.InvariantCulture, out h))
-				throw new BuildException(BuildExceptionCode.Conversion, node, null, value, typeof(Rectangle));
+				!float.TryParse(xywh[0], NumberStyles.Number, CultureInfo.InvariantCulture, out x) ||
+				!float.TryParse(xywh[1], NumberStyles.Number, CultureInfo.InvariantCulture, out y) ||
+				!float.TryParse(xywh[2], NumberStyles.Number, CultureInfo.InvariantCulture, out w) ||
+				!float.TryParse(xywh[3], NumberStyles.Number, CultureInfo.InvariantCulture, out h))
+				throw new BuildException(BuildExceptionCode.Conversion, node, null, value, typeof(RectangleF));
 
 			return GenerateIL(x, y, w, h, module);
 		}
 
-		IEnumerable<Instruction> GenerateIL(double x, double y, double w, double h, ModuleDefinition module)
+		IEnumerable<Instruction> GenerateIL(float x, float y, float w, float h, ModuleDefinition module)
 		{
 			//			IL_0000:  ldc.r8 3.1000000000000001
 			//			IL_0009:  ldc.r8 4.2000000000000002
@@ -41,10 +42,10 @@ namespace Xamarin.Forms.Core.XamlC
 			yield return Instruction.Create(OpCodes.Ldc_R8, w);
 			yield return Instruction.Create(OpCodes.Ldc_R8, h);
 			yield return Instruction.Create(OpCodes.Newobj, module.ImportCtorReference(("Xamarin.Platform", "Xamarin.Forms", "Rectangle"), parameterTypes: new[] {
-				("mscorlib", "System", "Double"),
-				("mscorlib", "System", "Double"),
-				("mscorlib", "System", "Double"),
-				("mscorlib", "System", "Double")}));
+				("mscorlib", "System", "float"),
+				("mscorlib", "System", "float"),
+				("mscorlib", "System", "float"),
+				("mscorlib", "System", "float")}));
 		}
 	}
 }

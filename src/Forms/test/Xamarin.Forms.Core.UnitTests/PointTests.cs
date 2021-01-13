@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using NUnit.Framework;
 
 
@@ -23,17 +23,17 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void TestPointMath()
 		{
-			var point = new PointF(2, 3) + new Size(3, 2);
+			var point = new PointF(2, 3) + new SizeF(3, 2);
 			Assert.AreEqual(new PointF(5, 5), point);
 
-			point = new PointF(3, 4) - new Size(2, 3);
+			point = new PointF(3, 4) - new SizeF(2, 3);
 			Assert.AreEqual(new PointF(1, 1), point);
 		}
 
 		[Test]
 		public void TestPointFromSize()
 		{
-			var point = new PointF(new Size(10, 20));
+			var point = new PointF(new SizeF(10, 20));
 
 			Assert.AreEqual(10, point.X);
 			Assert.AreEqual(20, point.Y);
@@ -84,7 +84,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var point = new PointF(2, 4);
 			var size = (Size)point;
 
-			Assert.AreEqual(new Size(2, 4), size);
+			Assert.AreEqual(new SizeF(2, 4), size);
 		}
 
 		[Test]

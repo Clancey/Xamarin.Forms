@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
+using System.Graphics;
 using NUnit.Framework;
 using Xamarin.Forms.Internals;
 

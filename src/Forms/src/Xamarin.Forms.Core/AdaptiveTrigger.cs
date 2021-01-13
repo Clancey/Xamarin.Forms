@@ -9,14 +9,14 @@ namespace Xamarin.Forms
 			UpdateState();
 		}
 
-		public double MinWindowHeight
+		public float MinWindowHeight
 		{
-			get => (double)GetValue(MinWindowHeightProperty);
+			get => (float)GetValue(MinWindowHeightProperty);
 			set => SetValue(MinWindowHeightProperty, value);
 		}
 
 		public static readonly BindableProperty MinWindowHeightProperty =
-			BindableProperty.Create(nameof(MinWindowHeight), typeof(double), typeof(AdaptiveTrigger), -1d,
+			BindableProperty.Create(nameof(MinWindowHeight), typeof(float), typeof(AdaptiveTrigger), -1f,
 				propertyChanged: OnMinWindowHeightChanged);
 
 		static void OnMinWindowHeightChanged(BindableObject bindable, object oldvalue, object newvalue)
@@ -24,14 +24,14 @@ namespace Xamarin.Forms
 			((AdaptiveTrigger)bindable).UpdateState();
 		}
 
-		public double MinWindowWidth
+		public float MinWindowWidth
 		{
-			get => (double)GetValue(MinWindowWidthProperty);
+			get => (float)GetValue(MinWindowWidthProperty);
 			set => SetValue(MinWindowWidthProperty, value);
 		}
 
 		public static readonly BindableProperty MinWindowWidthProperty =
-			BindableProperty.Create(nameof(MinWindowWidthProperty), typeof(double), typeof(AdaptiveTrigger), -1d,
+			BindableProperty.Create(nameof(MinWindowWidthProperty), typeof(float), typeof(AdaptiveTrigger), -1f,
 				propertyChanged: OnMinWindowWidthChanged);
 
 		static void OnMinWindowWidthChanged(BindableObject bindable, object oldvalue, object newvalue)

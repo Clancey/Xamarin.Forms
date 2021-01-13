@@ -586,7 +586,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		internal bool childAdded;
 		internal bool added;
 
-		protected override void LayoutChildren(double x, double y, double width, double height)
+		protected override void LayoutChildren(float x, float y, float width, float height)
 		{
 			if (added)
 				layoutChildren = true;

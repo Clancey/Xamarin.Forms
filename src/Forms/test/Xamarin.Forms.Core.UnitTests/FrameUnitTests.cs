@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -122,7 +122,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				IsPlatformEnabled = true,
 			};
 
-			Assert.AreEqual(new Size(140, 240), frame.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity).Request);
+			Assert.AreEqual(new SizeF(140, 240), frame.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity).Request);
 
 			frame.Layout(new Rectangle(0, 0, 300, 300));
 
@@ -150,7 +150,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				WidthRequest = 20
 			};
 
-			Assert.AreEqual(new Size(60, 240), frame.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity).Request);
+			Assert.AreEqual(new SizeF(60, 240), frame.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity).Request);
 		}
 
 		[Test]
@@ -168,7 +168,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				HeightRequest = 20
 			};
 
-			Assert.AreEqual(new Size(140, 60), frame.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity).Request);
+			Assert.AreEqual(new SizeF(140, 60), frame.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity).Request);
 		}
 
 		[Test]

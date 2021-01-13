@@ -27,21 +27,21 @@ namespace Xamarin.Forms
 
 		public static readonly BindableProperty YProperty = YPropertyKey.BindableProperty;
 
-		public static readonly BindableProperty AnchorXProperty = BindableProperty.Create("AnchorX", typeof(float), typeof(VisualElement), .5d);
+		public static readonly BindableProperty AnchorXProperty = BindableProperty.Create("AnchorX", typeof(float), typeof(VisualElement), .5f);
 
-		public static readonly BindableProperty AnchorYProperty = BindableProperty.Create("AnchorY", typeof(float), typeof(VisualElement), .5d);
+		public static readonly BindableProperty AnchorYProperty = BindableProperty.Create("AnchorY", typeof(float), typeof(VisualElement), .5f);
 
-		public static readonly BindableProperty TranslationXProperty = BindableProperty.Create("TranslationX", typeof(float), typeof(VisualElement), 0d);
+		public static readonly BindableProperty TranslationXProperty = BindableProperty.Create("TranslationX", typeof(float), typeof(VisualElement), 0f);
 
-		public static readonly BindableProperty TranslationYProperty = BindableProperty.Create("TranslationY", typeof(float), typeof(VisualElement), 0d);
+		public static readonly BindableProperty TranslationYProperty = BindableProperty.Create("TranslationY", typeof(float), typeof(VisualElement), 0f);
 
-		static readonly BindablePropertyKey WidthPropertyKey = BindableProperty.CreateReadOnly("Width", typeof(float), typeof(VisualElement), -1d,
-			coerceValue: (bindable, value) => float.IsNaN((float)value) ? 0d : value);
+		static readonly BindablePropertyKey WidthPropertyKey = BindableProperty.CreateReadOnly("Width", typeof(float), typeof(VisualElement), -1f,
+			coerceValue: (bindable, value) => float.IsNaN((float)value) ? 0f : value);
 
 		public static readonly BindableProperty WidthProperty = WidthPropertyKey.BindableProperty;
 
-		static readonly BindablePropertyKey HeightPropertyKey = BindableProperty.CreateReadOnly("Height", typeof(float), typeof(VisualElement), -1d,
-			coerceValue: (bindable, value) => float.IsNaN((float)value) ? 0d : value);
+		static readonly BindablePropertyKey HeightPropertyKey = BindableProperty.CreateReadOnly("Height", typeof(float), typeof(VisualElement), -1f,
+			coerceValue: (bindable, value) => float.IsNaN((float)value) ? 0f : value);
 
 		public static readonly BindableProperty HeightProperty = HeightPropertyKey.BindableProperty;
 
@@ -51,11 +51,11 @@ namespace Xamarin.Forms
 
 		public static readonly BindableProperty RotationYProperty = BindableProperty.Create("RotationY", typeof(float), typeof(VisualElement), default(float));
 
-		public static readonly BindableProperty ScaleProperty = BindableProperty.Create(nameof(Scale), typeof(float), typeof(VisualElement), 1d);
+		public static readonly BindableProperty ScaleProperty = BindableProperty.Create(nameof(Scale), typeof(float), typeof(VisualElement), 1f);
 
-		public static readonly BindableProperty ScaleXProperty = BindableProperty.Create(nameof(ScaleX), typeof(float), typeof(VisualElement), 1d);
+		public static readonly BindableProperty ScaleXProperty = BindableProperty.Create(nameof(ScaleX), typeof(float), typeof(VisualElement), 1f);
 
-		public static readonly BindableProperty ScaleYProperty = BindableProperty.Create(nameof(ScaleY), typeof(float), typeof(VisualElement), 1d);
+		public static readonly BindableProperty ScaleYProperty = BindableProperty.Create(nameof(ScaleY), typeof(float), typeof(VisualElement), 1f);
 
 		internal static readonly BindableProperty TransformProperty = BindableProperty.Create("Transform", typeof(string), typeof(VisualElement), null, propertyChanged: OnTransformChanged);
 
@@ -268,13 +268,13 @@ namespace Xamarin.Forms
 		public static readonly BindableProperty TriggersProperty = TriggersPropertyKey.BindableProperty;
 
 
-		public static readonly BindableProperty WidthRequestProperty = BindableProperty.Create("WidthRequest", typeof(float), typeof(VisualElement), -1d, propertyChanged: OnRequestChanged);
+		public static readonly BindableProperty WidthRequestProperty = BindableProperty.Create("WidthRequest", typeof(float), typeof(VisualElement), -1f, propertyChanged: OnRequestChanged);
 
-		public static readonly BindableProperty HeightRequestProperty = BindableProperty.Create("HeightRequest", typeof(float), typeof(VisualElement), -1d, propertyChanged: OnRequestChanged);
+		public static readonly BindableProperty HeightRequestProperty = BindableProperty.Create("HeightRequest", typeof(float), typeof(VisualElement), -1f, propertyChanged: OnRequestChanged);
 
-		public static readonly BindableProperty MinimumWidthRequestProperty = BindableProperty.Create("MinimumWidthRequest", typeof(float), typeof(VisualElement), -1d, propertyChanged: OnRequestChanged);
+		public static readonly BindableProperty MinimumWidthRequestProperty = BindableProperty.Create("MinimumWidthRequest", typeof(float), typeof(VisualElement), -1f, propertyChanged: OnRequestChanged);
 
-		public static readonly BindableProperty MinimumHeightRequestProperty = BindableProperty.Create("MinimumHeightRequest", typeof(float), typeof(VisualElement), -1d, propertyChanged: OnRequestChanged);
+		public static readonly BindableProperty MinimumHeightRequestProperty = BindableProperty.Create("MinimumHeightRequest", typeof(float), typeof(VisualElement), -1f, propertyChanged: OnRequestChanged);
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public static readonly BindablePropertyKey IsFocusedPropertyKey = BindableProperty.CreateReadOnly("IsFocused",

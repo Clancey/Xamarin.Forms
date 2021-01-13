@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Globalization;
 using System.Security.Cryptography.X509Certificates;
 using NUnit.Framework;
@@ -100,7 +100,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		public void ImplicitConversionFromSize()
 		{
 			Thickness thickness = new Thickness();
-			Assert.DoesNotThrow(() => thickness = new Size(42, 84));
+			Assert.DoesNotThrow(() => thickness = new SizeF(42, 84));
 			Assert.AreEqual(new Thickness(42, 84), thickness);
 
 			Assert.DoesNotThrow(() => thickness = 42);

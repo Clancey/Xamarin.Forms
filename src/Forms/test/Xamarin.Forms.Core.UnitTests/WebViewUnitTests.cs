@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Graphics;
 using System.Linq;
 using System.Net;
 
@@ -90,7 +91,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var container = new StackLayout
 			{
 				BindingContext = viewModel,
-				Padding = new Size(20, 20),
+				Padding = new SizeF(20, 20),
 				Children = {
 					htmlWebView,
 					urlWebView

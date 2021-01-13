@@ -11,7 +11,7 @@ namespace Xamarin.Forms.Core.UnitTests
 	{
 		class FakePlatform : IPlatform
 		{
-			public SizeRequest GetNativeSize(VisualElement view, double widthConstraint, double heightConstraint)
+			public SizeRequest GetNativeSize(VisualElement view, float widthConstraint, float heightConstraint)
 			{
 				throw new NotImplementedException();
 			}

@@ -9,7 +9,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		public override void Setup()
 		{
 			base.Setup();
-			Device.PlatformServices = new MockPlatformServices(getNativeSizeFunc: (b, d, e) => new SizeRequest(new Size(100, 50)));
+			Device.PlatformServices = new MockPlatformServices(getNativeSizeFunc: (b, d, e) => new SizeRequest(new SizeF(100, 50)));
 		}
 
 		[TearDown]
@@ -37,7 +37,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			parent.Content = child;
 
 			var result = parent.Measure(double.PositiveInfinity, double.PositiveInfinity, MeasureFlags.IncludeMargins);
-			Assert.AreEqual(new Size(140, 110), result.Request);
+			Assert.AreEqual(new SizeF(140, 110), result.Request);
 		}
 
 		[Test]

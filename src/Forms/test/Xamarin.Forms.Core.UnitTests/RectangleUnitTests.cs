@@ -1,4 +1,4 @@
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 
 namespace Xamarin.Forms.Core.UnitTests
@@ -21,7 +21,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			Assert.AreEqual(4, rect.Width);
 			Assert.AreEqual(5, rect.Height);
 
-			rect = new Rectangle(new PointF(2, 3), new Size(4, 5));
+			rect = new Rectangle(new PointF(2, 3), new SizeF(4, 5));
 			Assert.AreEqual(2, rect.X);
 			Assert.AreEqual(3, rect.Y);
 			Assert.AreEqual(4, rect.Width);
@@ -45,7 +45,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			Assert.AreEqual(6, rect.Right);
 			Assert.AreEqual(8, rect.Bottom);
 
-			Assert.AreEqual(new Size(4, 5), rect.Size);
+			Assert.AreEqual(new SizeF(4, 5), rect.Size);
 			Assert.AreEqual(new PointF(2, 3), rect.Location);
 
 			Assert.AreEqual(new PointF(4, 5.5), rect.Center);
@@ -83,7 +83,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assert.AreEqual(new Rectangle(-5, -5, 20, 20), rect);
 
-			rect = rect.Inflate(new Size(-5, -5));
+			rect = rect.Inflate(new SizeF(-5, -5));
 
 			Assert.AreEqual(new Rectangle(0, 0, 10, 10), rect);
 		}
@@ -154,7 +154,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		public void TestSetSize()
 		{
 			var rect = new Rectangle();
-			rect.Size = new Size(10, 20);
+			rect.Size = new SizeF(10, 20);
 
 			Assert.AreEqual(new Rectangle(0, 0, 10, 20), rect);
 		}

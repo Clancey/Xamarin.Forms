@@ -20,7 +20,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				if (d > 44)
 					animcount++;
 			}, box.Rotation, box.Rotation + 45);
-			sb.Add(0, .5, rot45);
+			sb.Add(0, .5f, rot45);
 			Assume.That(box.Rotation, Is.EqualTo(0d));
 
 			var i = 0;

@@ -21,7 +21,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var arcSegment1 = new ArcSegment();
 			Assert.IsNotNull(arcSegment1);
 
-			var arcSegment2 = new ArcSegment(new PointF(0, 0), new Size(100, 100), 90, SweepDirection.Clockwise, false);
+			var arcSegment2 = new ArcSegment(new PointF(0, 0), new SizeF(100, 100), 90, SweepDirection.Clockwise, false);
 			Assert.IsNotNull(arcSegment2);
 			Assert.AreEqual(90, arcSegment2.RotationAngle);
 			Assert.AreEqual(100, arcSegment2.Size.Height);

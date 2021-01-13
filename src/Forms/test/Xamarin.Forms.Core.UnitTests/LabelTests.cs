@@ -162,7 +162,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			Device.PlatformServices = new MockPlatformServices(getNativeSizeFunc: (ve, w, h) =>
 			{
 				var l = (Label)ve;
-				return new SizeRequest(new Size(l.Font.FontSize, l.Font.FontSize));
+				return new SizeRequest(new SizeF(l.Font.FontSize, l.Font.FontSize));
 			});
 
 			var label = new Label { IsPlatformEnabled = true };

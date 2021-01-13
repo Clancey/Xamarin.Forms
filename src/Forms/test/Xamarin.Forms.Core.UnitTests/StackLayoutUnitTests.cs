@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Linq;
 using NUnit.Framework;
 
@@ -44,7 +44,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			var r = stack.GetSizeRequest(100, 100);
 
-			Assert.AreEqual(new SizeRequest(new Size(20, 20)), r);
+			Assert.AreEqual(new SizeRequest(new SizeF(20, 20)), r);
 		}
 
 		[Test]
@@ -191,7 +191,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			};
 
 			var size = stack.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity).Request;
-			Assert.AreEqual(new Size(30, 56), size);
+			Assert.AreEqual(new SizeF(30, 56), size);
 		}
 
 		[Test]
@@ -208,7 +208,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			};
 
 			var size = stack.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity).Request;
-			Assert.AreEqual(new Size(56, 30), size);
+			Assert.AreEqual(new SizeF(56, 30), size);
 		}
 
 		[Test]
@@ -315,7 +315,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			};
 
 			var result = stack.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity);
-			Assert.That(result.Minimum, Is.EqualTo(new Size(100, 230)));
+			Assert.That(result.Minimum, Is.EqualTo(new SizeF(100, 230)));
 		}
 
 		[Test]
@@ -334,7 +334,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			};
 
 			var result = stack.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity);
-			Assert.That(result.Minimum, Is.EqualTo(new Size(230, 100)));
+			Assert.That(result.Minimum, Is.EqualTo(new SizeF(230, 100)));
 		}
 
 		[Test]
@@ -355,13 +355,13 @@ namespace Xamarin.Forms.Core.UnitTests
 			var size = stack.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity).Request;
 			Assert.AreEqual(new Rectangle(0, 0, 100, 20), child1.Bounds);
 			Assert.AreEqual(new Rectangle(0, 26, 100, 20), child2.Bounds);
-			Assert.AreEqual(new Size(100, 46), size);
+			Assert.AreEqual(new SizeF(100, 46), size);
 
 			child1.IsVisible = false;
 			Assert.False(child1.IsVisible);
 			Assert.AreEqual(new Rectangle(0, 0, 100, 20), child2.Bounds);
 			size = stack.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity).Request;
-			Assert.AreEqual(new Size(100, 20), size);
+			Assert.AreEqual(new SizeF(100, 20), size);
 
 		}
 
@@ -384,7 +384,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			});
 
 			var result = stack.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity);
-			Assert.AreEqual(new Size(10, 10), result.Minimum);
+			Assert.AreEqual(new SizeF(10, 10), result.Minimum);
 		}
 
 		[Test]

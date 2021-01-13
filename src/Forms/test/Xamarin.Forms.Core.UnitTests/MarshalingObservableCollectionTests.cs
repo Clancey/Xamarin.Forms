@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Graphics;
 using System.IO;
 using System.Reflection;
 using System.Threading;
@@ -294,12 +295,12 @@ namespace Xamarin.Forms.Core.UnitTests
 				throw new NotImplementedException();
 			}
 
-			public double GetNamedSize(NamedSize size, Type targetElementType, bool useOldSizes)
+			public float GetNamedSize(NamedSize size, Type targetElementType, bool useOldSizes)
 			{
 				throw new NotImplementedException();
 			}
 
-			public SizeRequest GetNativeSize(VisualElement view, double widthConstraint, double heightConstraint)
+			public SizeRequest GetNativeSize(VisualElement view, float widthConstraint, float heightConstraint)
 			{
 				throw new NotImplementedException();
 			}

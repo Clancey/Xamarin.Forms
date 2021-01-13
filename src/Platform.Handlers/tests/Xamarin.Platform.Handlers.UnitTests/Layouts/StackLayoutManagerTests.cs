@@ -37,7 +37,7 @@ namespace Xamarin.Platform.Handlers.UnitTests.Layouts
 			return view;
 		}
 
-		protected IStackLayout BuildStack(int viewCount, double viewWidth, double viewHeight)
+		protected IStackLayout BuildStack(int viewCount, float viewWidth, float viewHeight)
 		{
 			var stack = CreateTestLayout();
 
@@ -45,7 +45,7 @@ namespace Xamarin.Platform.Handlers.UnitTests.Layouts
 
 			for (int n = 0; n < viewCount; n++)
 			{
-				var view = CreateTestView(new Size(viewWidth, viewHeight));
+				var view = CreateTestView(new SizeF(viewWidth, viewHeight));
 				children.Add(view);
 			}
 

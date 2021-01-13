@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Graphics;
 using NUnit.Framework;
 
 namespace Xamarin.Forms.Core.UnitTests
@@ -21,11 +22,11 @@ namespace Xamarin.Forms.Core.UnitTests
 			};
 
 			label.SetAppThemeColor(Label.TextColorProperty, Colors.Green, Colors.Red);
-			Assert.AreEqual(Color.Green, label.TextColor);
+			Assert.AreEqual(Colors.Green, label.TextColor);
 
 			SetAppTheme(OSAppTheme.Dark);
 
-			Assert.AreEqual(Color.Red, label.TextColor);
+			Assert.AreEqual(Colors.Red, label.TextColor);
 		}
 
 		[Test]
@@ -37,11 +38,11 @@ namespace Xamarin.Forms.Core.UnitTests
 			};
 
 			label.SetOnAppTheme(Label.TextColorProperty, Colors.Green, Colors.Red);
-			Assert.AreEqual(Color.Green, label.TextColor);
+			Assert.AreEqual(Colors.Green, label.TextColor);
 
 			SetAppTheme(OSAppTheme.Dark);
 
-			Assert.AreEqual(Color.Red, label.TextColor);
+			Assert.AreEqual(Colors.Red, label.TextColor);
 		}
 
 		[Test]
@@ -53,11 +54,11 @@ namespace Xamarin.Forms.Core.UnitTests
 			};
 
 			label.SetBinding(Label.TextColorProperty, new AppThemeBinding { Light = Colors.Green, Dark = Colors.Red });
-			Assert.AreEqual(Color.Green, label.TextColor);
+			Assert.AreEqual(Colors.Green, label.TextColor);
 
 			SetAppTheme(OSAppTheme.Dark);
 
-			Assert.AreEqual(Color.Red, label.TextColor);
+			Assert.AreEqual(Colors.Red, label.TextColor);
 		}
 
 		void SetAppTheme(OSAppTheme theme)

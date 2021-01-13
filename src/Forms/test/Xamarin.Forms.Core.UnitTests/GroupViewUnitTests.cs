@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Graphics;
 using System.Linq;
 using NUnit.Framework;
 
@@ -8,12 +9,12 @@ namespace Xamarin.Forms.Core.UnitTests
 {
 	internal class NaiveLayout : Layout<View>
 	{
-		protected override void LayoutChildren(double x, double y, double width, double height)
+		protected override void LayoutChildren(float x, float y, float width, float height)
 		{
 			foreach (var child in ((IElementController)this).LogicalChildren.Cast<View>())
 			{
-				var result = new Rectangle(x, y, 0, 0);
-				var request = child.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity);
+				var result = new RectangleF(x, y, 0, 0);
+				var request = child.GetSizeRequest(float.PositiveInfinity, float.PositiveInfinity);
 				result.Width = request.Request.Width;
 				result.Height = request.Request.Height;
 
@@ -131,7 +132,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		}
 
 		[Test]
-		public void TestDoubleAdd()
+		public void TestfloatAdd()
 		{
 			var view = new NaiveLayout();
 			var child1 = new View();

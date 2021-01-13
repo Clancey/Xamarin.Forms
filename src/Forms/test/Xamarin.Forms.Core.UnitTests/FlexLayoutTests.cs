@@ -80,7 +80,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void TestSetBounds()
 		{
-			var layoutSize = new Size(320, 50);
+			var layoutSize = new SizeF(320, 50);
 
 			var layout = new FlexLayout
 			{
@@ -118,7 +118,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void TestRelayoutOnChildrenRemoved()
 		{
-			var layoutSize = new Size(300, 50);
+			var layoutSize = new SizeF(300, 50);
 
 			var layout = new FlexLayout
 			{
@@ -153,7 +153,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void TestFlexLayoutIsIncludeChangeWorksOnSecondPass()
 		{
-			var layoutSize = new Size(300, 50);
+			var layoutSize = new SizeF(300, 50);
 			var layout = new FlexLayout
 			{
 				Direction = FlexDirection.Row,
@@ -189,7 +189,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		// fixed at https://github.com/xamarin/flex/commit/0ccb9f1625abdc5400def29651373937bf6610cd
 		public void TestSwapChildrenOrder()
 		{
-			var layoutSize = new Size(300, 50);
+			var layoutSize = new SizeF(300, 50);
 
 			var layout = new FlexLayout
 			{
@@ -336,15 +336,15 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			//measure sith +inf as main-axis
 			var measure = Layout.Measure(double.PositiveInfinity, 40);
-			Assert.That(measure.Request, Is.EqualTo(new Size(100, 40)));
+			Assert.That(measure.Request, Is.EqualTo(new SizeF(100, 40)));
 
 			//measure sith +inf as cross-axis
 			measure = Layout.Measure(200, double.PositiveInfinity);
-			Assert.That(measure.Request, Is.EqualTo(new Size(200, 20)));
+			Assert.That(measure.Request, Is.EqualTo(new SizeF(200, 20)));
 
 			//measure with +inf as both axis
 			measure = Layout.Measure(double.PositiveInfinity, double.PositiveInfinity);
-			Assert.That(measure.Request, Is.EqualTo(new Size(100, 20)));
+			Assert.That(measure.Request, Is.EqualTo(new SizeF(100, 20)));
 
 		}
 
@@ -386,7 +386,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			};
 
 			var measure = layout.Measure(300, double.PositiveInfinity);
-			Assert.That(measure.Request, Is.EqualTo(new Size(300, 52)));
+			Assert.That(measure.Request, Is.EqualTo(new SizeF(300, 52)));
 			layout.Layout(new Rectangle(0, 0, 300, 300));
 			Assert.That(label0.Bounds, Is.EqualTo(new Rectangle(6, 6, 138, 20)));
 			Assert.That(label1.Bounds, Is.EqualTo(new Rectangle(156, 6, 138, 20)));

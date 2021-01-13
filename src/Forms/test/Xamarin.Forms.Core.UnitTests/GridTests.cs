@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Graphics;
 using System.Linq;
 using System.Reflection;
 using NUnit.Framework;
@@ -187,7 +188,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				}
 			};
 
-			var labelSize = new Size(100, 20);
+			var labelSize = new SizeF(100, 20);
 
 			Label label;
 			rowAControl = label = new FixedSizeLabel(labelSize) { Text = "Hello" };
@@ -218,8 +219,8 @@ namespace Xamarin.Forms.Core.UnitTests
 				Grid.SetRow(rowAControl, 1);
 			}
 
-			var sizeRequest = grid.Measure(300, double.PositiveInfinity);
-			grid.Layout(new Rectangle(0, 0, sizeRequest.Request.Width, sizeRequest.Request.Height));
+			var sizeRequest = grid.Measure(300, float.PositiveInfinity);
+			grid.Layout(new RectangleF(0, 0, sizeRequest.Request.Width, sizeRequest.Request.Height));
 		}
 
 		void SetupStarColumnOverlapTest(bool colAIsAtStart, out VisualElement colAControl,
@@ -235,7 +236,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				}
 			};
 
-			var labelSize = new Size(20, 100);
+			var labelSize = new SizeF(20, 100);
 
 			Label label;
 			colAControl = label = new FixedSizeLabel(labelSize) { Text = "Hello" };
@@ -266,8 +267,8 @@ namespace Xamarin.Forms.Core.UnitTests
 				Grid.SetColumn(colAControl, 1);
 			}
 
-			var sizeRequest = grid.Measure(double.PositiveInfinity, 300);
-			grid.Layout(new Rectangle(0, 0, sizeRequest.Request.Width, sizeRequest.Request.Height));
+			var sizeRequest = grid.Measure(float.PositiveInfinity, 300);
+			grid.Layout(new RectangleF(0, 0, sizeRequest.Request.Width, sizeRequest.Request.Height));
 		}
 
 		[Test(Description = "Columns with a Star width less than one should not cause the Grid to contract below the target width; see https://github.com/xamarin/Xamarin.Forms/issues/11742")]
@@ -333,7 +334,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			};
 
 			grid1.Children.Add(label1, 0, 0);
-			grid1.Measure(gridWidth, double.PositiveInfinity);
+			grid1.Measure(gridWidth, float.PositiveInfinity);
 			var grid1Height = grid1.RowDefinitions[0].ActualHeight;
 
 			var grid2 = new Grid() { ColumnSpacing = 0 };
@@ -352,7 +353,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			grid2.Children.Add(label2, 0, 0);
 
-			grid2.Measure(gridWidth, double.PositiveInfinity);
+			grid2.Measure(gridWidth, float.PositiveInfinity);
 			var grid2Height = grid2.RowDefinitions[0].ActualHeight;
 
 			Assert.That(grid2Height, Is.GreaterThan(grid1Height));
@@ -377,8 +378,8 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			grid1.Children.Add(label1, 0, 0);
 			grid1.Children.Add(label2, 0, 1);
-			var grid1Size = grid1.Measure(widthConstraint, double.PositiveInfinity, MeasureFlags.IncludeMargins);
-			grid1.Layout(new Rectangle(0, 0, grid1Size.Request.Width, grid1Size.Request.Height));
+			var grid1Size = grid1.Measure(widthConstraint, float.PositiveInfinity, MeasureFlags.IncludeMargins);
+			grid1.Layout(new RectangleF(0, 0, grid1Size.Request.Width, grid1Size.Request.Height));
 			var grid1Height = grid1.Height;
 
 			var expectedHeight = label1.Height + label2.Height + grid1.RowSpacing;
@@ -416,8 +417,8 @@ namespace Xamarin.Forms.Core.UnitTests
 			var expectedColumnWidth = width / 2;
 
 			// Measure and layout the grid
-			var firstMeasure = outerGrid.Measure(width, double.PositiveInfinity, MeasureFlags.IncludeMargins).Request;
-			outerGrid.Layout(new Rectangle(0, 0, firstMeasure.Width, firstMeasure.Height));
+			var firstMeasure = outerGrid.Measure(width, float.PositiveInfinity, MeasureFlags.IncludeMargins).Request;
+			outerGrid.Layout(new RectangleF(0, 0, firstMeasure.Width, firstMeasure.Height));
 
 			// Verify that the actual height of the label is what we would expect (within a tolerance)
 			Assert.That(label1.Height, Is.EqualTo(label1.DesiredHeight(expectedColumnWidth)).Within(2));
@@ -428,8 +429,8 @@ namespace Xamarin.Forms.Core.UnitTests
 			label1.Text += label1.Text;
 
 			// And measure/layout again
-			var secondMeasure = outerGrid.Measure(width, double.PositiveInfinity, MeasureFlags.IncludeMargins).Request;
-			outerGrid.Layout(new Rectangle(0, 0, secondMeasure.Width, secondMeasure.Height));
+			var secondMeasure = outerGrid.Measure(width, float.PositiveInfinity, MeasureFlags.IncludeMargins).Request;
+			outerGrid.Layout(new RectangleF(0, 0, secondMeasure.Width, secondMeasure.Height));
 
 			// Verify that the actual height of the label is what we would expect (within a tolerance)
 			Assert.That(label1.Height, Is.EqualTo(label1.DesiredHeight(expectedColumnWidth)).Within(2));
@@ -441,7 +442,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		[TestCase(0.1), TestCase(0.2), TestCase(0.3), TestCase(0.4), TestCase(0.5)]
 		[TestCase(0.6), TestCase(0.7), TestCase(0.8), TestCase(0.9)]
-		public void AbsoluteColumnShouldNotBloatStarredColumns(double firstColumnWidth)
+		public void AbsoluteColumnShouldNotBloatStarredColumns(float firstColumnWidth)
 		{
 			// This is a re-creation of the layout from Issue 12292
 			// The problem is that a huge label in a star column between a partial star column and
@@ -497,9 +498,9 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
 
-			var smaller = new Size(100, 10);
-			var larger = new Size(200, 10);
-			var min = new Size(0, 10);
+			var smaller = new SizeF(100, 10);
+			var larger = new SizeF(200, 10);
+			var min = new SizeF(0, 10);
 
 			var label0 = new FixedSizeLabel(min, smaller)
 			{
@@ -532,10 +533,10 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
 
-			var leftColumn = new Size(100, 10);
-			var rightColumn = new Size(100, 10);
-			var largerMin = new Size(75, 10);
-			var smallerMin = new Size(50, 10);
+			var leftColumn = new SizeF(100, 10);
+			var rightColumn = new SizeF(100, 10);
+			var largerMin = new SizeF(75, 10);
+			var smallerMin = new SizeF(50, 10);
 
 			var leftLabel = new FixedSizeLabel(largerMin, leftColumn)
 			{
@@ -566,9 +567,9 @@ namespace Xamarin.Forms.Core.UnitTests
 			grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
 			grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(2, GridUnitType.Star) });
 
-			var smaller = new Size(100, 100);
-			var larger = new Size(100, 200);
-			var min = new Size(100, 0);
+			var smaller = new SizeF(100, 100);
+			var larger = new SizeF(100, 200);
+			var min = new SizeF(100, 0);
 
 			var label0 = new FixedSizeLabel(min, smaller)
 			{
@@ -610,8 +611,8 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			// Create the foreground, which spans both rows
 			var foreground = new StackLayout() { Spacing = 0, IsPlatformEnabled = true };
-			var view1 = new FixedSizeLabel(new Size(200, 50)) { IsPlatformEnabled = true };
-			var view2 = new FixedSizeLabel(new Size(200, 100)) { IsPlatformEnabled = true };
+			var view1 = new FixedSizeLabel(new SizeF(200, 50)) { IsPlatformEnabled = true };
+			var view2 = new FixedSizeLabel(new SizeF(200, 100)) { IsPlatformEnabled = true };
 			foreground.Children.Add(view1);
 			foreground.Children.Add(view2);
 			Grid.SetRowSpan(foreground, 2);
@@ -624,7 +625,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			scrollView.Content = outerGrid;
 
 			var sizeRequest = scrollView.Measure(500, 1000);
-			scrollView.Layout(new Rectangle(0, 0, sizeRequest.Request.Width, 1000));
+			scrollView.Layout(new RectangleF(0, 0, sizeRequest.Request.Width, 1000));
 
 			Assert.That(innerGrid.Height, Is.EqualTo(foreground.Height));
 			Assert.That(background.Height, Is.EqualTo(foreground.Height * 0.6).Within(0.01));
@@ -642,18 +643,18 @@ namespace Xamarin.Forms.Core.UnitTests
 
 		class FixedSizeLabel : TestLabel
 		{
-			readonly Size _minimumSize;
-			readonly Size _requestedSize;
+			readonly SizeF _minimumSize;
+			readonly SizeF _requestedSize;
 
-			public FixedSizeLabel(Size minimumSize, Size requestedSize)
+			public FixedSizeLabel(SizeF minimumSize, SizeF requestedSize)
 			{
 				_minimumSize = minimumSize;
 				_requestedSize = requestedSize;
 			}
 
-			public FixedSizeLabel(Size size) : this(size, size) { }
+			public FixedSizeLabel(SizeF size) : this(size, size) { }
 
-			protected override SizeRequest OnMeasure(double widthConstraint, double heightConstraint)
+			protected override SizeRequest OnMeasure(float widthConstraint, float heightConstraint)
 			{
 				return new SizeRequest(_requestedSize, _minimumSize);
 			}
@@ -672,9 +673,9 @@ namespace Xamarin.Forms.Core.UnitTests
 				Text = "dfghjkl;SCAsdnlv dvjhdbcviaijdlvnkhubv oebwepuvjlvsdiljh dvjhdbcviaijdlvnkhubv dvjhdbcviaijdlvnkhubv oebwepuvjlvsdiljh dvjhdbcviaijdlvnkhubv dvjhdbcviaijdlvnkhubv oebwepuvjlvsdiljh dvjhdbcviaijdlvnkhubv dvjhdbcviaijdlvnkhubv oebwepuvjlvsdiljh dvjhdbcviaijdlvnkhubv dvjhdbcviaijdlvnkhubv oebwepuvjlvsdiljh dvjhdbcviaijdlvnkhubv  oebwepuvjlvsdiljh dvjhdbcviaijdlvnkhubv dvjhdbcviaijdlvnkhubv oebwepuvjlvsdiljh oebwepuvjlvsdiljhssdlncaCSN SNCAascsbdn  sciwohwfwef wbodlaoj bcwhuofw9qph nxaxhsavcgsdcvewp ibewfwfhpo sbcshclcsdc aasusos 9 p;fqpnwuvaycxaslucn;we;oivwemopv mre]bn ;nvw  modcefin e['vmdkv wqs vwlj vqur;/ b;bnoerbor blk evoneifb;4rbkk-eq'o ge  vlfbmokfen wov mdkqncvw;bnzdFCGHSIAJDOKFBLKVSCBAXVCGFAYGUIOK;LBMDF, NZBCHGFSYUGAEUHRPK;LBMFNVBCFYEWYGUIOPBK; M,MNBCDTFYYU9GIPL;LMVNCX KOEKFULIDJOPKWLFSBVHGIROIQWDMC, ;QLKHFEUHFIJOKPDS;LMNDFVGUHFIDJXHFJOKPEOEJGHRIFJEWODK;LMNBVJHGIOJFEPKWD;LMNDBF VBIWOPKWFKBNRGJOFKPELDWKNVDSHFIOEFIEPKLMDWNDVSFBDIHOFEPDKWL;MNVFBF C,P POIUYFUYGIHOJ;LMFE WGREBFX CUOUIGYUFCHJDKJLFK;EGRHMNBHIOKVEJKVNERNVOEIV OWIEFNIENEKEDLC,WP,EFF dfghjkl;SCAsdnlv dvjhdbcviaijdlvnkhubv oebwepuvjlvsdiljh ssdlncaCSN SNCAascsbdn  sciwohwfwef wbodlaoj bcwhuofw9qph nxaxhsavcgsdcvewp ibewfwfhpo sbcshclcsdc aasusos 9 p;fqpnwuvaycxaslucn;we;oivwemopv mre]bn ;nvw  modcefin e['vmdkv wqs vwlj vqur;/ b;bnoerbor blk evoneifb;4rbkk-eq'o ge  vlfbmokfen wov mdkqncvw;bnzdFCGHSIAJDOKFBLKVSCBAXVCGFAYGUIOK;LBMDF, NZBCHGFSYUGAEUHRPK;LBMFNVBCFYEWYGUIOPBK; M,MNBCDTFYYU9GIPL;LMVNCX KOEKFULIDJOPKWLFSBVHGIROIQWDMC, ;QLKHFEUHFIJOKPDS;LMNDFVGUHFIDJXHFJOKPEOEJGHRIFJEWODK;LMNBVJHGIOJFEPKWD;LMNDBF VBIWOPKWFKBNRGJOFKPELDWKNVDSHFIOEFIEPKLMDWNDVSFBDIHOFEPDKWL;MNVFBF C,P POIUYFUYGIHOJ;LMFE WGREBFX CUOUIGYUFCHJDKJLFK;EGRHMNBHIOKVEJKVNERNVOEIV OWIEFNIENEKEDLC,WP,1234567890234567890";
 			}
 
-			protected override SizeRequest OnMeasure(double widthConstraint, double heightConstraint)
+			protected override SizeRequest OnMeasure(float widthConstraint, float heightConstraint)
 			{
-				double minWidth = 10.2857142857143;
+				float minWidth = 10.2857142857143f;
 
 				_counter += 1;
 
@@ -682,28 +683,28 @@ namespace Xamarin.Forms.Core.UnitTests
 				{
 					case 1:
 						return new SizeRequest(
-							new Size(375.619047619048, 673.904761904762),
-							new Size(minWidth, 673.904761904762));
+							new SizeF(375.619047619048f, 673.904761904762f),
+							new SizeF(minWidth, 673.904761904762f));
 					case 2:
 						return new SizeRequest(
-							new Size(411.428571428571, 575.619047619048),
-							new Size(minWidth, 575.619047619048));
+							new SizeF(411.428571428571f, 575.619047619048f),
+							new SizeF(minWidth, 575.619047619048f));
 					case 3:
 						return new SizeRequest(
-							new Size(336.380952380952, 755.809523809524),
-							new Size(minWidth, 755.809523809524));
+							new SizeF(336.380952380952f, 755.809523809524f),
+							new SizeF(minWidth, 755.809523809524f));
 					case 4:
 						return new SizeRequest(
-							new Size(375.619047619048, 673.904761904762),
-							new Size(minWidth, 673.904761904762));
+							new SizeF(375.619047619048f, 673.904761904762f),
+							new SizeF(minWidth, 673.904761904762f));
 					case 5:
 						return new SizeRequest(
-							new Size(313.142857142857, 772.190476190476),
-							new Size(minWidth, 772.190476190476));
+							new SizeF(313.142857142857f, 772.190476190476f),
+							new SizeF(minWidth, 772.190476190476f));
 					case 0:
 						return new SizeRequest(
-							new Size(313.142857142857, 772.190476190476),
-							new Size(minWidth, 772.190476190476));
+							new SizeF(313.142857142857f, 772.190476190476f),
+							new SizeF(minWidth, 772.190476190476f));
 				}
 
 				throw new Exception("This shouldn't happen, unless we make measure/layout more or less efficient and " +
@@ -713,42 +714,42 @@ namespace Xamarin.Forms.Core.UnitTests
 
 		class HeightBasedOnTextLengthLabel : TestLabel
 		{
-			public double DesiredHeight(double widthConstraint)
+			public float DesiredHeight(float widthConstraint)
 			{
 				return (Text.Length / widthConstraint) * 200;
 			}
 
-			protected override SizeRequest OnMeasure(double widthConstraint, double heightConstraint)
+			protected override SizeRequest OnMeasure(float widthConstraint, float heightConstraint)
 			{
-				var minimumSize = new Size(20, 20);
+				var minimumSize = new SizeF(20, 20);
 				var height = DesiredHeight(widthConstraint);
-				return new SizeRequest(new Size(widthConstraint, height), minimumSize);
+				return new SizeRequest(new SizeF(widthConstraint, height), minimumSize);
 			}
 		}
 
 		class ColumnTestLabel : TestLabel
 		{
-			protected override SizeRequest OnMeasure(double widthConstraint, double heightConstraint)
+			protected override SizeRequest OnMeasure(float widthConstraint, float heightConstraint)
 			{
-				var minimumSize = new Size(20, 20);
+				var minimumSize = new SizeF(20, 20);
 				var height = 10000 / widthConstraint;
-				return new SizeRequest(new Size(widthConstraint, height), minimumSize);
+				return new SizeRequest(new SizeF(widthConstraint, height), minimumSize);
 			}
 		}
 
 		class RowTestLabel : TestLabel
 		{
-			protected override SizeRequest OnMeasure(double widthConstraint, double heightConstraint)
+			protected override SizeRequest OnMeasure(float widthConstraint, float heightConstraint)
 			{
-				var minimumSize = new Size(20, 20);
+				var minimumSize = new SizeF(20, 20);
 
-				if (double.IsInfinity(heightConstraint))
+				if (float.IsInfinity(heightConstraint))
 				{
 					heightConstraint = 1000;
 				}
 
 				var width = 10000 / heightConstraint;
-				return new SizeRequest(new Size(width, heightConstraint), minimumSize);
+				return new SizeRequest(new SizeF(width, heightConstraint), minimumSize);
 			}
 		}
 
@@ -889,7 +890,7 @@ namespace Xamarin.Forms.Core.UnitTests
 					if (op == 'C')
 						AddColumnDef();
 
-					_grid.Layout(new Rectangle(0, 0, 912, 912));
+					_grid.Layout(new RectangleFF(0, 0, 912, 912));
 				}
 
 				Console.WriteLine($"Operations: {string.Join(string.Empty, operations)}");
@@ -924,14 +925,14 @@ namespace Xamarin.Forms.Core.UnitTests
 				label3
 			});
 
-			layout.Layout(new Rectangle(0, 0, 912, 912));
+			layout.Layout(new RectangleF(0, 0, 912, 912));
 
 			Assert.AreEqual(912, layout.Width);
 			Assert.AreEqual(912, layout.Height);
 
-			Assert.AreEqual(new Rectangle(0, 0, 912, 300), label1.Bounds);
-			Assert.AreEqual(new Rectangle(0, 306, 912, 300), label2.Bounds);
-			Assert.AreEqual(new Rectangle(0, 612, 912, 300), label3.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 912, 300), label1.Bounds);
+			Assert.AreEqual(new RectangleF(0, 306, 912, 300), label2.Bounds);
+			Assert.AreEqual(new RectangleF(0, 612, 912, 300), label3.Bounds);
 		}
 
 		[Test]
@@ -949,14 +950,14 @@ namespace Xamarin.Forms.Core.UnitTests
 				label3
 			});
 
-			layout.Layout(new Rectangle(0, 0, 912, 912));
+			layout.Layout(new RectangleF(0, 0, 912, 912));
 
 			Assert.AreEqual(912, layout.Width);
 			Assert.AreEqual(912, layout.Height);
 
-			Assert.AreEqual(new Rectangle(0, 0, 300, 912), label1.Bounds);
-			Assert.AreEqual(new Rectangle(306, 0, 300, 912), label2.Bounds);
-			Assert.AreEqual(new Rectangle(612, 0, 300, 912), label3.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 300, 912), label1.Bounds);
+			Assert.AreEqual(new RectangleF(306, 0, 300, 912), label2.Bounds);
+			Assert.AreEqual(new RectangleF(612, 0, 300, 912), label3.Bounds);
 		}
 
 		[Test]
@@ -974,13 +975,13 @@ namespace Xamarin.Forms.Core.UnitTests
 			layout.Children.Add(label1, 0, 0);
 			layout.Children.Add(label2, 0, 1);
 
-			layout.Layout(new Rectangle(0, 0, 1000, 1000));
+			layout.Layout(new RectangleF(0, 0, 1000, 1000));
 
 			Assert.AreEqual(1000, layout.Width);
 			Assert.AreEqual(1000, layout.Height);
 
-			Assert.AreEqual(new Rectangle(0, 0, 1000, 1000 - 20 - layout.RowSpacing), label1.Bounds);
-			Assert.AreEqual(new Rectangle(0, 1000 - 20, 1000, 20), label2.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 1000, 1000 - 20 - layout.RowSpacing), label1.Bounds);
+			Assert.AreEqual(new RectangleF(0, 1000 - 20, 1000, 20), label2.Bounds);
 		}
 
 		[Test]
@@ -998,13 +999,13 @@ namespace Xamarin.Forms.Core.UnitTests
 			layout.Children.Add(label1, 0, 0);
 			layout.Children.Add(label2, 1, 0);
 
-			layout.Layout(new Rectangle(0, 0, 1000, 1000));
+			layout.Layout(new RectangleF(0, 0, 1000, 1000));
 
 			Assert.AreEqual(1000, layout.Width);
 			Assert.AreEqual(1000, layout.Height);
 
-			Assert.AreEqual(new Rectangle(0, 0, 1000 - 106, 1000), label1.Bounds);
-			Assert.AreEqual(new Rectangle(1000 - 100, 0, 100, 1000), label2.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 1000 - 106, 1000), label1.Bounds);
+			Assert.AreEqual(new RectangleF(1000 - 100, 0, 100, 1000), label2.Bounds);
 		}
 
 		[Test]
@@ -1022,13 +1023,13 @@ namespace Xamarin.Forms.Core.UnitTests
 			layout.Children.Add(label1, 0, 0);
 			layout.Children.Add(label2, 0, 1);
 
-			layout.Layout(new Rectangle(0, 0, 1000, 1000));
+			layout.Layout(new RectangleF(0, 0, 1000, 1000));
 
 			Assert.AreEqual(1000, layout.Width);
 			Assert.AreEqual(1000, layout.Height);
 
-			Assert.AreEqual(new Rectangle(0, 0, 1000, 20), label1.Bounds);
-			Assert.AreEqual(new Rectangle(0, 26, 1000, 1000 - 26), label2.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 1000, 20), label1.Bounds);
+			Assert.AreEqual(new RectangleF(0, 26, 1000, 1000 - 26), label2.Bounds);
 		}
 
 		[Test]
@@ -1047,13 +1048,13 @@ namespace Xamarin.Forms.Core.UnitTests
 			layout.Children.Add(label1, 0, 0);
 			layout.Children.Add(label2, 1, 0);
 
-			layout.Layout(new Rectangle(0, 0, 1000, 1000));
+			layout.Layout(new RectangleF(0, 0, 1000, 1000));
 
 			Assert.AreEqual(1000, layout.Width);
 			Assert.AreEqual(1000, layout.Height);
 
-			Assert.AreEqual(new Rectangle(0, 0, 100, 1000), label1.Bounds);
-			Assert.AreEqual(new Rectangle(106, 0, 1000 - 106, 1000), label2.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 100, 1000), label1.Bounds);
+			Assert.AreEqual(new RectangleF(106, 0, 1000 - 106, 1000), label2.Bounds);
 		}
 
 		[Test]
@@ -1074,14 +1075,14 @@ namespace Xamarin.Forms.Core.UnitTests
 			layout.Children.Add(label2, 0, 1);
 			layout.Children.Add(label3, 0, 2);
 
-			layout.Layout(new Rectangle(0, 0, 1000, 1000));
+			layout.Layout(new RectangleF(0, 0, 1000, 1000));
 
 			Assert.AreEqual(1000, layout.Width);
 			Assert.AreEqual(1000, layout.Height);
 
-			Assert.AreEqual(new Rectangle(0, 0, 1000, 20), label1.Bounds);
-			Assert.AreEqual(new Rectangle(0, 26, 1000, 1000 - 52), label2.Bounds);
-			Assert.AreEqual(new Rectangle(0, 980, 1000, 20), label3.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 1000, 20), label1.Bounds);
+			Assert.AreEqual(new RectangleF(0, 26, 1000, 1000 - 52), label2.Bounds);
+			Assert.AreEqual(new RectangleF(0, 980, 1000, 20), label3.Bounds);
 		}
 
 		[Test]
@@ -1103,14 +1104,14 @@ namespace Xamarin.Forms.Core.UnitTests
 			layout.Children.Add(label2, 1, 0);
 			layout.Children.Add(label3, 2, 0);
 
-			layout.Layout(new Rectangle(0, 0, 1000, 1000));
+			layout.Layout(new RectangleF(0, 0, 1000, 1000));
 
 			Assert.AreEqual(1000, layout.Width);
 			Assert.AreEqual(1000, layout.Height);
 
-			Assert.AreEqual(new Rectangle(0, 0, 100, 1000), label1.Bounds);
-			Assert.AreEqual(new Rectangle(106, 0, 1000 - 212, 1000), label2.Bounds);
-			Assert.AreEqual(new Rectangle(900, 0, 100, 1000), label3.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 100, 1000), label1.Bounds);
+			Assert.AreEqual(new RectangleF(106, 0, 1000 - 212, 1000), label2.Bounds);
+			Assert.AreEqual(new RectangleF(900, 0, 100, 1000), label3.Bounds);
 		}
 
 		[Test]
@@ -1137,15 +1138,15 @@ namespace Xamarin.Forms.Core.UnitTests
 				new RowDefinition { Height = GridLength.Auto}
 			};
 
-			layout.Layout(new Rectangle(0, 0, 1000, 1000));
+			layout.Layout(new RectangleF(0, 0, 1000, 1000));
 
 			Assert.AreEqual(1000, layout.Width);
 			Assert.AreEqual(1000, layout.Height);
 
-			Assert.AreEqual(new Rectangle(0, 0, 100, 20), label1.Bounds);
-			Assert.AreEqual(new Rectangle(106, 0, 100, 20), label2.Bounds);
-			Assert.AreEqual(new Rectangle(0, 26, 100, 20), label3.Bounds);
-			Assert.AreEqual(new Rectangle(106, 26, 100, 20), label4.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 100, 20), label1.Bounds);
+			Assert.AreEqual(new RectangleF(106, 0, 100, 20), label2.Bounds);
+			Assert.AreEqual(new RectangleF(0, 26, 100, 20), label3.Bounds);
+			Assert.AreEqual(new RectangleF(106, 26, 100, 20), label4.Bounds);
 		}
 
 		[Test]
@@ -1168,15 +1169,15 @@ namespace Xamarin.Forms.Core.UnitTests
 			layout.Children.Add(label3, 0, 1);
 			layout.Children.Add(label4, 1, 1);
 
-			layout.Layout(new Rectangle(0, 0, 1000, 1000));
+			layout.Layout(new RectangleF(0, 0, 1000, 1000));
 
 			Assert.AreEqual(1000, layout.Width);
 			Assert.AreEqual(1000, layout.Height);
 
-			Assert.AreEqual(new Rectangle(0, 0, 100, 497), label1.Bounds);
-			Assert.AreEqual(new Rectangle(106, 0, 894, 497), label2.Bounds);
-			Assert.AreEqual(new Rectangle(0, 503, 100, 497), label3.Bounds);
-			Assert.AreEqual(new Rectangle(106, 503, 894, 497), label4.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 100, 497), label1.Bounds);
+			Assert.AreEqual(new RectangleF(106, 0, 894, 497), label2.Bounds);
+			Assert.AreEqual(new RectangleF(0, 503, 100, 497), label3.Bounds);
+			Assert.AreEqual(new RectangleF(106, 503, 894, 497), label4.Bounds);
 		}
 
 		[Test]
@@ -1201,14 +1202,14 @@ namespace Xamarin.Forms.Core.UnitTests
 				new RowDefinition { Height = GridLength.Auto}
 			};
 
-			layout.Layout(new Rectangle(0, 0, 1000, 1000));
+			layout.Layout(new RectangleF(0, 0, 1000, 1000));
 
 			Assert.AreEqual(1000, layout.Width);
 			Assert.AreEqual(1000, layout.Height);
 
-			Assert.AreEqual(new Rectangle(0, 0, 206, 20), label1.Bounds);
-			Assert.AreEqual(new Rectangle(0, 26, 100, 20), label2.Bounds);
-			Assert.AreEqual(new Rectangle(106, 26, 100, 20), label3.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 206, 20), label1.Bounds);
+			Assert.AreEqual(new RectangleF(0, 26, 100, 20), label2.Bounds);
+			Assert.AreEqual(new RectangleF(106, 26, 100, 20), label3.Bounds);
 		}
 
 		[Test]
@@ -1233,14 +1234,14 @@ namespace Xamarin.Forms.Core.UnitTests
 			layout.Children.Add(label2, 0, 1, 1, 2);
 			layout.Children.Add(label3, 1, 2, 1, 2);
 
-			layout.Layout(new Rectangle(0, 0, 1000, 1000));
+			layout.Layout(new RectangleF(0, 0, 1000, 1000));
 
 			Assert.AreEqual(1000, layout.Width);
 			Assert.AreEqual(1000, layout.Height);
 
-			Assert.AreEqual(new Rectangle(0, 0, 1000, 20), label1.Bounds);
-			Assert.AreEqual(new Rectangle(0, 26, 497, 20), label2.Bounds);
-			Assert.AreEqual(new Rectangle(503, 26, 497, 20), label3.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 1000, 20), label1.Bounds);
+			Assert.AreEqual(new RectangleF(0, 26, 497, 20), label2.Bounds);
+			Assert.AreEqual(new RectangleF(503, 26, 497, 20), label3.Bounds);
 		}
 
 		[Test]
@@ -1279,9 +1280,9 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			layout.Children.Add(label1);
 
-			layout.Layout(new Rectangle(0, 0, 1000, 1000));
+			layout.Layout(new RectangleF(0, 0, 1000, 1000));
 
-			Assert.AreEqual(new Rectangle(450, 490, 100, 20), label1.Bounds);
+			Assert.AreEqual(new RectangleF(450, 490, 100, 20), label1.Bounds);
 		}
 
 		[Test]
@@ -1299,9 +1300,9 @@ namespace Xamarin.Forms.Core.UnitTests
 				new RowDefinition () {Height = new GridLength (1,GridUnitType.Star)},
 			};
 
-			layout.Layout(new Rectangle(0, 0, 1000, 1000));
+			layout.Layout(new RectangleF(0, 0, 1000, 1000));
 
-			Assert.AreEqual(new Rectangle(0, 0, 100, 20), label1.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 100, 20), label1.Bounds);
 		}
 
 		[Test]
@@ -1319,9 +1320,9 @@ namespace Xamarin.Forms.Core.UnitTests
 				new RowDefinition () {Height = new GridLength (1,GridUnitType.Star)},
 			};
 
-			layout.Layout(new Rectangle(0, 0, 1000, 1000));
+			layout.Layout(new RectangleF(0, 0, 1000, 1000));
 
-			Assert.AreEqual(new Rectangle(900, 980, 100, 20), label1.Bounds);
+			Assert.AreEqual(new RectangleF(900, 980, 100, 20), label1.Bounds);
 		}
 
 		[Test]
@@ -1424,9 +1425,9 @@ namespace Xamarin.Forms.Core.UnitTests
 		{
 			var layout = new Grid();
 
-			Assert.AreEqual(new Size(0, 0), layout.GetSizeRequest(0, 0).Request);
-			Assert.AreEqual(new Size(0, 0), layout.GetSizeRequest(0, 10).Request);
-			Assert.AreEqual(new Size(0, 0), layout.GetSizeRequest(10, 0).Request);
+			Assert.AreEqual(new SizeF(0, 0), layout.GetSizeRequest(0, 0).Request);
+			Assert.AreEqual(new SizeF(0, 0), layout.GetSizeRequest(0, 10).Request);
+			Assert.AreEqual(new SizeF(0, 0), layout.GetSizeRequest(10, 0).Request);
 		}
 
 		[Test]
@@ -1439,8 +1440,8 @@ namespace Xamarin.Forms.Core.UnitTests
 				new View {IsPlatformEnabled = true}
 			});
 
-			var result = layout.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity).Request;
-			Assert.AreEqual(new Size(100, 72), result);
+			var result = layout.GetSizeRequest(float.PositiveInfinity, float.PositiveInfinity).Request;
+			Assert.AreEqual(new SizeF(100, 72), result);
 		}
 
 		[Test]
@@ -1454,7 +1455,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			});
 
 			var result = layout.GetSizeRequest(10, 10).Request;
-			Assert.AreEqual(new Size(100, 72), result);
+			Assert.AreEqual(new SizeF(100, 72), result);
 		}
 
 		[Test]
@@ -1467,8 +1468,8 @@ namespace Xamarin.Forms.Core.UnitTests
 				new View {IsPlatformEnabled = true}
 			});
 
-			var result = layout.GetSizeRequest(10, double.PositiveInfinity).Request;
-			Assert.AreEqual(new Size(100, 72), result);
+			var result = layout.GetSizeRequest(10, float.PositiveInfinity).Request;
+			Assert.AreEqual(new SizeF(100, 72), result);
 		}
 
 		[Test]
@@ -1482,8 +1483,8 @@ namespace Xamarin.Forms.Core.UnitTests
 				new View {IsPlatformEnabled = true}
 			});
 
-			var result = layout.GetSizeRequest(double.PositiveInfinity, 10).Request;
-			Assert.AreEqual(new Size(100, 72), result);
+			var result = layout.GetSizeRequest(float.PositiveInfinity, 10).Request;
+			Assert.AreEqual(new SizeF(100, 72), result);
 		}
 
 		[Test]
@@ -1505,13 +1506,13 @@ namespace Xamarin.Forms.Core.UnitTests
 				new RowDefinition { Height = GridLength.Auto},
 			};
 
-			layout.Layout(new Rectangle(0, 0, 1000, 1000));
+			layout.Layout(new RectangleF(0, 0, 1000, 1000));
 
 			Assert.AreEqual(1000, layout.Width);
 			Assert.AreEqual(1000, layout.Height);
 
-			Assert.AreEqual(new Rectangle(0, 0, -1, -1), label1.Bounds);
-			Assert.AreEqual(new Rectangle(0, 6, 100, 20), label2.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, -1, -1), label1.Bounds);
+			Assert.AreEqual(new RectangleF(0, 6, 100, 20), label2.Bounds);
 		}
 
 		[Test]
@@ -1524,8 +1525,8 @@ namespace Xamarin.Forms.Core.UnitTests
 				new View {IsPlatformEnabled = true}
 			});
 
-			var result = layout.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity).Request;
-			Assert.AreEqual(new Size(135, 87), result);
+			var result = layout.GetSizeRequest(float.PositiveInfinity, float.PositiveInfinity).Request;
+			Assert.AreEqual(new SizeF(135, 87), result);
 		}
 
 		[Test]
@@ -1570,15 +1571,15 @@ namespace Xamarin.Forms.Core.UnitTests
 				new RowDefinition { Height = GridLength.Auto},
 			};
 
-			layout.Layout(new Rectangle(0, 0, 1000, 1000));
+			layout.Layout(new RectangleF(0, 0, 1000, 1000));
 
 			Assert.AreEqual(1000, layout.Width);
 			Assert.AreEqual(1000, layout.Height);
 
-			Assert.AreEqual(new Rectangle(0, 0, 100, 20), labela0.Bounds);
-			Assert.AreEqual(new Rectangle(106, 0, 100, 20), labela1.Bounds);
-			Assert.AreEqual(new Rectangle(106, 26, 100, 20), labelb1.Bounds);
-			Assert.AreEqual(new Rectangle(0, 52, 206, 20), labelc.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 100, 20), labela0.Bounds);
+			Assert.AreEqual(new RectangleF(106, 0, 100, 20), labela1.Bounds);
+			Assert.AreEqual(new RectangleF(106, 26, 100, 20), labelb1.Bounds);
+			Assert.AreEqual(new RectangleF(0, 52, 206, 20), labelc.Bounds);
 		}
 
 		[Test]
@@ -1632,14 +1633,14 @@ namespace Xamarin.Forms.Core.UnitTests
 			layout.Children.Add(label3, 2, 2);
 
 
-			layout.Layout(new Rectangle(0, 0, 1000, 1000));
+			layout.Layout(new RectangleF(0, 0, 1000, 1000));
 
 			Assert.AreEqual(1000, layout.Width);
 			Assert.AreEqual(1000, layout.Height);
 
-			Assert.AreEqual(new Rectangle(0, 0, 150, 30), label1.Bounds);
-			Assert.AreEqual(new Rectangle(156, 36, 150, 30), label2.Bounds);
-			Assert.AreEqual(new Rectangle(312, 72, 150, 30), label3.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 150, 30), label1.Bounds);
+			Assert.AreEqual(new RectangleF(156, 36, 150, 30), label2.Bounds);
+			Assert.AreEqual(new RectangleF(312, 72, 150, 30), label3.Bounds);
 		}
 
 		[Test]
@@ -1666,14 +1667,14 @@ namespace Xamarin.Forms.Core.UnitTests
 			layout.Children.Add(label3, 1, 2);
 
 
-			layout.Layout(new Rectangle(0, 0, 1000, 1000));
+			layout.Layout(new RectangleF(0, 0, 1000, 1000));
 
 			Assert.AreEqual(1000, layout.Width);
 			Assert.AreEqual(1000, layout.Height);
 
-			Assert.AreEqual(new Rectangle(0, 0, 306, 30), label1.Bounds);
-			Assert.AreEqual(new Rectangle(312, 0, 150, 66), label2.Bounds);
-			Assert.AreEqual(new Rectangle(156, 72, 150, 30), label3.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 306, 30), label1.Bounds);
+			Assert.AreEqual(new RectangleF(312, 0, 150, 66), label2.Bounds);
+			Assert.AreEqual(new RectangleF(156, 72, 150, 30), label3.Bounds);
 		}
 
 		[Test]
@@ -1703,13 +1704,13 @@ namespace Xamarin.Forms.Core.UnitTests
 			Assert.AreEqual(312, request.Request.Width);
 			Assert.AreEqual(72, request.Request.Height);
 
-			layout.Layout(new Rectangle(0, 0, 1002, 462));
+			layout.Layout(new RectangleF(0, 0, 1002, 462));
 			Assert.AreEqual(1002, layout.Width);
 			Assert.AreEqual(462, layout.Height);
 
-			Assert.AreEqual(new Rectangle(0, 0, 330, 150), label1.Bounds);
-			Assert.AreEqual(new Rectangle(336, 156, 330, 150), label2.Bounds);
-			Assert.AreEqual(new Rectangle(672, 312, 330, 150), label3.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 330, 150), label1.Bounds);
+			Assert.AreEqual(new RectangleF(336, 156, 330, 150), label2.Bounds);
+			Assert.AreEqual(new RectangleF(672, 312, 330, 150), label3.Bounds);
 		}
 
 		[Test]
@@ -1735,14 +1736,14 @@ namespace Xamarin.Forms.Core.UnitTests
 			layout.Children.Add(label2, 2, 3, 0, 2);
 			layout.Children.Add(label3, 1, 2);
 
-			layout.Layout(new Rectangle(0, 0, 1002, 462));
+			layout.Layout(new RectangleF(0, 0, 1002, 462));
 
 			Assert.AreEqual(1002, layout.Width);
 			Assert.AreEqual(462, layout.Height);
 
-			Assert.AreEqual(new Rectangle(0, 0, 666, 150), label1.Bounds);
-			Assert.AreEqual(new Rectangle(672, 0, 330, 306), label2.Bounds);
-			Assert.AreEqual(new Rectangle(336, 312, 330, 150), label3.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 666, 150), label1.Bounds);
+			Assert.AreEqual(new RectangleF(672, 0, 330, 306), label2.Bounds);
+			Assert.AreEqual(new RectangleF(336, 312, 330, 150), label3.Bounds);
 		}
 
 		[Test]
@@ -1769,14 +1770,14 @@ namespace Xamarin.Forms.Core.UnitTests
 			layout.Children.Add(label3, 2, 2);
 
 
-			layout.Layout(new Rectangle(0, 0, 1000, 1000));
+			layout.Layout(new RectangleF(0, 0, 1000, 1000));
 
 			Assert.AreEqual(1000, layout.Width);
 			Assert.AreEqual(1000, layout.Height);
 
-			Assert.AreEqual(new Rectangle(0, 0, 100, 20), label1.Bounds);
-			Assert.AreEqual(new Rectangle(106, 26, 100, 20), label2.Bounds);
-			Assert.AreEqual(new Rectangle(212, 52, 100, 20), label3.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 100, 20), label1.Bounds);
+			Assert.AreEqual(new RectangleF(106, 26, 100, 20), label2.Bounds);
+			Assert.AreEqual(new RectangleF(212, 52, 100, 20), label3.Bounds);
 		}
 
 		[Test]
@@ -1802,14 +1803,14 @@ namespace Xamarin.Forms.Core.UnitTests
 			layout.Children.Add(label2, 2, 3, 0, 2);
 			layout.Children.Add(label3, 1, 2);
 
-			layout.Layout(new Rectangle(0, 0, 1002, 462));
+			layout.Layout(new RectangleF(0, 0, 1002, 462));
 
 			Assert.AreEqual(1002, layout.Width);
 			Assert.AreEqual(462, layout.Height);
 
-			Assert.AreEqual(new Rectangle(0, 0, 150, 20), label1.Bounds);
-			Assert.AreEqual(new Rectangle(156, 0, 100, 50), label2.Bounds);
-			Assert.AreEqual(new Rectangle(50, 56, 100, 20), label3.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 150, 20), label1.Bounds);
+			Assert.AreEqual(new RectangleF(156, 0, 100, 50), label2.Bounds);
+			Assert.AreEqual(new RectangleF(50, 56, 100, 20), label3.Bounds);
 		}
 
 		[Test]
@@ -1839,7 +1840,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			layout.Children.Add(label5, 0, 3, 0, 1);
 			layout.Children.Add(label6, 2, 6, 0, 1);
 
-			layout.Layout(new Rectangle(0, 0, 1000, 500));
+			layout.Layout(new RectangleF(0, 0, 1000, 500));
 
 			Assert.AreEqual(100, layout.ColumnDefinitions[0].ActualWidth);
 			Assert.AreEqual(100, layout.ColumnDefinitions[1].ActualWidth);
@@ -1866,7 +1867,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			layout.Children.Add(label2, 1, 0);
 			layout.Children.Add(label3, 0, 2, 0, 1);
 
-			layout.Layout(new Rectangle(0, 0, 1000, 500));
+			layout.Layout(new RectangleF(0, 0, 1000, 500));
 
 			Assert.AreEqual(100, layout.ColumnDefinitions[0].ActualWidth);
 			Assert.AreEqual(194, layout.ColumnDefinitions[1].ActualWidth);
@@ -1909,9 +1910,9 @@ namespace Xamarin.Forms.Core.UnitTests
 			};
 
 			grid.Children.Add(label);
-			grid.Layout(new Rectangle(0, 0, 500, 500));
+			grid.Layout(new RectangleF(0, 0, 500, 500));
 
-			Assert.AreEqual(new Rectangle(200, 40, 100, 20), label.Bounds);
+			Assert.AreEqual(new RectangleF(200, 40, 100, 20), label.Bounds);
 		}
 
 		[Test]
@@ -1952,11 +1953,11 @@ namespace Xamarin.Forms.Core.UnitTests
 				IsPlatformEnabled = true,
 				Content = grid,
 			};
-			view.Layout(new Rectangle(0, 0, 100, 100));
+			view.Layout(new RectangleF(0, 0, 100, 100));
 			Assert.AreEqual(100, grid.Width);
 			Assert.AreEqual(20, grid.Height);
 
-			view.Layout(new Rectangle(0, 0, 50, 50));
+			view.Layout(new RectangleF(0, 0, 50, 50));
 			Assert.AreEqual(50, grid.Width);
 			Assert.AreEqual(10, grid.Height);
 		}
@@ -1986,11 +1987,11 @@ namespace Xamarin.Forms.Core.UnitTests
 				IsPlatformEnabled = true,
 				Content = grid,
 			};
-			view.Layout(new Rectangle(0, 0, 100, 100));
+			view.Layout(new RectangleF(0, 0, 100, 100));
 			Assert.AreEqual(100, grid.Width);
 			Assert.AreEqual(20, grid.Height);
 
-			view.Layout(new Rectangle(0, 0, 50, 50));
+			view.Layout(new RectangleF(0, 0, 50, 50));
 			Assert.AreEqual(50, grid.Width);
 			Assert.AreEqual(10, grid.Height);
 		}
@@ -2014,7 +2015,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			grid.Children.Add(new Label { Text = "Baz", XAlign = TextAlignment.End, IsPlatformEnabled = true }, 1, 0);
 			grid.Children.Add(new Label { Text = "Qux", XAlign = TextAlignment.End, IsPlatformEnabled = true }, 1, 1);
 
-			var request = grid.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity);
+			var request = grid.GetSizeRequest(float.PositiveInfinity, float.PositiveInfinity);
 			Assert.AreEqual(206, request.Request.Width);
 			Assert.AreEqual(46, request.Request.Height);
 
@@ -2052,8 +2053,8 @@ namespace Xamarin.Forms.Core.UnitTests
 			grid.Children.Add(label);
 			grid.Children.Add(Button, 0, 1);
 
-			grid.Layout(new Rectangle(0, 0, 300, 300));
-			Assert.AreEqual(new Rectangle(0, 280, 300, 20), Button.Bounds);
+			grid.Layout(new RectangleF(0, 0, 300, 300));
+			Assert.AreEqual(new RectangleF(0, 280, 300, 20), Button.Bounds);
 		}
 
 		[Test]
@@ -2083,23 +2084,23 @@ namespace Xamarin.Forms.Core.UnitTests
 			grid.Children.Add(box2, 1, 1);
 			grid.Children.Add(box3, 2, 1);
 
-			grid.Layout(new Rectangle(0, 0, 300, 46));
+			grid.Layout(new RectangleF(0, 0, 300, 46));
 
-			Assert.AreEqual(new Rectangle(0, 0, 300, 20), spanBox.Bounds);
-			Assert.AreEqual(new Rectangle(0, 26, 20, 20), box1.Bounds);
-			Assert.AreEqual(new Rectangle(26, 26, 20, 20), box2.Bounds);
-			Assert.AreEqual(new Rectangle(52, 26, 248, 20), box3.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 300, 20), spanBox.Bounds);
+			Assert.AreEqual(new RectangleF(0, 26, 20, 20), box1.Bounds);
+			Assert.AreEqual(new RectangleF(26, 26, 20, 20), box2.Bounds);
+			Assert.AreEqual(new RectangleF(52, 26, 248, 20), box3.Bounds);
 		}
 
-		static SizeRequest GetResizableSize(VisualElement view, double widthconstraint, double heightconstraint)
+		static SizeRequest GetResizableSize(VisualElement view, float widthconstraint, float heightconstraint)
 		{
 			if (!(view is Editor))
-				return new SizeRequest(new Size(100, 20));
+				return new SizeRequest(new SizeF(100, 20));
 			if (widthconstraint < 100)
-				return new SizeRequest(new Size(widthconstraint, 2000 / widthconstraint));
+				return new SizeRequest(new SizeF(widthconstraint, 2000 / widthconstraint));
 			if (heightconstraint < 20)
-				return new SizeRequest(new Size(2000 / heightconstraint, heightconstraint));
-			return new SizeRequest(new Size(100, 20));
+				return new SizeRequest(new SizeF(2000 / heightconstraint, heightconstraint));
+			return new SizeRequest(new SizeF(100, 20));
 		}
 
 		[Test]
@@ -2126,8 +2127,8 @@ namespace Xamarin.Forms.Core.UnitTests
 			grid0.Children.Add(label0, 0, 0);
 			grid0.Children.Add(editor0, 1, 2, 0, 2);
 
-			grid0.Layout(new Rectangle(0, 0, 156, 200));
-			Assert.AreEqual(new Rectangle(106, 0, 50, 40), editor0.Bounds);
+			grid0.Layout(new RectangleF(0, 0, 156, 200));
+			Assert.AreEqual(new RectangleF(106, 0, 50, 40), editor0.Bounds);
 
 			var grid1 = new Grid
 			{
@@ -2146,8 +2147,8 @@ namespace Xamarin.Forms.Core.UnitTests
 			grid1.Children.Add(label1, 0, 0);
 			grid1.Children.Add(editor1, 1, 0);
 
-			grid1.Layout(new Rectangle(0, 0, 156, 200));
-			Assert.AreEqual(new Rectangle(106, 0, 50, 40), editor1.Bounds);
+			grid1.Layout(new RectangleF(0, 0, 156, 200));
+			Assert.AreEqual(new RectangleF(106, 0, 50, 40), editor1.Bounds);
 		}
 
 		[Test]
@@ -2178,11 +2179,11 @@ namespace Xamarin.Forms.Core.UnitTests
 			grid.Children.Add(leftLabel, 0, 1);
 			grid.Children.Add(rightLabel, 1, 1);
 
-			var unboundRequest = grid.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity);
-			var widthBoundRequest = grid.GetSizeRequest(50, double.PositiveInfinity);
+			var unboundRequest = grid.GetSizeRequest(float.PositiveInfinity, float.PositiveInfinity);
+			var widthBoundRequest = grid.GetSizeRequest(50, float.PositiveInfinity);
 
-			Assert.AreEqual(new SizeRequest(new Size(20, 120), new Size(0, 120)), unboundRequest);
-			Assert.AreEqual(new SizeRequest(new Size(50, 60), new Size(0, 60)), widthBoundRequest);
+			Assert.AreEqual(new SizeRequest(new SizeF(20, 120), new SizeF(0, 120)), unboundRequest);
+			Assert.AreEqual(new SizeRequest(new SizeF(50, 60), new SizeF(0, 60)), widthBoundRequest);
 		}
 
 		[Test]
@@ -2227,9 +2228,9 @@ namespace Xamarin.Forms.Core.UnitTests
 			grid.Children.Add(label0);
 			grid.Children.Add(label1);
 
-			Assert.AreEqual(new SizeRequest(new Size(100, 20), new Size(0, 20)), grid.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity));
+			Assert.AreEqual(new SizeRequest(new SizeF(100, 20), new SizeF(0, 20)), grid.GetSizeRequest(float.PositiveInfinity, float.PositiveInfinity));
 			grid.BindingContext = new { Height = 42 };
-			Assert.AreEqual(new SizeRequest(new Size(100, 62), new Size(0, 62)), grid.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity));
+			Assert.AreEqual(new SizeRequest(new SizeF(100, 62), new SizeF(0, 62)), grid.GetSizeRequest(float.PositiveInfinity, float.PositiveInfinity));
 		}
 
 		[Test]
@@ -2273,7 +2274,7 @@ namespace Xamarin.Forms.Core.UnitTests
 					new RowDefinition(){Height = GridLength.Auto}
 				}
 			};
-			//image will have "EVERYTHING IS 100 x 20" size so grid should shrink it and itself to 50x10
+			//image will have "EVERYTHING IS 100 x 20" SizeF so grid should shrink it and itself to 50x10
 			contentGrid.Children.Add(new Image() { IsPlatformEnabled = true }, 0, 0);
 			var measurement = contentGrid.Measure(50, 100);
 			Assert.AreEqual(50, measurement.Request.Width);
@@ -2326,7 +2327,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				IsPlatformEnabled = true,
 				Content = grid,
 			};
-			view.Layout(new Rectangle(0, 0, 800, 800));
+			view.Layout(new RectangleF(0, 0, 800, 800));
 
 
 			Assert.AreEqual(boxRow0Column0.MinimumWidthRequest, boxRow0Column0.Width);
@@ -2380,7 +2381,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				IsPlatformEnabled = true,
 				Content = grid,
 			};
-			view.Layout(new Rectangle(0, 0, 800, 800));
+			view.Layout(new RectangleF(0, 0, 800, 800));
 
 			Assert.AreEqual(boxRow0Column0.MinimumHeightRequest, boxRow0Column0.Height);
 			Assert.AreEqual(boxRow0Column1.MinimumHeightRequest, boxRow0Column1.Height);
@@ -2507,7 +2508,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				fire = false;
 			};
 
-			grid.Layout(new Rectangle(0, 0, 100, 100));
+			grid.Layout(new RectangleF(0, 0, 100, 100));
 
 			foreach (var delayAction in delayActions)
 			{

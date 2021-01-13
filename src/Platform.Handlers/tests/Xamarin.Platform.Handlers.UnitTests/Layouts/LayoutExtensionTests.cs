@@ -3,6 +3,7 @@ using Xamarin.Platform.Handlers.Tests;
 using NSubstitute;
 using Xamarin.Forms;
 using Xamarin.Platform.Layouts;
+using System.Graphics;
 
 namespace Xamarin.Platform.Handlers.UnitTests.Layouts
 {
@@ -16,7 +17,7 @@ namespace Xamarin.Platform.Handlers.UnitTests.Layouts
 			var margin = new Thickness(20);
 			element.Margin.Returns(margin);
 
-			var bounds = new Rectangle(0, 0, 100, 100);
+			var bounds = new RectangleF(0, 0, 100, 100);
 			var frame = element.ComputeFrame(bounds);
 
 			// With a margin of 20 all the way around, we expect the actual frame
@@ -35,7 +36,7 @@ namespace Xamarin.Platform.Handlers.UnitTests.Layouts
 			var margin = new Thickness(200);
 			element.Margin.Returns(margin);
 
-			var bounds = new Rectangle(0, 0, 100, 100);
+			var bounds = new RectangleF(0, 0, 100, 100);
 			var frame = element.ComputeFrame(bounds);
 
 			// The margin is simply too large for the bounds; since negative widths/heights on a frame don't make sense,
@@ -56,7 +57,7 @@ namespace Xamarin.Platform.Handlers.UnitTests.Layouts
 			var margin = new Thickness(20);
 
 			// Our "native" control will request a size of (100,50) when we call GetDesiredSize
-			handler.GetDesiredSize(Arg.Any<double>(), Arg.Any<double>()).Returns(new Size(100, 50));
+			handler.GetDesiredSize(Arg.Any<float>(), Arg.Any<float>()).Returns(new SizeF(100, 50));
 			element.Handler.Returns(handler);
 			element.Margin.Returns(margin);
 
