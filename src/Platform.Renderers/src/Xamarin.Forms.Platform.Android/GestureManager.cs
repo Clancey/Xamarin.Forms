@@ -1,7 +1,8 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Graphics;
 using System.Linq;
 using Android.Content;
 using Android.Views;
@@ -154,7 +155,7 @@ namespace Xamarin.Forms.Platform.Android
 				new TapGestureHandler(() => View, () =>
 				{
 					if (Element is View view)
-						return view.GetChildElements(Point.Zero) ?? new List<GestureElement>();
+						return view.GetChildElements(PointF.Zero) ?? new List<GestureElement>();
 
 					return new List<GestureElement>();
 				}),

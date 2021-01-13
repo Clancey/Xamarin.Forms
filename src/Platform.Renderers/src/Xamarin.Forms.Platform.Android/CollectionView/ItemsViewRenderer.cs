@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using Android.Views;
 using AndroidX.RecyclerView.Widget;
@@ -82,7 +83,7 @@ namespace Xamarin.Forms.Platform.Android
 		SizeRequest IVisualElementRenderer.GetDesiredSize(int widthConstraint, int heightConstraint)
 		{
 			Measure(widthConstraint, heightConstraint);
-			return new SizeRequest(new Size(MeasuredWidth, MeasuredHeight), new Size());
+			return new SizeRequest(new SizeF(MeasuredWidth, MeasuredHeight), new SizeF());
 		}
 
 		void IVisualElementRenderer.SetElement(VisualElement element)
@@ -458,7 +459,7 @@ namespace Xamarin.Forms.Platform.Android
 		}
 
 		// TODO hartez 2018/08/09 09:30:17 Package up background color and flow direction providers so we don't have to re-implement them here	
-		protected virtual void UpdateBackgroundColor(Color? color = null)
+		protected virtual void UpdateBackgroundColor(Color color = null)
 		{
 			if (Element == null)
 			{

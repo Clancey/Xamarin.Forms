@@ -43,6 +43,6 @@ namespace Xamarin.Forms.Internals
 
 		void QuitApplication();
 
-		SizeRequest GetNativeSize(VisualElement view, double widthConstraint, double heightConstraint);
+		SizeRequest GetNativeSize(VisualElement view, float widthConstraint, float heightConstraint);
 	}
 }

@@ -1,6 +1,7 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Graphics;
 using System.Linq;
 using System.Threading.Tasks;
 using CoreGraphics;
@@ -10,9 +11,6 @@ using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using static Xamarin.Forms.PlatformConfiguration.iOSSpecific.NavigationPage;
 using static Xamarin.Forms.PlatformConfiguration.iOSSpecific.Page;
 using PageUIStatusBarAnimation = Xamarin.Forms.PlatformConfiguration.iOSSpecific.UIStatusBarAnimation;
-using PointF = CoreGraphics.CGPoint;
-using RectangleF = CoreGraphics.CGRect;
-using SizeF = CoreGraphics.CGSize;
 
 namespace Xamarin.Forms.Platform.iOS
 {
@@ -23,7 +21,7 @@ namespace Xamarin.Forms.Platform.iOS
 		bool _ignorePopCall;
 		bool _loaded;
 		FlyoutPage _parentFlyoutPage;
-		Size _queuedSize;
+		SizeF _queuedSize;
 		UIViewController[] _removeControllers;
 		UIToolbar _secondaryToolbar;
 		VisualElementTracker _tracker;
@@ -55,7 +53,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		public event EventHandler<VisualElementChangedEventArgs> ElementChanged;
 
-		public SizeRequest GetDesiredSize(double widthConstraint, double heightConstraint)
+		public SizeRequest GetDesiredSize(float widthConstraint, float heightConstraint)
 		{
 			return NativeView.GetSizeRequest(widthConstraint, heightConstraint);
 		}
@@ -77,10 +75,10 @@ namespace Xamarin.Forms.Platform.iOS
 			EffectUtilities.RegisterEffectControlProvider(this, oldElement, element);
 		}
 
-		public void SetElementSize(Size size)
+		public void SetElementSize(SizeF size)
 		{
 			if (_loaded)
-				Element.Layout(new Rectangle(Element.X, Element.Y, size.Width, size.Height));
+				Element.Layout(new RectangleF((float)Element.X, (float)Element.Y, (float)size.Width, (float)size.Height));
 			else
 				_queuedSize = size;
 		}
@@ -168,7 +166,7 @@ namespace Xamarin.Forms.Platform.iOS
 				return;
 			UpdateToolBarVisible();
 
-			var navBarFrameBottom = Math.Min(NavigationBar.Frame.Bottom, 140);
+			var navBarFrameBottom = (float)Math.Min(NavigationBar.Frame.Bottom, 140);
 			_navigationBottom = (nfloat)navBarFrameBottom;
 			var toolbar = _secondaryToolbar;
 
@@ -177,17 +175,17 @@ namespace Xamarin.Forms.Platform.iOS
 
 			// Use 0 if the NavBar is hidden or will be hidden
 			var toolbarY = NavigationBarHidden || NavigationBar.Translucent || !_hasNavigationBar ? 0 : navBarFrameBottom;
-			toolbar.Frame = new RectangleF(0, toolbarY, View.Frame.Width, toolbar.Frame.Height);
+			toolbar.Frame = new CGRect(0, toolbarY, View.Frame.Width, toolbar.Frame.Height);
 
-			double trueBottom = toolbar.Hidden ? toolbarY : toolbar.Frame.Bottom;
+			var trueBottom = toolbar.Hidden ? toolbarY : (float)toolbar.Frame.Bottom;
 			var modelSize = _queuedSize.IsZero ? Element.Bounds.Size : _queuedSize;
 			PageController.ContainerArea =
-				new Rectangle(0, toolbar.Hidden ? 0 : toolbar.Frame.Height, modelSize.Width, modelSize.Height - trueBottom);
+				new RectangleF(0, toolbar.Hidden ? 0 : (float)toolbar.Frame.Height, modelSize.Width, (float)modelSize.Height - trueBottom);
 
 			if (!_queuedSize.IsZero)
 			{
-				Element.Layout(new Rectangle(Element.X, Element.Y, _queuedSize.Width, _queuedSize.Height));
-				_queuedSize = Size.Zero;
+				Element.Layout(new RectangleF(Element.X, Element.Y, _queuedSize.Width, _queuedSize.Height));
+				_queuedSize = SizeF.Zero;
 			}
 
 			_loaded = true;
@@ -206,7 +204,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 			UpdateTranslucent();
 
-			_secondaryToolbar = new SecondaryToolbar { Frame = new RectangleF(0, 0, 320, 44) };
+			_secondaryToolbar = new SecondaryToolbar { Frame = new CGRect(0, 0, 320, 44) };
 			View.Add(_secondaryToolbar);
 			_secondaryToolbar.Hidden = true;
 
@@ -748,7 +746,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 			// set Tint color (i. e. Back Button arrow and Text)
 			var iconColor = Current != null ? NavigationPage.GetIconColor(Current) : null;
-			if (iconColor.IsDefault)
+			if (iconColor == null)
 				iconColor = barTextColor;
 
 			NavigationBar.TintColor = iconColor == null || NavPage.OnThisPlatform().GetStatusBarTextColorMode() == StatusBarTextColorMode.DoNotAdjust
@@ -761,7 +759,7 @@ namespace Xamarin.Forms.Platform.iOS
 			var barTextColor = NavPage.BarTextColor;
 			var statusBarColorMode = NavPage.OnThisPlatform().GetStatusBarTextColorMode();
 
-			if (statusBarColorMode == StatusBarTextColorMode.DoNotAdjust || barTextColor.Luminosity <= 0.5)
+			if (statusBarColorMode == StatusBarTextColorMode.DoNotAdjust || barTextColor.GetLuminosity() <= 0.5)
 			{
 				// Use dark text color for status bar
 				if (Forms.IsiOS13OrNewer)
@@ -792,7 +790,7 @@ namespace Xamarin.Forms.Platform.iOS
 			if (tintColor == null)
 				NavigationBar.TintColor = UINavigationBar.Appearance.TintColor;
 			else
-				NavigationBar.TintColor = tintColor.Luminosity > 0.5 ? UIColor.Black : UIColor.White;
+				NavigationBar.TintColor = tintColor.GetLuminosity() > 0.5 ? UIColor.Black : UIColor.White;
 		}
 
 		void UpdateToolBarVisible()
@@ -955,7 +953,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 				foreach (var item in Items)
 				{
-					var frame = new RectangleF(x, y, itemW, itemH);
+					var frame = new CGRect(x, y, itemW, itemH);
 					if (frame == item.CustomView.Frame)
 						continue;
 					item.CustomView.Frame = frame;
@@ -966,7 +964,7 @@ namespace Xamarin.Forms.Platform.iOS
 				y = (int)Bounds.GetMidY();
 				foreach (var l in _lines)
 				{
-					l.Center = new PointF(x, y);
+					l.Center = new CGPoint(x, y);
 					x += itemW + padding;
 				}
 			}
@@ -979,7 +977,7 @@ namespace Xamarin.Forms.Platform.iOS
 					return;
 				for (var i = 1; i < Items.Length; i++)
 				{
-					var l = new UIView(new RectangleF(0, 0, 1, 24)) { BackgroundColor = new UIColor(0, 0, 0, 0.2f) };
+					var l = new UIView(new CGRect(0, 0, 1, 24)) { BackgroundColor = new UIColor(0, 0, 0, 0.2f) };
 					AddSubview(l);
 					_lines.Add(l);
 				}
@@ -1073,7 +1071,7 @@ namespace Xamarin.Forms.Platform.iOS
 			{
 				IVisualElementRenderer childRenderer;
 				if (Child != null && (childRenderer = Platform.GetRenderer(Child)) != null)
-					childRenderer.NativeView.Frame = Child.Bounds.ToRectangleF();
+					childRenderer.NativeView.Frame = Child.Bounds.ToNative();
 				base.ViewDidLayoutSubviews();
 			}
 
@@ -1196,17 +1194,17 @@ namespace Xamarin.Forms.Platform.iOS
 					var shadowImage = navBar.ShadowImage;
 					navBar.CompactAppearance.ShadowImage = navBar.StandardAppearance.ShadowImage = navBar.ScrollEdgeAppearance.ShadowImage = shadowImage;
 
-					if (shadowImage != null && shadowImage.Size == SizeF.Empty)
+					if (shadowImage != null && shadowImage.Size == CGSize.Empty)
 						navBar.CompactAppearance.ShadowColor = navBar.StandardAppearance.ShadowColor = navBar.ScrollEdgeAppearance.ShadowColor = UIColor.Clear;
 				}
 
 				UIImage backIndicatorImage = navBar.BackIndicatorImage;
 				UIImage backIndicatorTransitionMaskImage = navBar.BackIndicatorTransitionMaskImage;
 
-				if (backIndicatorImage != null && backIndicatorImage.Size == SizeF.Empty)
+				if (backIndicatorImage != null && backIndicatorImage.Size == CGSize.Empty)
 					backIndicatorImage = GetEmptyBackIndicatorImage();
 
-				if (backIndicatorTransitionMaskImage != null && backIndicatorTransitionMaskImage.Size == SizeF.Empty)
+				if (backIndicatorTransitionMaskImage != null && backIndicatorTransitionMaskImage.Size == CGSize.Empty)
 					backIndicatorTransitionMaskImage = GetEmptyBackIndicatorImage();
 
 				navBar.CompactAppearance.SetBackIndicatorImage(backIndicatorImage, backIndicatorTransitionMaskImage);
@@ -1216,7 +1214,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 			UIImage GetEmptyBackIndicatorImage()
 			{
-				var rect = RectangleF.Empty;
+				var rect = CGRect.Empty;
 				var size = rect.Size;
 
 				UIGraphics.BeginImageContext(size);
@@ -1524,11 +1522,11 @@ namespace Xamarin.Forms.Platform.iOS
 			}
 
 			[Internals.Preserve(Conditional = true)]
-			public FormsNavigationBar(RectangleF frame) : base(frame)
+			public FormsNavigationBar(CGRect frame) : base(frame)
 			{
 			}
 
-			public RectangleF BackButtonFrameSize { get; private set; }
+			public CGRect BackButtonFrameSize { get; private set; }
 			public UILabel NavBarLabel { get; private set; }
 
 			public override void LayoutSubviews()
@@ -1597,8 +1595,8 @@ namespace Xamarin.Forms.Platform.iOS
 
 			public override CGSize IntrinsicContentSize => UILayoutFittingExpandedSize;
 
-			nfloat IconHeight => _icon?.Frame.Height ?? 0;
-			nfloat IconWidth => _icon?.Frame.Width ?? 0;
+			float IconHeight => (float)(_icon?.Frame.Height ?? 0);
+			float IconWidth => (float)(_icon?.Frame.Width ?? 0);
 
 			// Navigation bar will not stretch past these values. Prevent content clipping.
 			// iOS11 does this for us automatically, but apparently iOS10 doesn't.
@@ -1624,7 +1622,7 @@ namespace Xamarin.Forms.Platform.iOS
 						{
 							value.Y = Superview.Bounds.Y;
 
-							if (_bar != null && String.IsNullOrWhiteSpace(_bar.NavBarLabel?.Text) && _bar.BackButtonFrameSize != RectangleF.Empty)
+							if (_bar != null && String.IsNullOrWhiteSpace(_bar.NavBarLabel?.Text) && _bar.BackButtonFrameSize != CGRect.Empty)
 							{
 								var xSpace = _bar.BackButtonFrameSize.Width + (_bar.BackButtonFrameSize.X * 2);
 								value.Width = (value.X - xSpace) + value.Width;
@@ -1653,9 +1651,9 @@ namespace Xamarin.Forms.Platform.iOS
 				}
 			}
 
-			public override SizeF SizeThatFits(SizeF size)
+			public override CGSize SizeThatFits(CGSize size)
 			{
-				return new SizeF(size.Width, ToolbarHeight);
+				return new CGSize(size.Width, ToolbarHeight);
 			}
 
 			public override void LayoutSubviews()
@@ -1664,22 +1662,22 @@ namespace Xamarin.Forms.Platform.iOS
 				if (Frame == CGRect.Empty || Frame.Width >= 10000 || Frame.Height >= 10000)
 					return;
 
-				nfloat toolbarHeight = ToolbarHeight;
+				var toolbarHeight = (float)ToolbarHeight;
 
-				double height = Math.Min(toolbarHeight, Bounds.Height);
+				float height = (float)Math.Min(toolbarHeight, Bounds.Height);
 
 				if (_icon != null)
-					_icon.Frame = new RectangleF(0, 0, IconWidth, Math.Min(toolbarHeight, IconHeight));
+					_icon.Frame = new CGRect(0, 0, IconWidth, Math.Min(toolbarHeight, IconHeight));
 
 				if (_child?.Element != null)
 				{
-					Rectangle layoutBounds = new Rectangle(IconWidth, 0, Bounds.Width - IconWidth, height);
+					var layoutBounds = new RectangleF(IconWidth, 0, (float)Bounds.Width - IconWidth, height);
 					if (_child.Element.Bounds != layoutBounds)
 						Layout.LayoutChildIntoBoundingRegion(_child.Element, layoutBounds);
 				}
 				else if (_icon != null && Superview != null)
 				{
-					_icon.Center = new PointF(Superview.Frame.Width / 2 - Frame.X, Superview.Frame.Height / 2);
+					_icon.Center = new CGPoint(Superview.Frame.Width / 2 - Frame.X, Superview.Frame.Height / 2);
 				}
 			}
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using UIKit;
 using Xamarin.Forms.Internals;
 using PlatformElement = Xamarin.Forms.PlatformConfiguration.iOSSpecific.VisualElement;
@@ -42,7 +43,7 @@ namespace Xamarin.Forms.Platform.iOS
 			var layer = ShadowView.Layer;
 
 			layer.ShadowColor = PlatformElement.GetShadowColor(Element).ToCGColor();
-			layer.ShadowOffset = PlatformElement.GetShadowOffset(Element).ToSizeF();
+			layer.ShadowOffset = PlatformElement.GetShadowOffset(Element).ToNative();
 			layer.ShadowRadius = (nfloat)PlatformElement.GetShadowRadius(Element);
 			layer.ShadowOpacity = (float)PlatformElement.GetShadowOpacity(Element);
 		}

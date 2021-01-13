@@ -1,11 +1,10 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using Xamarin.Forms.Internals;
 using UIKit;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
-using PointF = CoreGraphics.CGPoint;
-using RectangleF = CoreGraphics.CGRect;
 using CoreGraphics;
+using System.Graphics;
 
 namespace Xamarin.Forms.Platform.iOS
 {
@@ -17,14 +16,14 @@ namespace Xamarin.Forms.Platform.iOS
 
 		VisualElementPackager _packager;
 
-		RectangleF _previousFrame;
+		CGRect _previousFrame;
 		ScrollToRequestedEventArgs _requestedScroll;
 		VisualElementTracker _tracker;
 		bool _checkedForRtlScroll = false;
 		bool _previousLTR = true;
 
 		[Preserve(Conditional = true)]
-		public ScrollViewRenderer() : base(RectangleF.Empty)
+		public ScrollViewRenderer() : base(CGRect.Empty)
 		{
 			ScrollAnimationEnded += HandleScrollAnimationEnded;
 			Scrolled += HandleScrolled;
@@ -39,7 +38,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		public event EventHandler<VisualElementChangedEventArgs> ElementChanged;
 
-		public SizeRequest GetDesiredSize(double widthConstraint, double heightConstraint)
+		public SizeRequest GetDesiredSize(float widthConstraint, float heightConstraint)
 		{
 			return NativeView.GetSizeRequest(widthConstraint, heightConstraint, 44, 44);
 		}
@@ -108,9 +107,9 @@ namespace Xamarin.Forms.Platform.iOS
 			}
 		}
 
-		public void SetElementSize(Size size)
+		public void SetElementSize(SizeF size)
 		{
-			Layout.LayoutChildIntoBoundingRegion(Element, new Rectangle(Element.X, Element.Y, size.Width, size.Height));
+			Layout.LayoutChildIntoBoundingRegion(Element, new RectangleF(Element.X, Element.Y, size.Width, size.Height));
 		}
 
 		public UIViewController ViewController
@@ -157,7 +156,7 @@ namespace Xamarin.Forms.Platform.iOS
 				{
 					_previousLTR = isLTR;
 					_checkedForRtlScroll = true;
-					SetContentOffset(new PointF((nfloat)(ScrollView.Content.Width - ScrollView.Width - ContentOffset.X), 0), false);
+					SetContentOffset(new CGPoint((nfloat)(ScrollView.Content.Width - ScrollView.Width - ContentOffset.X), 0), false);
 				}
 			}
 
@@ -264,25 +263,25 @@ namespace Xamarin.Forms.Platform.iOS
 				return;
 			}
 
-			PointF newOffset = PointF.Empty;
+			CGPoint newOffset = CGPoint.Empty;
 			if (e.Mode == ScrollToMode.Position)
-				newOffset = new PointF((nfloat)e.ScrollX, (nfloat)e.ScrollY);
+				newOffset = new CGPoint((nfloat)e.ScrollX, (nfloat)e.ScrollY);
 			else
 			{
 				var positionOnScroll = ScrollView.GetScrollPositionForElement(e.Element as VisualElement, e.Position);
-				positionOnScroll.X = positionOnScroll.X.Clamp(0, ContentSize.Width);
-				positionOnScroll.Y = positionOnScroll.Y.Clamp(0, ContentSize.Height);
+				positionOnScroll.X = positionOnScroll.X.Clamp(0, (float)ContentSize.Width);
+				positionOnScroll.Y = positionOnScroll.Y.Clamp(0, (float)ContentSize.Height);
 
 				switch (ScrollView.Orientation)
 				{
 					case ScrollOrientation.Horizontal:
-						newOffset = new PointF((nfloat)positionOnScroll.X, ContentOffset.Y);
+						newOffset = new CGPoint((nfloat)positionOnScroll.X, ContentOffset.Y);
 						break;
 					case ScrollOrientation.Vertical:
-						newOffset = new PointF(ContentOffset.X, (nfloat)positionOnScroll.Y);
+						newOffset = new CGPoint(ContentOffset.X, (nfloat)positionOnScroll.Y);
 						break;
 					case ScrollOrientation.Both:
-						newOffset = new PointF((nfloat)positionOnScroll.X, (nfloat)positionOnScroll.Y);
+						newOffset = new CGPoint((nfloat)positionOnScroll.X, (nfloat)positionOnScroll.Y);
 						break;
 				}
 			}
@@ -300,7 +299,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		void UpdateBackgroundColor()
 		{
-			BackgroundColor = Element.BackgroundColor.ToUIColor(Color.Transparent);
+			BackgroundColor = Element.BackgroundColor.ToUIColor(Colors.Transparent);
 		}
 
 		void UpdateBackground()
@@ -322,13 +321,13 @@ namespace Xamarin.Forms.Platform.iOS
 
 		CoreGraphics.CGSize RetrieveElementContentSize()
 		{
-			return ((ScrollView)Element).ContentSize.ToSizeF();
+			return ((ScrollView)Element).ContentSize.ToNative();
 		}
 
 		void UpdateScrollPosition()
 		{
 			if (ScrollView != null)
-				ScrollView.SetScrolledPosition(ContentOffset.X, ContentOffset.Y);
+				ScrollView.SetScrolledPosition((float)ContentOffset.X, (float)ContentOffset.Y);
 		}
 
 		void IEffectControlProvider.RegisterEffect(Effect effect)

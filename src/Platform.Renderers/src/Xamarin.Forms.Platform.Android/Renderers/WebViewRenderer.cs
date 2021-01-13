@@ -1,6 +1,7 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Graphics;
 using System.Net;
 using System.Threading.Tasks;
 using Android.Content;
@@ -109,9 +110,9 @@ namespace Xamarin.Forms.Platform.Android
 			return new FormsWebChromeClient();
 		}
 
-		protected override Size MinimumSize()
+		protected override SizeF MinimumSize()
 		{
-			return new Size(Context.ToPixels(40), Context.ToPixels(40));
+			return new SizeF(Context.ToPixels(40), Context.ToPixels(40));
 		}
 
 		protected override AWebView CreateNativeControl()

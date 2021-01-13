@@ -1,8 +1,9 @@
 using System;
 using CoreGraphics;
-using PointF = CoreGraphics.CGPoint;
-using RectangleF = CoreGraphics.CGRect;
-using SizeF = CoreGraphics.CGSize;
+using CGPoint = CoreGraphics.CGPoint;
+using CGRect = CoreGraphics.CGRect;
+using CGSize = CoreGraphics.CGSize;
+using System.Graphics;
 #if __MOBILE__
 using UIKit;
 namespace Xamarin.Forms.Platform.iOS
@@ -48,7 +49,7 @@ namespace Xamarin.Forms.Platform.MacOS
 				if (Forms.IsiOS13OrNewer)
 					return UIColor.SecondaryLabelColor;
 
-				return new Color(.32, .4, .57).ToUIColor();
+				return new Color(.32f, .4f, .57f).ToUIColor();
 			}
 		}
 
@@ -103,7 +104,7 @@ namespace Xamarin.Forms.Platform.MacOS
 				if (Forms.IsiOS13OrNewer)
 					return UIColor.SystemBlueColor;
 
-				return Colors.FromRgba(50, 79, 133, 255).ToUIColor();
+				return Color.FromBytes(50, 79, 133, 255).ToUIColor();
 			}
 		}
 
@@ -257,7 +258,7 @@ namespace Xamarin.Forms.Platform.MacOS
 
 			color.GetRgba(out red, out green, out blue, out alpha);
 #endif
-			return new Color(red, green, blue, alpha);
+			return new Color((float)red, (float)green, (float)blue, (float)alpha);
 		}
 
 #if __MACOS__
@@ -272,24 +273,14 @@ namespace Xamarin.Forms.Platform.MacOS
 #if __MOBILE__
 		public static UIColor ToUIColor(this Color color)
 		{
-			return new UIColor((float)color.R, (float)color.G, (float)color.B, (float)color.A);
+			return new UIColor((float)color.Red, (float)color.Green, (float)color.Blue, (float)color.Alpha);
 		}
 
 		public static UIColor ToUIColor(this Color color, Color defaultColor)
-		{
-			if (color.IsDefault)
-				return defaultColor.ToUIColor();
-
-			return color.ToUIColor();
-		}
+			=> color?.ToUIColor() ?? defaultColor.ToUIColor();
 
 		public static UIColor ToUIColor(this Color color, UIColor defaultColor)
-		{
-			if (color.IsDefault)
-				return defaultColor;
-
-			return color.ToUIColor();
-		}
+			=> color?.ToUIColor() ?? defaultColor;
 #else
 		public static NSColor ToNSColor(this Color color)
 		{
@@ -316,35 +307,35 @@ namespace Xamarin.Forms.Platform.MacOS
 
 	public static class PointExtensions
 	{
-		public static Point ToPoint(this PointF point)
+		public static PointF ToPoint(this CGPoint point)
 		{
-			return new PointF(point.X, point.Y);
+			return new PointF((float)point.X, (float)point.Y);
 		}
 
-		public static PointF ToPointF(this Point point)
+		public static CGPoint ToNative(this PointF point)
 		{
-			return new PointF(point.X, point.Y);
+			return new CGPoint(point.X, point.Y);
 		}
 	}
 
 	public static class SizeExtensions
 	{
-		public static SizeF ToSizeF(this Size size)
+		public static CGSize ToNative(this SizeF size)
 		{
-			return new SizeF((float)size.Width, (float)size.Height);
+			return new CGSize((float)size.Width, (float)size.Height);
 		}
 	}
 
 	public static class RectangleExtensions
 	{
-		public static Rectangle ToRectangle(this RectangleF rect)
+		public static RectangleF ToRectangle(this CGRect rect)
 		{
-			return new Rectangle(rect.X, rect.Y, rect.Width, rect.Height);
+			return new RectangleF((float)rect.X, (float)rect.Y, (float)rect.Width, (float)rect.Height);
 		}
 
-		public static RectangleF ToRectangleF(this Rectangle rect)
+		public static CGRect ToNative(this RectangleF rect)
 		{
-			return new RectangleF((nfloat)rect.X, (nfloat)rect.Y, (nfloat)rect.Width, (nfloat)rect.Height);
+			return new CGRect(rect.X, rect.Y, rect.Width, rect.Height);
 		}
 	}
 }

@@ -17,7 +17,7 @@ namespace Xamarin.Forms.Platform.iOS
 			var renderer = Platform.CreateRenderer(view);
 			Platform.SetRenderer(view, renderer);
 
-			renderer.NativeView.Bounds = view.Bounds.ToRectangleF();
+			renderer.NativeView.Bounds = view.Bounds.ToNative();
 
 			return renderer;
 		}

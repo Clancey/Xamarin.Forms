@@ -222,7 +222,7 @@ namespace Xamarin.Platform
 
 		public static NSColor ToNative(this Color color, Color defaultColor)
 		{
-			if (color.IsDefault)
+			if (color == null)
 				return defaultColor.ToNative();
 
 			return color.ToNative();
@@ -230,7 +230,7 @@ namespace Xamarin.Platform
 
 		public static NSColor ToNative(this Color color, NSColor defaultColor)
 		{
-			if (color.IsDefault)
+			if (color == null)
 				return defaultColor;
 
 			return color.ToNative();

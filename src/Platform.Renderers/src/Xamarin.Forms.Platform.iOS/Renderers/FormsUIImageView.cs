@@ -1,7 +1,6 @@
 ﻿using System;
 using CoreGraphics;
 using UIKit;
-using RectangleF = CoreGraphics.CGRect;
 
 namespace Xamarin.Forms.Platform.iOS
 {
@@ -11,7 +10,7 @@ namespace Xamarin.Forms.Platform.iOS
 		const string AnimationLayerName = "FormsUIImageViewAnimation";
 		FormsCAKeyFrameAnimation _animation;
 		public event EventHandler<CoreAnimation.CAAnimationStateEventArgs> AnimationStopped;
-		public FormsUIImageView() : base(RectangleF.Empty)
+		public FormsUIImageView() : base(CGRect.Empty)
 		{
 		}
 

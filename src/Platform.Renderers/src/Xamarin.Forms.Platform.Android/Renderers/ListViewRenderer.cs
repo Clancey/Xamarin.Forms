@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using Android.Runtime;
 using Android.Views;
@@ -100,9 +101,9 @@ namespace Xamarin.Forms.Platform.Android
 			base.Dispose(disposing);
 		}
 
-		protected override Size MinimumSize()
+		protected override SizeF MinimumSize()
 		{
-			return new Size(40, 40);
+			return new SizeF(40, 40);
 		}
 
 		protected virtual SwipeRefreshLayout CreateNativePullToRefresh(Context context)
@@ -546,8 +547,8 @@ namespace Xamarin.Forms.Platform.Android
 
 				var width = (int)ctx.FromPixels(MeasureSpecFactory.GetSize(widthMeasureSpec));
 
-				SizeRequest request = element.Measure(width, double.PositiveInfinity, MeasureFlags.IncludeMargins);
-				Xamarin.Forms.Layout.LayoutChildIntoBoundingRegion(element, new Rectangle(0, 0, width, request.Request.Height));
+				SizeRequest request = element.Measure(width, float.PositiveInfinity, MeasureFlags.IncludeMargins);
+				Xamarin.Forms.Layout.LayoutChildIntoBoundingRegion(element, new RectangleF(0, 0, width, request.Request.Height));
 
 				int widthSpec = MeasureSpecFactory.MakeMeasureSpec((int)ctx.ToPixels(width), MeasureSpecMode.Exactly);
 				int heightSpec = MeasureSpecFactory.MakeMeasureSpec((int)ctx.ToPixels(request.Request.Height), MeasureSpecMode.Exactly);
@@ -676,10 +677,10 @@ namespace Xamarin.Forms.Platform.Android
 				_density = renderer.Context.Resources.DisplayMetrics.Density;
 			}
 
-			void SendScrollEvent(double y)
+			void SendScrollEvent(float y)
 			{
 				var element = _element;
-				double offset = Math.Abs(y) / _density;
+				float offset = Math.Abs(y) / _density;
 				var args = new ScrolledEventArgs(0, offset);
 				element?.SendScrolled(args);
 			}

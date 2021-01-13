@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Graphics;
 using System.Linq;
+using CoreGraphics;
 using Foundation;
 using UIKit;
 using Xamarin.Forms.Internals;
-using RectangleF = CoreGraphics.CGRect;
-using SizeF = CoreGraphics.CGSize;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Specifics = Xamarin.Forms.PlatformConfiguration.iOSSpecific.ListView;
 
@@ -24,7 +24,7 @@ namespace Xamarin.Forms.Platform.iOS
 		IVisualElementRenderer _footerRenderer;
 
 		KeyboardInsetTracker _insetTracker;
-		RectangleF _previousFrame;
+		CGRect _previousFrame;
 		ScrollToRequestedEventArgs _requestedScroll;
 
 		FormsUITableViewController _tableViewController;
@@ -53,7 +53,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		}
 
-		public override SizeRequest GetDesiredSize(double widthConstraint, double heightConstraint)
+		public override SizeRequest GetDesiredSize(float widthConstraint, float heightConstraint)
 		{
 			return Control.GetSizeRequest(widthConstraint, heightConstraint, DefaultRowHeight, DefaultRowHeight);
 		}
@@ -63,12 +63,12 @@ namespace Xamarin.Forms.Platform.iOS
 			_insetTracker?.OnLayoutSubviews();
 			base.LayoutSubviews();
 
-			double height = Bounds.Height;
-			double width = Bounds.Width;
+			var height = (float)Bounds.Height;
+			var width = (float)Bounds.Width;
 			if (_headerRenderer != null)
 			{
 				var e = _headerRenderer.Element;
-				var request = e.Measure(width, double.PositiveInfinity, MeasureFlags.IncludeMargins);
+				var request = e.Measure(width, float.PositiveInfinity, MeasureFlags.IncludeMargins);
 
 				// Time for another story with Jason. Gather round children because the following Math.Ceiling will look like it's completely useless.
 				// You will remove it and test and find everything is fiiiiiine, but it is not fine, no it is far from fine. See iOS, or at least iOS 8
@@ -78,7 +78,7 @@ namespace Xamarin.Forms.Platform.iOS
 				// grow a little each time, which you weren't testing at all were you? So there you have it, the stupid reason we integer align here.
 				//
 				// The same technically applies to the footer, though that could hardly matter less. We just do it for fun.
-				Layout.LayoutChildIntoBoundingRegion(e, new Rectangle(0, 0, width, Math.Ceiling(request.Request.Height)));
+				Layout.LayoutChildIntoBoundingRegion(e, new RectangleF(0, 0, width, (float)Math.Ceiling(request.Request.Height)));
 
 				Device.BeginInvokeOnMainThread(() =>
 				{
@@ -91,7 +91,7 @@ namespace Xamarin.Forms.Platform.iOS
 			{
 				var e = _footerRenderer.Element;
 				var request = e.Measure(width, height, MeasureFlags.IncludeMargins);
-				Layout.LayoutChildIntoBoundingRegion(e, new Rectangle(0, 0, width, Math.Ceiling(request.Request.Height)));
+				Layout.LayoutChildIntoBoundingRegion(e, new RectangleF(0, 0, width, (float)Math.Ceiling(request.Request.Height)));
 
 				Device.BeginInvokeOnMainThread(() =>
 				{
@@ -388,13 +388,13 @@ namespace Xamarin.Forms.Platform.iOS
 
 		void OnFooterMeasureInvalidated(object sender, EventArgs eventArgs)
 		{
-			double width = Bounds.Width;
+			float width = (float)Bounds.Width;
 			if (width == 0)
 				return;
 
 			var footerView = (VisualElement)sender;
-			var request = footerView.Measure(width, double.PositiveInfinity, MeasureFlags.IncludeMargins);
-			Layout.LayoutChildIntoBoundingRegion(footerView, new Rectangle(0, 0, width, request.Request.Height));
+			var request = footerView.Measure(width, float.PositiveInfinity, MeasureFlags.IncludeMargins);
+			Layout.LayoutChildIntoBoundingRegion(footerView, new RectangleF(0, 0, width, request.Request.Height));
 
 			Control.TableFooterView = _footerRenderer.NativeView;
 		}
@@ -410,13 +410,13 @@ namespace Xamarin.Forms.Platform.iOS
 
 		void OnHeaderMeasureInvalidated(object sender, EventArgs eventArgs)
 		{
-			double width = Bounds.Width;
+			var width = (float)Bounds.Width;
 			if (width == 0)
 				return;
 
 			var headerView = (VisualElement)sender;
-			var request = headerView.Measure(width, double.PositiveInfinity, MeasureFlags.IncludeMargins);
-			Layout.LayoutChildIntoBoundingRegion(headerView, new Rectangle(0, 0, width, request.Request.Height));
+			var request = headerView.Measure(width, float.PositiveInfinity, MeasureFlags.IncludeMargins);
+			Layout.LayoutChildIntoBoundingRegion(headerView, new RectangleF(0, 0, width, request.Request.Height));
 
 			Control.TableHeaderView = _headerRenderer.NativeView;
 		}
@@ -485,9 +485,9 @@ namespace Xamarin.Forms.Platform.iOS
 				_footerRenderer = Platform.CreateRenderer(footerView);
 				Platform.SetRenderer(footerView, _footerRenderer);
 
-				double width = Bounds.Width;
-				var request = footerView.Measure(width, double.PositiveInfinity, MeasureFlags.IncludeMargins);
-				Layout.LayoutChildIntoBoundingRegion(footerView, new Rectangle(0, 0, width, request.Request.Height));
+				var width = (float)Bounds.Width;
+				var request = footerView.Measure(width, float.PositiveInfinity, MeasureFlags.IncludeMargins);
+				Layout.LayoutChildIntoBoundingRegion(footerView, new RectangleF(0, 0, width, request.Request.Height));
 
 				Control.TableFooterView = _footerRenderer.NativeView;
 				footerView.MeasureInvalidated += OnFooterMeasureInvalidated;
@@ -531,9 +531,9 @@ namespace Xamarin.Forms.Platform.iOS
 				// This will force measure to invalidate, which we haven't hooked up to yet because we are smarter!
 				Platform.SetRenderer(headerView, _headerRenderer);
 
-				double width = Bounds.Width;
-				var request = headerView.Measure(width, double.PositiveInfinity, MeasureFlags.IncludeMargins);
-				Layout.LayoutChildIntoBoundingRegion(headerView, new Rectangle(0, 0, width, request.Request.Height));
+				float width = (float)Bounds.Width;
+				var request = headerView.Measure(width, float.PositiveInfinity, MeasureFlags.IncludeMargins);
+				Layout.LayoutChildIntoBoundingRegion(headerView, new RectangleF(0, 0, width, request.Request.Height));
 
 				Control.TableHeaderView = _headerRenderer.NativeView;
 				headerView.MeasureInvalidated += OnHeaderMeasureInvalidated;
@@ -945,7 +945,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 					Platform.SetRenderer(target, _prototype);
 
-					var req = target.Measure(tableView.Frame.Width, double.PositiveInfinity, MeasureFlags.IncludeMargins);
+					var req = target.Measure((float)tableView.Frame.Width, float.PositiveInfinity, MeasureFlags.IncludeMargins);
 
 					target.ClearValue(Platform.RendererProperty);
 					foreach (Element descendant in target.Descendants())
@@ -1581,7 +1581,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 						//hack: when we don't have cells in our UITableView the spinner fails to appear
 						CheckContentSize();
-						TableView.ScrollRectToVisible(new RectangleF(0, 0, _refresh.Bounds.Width, _refresh.Bounds.Height), true);
+						TableView.ScrollRectToVisible(new CGRect(0, 0, _refresh.Bounds.Width, _refresh.Bounds.Height), true);
 					});
 				}
 			}
@@ -1713,7 +1713,7 @@ namespace Xamarin.Forms.Platform.iOS
 			//adding a default height of at least 1 pixel tricks iOS to show the spinner
 			var contentSize = TableView.ContentSize;
 			if (contentSize.Height == 0)
-				TableView.ContentSize = new SizeF(contentSize.Width, 1);
+				TableView.ContentSize = new CGSize(contentSize.Width, 1);
 		}
 
 		void OnRefreshingChanged(object sender, EventArgs eventArgs)

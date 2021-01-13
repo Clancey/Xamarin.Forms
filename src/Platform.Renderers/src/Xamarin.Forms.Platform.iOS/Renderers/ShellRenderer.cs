@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using System.Threading.Tasks;
 using UIKit;
 
@@ -87,7 +88,7 @@ namespace Xamarin.Forms.Platform.iOS
 		public Shell Shell => (Shell)Element;
 		public UIViewController ViewController => FlyoutRenderer.ViewController;
 
-		public SizeRequest GetDesiredSize(double widthConstraint, double heightConstraint) => new SizeRequest(new Size(100, 100));
+		public SizeRequest GetDesiredSize(float widthConstraint, float heightConstraint) => new SizeRequest(new SizeF(100, 100));
 
 		public void RegisterEffect(Effect effect)
 		{
@@ -104,9 +105,9 @@ namespace Xamarin.Forms.Platform.iOS
 			ElementChanged?.Invoke(this, new VisualElementChangedEventArgs(null, Element));
 		}
 
-		public virtual void SetElementSize(Size size)
+		public virtual void SetElementSize(SizeF size)
 		{
-			Element.Layout(new Rectangle(Element.X, Element.Y, size.Width, size.Height));
+			Element.Layout(new RectangleF(Element.X, Element.Y, size.Width, size.Height));
 		}
 
 		public override void ViewDidLayoutSubviews()
@@ -115,7 +116,7 @@ namespace Xamarin.Forms.Platform.iOS
 			if(_currentShellItemRenderer != null)
 				_currentShellItemRenderer.ViewController.View.Frame = View.Bounds;
 
-			SetElementSize(new Size(View.Bounds.Width, View.Bounds.Height));
+			SetElementSize(new SizeF((float)View.Bounds.Width, (float)View.Bounds.Height));
 		}
 
 		public override void ViewDidLoad()
@@ -329,7 +330,7 @@ namespace Xamarin.Forms.Platform.iOS
 		protected virtual void UpdateBackgroundColor()
 		{
 			var color = Shell.BackgroundColor;
-			if (color.IsDefault)
+			if (color == null)
 				color = ColorExtensions.BackgroundColor.ToColor();
 
 			FlyoutRenderer.View.BackgroundColor = color.ToUIColor();

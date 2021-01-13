@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Graphics;
 using CoreGraphics;
 using Foundation;
 using UIKit;
@@ -381,13 +382,13 @@ namespace Xamarin.Forms.Platform.iOS
 		{
 			if (IsHorizontal)
 			{
-				var request = formsElement.Measure(double.PositiveInfinity, CollectionView.Frame.Height, MeasureFlags.IncludeMargins);
-				Xamarin.Forms.Layout.LayoutChildIntoBoundingRegion(formsElement, new Rectangle(0, 0, request.Request.Width, CollectionView.Frame.Height));
+				var request = formsElement.Measure(float.PositiveInfinity, (float)CollectionView.Frame.Height, MeasureFlags.IncludeMargins);
+				Xamarin.Forms.Layout.LayoutChildIntoBoundingRegion(formsElement, new RectangleF(0, 0, request.Request.Width, (float)CollectionView.Frame.Height));
 			}
 			else
 			{
-				var request = formsElement.Measure(CollectionView.Frame.Width, double.PositiveInfinity, MeasureFlags.IncludeMargins);
-				Xamarin.Forms.Layout.LayoutChildIntoBoundingRegion(formsElement, new Rectangle(0, 0, CollectionView.Frame.Width, request.Request.Height));
+				var request = formsElement.Measure((float)CollectionView.Frame.Width, float.PositiveInfinity, MeasureFlags.IncludeMargins);
+				Xamarin.Forms.Layout.LayoutChildIntoBoundingRegion(formsElement, new RectangleF(0, 0, (float)CollectionView.Frame.Width, request.Request.Height));
 			}
 		}
 

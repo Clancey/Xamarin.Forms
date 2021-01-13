@@ -4,6 +4,7 @@ using CoreAnimation;
 using CoreGraphics;
 using Xamarin.Forms.Shapes;
 using Shape = Xamarin.Forms.Shapes.Shape;
+using System.Graphics;
 
 #if __MOBILE__
 using UIKit;
@@ -74,7 +75,7 @@ namespace Xamarin.Forms.Platform.MacOS
                 UpdateStrokeMiterLimit();
         }
 
-        public override SizeRequest GetDesiredSize(double widthConstraint, double heightConstraint)
+        public override SizeRequest GetDesiredSize(float widthConstraint, float heightConstraint)
         {
             if (Control != null)
             {
@@ -289,9 +290,9 @@ namespace Xamarin.Forms.Platform.MacOS
 
         public SizeRequest GetDesiredSize()
         {
-            return new SizeRequest(new Size(
-                Math.Max(0, nfloat.IsNaN(_pathStrokeBounds.Right) ? 0 : _pathStrokeBounds.Right),
-                Math.Max(0, nfloat.IsNaN(_pathStrokeBounds.Bottom) ? 0 : _pathStrokeBounds.Bottom)));
+            return new SizeRequest(new SizeF(
+                (float)Math.Max(0, nfloat.IsNaN(_pathStrokeBounds.Right) ? 0 : _pathStrokeBounds.Right),
+                (float)Math.Max(0, nfloat.IsNaN(_pathStrokeBounds.Bottom) ? 0 : _pathStrokeBounds.Bottom)));
         }
 
         public void UpdateSize(CGSize size)
@@ -538,7 +539,7 @@ namespace Xamarin.Forms.Platform.MacOS
                 for (int index = 0; index < brush.GradientStops.Count; index++)
                 {
                     Color color = brush.GradientStops[index].Color;
-                    colors[index] = new CGColor(new nfloat(color.R), new nfloat(color.G), new nfloat(color.B), new nfloat(color.A));
+                    colors[index] = new CGColor(new nfloat(color.Red), new nfloat(color.Green), new nfloat(color.Blue), new nfloat(color.Alpha));
                     locations[index] = new nfloat(brush.GradientStops[index].Offset);
                 }
 

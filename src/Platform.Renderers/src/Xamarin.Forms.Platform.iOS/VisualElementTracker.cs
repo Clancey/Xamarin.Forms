@@ -1,6 +1,6 @@
-using System;
+﻿using System;
 using System.ComponentModel;
-using System.Drawing;
+using System.Graphics;
 using System.Threading;
 using CoreAnimation;
 using CoreGraphics;
@@ -29,9 +29,9 @@ namespace Xamarin.Forms.Platform.MacOS
 
 		// Track these by hand because the calls down into iOS are too expensive
 		bool _isInteractive;
-		Rectangle _lastBounds;
+		RectangleF _lastBounds;
 #if !__MOBILE__
-		Rectangle _lastParentBounds;
+		RectangleF _lastParentBounds;
 #endif
 		CALayer _layer;
 		CGPoint _originalAnchor;
@@ -190,7 +190,7 @@ namespace Xamarin.Forms.Platform.MacOS
 			var boundsChanged = _lastBounds != view.Bounds && TrackFrame;
 #if !__MOBILE__
 			var viewParent = view.RealParent as VisualElement;
-			var parentBoundsChanged = _lastParentBounds != (viewParent == null ? Rectangle.Zero : viewParent.Bounds);
+			var parentBoundsChanged = _lastParentBounds != (viewParent == null ? RectangleF.Zero : viewParent.Bounds);
 #else
 			var thread = !boundsChanged && !caLayer.Frame.IsEmpty && Application.Current?.OnThisPlatform()?.GetHandleControlUpdatesOnMainThread() == false;
 #endif
@@ -258,7 +258,7 @@ namespace Xamarin.Forms.Platform.MacOS
 				if (shouldUpdate && TrackFrame)
 				{
 #if __MOBILE__
-					var target = new RectangleF(x, y, width, height);
+					var target = new CGRect(x, y, width, height);
 #else
 					var visualParent = parent as VisualElement;
 					float newY = visualParent == null ? y : Math.Max(0, (float)(visualParent.Height - y - view.Height));
@@ -295,7 +295,7 @@ namespace Xamarin.Forms.Platform.MacOS
 				//otherwise scaled/rotated image clipped by parent bounds
 				caLayer.MasksToBounds = false;
 #endif
-				caLayer.AnchorPoint = new PointF(anchorX, anchorY);
+				caLayer.AnchorPoint = new CGPoint(anchorX, anchorY);
 				caLayer.Opacity = opacity;
 				const double epsilon = 0.001;
 
@@ -351,7 +351,7 @@ namespace Xamarin.Forms.Platform.MacOS
 
 			_lastBounds = view.Bounds;
 #if !__MOBILE__
-			_lastParentBounds = viewParent?.Bounds ?? Rectangle.Zero;
+			_lastParentBounds = viewParent?.Bounds ?? RectangleF.Zero;
 #endif
 		}
 

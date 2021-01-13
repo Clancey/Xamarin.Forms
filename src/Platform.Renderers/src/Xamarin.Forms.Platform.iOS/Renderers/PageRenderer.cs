@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Foundation;
@@ -6,6 +6,7 @@ using UIKit;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using PageUIStatusBarAnimation = Xamarin.Forms.PlatformConfiguration.iOSSpecific.UIStatusBarAnimation;
 using PageSpecific = Xamarin.Forms.PlatformConfiguration.iOSSpecific.Page;
+using System.Graphics;
 
 namespace Xamarin.Forms.Platform.iOS
 {
@@ -93,7 +94,7 @@ namespace Xamarin.Forms.Platform.iOS
 			return views;
 		}
 
-		public SizeRequest GetDesiredSize(double widthConstraint, double heightConstraint)
+		public SizeRequest GetDesiredSize(float widthConstraint, float heightConstraint)
 		{
 			return NativeView.GetSizeRequest(widthConstraint, heightConstraint);
 		}
@@ -140,14 +141,14 @@ namespace Xamarin.Forms.Platform.iOS
 			EffectUtilities.RegisterEffectControlProvider(this, oldElement, element);
 		}
 
-		public void SetElementSize(Size size)
+		public void SetElementSize(SizeF size)
 		{
 			// In Split Mode the Frame will occasionally get set to the wrong value
 			var rect = new CoreGraphics.CGRect(Element.X, Element.Y, size.Width, size.Height);
 			if (rect != _pageContainer.Frame)
 				_pageContainer.Frame = rect;
 
-			Element.Layout(new Rectangle(Element.X, Element.Y, size.Width, size.Height));
+			Element.Layout(new RectangleF(Element.X, Element.Y, size.Width, size.Height));
 		}
 
 		public override void LoadView()
@@ -403,7 +404,7 @@ namespace Xamarin.Forms.Platform.iOS
 			if (!IsPartOfShell && !Forms.IsiOS11OrNewer)
 				return;
 
-			var tabThickness = _tabThickness;
+			var tabThickness = (float)_tabThickness;
 			if (!_isInItems)
 				tabThickness = 0;
 
@@ -420,12 +421,12 @@ namespace Xamarin.Forms.Platform.iOS
 					insets.Bottom = 0;
 				}
 
-				safeareaPadding = new Thickness(insets.Left, insets.Top + tabThickness, insets.Right, insets.Bottom);
+				safeareaPadding = new Thickness((float)insets.Left, (float)insets.Top + tabThickness, (float)insets.Right, (float)insets.Bottom);
 				Page.On<PlatformConfiguration.iOS>().SetSafeAreaInsets(safeareaPadding);
 			}
 			else if (IsPartOfShell)
 			{
-				safeareaPadding = new Thickness(0, TopLayoutGuide.Length + tabThickness, 0, BottomLayoutGuide.Length);
+				safeareaPadding = new Thickness(0, (float)TopLayoutGuide.Length + tabThickness, 0, (float)BottomLayoutGuide.Length);
 				Page.On<PlatformConfiguration.iOS>().SetSafeAreaInsets(safeareaPadding);
 			}
 
@@ -533,7 +534,7 @@ namespace Xamarin.Forms.Platform.iOS
 					{
 						Color backgroundColor = Element.BackgroundColor;
 
-						if (backgroundColor.IsDefault)
+						if (backgroundColor == null)
 							NativeView.BackgroundColor = UIColor.White;
 						else
 							NativeView.BackgroundColor = backgroundColor.ToUIColor();
@@ -565,10 +566,10 @@ namespace Xamarin.Forms.Platform.iOS
 			SetNeedsUpdateOfHomeIndicatorAutoHidden();
 		}
 
-		double _tabThickness;
+		float _tabThickness;
 		bool _isInItems;
 
-		void IShellContentInsetObserver.OnInsetChanged(Thickness inset, double tabThickness)
+		void IShellContentInsetObserver.OnInsetChanged(Thickness inset, float tabThickness)
 		{
 			if (_tabThickness != tabThickness)
 			{

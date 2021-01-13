@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Graphics;
 using Android.Text;
 using Android.Text.Style;
 using Android.Views;

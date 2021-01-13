@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using Android.Content;
 using Android.Content.Res;
@@ -8,6 +8,9 @@ using Android.Util;
 using Android.Views;
 using AndroidX.Core.View;
 using AView = Android.Views.View;
+using SizeF = System.Graphics.SizeF;
+using System.Graphics;
+using Color = System.Graphics.Color;
 
 namespace Xamarin.Forms.Platform.Android.FastRenderers
 {
@@ -123,13 +126,13 @@ namespace Xamarin.Forms.Platform.Android.FastRenderers
 			var hc = MeasureSpec.GetSize(heightConstraint);
 
 			Measure(widthConstraint, heightConstraint);
-			var result = new SizeRequest(new Size(MeasuredWidth, MeasuredHeight), new Size());
+			var result = new SizeRequest(new SizeF(MeasuredWidth, MeasuredHeight), new SizeF());
 
 			//Set Hint back after sizing
 			if (setHint)
 				Control.Hint = hint;
 
-			result.Minimum = new Size(Math.Min(Context.ToPixels(10), result.Request.Width), result.Request.Height);
+			result.Minimum = new SizeF(Math.Min(Context.ToPixels(10), result.Request.Width), result.Request.Height);
 
 			// if the measure of the view has changed then trigger a request for layout
 			// if the measure hasn't changed then force a layout of the label
@@ -150,7 +153,7 @@ namespace Xamarin.Forms.Platform.Android.FastRenderers
 		protected override void OnLayout(bool changed, int left, int top, int right, int bottom)
 		{
 			base.OnLayout(changed, left, top, right, bottom);
-			this.RecalculateSpanPositions(Element, _spannableString, new SizeRequest(new Size(right - left, bottom - top)));
+			this.RecalculateSpanPositions(Element, _spannableString, new SizeRequest(new SizeF(right - left, bottom - top)));
 			_hasLayoutOccurred = true;
 		}
 
@@ -312,7 +315,7 @@ namespace Xamarin.Forms.Platform.Android.FastRenderers
 				return;
 			_lastUpdateColor = c;
 
-			if (c.IsDefault)
+			if (c == null)
 				SetTextColor(_labelTextColorDefault);
 			else
 				SetTextColor(c.ToAndroid());

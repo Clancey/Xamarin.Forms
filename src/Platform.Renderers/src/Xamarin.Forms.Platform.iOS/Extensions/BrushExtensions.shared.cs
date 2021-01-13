@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Graphics;
 using System.Linq;
 using CoreGraphics;
 using Foundation;
@@ -11,7 +12,7 @@ namespace Xamarin.Forms.Platform.MacOS
 {
 	public partial class BrushExtensions
 	{
-		static CGPoint GetRadialGradientBrushEndPoint(Point startPoint, double radius)
+		static CGPoint GetRadialGradientBrushEndPoint(PointF startPoint, double radius)
 		{
 			double x = startPoint.X == 1 ? (startPoint.X - radius) : (startPoint.X + radius);
 

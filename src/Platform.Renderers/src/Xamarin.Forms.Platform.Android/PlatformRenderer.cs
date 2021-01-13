@@ -1,4 +1,5 @@
-using System;
+﻿using System;
+using System.Graphics;
 using Android.App;
 using Android.Content;
 using Android.Views;
@@ -10,7 +11,7 @@ namespace Xamarin.Forms.Platform.Android
 	internal class PlatformRenderer : ViewGroup
 	{
 		readonly IPlatformLayout _canvas;
-		Point _downPosition;
+		PointF _downPosition;
 
 		DateTime _downTime;
 
@@ -56,7 +57,7 @@ namespace Xamarin.Forms.Platform.Android
 				float x = e.RawX + currentView.Left - location[0];
 				float y = e.RawY + currentView.Top - location[1];
 
-				var rect = new Rectangle(currentView.Left, currentView.Top, currentView.Width, currentView.Height);
+				var rect = new RectangleF(currentView.Left, currentView.Top, currentView.Width, currentView.Height);
 
 				if (rect.Contains(x, y))
 					break;

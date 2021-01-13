@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using Android.Graphics;
 using Android.Graphics.Drawables;
@@ -9,6 +10,8 @@ using AndroidX.DrawerLayout.Widget;
 using AndroidX.Fragment.App;
 using Xamarin.Forms.Internals;
 using AColor = Android.Graphics.Color;
+using APaint = Android.Graphics.Paint;
+using Color = System.Graphics.Color;
 using ARect = Android.Graphics.Rect;
 using AView = Android.Views.View;
 using LP = Android.Views.ViewGroup.LayoutParams;
@@ -44,7 +47,7 @@ namespace Xamarin.Forms.Platform.Android
 
 		SizeRequest IVisualElementRenderer.GetDesiredSize(int widthConstraint, int heightConstraint)
 		{
-			return new SizeRequest(new Size(100, 100));
+			return new SizeRequest(new SizeF(100, 100));
 		}
 
 		void IVisualElementRenderer.SetElement(VisualElement element)
@@ -136,10 +139,10 @@ namespace Xamarin.Forms.Platform.Android
 
 		#endregion IAppearanceObserver
 
-		public static readonly Color DefaultBackgroundColor = Colors.FromRgb(33, 150, 243);
+		public static readonly Color DefaultBackgroundColor = new Color(33, 150, 243);
 		public static readonly Color DefaultForegroundColor = Colors.White;
 		public static readonly Color DefaultTitleColor = Colors.White;
-		public static readonly Color DefaultUnselectedColor = Colors.FromRgba(255, 255, 255, 180);
+		public static readonly Color DefaultUnselectedColor = new Color(255, 255, 255, 180);
 
 		bool _disposed;
 		IShellFlyoutRenderer _flyoutRenderer;
@@ -339,11 +342,11 @@ namespace Xamarin.Forms.Platform.Android
 				AColor color;
 				if (appearance != null)
 				{
-					color = appearance.BackgroundColor.ToAndroid(Color.FromHex("#03A9F4"));
+					color = appearance.BackgroundColor.ToAndroid(new Color("#03A9F4"));
 				}
 				else
 				{
-					color = Colors.FromHex("#03A9F4").ToAndroid();
+					color = new Color("#03A9F4").ToAndroid();
 				}
 
 				if (!(decorView.Background is SplitDrawable splitDrawable) ||
@@ -378,7 +381,7 @@ namespace Xamarin.Forms.Platform.Android
 			{
 				var bounds = Bounds;
 
-				using (var paint = new Paint())
+				using (var paint = new APaint())
 				{
 
 					paint.Color = Color;

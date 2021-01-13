@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Graphics;
 using Android.Content;
 using Android.Util;
 using Android.Views;
@@ -134,7 +135,7 @@ namespace Xamarin.Forms.Platform.Android
 				bline = layout.GetChildAt(1);
 
 			if (isHeader)
-				bline.SetBackgroundColor(Color.Accent.ToAndroid());
+				bline.SetBackgroundColor(Forms.AccentColor.ToAndroid());
 			else if (nextIsHeader)
 				bline.SetBackgroundColor(global::Android.Graphics.Color.Transparent);
 			else

@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Graphics;
 using System.Linq;
 using Xamarin.Forms.Internals;
 
@@ -46,7 +47,7 @@ namespace Xamarin.Forms.Platform.Android
 		}
 
 		public void Bind(object itemBindingContext, ItemsView itemsView,
-			Action<Size> reportMeasure = null, Size? size = null)
+			Action<SizeF> reportMeasure = null, SizeF? size = null)
 		{
 			var template = _template.SelectDataTemplate(itemBindingContext, itemsView);
 

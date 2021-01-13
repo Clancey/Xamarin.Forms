@@ -1,6 +1,7 @@
 using System.ComponentModel;
+using System.Graphics;
+using CoreGraphics;
 using UIKit;
-using SizeF = CoreGraphics.CGSize;
 
 namespace Xamarin.Forms.Platform.iOS
 {
@@ -12,12 +13,12 @@ namespace Xamarin.Forms.Platform.iOS
 
 		}
 
-		public override SizeF SizeThatFits(SizeF size)
+		public override CGSize SizeThatFits(CGSize size)
 		{
 			// progress bar will size itself to be as wide as the request, even if its inifinite
 			// we want the minimum need size
 			var result = base.SizeThatFits(size);
-			return new SizeF(10, result.Height);
+			return new CGSize(10, result.Height);
 		}
 
 		protected override void OnElementChanged(ElementChangedEventArgs<ProgressBar> e)

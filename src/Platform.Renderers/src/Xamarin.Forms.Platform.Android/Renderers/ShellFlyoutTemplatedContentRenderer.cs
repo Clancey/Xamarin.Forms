@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using Android.Graphics.Drawables;
 using Android.Runtime;
@@ -276,7 +277,7 @@ namespace Xamarin.Forms.Platform.Android
 		{
 			if (_footerView != null)
 			{
-				_footerView.LayoutView(_shellContext.AndroidContext.FromPixels(_rootView.LayoutParameters.Width), double.PositiveInfinity);
+				_footerView.LayoutView((float)_shellContext.AndroidContext.FromPixels(_rootView.LayoutParameters.Width), float.PositiveInfinity);
 			}
 		}
 
@@ -295,8 +296,8 @@ namespace Xamarin.Forms.Platform.Android
 				var width = View.MeasuredWidth;
 
 				_contentView.LayoutView(
-					ShellContext.AndroidContext.FromPixels(width),
-					ShellContext.AndroidContext.FromPixels(height));
+					(float)ShellContext.AndroidContext.FromPixels(width),
+					(float)ShellContext.AndroidContext.FromPixels(height));
 			}
 		}
 
@@ -344,7 +345,7 @@ namespace Xamarin.Forms.Platform.Android
 				if (_defaultBackgroundColor == null)
 					_defaultBackgroundColor = _rootView.Background;
 
-				_rootView.Background = color.IsDefault ? _defaultBackgroundColor : new ColorDrawable(color.ToAndroid());
+				_rootView.Background = color == null ? _defaultBackgroundColor : new ColorDrawable(color.ToAndroid());
 			}
 			else
 				_rootView.UpdateBackground(brush);
@@ -547,13 +548,13 @@ namespace Xamarin.Forms.Platform.Android
 					ElevationHelper.SetElevation(view, View);
 			}
 
-			protected override void LayoutView(double x, double y, double width, double height)
+			protected override void LayoutView(float x, float y, float width, float height)
 			{
 				var context = Context;
-				var paddingLeft = context.FromPixels(PaddingLeft);
-				var paddingTop = context.FromPixels(PaddingTop);
-				var paddingRight = context.FromPixels(PaddingRight);
-				var paddingBottom = context.FromPixels(PaddingBottom);
+				var paddingLeft = (float)context.FromPixels(PaddingLeft);
+				var paddingTop = (float)context.FromPixels(PaddingTop);
+				var paddingRight = (float)context.FromPixels(PaddingRight);
+				var paddingBottom = (float)context.FromPixels(PaddingBottom);
 
 				width -= paddingLeft + paddingRight;
 				height -= paddingTop + paddingBottom;
@@ -561,7 +562,7 @@ namespace Xamarin.Forms.Platform.Android
 				UpdateElevation();
 
 				if (View != null)
-					View.Layout(new Rectangle(paddingLeft, paddingTop, width, height));
+					View.Layout(new RectangleF(paddingLeft, paddingTop, width, height));
 			}
 
 			protected override void Dispose(bool disposing)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Graphics;
 using Android.Content;
 using Android.Runtime;
 using Android.Util;
@@ -60,15 +61,15 @@ namespace Xamarin.Forms.Platform.Android
 			if (_shellViewRenderer == null)
 				return;
 
-			var width = Context.FromPixels(r - l);
-			var height = Context.FromPixels(b - t);
+			var width = (float)Context.FromPixels(r - l);
+			var height = (float)Context.FromPixels(b - t);
 
 			_shellViewRenderer.LayoutView(width, height);
 		}
 
-		protected virtual void LayoutView(double x, double y, double width, double height)
+		protected virtual void LayoutView(float x, float y, float width, float height)
 		{
-			View?.Layout(new Rectangle(x, y, width, height));
+			View?.Layout(new RectangleF(x, y, width, height));
 		}
 
 		protected override void OnMeasure(int widthMeasureSpec, int heightMeasureSpec)
@@ -88,8 +89,8 @@ namespace Xamarin.Forms.Platform.Android
 			var width = MeasureSpecFactory.GetSize(widthMeasureSpec);
 			var height = MeasureSpecFactory.GetSize(heightMeasureSpec);
 
-			var measureWidth = width > 0 ? Context.FromPixels(width) : double.PositiveInfinity;
-			var measureHeight = height > 0 ? Context.FromPixels(height) : double.PositiveInfinity;
+			var measureWidth = width > 0 ? (float)Context.FromPixels(width) : float.PositiveInfinity;
+			var measureHeight = height > 0 ? (float)Context.FromPixels(height) : float.PositiveInfinity;
 
 			_shellViewRenderer.LayoutView(measureWidth, measureHeight);
 

@@ -1,9 +1,10 @@
-﻿using Xamarin.Forms;
+﻿using System.Graphics;
+using Xamarin.Forms;
 using Xamarin.Platform;
 
 namespace Sample
 {
-	public class Label : Xamarin.Forms.View, ILabel
+	public class Label : View, ILabel
 	{
 		public string Text { get; set; }
 
@@ -13,7 +14,7 @@ namespace Sample
 
 		public string FontFamily { get; set; }
 
-		public double FontSize { get; set; }
+		public float FontSize { get; set; }
 
 		public FontAttributes FontAttributes { get; set; }
 
@@ -23,6 +24,6 @@ namespace Sample
 
 		public TextAlignment VerticalTextAlignment { get; set; }
 		
-		public double CharacterSpacing { get; set; }
+		public float CharacterSpacing { get; set; }
 	}
 }

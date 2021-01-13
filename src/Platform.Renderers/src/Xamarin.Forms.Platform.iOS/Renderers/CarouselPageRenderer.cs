@@ -1,12 +1,11 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Graphics;
+using CoreGraphics;
 using UIKit;
 using Xamarin.Forms.Internals;
-using PointF = CoreGraphics.CGPoint;
-using RectangleF = CoreGraphics.CGRect;
-using SizeF = CoreGraphics.CGSize;
 
 namespace Xamarin.Forms.Platform.iOS
 {
@@ -46,7 +45,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		public event EventHandler<VisualElementChangedEventArgs> ElementChanged;
 
-		public SizeRequest GetDesiredSize(double widthConstraint, double heightConstraint)
+		public SizeRequest GetDesiredSize(float widthConstraint, float heightConstraint)
 		{
 			return NativeView.GetSizeRequest(widthConstraint, heightConstraint);
 		}
@@ -70,9 +69,9 @@ namespace Xamarin.Forms.Platform.iOS
 			_previousPage = Carousel?.CurrentPage;
 		}
 
-		public void SetElementSize(Size size)
+		public void SetElementSize(SizeF size)
 		{
-			Element.Layout(new Rectangle(Element.X, Element.Y, size.Width, size.Height));
+			Element.Layout(new RectangleF(Element.X, Element.Y, size.Width, size.Height));
 		}
 
 		public UIViewController ViewController
@@ -312,17 +311,17 @@ namespace Xamarin.Forms.Platform.iOS
 		void PositionChildren()
 		{
 			nfloat x = 0;
-			RectangleF bounds = View.Bounds;
+			CGRect bounds = View.Bounds;
 			foreach (ContentPage child in ((CarouselPage)Element).Children)
 			{
 				UIView container = _containerMap[child];
 
-				container.Frame = new RectangleF(x, bounds.Y, bounds.Width, bounds.Height);
+				container.Frame = new CGRect(x, bounds.Y, bounds.Width, bounds.Height);
 				x += bounds.Width;
 			}
 
 			_scrollView.PagingEnabled = true;
-			_scrollView.ContentSize = new SizeF(bounds.Width * ((CarouselPage)Element).Children.Count, bounds.Height);
+			_scrollView.ContentSize = new CGSize(bounds.Width * ((CarouselPage)Element).Children.Count, bounds.Height);
 		}
 
 		void RemovePage(ContentPage page, int index)
@@ -357,7 +356,7 @@ namespace Xamarin.Forms.Platform.iOS
 			if (_scrollView.ContentOffset.X == index * _scrollView.Frame.Width)
 				return;
 
-			_scrollView.SetContentOffset(new PointF(index * _scrollView.Frame.Width, 0), animated);
+			_scrollView.SetContentOffset(new CGPoint(index * _scrollView.Frame.Width, 0), animated);
 		}
 
 		void UpdateBackground()
@@ -366,11 +365,11 @@ namespace Xamarin.Forms.Platform.iOS
 			{
 				if (bgImage != null)
 					View.BackgroundColor = UIColor.FromPatternImage(bgImage);
-				else if (Element.BackgroundColor.IsDefault)
+				else if (Element.BackgroundColor == null)
 					View.BackgroundColor = ColorExtensions.BackgroundColor;
 				else
 				{
-					if (Element.BackgroundColor.IsDefault)
+					if (Element.BackgroundColor == null)
 						View.BackgroundColor = UIColor.White;
 					else
 						View.BackgroundColor = Element.BackgroundColor.ToUIColor();
@@ -402,7 +401,7 @@ namespace Xamarin.Forms.Platform.iOS
 				base.LayoutSubviews();
 
 				if (Subviews.Length > 0)
-					Subviews[0].Frame = new RectangleF(0, 0, (float)Element.Width, (float)Element.Height);
+					Subviews[0].Frame = new CGRect(0, 0, (float)Element.Width, (float)Element.Height);
 			}
 		}
 

@@ -22,7 +22,7 @@ namespace Xamarin.Forms
 
 		bool RemoveDisplayedPageObserver(object observer);
 
-		void SendInsetChanged(Thickness inset, double tabThickness);
+		void SendInsetChanged(Thickness inset, float tabThickness);
 
 		void SendPopping(Task poppingCompleted);
 		void SendPoppingToRoot(Task finishedPopping);

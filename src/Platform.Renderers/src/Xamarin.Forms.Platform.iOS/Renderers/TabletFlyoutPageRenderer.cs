@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using CoreGraphics;
 using Foundation;
 using UIKit;
@@ -118,7 +119,7 @@ namespace Xamarin.Forms.Platform.iOS
 		bool _disposed;
 		EventTracker _events;
 		InnerDelegate _innerDelegate;
-		nfloat _flyoutWidth = 0;
+		float _flyoutWidth = 0;
 		EventedViewController _flyoutController;
 		FlyoutPage _flyoutPage;
 		VisualElementTracker _tracker;
@@ -190,7 +191,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		public event EventHandler<VisualElementChangedEventArgs> ElementChanged;
 
-		public SizeRequest GetDesiredSize(double widthConstraint, double heightConstraint)
+		public SizeRequest GetDesiredSize(float widthConstraint, float heightConstraint)
 		{
 			return NativeView.GetSizeRequest(widthConstraint, heightConstraint);
 		}
@@ -224,9 +225,9 @@ namespace Xamarin.Forms.Platform.iOS
 				element.SendViewInitialized(NativeView);
 		}
 
-		public void SetElementSize(Size size)
+		public void SetElementSize(SizeF size)
 		{
-			Element.Layout(new Rectangle(Element.X, Element.Width, size.Width, size.Height));
+			Element.Layout(new RectangleF(Element.X, Element.Width, size.Width, size.Height));
 		}
 
 		public UIViewController ViewController
@@ -275,19 +276,19 @@ namespace Xamarin.Forms.Platform.iOS
 				var flyoutBounds = _flyoutController.View.Frame;
 
 				if (Forms.IsiOS13OrNewer)
-					_flyoutWidth = flyoutBounds.Width;
+					_flyoutWidth = (float)flyoutBounds.Width;
 				else
-					_flyoutWidth = (nfloat)Math.Max(_flyoutWidth, flyoutBounds.Width);
+					_flyoutWidth = (float)Math.Max(_flyoutWidth, flyoutBounds.Width);
 
 				if (!flyoutBounds.IsEmpty)
-					FlyoutPage.FlyoutBounds = new Rectangle(0, 0, _flyoutWidth, flyoutBounds.Height);
+					FlyoutPage.FlyoutBounds = new RectangleF(0, 0, _flyoutWidth, (float)flyoutBounds.Height);
 			}
 
 			if (layoutDetails)
 			{
 				var detailsBounds = _detailController.View.Frame;
 				if (!detailsBounds.IsEmpty)
-					FlyoutPage.DetailBounds = new Rectangle(0, 0, detailsBounds.Width, detailsBounds.Height);
+					FlyoutPage.DetailBounds = new RectangleF(0, 0, (float)detailsBounds.Width, (float)detailsBounds.Height);
 			}
 
 			if (_previousViewDidLayoutSize == CGSize.Empty)

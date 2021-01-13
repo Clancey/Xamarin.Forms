@@ -1,6 +1,7 @@
 using Foundation;
 using System;
 using Xamarin.Forms.Internals;
+using System.Graphics;
 #if __MOBILE__
 using UIKit;
 
@@ -23,11 +24,8 @@ namespace Xamarin.Forms.Platform.MacOS
 			var font = span.Font != Font.Default ? span.Font : defaultFont;
 #pragma warning restore 0618
 			var fgcolor = span.TextColor;
-			if (fgcolor.IsDefault)
-				fgcolor = defaultForegroundColor;
-			if (fgcolor.IsDefault)
-				fgcolor = ColorExtensions.LabelColor.ToColor();
-
+			fgcolor ??= defaultForegroundColor;
+			fgcolor ??= ColorExtensions.LabelColor.ToColor();
 #if __MOBILE__
 			return new NSAttributedString(span.Text, font == Font.Default ? null : font.ToUIFont(), fgcolor.ToUIColor(), 
 				span.BackgroundColor.ToUIColor(), kerning: (float)span.CharacterSpacing);
@@ -103,13 +101,13 @@ namespace Xamarin.Forms.Platform.MacOS
 #endif
 			var fgcolor = span.TextColor;
 
-			if (fgcolor.IsDefault)
+			if (fgcolor == null)
 				fgcolor = defaultForegroundColor;
 
-			if (owner is Entry && !fgcolor.IsDefault)
+			if (owner is Entry && fgcolor != null)
 				fgcolor = defaultForegroundColor;
 
-			if (fgcolor.IsDefault)
+			if (fgcolor == null)
 				fgcolor = ColorExtensions.LabelColor.ToColor();
 #if __MOBILE__
 			UIColor spanFgColor;

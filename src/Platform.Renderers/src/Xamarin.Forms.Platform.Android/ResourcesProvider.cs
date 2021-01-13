@@ -1,3 +1,4 @@
+using System.Graphics;
 using Android.Content.Res;
 using Android.Util;
 using Xamarin.Forms.Internals;
@@ -49,7 +50,7 @@ namespace Xamarin.Forms.Platform.Android
 
 			if (androidColor != defaultColor)
 			{
-				result.Setters.Add(new Setter { Property = Label.TextColorProperty, Value = Colors.FromRgba(androidColor.R, androidColor.G, androidColor.B, androidColor.A) });
+				result.Setters.Add(new Setter { Property = Label.TextColorProperty, Value = Color.FromRgba(androidColor.R, androidColor.G, androidColor.B, androidColor.A) });
 			}
 
 			return result;

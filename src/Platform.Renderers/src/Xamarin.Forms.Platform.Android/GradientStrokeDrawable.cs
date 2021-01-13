@@ -3,6 +3,7 @@ using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.Graphics.Drawables.Shapes;
 using AColor = Android.Graphics.Color;
+using Color = System.Graphics.Color;
 
 namespace Xamarin.Forms.Platform.Android
 {

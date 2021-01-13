@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using Android.Views;
 using Xamarin.Forms.Platform.Android.FastRenderers;
@@ -133,7 +134,7 @@ namespace Xamarin.Forms.Platform.Android
 			AView view = _container == this ? (AView)Control : _container;
 			view.Measure(widthConstraint, heightConstraint);
 
-			return new SizeRequest(new Size(Control.MeasuredWidth, Control.MeasuredHeight), MinimumSize());
+			return new SizeRequest(new SizeF(Control.MeasuredWidth, Control.MeasuredHeight), MinimumSize());
 		}
 
 		protected override void Dispose(bool disposing)

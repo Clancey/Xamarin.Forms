@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO.IsolatedStorage;
 using System.Reflection;
@@ -82,9 +82,9 @@ namespace Xamarin.Forms.Core.UnitTests
 				case "SystemBlue":
 					return Colors.FromRgb(0, 122, 255);
 				case "SystemChromeHighColor":
-					return Colors.FromHex("#FF767676");
+					return new Color("#FF767676");
 				case "HoloBlueBright":
-					return Colors.FromHex("#ff00ddff");
+					return new Color("#ff00ddff");
 				default:
 					return null;
 			}

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Graphics;
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Linq;
@@ -19,8 +20,10 @@ using AndroidX.Core.Content;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Platform.Android;
 using AColor = Android.Graphics.Color;
+using Color = System.Graphics.Color;
 using Resource = Android.Resource;
 using Trace = System.Diagnostics.Trace;
+using SizeF = System.Graphics.SizeF;
 
 namespace Xamarin.Forms
 {
@@ -153,7 +156,7 @@ namespace Xamarin.Forms
 				return s_isPieOrNewer.Value;
 			}
 		}
-
+		internal static Color AccentColor { get; private set; }
 		public static float GetFontSizeNormal(Context context)
 		{
 			float size = 50;
@@ -292,7 +295,7 @@ namespace Xamarin.Forms
 			Profile.FramePartition("Color.SetAccent()");
 			// We want this to be updated when we have a new activity (e.g. on a configuration change)
 			// This could change if the UI mode changes (e.g., if night mode is enabled)
-			Color.SetAccent(GetAccentColor(activity));
+			AccentColor = GetAccentColor(activity);
 			_ColorButtonNormalSet = false;
 
 			if (!IsInitialized)
@@ -472,13 +475,13 @@ namespace Xamarin.Forms
 			{
 				if (context.Theme.ResolveAttribute(global::Android.Resource.Attribute.ColorAccent, value, true) && Forms.IsLollipopOrNewer) // Android 5.0+
 				{
-					rc = Colors.FromUint((uint)value.Data);
+					rc = Color.FromUint((uint)value.Data);
 				}
 				else if (context.Theme.ResolveAttribute(context.Resources.GetIdentifier("colorAccent", "attr", context.PackageName), value, true))  // < Android 5.0
 				{
-					rc = Colors.FromUint((uint)value.Data);
+					rc = Color.FromUint((uint)value.Data);
 				}
-				else                    // fallback to old code if nothing works (don't know if that ever happens)
+				else // fallback to old code if nothing works (don't know if that ever happens)
 				{
 					// Detect if legacy device and use appropriate accent color
 					// Hardcoded because could not get color from the theme drawable
@@ -486,12 +489,12 @@ namespace Xamarin.Forms
 					if (sdkVersion <= 10)
 					{
 						// legacy theme button pressed color
-						rc = Colors.FromHex("#fffeaa0c");
+						rc = new Color("#fffeaa0c");
 					}
 					else
 					{
 						// Holo dark light blue
-						rc = Colors.FromHex("#ff33b5e5");
+						rc = new Color("#ff33b5e5");
 					}
 				}
 			}
@@ -508,11 +511,11 @@ namespace Xamarin.Forms
 				{
 					if (context.Theme.ResolveAttribute(global::Android.Resource.Attribute.ColorButtonNormal, value, true) && Forms.IsLollipopOrNewer) // Android 5.0+
 					{
-						rc = Colors.FromUint((uint)value.Data);
+						rc = Color.FromUint((uint)value.Data);
 					}
 					else if (context.Theme.ResolveAttribute(context.Resources.GetIdentifier("colorButtonNormal", "attr", context.PackageName), value, true))  // < Android 5.0
 					{
-						rc = Colors.FromUint((uint)value.Data);
+						rc = Color.FromUint((uint)value.Data);
 					}
 				}
 			}
@@ -523,9 +526,9 @@ namespace Xamarin.Forms
 		{
 			bool _disposed;
 			readonly Context _formsActivity;
-			Size _scaledScreenSize;
-			Size _pixelScreenSize;
-			double _scalingFactor;
+			SizeF _scaledScreenSize;
+			SizeF _pixelScreenSize;
+			float _scalingFactor;
 
 			Orientation _previousOrientation = Orientation.Undefined;
 			Platform.Android.DualScreen.IDualScreenService DualScreenService => DependencyService.Get<Platform.Android.DualScreen.IDualScreenService>();
@@ -544,21 +547,21 @@ namespace Xamarin.Forms
 				}
 			}
 
-			public override Size PixelScreenSize
+			public override SizeF PixelScreenSize
 			{
 				get { return _pixelScreenSize; }
 			}
 
-			public override Size ScaledScreenSize => _scaledScreenSize;
+			public override SizeF ScaledScreenSize => _scaledScreenSize;
 
-			public override double ScalingFactor
+			public override float ScalingFactor
 			{
 				get { return _scalingFactor; }
 			}
 
 
-			public override double DisplayRound(double value) =>
-				Math.Round(ScalingFactor * value) / ScalingFactor;
+			public override float DisplayRound(float value) =>
+				(float)Math.Round(ScalingFactor * value) / ScalingFactor;
 
 			protected override void Dispose(bool disposing)
 			{
@@ -584,8 +587,8 @@ namespace Xamarin.Forms
 				using (DisplayMetrics display = formsActivity.Resources.DisplayMetrics)
 				{
 					_scalingFactor = display.Density;
-					_pixelScreenSize = new Size(display.WidthPixels, display.HeightPixels);
-					_scaledScreenSize = new Size(_pixelScreenSize.Width / _scalingFactor, _pixelScreenSize.Height / _scalingFactor);
+					_pixelScreenSize = new SizeF(display.WidthPixels, display.HeightPixels);
+					_scaledScreenSize = new SizeF(_pixelScreenSize.Width / _scalingFactor, _pixelScreenSize.Height / _scalingFactor);
 				}
 			}
 
@@ -645,14 +648,14 @@ namespace Xamarin.Forms
 
 		class AndroidPlatformServices : IPlatformServices, IPlatformInvalidate
 		{
-			double _buttonDefaultSize;
-			double _editTextDefaultSize;
-			double _labelDefaultSize;
-			double _largeSize;
-			double _mediumSize;
+			float _buttonDefaultSize;
+			float _editTextDefaultSize;
+			float _labelDefaultSize;
+			float _largeSize;
+			float _mediumSize;
 
-			double _microSize;
-			double _smallSize;
+			float _microSize;
+			float _smallSize;
 
 			static Handler s_handler;
 
@@ -693,7 +696,7 @@ namespace Xamarin.Forms
 
 			string IPlatformServices.GetMD5Hash(string input) => GetHash(input);
 
-			public double GetNamedSize(NamedSize size, Type targetElementType, bool useOldSizes)
+			public float GetNamedSize(NamedSize size, Type targetElementType, bool useOldSizes)
 			{
 				if (_smallSize == 0)
 				{
@@ -896,9 +899,9 @@ namespace Xamarin.Forms
 				}, (long)interval.TotalMilliseconds);
 			}
 
-			double ConvertTextAppearanceToSize(int themeDefault, int deviceDefault, double defaultValue)
+			float ConvertTextAppearanceToSize(int themeDefault, int deviceDefault, float defaultValue)
 			{
-				double myValue;
+				float myValue;
 
 				if (TryGetTextAppearance(themeDefault, out myValue) && myValue > 0)
 					return myValue;
@@ -914,7 +917,7 @@ namespace Xamarin.Forms
 				return 'a' + v - 10;
 			}
 
-			bool TryGetTextAppearance(int appearance, out double val)
+			bool TryGetTextAppearance(int appearance, out float val)
 			{
 				val = 0;
 				try
@@ -927,7 +930,7 @@ namespace Xamarin.Forms
 							const int indexOfAttrTextSize = 0;
 							using (TypedArray array = _context.ObtainStyledAttributes(value.Data, textSizeAttr))
 							{
-								val = _context.FromPixels(array.GetDimensionPixelSize(indexOfAttrTextSize, -1));
+								val = (float)_context.FromPixels(array.GetDimensionPixelSize(indexOfAttrTextSize, -1));
 								return true;
 							}
 						}
@@ -945,7 +948,7 @@ namespace Xamarin.Forms
 				Internals.Log.Warning(nameof(AndroidPlatformServices), "Platform doesn't implement QuitApp");
 			}
 
-			public SizeRequest GetNativeSize(VisualElement view, double widthConstraint, double heightConstraint)
+			public SizeRequest GetNativeSize(VisualElement view, float widthConstraint, float heightConstraint)
 			{
 				return Platform.Android.AppCompat.Platform.GetNativeSize(view, widthConstraint, heightConstraint);
 			}

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Graphics;
 using Android.Content;
 using Android.Runtime;
 using Android.Util;
@@ -15,8 +16,8 @@ namespace Xamarin.Forms.Platform.Android
 		public IVisualElementRenderer Renderer { get; private set; }
 		View _view;
 		WeakReference<Context> _context;
-		public double Width { get; private set; }
-		public double Height { get; private set; }
+		public float Width { get; private set; }
+		public float Height { get; private set; }
 
 		public ShellViewRenderer(Context context, View view)
 		{
@@ -42,13 +43,13 @@ namespace Xamarin.Forms.Platform.Android
 			_context = null;
 		}
 
-		public void LayoutView(double width, double height, double? maxWidth = null, double? maxHeight = null)
+		public void LayoutView(float width, float height, float? maxWidth = null, float? maxHeight = null)
 		{
 			if (width == -1)
-				width = double.PositiveInfinity;
+				width = float.PositiveInfinity;
 
 			if (height == -1)
-				height = double.PositiveInfinity;
+				height = float.PositiveInfinity;
 
 			Width = width;
 			Height = height;
@@ -64,13 +65,13 @@ namespace Xamarin.Forms.Platform.Android
 				return;
 			}
 
-			var request = View.Measure(width, height, MeasureFlags.None);
+			var request = View.Measure((float)width, (float)height, MeasureFlags.None);
 
 			var layoutParams = NativeView.LayoutParameters;
-			if (double.IsInfinity(height))
+			if (float.IsInfinity(height))
 				height = request.Request.Height;
 
-			if (double.IsInfinity(width))
+			if (float.IsInfinity(width))
 				width = request.Request.Width;
 
 			if (height > maxHeight)
@@ -86,7 +87,7 @@ namespace Xamarin.Forms.Platform.Android
 				layoutParams.Height = (int)context.ToPixels(height);
 
 			NativeView.LayoutParameters = layoutParams;
-			View.Layout(new Rectangle(0, 0, width, height));
+			View.Layout(new RectangleF(0, 0, width, height));
 			Renderer.UpdateLayout();
 		}
 

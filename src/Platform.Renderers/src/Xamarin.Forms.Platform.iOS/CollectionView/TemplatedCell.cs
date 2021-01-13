@@ -1,4 +1,5 @@
 using System;
+using System.Graphics;
 using CoreGraphics;
 using Foundation;
 using UIKit;
@@ -19,9 +20,9 @@ namespace Xamarin.Forms.Platform.iOS
 
 		// Keep track of the cell size so we can verify whether a measure invalidation 
 		// actually changed the size of the cell
-		Size _size;
+		SizeF _size;
 
-		internal CGSize CurrentSize => _size.ToSizeF();
+		internal CGSize CurrentSize => _size.ToNative();
 
 		[Export("initWithFrame:")]
 		[Internals.Preserve(Conditional = true)]
@@ -107,7 +108,7 @@ namespace Xamarin.Forms.Platform.iOS
 					oldElement.BindingContext = null;
 					itemsView.RemoveLogicalChild(oldElement);
 					ClearSubviews();
-					_size = Size.Zero;
+					_size = SizeF.Zero;
 				}
 
 				// Create the content and renderer for the view 
@@ -176,8 +177,8 @@ namespace Xamarin.Forms.Platform.iOS
 		{
 			var nativeView = VisualElementRenderer.NativeView;
 
-			var width = constraints.Width;
-			var height = constraints.Height;
+			var width = (float)constraints.Width;
+			var height = (float)constraints.Height;
 
 			VisualElementRenderer.Element.Measure(width, height, MeasureFlags.IncludeMargins);
 
@@ -252,7 +253,7 @@ namespace Xamarin.Forms.Platform.iOS
 			}
 		}
 
-		protected abstract (bool, Size) NeedsContentSizeUpdate(Size currentSize);
+		protected abstract (bool, SizeF) NeedsContentSizeUpdate(SizeF currentSize);
 
 		void MeasureInvalidated(object sender, EventArgs args)
 		{
@@ -282,7 +283,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		protected abstract bool AttributesConsistentWithConstrainedDimension(UICollectionViewLayoutAttributes attributes);
 
-		bool SizesAreSame(CGSize preferredSize, Size elementSize)
+		bool SizesAreSame(CGSize preferredSize, SizeF elementSize)
 		{
 			const double tolerance = 0.000001;
 

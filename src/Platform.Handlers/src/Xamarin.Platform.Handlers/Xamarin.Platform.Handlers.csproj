@@ -10,7 +10,7 @@
     <Product>Xamarin</Product>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="JonLipsky.System.Graphics" Version="0.1.13"/>
+    <PackageReference Include="JonLipsky.System.Graphics" Version="0.1.32" />
   </ItemGroup>
-  <Import Project="..\..\..\..\.nuspec\Xamarin.Forms.MultiTargeting.targets"/>
+  <Import Project="..\..\..\..\.nuspec\Xamarin.Forms.MultiTargeting.targets" />
 </Project>

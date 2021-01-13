@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Graphics;
 using CoreGraphics;
 using Foundation;
 using UIKit;
@@ -132,12 +133,12 @@ namespace Xamarin.Forms.Platform.iOS
 
 			var backGroundColor = _searchHandler.BackgroundColor;
 
-			if (!_hasCustomBackground && backGroundColor.IsDefault)
+			if (!_hasCustomBackground && backGroundColor == null)
 				return;
 
 			var backgroundView = textField.Subviews[0];
 
-			if (backGroundColor.IsDefault)
+			if (backGroundColor == null)
 			{
 				backgroundView.Layer.CornerRadius = 0;
 				backgroundView.ClipsToBounds = false;
@@ -159,7 +160,7 @@ namespace Xamarin.Forms.Platform.iOS
 				return;
 
 			var cancelColor = _searchHandler.CancelButtonColor;
-			if (cancelColor.IsDefault)
+			if (cancelColor == null)
 			{
 				cancelButton.SetTitleColor(_cancelButtonTextColorDefaultNormal, UIControlState.Normal);
 				cancelButton.SetTitleColor(_cancelButtonTextColorDefaultHighlighted, UIControlState.Highlighted);
@@ -183,11 +184,11 @@ namespace Xamarin.Forms.Platform.iOS
 
 			var formatted = (FormattedString)_searchHandler.Placeholder ?? string.Empty;
 			var targetColor = _searchHandler.PlaceholderColor;
-			var placeHolderColor = targetColor.IsDefault ? ColorExtensions.PlaceholderColor.ToColor() : targetColor;
+			var placeHolderColor = targetColor == null ? ColorExtensions.PlaceholderColor.ToColor() : targetColor;
 			textField.AttributedPlaceholder = formatted.ToAttributed(_searchHandler, placeHolderColor, _searchHandler.HorizontalTextAlignment);
 
 			//Center placeholder
-			//var width = (_uiSearchBar.Frame.Width / 2) - textField.AttributedPlaceholder.Size.Width;
+			//var width = (_uiSearchBar.Frame.Width / 2) - textField.AttributedPlaceholder.SizeF.Width;
 
 			//var paddingView = new UIImageView(new CGRect(0, 0, width, _uiSearchBar.Frame.Height));
 
@@ -215,7 +216,7 @@ namespace Xamarin.Forms.Platform.iOS
 			_defaultTextColor = _defaultTextColor ?? textField.TextColor;
 			var targetColor = _searchHandler.TextColor;
 
-			textField.TextColor = targetColor.IsDefault ? _defaultTextColor : targetColor.ToUIColor();
+			textField.TextColor = targetColor?.ToUIColor() ?? _defaultTintColor;
 			UpdateSearchBarTintColor(targetColor);
 			UpdateSearchButtonIconColor(targetColor);
 			UpdateClearPlaceholderIconColor(targetColor);
@@ -223,7 +224,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		void UpdateSearchBarTintColor(Color targetColor)
 		{
-			_uiSearchBar.TintColor = targetColor.IsDefault ? _defaultTintColor : targetColor.ToUIColor();
+			_uiSearchBar.TintColor = targetColor?.ToUIColor() ?? _defaultTintColor;
 		}
 
 		void UpdateSearchButtonIconColor(Color targetColor)
@@ -248,7 +249,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 
 			SetSearchBarIconColor(uiButton, targetColor, _defaultPlaceholderTintColor);
-			uiButton.TintColor = targetColor.IsDefault ? _defaultPlaceholderTintColor : targetColor.ToUIColor();
+			uiButton.TintColor = targetColor == null ? _defaultPlaceholderTintColor : targetColor.ToUIColor();
 		}
 
 		void UpdateClearIconColor(Color targetColor)
@@ -341,11 +342,11 @@ namespace Xamarin.Forms.Platform.iOS
 		{
 			var icon = imageView?.Image;
 
-			if (icon == null || (targetColor.IsDefault && defaultTintColor == null))
+			if (icon == null || (targetColor == null && defaultTintColor == null))
 				return;
 
 			var newIcon = icon.ImageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate);
-			imageView.TintColor = targetColor.IsDefault ? defaultTintColor : targetColor.ToUIColor();
+			imageView.TintColor = targetColor?.ToUIColor() ?? defaultTintColor;
 			imageView.Image = newIcon;
 		}
 
@@ -353,14 +354,14 @@ namespace Xamarin.Forms.Platform.iOS
 		{
 			var icon = button.ImageView?.Image;
 
-			if (icon == null || (targetColor.IsDefault && defaultTintColor == null))
+			if (icon == null || (targetColor == null && defaultTintColor == null))
 				return;
 
 			var newIcon = icon.ImageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate);
 			button.SetImage(newIcon, UIControlState.Normal);
 			button.SetImage(newIcon, UIControlState.Selected);
 			button.SetImage(newIcon, UIControlState.Highlighted);
-			button.TintColor = button.ImageView.TintColor = targetColor.IsDefault ? defaultTintColor : targetColor.ToUIColor();
+			button.TintColor = button.ImageView.TintColor = targetColor == null ? defaultTintColor : targetColor.ToUIColor();
 		}
 
 		protected virtual void Dispose(bool disposing)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Graphics;
 using System.Linq;
 using System.Text;
 using CoreAnimation;
@@ -224,7 +225,7 @@ namespace Xamarin.Forms.Platform.iOS
 			if (FooterView != null)
 				footerHeight = FooterView.Frame.Height;
 
-			var contentViewYOffset = HeaderView?.Frame.Height ?? 0;
+			var contentViewYOffset = (float)(HeaderView?.Frame.Height ?? 0f);
 			if (ScrollView != null)
 			{
 				if (Content == null)
@@ -238,7 +239,7 @@ namespace Xamarin.Forms.Platform.iOS
 							new CGRect(parent.Bounds.X, HeaderTopMargin, parent.Bounds.Width, parent.Bounds.Height - HeaderTopMargin - footerHeight);
 
 					if (Content != null)
-						Layout.LayoutChildIntoBoundingRegion(Content, new Rectangle(0, 0, ContentView.Frame.Width, ContentView.Frame.Height - contentViewYOffset));
+						Layout.LayoutChildIntoBoundingRegion(Content, new RectangleF(0, 0, (float)ContentView.Frame.Width, (float)ContentView.Frame.Height - contentViewYOffset));
 				}
 			}
 			else
@@ -247,7 +248,7 @@ namespace Xamarin.Forms.Platform.iOS
 						new CGRect(parent.Bounds.X, HeaderTopMargin + contentViewYOffset, parent.Bounds.Width, parent.Bounds.Height - HeaderTopMargin - footerHeight - contentViewYOffset);
 
 				if (Content != null)
-					Layout.LayoutChildIntoBoundingRegion(Content, new Rectangle(0, 0, ContentView.Frame.Width, ContentView.Frame.Height));
+					Layout.LayoutChildIntoBoundingRegion(Content, new RectangleF(0, 0, (float)ContentView.Frame.Width, (float)ContentView.Frame.Height));
 			}
 
 			if (HeaderView != null && !double.IsNaN(_headerSize))

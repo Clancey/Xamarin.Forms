@@ -16,6 +16,7 @@ using Foundation;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms;
+using System.Graphics;
 
 #if __MOBILE__
 using UIKit;
@@ -151,7 +152,7 @@ namespace Xamarin.Forms
 		}
 
 #endif
-
+		internal static Color AccentColor { get; private set; }
 		static IReadOnlyList<string> s_flags;
 		public static IReadOnlyList<string> Flags => s_flags ?? (s_flags = new string[0]);
 
@@ -173,7 +174,7 @@ namespace Xamarin.Forms
 				return;
 			IsInitialized = true;
 
-			Color.SetAccent(ColorExtensions.AccentColor.ToColor());
+			AccentColor = ColorExtensions.AccentColor.ToColor();
 
 			Log.Listeners.Add(new DelegateLogListener((c, m) => Trace.WriteLine(m, c)));
 
@@ -258,13 +259,13 @@ namespace Xamarin.Forms
 			, IPlatformInvalidate
 #endif
 		{
-			readonly double _fontScalingFactor = 1;
+			readonly float _fontScalingFactor = 1;
 			public IOSPlatformServices()
 			{
 #if __MOBILE__
 				//The standard accessibility size for a font is 17, we can get a
-				//close approximation to the new Size by multiplying by this scale factor
-				_fontScalingFactor = (double)UIFont.PreferredBody.PointSize / 17f;
+				//close approximation to the new SizeF by multiplying by this scale factor
+				_fontScalingFactor = (float)UIFont.PreferredBody.PointSize / 17f;
 #endif
 			}
 
@@ -287,7 +288,7 @@ namespace Xamarin.Forms
 
 			string IPlatformServices.GetMD5Hash(string input) => GetHash(input);
 
-			public double GetNamedSize(NamedSize size, Type targetElementType, bool useOldSizes)
+			public float GetNamedSize(NamedSize size, Type targetElementType, bool useOldSizes)
 			{
 				// We make these up anyway, so new sizes didn't really change
 				// iOS docs say default button font size is 15, default label font size is 17 so we use those as the defaults.
@@ -313,15 +314,15 @@ namespace Xamarin.Forms
 						return (int)(22 * scalingFactor);
 #if __IOS__
 					case NamedSize.Body:
-						return (double)UIFont.PreferredBody.PointSize;
+						return (float)UIFont.PreferredBody.PointSize;
 					case NamedSize.Caption:
-						return (double)UIFont.PreferredCaption1.PointSize;
+						return (float)UIFont.PreferredCaption1.PointSize;
 					case NamedSize.Header:
-						return (double)UIFont.PreferredHeadline.PointSize;
+						return (float)UIFont.PreferredHeadline.PointSize;
 					case NamedSize.Subtitle:
-						return (double)UIFont.PreferredTitle2.PointSize;
+						return (float)UIFont.PreferredTitle2.PointSize;
 					case NamedSize.Title:
-						return (double)UIFont.PreferredTitle1.PointSize;
+						return (float)UIFont.PreferredTitle1.PointSize;
 #else
 					case NamedSize.Body:
 						return 23;
@@ -727,7 +728,7 @@ namespace Xamarin.Forms
 #endif
 			}
 
-			public SizeRequest GetNativeSize(VisualElement view, double widthConstraint, double heightConstraint)
+			public SizeRequest GetNativeSize(VisualElement view, float widthConstraint, float heightConstraint)
 			{
 #if __MOBILE__
 				return Platform.iOS.Platform.GetNativeSize(view, widthConstraint, heightConstraint);

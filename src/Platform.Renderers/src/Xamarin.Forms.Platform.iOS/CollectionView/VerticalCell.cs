@@ -16,8 +16,8 @@ namespace Xamarin.Forms.Platform.iOS
 
 		public override CGSize Measure()
 		{
-			var measure = VisualElementRenderer.Element.Measure(ConstrainedDimension,
-				double.PositiveInfinity, MeasureFlags.IncludeMargins);
+			var measure = VisualElementRenderer.Element.Measure((float)ConstrainedDimension,
+				float.PositiveInfinity, MeasureFlags.IncludeMargins);
 
 			return new CGSize(ConstrainedDimension, measure.Request.Height);
 		}

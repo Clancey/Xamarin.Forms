@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Graphics;
 using Xamarin.Forms;
 using Xamarin.Platform;
 using Xamarin.Platform.Layouts;
@@ -31,7 +32,7 @@ namespace Sample
 
 		IEnumerator IEnumerable.GetEnumerator() => _children.GetEnumerator();
 
-		public override Size Measure(double widthConstraint, double heightConstraint)
+		public override SizeF Measure(float widthConstraint, float heightConstraint)
 		{
 			if (IsMeasureValid)
 			{
@@ -39,14 +40,14 @@ namespace Sample
 			}
 
 			var sizeWithoutMargins = LayoutManager.Measure(widthConstraint, heightConstraint);
-			DesiredSize = new Size(sizeWithoutMargins.Width + Margin.HorizontalThickness,
+			DesiredSize = new SizeF(sizeWithoutMargins.Width + Margin.HorizontalThickness,
 				sizeWithoutMargins.Height + Margin.VerticalThickness);
 			
 			IsMeasureValid = true;
 			return DesiredSize;
 		}
 
-		public override void Arrange(Rectangle bounds)
+		public override void Arrange(RectangleF bounds)
 		{
 			if (IsArrangeValid)
 			{

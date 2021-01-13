@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Globalization;
 using Android.App;
@@ -8,6 +8,7 @@ using Android.Text.Format;
 using Android.Util;
 using Android.Widget;
 using AColor = Android.Graphics.Color;
+using Color = System.Graphics.Color;
 using ATimePicker = Android.Widget.TimePicker;
 
 namespace Xamarin.Forms.Platform.Android

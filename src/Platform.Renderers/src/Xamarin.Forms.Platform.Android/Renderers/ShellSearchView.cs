@@ -13,6 +13,7 @@ using AndroidX.CardView.Widget;
 using Java.Lang;
 using Xamarin.Forms.Platform.Android.FastRenderers;
 using AColor = Android.Graphics.Color;
+using Color = System.Graphics.Color;
 using AImageButton = Android.Widget.ImageButton;
 using ASupportDrawable = AndroidX.AppCompat.Graphics.Drawable;
 using AView = Android.Views.View;

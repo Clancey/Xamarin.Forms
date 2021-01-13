@@ -1,4 +1,5 @@
 using System;
+using System.Graphics;
 using System.Linq;
 using Android.Graphics.Drawables;
 using Android.Util;
@@ -87,7 +88,7 @@ namespace Xamarin.Forms.Platform.Android
 					return null;
 				}
 
-				var color = Colors.FromUint((uint)value.Data);
+				var color = Color.FromUint((uint)value.Data);
 				var colorDrawable = new ColorDrawable(color.ToAndroid());
 
 				var stateListDrawable = new StateListDrawable();

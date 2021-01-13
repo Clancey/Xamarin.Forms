@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using Android.Content;
 using Android.Graphics;
@@ -7,7 +7,9 @@ using Android.Views;
 using AndroidX.CardView.Widget;
 using AndroidX.Core.View;
 using AColor = Android.Graphics.Color;
+using Color = System.Graphics.Color;
 using AView = Android.Views.View;
+using System.Graphics;
 
 namespace Xamarin.Forms.Platform.Android.FastRenderers
 {
@@ -73,7 +75,7 @@ namespace Xamarin.Forms.Platform.Android.FastRenderers
 		SizeRequest IVisualElementRenderer.GetDesiredSize(int widthConstraint, int heightConstraint)
 		{
 			Context context = Context;
-			return new SizeRequest(new Size(context.ToPixels(20), context.ToPixels(20)));
+			return new SizeRequest(new SizeF(context.ToPixels(20), context.ToPixels(20)));
 		}
 
 		void IVisualElementRenderer.SetElement(VisualElement element)
@@ -283,7 +285,7 @@ namespace Xamarin.Forms.Platform.Android.FastRenderers
 				return;
 
 			Color bgColor = Element.BackgroundColor;
-			_backgroundDrawable.SetColor(bgColor.IsDefault ? AColor.White : bgColor.ToAndroid());
+			_backgroundDrawable.SetColor(bgColor?.ToAndroid() ?? AColor.White);
 		}
 
 		void UpdateBackground()
@@ -323,7 +325,7 @@ namespace Xamarin.Forms.Platform.Android.FastRenderers
 
 			Color borderColor = Element.BorderColor;
 
-			if (borderColor.IsDefault)
+			if (borderColor == null)
 				_backgroundDrawable.SetStroke(0, AColor.Transparent);
 			else
 				_backgroundDrawable.SetStroke(3, borderColor.ToAndroid());

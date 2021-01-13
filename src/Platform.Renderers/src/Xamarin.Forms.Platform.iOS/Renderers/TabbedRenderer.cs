@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Graphics;
 using System.Threading.Tasks;
 using UIKit;
 using Xamarin.Forms.Internals;
@@ -22,7 +23,7 @@ namespace Xamarin.Forms.Platform.iOS
 		bool _defaultBarColorSet;
 		bool? _defaultBarTranslucent;
 		bool _loaded;
-		Size _queuedSize;
+		SizeF _queuedSize;
 
 		Page Page => Element as Page;
 
@@ -51,7 +52,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		public event EventHandler<VisualElementChangedEventArgs> ElementChanged;
 
-		public SizeRequest GetDesiredSize(double widthConstraint, double heightConstraint)
+		public SizeRequest GetDesiredSize(float widthConstraint, float heightConstraint)
 		{
 			return NativeView.GetSizeRequest(widthConstraint, heightConstraint);
 		}
@@ -89,10 +90,10 @@ namespace Xamarin.Forms.Platform.iOS
 			EffectUtilities.RegisterEffectControlProvider(this, oldElement, element);
 		}
 
-		public void SetElementSize(Size size)
+		public void SetElementSize(SizeF size)
 		{
 			if (_loaded)
-				Element.Layout(new Rectangle(Element.X, Element.Y, size.Width, size.Height));
+				Element.Layout(new RectangleF(Element.X, Element.Y, size.Width, size.Height));
 			else
 				_queuedSize = size;
 		}
@@ -138,12 +139,12 @@ namespace Xamarin.Forms.Platform.iOS
 
 			var frame = View.Frame;
 			var tabBarFrame = TabBar.Frame;
-			Page.ContainerArea = new Rectangle(0, 0, frame.Width, frame.Height - tabBarFrame.Height);
+			Page.ContainerArea = new RectangleF(0, 0, (float)frame.Width, (float)(frame.Height - tabBarFrame.Height));
 
 			if (!_queuedSize.IsZero)
 			{
-				Element.Layout(new Rectangle(Element.X, Element.Y, _queuedSize.Width, _queuedSize.Height));
-				_queuedSize = Size.Zero;
+				Element.Layout(new RectangleF(Element.X, Element.Y, _queuedSize.Width, _queuedSize.Height));
+				_queuedSize = SizeF.Zero;
 			}
 
 			_loaded = true;
@@ -354,7 +355,7 @@ namespace Xamarin.Forms.Platform.iOS
 				return;
 
 			var barBackgroundColor = Tabbed.BarBackgroundColor;
-			var isDefaultColor = barBackgroundColor.IsDefault;
+			var isDefaultColor = barBackgroundColor == null;
 
 			if (isDefaultColor && !_barBackgroundColorWasSet)
 				return;
@@ -388,7 +389,7 @@ namespace Xamarin.Forms.Platform.iOS
 				return;
 
 			var barTextColor = Tabbed.BarTextColor;
-			var isDefaultColor = barTextColor.IsDefault;
+			var isDefaultColor = barTextColor == null;
 
 			if (isDefaultColor && !_barTextColorWasSet)
 				return;

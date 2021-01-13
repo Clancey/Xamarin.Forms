@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 
@@ -217,11 +217,11 @@ namespace Xamarin.Forms.Core.UnitTests
 		public void TestFromHex()
 		{
 			var color = Colors.FromRgb(138, 43, 226);
-			Assert.AreEqual(color, Colors.FromHex("8a2be2"));
+			Assert.AreEqual(color, new Color("8a2be2"));
 
-			Assert.AreEqual(Color.FromRgba(138, 43, 226, 128), Colors.FromHex("#808a2be2"));
-			Assert.AreEqual(Color.FromHex("#aabbcc"), Colors.FromHex("#abc"));
-			Assert.AreEqual(Color.FromHex("#aabbccdd"), Colors.FromHex("#abcd"));
+			Assert.AreEqual(Color.FromRgba(138, 43, 226, 128), new Color("#808a2be2"));
+			Assert.AreEqual(Color.FromHex("#aabbcc"), new Color("#abc"));
+			Assert.AreEqual(Color.FromHex("#aabbccdd"), new Color("#abcd"));
 		}
 
 		[Test]
@@ -234,7 +234,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var colorHsl = Colors.FromHsla(240, 1, 1);
 			Assert.AreEqual(Color.FromHex(colorHsl.ToHex()), colorHsl);
 			var colorHsla = Colors.FromHsla(240, 1, 1, .1);
-			var hexFromHsla = Colors.FromHex(colorHsla.ToHex());
+			var hexFromHsla = new Color(colorHsla.ToHex());
 			Assert.That(hexFromHsla.A, Is.EqualTo(colorHsla.A).Within(0.002));
 			Assert.That(hexFromHsla.R, Is.EqualTo(colorHsla.R).Within(0.001));
 			Assert.That(hexFromHsla.G, Is.EqualTo(colorHsla.G).Within(0.001));
@@ -323,7 +323,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			Assert.AreEqual(Color.FromHsv(0.89166666666666669, .71, 1), converter.ConvertFromInvariantString("hsv(321,71%, 100%)"));
 			Assert.AreEqual(null, converter.ConvertFromInvariantString("null"));
 			Assert.AreEqual(Color.Accent, converter.ConvertFromInvariantString("Accent"));
-			var hotpink = Colors.FromHex("#FF69B4");
+			var hotpink = new Color("#FF69B4");
 			Color.Accent = hotpink;
 			Assert.AreEqual(Color.Accent, converter.ConvertFromInvariantString("Accent"));
 			Assert.AreEqual(null, converter.ConvertFromInvariantString("#12345"));

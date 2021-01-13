@@ -1,21 +1,21 @@
 ﻿using System;
+using System.Graphics;
 using System.Windows.Input;
 using Xamarin.Forms;
-using Xamarin.Forms.Internals;
 using Xamarin.Platform;
 
 namespace Sample
 {
-	public class Slider : Xamarin.Forms.View, ISlider
+	public class Slider : View, ISlider
 	{
-		double _value;
+		float _value;
 
 		public Slider()
 		{
 
 		}
 
-		public Slider(double min, double max, double val)
+		public Slider(float min, float max, float val)
 		{
 			if (min >= max)
 				throw new ArgumentOutOfRangeException("min");
@@ -34,10 +34,10 @@ namespace Sample
 			Value = val.Clamp(min, max);
 		}
 
-		public double Minimum { get; set; }
-		public double Maximum { get; set; } = 1d;
+		public float Minimum { get; set; }
+		public float Maximum { get; set; } = 1;
 
-		public double Value
+		public float Value
 		{
 			get
 			{
@@ -57,7 +57,7 @@ namespace Sample
 		public Color MaximumTrackColor { get; set; }
 		public Color ThumbColor { get; set; }
 
-		public Action<double> ValueChanged { get; set; }
+		public Action<float> ValueChanged { get; set; }
 		public Action DragStarted { get; set; }
 		public Action DragCompleted { get; set; }
 

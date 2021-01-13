@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using Android.Opengl;
 using Javax.Microedition.Khronos.Opengles;
@@ -88,7 +89,7 @@ namespace Xamarin.Forms.Platform.Android
 		class Renderer : Object, GLSurfaceView.IRenderer
 		{
 			readonly OpenGLView _model;
-			Rectangle _rect;
+			RectangleF _rect;
 
 			public Renderer(OpenGLView model)
 			{
@@ -97,7 +98,7 @@ namespace Xamarin.Forms.Platform.Android
 
 			public void OnDrawFrame(IGL10 gl)
 			{
-				Action<Rectangle> onDisplay = _model.OnDisplay;
+				Action<RectangleF> onDisplay = _model.OnDisplay;
 				if (onDisplay == null)
 					return;
 				onDisplay(_rect);
@@ -105,7 +106,7 @@ namespace Xamarin.Forms.Platform.Android
 
 			public void OnSurfaceChanged(IGL10 gl, int width, int height)
 			{
-				_rect = new Rectangle(0.0, 0.0, width, height);
+				_rect = new RectangleF(0, 0, width, height);
 			}
 
 			public void OnSurfaceCreated(IGL10 gl, EGLConfig config)

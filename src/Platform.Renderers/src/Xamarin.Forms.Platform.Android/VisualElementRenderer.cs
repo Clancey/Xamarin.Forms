@@ -1,6 +1,7 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using Android.Content.Res;
 using Android.Graphics;
@@ -10,6 +11,7 @@ using AndroidX.Core.View;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Platform.Android.FastRenderers;
 using AView = Android.Views.View;
+using Color = System.Graphics.Color;
 
 
 namespace Xamarin.Forms.Platform.Android
@@ -120,7 +122,7 @@ namespace Xamarin.Forms.Platform.Android
 		public virtual SizeRequest GetDesiredSize(int widthConstraint, int heightConstraint)
 		{
 			Measure(widthConstraint, heightConstraint);
-			return new SizeRequest(new Size(MeasuredWidth, MeasuredHeight), MinimumSize());
+			return new SizeRequest(new SizeF(MeasuredWidth, MeasuredHeight), MinimumSize());
 		}
 
 		void IVisualElementRenderer.SetElement(VisualElement element)
@@ -342,9 +344,9 @@ namespace Xamarin.Forms.Platform.Android
 			Invalidate();
 		}
 
-		protected virtual Size MinimumSize()
+		protected virtual SizeF MinimumSize()
 		{
-			return new Size();
+			return new SizeF();
 		}
 
 		protected virtual void OnElementChanged(ElementChangedEventArgs<TElement> e)

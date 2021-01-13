@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using AndroidX.RecyclerView.Widget;
 using ViewGroup = Android.Views.ViewGroup;
@@ -10,7 +11,7 @@ namespace Xamarin.Forms.Platform.Android
 		where TItemsView : StructuredItemsView
 		where TItemsViewSource : IItemsViewSource
 	{
-		Size? _size;
+		SizeF? _size;
 
 		protected internal StructuredItemsViewAdapter(TItemsView itemsView,
 			Func<View, Context, ItemContentView> createItemContentView = null) : base(itemsView, createItemContentView)
@@ -146,7 +147,7 @@ namespace Xamarin.Forms.Platform.Android
 			return SimpleViewHolder.FromText(content?.ToString(), context, fill: false);
 		}
 
-		void SetStaticSize(Size size)
+		void SetStaticSize(SizeF size)
 		{
 			_size = size;
 		}

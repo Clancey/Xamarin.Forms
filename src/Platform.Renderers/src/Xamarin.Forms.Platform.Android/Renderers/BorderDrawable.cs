@@ -1,8 +1,9 @@
-using System;
+﻿using System;
 using System.Linq;
 using Android.Graphics;
 using Android.Graphics.Drawables;
 using AColor = Android.Graphics.Color;
+using Color = System.Graphics.Color;
 using APath = Android.Graphics.Path;
 
 namespace Xamarin.Forms.Platform.Android
@@ -143,7 +144,7 @@ namespace Xamarin.Forms.Platform.Android
 		}
 
 		public Color BackgroundColor => BorderElement.BackgroundColor == null ? _defaultColor : BorderElement.BackgroundColor;
-		public Color PressedBackgroundColor => BackgroundColor.AddLuminosity(-.12);//<item name="highlight_alpha_material_light" format="float" type="dimen">0.12</item>
+		public Color PressedBackgroundColor => BackgroundColor.AddLuminosity(-.12f);//<item name="highlight_alpha_material_light" format="float" type="dimen">0.12</item>
 
 		protected override void Dispose(bool disposing)
 		{

@@ -1,19 +1,18 @@
-using System;
+﻿using System;
+using CoreGraphics;
 using UIKit;
-using PointF = CoreGraphics.CGPoint;
-using RectangleF = CoreGraphics.CGRect;
 
 namespace Xamarin.Forms.Platform.iOS
 {
 	internal class KeyboardInsetTracker : IDisposable
 	{
 		readonly Func<UIWindow> _fetchWindow;
-		readonly Action<PointF> _setContentOffset;
+		readonly Action<CGPoint> _setContentOffset;
 		readonly Action<UIEdgeInsets> _setInsetAction;
 		readonly UIScrollView _targetView;
 		bool _disposed;
 		UIEdgeInsets _currentInset;
-		RectangleF _lastKeyboardRect;
+		CGRect _lastKeyboardRect;
 		ShellScrollViewTracker _shellScrollViewTracker;
 
 
@@ -22,12 +21,12 @@ namespace Xamarin.Forms.Platform.iOS
 		{
 		}
 
-		public KeyboardInsetTracker(UIScrollView targetView, Func<UIWindow> fetchWindow, Action<UIEdgeInsets> setInsetAction, Action<PointF> setContentOffset)
+		public KeyboardInsetTracker(UIScrollView targetView, Func<UIWindow> fetchWindow, Action<UIEdgeInsets> setInsetAction, Action<CGPoint> setContentOffset)
 			 : this(targetView, fetchWindow, setInsetAction, setContentOffset, null)
 		{
 		}
 
-		public KeyboardInsetTracker(UIScrollView targetView, Func<UIWindow> fetchWindow, Action<UIEdgeInsets> setInsetAction, Action<PointF> setContentOffset, IVisualElementRenderer renderer)
+		public KeyboardInsetTracker(UIScrollView targetView, Func<UIWindow> fetchWindow, Action<UIEdgeInsets> setInsetAction, Action<CGPoint> setContentOffset, IVisualElementRenderer renderer)
 		{
 			_setContentOffset = setContentOffset;
 			_targetView = targetView;
@@ -80,7 +79,7 @@ namespace Xamarin.Forms.Platform.iOS
 			//since our keyboard frame is RVC CoordinateSpace, lets convert it to our targetView CoordinateSpace
 			var rect = _targetView.Superview.ConvertRectFromView(_lastKeyboardRect, null);
 			//let's see how much does it cover our target view
-			var overlay = RectangleF.Intersect(rect, _targetView.Frame);
+			var overlay = CGRect.Intersect(rect, _targetView.Frame);
 
 			_currentInset = _targetView.ContentInset;
 			_setInsetAction(new UIEdgeInsets(0, 0, overlay.Height, 0));
@@ -92,7 +91,7 @@ namespace Xamarin.Forms.Platform.iOS
 				var fieldBottom = fieldPosition.Y + field.Frame.Height;
 				var offset = fieldBottom - keyboardTop;
 				if (offset > 0)
-					_setContentOffset(new PointF(0, offset));
+					_setContentOffset(new CGPoint(0, offset));
 			}
 		}
 
@@ -103,7 +102,7 @@ namespace Xamarin.Forms.Platform.iOS
 			if(_shellScrollViewTracker == null || !_shellScrollViewTracker.Reset())
 				_setInsetAction(new UIEdgeInsets(0,0,0,0));
 
-			_lastKeyboardRect = RectangleF.Empty;
+			_lastKeyboardRect = CGRect.Empty;
 		}
 
 		void OnKeyboardShown(object sender, UIKeyboardEventArgs args)

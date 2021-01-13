@@ -5,9 +5,7 @@ using System.ComponentModel;
 using Foundation;
 using UIKit;
 using Xamarin.Forms.Platform.iOS.Resources;
-using PointF = CoreGraphics.CGPoint;
-using RectangleF = CoreGraphics.CGRect;
-using SizeF = CoreGraphics.CGSize;
+using CoreGraphics;
 
 namespace Xamarin.Forms.Platform.iOS
 {
@@ -28,7 +26,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		static ContextActionsCell()
 		{
-			var rect = new RectangleF(0, 0, 1, 1);
+			var rect = new CGRect(0, 0, 1, 1);
 			var size = rect.Size;
 
 			UIGraphics.BeginImageContext(size);
@@ -84,7 +82,7 @@ namespace Xamarin.Forms.Platform.iOS
 			if (_scroller == null)
 				return;
 
-			_scroller.ContentOffset = new PointF(0, 0);
+			_scroller.ContentOffset = new CGPoint(0, 0);
 		}
 
 		public override void LayoutSubviews()
@@ -114,7 +112,7 @@ namespace Xamarin.Forms.Platform.iOS
 			ScrollDelegate.PrepareForDeselect(_scroller);
 		}
 
-		public override SizeF SizeThatFits(SizeF size)
+		public override CGSize SizeThatFits(CGSize size)
 		{
 			return ContentCell.SizeThatFits(size);
 		}
@@ -143,7 +141,7 @@ namespace Xamarin.Forms.Platform.iOS
 			var height = Frame.Height + (parentListView != null && parentListView.SeparatorVisibility == SeparatorVisibility.None ? 0.5f : 0f);
 			var width = ContentView.Frame.Width;
 
-			nativeCell.Frame = new RectangleF(0, 0, width, height);
+			nativeCell.Frame = new CGRect(0, 0, width, height);
 			nativeCell.SetNeedsLayout();
 
 			var handler = new PropertyChangedEventHandler(OnMenuItemPropertyChanged);
@@ -179,7 +177,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 			if (_scroller == null)
 			{
-				_scroller = new UIScrollView(new RectangleF(0, 0, width, height));
+				_scroller = new UIScrollView(new CGRect(0, 0, width, height));
 				_scroller.ScrollsToTop = false;
 				_scroller.ShowsHorizontalScrollIndicator = false;
 				
@@ -189,7 +187,7 @@ namespace Xamarin.Forms.Platform.iOS
 			}
 			else
 			{
-				_scroller.Frame = new RectangleF(0, 0, width, height);
+				_scroller.Frame = new CGRect(0, 0, width, height);
 				isOpen = ScrollDelegate.IsOpen;
 
 				for (var i = 0; i < _buttons.Count; i++)
@@ -257,12 +255,12 @@ namespace Xamarin.Forms.Platform.iOS
 			}
 
 			_scroller.Delegate = new ContextScrollViewDelegate(container, _buttons, isOpen);
-			_scroller.ContentSize = new SizeF(totalWidth, height);
+			_scroller.ContentSize = new CGSize(totalWidth, height);
 
 			if (isOpen)
-				_scroller.SetContentOffset(new PointF(ScrollDelegate.ButtonsWidth, 0), false);
+				_scroller.SetContentOffset(new CGPoint(ScrollDelegate.ButtonsWidth, 0), false);
 			else
-				_scroller.SetContentOffset(new PointF(0, 0), false);
+				_scroller.SetContentOffset(new CGPoint(0, 0), false);
 
 			if (ContentCell != null)
 			{
@@ -329,7 +327,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 			var path = _tableView.IndexPathForCell(this);
 			var rowPosition = _tableView.RectForRowAtIndexPath(path);
-			var sourceRect = new RectangleF(x, rowPosition.Y, rowPosition.Width, rowPosition.Height);
+			var sourceRect = new CGRect(x, rowPosition.Y, rowPosition.Width, rowPosition.Height);
 
 			if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
 			{
@@ -347,7 +345,7 @@ namespace Xamarin.Forms.Platform.iOS
 						if (_scroller == null)
 							return;
 
-						_scroller.SetContentOffset(new PointF(0, 0), true);
+						_scroller.SetContentOffset(new CGPoint(0, 0), true);
 						if (weakItem.TryGetTarget(out MenuItem mi))
 							((IMenuItemController)mi).Activate();
 					});
@@ -416,7 +414,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		UIButton GetButton(MenuItem item)
 		{
-			var button = new UIButton(new RectangleF(0, 0, 1, 1));
+			var button = new UIButton(new CGRect(0, 0, 1, 1));
 
 			if (!item.IsDestructive)
 				button.SetBackgroundImage(NormalBackground, UIControlState.Normal);
@@ -466,7 +464,7 @@ namespace Xamarin.Forms.Platform.iOS
 				ActivateMore();
 			else
 			{
-				_scroller.SetContentOffset(new PointF(0, 0), true);
+				_scroller.SetContentOffset(new CGPoint(0, 0), true);
 				((IMenuItemController)_cell.ContextActions[(int)button.Tag]).Activate();
 			}
 		}
@@ -519,7 +517,7 @@ namespace Xamarin.Forms.Platform.iOS
 					((ContextScrollViewDelegate)_scroller.Delegate).ClosedCallback = null;
 				};
 
-				_scroller.SetContentOffset(new PointF(0, 0), true);
+				_scroller.SetContentOffset(new CGPoint(0, 0), true);
 			}
 			else
 				ReloadRowCore();
@@ -567,7 +565,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 				var button = GetButton(item);
 				button.Tag = i;
-				var buttonWidth = button.TitleLabel.SizeThatFits(new SizeF(width, height)).Width + 30;
+				var buttonWidth = button.TitleLabel.SizeThatFits(new CGSize(width, height)).Width + 30;
 				if (buttonWidth > largestWidth)
 					largestWidth = buttonWidth;
 
@@ -591,12 +589,12 @@ namespace Xamarin.Forms.Platform.iOS
 					resize = true;
 				}
 
-				var button = new UIButton(new RectangleF(0, 0, largestWidth, height));
+				var button = new UIButton(new CGRect(0, 0, largestWidth, height));
 				button.SetBackgroundImage(NormalBackground, UIControlState.Normal);
 				button.TitleEdgeInsets = new UIEdgeInsets(0, 15, 0, 15);
 				button.SetTitle(StringResources.More, UIControlState.Normal);
 
-				var moreWidth = button.TitleLabel.SizeThatFits(new SizeF(width, height)).Width + 30;
+				var moreWidth = button.TitleLabel.SizeThatFits(new CGSize(width, height)).Width + 30;
 				if (moreWidth > largestWidth)
 				{
 					largestWidth = moreWidth;
@@ -636,7 +634,7 @@ namespace Xamarin.Forms.Platform.iOS
 				if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
 					x += totalWidth;
 
-				b.Frame = new RectangleF(x, 0, largestWidth, height);
+				b.Frame = new CGRect(x, 0, largestWidth, height);
 				if (resize)
 					b.TitleLabel.AdjustsFontSizeToFitWidth = true;
 
@@ -722,7 +720,7 @@ namespace Xamarin.Forms.Platform.iOS
 				if (buttonIndex == Items.Count)
 					return; // Cancel button
 
-				Scroller.SetContentOffset(new PointF(0, 0), true);
+				Scroller.SetContentOffset(new CGPoint(0, 0), true);
 
 				// do not activate a -1 index when dismissing by clicking outside the popover
 				if (buttonIndex >= 0)

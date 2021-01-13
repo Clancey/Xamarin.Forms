@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Graphics;
 using CoreGraphics;
 using Foundation;
 using ObjCRuntime;
 using UIKit;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
-using RectangleF = CoreGraphics.CGRect;
 
 namespace Xamarin.Forms.Platform.iOS
 {
@@ -75,7 +75,7 @@ namespace Xamarin.Forms.Platform.iOS
 					_picker = new UIPickerView();
 
 					var width = UIScreen.MainScreen.Bounds.Width;
-					var toolbar = new UIToolbar(new RectangleF(0, 0, width, 44)) { BarStyle = UIBarStyle.Default, Translucent = true };
+					var toolbar = new UIToolbar(new CGRect(0, 0, width, 44)) { BarStyle = UIBarStyle.Default, Translucent = true };
 					var spacer = new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace);
 					var doneButton = new UIBarButtonItem(UIBarButtonSystemItem.Done, (o, a) =>
 					{
@@ -215,13 +215,13 @@ namespace Xamarin.Forms.Platform.iOS
 
 			if (_useLegacyColorManagement)
 			{
-				var color = targetColor.IsDefault || !Element.IsEnabled ? _defaultPlaceholderColor : targetColor;
+				var color = targetColor == null || !Element.IsEnabled ? _defaultPlaceholderColor : targetColor;
 				UpdateAttributedPlaceholder(formatted.ToAttributed(Element, color));
 			}
 			else
 			{
 				// Using VSM color management; take whatever is in Element.PlaceholderColor
-				var color = targetColor.IsDefault ? _defaultPlaceholderColor : targetColor;
+				var color = targetColor == null ? _defaultPlaceholderColor : targetColor;
 				UpdateAttributedPlaceholder(formatted.ToAttributed(Element, color));
 			}
 
@@ -287,7 +287,7 @@ namespace Xamarin.Forms.Platform.iOS
 		{
 			var textColor = Element.TextColor;
 
-			if (textColor.IsDefault || (!Element.IsEnabled && _useLegacyColorManagement))
+			if (textColor == null || (!Element.IsEnabled && _useLegacyColorManagement))
 				Control.TextColor = _defaultTextColor;
 			else
 				Control.TextColor = textColor.ToUIColor();

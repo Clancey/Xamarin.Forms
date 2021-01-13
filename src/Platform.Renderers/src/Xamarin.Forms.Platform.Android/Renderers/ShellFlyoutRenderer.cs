@@ -8,6 +8,9 @@ using AndroidX.DrawerLayout.Widget;
 using Xamarin.Forms.Internals;
 using AView = Android.Views.View;
 using LP = Android.Views.ViewGroup.LayoutParams;
+using Color = System.Graphics.Color;
+using System.Graphics;
+using APaint = Android.Graphics.Paint;
 
 namespace Xamarin.Forms.Platform.Android
 {
@@ -114,7 +117,7 @@ namespace Xamarin.Forms.Platform.Android
 		int _currentLockMode;
 		bool _disposed;
 		Brush _scrimBrush;
-		Paint _scrimPaint;
+		APaint _scrimPaint;
 		int _previousHeight;
 		int _previousWidth;
 		int _scrimOpacity;
@@ -303,7 +306,7 @@ namespace Xamarin.Forms.Platform.Android
 
 			if (_behavior == FlyoutBehavior.Locked)
 			{
-				SetScrimColor(Color.Transparent.ToAndroid());
+				SetScrimColor(Colors.Transparent.ToAndroid());
 				_scrimPaint = null;
 			}
 			else
@@ -324,9 +327,9 @@ namespace Xamarin.Forms.Platform.Android
 				}
 				else
 				{
-					_scrimPaint = _scrimPaint ?? new Paint();
+					_scrimPaint = _scrimPaint ?? new APaint();
 					_scrimPaint.UpdateBackground(_scrimBrush, Height, Width);
-					SetScrimColor(Color.Transparent.ToAndroid());
+					SetScrimColor(Colors.Transparent.ToAndroid());
 				}
 			}
 		}

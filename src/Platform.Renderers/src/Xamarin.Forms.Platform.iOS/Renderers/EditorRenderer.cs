@@ -3,7 +3,6 @@ using System.ComponentModel;
 using CoreGraphics;
 using Foundation;
 using UIKit;
-using RectangleF = CoreGraphics.CGRect;
 
 namespace Xamarin.Forms.Platform.iOS
 {
@@ -17,12 +16,12 @@ namespace Xamarin.Forms.Platform.iOS
 		[Preserve(Conditional = true)]
 		public EditorRenderer()
 		{
-			Frame = new RectangleF(0, 20, 320, 40);
+			Frame = new CGRect(0, 20, 320, 40);
 		}
 
 		protected override UITextView CreateNativeControl()
 		{
-			return new FormsUITextView(RectangleF.Empty);
+			return new FormsUITextView(CGRect.Empty);
 		}
 
 		protected override UITextView TextView => Control;
@@ -43,7 +42,7 @@ namespace Xamarin.Forms.Platform.iOS
 				_placeholderLabel = new UILabel
 				{
 					BackgroundColor = UIColor.Clear,
-					Frame = new RectangleF(0, 0, Frame.Width, Frame.Height),
+					Frame = new CGRect(0, 0, Frame.Width, Frame.Height),
 					Lines = 0
 				};
 			}
@@ -84,11 +83,8 @@ namespace Xamarin.Forms.Platform.iOS
 
 		protected internal override void UpdatePlaceholderColor()
 		{
-			Color placeholderColor = Element.PlaceholderColor;
-			if (placeholderColor.IsDefault)
-				_placeholderLabel.TextColor = _defaultPlaceholderColor;
-			else
-				_placeholderLabel.TextColor = placeholderColor.ToUIColor();
+			var placeholderColor = Element.PlaceholderColor;
+			_placeholderLabel.TextColor = placeholderColor?.ToUIColor() ?? _defaultPlaceholderColor;
 		}
 
 		void CreatePlaceholderLabel()
@@ -173,7 +169,7 @@ namespace Xamarin.Forms.Platform.iOS
 				{
 					// iPhone does not have a dismiss keyboard button
 					var keyboardWidth = UIScreen.MainScreen.Bounds.Width;
-					var accessoryView = new UIToolbar(new RectangleF(0, 0, keyboardWidth, 44)) { BarStyle = UIBarStyle.Default, Translucent = true };
+					var accessoryView = new UIToolbar(new CGRect(0, 0, keyboardWidth, 44)) { BarStyle = UIBarStyle.Default, Translucent = true };
 
 					var spacer = new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace);
 					var doneButton = new UIBarButtonItem(UIBarButtonSystemItem.Done, (o, a) =>
@@ -349,11 +345,7 @@ namespace Xamarin.Forms.Platform.iOS
 		protected internal virtual void UpdateTextColor()
 		{
 			var textColor = Element.TextColor;
-
-			if (textColor.IsDefault)
-				TextView.TextColor = ColorExtensions.LabelColor;
-			else
-				TextView.TextColor = textColor.ToUIColor();
+			TextView.TextColor = textColor.ToUIColor() ?? ColorExtensions.LabelColor;
 		}
 
 		void UpdateMaxLength()
@@ -390,12 +382,12 @@ namespace Xamarin.Forms.Platform.iOS
 		{
 			public event EventHandler FrameChanged;
 
-			public FormsUITextView(RectangleF frame) : base(frame)
+			public FormsUITextView(CGRect frame) : base(frame)
 			{
 			}
 
 
-			public override RectangleF Frame
+			public override CGRect Frame
 			{
 				get => base.Frame;
 				set

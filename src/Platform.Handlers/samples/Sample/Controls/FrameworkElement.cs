@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System.Graphics;
+using Xamarin.Forms;
 using Xamarin.Platform;
 using Xamarin.Platform.Layouts;
 
@@ -10,7 +11,7 @@ namespace Sample
 
 		public Color BackgroundColor { get; set; } = Colors.Transparent;
 
-		public Rectangle Frame
+		public RectangleF Frame
 		{
 			get;
 			protected set;
@@ -20,18 +21,18 @@ namespace Sample
 
 		public IFrameworkElement Parent { get; set; }
 
-		public Size DesiredSize { get; protected set; }
+		public SizeF DesiredSize { get; protected set; }
 
 		public virtual bool IsMeasureValid { get; protected set; }
 
 		public bool IsArrangeValid { get; protected set; }
 
-		public double Width { get; set; } = -1;
-		public double Height { get; set; } = -1;
+		public float Width { get; set; } = -1;
+		public float Height { get; set; } = -1;
 
 		public Thickness Margin { get; set; } = Thickness.Zero;
 
-		public virtual void Arrange(Rectangle bounds)
+		public virtual void Arrange(RectangleF bounds)
 		{
 			Frame = this.ComputeFrame(bounds);
 		}
@@ -47,7 +48,7 @@ namespace Sample
 			IsArrangeValid = false;
 		}
 
-		public virtual Size Measure(double widthConstraint, double heightConstraint)
+		public virtual SizeF Measure(float widthConstraint, float heightConstraint)
 		{
 			if (!IsMeasureValid)
 			{

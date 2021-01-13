@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using Android.Content.Res;
 using Android.Graphics;
@@ -11,6 +12,7 @@ using Xamarin.Forms.Internals;
 using Xamarin.Forms.Platform.Android.FastRenderers;
 using AAttribute = Android.Resource.Attribute;
 using AColor = Android.Graphics.Color;
+using Color = System.Graphics.Color;
 using AView = Android.Views.View;
 
 namespace Xamarin.Forms.Platform.Android
@@ -84,9 +86,9 @@ namespace Xamarin.Forms.Platform.Android
 			base.Dispose(disposing);
 		}
 
-		Size MinimumSize()
+		SizeF MinimumSize()
 		{
-			return Size.Zero;
+			return SizeF.Zero;
 		}
 
 		SizeRequest IVisualElementRenderer.GetDesiredSize(int widthConstraint, int heightConstraint)
@@ -96,7 +98,7 @@ namespace Xamarin.Forms.Platform.Android
 				return new SizeRequest();
 			}
 			Measure(widthConstraint, heightConstraint);
-			return new SizeRequest(new Size(MeasuredWidth, MeasuredHeight), MinimumSize());
+			return new SizeRequest(new SizeF(MeasuredWidth, MeasuredHeight), MinimumSize());
 		}
 
 		void IVisualElementRenderer.SetElement(VisualElement element)
@@ -195,7 +197,7 @@ namespace Xamarin.Forms.Platform.Android
 
 		protected virtual ColorStateList GetColorStateList()
 		{
-			var tintColor = Element.Color == null ? Colors.Accent.ToAndroid() : Element.Color.ToAndroid();
+			var tintColor = Element.Color == null ? Forms.AccentColor.ToAndroid() : Element.Color.ToAndroid();
 
 			var list = new ColorStateList(
 					_checkedStates,

@@ -1,4 +1,5 @@
-using System;
+﻿using System;
+using System.Graphics;
 using Android.Content;
 using Android.Views;
 using AndroidX.RecyclerView.Widget;
@@ -285,15 +286,15 @@ namespace Xamarin.Forms.Platform.Android
 			if (item == null)
 				return;
 
-			var sizeRequest = new SizeRequest(new Size(0, 0));
+			var sizeRequest = new SizeRequest(new SizeF(0, 0));
 
 			if (item is View view)
-				sizeRequest = view.Measure(double.PositiveInfinity, double.PositiveInfinity, MeasureFlags.IncludeMargins);
+				sizeRequest = view.Measure(float.PositiveInfinity, float.PositiveInfinity, MeasureFlags.IncludeMargins);
 
 			if (item is DataTemplate dataTemplate)
 			{
 				var content = dataTemplate.CreateContent() as View;
-				sizeRequest = content.Measure(double.PositiveInfinity, double.PositiveInfinity, MeasureFlags.IncludeMargins);
+				sizeRequest = content.Measure(float.PositiveInfinity, float.PositiveInfinity, MeasureFlags.IncludeMargins);
 			}
 
 			var itemHeight = (int)sizeRequest.Request.Height;

@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using RectangleF = CoreGraphics.CGRect;
-using SizeF = CoreGraphics.CGSize;
+using CGRect = CoreGraphics.CGRect;
+using CGSize = CoreGraphics.CGSize;
 using Xamarin.Forms.Internals;
 using CoreAnimation;
+using System.Graphics;
 
 #if __MOBILE__
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -54,7 +55,7 @@ namespace Xamarin.Forms.Platform.MacOS
 		BlurEffectStyle _previousBlur;
 #endif
 
-		protected VisualElementRenderer() : base(RectangleF.Empty)
+		protected VisualElementRenderer() : base(CGRect.Empty)
 		{
 			_propertyChangedHandler = OnElementPropertyChanged;
 #if __MOBILE__
@@ -143,7 +144,7 @@ namespace Xamarin.Forms.Platform.MacOS
 
 
 
-		public virtual SizeRequest GetDesiredSize(double widthConstraint, double heightConstraint)
+		public virtual SizeRequest GetDesiredSize(float widthConstraint, float heightConstraint)
 		{
 			return NativeView.GetSizeRequest(widthConstraint, heightConstraint);
 		}
@@ -160,9 +161,9 @@ namespace Xamarin.Forms.Platform.MacOS
 			UpdateTabIndex();
 		}
 
-		public void SetElementSize(Size size)
+		public void SetElementSize(SizeF size)
 		{
-			Xamarin.Forms.Layout.LayoutChildIntoBoundingRegion(Element, new Rectangle(Element.X, Element.Y, size.Width, size.Height));
+			Xamarin.Forms.Layout.LayoutChildIntoBoundingRegion(Element, new RectangleF(Element.X, Element.Y, size.Width, size.Height));
 		}
 
 		public virtual NativeViewController ViewController => null;
@@ -312,9 +313,9 @@ namespace Xamarin.Forms.Platform.MacOS
 		}
 
 #if __MOBILE__
-		public override SizeF SizeThatFits(SizeF size)
+		public override CGSize SizeThatFits(CGSize size)
 		{
-			return new SizeF(0, 0);
+			return new CGSize(0, 0);
 		}
 
 		public override void LayoutSubviews()

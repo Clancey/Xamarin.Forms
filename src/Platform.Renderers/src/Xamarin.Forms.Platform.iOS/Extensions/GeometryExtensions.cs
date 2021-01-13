@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Graphics;
 using CoreGraphics;
 using Xamarin.Forms.Shapes;
+using Geometry = Xamarin.Forms.Shapes.Geometry;
 
 #if __MOBILE__
 namespace Xamarin.Forms.Platform.iOS
@@ -28,12 +30,12 @@ namespace Xamarin.Forms.Platform.MacOS
             if (geometry is LineGeometry)
             {
                 LineGeometry lineGeometry = geometry as LineGeometry;
-                pathData.Data.MoveToPoint(transform, lineGeometry.StartPoint.ToPointF());
-                pathData.Data.AddLineToPoint(transform, lineGeometry.EndPoint.ToPointF());
+                pathData.Data.MoveToPoint(transform, lineGeometry.StartPoint.ToNative());
+                pathData.Data.AddLineToPoint(transform, lineGeometry.EndPoint.ToNative());
             }
             else if (geometry is RectangleGeometry)
             {
-                Rect rect = (geometry as RectangleGeometry).Rect;
+                RectangleF rect = (geometry as RectangleGeometry).Rect;
                 pathData.Data.AddRect(transform, new CGRect(rect.X, rect.Y, rect.Width, rect.Height));
             }
             else if (geometry is EllipseGeometry)
@@ -68,8 +70,8 @@ namespace Xamarin.Forms.Platform.MacOS
 
                 foreach (PathFigure pathFigure in pathGeometry.Figures)
                 {
-                    pathData.Data.MoveToPoint(transform, pathFigure.StartPoint.ToPointF());
-                    Point lastPoint = pathFigure.StartPoint;
+                    pathData.Data.MoveToPoint(transform, pathFigure.StartPoint.ToNative());
+                    PointF lastPoint = pathFigure.StartPoint;
 
                     foreach (PathSegment pathSegment in pathFigure.Segments)
                     {
@@ -78,7 +80,7 @@ namespace Xamarin.Forms.Platform.MacOS
                         {
                             LineSegment lineSegment = pathSegment as LineSegment;
 
-                            pathData.Data.AddLineToPoint(transform, lineSegment.Point.ToPointF());
+                            pathData.Data.AddLineToPoint(transform, lineSegment.Point.ToNative());
                             lastPoint = lineSegment.Point;
                         }
                         // PolyLineSegment
@@ -88,7 +90,7 @@ namespace Xamarin.Forms.Platform.MacOS
                             PointCollection points = polylineSegment.Points;
 
                             for (int i = 0; i < points.Count; i++)
-                                pathData.Data.AddLineToPoint(transform, points[i].ToPointF());
+                                pathData.Data.AddLineToPoint(transform, points[i].ToNative());
 
                             lastPoint = points[points.Count - 1];
                         }
@@ -100,9 +102,9 @@ namespace Xamarin.Forms.Platform.MacOS
 
                             pathData.Data.AddCurveToPoint(
                                 transform,
-                                bezierSegment.Point1.ToPointF(),
-                                bezierSegment.Point2.ToPointF(),
-                                bezierSegment.Point3.ToPointF());
+                                bezierSegment.Point1.ToNative(),
+                                bezierSegment.Point2.ToNative(),
+                                bezierSegment.Point3.ToNative());
 
                             lastPoint = bezierSegment.Point3;
                         }
@@ -118,9 +120,9 @@ namespace Xamarin.Forms.Platform.MacOS
                                 {
                                     pathData.Data.AddCurveToPoint(
                                         transform,
-                                        points[i].ToPointF(),
-                                        points[i + 1].ToPointF(),
-                                        points[i + 2].ToPointF());
+                                        points[i].ToNative(),
+                                        points[i + 1].ToNative(),
+                                        points[i + 2].ToNative());
                                 }
                             }
 
@@ -167,7 +169,7 @@ namespace Xamarin.Forms.Platform.MacOS
                         {
                             ArcSegment arcSegment = pathSegment as ArcSegment;
 
-                            List<Point> points = new List<Point>();
+                            List<PointF> points = new List<PointF>();
 
                             GeometryHelper.FlattenArc(
                                 points,
@@ -183,11 +185,11 @@ namespace Xamarin.Forms.Platform.MacOS
                             CGPoint[] cgpoints = new CGPoint[points.Count];
 
                             for (int i = 0; i < points.Count; i++)
-                                cgpoints[i] = transform.TransformPoint(points[i].ToPointF());
+                                cgpoints[i] = transform.TransformPoint((CGPoint)points[i].ToNative());
 
                             pathData.Data.AddLines(cgpoints);
 
-                            lastPoint = points.Count > 0 ? points[points.Count - 1] : Point.Zero;
+                            lastPoint = points.Count > 0 ? points[points.Count - 1] : PointF.Zero;
                         }
                     }
 

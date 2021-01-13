@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Graphics;
 using System.Linq;
 using System.Threading.Tasks;
 using CoreGraphics;
@@ -208,13 +209,13 @@ namespace Xamarin.Forms.Platform.iOS
 			throw new InvalidOperationException("RemovePage is not supported globally on iOS, please use a NavigationPage.");
 		}
 
-		public static SizeRequest GetNativeSize(VisualElement view, double widthConstraint, double heightConstraint)
+		public static SizeRequest GetNativeSize(VisualElement view, float widthConstraint, float heightConstraint)
 		{
 			Performance.Start(out string reference);
 
 			var renderView = GetRenderer(view);
 			if (renderView == null || renderView.NativeView == null)
-				return new SizeRequest(Size.Zero);
+				return new SizeRequest(SizeF.Zero);
 
 			Performance.Stop(reference);
 			return renderView.GetDesiredSize(widthConstraint, heightConstraint);
@@ -283,7 +284,7 @@ namespace Xamarin.Forms.Platform.iOS
 			if (rootRenderer == null)
 				return;
 
-			rootRenderer.SetElementSize(new Size(_renderer.View.Bounds.Width, _renderer.View.Bounds.Height));
+			rootRenderer.SetElementSize(new SizeF((float)_renderer.View.Bounds.Width, (float)_renderer.View.Bounds.Height));
 		}
 
 		internal void SetPage(Page newRoot)
@@ -347,10 +348,10 @@ namespace Xamarin.Forms.Platform.iOS
 				if (viewRenderer.ViewController != null)
 					_renderer.AddChildViewController(viewRenderer.ViewController);
 				viewRenderer.NativeView.Frame = new RectangleF(0, 0, _renderer.View.Bounds.Width, _renderer.View.Bounds.Height);
-				viewRenderer.SetElementSize(new Size(_renderer.View.Bounds.Width, _renderer.View.Bounds.Height));
+				viewRenderer.SetElementSize(new SizeF((float)_renderer.View.Bounds.Width, (float)_renderer.View.Bounds.Height));
 			}
 			else
-				Console.Error.WriteLine("Potential view double add");
+				Console.Error.WriteLine("Potential view float add");
 		}
 
 		static void HandleChildRemoved(object sender, ElementEventArgs e)
@@ -626,7 +627,7 @@ namespace Xamarin.Forms.Platform.iOS
     
 		#region Obsolete 
 
-		SizeRequest IPlatform.GetNativeSize(VisualElement view, double widthConstraint, double heightConstraint)
+		SizeRequest IPlatform.GetNativeSize(VisualElement view, float widthConstraint, float heightConstraint)
 		{
 			return GetNativeSize(view, widthConstraint, heightConstraint);
 		}

@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using Android.Graphics.Drawables;
 using Android.Widget;
@@ -45,7 +46,7 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 				if (widthConstraint <= 0)
 					width = (int)Context.GetThemeAttributeDp(global::Android.Resource.Attribute.SwitchMinWidth);
 
-				sizeConstraint = new SizeRequest(new Size(width, sizeConstraint.Request.Height), new Size(width, sizeConstraint.Minimum.Height));
+				sizeConstraint = new SizeRequest(new SizeF(width, sizeConstraint.Request.Height), new SizeF(width, sizeConstraint.Minimum.Height));
 			}
 
 			return sizeConstraint;

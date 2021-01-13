@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Graphics;
 using NSubstitute;
 using Xamarin.Forms;
 
@@ -26,11 +27,11 @@ namespace Xamarin.Platform.Handlers.UnitTests.Layouts
 			return view;
 		}
 
-		protected IView CreateTestView(Size viewSize)
+		protected IView CreateTestView(SizeF viewSize)
 		{
 			var view = CreateTestView();
 
-			view.Measure(Arg.Any<double>(), Arg.Any<double>()).Returns(viewSize);
+			view.Measure(Arg.Any<float>(), Arg.Any<float>()).Returns(viewSize);
 			view.DesiredSize.Returns(viewSize);
 
 			return view;

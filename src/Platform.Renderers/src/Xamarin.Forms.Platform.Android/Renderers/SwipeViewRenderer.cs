@@ -20,6 +20,7 @@ using AView = Android.Views.View;
 using AWebView = Android.Webkit.WebView;
 using Specifics = Xamarin.Forms.PlatformConfiguration.AndroidSpecific.SwipeView;
 using Xamarin.Platform;
+using System.Graphics;
 
 namespace Xamarin.Forms.Platform.Android
 {
@@ -45,8 +46,8 @@ namespace Xamarin.Forms.Platform.Android
 		SwipeDirection? _swipeDirection;
 		float _swipeOffset;
 		float _swipeThreshold;
-		double _previousScrollX;
-		double _previousScrollY;
+		float _previousScrollX;
+		float _previousScrollY;
 		bool _isSwipeEnabled;
 		bool _isResettingSwipe;
 		bool _isOpen;
@@ -109,7 +110,7 @@ namespace Xamarin.Forms.Platform.Android
 				UpdateSwipeTransitionMode();
 		}
 
-		protected override Size MinimumSize() => new Size(40, 40);
+		protected override SizeF MinimumSize() => new SizeF(40, 40);
 
 		protected override void UpdateBackgroundColor()
 		{
@@ -371,7 +372,7 @@ namespace Xamarin.Forms.Platform.Android
 		AView CreateEmptyContent()
 		{
 			var emptyContentView = new AView(_context);
-			emptyContentView.SetBackgroundColor(null.ToAndroid());
+			emptyContentView.SetBackgroundColor(Colors.Transparent.ToAndroid());
 
 			return emptyContentView;
 		}
@@ -533,7 +534,7 @@ namespace Xamarin.Forms.Platform.Android
 
 			UpdateSwipeItems();
 
-			if (Math.Abs(_swipeOffset) > double.Epsilon)
+			if (Math.Abs(_swipeOffset) > float.Epsilon)
 				Swipe();
 
 			RaiseSwipeChanging();
@@ -585,7 +586,7 @@ namespace Xamarin.Forms.Platform.Android
 			return touchContent;
 		}
 
-		bool TouchInsideContent(double x1, double y1, double x2, double y2, double x, double y)
+		bool TouchInsideContent(float x1, float y1, float x2, float y2, float x, float y)
 		{
 			if (x > x1 && x < (x1 + x2) && y > y1 && y < (y1 + y2))
 				return true;
@@ -862,7 +863,7 @@ namespace Xamarin.Forms.Platform.Android
 		{
 			var swipeItemSize = GetSwipeItemSize(swipeItemView);
 
-			swipeItemView.Layout(new Rectangle(0, 0, swipeItemSize.Width, swipeItemSize.Height));
+			swipeItemView.Layout(new RectangleF(0, 0, swipeItemSize.Width, swipeItemSize.Height));
 		}
 
 		void UpdateIsSwipeEnabled()
@@ -880,7 +881,7 @@ namespace Xamarin.Forms.Platform.Android
 
 		Color GetSwipeItemColor(Color backgroundColor)
 		{
-			var luminosity = 0.2126 * backgroundColor.R + 0.7152 * backgroundColor.G + 0.0722 * backgroundColor.B;
+			var luminosity = 0.2126 * backgroundColor.Red + 0.7152 * backgroundColor.Green + 0.0722 * backgroundColor.Blue;
 
 			return luminosity < 0.75 ? Colors.White : Colors.Black;
 		}
@@ -1181,7 +1182,7 @@ namespace Xamarin.Forms.Platform.Android
 
 		float GetSwipeThreshold()
 		{
-			if (Math.Abs(_swipeThreshold) > double.Epsilon)
+			if (Math.Abs(_swipeThreshold) > float.Epsilon)
 				return _swipeThreshold;
 
 			var swipeItems = GetSwipeItemsByDirection();
@@ -1196,7 +1197,7 @@ namespace Xamarin.Forms.Platform.Android
 
 		float GetSwipeThreshold(SwipeItems swipeItems)
 		{
-			double threshold = Element.Threshold;
+			float threshold = Element.Threshold;
 
 			if (threshold > 0)
 				return (float)threshold;
@@ -1334,34 +1335,34 @@ namespace Xamarin.Forms.Platform.Android
 			return swipeThreshold;
 		}
 
-		Size GetSwipeItemSize(ISwipeItem swipeItem)
+		SizeF GetSwipeItemSize(ISwipeItem swipeItem)
 		{
 			bool isHorizontal = IsHorizontalSwipe();
 			var items = GetSwipeItemsByDirection();
 
-			double threshold = Element.Threshold;
-			double contentHeight = _context.FromPixels(_contentView.Height);
-			double contentWidth = _context.FromPixels(_contentView.Width);
+			float threshold = Element.Threshold;
+			float contentHeight = (float)_context.FromPixels(_contentView.Height);
+			float contentWidth = (float)_context.FromPixels(_contentView.Width);
 
 			if (isHorizontal)
 			{
 				if (swipeItem is SwipeItem)
 				{
-					return new Size(items.Mode == SwipeMode.Execute ? (threshold > 0 ? threshold : contentWidth) / items.Count : (threshold < SwipeItemWidth ? SwipeItemWidth : threshold), contentHeight);
+					return new SizeF(items.Mode == SwipeMode.Execute ? (threshold > 0 ? threshold : contentWidth) / items.Count : (threshold < SwipeItemWidth ? SwipeItemWidth : threshold), contentHeight);
 				}
 
 				if (swipeItem is SwipeItemView horizontalSwipeItemView)
 				{
-					var swipeItemViewSizeRequest = horizontalSwipeItemView.Measure(double.PositiveInfinity, double.PositiveInfinity, MeasureFlags.IncludeMargins);
+					var swipeItemViewSizeRequest = horizontalSwipeItemView.Measure(float.PositiveInfinity, float.PositiveInfinity, MeasureFlags.IncludeMargins);
 
-					double swipeItemWidth;
+					float swipeItemWidth;
 
 					if (swipeItemViewSizeRequest.Request.Width > 0)
 						swipeItemWidth = threshold > swipeItemViewSizeRequest.Request.Width ? threshold : (float)swipeItemViewSizeRequest.Request.Width;
 					else
 						swipeItemWidth = threshold > SwipeItemWidth ? threshold : SwipeItemWidth;
 
-					return new Size(swipeItemWidth, contentHeight);
+					return new SizeF(swipeItemWidth, contentHeight);
 				}
 			}
 			else
@@ -1369,25 +1370,25 @@ namespace Xamarin.Forms.Platform.Android
 				if (swipeItem is SwipeItem)
 				{
 					var swipeItemHeight = GetSwipeItemHeight();
-					return new Size(contentWidth / items.Count, (threshold > 0 && threshold < swipeItemHeight) ? threshold : swipeItemHeight);
+					return new SizeF(contentWidth / items.Count, (threshold > 0 && threshold < swipeItemHeight) ? threshold : swipeItemHeight);
 				}
 
 				if (swipeItem is SwipeItemView verticalSwipeItemView)
 				{
-					var swipeItemViewSizeRequest = verticalSwipeItemView.Measure(double.PositiveInfinity, double.PositiveInfinity, MeasureFlags.IncludeMargins);
+					var swipeItemViewSizeRequest = verticalSwipeItemView.Measure(float.PositiveInfinity, float.PositiveInfinity, MeasureFlags.IncludeMargins);
 
-					double swipeItemHeight;
+					float swipeItemHeight;
 
 					if (swipeItemViewSizeRequest.Request.Width > 0)
 						swipeItemHeight = threshold > swipeItemViewSizeRequest.Request.Height ? threshold : (float)swipeItemViewSizeRequest.Request.Height;
 					else
 						swipeItemHeight = threshold > contentHeight ? threshold : contentHeight;
 
-					return new Size(contentWidth / items.Count, swipeItemHeight);
+					return new SizeF(contentWidth / items.Count, swipeItemHeight);
 				}
 			}
 
-			return Size.Zero;
+			return SizeF.Zero;
 		}
 
 		float GetSwipeItemHeight()
@@ -1403,7 +1404,7 @@ namespace Xamarin.Forms.Platform.Android
 				{
 					if (swipeItem is SwipeItemView swipeItemView)
 					{
-						var swipeItemViewSizeRequest = swipeItemView.Measure(double.PositiveInfinity, double.PositiveInfinity, MeasureFlags.IncludeMargins);
+						var swipeItemViewSizeRequest = swipeItemView.Measure(float.PositiveInfinity, float.PositiveInfinity, MeasureFlags.IncludeMargins);
 						itemsHeight.Add((float)swipeItemViewSizeRequest.Request.Height);
 					}
 				}
@@ -1564,8 +1565,8 @@ namespace Xamarin.Forms.Platform.Android
 			if (horizontalDelta > SwipeMinimumDelta || verticalDelta > SwipeMinimumDelta)
 				ResetSwipe();
 
-			_previousScrollX = e.ScrollX;
-			_previousScrollY = e.ScrollY;
+			_previousScrollX = (float)e.ScrollX;
+			_previousScrollY = (float)e.ScrollY;
 		}
 
 		void OnParentScrolled(object sender, ItemsViewScrolledEventArgs e)

@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Graphics;
 using Foundation;
 using UIKit;
 using Xamarin.Forms.Internals;
@@ -8,9 +8,9 @@ namespace Xamarin.Forms.Platform.iOS
 {
 	internal class IOSDeviceInfo : DeviceInfo
 	{
-		Size _pixelScreenSize;
-		Size _scaledScreenSize;
-		double _scalingFactor;
+		SizeF _pixelScreenSize;
+		SizeF _scaledScreenSize;
+		float _scalingFactor;
 		bool _disposed;
 		readonly NSObject _notification;
 
@@ -21,14 +21,14 @@ namespace Xamarin.Forms.Platform.iOS
 			UpdateScreenSize();
 		}
 
-		public override Size PixelScreenSize => _pixelScreenSize;
-		public override Size ScaledScreenSize => _scaledScreenSize;
+		public override SizeF PixelScreenSize => _pixelScreenSize;
+		public override SizeF ScaledScreenSize => _scaledScreenSize;
 
-		public override double ScalingFactor => _scalingFactor;
+		public override float ScalingFactor => _scalingFactor;
 
 		void UpdateScreenSize()
 		{
-			_scalingFactor = UIScreen.MainScreen.Scale;
+			_scalingFactor = (float)UIScreen.MainScreen.Scale;
 
 			var boundsWidth = UIScreen.MainScreen.Bounds.Width;
 			var boundsHeight = UIScreen.MainScreen.Bounds.Height;
@@ -43,8 +43,8 @@ namespace Xamarin.Forms.Platform.iOS
 				? Math.Max(boundsHeight, boundsWidth)
 				: Math.Min(boundsHeight, boundsWidth);
 
-			_scaledScreenSize = new Size(width, height);
-			_pixelScreenSize = new Size(_scaledScreenSize.Width * _scalingFactor, _scaledScreenSize.Height * _scalingFactor);
+			_scaledScreenSize = new SizeF((float)width, (float)height);
+			_pixelScreenSize = new SizeF(_scaledScreenSize.Width * _scalingFactor, _scaledScreenSize.Height * _scalingFactor);
 		}
 
 		void OrientationChanged(object sender, NSNotificationEventArgs args)

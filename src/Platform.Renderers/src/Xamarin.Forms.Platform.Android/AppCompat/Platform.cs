@@ -1,6 +1,7 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Graphics;
 using System.Linq;
 using System.Threading.Tasks;
 using Android.Content;
@@ -17,6 +18,7 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 		, IPlatform
 #pragma warning restore
 	{
+		public static Color AccentColor;
 		readonly Context _context;
 		readonly PlatformRenderer _renderer;
 		bool _disposed;
@@ -216,7 +218,7 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 			throw new InvalidOperationException("RemovePage is not supported globally on Android, please use a NavigationPage.");
 		}
 
-		public static SizeRequest GetNativeSize(VisualElement view, double widthConstraint, double heightConstraint)
+		public static SizeRequest GetNativeSize(VisualElement view, float widthConstraint, float heightConstraint)
 		{
 			Performance.Start(out string reference);
 
@@ -224,17 +226,17 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 
 			if (visualElementRenderer == null || visualElementRenderer.View.IsDisposed())
 			{
-				return new SizeRequest(Size.Zero, Size.Zero);
+				return new SizeRequest(SizeF.Zero, SizeF.Zero);
 			}
 
 			var context = visualElementRenderer.View.Context;
 
 			// negative numbers have special meanings to android they don't to us
-			widthConstraint = widthConstraint <= -1 ? double.PositiveInfinity : context.ToPixels(widthConstraint);
-			heightConstraint = heightConstraint <= -1 ? double.PositiveInfinity : context.ToPixels(heightConstraint);
+			widthConstraint = widthConstraint <= -1 ? float.PositiveInfinity : context.ToPixels(widthConstraint);
+			heightConstraint = heightConstraint <= -1 ? float.PositiveInfinity : context.ToPixels(heightConstraint);
 
-			bool widthConstrained = !double.IsPositiveInfinity(widthConstraint);
-			bool heightConstrained = !double.IsPositiveInfinity(heightConstraint);
+			bool widthConstrained = !float.IsPositiveInfinity(widthConstraint);
+			bool heightConstrained = !float.IsPositiveInfinity(heightConstraint);
 
 			int widthMeasureSpec = widthConstrained
 							? MeasureSpecFactory.MakeMeasureSpec((int)widthConstraint, MeasureSpecMode.AtMost)
@@ -245,10 +247,10 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 							 : MeasureSpecFactory.MakeMeasureSpec(0, MeasureSpecMode.Unspecified);
 
 			SizeRequest rawResult = visualElementRenderer.GetDesiredSize(widthMeasureSpec, heightMeasureSpec);
-			if (rawResult.Minimum == Size.Zero)
+			if (rawResult.Minimum == SizeF.Zero)
 				rawResult.Minimum = rawResult.Request;
-			var result = new SizeRequest(new Size(context.FromPixels(rawResult.Request.Width), context.FromPixels(rawResult.Request.Height)),
-				new Size(context.FromPixels(rawResult.Minimum.Width), context.FromPixels(rawResult.Minimum.Height)));
+			var result = new SizeRequest(new SizeF((float)context.FromPixels(rawResult.Request.Width), (float)context.FromPixels(rawResult.Request.Height)),
+				new SizeF((float)context.FromPixels(rawResult.Minimum.Width), (float)context.FromPixels(rawResult.Minimum.Height)));
 
 			if ((widthConstrained && result.Request.Width < widthConstraint)
 				|| (heightConstrained && result.Request.Height < heightConstraint))
@@ -511,7 +513,7 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 
 		void LayoutRootPage(Page page, int width, int height)
 		{
-			page.Layout(new Rectangle(0, 0, _context.FromPixels(width), _context.FromPixels(height)));
+			page.Layout(new RectangleF(0, 0, (float)_context.FromPixels(width), (float)_context.FromPixels(height)));
 		}
 
 		Task PresentModal(Page modal, bool animated)
@@ -604,7 +606,7 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 			{
 				if (changed)
 				{
-					_modal.Layout(new Rectangle(0, 0, Context.FromPixels(r - l), Context.FromPixels(b - t)));
+					_modal.Layout(new RectangleF(0, 0, (float)Context.FromPixels(r - l), (float)Context.FromPixels(b - t)));
 					_backgroundView.Layout(0, 0, r - l, b - t);
 				}
 
@@ -620,7 +622,7 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 			void UpdateBackgroundColor()
 			{
 				Color modalBkgndColor = _modal.BackgroundColor;
-				if (modalBkgndColor.IsDefault)
+				if (modalBkgndColor == null)
 					_backgroundView.SetWindowBackground();
 				else
 					_backgroundView.SetBackgroundColor(modalBkgndColor.ToAndroid());
@@ -682,7 +684,7 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 
 		#region Obsolete 
 
-		SizeRequest IPlatform.GetNativeSize(VisualElement view, double widthConstraint, double heightConstraint)
+		SizeRequest IPlatform.GetNativeSize(VisualElement view, float widthConstraint, float heightConstraint)
 		{
 			return GetNativeSize(view, widthConstraint, heightConstraint);
 		}

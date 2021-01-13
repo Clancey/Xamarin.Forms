@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Graphics;
 using System.Linq;
 using Xamarin.Forms.Internals;
 
@@ -25,7 +26,7 @@ namespace Xamarin.Forms.Platform.Android
 			OnTap(1, new PointF(-1, -1));
 		}
 
-		public bool OnTap(int count, Point point)
+		public bool OnTap(int count, PointF point)
 		{
 			View view = GetView();
 

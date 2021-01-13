@@ -73,14 +73,14 @@ namespace Xamarin.Forms.Platform.MacOS
 				var defaultLineHeight = control.FindDefaultLineHeight(location, length);
 
 				var yaxis = startRect.Top;
-				var lineHeights = new List<double>();
+				var lineHeights = new List<float>();
 
 				while ((endRect.Bottom - yaxis) > 0.001)
 				{
-					double lineHeight;
+					float lineHeight;
 					if (yaxis == startRect.Top) // First Line
 					{
-						lineHeight = startRect.Bottom - startRect.Top;
+						lineHeight = (float)(startRect.Bottom - startRect.Top);
 					}
 					else if (yaxis != endRect.Top) // Middle Line(s)
 					{
@@ -88,13 +88,13 @@ namespace Xamarin.Forms.Platform.MacOS
 					}
 					else // Bottom Line
 					{
-						lineHeight = endRect.Bottom - endRect.Top;
+						lineHeight = (float)(endRect.Bottom - endRect.Top);
 					}
 					lineHeights.Add(lineHeight);
 					yaxis += (float)lineHeight;
 				}
 
-				((ISpatialElement)span).Region = Region.FromLines(lineHeights.ToArray(), finalSize.Width, startRect.X, endRect.X, startRect.Top).Inflate(10);
+				((ISpatialElement)span).Region = Region.FromLines(lineHeights.ToArray(), (float)finalSize.Width, (float)startRect.X, (float)endRect.X, (float)startRect.Top).Inflate(10);
 
 				// update current location
 				currentLocation += length;
@@ -115,10 +115,10 @@ namespace Xamarin.Forms.Platform.MacOS
 			return layoutManager.BoundingRectForGlyphRange(glyphRange, textContainer);
 		}
 
-		static double FindDefaultLineHeight(this NativeLabel control, int start, int length)
+		static float FindDefaultLineHeight(this NativeLabel control, int start, int length)
 		{
 			if (length == 0)
-				return 0.0;
+				return 0;
 
 			var textStorage = new NSTextStorage();
 #if __MOBILE__
@@ -136,7 +136,7 @@ namespace Xamarin.Forms.Platform.MacOS
 			layoutManager.AddTextContainer(textContainer);
 
 			var rect = GetCharacterBounds(new NSRange(0, 1), layoutManager, textContainer);
-			return rect.Bottom - rect.Top;
+			return (float)(rect.Bottom - rect.Top);
 		}
 
 	}

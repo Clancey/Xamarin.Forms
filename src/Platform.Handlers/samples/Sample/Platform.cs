@@ -24,8 +24,10 @@ namespace Sample
 			RegistrarHandlers.Handlers.Register<Slider, SliderHandler>();
 			RegistrarHandlers.Handlers.Register<Sample.VerticalStackLayout, LayoutHandler>();
 			RegistrarHandlers.Handlers.Register<Sample.HorizontalStackLayout, LayoutHandler>();
+#if __MOBILE__
 			RegistrarHandlers.Handlers.Register<Xamarin.Forms.FlexLayout, LayoutHandler>();
 			RegistrarHandlers.Handlers.Register<Xamarin.Forms.StackLayout, LayoutHandler>();
+#endif
 			//RegistrarHandlers.Handlers.Register<Entry, EntryHandler>();
 			RegistrarHandlers.Handlers.Register<Label, LabelHandler>();
 		}

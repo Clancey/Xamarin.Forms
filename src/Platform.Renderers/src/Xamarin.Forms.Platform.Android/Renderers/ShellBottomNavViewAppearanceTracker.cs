@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Graphics;
 using Android.Content.Res;
 using Android.Graphics.Drawables;
 using Google.Android.Material.BottomNavigation;
 using AColor = Android.Graphics.Color;
+using Color = System.Graphics.Color;
 using R = Android.Resource;
+using APointF = Android.Graphics.PointF;
 
 namespace Xamarin.Forms.Platform.Android
 {
@@ -64,7 +67,7 @@ namespace Xamarin.Forms.Platform.Android
 			var oldBackground = bottomView.Background;
 			var colorDrawable = oldBackground as ColorDrawable;
 			var colorChangeRevealDrawable = oldBackground as ColorChangeRevealDrawable;
-			AColor lastColor = colorChangeRevealDrawable?.EndColor ?? colorDrawable?.Color ?? null.ToAndroid();
+			AColor lastColor = colorChangeRevealDrawable?.EndColor ?? colorDrawable?.Color ?? Colors.Transparent.ToAndroid();;
 			AColor newColor;
 
 			if (color == null)
@@ -95,7 +98,7 @@ namespace Xamarin.Forms.Platform.Android
 				if (child == null)
 					return;
 
-				var touchPoint = new PointF(child.Left + (child.Right - child.Left) / 2, child.Top + (child.Bottom - child.Top) / 2);
+				var touchPoint = new APointF(child.Left + (child.Right - child.Left) / 2, child.Top + (child.Bottom - child.Top) / 2);
 
 				bottomView.SetBackground(new ColorChangeRevealDrawable(lastColor, newColor, touchPoint));
 			}
@@ -103,15 +106,15 @@ namespace Xamarin.Forms.Platform.Android
 
 		ColorStateList MakeColorStateList(Color titleColor, Color disabledColor, Color unselectedColor)
 		{
-			var disabledInt = disabledColor.IsDefault ?
+			var disabledInt = disabledColor == null ?
 				_defaultList.GetColorForState(new[] { -R.Attribute.StateEnabled }, AColor.Gray) :
 				disabledColor.ToAndroid().ToArgb();
 
-			var checkedInt = titleColor.IsDefault ?
+			var checkedInt = titleColor == null ?
 				_defaultList.GetColorForState(new[] { R.Attribute.StateChecked }, AColor.Black) :
 				titleColor.ToAndroid().ToArgb();
 
-			var defaultColor = unselectedColor.IsDefault ?
+			var defaultColor = unselectedColor == null ?
 				_defaultList.DefaultColor :
 				unselectedColor.ToAndroid().ToArgb();
 

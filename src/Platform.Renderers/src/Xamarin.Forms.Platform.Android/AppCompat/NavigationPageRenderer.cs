@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -26,8 +26,10 @@ using Fragment = AndroidX.Fragment.App.Fragment;
 using FragmentManager = AndroidX.Fragment.App.FragmentManager;
 using FragmentTransaction = AndroidX.Fragment.App.FragmentTransaction;
 using Object = Java.Lang.Object;
+using Color = System.Graphics.Color;
 using APlatform = Xamarin.Forms.Platform.Android.AppCompat.Platform;
 using Xamarin.Platform;
+using System.Graphics;
 
 namespace Xamarin.Forms.Platform.Android.AppCompat
 {
@@ -419,7 +421,7 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 			var barOffset = ToolbarVisible ? barHeight : 0;
 			int containerHeight = b - t - ContainerTopPadding - barOffset - ContainerBottomPadding;
 
-			PageController.ContainerArea = new Rectangle(0, 0, Context.FromPixels(r - l), Context.FromPixels(containerHeight));
+			PageController.ContainerArea = new RectangleF(0, 0, (float)Context.FromPixels(r - l), (float)Context.FromPixels(containerHeight));
 
 			// Potential for optimization here, the exact conditions by which you don't need to do this are complex
 			// and the cost of doing when it's not needed is moderate to low since the layout will short circuit pretty fast
@@ -988,11 +990,11 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 				}
 			}
 
-			Color tintColor = Element.BarBackgroundColor;
+			var tintColor = Element.BarBackgroundColor;
 
 			if (Forms.IsLollipopOrNewer)
 			{
-				if (tintColor.IsDefault)
+				if (tintColor == null)
 					bar.BackgroundTintMode = null;
 				else
 				{
@@ -1002,9 +1004,9 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 			}
 			else
 			{
-				if (tintColor.IsDefault && _backgroundDrawable != null)
+				if (tintColor == null && _backgroundDrawable != null)
 					bar.SetBackground(_backgroundDrawable);
-				else if (!tintColor.IsDefault)
+				else if (tintColor != null)
 				{
 					if (_backgroundDrawable == null)
 						_backgroundDrawable = bar.Background;
@@ -1016,16 +1018,16 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 			bar.UpdateBackground(barBackground);
 
 			Color textColor = Element.BarTextColor;
-			if (!textColor.IsDefault)
+			if (textColor != null)
 				bar.SetTitleTextColor(textColor.ToAndroid().ToArgb());
 
 			Color navIconColor = NavigationPage.GetIconColor(Current);
-			if (!navIconColor.IsDefault && bar.NavigationIcon != null)
-				DrawableExtensions.SetColorFilter(bar.NavigationIcon, navIconColor, FilterMode.SrcAtop);
+			if (navIconColor != null && bar.NavigationIcon != null)
+				Xamarin.Platform.DrawableExtensions.SetColorFilter(bar.NavigationIcon, navIconColor, FilterMode.SrcAtop);
 
 			bar.Title = currentPage?.Title ?? string.Empty;
 
-			if (_toolbar.NavigationIcon != null && !textColor.IsDefault)
+			if (_toolbar.NavigationIcon != null && textColor != null)
 			{
 				var icon = _toolbar.NavigationIcon as DrawerArrowDrawable;
 				if (icon != null)
@@ -1219,8 +1221,8 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 
 				var width = (int)ctx.FromPixels(MeasureSpecFactory.GetSize(widthMeasureSpec));
 
-				SizeRequest request = _child.Element.Measure(width, double.PositiveInfinity, MeasureFlags.IncludeMargins);
-				Xamarin.Forms.Layout.LayoutChildIntoBoundingRegion(_child.Element, new Rectangle(0, 0, width, request.Request.Height));
+				SizeRequest request = _child.Element.Measure(width, float.PositiveInfinity, MeasureFlags.IncludeMargins);
+				Xamarin.Forms.Layout.LayoutChildIntoBoundingRegion(_child.Element, new RectangleF(0, 0, width, request.Request.Height));
 
 				int widthSpec = MeasureSpecFactory.MakeMeasureSpec((int)ctx.ToPixels(width), MeasureSpecMode.Exactly);
 				int heightSpec = MeasureSpecFactory.MakeMeasureSpec((int)ctx.ToPixels(request.Request.Height), MeasureSpecMode.Exactly);

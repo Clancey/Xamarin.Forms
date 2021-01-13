@@ -21,8 +21,8 @@ namespace Xamarin.Forms.Platform.iOS
 				return CGSize.Empty;
 			}
 
-			var measure = VisualElementRenderer.Element.Measure(double.PositiveInfinity,
-				ConstrainedDimension, MeasureFlags.IncludeMargins);
+			var measure = VisualElementRenderer.Element.Measure(float.PositiveInfinity,
+				(float)ConstrainedDimension, MeasureFlags.IncludeMargins);
 
 			var width = VisualElementRenderer.Element.Width > 0
 				? VisualElementRenderer.Element.Width : measure.Request.Width;

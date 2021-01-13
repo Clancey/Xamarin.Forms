@@ -33,9 +33,9 @@ namespace Xamarin.Forms
 			BindableProperty.Create(nameof(BottomItems), typeof(SwipeItems), typeof(SwipeView), null, BindingMode.OneWay, null, defaultValueCreator: SwipeItemsDefaultValueCreator,
 				propertyChanged: OnSwipeItemsChanged);
 
-		public double Threshold
+		public float Threshold
 		{
-			get { return (double)GetValue(ThresholdProperty); }
+			get { return (float)GetValue(ThresholdProperty); }
 			set { SetValue(ThresholdProperty, value); }
 		}
 

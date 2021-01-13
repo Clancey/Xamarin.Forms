@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using CoreGraphics;
 using UIKit;
 using static Xamarin.Forms.IndicatorView;
@@ -161,8 +162,8 @@ namespace Xamarin.Forms.Platform.iOS
 			var control = (UIView)Element.IndicatorLayout.GetRenderer();
 			AddSubview(control);
 
-			var indicatorLayoutSizeRequest = Element.IndicatorLayout.Measure(double.PositiveInfinity, double.PositiveInfinity, MeasureFlags.IncludeMargins);
-			Element.IndicatorLayout.Layout(new Rectangle(0, 0, indicatorLayoutSizeRequest.Request.Width, indicatorLayoutSizeRequest.Request.Height));
+			var indicatorLayoutSizeRequest = Element.IndicatorLayout.Measure(float.PositiveInfinity, float.PositiveInfinity, MeasureFlags.IncludeMargins);
+			Element.IndicatorLayout.Layout(new RectangleF(0, 0, indicatorLayoutSizeRequest.Request.Width, indicatorLayoutSizeRequest.Request.Height));
 		}
 
 		void UIPagerValueChanged(object sender, System.EventArgs e)
@@ -211,7 +212,7 @@ namespace Xamarin.Forms.Platform.iOS
 				return;
 
 			var color = Element.IndicatorColor;
-			UIPager.PageIndicatorTintColor = color.IsDefault ? _defaultPagesIndicatorTintColor : color.ToUIColor();
+			UIPager.PageIndicatorTintColor = color?.ToUIColor() ?? _defaultPagesIndicatorTintColor;
 		}
 
 		void UpdateCurrentPagesIndicatorTintColor()
@@ -220,7 +221,7 @@ namespace Xamarin.Forms.Platform.iOS
 				return;
 
 			var color = Element.SelectedIndicatorColor;
-			UIPager.CurrentPageIndicatorTintColor = color.IsDefault ? _defaultCurrentPagesIndicatorTintColor : color.ToUIColor();
+			UIPager.CurrentPageIndicatorTintColor = color?.ToUIColor() ?? _defaultCurrentPagesIndicatorTintColor;
 		}
 
 		void UpdateMaximumVisible()

@@ -5,6 +5,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+using System.Graphics;
 
 #if __MOBILE__
 using UIKit;
@@ -108,7 +109,7 @@ namespace Xamarin.Forms.Platform.MacOS
 				return null;
 
 			var originPoint = sender.LocationInView(eventTracker._renderer.NativeView);
-			var childGestures = view.GetChildElements(new PointF(originPoint.X, originPoint.Y));
+			var childGestures = view.GetChildElements(new PointF((float)originPoint.X, (float)originPoint.Y));
 			return childGestures;
 		}
 
@@ -326,7 +327,7 @@ namespace Xamarin.Forms.Platform.MacOS
 #else
 						originPoint = NSApplication.SharedApplication.KeyWindow.ContentView.ConvertPointToView(originPoint, eventTracker._renderer.NativeView);
 #endif
-						var scaledPoint = new PointF(originPoint.X / view.Width, originPoint.Y / view.Height);
+						var scaledPoint = new PointF((float)originPoint.X / view.Width, (float)originPoint.Y / view.Height);
 
 						switch (r.State)
 						{

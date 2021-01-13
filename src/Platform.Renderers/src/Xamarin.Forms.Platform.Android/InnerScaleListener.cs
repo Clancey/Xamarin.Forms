@@ -1,4 +1,5 @@
-using System;
+﻿using System;
+using System.Graphics;
 using Android.Runtime;
 using Android.Views;
 
@@ -6,10 +7,10 @@ namespace Xamarin.Forms.Platform.Android
 {
 	internal class InnerScaleListener : ScaleGestureDetector.SimpleOnScaleGestureListener
 	{
-		Func<float, Point, bool> _pinchDelegate;
+		Func<float, PointF, bool> _pinchDelegate;
 		Action _pinchEndedDelegate;
 		readonly Func<double, double> _fromPixels;
-		Func<Point, bool> _pinchStartedDelegate;
+		Func<PointF, bool> _pinchStartedDelegate;
 
 		public InnerScaleListener(PinchGestureHandler pinchGestureHandler, Func<double, double> fromPixels)
 		{
@@ -39,12 +40,12 @@ namespace Xamarin.Forms.Platform.Android
 			if (Math.Abs(cur - last) < 10)
 				return false;
 
-			return _pinchDelegate(detector.ScaleFactor, new PointF(_fromPixels(detector.FocusX), _fromPixels(detector.FocusY)));
+			return _pinchDelegate(detector.ScaleFactor, new PointF((float)_fromPixels(detector.FocusX), (float)_fromPixels(detector.FocusY)));
 		}
 
 		public override bool OnScaleBegin(ScaleGestureDetector detector)
 		{
-			return _pinchStartedDelegate(new PointF(_fromPixels(detector.FocusX), _fromPixels(detector.FocusY)));
+			return _pinchStartedDelegate(new PointF((float)_fromPixels(detector.FocusX), (float)_fromPixels(detector.FocusY)));
 		}
 
 		public override void OnScaleEnd(ScaleGestureDetector detector)

@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System.Graphics;
+using Xamarin.Forms;
 using Xamarin.Platform;
 using Xamarin.Platform.Core;
 

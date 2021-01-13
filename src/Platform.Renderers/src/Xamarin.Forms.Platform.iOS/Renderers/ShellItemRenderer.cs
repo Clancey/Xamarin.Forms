@@ -7,6 +7,7 @@ using System.Linq;
 using Foundation;
 using ObjCRuntime;
 using UIKit;
+using System.Graphics;
 
 namespace Xamarin.Forms.Platform.iOS
 {
@@ -328,7 +329,7 @@ namespace Xamarin.Forms.Platform.iOS
 					if (_defaultMoreTextLabelTextColor == null)
 						_defaultMoreTextLabelTextColor = cell.TextLabel.TextColor;
 
-					cell.TextLabel.TextColor = Colors.FromRgb(213, 213, 213).ToUIColor();
+					cell.TextLabel.TextColor = Color.FromBytes(213, 213, 213).ToUIColor();
 				}
 				else if(!cell.UserInteractionEnabled)
 				{

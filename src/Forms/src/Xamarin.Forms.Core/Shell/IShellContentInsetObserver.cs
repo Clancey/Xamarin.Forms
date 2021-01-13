@@ -2,6 +2,6 @@
 {
 	public interface IShellContentInsetObserver
 	{
-		void OnInsetChanged(Thickness inset, double tabThickness);
+		void OnInsetChanged(Thickness inset, float tabThickness);
 	}
 }

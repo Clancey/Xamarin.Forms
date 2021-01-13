@@ -101,7 +101,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 				IVisualElementRenderer renderer;
 				if (_rendererRef.TryGetTarget(out renderer))
-					renderer.NativeView.Frame = view.Bounds.ToRectangleF();
+					renderer.NativeView.Frame = view.Bounds.ToNative();
 
 				Performance.Stop(reference);
 			}
@@ -117,8 +117,8 @@ namespace Xamarin.Forms.Platform.iOS
 				if (renderer.Element == null)
 					return SizeF.Empty;
 
-				double width = size.Width;
-				var height = size.Height > 0 ? size.Height : double.PositiveInfinity;
+				var width = (float)size.Width;
+				var height = size.Height > 0 ? (float)size.Height : float.PositiveInfinity;
 				var result = renderer.Element.Measure(width, height, MeasureFlags.IncludeMargins);
 
 				// make sure to add in the separator if needed

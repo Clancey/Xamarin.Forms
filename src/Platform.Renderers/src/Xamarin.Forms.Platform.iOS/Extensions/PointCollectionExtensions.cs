@@ -1,4 +1,5 @@
-﻿using CoreGraphics;
+﻿using System.Graphics;
+using CoreGraphics;
 using Xamarin.Forms.Shapes;
 
 #if __MOBILE__
@@ -17,7 +18,7 @@ namespace Xamarin.Forms.Platform.MacOS
             }
 
             CGPoint[] points = new CGPoint[pointCollection.Count];
-            Point[] array = new Point[pointCollection.Count];
+            PointF[] array = new PointF[pointCollection.Count];
             pointCollection.CopyTo(array, 0);
 
             for (int i = 0; i < array.Length; i++)

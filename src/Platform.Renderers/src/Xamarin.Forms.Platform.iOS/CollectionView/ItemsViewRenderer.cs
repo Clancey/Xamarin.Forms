@@ -25,7 +25,7 @@ namespace Xamarin.Forms.Platform.iOS
 			AutoPackage = false;
 		}
 
-		public override SizeRequest GetDesiredSize(double widthConstraint, double heightConstraint)
+		public override SizeRequest GetDesiredSize(float widthConstraint, float heightConstraint)
 		{
 			return Control.GetSizeRequest(widthConstraint, heightConstraint, 0, 0);
 		}

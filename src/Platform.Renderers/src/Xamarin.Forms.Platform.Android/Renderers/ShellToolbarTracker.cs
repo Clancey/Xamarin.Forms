@@ -15,6 +15,8 @@ using AndroidX.DrawerLayout.Widget;
 using Google.Android.Material.AppBar;
 using Xamarin.Forms.Internals;
 using AColor = Android.Graphics.Color;
+using APaint = Android.Graphics.Paint;
+using Color = System.Graphics.Color;
 using ActionBarDrawerToggle = AndroidX.AppCompat.App.ActionBarDrawerToggle;
 using ADrawableCompat = AndroidX.Core.Graphics.Drawable.DrawableCompat;
 using ATextView = global::Android.Widget.TextView;
@@ -23,6 +25,7 @@ using LP = Android.Views.ViewGroup.LayoutParams;
 using R = Android.Resource;
 using Toolbar = AndroidX.AppCompat.Widget.Toolbar;
 using Xamarin.Platform;
+using System.Graphics;
 
 namespace Xamarin.Forms.Platform.Android
 {
@@ -476,7 +479,7 @@ namespace Xamarin.Forms.Platform.Android
 					using (var newDrawable = constant.NewDrawable())
 					using (var iconDrawable = newDrawable.Mutate())
 					{
-						iconDrawable.SetColorFilter(TintColor.ToAndroid(Color.White), FilterMode.SrcAtop);
+						iconDrawable.SetColorFilter(TintColor.ToAndroid(Colors.White), FilterMode.SrcAtop);
 						menuItem.SetIcon(iconDrawable);
 					}
 				}
@@ -575,7 +578,7 @@ namespace Xamarin.Forms.Platform.Android
 					item.SetEnabled(SearchHandler.IsSearchEnabled);
 					item.SetIcon(Resource.Drawable.abc_ic_search_api_material);
 					using (var icon = item.Icon)
-						icon.SetColorFilter(TintColor.ToAndroid(Color.White), FilterMode.SrcAtop);
+						icon.SetColorFilter(TintColor.ToAndroid(Colors.White), FilterMode.SrcAtop);
 					item.SetShowAsAction(ShowAsAction.IfRoom | ShowAsAction.CollapseActionView);
 
 					if (_searchView.View.Parent != null)
@@ -627,7 +630,7 @@ namespace Xamarin.Forms.Platform.Android
 					// we want the newly added button which will need layout
 					if (child.IsLayoutRequested)
 					{
-						button.SetColorFilter(TintColor.ToAndroid(Color.White), PorterDuff.Mode.SrcAtop);
+						button.SetColorFilter(TintColor.ToAndroid(Colors.White), PorterDuff.Mode.SrcAtop);
 					}
 
 					button.Dispose();
@@ -658,7 +661,7 @@ namespace Xamarin.Forms.Platform.Android
 			public ImageSource IconBitmapSource { get; set; }
 			float _defaultSize;
 
-			Color _pressedBackgroundColor => TintColor.AddLuminosity(-.12);//<item name="highlight_alpha_material_light" format="float" type="dimen">0.12</item>
+			Color _pressedBackgroundColor => TintColor.AddLuminosity(-.12f);//<item name="highlight_alpha_material_light" format="float" type="dimen">0.12</item>
 
 			protected override void Dispose(bool disposing)
 			{
@@ -690,10 +693,10 @@ namespace Xamarin.Forms.Platform.Android
 				}
 				else if (!string.IsNullOrEmpty(Text))
 				{
-					var paint = new Paint { AntiAlias = true };
+					var paint = new APaint { AntiAlias = true };
 					paint.TextSize = _defaultSize;
 					paint.Color = pressed ? _pressedBackgroundColor.ToAndroid() : TintColor.ToAndroid();
-					paint.SetStyle(Paint.Style.Fill);
+					paint.SetStyle(APaint.Style.Fill);
 					var y = (Bounds.Height() + paint.TextSize) / 2;
 					canvas.DrawText(Text, 0, y, paint);
 				}

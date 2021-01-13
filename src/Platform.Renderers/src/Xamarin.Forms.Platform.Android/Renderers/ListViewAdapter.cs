@@ -701,10 +701,10 @@ namespace Xamarin.Forms.Platform.Android
 			if (bline == null)
 				return;
 
-			Color separatorColor = _listView.SeparatorColor;
+			var separatorColor = _listView.SeparatorColor;
 
-			if (isHeader || !separatorColor.IsDefault)
-				bline.SetBackgroundColor(separatorColor.ToAndroid(Color.Accent));
+			if (isHeader || separatorColor != null)
+				bline.SetBackgroundColor(separatorColor.ToAndroid(Forms.AccentColor));
 			else
 			{
 				if (s_dividerHorizontalDarkId == int.MinValue)

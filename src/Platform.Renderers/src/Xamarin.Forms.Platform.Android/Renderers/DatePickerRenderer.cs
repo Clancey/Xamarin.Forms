@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Globalization;
 using Android.App;
@@ -7,6 +7,7 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using AColor = Android.Graphics.Color;
+using Color = System.Graphics.Color;
 
 namespace Xamarin.Forms.Platform.Android
 {

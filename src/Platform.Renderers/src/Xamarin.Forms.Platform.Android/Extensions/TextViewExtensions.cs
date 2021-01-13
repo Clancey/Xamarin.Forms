@@ -129,7 +129,7 @@ namespace Xamarin.Forms.Platform.Android
 				var startLine = layout.GetLineForOffset(startSpanOffset);
 				var endLine = layout.GetLineForOffset(endSpanOffset);
 
-				double[] lineHeights = new double[endLine - startLine + 1];
+				float[] lineHeights = new float[endLine - startLine + 1];
 
 				// calculate all the different line heights
 				for (var lineCount = startLine; lineCount <= endLine; lineCount++)
@@ -141,7 +141,7 @@ namespace Xamarin.Forms.Platform.Android
 						totalLineHeights.Add(lineHeight);
 				}
 
-				var yaxis = 0.0;
+				var yaxis = 0f;
 
 
 				for (var line = startLine; line > 0; line--)

@@ -1,5 +1,5 @@
-using System;
-using System.Drawing;
+﻿using System;
+using System.Graphics;
 using System.ComponentModel;
 using System.IO;
 using System.Threading;
@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 using Foundation;
 using UIKit;
 using Xamarin.Forms.Internals;
-using RectangleF = CoreGraphics.CGRect;
 using PreserveAttribute = Foundation.PreserveAttribute;
+using CoreGraphics;
 
 namespace Xamarin.Forms.Platform.iOS
 {
@@ -265,14 +265,14 @@ namespace Xamarin.Forms.Platform.iOS
 				var cleansedname = FontExtensions.CleanseFontName(fontsource.FontFamily);
 				var font = UIFont.FromName(cleansedname ?? string.Empty, (float)fontsource.Size) ??
 					UIFont.SystemFontOfSize((float)fontsource.Size);
-				var iconcolor = fontsource.Color.IsDefault ? _defaultColor : fontsource.Color;
+				var iconcolor = fontsource.Color ?? _defaultColor; 
 				var attString = new NSAttributedString(fontsource.Glyph, font: font, foregroundColor: iconcolor.ToUIColor());
 				var imagesize = ((NSString)fontsource.Glyph).GetSizeUsingAttributes(attString.GetUIKitAttributes(0, out _));
 				
 				UIGraphics.BeginImageContextWithOptions(imagesize, false, 0f);
 				var ctx = new NSStringDrawingContext();
 				var boundingRect = attString.GetBoundingRect(imagesize, (NSStringDrawingOptions)0, ctx);
-				attString.DrawString(new RectangleF(
+				attString.DrawString(new CGRect(
 					imagesize.Width / 2 - boundingRect.Size.Width / 2,
 					imagesize.Height / 2 - boundingRect.Size.Height / 2,
 					imagesize.Width,

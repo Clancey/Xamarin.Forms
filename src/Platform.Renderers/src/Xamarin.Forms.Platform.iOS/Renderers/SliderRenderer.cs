@@ -1,16 +1,16 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using UIKit;
-using SizeF = CoreGraphics.CGSize;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Specifics = Xamarin.Forms.PlatformConfiguration.iOSSpecific.Slider;
 using Xamarin.Platform;
+using CoreGraphics;
 
 namespace Xamarin.Forms.Platform.iOS
 {
 	public class SliderRenderer : ViewRenderer<Slider, UISlider>
 	{
-		SizeF _fitSize;
+		CGSize _fitSize;
 		UIColor defaultmintrackcolor, defaultmaxtrackcolor, defaultthumbcolor;
 		UITapGestureRecognizer _sliderTapRecognizer;
 		bool _disposed;
@@ -21,7 +21,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		}
 
-		public override SizeF SizeThatFits(SizeF size)
+		public override CGSize SizeThatFits(CGSize size)
 		{
 			return _fitSize;
 		}
@@ -74,7 +74,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 					// except if your not running iOS 7... then it fails...
 					if (_fitSize.Width <= 0 || _fitSize.Height <= 0)
-						_fitSize = new SizeF(22, 22); // Per the glorious documentation known as the SDK docs
+						_fitSize = new CGSize(22, 22); // Per the glorious documentation known as the SDK docs
 
 					Control.AddTarget(OnTouchDownControlEvent, UIControlEvent.TouchDown);
 					Control.AddTarget(OnTouchUpControlEvent, UIControlEvent.TouchUpInside | UIControlEvent.TouchUpOutside);

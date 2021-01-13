@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Android.Content;
 using Android.Graphics.Drawables;
@@ -7,6 +7,7 @@ using Android.Util;
 using Android.Views;
 using AndroidX.Core.Content;
 using AColor = Android.Graphics.Color;
+using Color = System.Graphics.Color;
 using ARect = Android.Graphics.Rect;
 using AView = Android.Views.View;
 

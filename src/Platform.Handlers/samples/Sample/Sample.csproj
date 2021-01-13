@@ -1,7 +1,7 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
     <TargetFrameworks>netstandard2.1;Xamarin.iOS10;MonoAndroid10.0</TargetFrameworks>
-  </PropertyGroup>  
+  </PropertyGroup>
   <Import Project="..\..\..\..\.nuspec\Xamarin.Forms.MultiTargeting.targets" />
   <ItemGroup Condition="$(TargetFramework.StartsWith('Xamarin.iOS')) == true ">
     <ProjectReference Include="..\..\..\Platform.Renderers\src\Xamarin.Forms.Platform.iOS\Xamarin.Forms.Platform.iOS.csproj" />
@@ -11,5 +11,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Xamarin.Platform.Handlers\Xamarin.Platform.Handlers.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="JonLipsky.System.Graphics" Version="0.1.32" />
   </ItemGroup>
 </Project>

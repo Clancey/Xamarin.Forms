@@ -1,9 +1,11 @@
 using System;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using Android.Content.Res;
 using AndroidX.Core.Content;
 using AColor = Android.Graphics.Color;
+using Color = System.Graphics.Color;
 
 namespace Xamarin.Forms.Platform.Android
 {
@@ -13,7 +15,7 @@ namespace Xamarin.Forms.Platform.Android
 
 		public static AColor ToAndroid(this Color self)
 		{
-			return new AColor((byte)(byte.MaxValue * self.R), (byte)(byte.MaxValue * self.G), (byte)(byte.MaxValue * self.B), (byte)(byte.MaxValue * self.A));
+			return new AColor((byte)(byte.MaxValue * self.Red), (byte)(byte.MaxValue * self.Green), (byte)(byte.MaxValue * self.Blue), (byte)(byte.MaxValue * self.Alpha));
 		}
 
 		[Obsolete("ToAndroid(this Color, int) is obsolete as of version 2.5. Please use ToAndroid(this Color, int, Context) instead.")]
@@ -53,9 +55,9 @@ namespace Xamarin.Forms.Platform.Android
 		}
 
 		public static Color ToColor(this AColor color)
-		{
-			return Colors.FromUint((uint)color.ToArgb());
-		}
+			=> new Color(color.R, color.G, color.B, color.A);
+
+		public static Color ToColor(this uint argb) => Color.FromBytes((byte)((argb & 0x00ff0000) >> 0x10), (byte)((argb & 0x0000ff00) >> 0x8), (byte)(argb & 0x000000ff), (byte)((argb & 0xff000000) >> 0x18));
 
 		internal static ColorStateList ToDefaultColorStateList(this Color color)
 		{

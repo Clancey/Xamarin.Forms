@@ -1,4 +1,5 @@
-﻿using CoreGraphics;
+﻿using System.Graphics;
+using CoreGraphics;
 using Foundation;
 
 namespace Xamarin.Forms.Platform.iOS
@@ -17,9 +18,9 @@ namespace Xamarin.Forms.Platform.iOS
 			ConstrainedDimension = constraint.Height;
 		}
 
-		protected override (bool, Size) NeedsContentSizeUpdate(Size currentSize)
+		protected override (bool, SizeF) NeedsContentSizeUpdate(SizeF currentSize)
 		{
-			var size = Size.Zero;
+			var size = SizeF.Zero;
 
 			if (VisualElementRenderer?.Element == null)
 			{
@@ -33,7 +34,7 @@ namespace Xamarin.Forms.Platform.iOS
 				return (false, size);
 			}
 
-			var desiredBounds = VisualElementRenderer.Element.Measure(double.PositiveInfinity, bounds.Height, 
+			var desiredBounds = VisualElementRenderer.Element.Measure(float.PositiveInfinity, bounds.Height, 
 				MeasureFlags.IncludeMargins);
 
 			if (desiredBounds.Request.Width == currentSize.Width)

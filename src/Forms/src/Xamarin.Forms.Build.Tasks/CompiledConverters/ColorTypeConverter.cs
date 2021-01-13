@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using Mono.Cecil;
@@ -23,7 +23,7 @@ namespace Xamarin.Forms.Core.XamlC
 
 				if (value.StartsWith("#", StringComparison.Ordinal))
 				{
-					var color = Colors.FromHex(value);
+					var color = new Color(value);
 					yield return Instruction.Create(OpCodes.Ldc_R8, color.R);
 					yield return Instruction.Create(OpCodes.Ldc_R8, color.G);
 					yield return Instruction.Create(OpCodes.Ldc_R8, color.B);

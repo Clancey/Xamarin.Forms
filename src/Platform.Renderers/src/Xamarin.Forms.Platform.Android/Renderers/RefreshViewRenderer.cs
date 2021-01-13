@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using Android.OS;
 using Android.Views;
@@ -220,7 +221,7 @@ namespace Xamarin.Forms.Platform.Android
 		{
 			_renderer.View.Measure(widthConstraint, heightConstraint);
 
-			return new SizeRequest(new Size(_renderer.View.MeasuredWidth, _renderer.View.MeasuredHeight), new Size(100, 100));
+			return new SizeRequest(new SizeF(_renderer.View.MeasuredWidth, _renderer.View.MeasuredHeight), new SizeF(100, 100));
 		}
 
 		public void UpdateLayout() => Tracker?.UpdateLayout();

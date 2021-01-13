@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Android.Content;
@@ -8,6 +8,7 @@ using Android.Widget;
 using Google.Android.Material.BottomNavigation;
 using Google.Android.Material.BottomSheet;
 using AColor = Android.Graphics.Color;
+using Color = System.Graphics.Color;
 using ALabelVisibilityMode = Google.Android.Material.BottomNavigation.LabelVisibilityMode;
 using ColorStateList = Android.Content.Res.ColorStateList;
 using IMenu = Android.Views.IMenu;
@@ -15,6 +16,7 @@ using LP = Android.Views.ViewGroup.LayoutParams;
 using Orientation = Android.Widget.Orientation;
 using Typeface = Android.Graphics.Typeface;
 using TypefaceStyle = Android.Graphics.TypefaceStyle;
+using System.Graphics;
 
 namespace Xamarin.Forms.Platform.Android
 {
@@ -24,7 +26,7 @@ namespace Xamarin.Forms.Platform.Android
 
 		public static Drawable CreateItemBackgroundDrawable()
 		{
-			var stateList = ColorStateList.ValueOf(Color.Black.MultiplyAlpha(0.2).ToAndroid());
+			var stateList = ColorStateList.ValueOf(Colors.Black.MultiplyAlpha(0.2f).ToAndroid());
 			var colorDrawable = new ColorDrawable(AColor.White);
 
 			if (Forms.IsLollipopOrNewer)
@@ -164,7 +166,7 @@ namespace Xamarin.Forms.Platform.Android
 
 					if (Forms.IsLollipopOrNewer)
 					{
-						image.ImageTintList = ColorStateList.ValueOf(Color.Black.MultiplyAlpha(0.6).ToAndroid());
+						image.ImageTintList = ColorStateList.ValueOf(Colors.Black.MultiplyAlpha(0.6f).ToAndroid());
 					}
 
 					image.SetImage(shellContent.icon, context);

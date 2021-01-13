@@ -5,9 +5,9 @@ namespace Xamarin.Platform
 {
 	public interface ISlider : IView
 	{
-		double Minimum { get; }
-		double Maximum { get; }
-		double Value { get; set; }
+		float Minimum { get; }
+		float Maximum { get; }
+		float Value { get; set; }
 
 		Color MinimumTrackColor { get; }
 		Color MaximumTrackColor { get; }

@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using AColor = Android.Graphics.Color;
+using Color = System.Graphics.Color;
 using AView = Android.Views.View;
 
 namespace Xamarin.Forms.Platform.Android

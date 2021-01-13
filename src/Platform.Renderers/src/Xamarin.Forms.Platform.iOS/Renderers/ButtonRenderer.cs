@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using UIKit;
-using SizeF = CoreGraphics.CGSize;
 using PreserveAttribute = Foundation.PreserveAttribute;
 using CoreGraphics;
 
@@ -11,7 +10,7 @@ namespace Xamarin.Forms.Platform.iOS
 	public class ButtonRenderer : ViewRenderer<Button, UIButton>, IImageVisualElementRenderer, IButtonLayoutRenderer
 	{
 		bool _isDisposed;
-		SizeF _previousSize;
+		CGSize _previousSize;
 		UIColor _buttonTextColorDefaultDisabled;
 		UIColor _buttonTextColorDefaultHighlighted;
 		UIColor _buttonTextColorDefaultNormal;
@@ -41,7 +40,7 @@ namespace Xamarin.Forms.Platform.iOS
 			_buttonLayoutManager = new ButtonLayoutManager(this);
 		}
 
-		public override SizeF SizeThatFits(SizeF size)
+		public override CGSize SizeThatFits(CGSize size)
 		{
 			var measured = base.SizeThatFits(size);
 			return _buttonLayoutManager?.SizeThatFits(size, measured) ?? measured;

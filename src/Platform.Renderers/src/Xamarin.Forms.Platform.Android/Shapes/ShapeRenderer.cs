@@ -6,10 +6,13 @@ using Android.Graphics.Drawables;
 using Android.Graphics.Drawables.Shapes;
 using Xamarin.Forms.Shapes;
 using AColor = Android.Graphics.Color;
+using Color = System.Graphics.Color;
+using Paint = Android.Graphics.Paint;
 using AMatrix = Android.Graphics.Matrix;
 using APath = Android.Graphics.Path;
 using AView = Android.Views.View;
 using Shape = Xamarin.Forms.Shapes.Shape;
+using System.Graphics;
 
 namespace Xamarin.Forms.Platform.Android
 {
@@ -236,7 +239,7 @@ namespace Xamarin.Forms.Platform.Android
 				}
 				else
 				{
-					AColor fillColor = null.ToAndroid();
+					var fillColor = Colors.Transparent.ToAndroid();
 
 					if (_fill is SolidColorBrush solidColorBrush && solidColorBrush.Color != null)
 						fillColor = solidColorBrush.Color.ToAndroid();
@@ -266,7 +269,7 @@ namespace Xamarin.Forms.Platform.Android
 				}
 				else
 				{
-					AColor strokeColor = null.ToAndroid();
+					AColor strokeColor = Colors.Transparent.ToAndroid();
 
 					if (_stroke is SolidColorBrush solidColorBrush && solidColorBrush.Color != null)
 						strokeColor = solidColorBrush.Color.ToAndroid();
@@ -302,7 +305,7 @@ namespace Xamarin.Forms.Platform.Android
 		{
 			if (_path != null)
 			{
-				return new SizeRequest(new Size(
+				return new SizeRequest(new SizeF(
 					Math.Max(0, _pathStrokeBounds.Right),
 					Math.Max(0, _pathStrokeBounds.Bottom)));
 			}
@@ -511,8 +514,8 @@ namespace Xamarin.Forms.Platform.Android
 				return null;
 
 			int gradientStopsCount = radialGradientBrush.GradientStops.Count;
-			AColor centerColor = gradientStopsCount > 0 ? radialGradientBrush.GradientStops[0].Color.ToAndroid() : null.ToAndroid();
-			AColor edgeColor = gradientStopsCount > 0 ? radialGradientBrush.GradientStops[gradientStopsCount - 1].Color.ToAndroid() : null.ToAndroid();
+			AColor centerColor = gradientStopsCount > 0 ? radialGradientBrush.GradientStops[0].Color.ToAndroid() : Colors.Transparent.ToAndroid();
+			AColor edgeColor = gradientStopsCount > 0 ? radialGradientBrush.GradientStops[gradientStopsCount - 1].Color.ToAndroid() : Colors.Transparent.ToAndroid();
 
 			float[] offsets = new float[radialGradientBrush.GradientStops.Count];
 

@@ -1,4 +1,5 @@
 using System;
+using System.Graphics;
 using Android.Content;
 using Android.Text;
 using Android.Views;
@@ -74,7 +75,7 @@ namespace Xamarin.Forms.Platform.Android
 				AddView(textLayout, layoutParams);
 
 			SetMinimumHeight((int)context.ToPixels(DefaultMinHeight));
-			_androidDefaultTextColor = Colors.FromUint((uint)_mainText.CurrentTextColor);
+			_androidDefaultTextColor = ((uint)_mainText.CurrentTextColor).ToColor();
 
 			if ((int)Forms.SdkInt > 16)
 			{
@@ -144,7 +145,7 @@ namespace Xamarin.Forms.Platform.Android
 				return;
 
 			if (_defaultDetailColor == null)
-				_defaultDetailColor = Colors.FromUint((uint)_detailText.CurrentTextColor);
+				_defaultDetailColor = ((uint)_detailText.CurrentTextColor).ToColor();
 
 			_detailTextColor = color;
 			_detailText.SetTextColor(color.ToAndroid(_defaultDetailColor));

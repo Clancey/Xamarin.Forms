@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using Android.Views;
 using Xamarin.Forms.Internals;
@@ -82,7 +83,7 @@ namespace Xamarin.Forms.Platform.Android
 			View.MainText = cell.Text;
 
 			if (!cell.GetIsGroupHeader<ItemsView<Cell>, Cell>())
-				View.SetDefaultMainTextColor(Color.Accent);
+				View.SetDefaultMainTextColor(Forms.AccentColor);
 			else
 				View.SetDefaultMainTextColor(null);
 

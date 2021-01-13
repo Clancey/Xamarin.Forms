@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,6 +13,7 @@ using Android.Widget;
 using Android.Views;
 using Xamarin.Platform;
 using AView = Android.Views.View;
+using SizeF = System.Graphics.SizeF;
 
 namespace Xamarin.Forms.Platform.Android
 {
@@ -55,7 +56,7 @@ namespace Xamarin.Forms.Platform.Android
 			var sizerequest = base.GetDesiredSize(widthConstraint, heightConstraint);
 			if (Forms.SdkInt == BuildVersionCodes.N && heightConstraint == 0 && sizerequest.Request.Height == 0)
 			{
-				sizerequest.Request = new Size(sizerequest.Request.Width, _defaultHeight);
+				sizerequest.Request = new SizeF(sizerequest.Request.Width, _defaultHeight);
 			}
 			return sizerequest;
 		}

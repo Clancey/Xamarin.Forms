@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using Android.Graphics.Drawables;
 using Android.Text.Method;
@@ -100,7 +101,7 @@ namespace Xamarin.Forms.Platform.Android
 			else
 				View.ForceLayout();
 
-			return new SizeRequest(new Size(View.MeasuredWidth, View.MeasuredHeight), Size.Zero);
+			return new SizeRequest(new SizeF(View.MeasuredWidth, View.MeasuredHeight), SizeF.Zero);
 		}
 
 		public void OnLayout(bool changed, int left, int top, int right, int bottom)

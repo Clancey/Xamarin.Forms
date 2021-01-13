@@ -8,36 +8,36 @@ namespace Xamarin.Forms
 {
 	public partial class Slider : View, ISliderController, IElementConfiguration<Slider>
 	{
-		public static readonly BindableProperty MinimumProperty = BindableProperty.Create("Minimum", typeof(double), typeof(Slider), 0d, validateValue: (bindable, value) =>
+		public static readonly BindableProperty MinimumProperty = BindableProperty.Create("Minimum", typeof(float), typeof(Slider), 0d, validateValue: (bindable, value) =>
 		{
 			var slider = (Slider)bindable;
-			return (double)value < slider.Maximum;
+			return (float)value < slider.Maximum;
 		}, coerceValue: (bindable, value) =>
 		{
 			var slider = (Slider)bindable;
-			slider.Value = slider.Value.Clamp((double)value, slider.Maximum);
+			slider.Value = slider.Value.Clamp((float)value, slider.Maximum);
 			return value;
 		});
 
-		public static readonly BindableProperty MaximumProperty = BindableProperty.Create("Maximum", typeof(double), typeof(Slider), 1d, validateValue: (bindable, value) =>
+		public static readonly BindableProperty MaximumProperty = BindableProperty.Create("Maximum", typeof(float), typeof(Slider), 1d, validateValue: (bindable, value) =>
 		{
 			var slider = (Slider)bindable;
-			return (double)value > slider.Minimum;
+			return (float)value > slider.Minimum;
 		}, coerceValue: (bindable, value) =>
 		{
 			var slider = (Slider)bindable;
-			slider.Value = slider.Value.Clamp(slider.Minimum, (double)value);
+			slider.Value = slider.Value.Clamp(slider.Minimum, (float)value);
 			return value;
 		});
 
-		public static readonly BindableProperty ValueProperty = BindableProperty.Create("Value", typeof(double), typeof(Slider), 0d, BindingMode.TwoWay, coerceValue: (bindable, value) =>
+		public static readonly BindableProperty ValueProperty = BindableProperty.Create("Value", typeof(float), typeof(Slider), 0d, BindingMode.TwoWay, coerceValue: (bindable, value) =>
 		{
 			var slider = (Slider)bindable;
-			return ((double)value).Clamp(slider.Minimum, slider.Maximum);
+			return ((float)value).Clamp(slider.Minimum, slider.Maximum);
 		}, propertyChanged: (bindable, oldValue, newValue) =>
 		{
 			var slider = (Slider)bindable;
-			slider.ValueChanged?.Invoke(slider, new ValueChangedEventArgs((double)oldValue, (double)newValue));
+			slider.ValueChanged?.Invoke(slider, new ValueChangedEventArgs((float)oldValue, (float)newValue));
 		});
 
 		public static readonly BindableProperty MinimumTrackColorProperty = BindableProperty.Create(nameof(MinimumTrackColor), typeof(Color), typeof(Slider), null);
@@ -63,7 +63,7 @@ namespace Xamarin.Forms
 			_platformConfigurationRegistry = new Lazy<PlatformConfigurationRegistry<Slider>>(() => new PlatformConfigurationRegistry<Slider>(this));
 		}
 
-		public Slider(double min, double max, double val) : this()
+		public Slider(float min, float max, float val) : this()
 		{
 			if (min >= max)
 				throw new ArgumentOutOfRangeException("min");
@@ -125,21 +125,21 @@ namespace Xamarin.Forms
 			set { SetValue(DragCompletedCommandProperty, value); }
 		}
 
-		public double Maximum
+		public float Maximum
 		{
-			get { return (double)GetValue(MaximumProperty); }
+			get { return (float)GetValue(MaximumProperty); }
 			set { SetValue(MaximumProperty, value); }
 		}
 
-		public double Minimum
+		public float Minimum
 		{
-			get { return (double)GetValue(MinimumProperty); }
+			get { return (float)GetValue(MinimumProperty); }
 			set { SetValue(MinimumProperty, value); }
 		}
 
-		public double Value
+		public float Value
 		{
-			get { return (double)GetValue(ValueProperty); }
+			get { return (float)GetValue(ValueProperty); }
 			set { SetValue(ValueProperty, value); }
 		}
 

@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using CoreGraphics;
 using UIKit;
 
@@ -46,7 +47,7 @@ namespace Xamarin.Forms.Platform.iOS
 			return new CGSize(final, final);
 		}
 
-		public override SizeRequest GetDesiredSize(double widthConstraint, double heightConstraint)
+		public override SizeRequest GetDesiredSize(float widthConstraint, float heightConstraint)
 		{
 			var sizeConstraint = base.GetDesiredSize(widthConstraint, heightConstraint);
 
@@ -74,7 +75,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 			if (set)
 			{
-				sizeConstraint = new SizeRequest(new Size(width, height), new Size(MinimumSize, MinimumSize));
+				sizeConstraint = new SizeRequest(new SizeF(width, height), new SizeF(MinimumSize, MinimumSize));
 			}
 
 			return sizeConstraint;

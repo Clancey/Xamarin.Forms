@@ -1,6 +1,7 @@
-using System;
+﻿using System;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using Android.Views;
 using AndroidX.Fragment.App;
@@ -179,7 +180,7 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 
 			if (width > 0 && height > 0)
 			{
-				PageController.ContainerArea = new Rectangle(0, 0, context.FromPixels(width), context.FromPixels(height));
+				PageController.ContainerArea = new RectangleF(0, 0, (float)context.FromPixels(width), (float)context.FromPixels(height));
 				pager.Layout(0, 0, width, b);
 			}
 

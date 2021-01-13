@@ -1,9 +1,10 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
+using System.Graphics;
 using System.Linq;
 using static System.String;
 using Xamarin.Forms.Internals;
+using CoreGraphics;
 #if __MOBILE__
 using UIKit;
 namespace Xamarin.Forms.Platform.iOS
@@ -74,12 +75,12 @@ namespace Xamarin.Forms.Platform.MacOS
 			}
 		}
 
-		public static SizeRequest GetSizeRequest(this UIView self, double widthConstraint, double heightConstraint,
-			double minimumWidth = -1, double minimumHeight = -1)
+		public static SizeRequest GetSizeRequest(this UIView self, float widthConstraint, float heightConstraint,
+			float minimumWidth = -1, float minimumHeight = -1)
 		{
 			CoreGraphics.CGSize s;
 #if __MOBILE__
-			s = self.SizeThatFits(new SizeF((float)widthConstraint, (float)heightConstraint));
+			s = self.SizeThatFits(new CGSize(widthConstraint, heightConstraint));
 #else
 			var control = self as AppKit.NSControl;
 			if (control != null)
@@ -87,9 +88,9 @@ namespace Xamarin.Forms.Platform.MacOS
 			else
 				s = self.FittingSize;
 #endif
-			var request = new Size(s.Width == float.PositiveInfinity ? double.PositiveInfinity : s.Width,
-				s.Height == float.PositiveInfinity ? double.PositiveInfinity : s.Height);
-			var minimum = new Size(minimumWidth < 0 ? request.Width : minimumWidth,
+			var request = new SizeF(s.Width == float.PositiveInfinity ? float.PositiveInfinity : (float)s.Width,
+				s.Height == float.PositiveInfinity ? float.PositiveInfinity : (float)s.Height);
+			var minimum = new SizeF(minimumWidth < 0 ? request.Width : minimumWidth,
 				minimumHeight < 0 ? request.Height : minimumHeight);
 			return new SizeRequest(request, minimum);
 		}

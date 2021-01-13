@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using Android.Views;
 using AndroidX.Core.Widget;
@@ -30,9 +31,9 @@ namespace Xamarin.Forms.Platform.Android
 			return new TableViewModelRenderer(Context, listView, view);
 		}
 
-		protected override Size MinimumSize()
+		protected override SizeF MinimumSize()
 		{
-			return new Size(40, 40);
+			return new SizeF(40, 40);
 		}
 
 		protected override AListView CreateNativeControl()

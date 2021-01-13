@@ -332,4 +332,9 @@
       <Name>Xamarin.Platform.Handlers</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="JonLipsky.System.Graphics">
+      <Version>0.1.32</Version>
+    </PackageReference>
+  </ItemGroup>
 </Project>

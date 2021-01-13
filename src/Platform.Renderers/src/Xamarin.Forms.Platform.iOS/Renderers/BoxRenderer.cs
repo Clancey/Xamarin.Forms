@@ -1,15 +1,15 @@
-using System;
+﻿using System;
 using System.ComponentModel;
+using System.Graphics;
+using CoreGraphics;
 using UIKit;
-using RectangleF = CoreGraphics.CGRect;
-using SizeF = CoreGraphics.CGSize;
 
 namespace Xamarin.Forms.Platform.iOS
 {
 	public class BoxRenderer : VisualElementRenderer<BoxView>
 	{
 		UIColor _colorToRenderer;
-		SizeF _previousSize;
+		CGSize _previousSize;
 		nfloat _topLeft;
 		nfloat _topRight;
 		nfloat _bottomLeft;
@@ -26,7 +26,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		}
 
-		public override void Draw(RectangleF rect)
+		public override void Draw(CGRect rect)
 		{
 			UIBezierPath bezierPath = new UIBezierPath();
 
@@ -82,11 +82,7 @@ namespace Xamarin.Forms.Platform.iOS
 				return;
 
 			var elementColor = Element.Color;
-
-			if (!elementColor.IsDefault)
-				_colorToRenderer = elementColor.ToUIColor();
-			else
-				_colorToRenderer = color.ToUIColor();
+			_colorToRenderer = elementColor?.ToUIColor() ?? color.ToUIColor();
 
 			SetNeedsDisplay();
 		}

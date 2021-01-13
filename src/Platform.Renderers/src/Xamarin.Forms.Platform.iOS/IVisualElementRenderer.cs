@@ -1,4 +1,5 @@
 using System;
+using System.Graphics;
 #if __MOBILE__
 using UIKit;
 using NativeView = UIKit.UIView;
@@ -22,10 +23,10 @@ namespace Xamarin.Forms.Platform.MacOS
 
 		event EventHandler<VisualElementChangedEventArgs> ElementChanged;
 
-		SizeRequest GetDesiredSize(double widthConstraint, double heightConstraint);
+		SizeRequest GetDesiredSize(float widthConstraint, float heightConstraint);
 
 		void SetElement(VisualElement element);
 
-		void SetElementSize(Size size);
+		void SetElementSize(SizeF size);
 	}
 }

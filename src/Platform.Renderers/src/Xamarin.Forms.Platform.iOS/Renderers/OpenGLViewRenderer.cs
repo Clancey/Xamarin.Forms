@@ -4,7 +4,7 @@ using GLKit;
 using OpenGLES;
 using Foundation;
 using CoreAnimation;
-using RectangleF = CoreGraphics.CGRect;
+using CoreGraphics;
 
 namespace Xamarin.Forms.Platform.iOS
 {
@@ -48,7 +48,7 @@ namespace Xamarin.Forms.Platform.iOS
 			if (e.NewElement != null)
 			{
 				var context = new EAGLContext(EAGLRenderingAPI.OpenGLES2);
-				var glkView = new GLKView(RectangleF.Empty) { Context = context, DrawableDepthFormat = GLKViewDrawableDepthFormat.Format24, Delegate = new Delegate(e.NewElement) };
+				var glkView = new GLKView(CGRect.Empty) { Context = context, DrawableDepthFormat = GLKViewDrawableDepthFormat.Format24, Delegate = new Delegate(e.NewElement) };
 				SetNativeControl(glkView);
 
 				e.NewElement.DisplayRequested += Display;
@@ -99,7 +99,7 @@ namespace Xamarin.Forms.Platform.iOS
 				_model = model;
 			}
 
-			public override void DrawInRect(GLKView view, RectangleF rect)
+			public override void DrawInRect(GLKView view, CGRect rect)
 			{
 				var onDisplay = _model.OnDisplay;
 				if (onDisplay == null)

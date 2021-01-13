@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Graphics;
 using CoreGraphics;
 using Foundation;
 using UIKit;
@@ -32,9 +33,9 @@ namespace Xamarin.Forms.Platform.iOS
 			return new CGSize(_constraint.Width, _constraint.Height);
 		}
 
-		protected override (bool, Size) NeedsContentSizeUpdate(Size currentSize)
+		protected override (bool, SizeF) NeedsContentSizeUpdate(SizeF currentSize)
 		{
-			return (false, Size.Zero);
+			return (false, SizeF.Zero);
 		}
 
 		protected override bool AttributesConsistentWithConstrainedDimension(UICollectionViewLayoutAttributes attributes)

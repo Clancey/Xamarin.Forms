@@ -46,7 +46,7 @@ namespace Xamarin.Forms.Platform.Android
 			AppCompat.Platform.SetRenderer(bindable, value);
 		}
 
-		public static SizeRequest GetNativeSize(VisualElement view, double widthConstraint, double heightConstraint)
+		public static SizeRequest GetNativeSize(VisualElement view, float widthConstraint, float heightConstraint)
 		{
 			return AppCompat.Platform.GetNativeSize(view, widthConstraint, heightConstraint);
 		}

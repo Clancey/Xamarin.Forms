@@ -3,12 +3,13 @@ using Android.Animation;
 using Android.Graphics;
 using Android.Graphics.Drawables;
 using AColor = Android.Graphics.Color;
+using Color = System.Graphics.Color;
 
 namespace Xamarin.Forms.Platform.Android
 {
 	public class ColorChangeRevealDrawable : AnimationDrawable
 	{
-		readonly Point _center;
+		readonly PointF _center;
 		readonly AColor _endColor;
 		readonly AColor _startColor;
 		float _progress;
@@ -18,7 +19,7 @@ namespace Xamarin.Forms.Platform.Android
 		internal AColor StartColor => _startColor;
 		internal AColor EndColor => _endColor;
 
-		public ColorChangeRevealDrawable(AColor startColor, AColor endColor, Point center) : base()
+		public ColorChangeRevealDrawable(AColor startColor, AColor endColor, PointF center) : base()
 		{
 			_startColor = startColor;
 			_endColor = endColor;

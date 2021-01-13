@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Graphics;
 using System.Linq;
 using Android.Runtime;
 using Android.Views;
@@ -23,7 +24,7 @@ namespace Xamarin.Forms.Platform.Android
 		Func<bool> _scrollCompleteDelegate;
 		Func<float, float, int, bool> _scrollDelegate;
 		Func<int, bool> _scrollStartedDelegate;
-		Func<int, Point, bool> _tapDelegate;
+		Func<int, PointF, bool> _tapDelegate;
 		Func<int, IEnumerable<TapGestureRecognizer>> _tapGestureRecognizers;
 
 		public InnerGestureListener(

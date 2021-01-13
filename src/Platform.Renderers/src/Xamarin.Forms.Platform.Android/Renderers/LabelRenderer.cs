@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using Android.Content;
 using Android.Content.Res;
@@ -8,6 +8,8 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using Xamarin.Forms.PlatformConfiguration.TizenSpecific;
+using Color = System.Graphics.Color;
+using SizeF = System.Graphics.SizeF;
 
 namespace Xamarin.Forms.Platform.Android
 {
@@ -82,7 +84,7 @@ namespace Xamarin.Forms.Platform.Android
 			//Set Hint back after sizing
 			Control.Hint = hint;
 
-			result.Minimum = new Size(Math.Min(Context.ToPixels(10), result.Request.Width), result.Request.Height);
+			result.Minimum = new SizeF(Math.Min(Context.ToPixels(10), result.Request.Width), result.Request.Height);
 
 			_lastConstraintWidth = widthConstraint;
 			_lastConstraintHeight = heightConstraint;
@@ -94,7 +96,7 @@ namespace Xamarin.Forms.Platform.Android
 		protected override void OnLayout(bool changed, int l, int t, int r, int b)
 		{
 			base.OnLayout(changed, l, t, r, b);
-			Control.RecalculateSpanPositions(Element, _spannableString, new SizeRequest(new Size(r - l, b - t)));
+			Control.RecalculateSpanPositions(Element, _spannableString, new SizeRequest(new SizeF(r - l, b - t)));
 		}
 
 		protected override TextView CreateNativeControl()
@@ -188,7 +190,7 @@ namespace Xamarin.Forms.Platform.Android
 				return;
 			_lastUpdateColor = c;
 
-			if (c.IsDefault)
+			if (c == null)
 				_view.SetTextColor(_labelTextColorDefault);
 			else
 				_view.SetTextColor(c.ToAndroid());

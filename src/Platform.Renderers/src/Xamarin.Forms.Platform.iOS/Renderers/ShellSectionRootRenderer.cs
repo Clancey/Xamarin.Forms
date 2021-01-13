@@ -538,11 +538,11 @@ namespace Xamarin.Forms.Platform.iOS
 
 			if (_didLayoutSubviews)
 			{
-				var newInset = new Thickness(left, top, right, bottom);
+				var newInset = new Thickness((float)left, (float)top, (float)right, (float)bottom);
 				if (newInset != _lastTabThickness || tabThickness != _lastTabThickness)
 				{
 					_lastTabThickness = tabThickness;
-					_lastInset = new Thickness(left, top, right, bottom);
+					_lastInset = new Thickness((float)left, (float)top, (float)right, (float)bottom);
 					((IShellSectionController)ShellSection).SendInsetChanged(_lastInset, _lastTabThickness);
 				}
 			}

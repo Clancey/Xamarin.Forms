@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using UIKit;
-using RectangleF = CoreGraphics.CGRect;
+using CoreGraphics;
 
 namespace Xamarin.Forms.Platform.iOS
 {
@@ -10,7 +10,7 @@ namespace Xamarin.Forms.Platform.iOS
 		const int DefaultRowHeight = 44;
 		KeyboardInsetTracker _insetTracker;
 		UIView _originalBackgroundView;
-		RectangleF _previousFrame;
+		CGRect _previousFrame;
 
 		[Internals.Preserve(Conditional = true)]
 		public TableViewRenderer()
@@ -18,7 +18,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		}
 
-		public override SizeRequest GetDesiredSize(double widthConstraint, double heightConstraint)
+		public override SizeRequest GetDesiredSize(float widthConstraint, float heightConstraint)
 		{
 			return Control.GetSizeRequest(widthConstraint, heightConstraint, DefaultRowHeight, DefaultRowHeight);
 		}
@@ -62,7 +62,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		protected override UITableView CreateNativeControl()
 		{
-			return new UITableView(RectangleF.Empty, GetTableViewStyle(Element?.Intent ?? TableIntent.Data));
+			return new UITableView(CGRect.Empty, GetTableViewStyle(Element?.Intent ?? TableIntent.Data));
 		}
 
 		protected UITableViewStyle GetTableViewStyle(TableIntent intent)

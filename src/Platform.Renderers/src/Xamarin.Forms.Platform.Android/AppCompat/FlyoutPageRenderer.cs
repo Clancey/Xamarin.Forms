@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using Android.Content;
@@ -10,6 +10,7 @@ using AView = Android.Views.View;
 
 namespace Xamarin.Forms.Platform.Android
 {
+	using System.Graphics;
 	using Xamarin.Forms.Platform.Android.AppCompat;
 	using Xamarin.Forms.Platform.Android.FastRenderers;
 
@@ -104,7 +105,7 @@ namespace Xamarin.Forms.Platform.Android
 		SizeRequest IVisualElementRenderer.GetDesiredSize(int widthConstraint, int heightConstraint)
 		{
 			Measure(widthConstraint, heightConstraint);
-			return new SizeRequest(new Size(MeasuredWidth, MeasuredHeight));
+			return new SizeRequest(new SizeF(MeasuredWidth, MeasuredHeight));
 		}
 
 		void IVisualElementRenderer.SetElement(VisualElement element)
@@ -414,7 +415,8 @@ namespace Xamarin.Forms.Platform.Android
 		void UpdateBackgroundColor(Page view)
 		{
 			Color backgroundColor = view.BackgroundColor;
-			if (backgroundColor.IsDefault)
+			//TODO: Verify, I changed it to a proper null check. It was backgroundColor.IsDefault
+			if (backgroundColor != null)
 				SetBackgroundColor(backgroundColor.ToAndroid());
 		}
 

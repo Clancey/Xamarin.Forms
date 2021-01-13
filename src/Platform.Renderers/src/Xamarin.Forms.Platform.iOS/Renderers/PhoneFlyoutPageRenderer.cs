@@ -1,10 +1,11 @@
-using System;
+﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using System.Linq;
+using CoreGraphics;
 using UIKit;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
-using PointF = CoreGraphics.CGPoint;
 
 namespace Xamarin.Forms.Platform.iOS
 {
@@ -61,7 +62,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		public event EventHandler<VisualElementChangedEventArgs> ElementChanged;
 
-		public SizeRequest GetDesiredSize(double widthConstraint, double heightConstraint)
+		public SizeRequest GetDesiredSize(float widthConstraint, float heightConstraint)
 		{
 			return NativeView.GetSizeRequest(widthConstraint, heightConstraint);
 		}
@@ -93,9 +94,9 @@ namespace Xamarin.Forms.Platform.iOS
 				element.SendViewInitialized(NativeView);
 		}
 
-		public void SetElementSize(Size size)
+		public void SetElementSize(SizeF size)
 		{
-			Element.Layout(new Rectangle(Element.X, Element.Y, size.Width, size.Height));
+			Element.Layout(new RectangleF(Element.X, Element.Y, size.Width, size.Height));
 		}
 
 		public UIViewController ViewController
@@ -248,7 +249,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		void LayoutChildren(bool animated)
 		{
-			var frame = Element.Bounds.ToRectangleF();
+			var frame = Element.Bounds.ToNative();
 			var flyoutFrame = frame;
 			nfloat opacity = 1;
 			flyoutFrame.Width = (int)(Math.Min(flyoutFrame.Width, flyoutFrame.Height) * 0.8);
@@ -294,8 +295,8 @@ namespace Xamarin.Forms.Platform.iOS
 				detailView.Layer.Opacity = (float)opacity;
 			}
 
-			FlyoutPage.FlyoutBounds = new Rectangle(flyoutFrame.X, 0, flyoutFrame.Width, flyoutFrame.Height);
-			FlyoutPage.DetailBounds = new Rectangle(0, 0, frame.Width, frame.Height);
+			FlyoutPage.FlyoutBounds = new RectangleF((float)flyoutFrame.X, 0, (float)flyoutFrame.Width, (float)flyoutFrame.Height);
+			FlyoutPage.DetailBounds = new RectangleF(0, 0, (float)frame.Width, (float)frame.Height);
 
 			if (Presented)
 				_clickOffView.Frame = _detailController.View.Frame;
@@ -374,7 +375,7 @@ namespace Xamarin.Forms.Platform.iOS
 			if (Forms.RespondsToSetNeedsUpdateOfHomeIndicatorAutoHidden)
 				SetNeedsUpdateOfHomeIndicatorAutoHidden();
 
-			detailRenderer.ViewController.View.Superview.BackgroundColor = Xamarin.Forms.Color.Black.ToUIColor();
+			detailRenderer.ViewController.View.Superview.BackgroundColor = Colors.Black.ToUIColor();
 
 			ToggleAccessibilityElementsHidden();
 		}
@@ -448,7 +449,7 @@ namespace Xamarin.Forms.Platform.iOS
 				return !(t.View is UISlider) && !IsSwipeView(t.View);
 			}
 
-			var center = new PointF();
+			var center = new CGPoint();
 			_panGesture = new UIPanGestureRecognizer(g =>
 			{
 				var isRTL = (Element as IVisualElementController)?.EffectiveFlowDirection.IsRightToLeft() == true;

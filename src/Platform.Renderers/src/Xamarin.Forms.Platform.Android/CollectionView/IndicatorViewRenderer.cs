@@ -1,11 +1,13 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using Android.Graphics.Drawables;
 using Android.Views;
 using Android.Widget;
 using Xamarin.Forms.Platform.Android.FastRenderers;
 using AColor = Android.Graphics.Color;
+using Color = System.Graphics.Color;
 using AShapes = Android.Graphics.Drawables.Shapes;
 using AShapeType = Android.Graphics.Drawables.ShapeType;
 using AView = Android.Views.View;
@@ -57,7 +59,7 @@ namespace Xamarin.Forms.Platform.Android
 		SizeRequest IVisualElementRenderer.GetDesiredSize(int widthConstraint, int heightConstraint)
 		{
 			Measure(widthConstraint, heightConstraint);
-			return new SizeRequest(new Size(MeasuredWidth, MeasuredHeight), new Size());
+			return new SizeRequest(new SizeF(MeasuredWidth, MeasuredHeight), new SizeF());
 		}
 
 		void IVisualElementRenderer.UpdateLayout()
@@ -171,7 +173,7 @@ namespace Xamarin.Forms.Platform.Android
 			}
 		}
 
-		protected virtual void UpdateBackgroundColor(Color? color = null)
+		protected virtual void UpdateBackgroundColor(Color color = null)
 		{
 			if (Element == null)
 			{
@@ -297,8 +299,8 @@ namespace Xamarin.Forms.Platform.Android
 			RemoveAllViews();
 			AddView(renderer.View);
 
-			var indicatorLayoutSizeRequest = IndicatorView.IndicatorLayout.Measure(double.PositiveInfinity, double.PositiveInfinity, MeasureFlags.IncludeMargins);
-			IndicatorView.IndicatorLayout.Layout(new Rectangle(0, 0, indicatorLayoutSizeRequest.Request.Width, indicatorLayoutSizeRequest.Request.Height));
+			var indicatorLayoutSizeRequest = IndicatorView.IndicatorLayout.Measure(float.PositiveInfinity, float.PositiveInfinity, MeasureFlags.IncludeMargins);
+			IndicatorView.IndicatorLayout.Layout(new RectangleF(0, 0, indicatorLayoutSizeRequest.Request.Width, indicatorLayoutSizeRequest.Request.Height));
 		}
 
 		void UpdateIndicators()

@@ -1,4 +1,5 @@
-using System;
+﻿using System;
+using System.Graphics;
 using System.Linq;
 using Xamarin.Forms.Internals;
 
@@ -19,7 +20,7 @@ namespace Xamarin.Forms.Platform.Android
 		PinchGestureRecognizer PinchGesture => GetView()?.GestureRecognizers.OfType<PinchGestureRecognizer>()
 			.FirstOrDefault();
 
-		public bool OnPinch(float scale, Point scalePoint)
+		public bool OnPinch(float scale, PointF scalePoint)
 		{
 			View view = GetView();
 
@@ -47,7 +48,7 @@ namespace Xamarin.Forms.Platform.Android
 			pinchGesture?.SendPinchEnded(view);
 		}
 
-		public bool OnPinchStarted(Point scalePoint)
+		public bool OnPinchStarted(PointF scalePoint)
 		{
 			View view = GetView();
 

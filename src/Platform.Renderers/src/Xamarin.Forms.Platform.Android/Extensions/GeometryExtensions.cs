@@ -3,7 +3,8 @@ using Android.Content;
 using Android.Graphics;
 using Xamarin.Forms.Shapes;
 using APath = Android.Graphics.Path;
-using FormsRectangle = Xamarin.Forms.Rectangle;
+using FormsRectangle = System.Graphics.RectangleF;
+using PointF = System.Graphics.PointF;
 
 namespace Xamarin.Forms.Platform.Android
 {
@@ -73,7 +74,7 @@ namespace Xamarin.Forms.Platform.Android
 						density * (float)pathFigure.StartPoint.X,
 						density * (float)pathFigure.StartPoint.Y);
 
-					Point lastPoint = pathFigure.StartPoint;
+					PointF lastPoint = pathFigure.StartPoint;
 
 					foreach (PathSegment pathSegment in pathFigure.Segments)
 					{
@@ -166,7 +167,7 @@ namespace Xamarin.Forms.Platform.Android
 						{
 							ArcSegment arcSegment = pathSegment as ArcSegment;
 
-							List<Point> points = new List<Point>();
+							List<PointF> points = new List<PointF>();
 
 							GeometryHelper.FlattenArc(
 								points,

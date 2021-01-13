@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Graphics;
 using Xamarin.Forms;
 using Xamarin.Platform;
 
 namespace Sample
 {
-	public class Button : Xamarin.Forms.View, IButton
+	public class Button : View, IButton
 	{
 		public const int DefaultCornerRadius = -1;
 
@@ -16,13 +17,13 @@ namespace Sample
 
 		public Color BorderColor { get; set; }
 
-		public double BorderWidth { get; set; }
+		public float BorderWidth { get; set; }
 
 		public Font Font { get; set; }
 
 		public string FontFamily { get; set; }
 
-		public double FontSize { get; set; }
+		public float FontSize { get; set; }
 
 		public FontAttributes FontAttributes { get; set; }
 
@@ -32,7 +33,7 @@ namespace Sample
 
 		public TextAlignment VerticalTextAlignment { get; set; }
 
-		public double CharacterSpacing { get; set; }
+		public float CharacterSpacing { get; set; }
 
 		public Action Pressed { get; set; }
 		public Action Released { get; set; }
@@ -42,16 +43,16 @@ namespace Sample
 		void IButton.Released() => Released?.Invoke();
 		void IButton.Clicked() => Clicked?.Invoke();
 
-		public new double Width 
-		{
-			get { return WidthRequest; }
-			set { WidthRequest = value; }
-		}
+		//public new float Width 
+		//{
+		//	get { return WidthRequest; }
+		//	set { WidthRequest = value; }
+		//}
 
-		public new double Height
-		{
-			get { return HeightRequest; }
-			set { HeightRequest = value; }
-		}
+		//public new float Height
+		//{
+		//	get { return HeightRequest; }
+		//	set { HeightRequest = value; }
+		//}
 	}
 }

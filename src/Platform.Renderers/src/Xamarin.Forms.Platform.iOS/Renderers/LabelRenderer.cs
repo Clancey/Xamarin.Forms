@@ -1,11 +1,10 @@
-using System;
+﻿using System;
 using System.ComponentModel;
-using RectangleF = CoreGraphics.CGRect;
-using SizeF = CoreGraphics.CGSize;
 using Foundation;
 using System.Collections.Generic;
 using CoreGraphics;
 using System.Diagnostics;
+using System.Graphics;
 
 #if __MOBILE__
 using UIKit;
@@ -49,12 +48,12 @@ namespace Xamarin.Forms.Platform.MacOS
 
 		}
 
-		public override SizeRequest GetDesiredSize(double widthConstraint, double heightConstraint)
+		public override SizeRequest GetDesiredSize(float widthConstraint, float heightConstraint)
 		{
 			if (!_perfectSizeValid)
 			{
-				_perfectSize = base.GetDesiredSize(double.PositiveInfinity, double.PositiveInfinity);
-				_perfectSize.Minimum = new Size(Math.Min(10, _perfectSize.Request.Width), _perfectSize.Request.Height);
+				_perfectSize = base.GetDesiredSize(float.PositiveInfinity, float.PositiveInfinity);
+				_perfectSize.Minimum = new SizeF(Math.Min(10,(float) _perfectSize.Request.Width),(float) _perfectSize.Request.Height);
 				_perfectSizeValid = true;
 			}
 
@@ -66,7 +65,7 @@ namespace Xamarin.Forms.Platform.MacOS
 
 			var result = base.GetDesiredSize(widthConstraint, heightConstraint);
 			var tinyWidth = Math.Min(10, result.Request.Width);
-			result.Minimum = new Size(tinyWidth, result.Request.Height);
+			result.Minimum = new SizeF(tinyWidth, result.Request.Height);
 
 			if (widthFits || Element.LineBreakMode == LineBreakMode.NoWrap)
 				return result;
@@ -81,7 +80,7 @@ namespace Xamarin.Forms.Platform.MacOS
 				if (textExceedsContainer || textCouldHaveWrapped)
 				{
 					var expandedWidth = Math.Max(tinyWidth, widthConstraint);
-					result.Request = new Size(expandedWidth, result.Request.Height);
+					result.Request = new SizeF(expandedWidth, result.Request.Height);
 				}
 			}
 
@@ -101,33 +100,33 @@ namespace Xamarin.Forms.Platform.MacOS
 			if (Control == null)
 				return;
 
-			SizeF fitSize;
+			CGSize fitSize;
 			nfloat labelHeight;
 			switch (Element.VerticalTextAlignment)
 			{
 				case TextAlignment.Start:
-					fitSize = Control.SizeThatFits(Element.Bounds.Size.ToSizeF());
+					fitSize = Control.SizeThatFits(Element.Bounds.Size.ToNative());
 					labelHeight = (nfloat)Math.Min(Bounds.Height, fitSize.Height);
-					Control.Frame = new RectangleF(0, 0, (nfloat)Element.Width, labelHeight);
+					Control.Frame = new CGRect(0, 0, (nfloat)Element.Width, labelHeight);
 					break;
 				case TextAlignment.Center:
 
 #if __MOBILE__
-					Control.Frame = new RectangleF(0, 0, (nfloat)Element.Width, (nfloat)Element.Height);
+					Control.Frame = new CGRect(0, 0, (nfloat)Element.Width, (nfloat)Element.Height);
 #else
-					fitSize = Control.SizeThatFits(Element.Bounds.Size.ToSizeF());
+					fitSize = Control.SizeThatFits(Element.Bounds.SizeF.ToSizeF());
 					labelHeight = (nfloat)Math.Min(Bounds.Height, fitSize.Height);
 					var yOffset = (int)(Element.Height / 2 - labelHeight / 2);
 					Control.Frame = new RectangleF(0, 0, (nfloat)Element.Width, (nfloat)Element.Height - yOffset);
 #endif
 					break;
 				case TextAlignment.End:
-					fitSize = Control.SizeThatFits(Element.Bounds.Size.ToSizeF());
+					fitSize = Control.SizeThatFits(Element.Bounds.Size.ToNative());
 					labelHeight = (nfloat)Math.Min(Bounds.Height, fitSize.Height);
 #if __MOBILE__
 					nfloat yOffset = 0;
 					yOffset = (nfloat)(Element.Height - labelHeight);
-					Control.Frame = new RectangleF(0, yOffset, (nfloat)Element.Width, labelHeight);
+					Control.Frame = new CGRect(0, yOffset, (nfloat)Element.Width, labelHeight);
 #else
 					Control.Frame = new RectangleF(0, 0, (nfloat)Element.Width, labelHeight);
 #endif
@@ -232,7 +231,7 @@ namespace Xamarin.Forms.Platform.MacOS
 		protected override NativeLabel CreateNativeControl()
 		{
 #if __MOBILE__
-			return Element.Padding.IsEmpty ? new NativeLabel(RectangleF.Empty) : new FormsLabel(RectangleF.Empty);
+			return Element.Padding.IsEmpty ? new NativeLabel(CGRect.Empty) : new FormsLabel(CGRect.Empty);
 #else
 			return new NativeLabel(RectangleF.Empty);
 #endif
@@ -561,7 +560,7 @@ namespace Xamarin.Forms.Platform.MacOS
 
 			var textColor = (Color)Element.GetValue(Label.TextColorProperty);
 
-			if (textColor.IsDefault && Element.TextType == TextType.Html)
+			if (textColor == null && Element.TextType == TextType.Html)
 			{
 				// If no explicit text color has been specified and we're displaying HTML, 
 				// let the HTML determine the colors
@@ -671,15 +670,15 @@ namespace Xamarin.Forms.Platform.MacOS
 		{
 			public UIEdgeInsets TextInsets { get; set; }
 
-			public FormsLabel(RectangleF frame) : base(frame)
+			public FormsLabel(CGRect frame) : base(frame)
 			{
 			}
 
-			public override void DrawText(RectangleF rect) => base.DrawText(TextInsets.InsetRect(rect));
+			public override void DrawText(CGRect rect) => base.DrawText(TextInsets.InsetRect(rect));
 
-			public override SizeF SizeThatFits(SizeF size) => AddInsets(base.SizeThatFits(size));
+			public override CGSize SizeThatFits(CGSize size) => AddInsets(base.SizeThatFits(size));
 
-			SizeF AddInsets(SizeF size) => new SizeF(
+			CGSize AddInsets(CGSize size) => new CGSize(
 				width: size.Width + TextInsets.Left + TextInsets.Right,
 				height: size.Height + TextInsets.Top + TextInsets.Bottom);
 		}

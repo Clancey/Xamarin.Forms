@@ -9,6 +9,6 @@ namespace Xamarin.Forms.Internals
 	{
 		[Obsolete("This method is obsolete as of 3.5.0. Please use the static Platform.GetNativeSize(VisualElement " +
 			"view, double widthConstraint, double heightConstraint) method instead")]
-		SizeRequest GetNativeSize(VisualElement view, double widthConstraint, double heightConstraint);
+		SizeRequest GetNativeSize(VisualElement view, float widthConstraint, float heightConstraint);
 	}
 }

@@ -2,25 +2,25 @@ using System;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
+using CoreGraphics;
 using Foundation;
 using UIKit;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
-using RectangleF = CoreGraphics.CGRect;
 
 namespace Xamarin.Forms.Platform.iOS
 {
 	internal class NoCaretField : UITextField
 	{
-		public NoCaretField() : base(new RectangleF())
+		public NoCaretField() : base(new CGRect())
 		{
 			SpellCheckingType = UITextSpellCheckingType.No;
 			AutocorrectionType = UITextAutocorrectionType.No;
 			AutocapitalizationType = UITextAutocapitalizationType.None;
 		}
 
-		public override RectangleF GetCaretRectForPosition(UITextPosition position)
+		public override CGRect GetCaretRectForPosition(UITextPosition position)
 		{
-			return new RectangleF();
+			return new CGRect();
 		}
 	}
 
@@ -82,7 +82,7 @@ namespace Xamarin.Forms.Platform.iOS
 				_picker.ValueChanged += HandleValueChanged;
 
 				var width = UIScreen.MainScreen.Bounds.Width;
-				var toolbar = new UIToolbar(new RectangleF(0, 0, width, 44)) { BarStyle = UIBarStyle.Default, Translucent = true };
+				var toolbar = new UIToolbar(new CGRect(0, 0, width, 44)) { BarStyle = UIBarStyle.Default, Translucent = true };
 				var spacer = new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace);
 				var doneButton = new UIBarButtonItem(UIBarButtonSystemItem.Done, (o, a) =>
 				{
@@ -231,7 +231,7 @@ namespace Xamarin.Forms.Platform.iOS
 		{
 			var textColor = Element.TextColor;
 
-			if (textColor.IsDefault || (!Element.IsEnabled && _useLegacyColorManagement))
+			if (textColor == null || (!Element.IsEnabled && _useLegacyColorManagement))
 				Control.TextColor = _defaultTextColor;
 			else
 				Control.TextColor = textColor.ToUIColor();

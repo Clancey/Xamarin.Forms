@@ -1,6 +1,7 @@
 ﻿using CoreGraphics;
 using System;
 using System.ComponentModel;
+using System.Graphics;
 using UIKit;
 
 namespace Xamarin.Forms.Platform.iOS
@@ -144,8 +145,9 @@ namespace Xamarin.Forms.Platform.iOS
 
 		void ReMeasureFooter()
 		{
-			var request = _footer.Measure(View.Frame.Width, double.PositiveInfinity, MeasureFlags.None);
-			Layout.LayoutChildIntoBoundingRegion(_footer, new Rectangle(0, 0, View.Frame.Width, request.Request.Height));
+			var width = (float)View.Frame.Width;
+			var request = _footer.Measure(width, float.PositiveInfinity, MeasureFlags.None);
+			Layout.LayoutChildIntoBoundingRegion(_footer, new RectangleF(0, 0, width, request.Request.Height));
 			UpdateFooterPosition(_footerView.Frame.Height);
 		}
 

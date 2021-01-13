@@ -1,4 +1,5 @@
-﻿using Android.Graphics.Drawables;
+﻿using System.Graphics;
+using Android.Graphics.Drawables;
 using AndroidX.AppCompat.Widget;
 
 namespace Xamarin.Forms.Platform.Android
@@ -46,7 +47,7 @@ namespace Xamarin.Forms.Platform.Android
 					toolbar.SetBackground(colorDrawable);
 			}
 
-			var newTintColor = foreground.IsDefault ? ShellRenderer.DefaultForegroundColor : foreground;
+			var newTintColor = foreground ?? ShellRenderer.DefaultForegroundColor;
 
 			if (toolbarTracker.TintColor != newTintColor)
 				toolbarTracker.TintColor = newTintColor;

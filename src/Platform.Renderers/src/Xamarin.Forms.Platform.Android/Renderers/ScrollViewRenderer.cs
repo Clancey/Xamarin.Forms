@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using System.Threading.Tasks;
 using Android.Animation;
 using Android.Content;
@@ -9,6 +10,8 @@ using Android.Widget;
 using AndroidX.Core.Widget;
 using Xamarin.Forms.Internals;
 using AView = Android.Views.View;
+using PointF = System.Graphics.PointF;
+using Color = System.Graphics.Color;
 
 namespace Xamarin.Forms.Platform.Android
 {
@@ -66,7 +69,7 @@ namespace Xamarin.Forms.Platform.Android
 		public SizeRequest GetDesiredSize(int widthConstraint, int heightConstraint)
 		{
 			Measure(widthConstraint, heightConstraint);
-			return new SizeRequest(new Size(MeasuredWidth, MeasuredHeight), new Size(40, 40));
+			return new SizeRequest(new SizeF(MeasuredWidth, MeasuredHeight), new SizeF(40, 40));
 		}
 
 		public void SetElement(VisualElement element)
@@ -310,7 +313,7 @@ namespace Xamarin.Forms.Platform.Android
 						y = context.FromPixels(ScrollY);
 				}
 
-				Controller.SetScrolledPosition(x, y);
+				Controller.SetScrolledPosition((float)x, (float)y);
 			}
 		}
 
@@ -403,7 +406,7 @@ namespace Xamarin.Forms.Platform.Android
 			int currentY = _view.Orientation == ScrollOrientation.Vertical || _view.Orientation == ScrollOrientation.Both ? ScrollY : _hScrollView.ScrollY;
 			if (e.Mode == ScrollToMode.Element)
 			{
-				Point itemPosition = Controller.GetScrollPositionForElement(e.Element as VisualElement, e.Position);
+				PointF itemPosition = Controller.GetScrollPositionForElement(e.Element as VisualElement, e.Position);
 
 				x = (int)context.ToPixels(itemPosition.X);
 				y = (int)context.ToPixels(itemPosition.Y);
@@ -474,7 +477,7 @@ namespace Xamarin.Forms.Platform.Android
 
 		void UpdateBackgroundColor()
 		{
-			SetBackgroundColor(Element.BackgroundColor.ToAndroid(Color.Transparent));
+			SetBackgroundColor(Element.BackgroundColor.ToAndroid(Colors.Transparent));
 		}
 
 		void UpdateBackground()

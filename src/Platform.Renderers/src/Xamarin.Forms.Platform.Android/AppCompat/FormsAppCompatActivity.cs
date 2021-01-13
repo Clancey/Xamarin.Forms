@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading;
@@ -14,6 +14,7 @@ using Xamarin.Forms.Platform.Android.AppCompat;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific.AppCompat;
 using AColor = Android.Graphics.Color;
+using Color = System.Graphics.Color;
 using ARelativeLayout = Android.Widget.RelativeLayout;
 using AToolbar = AndroidX.AppCompat.Widget.Toolbar;
 

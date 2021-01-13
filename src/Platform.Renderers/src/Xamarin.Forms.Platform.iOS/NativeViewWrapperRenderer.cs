@@ -17,7 +17,7 @@ namespace Xamarin.Forms.Platform.MacOS
 
 		}
 
-		public override SizeRequest GetDesiredSize(double widthConstraint, double heightConstraint)
+		public override SizeRequest GetDesiredSize(float widthConstraint, float heightConstraint)
 		{
 			if (Element?.GetDesiredSizeDelegate == null)
 				return base.GetDesiredSize(widthConstraint, heightConstraint);

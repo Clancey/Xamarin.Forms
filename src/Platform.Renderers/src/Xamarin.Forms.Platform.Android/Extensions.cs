@@ -44,8 +44,9 @@ namespace Xamarin.Forms.Platform.Android
 
 
 		internal static float ToEm(this double pt)
-		{
-			return (float)pt * 0.0624f; //Coefficient for converting Pt to Em
-		}
+			=> ((double)pt).ToEm();
+
+		internal static float ToEm(this float pt)
+			=> pt * 0.0624f; //Coefficient for converting Pt to Em
 	}
 }

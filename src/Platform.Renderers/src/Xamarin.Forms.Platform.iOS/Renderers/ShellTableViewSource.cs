@@ -82,7 +82,7 @@ namespace Xamarin.Forms.Platform.iOS
 				height = (float)view.View.HeightRequest;
 			else
 			{
-				var request = view.View.Measure(tableView.Bounds.Width, double.PositiveInfinity, MeasureFlags.None);
+				var request = view.View.Measure((float)tableView.Bounds.Width, float.PositiveInfinity, MeasureFlags.None);
 
 				if (request.Request.Height > defaultHeight)
 					height = (float)request.Request.Height;

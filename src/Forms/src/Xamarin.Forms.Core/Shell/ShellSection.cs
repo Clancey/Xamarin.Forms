@@ -34,7 +34,7 @@ namespace Xamarin.Forms
 			new List<(object Observer, Action<Page> Callback)>();
 		readonly List<IShellContentInsetObserver> _observers = new List<IShellContentInsetObserver>();
 		Thickness _lastInset;
-		double _lastTabThickness;
+		float _lastTabThickness;
 
 		event EventHandler<NavigationRequestedEventArgs> IShellSectionController.NavigationRequested
 		{
@@ -93,7 +93,7 @@ namespace Xamarin.Forms
 			return false;
 		}
 
-		void IShellSectionController.SendInsetChanged(Thickness inset, double tabThickness)
+		void IShellSectionController.SendInsetChanged(Thickness inset, float tabThickness)
 		{
 			foreach (var observer in _observers)
 			{

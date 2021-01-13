@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using Android.Content;
 using Android.Graphics;
@@ -10,7 +10,9 @@ using AndroidX.Core.View;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Platform.Android.FastRenderers;
 using AColor = Android.Graphics.Color;
+using Color = System.Graphics.Color;
 using AView = Android.Views.View;
+using SizeF = System.Graphics.SizeF;
 
 namespace Xamarin.Forms.Platform.Android
 {
@@ -59,7 +61,7 @@ namespace Xamarin.Forms.Platform.Android
 		SizeRequest IVisualElementRenderer.GetDesiredSize(int widthConstraint, int heightConstraint)
 		{
 			Measure(widthConstraint, heightConstraint);
-			return new SizeRequest(new Size(MeasuredWidth, MeasuredHeight));
+			return new SizeRequest(new SizeF(MeasuredWidth, MeasuredHeight));
 		}
 
 		void IVisualElementRenderer.SetElement(VisualElement element)

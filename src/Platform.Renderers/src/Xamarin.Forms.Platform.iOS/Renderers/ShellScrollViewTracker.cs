@@ -8,7 +8,7 @@ namespace Xamarin.Forms.Platform.iOS
 	{
 		#region IShellContentInsetObserver
 
-		void IShellContentInsetObserver.OnInsetChanged(Thickness inset, double tabThickness)
+		void IShellContentInsetObserver.OnInsetChanged(Thickness inset, float tabThickness)
 		{
 			UpdateContentInset(inset, tabThickness);
 		}
@@ -78,7 +78,7 @@ namespace Xamarin.Forms.Platform.iOS
 		}
 
 		Thickness _lastInset;
-		double _tabThickness;
+		float _tabThickness;
 
 		public bool Reset()
 		{
@@ -103,7 +103,7 @@ namespace Xamarin.Forms.Platform.iOS
 			return false;
 		}
 
-		void UpdateContentInset(Thickness inset, double tabThickness)
+		void UpdateContentInset(Thickness inset, float tabThickness)
 		{
 			_lastInset = inset;
 			_tabThickness = tabThickness;

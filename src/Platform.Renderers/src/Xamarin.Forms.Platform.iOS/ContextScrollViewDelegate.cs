@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UIKit;
-using NSAction = System.Action;
-using PointF = CoreGraphics.CGPoint;
-using RectangleF = CoreGraphics.CGRect;
+using CoreGraphics;
 
 namespace Xamarin.Forms.Platform.iOS
 {
@@ -11,7 +9,7 @@ namespace Xamarin.Forms.Platform.iOS
 	{
 		readonly nfloat _buttonWidth;
 
-		public iOS7ButtonContainer(nfloat buttonWidth) : base(new RectangleF(0, 0, 0, 0))
+		public iOS7ButtonContainer(nfloat buttonWidth) : base(new CGRect(0, 0, 0, 0))
 		{
 			_buttonWidth = buttonWidth;
 			ClipsToBounds = true;
@@ -28,7 +26,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 				var pos = Subviews.Length - i;
 				var x = width - _buttonWidth * pos;
-				view.Frame = new RectangleF(x, 0, view.Frame.Width, view.Frame.Height);
+				view.Frame = new CGRect(x, 0, view.Frame.Width, view.Frame.Height);
 
 				takenSpace += view.Frame.Width;
 			}
@@ -102,7 +100,7 @@ namespace Xamarin.Forms.Platform.iOS
 			var count = _buttons.Count;
 
 			if (!UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
-				_container.Frame = new RectangleF(scrollView.Frame.Width, 0, scrollView.ContentOffset.X, scrollView.Frame.Height);
+				_container.Frame = new CGRect(scrollView.Frame.Width, 0, scrollView.ContentOffset.X, scrollView.Frame.Height);
 			else
 			{
 				var ioffset = scrollView.ContentOffset.X / (float)count;
@@ -114,7 +112,7 @@ namespace Xamarin.Forms.Platform.iOS
 				{
 					var b = _buttons[i];
 					var rect = b.Frame;
-					b.Frame = new RectangleF(scrollView.Frame.Width + (count - (i + 1)) * ioffset, 0, width, rect.Height);
+					b.Frame = new CGRect(scrollView.Frame.Width + (count - (i + 1)) * ioffset, 0, width, rect.Height);
 				}
 			}
 
@@ -136,7 +134,7 @@ namespace Xamarin.Forms.Platform.iOS
 			ClearCloserRecognizer(GetContextCell(scrollView));
 		}
 
-		public override void WillEndDragging(UIScrollView scrollView, PointF velocity, ref PointF targetContentOffset)
+		public override void WillEndDragging(UIScrollView scrollView, CGPoint velocity, ref CGPoint targetContentOffset)
 		{
 			if (ShouldIgnoreScrolling(scrollView))
 				return;
@@ -149,7 +147,7 @@ namespace Xamarin.Forms.Platform.iOS
 			if (x >= parentThreshold || x >= contentThreshold)
 			{
 				IsOpen = true;
-				targetContentOffset = new PointF(width, 0);
+				targetContentOffset = new CGPoint(width, 0);
 				RemoveHighlight(scrollView);
 
 				if (_globalCloser == null)
@@ -162,13 +160,13 @@ namespace Xamarin.Forms.Platform.iOS
 						if (table != null)
 						{
 							ContextActionsCell contentCell = GetContextCell(scrollView);
-							NSAction close = () =>
+							Action close = () =>
 							{
 								if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
 									RestoreHighlight(scrollView);
 
 								IsOpen = false;
-								scrollView.SetContentOffset(new PointF(0, 0), true);
+								scrollView.SetContentOffset(new CGPoint(0, 0), true);
 								ClearCloserRecognizer(contentCell);
 								contentCell = null;
 							};
@@ -189,7 +187,7 @@ namespace Xamarin.Forms.Platform.iOS
 				ClearCloserRecognizer(GetContextCell(scrollView));
 
 				IsOpen = false;
-				targetContentOffset = new PointF(0, 0);
+				targetContentOffset = new CGPoint(0, 0);
 
 				if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
 					RestoreHighlight(scrollView);
@@ -207,7 +205,7 @@ namespace Xamarin.Forms.Platform.iOS
 				|| !ReferenceEquals(((ContextScrollViewDelegate)scrollViewBeingScrolled.Delegate)?._table, ((ContextScrollViewDelegate)scrollView.Delegate)?._table))
 				return false;
 
-			scrollView.SetContentOffset(new PointF(0, 0), false);
+			scrollView.SetContentOffset(new CGPoint(0, 0), false);
 			return true;
 		}
 

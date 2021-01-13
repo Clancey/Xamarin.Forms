@@ -86,7 +86,7 @@ namespace Xamarin.Forms
 					var h = ParseColorValue(triplet[0], 360, acceptPercent: false);
 					var s = ParseColorValue(triplet[1], 100, acceptPercent: true);
 					var l = ParseColorValue(triplet[2], 100, acceptPercent: true);
-					return Colors.FromHsla(h, s, l);
+					return Color.FromHsla(h, s, l);
 				}
 
 				if (value.StartsWith("hsva", StringComparison.OrdinalIgnoreCase))
@@ -102,7 +102,7 @@ namespace Xamarin.Forms
 					var s = ParseColorValue(quad[1], 100, acceptPercent: true);
 					var v = ParseColorValue(quad[2], 100, acceptPercent: true);
 					var a = ParseOpacity(quad[3]);
-					return Colors.FromHsva(h, s, v, a);
+					return Color.FromHsva(h, s, v, a);
 				}
 
 				if (value.StartsWith("hsv", StringComparison.OrdinalIgnoreCase))

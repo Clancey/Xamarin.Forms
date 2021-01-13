@@ -1,4 +1,5 @@
-using System;
+﻿using System;
+using System.Graphics;
 using Android.Content;
 using Android.Content.Res;
 using Android.Runtime;
@@ -65,11 +66,11 @@ namespace Xamarin.Forms.Platform.Android
 
 		public int TopPadding { get; set; }
 
-		double DefaultWidthMaster
+		float DefaultWidthMaster
 		{
 			get
 			{
-				double w = Context.FromPixels(Resources.DisplayMetrics.WidthPixels);
+				var w = (float)Context.FromPixels(Resources.DisplayMetrics.WidthPixels);
 				return w < DefaultSmallMasterSize ? w : (w < DefaultMasterSize ? DefaultSmallMasterSize : DefaultMasterSize);
 			}
 		}
@@ -97,7 +98,7 @@ namespace Xamarin.Forms.Platform.Android
 			if (_childView == null)
 				return;
 
-			Rectangle bounds = GetBounds(_isMaster, l, t, r, b);
+			RectangleF bounds = GetBounds(_isMaster, l, t, r, b);
 			if (_isMaster)
 				MasterDetailPageController.MasterBounds = bounds;
 			else
@@ -114,12 +115,12 @@ namespace Xamarin.Forms.Platform.Android
 			_childView?.ClearValue(AppCompat.Platform.RendererProperty);
 		}
 
-		Rectangle GetBounds(bool isMasterPage, int left, int top, int right, int bottom)
+		RectangleF GetBounds(bool isMasterPage, int left, int top, int right, int bottom)
 		{
-			double width = Context.FromPixels(right - left);
-			double height = Context.FromPixels(bottom - top);
-			double xPos = 0;
-			bool supressPadding = false;
+			float width = (float)Context.FromPixels(right - left);
+			float height = (float)Context.FromPixels(bottom - top);
+			float xPos = 0;
+			var supressPadding = false;
 
 			//splitview
 			if (MasterDetailPageController.ShouldShowSplitMode)
@@ -137,8 +138,8 @@ namespace Xamarin.Forms.Platform.Android
 				width = isMasterPage && (Device.Info.CurrentOrientation.IsLandscape() || Device.Idiom == TargetIdiom.Tablet) ? DefaultWidthMaster : width;
 			}
 
-			double padding = supressPadding ? 0 : Context.FromPixels(TopPadding);
-			return new Rectangle(xPos, padding, width, height - padding);
+			float padding = supressPadding ? 0 : (float)Context.FromPixels(TopPadding);
+			return new RectangleF((float)xPos, (float)padding, (float)width, (float)height - padding);
 		}
 
 		protected void SetDefaultBackgroundColor(IVisualElementRenderer renderer)

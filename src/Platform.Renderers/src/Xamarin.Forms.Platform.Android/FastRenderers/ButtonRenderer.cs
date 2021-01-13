@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using Android.Content;
 using Android.Graphics;
@@ -9,6 +9,7 @@ using AndroidX.Core.View;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using AColor = Android.Graphics.Color;
+using Color = System.Graphics.Color;
 using AView = Android.Views.View;
 
 namespace Xamarin.Forms.Platform.Android.FastRenderers

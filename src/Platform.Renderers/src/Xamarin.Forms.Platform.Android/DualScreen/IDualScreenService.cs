@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Graphics;
 using System.Threading.Tasks;
 
 namespace Xamarin.Forms.Platform.Android.DualScreen
@@ -8,9 +9,9 @@ namespace Xamarin.Forms.Platform.Android.DualScreen
 		event EventHandler OnScreenChanged;
 		bool IsSpanned { get; }
 		bool IsLandscape { get; }
-		Rectangle GetHinge();
-		Size ScaledScreenSize { get; }
-		Point? GetLocationOnScreen(VisualElement visualElement);
+		RectangleF GetHinge();
+		SizeF ScaledScreenSize { get; }
+		PointF? GetLocationOnScreen(VisualElement visualElement);
 		object WatchForChangesOnLayout(VisualElement visualElement, Action action);
 		void StopWatchingForChangesOnLayout(VisualElement visualElement, object handle);
 		Task<int> GetHingeAngleAsync();

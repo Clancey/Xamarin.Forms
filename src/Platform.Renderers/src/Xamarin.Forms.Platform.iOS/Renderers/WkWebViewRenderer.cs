@@ -1,14 +1,16 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Drawing;
+using System.Graphics;
+//using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using CoreGraphics;
 using Foundation;
 using ObjCRuntime;
 using UIKit;
@@ -43,7 +45,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 
 		[Preserve(Conditional = true)]
-		public WkWebViewRenderer(WKWebViewConfiguration config) : base(RectangleF.Empty, config)
+		public WkWebViewRenderer(WKWebViewConfiguration config) : base(CGRect.Empty, config)
 		{
 		
 		}
@@ -73,7 +75,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		public event EventHandler<VisualElementChangedEventArgs> ElementChanged;
 
-		public SizeRequest GetDesiredSize(double widthConstraint, double heightConstraint)
+		public SizeRequest GetDesiredSize(float widthConstraint, float heightConstraint)
 		{
 			return NativeView.GetSizeRequest(widthConstraint, heightConstraint, 44, 44);
 		}
@@ -129,9 +131,9 @@ namespace Xamarin.Forms.Platform.iOS
 				element.SendViewInitialized(this);
 		}
 
-		public void SetElementSize(Size size)
+		public void SetElementSize(SizeF size)
 		{
-			Layout.LayoutChildIntoBoundingRegion(Element, new Rectangle(Element.X, Element.Y, size.Width, size.Height));
+			Layout.LayoutChildIntoBoundingRegion(Element, new RectangleF(Element.X, Element.Y, size.Width, size.Height));
 		}
 
 		public void LoadHtml(string html, string baseUrl)

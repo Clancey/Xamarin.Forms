@@ -1,4 +1,4 @@
-using Android.App;
+﻿using Android.App;
 using Android.Content;
 using Android.Content.Res;
 using Android.Views;
@@ -9,6 +9,7 @@ using FragmentContainer = Xamarin.Forms.Platform.Android.AppCompat.FragmentConta
 using FragmentManager = AndroidX.Fragment.App.FragmentManager;
 using FragmentTransaction = AndroidX.Fragment.App.FragmentTransaction;
 using APlatform = Xamarin.Forms.Platform.Android.AppCompat.Platform;
+using System.Graphics;
 
 namespace Xamarin.Forms.Platform.Android
 {
@@ -42,7 +43,7 @@ namespace Xamarin.Forms.Platform.Android
 			if (_childView == null)
 				return;
 
-			Rectangle bounds = GetBounds(_isFlyout, l, t, r, b);
+			RectangleF bounds = GetBounds(_isFlyout, l, t, r, b);
 			if (_isFlyout)
 				FlyoutPageController.FlyoutBounds = bounds;
 			else
@@ -189,11 +190,11 @@ namespace Xamarin.Forms.Platform.Android
 
 		public int TopPadding { get; set; }
 
-		double DefaultWidthFlyout
+		float DefaultWidthFlyout
 		{
 			get
 			{
-				double w = Context.FromPixels(Resources.DisplayMetrics.WidthPixels);
+				var w = (float)Context.FromPixels(Resources.DisplayMetrics.WidthPixels);
 				return w < DefaultSmallFlyoutSize ? w : (w < DefaultFlyoutSize ? DefaultSmallFlyoutSize : DefaultFlyoutSize);
 			}
 		}
@@ -263,11 +264,11 @@ namespace Xamarin.Forms.Platform.Android
 			_childView?.ClearValue(APlatform.RendererProperty);
 		}
 
-		Rectangle GetBounds(bool isFlyoutPage, int left, int top, int right, int bottom)
+		RectangleF GetBounds(bool isFlyoutPage, int left, int top, int right, int bottom)
 		{
-			double width = Context.FromPixels(right - left);
-			double height = Context.FromPixels(bottom - top);
-			double xPos = 0;
+			var width = (float)Context.FromPixels(right - left);
+			var height = (float)Context.FromPixels(bottom - top);
+			float xPos = 0;
 			bool supressPadding = false;
 
 			//splitview
@@ -286,8 +287,8 @@ namespace Xamarin.Forms.Platform.Android
 				width = isFlyoutPage && (Device.Info.CurrentOrientation.IsLandscape() || Device.Idiom == TargetIdiom.Tablet) ? DefaultWidthFlyout : width;
 			}
 
-			double padding = supressPadding ? 0 : Context.FromPixels(TopPadding);
-			return new Rectangle(xPos, padding, width, height - padding);
+			var padding = supressPadding ? 0 : (float)Context.FromPixels(TopPadding);
+			return new RectangleF(xPos, padding, width, height - padding);
 		}
 
 		protected void SetDefaultBackgroundColor(IVisualElementRenderer renderer)

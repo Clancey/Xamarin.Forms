@@ -1,4 +1,5 @@
-using System;
+﻿using System;
+using System.Graphics;
 using System.Linq;
 using Android.Content;
 using Android.Runtime;
@@ -239,11 +240,11 @@ namespace Xamarin.Forms.Platform.Android
 			{
 				Performance.Start(out string reference);
 
-				double width = Context.FromPixels(r - l);
-				double height = Context.FromPixels(b - t);
+				var width = (float)Context.FromPixels(r - l);
+				var height = (float)Context.FromPixels(b - t);
 
 				Performance.Start(reference, "Element.Layout");
-				Xamarin.Forms.Layout.LayoutChildIntoBoundingRegion(_view.Element, new Rectangle(0, 0, width, height));
+				Xamarin.Forms.Layout.LayoutChildIntoBoundingRegion(_view.Element, new RectangleF(0, 0, width, height));
 				Performance.Stop(reference, "Element.Layout");
 
 				_view.UpdateLayout();
@@ -259,7 +260,7 @@ namespace Xamarin.Forms.Platform.Android
 
 				if (ParentHasUnevenRows)
 				{
-					SizeRequest measure = _view.Element.Measure(Context.FromPixels(width), double.PositiveInfinity, MeasureFlags.IncludeMargins);
+					SizeRequest measure = _view.Element.Measure((float)Context.FromPixels(width), float.PositiveInfinity, MeasureFlags.IncludeMargins);
 					height = (int)Context.ToPixels(_viewCell.Height > 0 ? _viewCell.Height : measure.Request.Height);
 				}
 				else

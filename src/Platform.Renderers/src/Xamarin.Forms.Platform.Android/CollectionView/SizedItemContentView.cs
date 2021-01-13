@@ -26,7 +26,7 @@ namespace Xamarin.Forms.Platform.Android
 			var targetWidth = _width();
 			var targetHeight = _height();
 
-			Content.Element.Measure(Context.FromPixels(targetWidth), Context.FromPixels(targetHeight),
+			Content.Element.Measure((float)Context.FromPixels(targetWidth), (float)Context.FromPixels(targetHeight),
 				MeasureFlags.IncludeMargins);
 
 			SetMeasuredDimension(targetWidth, targetHeight);

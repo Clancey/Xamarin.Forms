@@ -3,10 +3,10 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using CoreGraphics;
 using Foundation;
 using UIKit;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
-using SizeF = CoreGraphics.CGSize;
 
 namespace Xamarin.Forms.Platform.iOS
 {
@@ -30,7 +30,7 @@ namespace Xamarin.Forms.Platform.iOS
 			ImageElementManager.Init(this);
 		}
 
-		public override SizeF SizeThatFits(SizeF size)
+		public override CGSize SizeThatFits(CGSize size)
 		{
 			var result = base.SizeThatFits(size);
 

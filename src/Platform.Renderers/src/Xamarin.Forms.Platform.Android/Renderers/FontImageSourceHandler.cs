@@ -1,9 +1,10 @@
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using System.Threading;
 using System.Threading.Tasks;
 using Android.Content;
 using Android.Graphics;
 using Android.Util;
+using Colors = System.Graphics.Colors;
 
 namespace Xamarin.Forms.Platform.Android
 {

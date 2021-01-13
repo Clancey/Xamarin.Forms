@@ -1,4 +1,5 @@
-using System;
+﻿using System;
+using System.Graphics;
 using Android.Content;
 using Android.Views;
 
@@ -8,8 +9,8 @@ namespace Xamarin.Forms.Platform.Android
 	{
 		protected IVisualElementRenderer Content;
 		internal Element Element => Content?.Element;
-		Size? _size;
-		Action<Size> _reportMeasure;
+		SizeF? _size;
+		Action<SizeF> _reportMeasure;
 
 		public ItemContentView(Context context) : base(context)
 		{
@@ -57,7 +58,7 @@ namespace Xamarin.Forms.Platform.Android
 			_size = null;
 		}
 
-		internal void HandleItemSizingStrategy(Action<Size> reportMeasure, Size? size)
+		internal void HandleItemSizingStrategy(Action<SizeF> reportMeasure, SizeF? size)
 		{
 			_reportMeasure = reportMeasure;
 			_size = size;
@@ -72,7 +73,7 @@ namespace Xamarin.Forms.Platform.Android
 
 			var size = Context.FromPixels(r - l, b - t);
 
-			Content.Element.Layout(new Rectangle(Point.Zero, size));
+			Content.Element.Layout(new RectangleF(0,0,size.Width,size.Height));
 
 			Content.UpdateLayout();
 		}
@@ -103,7 +104,7 @@ namespace Xamarin.Forms.Platform.Android
 				? double.PositiveInfinity
 				: Context.FromPixels(pixelHeight);
 
-			SizeRequest measure = Content.Element.Measure(width, height, MeasureFlags.IncludeMargins);
+			SizeRequest measure = Content.Element.Measure((float)width, (float)height, MeasureFlags.IncludeMargins);
 
 			if (pixelWidth == 0)
 			{
@@ -115,7 +116,7 @@ namespace Xamarin.Forms.Platform.Android
 				pixelHeight = (int)Context.ToPixels(measure.Request.Height);
 			}
 
-			_reportMeasure?.Invoke(new Size(pixelWidth, pixelHeight));
+			_reportMeasure?.Invoke(new SizeF(pixelWidth, pixelHeight));
 			_reportMeasure = null; // Make sure we only report back the measure once
 
 			SetMeasuredDimension(pixelWidth, pixelHeight);

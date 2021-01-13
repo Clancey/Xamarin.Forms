@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Graphics;
 using CoreGraphics;
 using UIKit;
 
@@ -21,7 +22,7 @@ namespace Xamarin.Forms.Platform.iOS
 			AddSubview(_renderer.NativeView);
 			ClipsToBounds = true;
 			view.MeasureInvalidated += OnMeasureInvalidated;
-			MeasuredHeight = double.NaN;
+			MeasuredHeight = float.NaN;
 			_view.BatchCommitted += _view_BatchCommitted;
 		}
 
@@ -31,14 +32,14 @@ namespace Xamarin.Forms.Platform.iOS
 
 		internal View View => _view;
 
-		internal double MeasuredHeight { get; private set; }
+		internal float MeasuredHeight { get; private set; }
 
 		internal bool MeasureIfNeeded()
 		{
 			if (View == null)
 				return false;
 
-			if (double.IsNaN(MeasuredHeight) || Frame.Width != View.Width)
+			if (float.IsNaN(MeasuredHeight) || Frame.Width != View.Width)
 			{
 				ReMeasure();
 				return true;
@@ -66,7 +67,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		void ReMeasure()
 		{
-			var request = _view.Measure(Frame.Width, double.PositiveInfinity, MeasureFlags.None);
+			var request = _view.Measure((float)Frame.Width, float.PositiveInfinity, MeasureFlags.None);
 			MeasuredHeight = request.Request.Height;
 			HeaderSizeChanged?.Invoke(this, EventArgs.Empty);
 		}
@@ -85,7 +86,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		public override void LayoutSubviews()
 		{
-			_view.Layout(new Rectangle(0, Margin.Top, Frame.Width, MeasuredHeight));
+			_view.Layout(new RectangleF(0, Margin.Top, (float)Frame.Width, (float)MeasuredHeight));
 		}
 
 		protected override void Dispose(bool disposing)

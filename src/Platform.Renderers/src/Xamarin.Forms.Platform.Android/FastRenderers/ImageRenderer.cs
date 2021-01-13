@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using Android.Graphics;
 using Android.Views;
@@ -103,9 +104,9 @@ namespace Xamarin.Forms.Platform.Android.FastRenderers
 			return _motionEventHelper.HandleMotionEvent(Parent, e);
 		}
 
-		Size MinimumSize()
+		SizeF MinimumSize()
 		{
-			return new Size();
+			return new SizeF();
 		}
 
 		SizeRequest IVisualElementRenderer.GetDesiredSize(int widthConstraint, int heightConstraint)
@@ -116,7 +117,7 @@ namespace Xamarin.Forms.Platform.Android.FastRenderers
 			}
 
 			Measure(widthConstraint, heightConstraint);
-			return new SizeRequest(new Size(MeasuredWidth, MeasuredHeight), MinimumSize());
+			return new SizeRequest(new SizeF(MeasuredWidth, MeasuredHeight), MinimumSize());
 		}
 
 		void IVisualElementRenderer.SetElement(VisualElement element)

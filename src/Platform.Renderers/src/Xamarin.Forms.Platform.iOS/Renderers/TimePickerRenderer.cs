@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
-using RectangleF = CoreGraphics.CGRect;
+using CoreGraphics;
 
 namespace Xamarin.Forms.Platform.iOS
 {
@@ -90,7 +90,7 @@ namespace Xamarin.Forms.Platform.iOS
 					}
 #endif
 					var width = UIScreen.MainScreen.Bounds.Width;
-					var toolbar = new UIToolbar(new RectangleF(0, 0, width, 44)) { BarStyle = UIBarStyle.Default, Translucent = true };
+					var toolbar = new UIToolbar(new CGRect(0, 0, width, 44)) { BarStyle = UIBarStyle.Default, Translucent = true };
 					var spacer = new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace);
 					var doneButton = new UIBarButtonItem(UIBarButtonSystemItem.Done, (o, a) =>
 					{
@@ -182,7 +182,7 @@ namespace Xamarin.Forms.Platform.iOS
 		{
 			var textColor = Element.TextColor;
 
-			if (textColor.IsDefault || (!Element.IsEnabled && _useLegacyColorManagement))
+			if (textColor == null || (!Element.IsEnabled && _useLegacyColorManagement))
 				Control.TextColor = _defaultTextColor;
 			else
 				Control.TextColor = textColor.ToUIColor();
