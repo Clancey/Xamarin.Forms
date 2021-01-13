@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Graphics;
+using NUnit.Framework;
 
 namespace Xamarin.Forms.Core.UnitTests
 {
@@ -18,9 +19,9 @@ namespace Xamarin.Forms.Core.UnitTests
 			FlexLayout.SetAlignSelf(view0, FlexAlignSelf.Center);
 			layout.Children.Add(view0);
 
-			layout.Layout(new Rectangle(0, 0, 100, 100));
-			Assert.That(layout.Bounds, Is.EqualTo(new Rectangle(0, 0, 100, 100)));
-			Assert.That(view0.Bounds, Is.EqualTo(new Rectangle(45, 0, 10, 10)));
+			layout.Layout(new RectangleF(0, 0, 100, 100));
+			Assert.That(layout.Bounds, Is.EqualTo(new RectangleF(0, 0, 100, 100)));
+			Assert.That(view0.Bounds, Is.EqualTo(new RectangleF(45, 0, 10, 10)));
 		}
 
 		[Test]
@@ -36,9 +37,9 @@ namespace Xamarin.Forms.Core.UnitTests
 			FlexLayout.SetAlignSelf(view0, FlexAlignSelf.End);
 			layout.Children.Add(view0);
 
-			layout.Layout(new Rectangle(0, 0, 100, 100));
-			Assert.That(layout.Bounds, Is.EqualTo(new Rectangle(0, 0, 100, 100)));
-			Assert.That(view0.Bounds, Is.EqualTo(new Rectangle(90, 0, 10, 10)));
+			layout.Layout(new RectangleF(0, 0, 100, 100));
+			Assert.That(layout.Bounds, Is.EqualTo(new RectangleF(0, 0, 100, 100)));
+			Assert.That(view0.Bounds, Is.EqualTo(new RectangleF(90, 0, 10, 10)));
 		}
 
 		[Test]
@@ -54,9 +55,9 @@ namespace Xamarin.Forms.Core.UnitTests
 			FlexLayout.SetAlignSelf(view0, FlexAlignSelf.Start);
 			layout.Children.Add(view0);
 
-			layout.Layout(new Rectangle(0, 0, 100, 100));
-			Assert.That(layout.Bounds, Is.EqualTo(new Rectangle(0, 0, 100, 100)));
-			Assert.That(view0.Bounds, Is.EqualTo(new Rectangle(0, 0, 10, 10)));
+			layout.Layout(new RectangleF(0, 0, 100, 100));
+			Assert.That(layout.Bounds, Is.EqualTo(new RectangleF(0, 0, 100, 100)));
+			Assert.That(view0.Bounds, Is.EqualTo(new RectangleF(0, 0, 10, 10)));
 		}
 
 		[Test]
@@ -73,9 +74,9 @@ namespace Xamarin.Forms.Core.UnitTests
 			FlexLayout.SetAlignSelf(view0, FlexAlignSelf.End);
 			layout.Children.Add(view0);
 
-			layout.Layout(new Rectangle(0, 0, 100, 100));
-			Assert.That(layout.Bounds, Is.EqualTo(new Rectangle(0, 0, 100, 100)));
-			Assert.That(view0.Bounds, Is.EqualTo(new Rectangle(90, 0, 10, 10)));
+			layout.Layout(new RectangleF(0, 0, 100, 100));
+			Assert.That(layout.Bounds, Is.EqualTo(new RectangleF(0, 0, 100, 100)));
+			Assert.That(view0.Bounds, Is.EqualTo(new RectangleF(90, 0, 10, 10)));
 		}
 	}
 }

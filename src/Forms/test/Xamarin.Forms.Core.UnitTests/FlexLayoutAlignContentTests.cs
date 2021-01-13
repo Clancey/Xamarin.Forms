@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Graphics;
 using NUnit.Framework;
 
 namespace Xamarin.Forms.Core.UnitTests
@@ -37,14 +38,14 @@ namespace Xamarin.Forms.Core.UnitTests
 			var view4 = new View { IsPlatformEnabled = true, WidthRequest = 50, HeightRequest = 10, };
 			layout.Children.Add(view4);
 
-			layout.Layout(new Rectangle(0, 0, 130, 100));
+			layout.Layout(new RectangleF(0, 0, 130, 100));
 
-			Assert.That(layout.Bounds, Is.EqualTo(new Rectangle(0, 0, 130, 100)));
-			Assert.That(view0.Bounds, Is.EqualTo(new Rectangle(0, 0, 50, 10)));
-			Assert.That(view1.Bounds, Is.EqualTo(new Rectangle(50, 0, 50, 10)));
-			Assert.That(view2.Bounds, Is.EqualTo(new Rectangle(0, 10, 50, 10)));
-			Assert.That(view3.Bounds, Is.EqualTo(new Rectangle(50, 10, 50, 10)));
-			Assert.That(view4.Bounds, Is.EqualTo(new Rectangle(0, 20, 50, 10)));
+			Assert.That(layout.Bounds, Is.EqualTo(new RectangleF(0, 0, 130, 100)));
+			Assert.That(view0.Bounds, Is.EqualTo(new RectangleF(0, 0, 50, 10)));
+			Assert.That(view1.Bounds, Is.EqualTo(new RectangleF(50, 0, 50, 10)));
+			Assert.That(view2.Bounds, Is.EqualTo(new RectangleF(0, 10, 50, 10)));
+			Assert.That(view3.Bounds, Is.EqualTo(new RectangleF(50, 10, 50, 10)));
+			Assert.That(view4.Bounds, Is.EqualTo(new RectangleF(0, 20, 50, 10)));
 		}
 
 		[Test]
@@ -76,13 +77,13 @@ namespace Xamarin.Forms.Core.UnitTests
 			var view4 = new View { IsPlatformEnabled = true, WidthRequest = 50, HeightRequest = 10, };
 			layout.Children.Add(view4);
 
-			layout.Layout(new Rectangle(0, 0, 100, 100));
-			Assert.That(layout.Bounds, Is.EqualTo(new Rectangle(0, 0, 100, 100)));
-			Assert.That(view0.Bounds, Is.EqualTo(new Rectangle(0, 0, 50, 10)));
-			Assert.That(view1.Bounds, Is.EqualTo(new Rectangle(0, 10, 50, 10)));
-			Assert.That(view2.Bounds, Is.EqualTo(new Rectangle(0, 20, 50, 10)));
-			Assert.That(view3.Bounds, Is.EqualTo(new Rectangle(0, 30, 50, 10)));
-			Assert.That(view4.Bounds, Is.EqualTo(new Rectangle(0, 40, 50, 10)));
+			layout.Layout(new RectangleF(0, 0, 100, 100));
+			Assert.That(layout.Bounds, Is.EqualTo(new RectangleF(0, 0, 100, 100)));
+			Assert.That(view0.Bounds, Is.EqualTo(new RectangleF(0, 0, 50, 10)));
+			Assert.That(view1.Bounds, Is.EqualTo(new RectangleF(0, 10, 50, 10)));
+			Assert.That(view2.Bounds, Is.EqualTo(new RectangleF(0, 20, 50, 10)));
+			Assert.That(view3.Bounds, Is.EqualTo(new RectangleF(0, 30, 50, 10)));
+			Assert.That(view4.Bounds, Is.EqualTo(new RectangleF(0, 40, 50, 10)));
 		}
 
 		[Test]
@@ -129,14 +130,14 @@ namespace Xamarin.Forms.Core.UnitTests
 			view4.WidthRequest = 50;
 			layout.Children.Add(view4);
 
-			layout.Layout(new Rectangle(0, 0, 100, 120));
+			layout.Layout(new RectangleF(0, 0, 100, 120));
 
-			Assert.That(layout.Bounds, Is.EqualTo(new Rectangle(0, 0, 100, 120)));
-			Assert.That(view0.Bounds, Is.EqualTo(new Rectangle(0, 0, 50, 40)));
-			Assert.That(view1.Bounds, Is.EqualTo(new Rectangle(0, 40, 50, 40)));
-			Assert.That(view2.Bounds, Is.EqualTo(new Rectangle(0, 80, 50, 0)));
-			Assert.That(view3.Bounds, Is.EqualTo(new Rectangle(0, 80, 50, 40)));
-			Assert.That(view4.Bounds, Is.EqualTo(new Rectangle(0, 120, 50, 0)));
+			Assert.That(layout.Bounds, Is.EqualTo(new RectangleF(0, 0, 100, 120)));
+			Assert.That(view0.Bounds, Is.EqualTo(new RectangleF(0, 0, 50, 40)));
+			Assert.That(view1.Bounds, Is.EqualTo(new RectangleF(0, 40, 50, 40)));
+			Assert.That(view2.Bounds, Is.EqualTo(new RectangleF(0, 80, 50, 0)));
+			Assert.That(view3.Bounds, Is.EqualTo(new RectangleF(0, 80, 50, 40)));
+			Assert.That(view4.Bounds, Is.EqualTo(new RectangleF(0, 120, 50, 0)));
 		}
 
 		[Test]
@@ -177,14 +178,14 @@ namespace Xamarin.Forms.Core.UnitTests
 			layout.Children.Add(view4);
 
 			var measure = layout.Measure(100, 100);
-			layout.Layout(new Rectangle(0, 0, 100, 100));
+			layout.Layout(new RectangleF(0, 0, 100, 100));
 
-			Assert.That(layout.Bounds, Is.EqualTo(new Rectangle(0, 0, 100, 100)));
-			Assert.That(view0.Bounds, Is.EqualTo(new Rectangle(50, 0, 50, 10)));
-			Assert.That(view1.Bounds, Is.EqualTo(new Rectangle(50, 10, 50, 10)));
-			Assert.That(view2.Bounds, Is.EqualTo(new Rectangle(50, 20, 50, 10)));
-			Assert.That(view3.Bounds, Is.EqualTo(new Rectangle(50, 30, 50, 10)));
-			Assert.That(view4.Bounds, Is.EqualTo(new Rectangle(50, 40, 50, 10)));
+			Assert.That(layout.Bounds, Is.EqualTo(new RectangleF(0, 0, 100, 100)));
+			Assert.That(view0.Bounds, Is.EqualTo(new RectangleF(50, 0, 50, 10)));
+			Assert.That(view1.Bounds, Is.EqualTo(new RectangleF(50, 10, 50, 10)));
+			Assert.That(view2.Bounds, Is.EqualTo(new RectangleF(50, 20, 50, 10)));
+			Assert.That(view3.Bounds, Is.EqualTo(new RectangleF(50, 30, 50, 10)));
+			Assert.That(view4.Bounds, Is.EqualTo(new RectangleF(50, 40, 50, 10)));
 
 		}
 
@@ -222,7 +223,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			view4.WidthRequest = 50;
 			layout.Children.Add(view4);
 
-			layout.Layout(new Rectangle(0, 0, 150, 100));
+			layout.Layout(new RectangleF(0, 0, 150, 100));
 
 			Assert.AreEqual(0f, layout.X);
 			Assert.AreEqual(0f, layout.Y);
@@ -285,14 +286,14 @@ namespace Xamarin.Forms.Core.UnitTests
 			var view4 = new View { IsPlatformEnabled = true, WidthRequest = 50, HeightRequest = 10 };
 			layout.Children.Add(view4);
 
-			layout.Layout(new Rectangle(0, 0, 130, 100));
+			layout.Layout(new RectangleF(0, 0, 130, 100));
 
-			Assert.That(layout.Bounds, Is.EqualTo(new Rectangle(0, 0, 130, 100)));
-			Assert.That(view0.Bounds, Is.EqualTo(new Rectangle(0, 0, 50, 10)));
-			Assert.That(view1.Bounds, Is.EqualTo(new Rectangle(50, 0, 50, 10)));
-			Assert.That(view2.Bounds, Is.EqualTo(new Rectangle(0, 45, 50, 10)));
-			Assert.That(view3.Bounds, Is.EqualTo(new Rectangle(50, 45, 50, 10)));
-			Assert.That(view4.Bounds, Is.EqualTo(new Rectangle(0, 90, 50, 10)));
+			Assert.That(layout.Bounds, Is.EqualTo(new RectangleF(0, 0, 130, 100)));
+			Assert.That(view0.Bounds, Is.EqualTo(new RectangleF(0, 0, 50, 10)));
+			Assert.That(view1.Bounds, Is.EqualTo(new RectangleF(50, 0, 50, 10)));
+			Assert.That(view2.Bounds, Is.EqualTo(new RectangleF(0, 45, 50, 10)));
+			Assert.That(view3.Bounds, Is.EqualTo(new RectangleF(50, 45, 50, 10)));
+			Assert.That(view4.Bounds, Is.EqualTo(new RectangleF(0, 90, 50, 10)));
 		}
 
 		[Test]
@@ -324,14 +325,14 @@ namespace Xamarin.Forms.Core.UnitTests
 			var view4 = new View { IsPlatformEnabled = true, WidthRequest = 50, HeightRequest = 10, };
 			layout.Children.Add(view4);
 
-			layout.Layout(new Rectangle(0, 0, 140, 120));
+			layout.Layout(new RectangleF(0, 0, 140, 120));
 
-			Assert.That(layout.Bounds, Is.EqualTo(new Rectangle(0, 0, 140, 120)));
-			Assert.That(view0.Bounds, Is.EqualTo(new Rectangle(0, 15, 50, 10)));
-			Assert.That(view1.Bounds, Is.EqualTo(new Rectangle(50, 15, 50, 10)));
-			Assert.That(view2.Bounds, Is.EqualTo(new Rectangle(0, 55, 50, 10)));
-			Assert.That(view3.Bounds, Is.EqualTo(new Rectangle(50, 55, 50, 10)));
-			Assert.That(view4.Bounds, Is.EqualTo(new Rectangle(0, 95, 50, 10)));
+			Assert.That(layout.Bounds, Is.EqualTo(new RectangleF(0, 0, 140, 120)));
+			Assert.That(view0.Bounds, Is.EqualTo(new RectangleF(0, 15, 50, 10)));
+			Assert.That(view1.Bounds, Is.EqualTo(new RectangleF(50, 15, 50, 10)));
+			Assert.That(view2.Bounds, Is.EqualTo(new RectangleF(0, 55, 50, 10)));
+			Assert.That(view3.Bounds, Is.EqualTo(new RectangleF(50, 55, 50, 10)));
+			Assert.That(view4.Bounds, Is.EqualTo(new RectangleF(0, 95, 50, 10)));
 		}
 
 		[Test]
@@ -367,7 +368,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			view4.WidthRequest = 50;
 			layout.Children.Add(view4);
 
-			layout.Layout(new Rectangle(0, 0, 150, 100));
+			layout.Layout(new RectangleF(0, 0, 150, 100));
 
 			Assert.AreEqual(0f, layout.X);
 			Assert.AreEqual(0f, layout.Y);
@@ -434,9 +435,9 @@ namespace Xamarin.Forms.Core.UnitTests
 			var view4 = new View { IsPlatformEnabled = true, WidthRequest = 50, };
 			layout.Children.Add(view4);
 
-			layout.Layout(new Rectangle(0, 0, 150, 100));
+			layout.Layout(new RectangleF(0, 0, 150, 100));
 
-			Assert.That(layout.Bounds, Is.EqualTo(new Rectangle(0, 0, 150, 100)));
+			Assert.That(layout.Bounds, Is.EqualTo(new RectangleF(0, 0, 150, 100)));
 
 			Assert.AreEqual(0f, view0.X);
 			Assert.AreEqual(0f, view0.Y);
@@ -501,14 +502,14 @@ namespace Xamarin.Forms.Core.UnitTests
 			var view4 = new View { IsPlatformEnabled = true, WidthRequest = 50 };
 			layout.Children.Add(view4);
 
-			layout.Layout(new Rectangle(0, 0, 150, 100));
+			layout.Layout(new RectangleF(0, 0, 150, 100));
 
-			Assert.That(layout.Bounds, Is.EqualTo(new Rectangle(0, 0, 150, 100)));
-			Assert.That(view0.Bounds, Is.EqualTo(new Rectangle(0, 0, 50, 100)));
-			Assert.That(view1.Bounds, Is.EqualTo(new Rectangle(50, 0, 0, 100)));
-			Assert.That(view2.Bounds, Is.EqualTo(new Rectangle(50, 0, 50, 100)));
-			Assert.That(view3.Bounds, Is.EqualTo(new Rectangle(100, 0, 0, 100)));
-			Assert.That(view4.Bounds, Is.EqualTo(new Rectangle(100, 0, 50, 100)));
+			Assert.That(layout.Bounds, Is.EqualTo(new RectangleF(0, 0, 150, 100)));
+			Assert.That(view0.Bounds, Is.EqualTo(new RectangleF(0, 0, 50, 100)));
+			Assert.That(view1.Bounds, Is.EqualTo(new RectangleF(50, 0, 0, 100)));
+			Assert.That(view2.Bounds, Is.EqualTo(new RectangleF(50, 0, 50, 100)));
+			Assert.That(view3.Bounds, Is.EqualTo(new RectangleF(100, 0, 0, 100)));
+			Assert.That(view4.Bounds, Is.EqualTo(new RectangleF(100, 0, 50, 100)));
 		}
 
 		[Test]
@@ -543,7 +544,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var view4 = new View { IsPlatformEnabled = true, WidthRequest = 50 };
 			layout.Children.Add(view4);
 
-			layout.Layout(new Rectangle(0, 0, 150, 100));
+			layout.Layout(new RectangleF(0, 0, 150, 100));
 
 			Assert.AreEqual(0f, layout.X);
 			Assert.AreEqual(0f, layout.Y);
@@ -633,14 +634,14 @@ namespace Xamarin.Forms.Core.UnitTests
 			};
 			layout.Children.Add(view4);
 
-			layout.Layout(new Rectangle(0, 0, 150, 100));
+			layout.Layout(new RectangleF(0, 0, 150, 100));
 
-			Assert.That(layout.Bounds, Is.EqualTo(new Rectangle(0, 0, 150, 100)));
-			Assert.That(view0.Bounds, Is.EqualTo(new Rectangle(0, 0, 50, 20)));
-			Assert.That(view1.Bounds, Is.EqualTo(new Rectangle(60, 10, 50, 20)));
-			Assert.That(view2.Bounds, Is.EqualTo(new Rectangle(0, 40, 50, 20)));
-			Assert.That(view3.Bounds, Is.EqualTo(new Rectangle(60, 50, 50, 20)));
-			Assert.That(view4.Bounds, Is.EqualTo(new Rectangle(0, 80, 50, 20)));
+			Assert.That(layout.Bounds, Is.EqualTo(new RectangleF(0, 0, 150, 100)));
+			Assert.That(view0.Bounds, Is.EqualTo(new RectangleF(0, 0, 50, 20)));
+			Assert.That(view1.Bounds, Is.EqualTo(new RectangleF(60, 10, 50, 20)));
+			Assert.That(view2.Bounds, Is.EqualTo(new RectangleF(0, 40, 50, 20)));
+			Assert.That(view3.Bounds, Is.EqualTo(new RectangleF(60, 50, 50, 20)));
+			Assert.That(view4.Bounds, Is.EqualTo(new RectangleF(0, 80, 50, 20)));
 		}
 
 		[Test]
@@ -663,7 +664,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			view1.WidthRequest = 50;
 			layout.Children.Add(view1);
 
-			layout.Layout(new Rectangle(0, 0, 150, 100));
+			layout.Layout(new RectangleF(0, 0, 150, 100));
 
 			Assert.AreEqual(0f, layout.X);
 			Assert.AreEqual(0f, layout.Y);
@@ -716,7 +717,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			view4.WidthRequest = 50;
 			layout.Children.Add(view4);
 
-			layout.Layout(new Rectangle(0, 0, 150, 100));
+			layout.Layout(new RectangleF(0, 0, 150, 100));
 
 			Assert.AreEqual(0f, layout.X);
 			Assert.AreEqual(0f, layout.Y);

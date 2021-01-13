@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Graphics;
 using System.Threading;
 using NUnit.Framework;
 
@@ -23,11 +24,11 @@ namespace Xamarin.Forms.Core.UnitTests
 				}
 			};
 
-			layout.Layout(new Rectangle(0, 0, 912, 912));
+			layout.Layout(new RectangleF(0, 0, 912, 912));
 
-			Assert.That(layout.Bounds, Is.EqualTo(new Rectangle(0, 0, 912, 912)));
-			Assert.That(label1.Bounds, Is.EqualTo(new Rectangle(0, 0, 100, 912)));
-			Assert.That(label2.Bounds, Is.EqualTo(new Rectangle(100, 0, 100, 912)));
+			Assert.That(layout.Bounds, Is.EqualTo(new RectangleF(0, 0, 912, 912)));
+			Assert.That(label1.Bounds, Is.EqualTo(new RectangleF(0, 0, 100, 912)));
+			Assert.That(label2.Bounds, Is.EqualTo(new RectangleF(100, 0, 100, 912)));
 		}
 
 		[Test]
@@ -45,11 +46,11 @@ namespace Xamarin.Forms.Core.UnitTests
 				}
 			};
 
-			layout.Layout(new Rectangle(0, 0, 912, 912));
+			layout.Layout(new RectangleF(0, 0, 912, 912));
 
-			Assert.That(layout.Bounds, Is.EqualTo(new Rectangle(0, 0, 912, 912)));
-			Assert.That(label1.Bounds, Is.EqualTo(new Rectangle(0, 0, 120, 912)));
-			Assert.That(label2.Bounds, Is.EqualTo(new Rectangle(120, 0, 120, 912)));
+			Assert.That(layout.Bounds, Is.EqualTo(new RectangleF(0, 0, 912, 912)));
+			Assert.That(label1.Bounds, Is.EqualTo(new RectangleF(0, 0, 120, 912)));
+			Assert.That(label2.Bounds, Is.EqualTo(new RectangleF(120, 0, 120, 912)));
 
 		}
 
@@ -68,13 +69,13 @@ namespace Xamarin.Forms.Core.UnitTests
 				}
 			};
 
-			layout.Layout(new Rectangle(0, 0, 912, 912));
+			layout.Layout(new RectangleF(0, 0, 912, 912));
 
 			Assert.AreEqual(912, layout.Width);
 			Assert.AreEqual(912, layout.Height);
 
-			Assert.AreEqual(new Rectangle(5, 0, 100, 912), label1.Bounds);
-			Assert.AreEqual(new Rectangle(110, 0, 100, 912), label2.Bounds);
+			Assert.AreEqual(new RectangleF(5, 0, 100, 912), label1.Bounds);
+			Assert.AreEqual(new RectangleF(110, 0, 100, 912), label2.Bounds);
 		}
 
 		[Test]
@@ -101,12 +102,12 @@ namespace Xamarin.Forms.Core.UnitTests
 			FlexLayout.SetGrow(label3, 1);
 			layout.Children.Add(label3);
 
-			layout.Layout(new Rectangle(0, 0, layoutSize.Width, layoutSize.Height));
+			layout.Layout(new RectangleF(0, 0, layoutSize.Width, layoutSize.Height));
 
 			Assert.AreEqual(label2.Bounds.Left, Math.Max(label1.Bounds.Left, label1.Bounds.Right), 1);
 			Assert.AreEqual(label3.Bounds.Left, Math.Max(label2.Bounds.Left, label2.Bounds.Right), 1);
 
-			double totalWidth = 0;
+			float totalWidth = 0;
 			foreach (var view in layout.Children)
 			{
 				totalWidth += view.Bounds.Width;
@@ -138,7 +139,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			FlexLayout.SetGrow(label3, 1);
 			layout.Children.Add(label3);
 
-			layout.Layout(new Rectangle(0, 0, layoutSize.Width, layoutSize.Height));
+			layout.Layout(new RectangleF(0, 0, layoutSize.Width, layoutSize.Height));
 
 			foreach (var view in layout.Children)
 				Assert.That(view.Bounds.Width, Is.EqualTo(100));
@@ -171,7 +172,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var label3 = new Label { IsPlatformEnabled = true };
 			FlexLayout.SetGrow(label3, 1);
 
-			layout.Layout(new Rectangle(0, 0, layoutSize.Width, layoutSize.Height));
+			layout.Layout(new RectangleF(0, 0, layoutSize.Width, layoutSize.Height));
 
 			Assert.AreEqual(150, label1.Bounds.Width);
 			Assert.AreEqual(150, label2.Bounds.Width);
@@ -179,7 +180,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			layout.Children.Add(label3);
 
-			layout.Layout(new Rectangle(0, 0, layoutSize.Width, layoutSize.Height));
+			layout.Layout(new RectangleF(0, 0, layoutSize.Width, layoutSize.Height));
 			Assert.AreEqual(100, label1.Bounds.Width);
 			Assert.AreEqual(100, label2.Bounds.Width);
 			Assert.AreEqual(100, label3.Bounds.Width);
@@ -209,24 +210,24 @@ namespace Xamarin.Forms.Core.UnitTests
 			FlexLayout.SetGrow(label2, 1);
 			layout.Children.Add(label2);
 
-			layout.Layout(new Rectangle(0, 0, layoutSize.Width, layoutSize.Height));
+			layout.Layout(new RectangleF(0, 0, layoutSize.Width, layoutSize.Height));
 
-			Assert.AreEqual(new Rectangle(0, 0, 100, 50), label0.Bounds);
-			Assert.AreEqual(new Rectangle(100, 0, 100, 50), label1.Bounds);
-			Assert.AreEqual(new Rectangle(200, 0, 100, 50), label2.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 100, 50), label0.Bounds);
+			Assert.AreEqual(new RectangleF(100, 0, 100, 50), label1.Bounds);
+			Assert.AreEqual(new RectangleF(200, 0, 100, 50), label2.Bounds);
 
 			var lastItem = layout.Children[2];
 			Assert.That(lastItem, Is.SameAs(label2));
 
 			layout.Children.Remove(lastItem);
-			Assert.AreEqual(new Rectangle(0, 0, 150, 50), label0.Bounds);
-			Assert.AreEqual(new Rectangle(150, 0, 150, 50), label1.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 150, 50), label0.Bounds);
+			Assert.AreEqual(new RectangleF(150, 0, 150, 50), label1.Bounds);
 
 			layout.Children.Insert(0, lastItem);
 
-			Assert.AreEqual(new Rectangle(0, 0, 100, 50), label2.Bounds);
-			Assert.AreEqual(new Rectangle(100, 0, 100, 50), label0.Bounds);
-			Assert.AreEqual(new Rectangle(200, 0, 100, 50), label1.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 100, 50), label2.Bounds);
+			Assert.AreEqual(new RectangleF(100, 0, 100, 50), label0.Bounds);
+			Assert.AreEqual(new RectangleF(200, 0, 100, 50), label1.Bounds);
 		}
 
 		[Test]
@@ -258,13 +259,13 @@ namespace Xamarin.Forms.Core.UnitTests
 				HeightRequest = 10
 			};
 			layout.Children.Add(label2);
-			layout.Layout(new Rectangle(0, 0, 320, 50));
+			layout.Layout(new RectangleF(0, 0, 320, 50));
 
-			var label2Size = label2.Measure(double.PositiveInfinity, double.PositiveInfinity);
+			var label2Size = label2.Measure(float.PositiveInfinity, float.PositiveInfinity);
 			Assert.AreEqual(10, label2Size.Request.Height);
 			Assert.AreEqual(10, label2Size.Request.Width);
 
-			var label1Size = label1.Measure(double.PositiveInfinity, double.PositiveInfinity);
+			var label1Size = label1.Measure(float.PositiveInfinity, float.PositiveInfinity);
 			//	var layoutSize = layout.Measure(-1, -1);
 		}
 
@@ -304,17 +305,17 @@ namespace Xamarin.Forms.Core.UnitTests
 			var inner = layout.Children[1] as FlexLayout;
 			FlexLayout.SetGrow(inner, 1);
 
-			layout.Layout(new Rectangle(0, 0, 300, 600));
-			Assert.That(layout.Bounds, Is.EqualTo(new Rectangle(0, 0, 300, 600)));
-			Assert.That(header.Bounds, Is.EqualTo(new Rectangle(0, 0, 300, 50)));
-			Assert.That(inner.Bounds, Is.EqualTo(new Rectangle(0, 50, 300, 500)));
-			Assert.That(inner.Children[0].Bounds, Is.EqualTo(new Rectangle(5, 5, 50, 490)));
-			Assert.That(inner.Children[1].Bounds, Is.EqualTo(new Rectangle(65, 5, 50, 490)));
-			Assert.That(inner.Children[2].Bounds, Is.EqualTo(new Rectangle(125, 5, 50, 490)));
-			Assert.That(inner.Children[3].Bounds, Is.EqualTo(new Rectangle(185, 5, 50, 490)));
-			Assert.That(inner.Children[4].Bounds, Is.EqualTo(new Rectangle(245, 5, 50, 490)));
+			layout.Layout(new RectangleF(0, 0, 300, 600));
+			Assert.That(layout.Bounds, Is.EqualTo(new RectangleF(0, 0, 300, 600)));
+			Assert.That(header.Bounds, Is.EqualTo(new RectangleF(0, 0, 300, 50)));
+			Assert.That(inner.Bounds, Is.EqualTo(new RectangleF(0, 50, 300, 500)));
+			Assert.That(inner.Children[0].Bounds, Is.EqualTo(new RectangleF(5, 5, 50, 490)));
+			Assert.That(inner.Children[1].Bounds, Is.EqualTo(new RectangleF(65, 5, 50, 490)));
+			Assert.That(inner.Children[2].Bounds, Is.EqualTo(new RectangleF(125, 5, 50, 490)));
+			Assert.That(inner.Children[3].Bounds, Is.EqualTo(new RectangleF(185, 5, 50, 490)));
+			Assert.That(inner.Children[4].Bounds, Is.EqualTo(new RectangleF(245, 5, 50, 490)));
 
-			Assert.That(footer.Bounds, Is.EqualTo(new Rectangle(0, 550, 300, 50)));
+			Assert.That(footer.Bounds, Is.EqualTo(new RectangleF(0, 550, 300, 50)));
 		}
 
 		[Test]
@@ -335,15 +336,15 @@ namespace Xamarin.Forms.Core.UnitTests
 			};
 
 			//measure sith +inf as main-axis
-			var measure = Layout.Measure(double.PositiveInfinity, 40);
+			var measure = Layout.Measure(float.PositiveInfinity, 40);
 			Assert.That(measure.Request, Is.EqualTo(new SizeF(100, 40)));
 
 			//measure sith +inf as cross-axis
-			measure = Layout.Measure(200, double.PositiveInfinity);
+			measure = Layout.Measure(200, float.PositiveInfinity);
 			Assert.That(measure.Request, Is.EqualTo(new SizeF(200, 20)));
 
 			//measure with +inf as both axis
-			measure = Layout.Measure(double.PositiveInfinity, double.PositiveInfinity);
+			measure = Layout.Measure(float.PositiveInfinity, float.PositiveInfinity);
 			Assert.That(measure.Request, Is.EqualTo(new SizeF(100, 20)));
 
 		}
@@ -385,12 +386,12 @@ namespace Xamarin.Forms.Core.UnitTests
 				}
 			};
 
-			var measure = layout.Measure(300, double.PositiveInfinity);
+			var measure = layout.Measure(300, float.PositiveInfinity);
 			Assert.That(measure.Request, Is.EqualTo(new SizeF(300, 52)));
-			layout.Layout(new Rectangle(0, 0, 300, 300));
-			Assert.That(label0.Bounds, Is.EqualTo(new Rectangle(6, 6, 138, 20)));
-			Assert.That(label1.Bounds, Is.EqualTo(new Rectangle(156, 6, 138, 20)));
-			Assert.That(label2.Bounds, Is.EqualTo(new Rectangle(0, 32, 300, 20)));
+			layout.Layout(new RectangleF(0, 0, 300, 300));
+			Assert.That(label0.Bounds, Is.EqualTo(new RectangleF(6, 6, 138, 20)));
+			Assert.That(label1.Bounds, Is.EqualTo(new RectangleF(156, 6, 138, 20)));
+			Assert.That(label2.Bounds, Is.EqualTo(new RectangleF(0, 32, 300, 20)));
 		}
 
 		[Test]
@@ -411,8 +412,8 @@ namespace Xamarin.Forms.Core.UnitTests
 				}
 			};
 
-			layout.Layout(new Rectangle(0, 0, 300, 300));
-			Assert.That(label0.Bounds, Is.EqualTo(new Rectangle(0, 0, 300, 300)));
+			layout.Layout(new RectangleF(0, 0, 300, 300));
+			Assert.That(label0.Bounds, Is.EqualTo(new RectangleF(0, 0, 300, 300)));
 		}
 
 		[Test]
@@ -442,19 +443,19 @@ namespace Xamarin.Forms.Core.UnitTests
 				}
 			};
 
-			layout.Layout(new Rectangle(0, 0, 300, 300));
-			Assert.That(label0.Bounds, Is.EqualTo(new Rectangle(0, 0, 300, 20)));
-			Assert.That(label1.Bounds, Is.EqualTo(new Rectangle(0, 20, 300, 20)));
-			Assert.That(label2.Bounds, Is.EqualTo(new Rectangle(0, 40, 300, 20)));
+			layout.Layout(new RectangleF(0, 0, 300, 300));
+			Assert.That(label0.Bounds, Is.EqualTo(new RectangleF(0, 0, 300, 20)));
+			Assert.That(label1.Bounds, Is.EqualTo(new RectangleF(0, 20, 300, 20)));
+			Assert.That(label2.Bounds, Is.EqualTo(new RectangleF(0, 40, 300, 20)));
 
 			label1.IsVisible = false;
-			Assert.That(label0.Bounds, Is.EqualTo(new Rectangle(0, 0, 300, 20)));
-			Assert.That(label2.Bounds, Is.EqualTo(new Rectangle(0, 20, 300, 20)));
+			Assert.That(label0.Bounds, Is.EqualTo(new RectangleF(0, 0, 300, 20)));
+			Assert.That(label2.Bounds, Is.EqualTo(new RectangleF(0, 20, 300, 20)));
 
 			label0.IsVisible = false;
 			label1.IsVisible = true;
-			Assert.That(label1.Bounds, Is.EqualTo(new Rectangle(0, 0, 300, 20)));
-			Assert.That(label2.Bounds, Is.EqualTo(new Rectangle(0, 20, 300, 20)));
+			Assert.That(label1.Bounds, Is.EqualTo(new RectangleF(0, 0, 300, 20)));
+			Assert.That(label2.Bounds, Is.EqualTo(new RectangleF(0, 20, 300, 20)));
 		}
 
 		[Test]
@@ -467,7 +468,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				Direction = FlexDirection.Column,
 			};
 
-			layout.Layout(new Rectangle(0, 0, 300, 300));
+			layout.Layout(new RectangleF(0, 0, 300, 300));
 			for (var i = 0; i < 3; i++)
 			{
 				var box = new BoxView
@@ -478,7 +479,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				FlexLayout.SetGrow(box, 1f);
 			}
 
-			Assert.That(layout.Children[2].Bounds, Is.EqualTo(new Rectangle(0, 200, 300, 100)));
+			Assert.That(layout.Children[2].Bounds, Is.EqualTo(new RectangleF(0, 200, 300, 100)));
 		}
 
 		[Test]
@@ -511,9 +512,9 @@ namespace Xamarin.Forms.Core.UnitTests
 				}
 			};
 
-			layout.Layout(new Rectangle(0, 0, 500, 300));
-			Assert.That(layout.Children[0].Bounds, Is.EqualTo(new Rectangle(20, 10, 100, 20)));
-			Assert.That(layout.Children[2].Bounds, Is.EqualTo(new Rectangle(380, 10, 100, 20)));
+			layout.Layout(new RectangleF(0, 0, 500, 300));
+			Assert.That(layout.Children[0].Bounds, Is.EqualTo(new RectangleF(20, 10, 100, 20)));
+			Assert.That(layout.Children[2].Bounds, Is.EqualTo(new RectangleF(380, 10, 100, 20)));
 		}
 	}
 }

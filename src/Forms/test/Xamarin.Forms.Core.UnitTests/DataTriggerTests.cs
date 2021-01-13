@@ -1,3 +1,4 @@
+using System.Graphics;
 using System.Threading.Tasks;
 using NUnit.Framework;
 
@@ -146,19 +147,19 @@ namespace Xamarin.Forms.Core.UnitTests
 			};
 
 			boxview.BindingContext = "Complete";
-			Assert.AreEqual(Color.Green, boxview.Color);
+			Assert.AreEqual(Colors.Green, boxview.Color);
 			Assert.AreEqual(.5, boxview.Opacity);
 
 			boxview.BindingContext = "MissingInfo";
-			Assert.AreEqual(Color.Yellow, boxview.Color);
+			Assert.AreEqual(Colors.Yellow, boxview.Color);
 			Assert.AreEqual(1, boxview.Opacity);
 
 			boxview.BindingContext = "Error";
-			Assert.AreEqual(Color.Red, boxview.Color);
+			Assert.AreEqual(Colors.Red, boxview.Color);
 			Assert.AreEqual(1, boxview.Opacity);
 
 			boxview.BindingContext = "Complete";
-			Assert.AreEqual(Color.Green, boxview.Color);
+			Assert.AreEqual(Colors.Green, boxview.Color);
 			Assert.AreEqual(.5, boxview.Opacity);
 		}
 	}

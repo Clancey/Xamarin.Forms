@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Graphics;
 using NUnit.Framework;
 using Xamarin.Forms.Shapes;
 
@@ -15,7 +16,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		[TestCase(180, false)]
 		[TestCase(270, true)]
 		[TestCase(270, false)]
-		public void FlattenArcTest(double angle, bool isLargeArc)
+		public void FlattenArcTest(float angle, bool isLargeArc)
 		{
 			var path = new Path
 			{
@@ -44,11 +45,11 @@ namespace Xamarin.Forms.Core.UnitTests
 				}
 			};
 
-			List<Point> points = new List<Point>();
+			List<PointF> points = new List<PointF>();
 
 			GeometryHelper.FlattenArc(
 				points,
-				Point.Zero,
+				PointF.Zero,
 				arcSegment.Point,
 				arcSegment.Size.Width,
 				arcSegment.Size.Height,
@@ -87,7 +88,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void TestRectangleGeometryConstruction()
 		{
-			var rectangleGeometry = new RectangleGeometry(new Rect(0, 0, 150, 150));
+			var rectangleGeometry = new RectangleGeometry(new RectangleF(0, 0, 150, 150));
 
 			Assert.IsNotNull(rectangleGeometry);
 			Assert.AreEqual(150, rectangleGeometry.Rect.Height);
@@ -97,7 +98,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void TestRoundRectangleGeometryConstruction()
 		{
-			var roundRectangleGeometry = new RoundRectangleGeometry(new CornerRadius(12, 0, 0, 12), new Rect(0, 0, 150, 150));
+			var roundRectangleGeometry = new RoundRectangleGeometry(new CornerRadius(12, 0, 0, 12), new RectangleF(0, 0, 150, 150));
 
 			Assert.IsNotNull(roundRectangleGeometry);
 			Assert.AreEqual(12, roundRectangleGeometry.CornerRadius.TopLeft);

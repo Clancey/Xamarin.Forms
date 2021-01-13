@@ -7,7 +7,7 @@ namespace Xamarin.Forms
 	{
 		public string FontFamily { get; private set; }
 
-		public double FontSize { get; private set; }
+		public float FontSize { get; private set; }
 
 		public NamedSize NamedSize { get; private set; }
 
@@ -28,7 +28,7 @@ namespace Xamarin.Forms
 			get { return default(Font); }
 		}
 
-		public Font WithSize(double size)
+		public Font WithSize(float size)
 		{
 			return new Font { FontFamily = FontFamily, FontSize = size, NamedSize = 0, FontAttributes = FontAttributes };
 		}
@@ -46,7 +46,7 @@ namespace Xamarin.Forms
 			return new Font { FontFamily = FontFamily, FontSize = FontSize, NamedSize = NamedSize, FontAttributes = fontAttributes };
 		}
 
-		public static Font OfSize(string name, double size)
+		public static Font OfSize(string name, float size)
 		{
 			var result = new Font { FontFamily = name, FontSize = size };
 			return result;
@@ -58,7 +58,7 @@ namespace Xamarin.Forms
 			return result;
 		}
 
-		public static Font SystemFontOfSize(double size)
+		public static Font SystemFontOfSize(float size)
 		{
 			var result = new Font { FontSize = size };
 			return result;
@@ -70,7 +70,7 @@ namespace Xamarin.Forms
 			return result;
 		}
 
-		public static Font SystemFontOfSize(double size, FontAttributes attributes)
+		public static Font SystemFontOfSize(float size, FontAttributes attributes)
 		{
 			var result = new Font { FontSize = size, FontAttributes = attributes };
 			return result;
@@ -82,9 +82,9 @@ namespace Xamarin.Forms
 			return result;
 		}
 
-		[Obsolete("BoldSystemFontOfSize is obsolete as of version 1.2.0. Please use SystemFontOfSize (double, FontAttributes) instead.")]
+		[Obsolete("BoldSystemFontOfSize is obsolete as of version 1.2.0. Please use SystemFontOfSize (float, FontAttributes) instead.")]
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public static Font BoldSystemFontOfSize(double size)
+		public static Font BoldSystemFontOfSize(float size)
 		{
 			var result = new Font { FontSize = size, FontAttributes = FontAttributes.Bold };
 			return result;

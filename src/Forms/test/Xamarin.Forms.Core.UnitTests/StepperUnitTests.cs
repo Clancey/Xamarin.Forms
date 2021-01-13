@@ -149,13 +149,13 @@ namespace Xamarin.Forms.Core.UnitTests
 		[TestCase(100.0, 0.5)]
 		[TestCase(10.0, 25.0)]
 		[TestCase(0, 39.5)]
-		public void StepperValueChangedEventArgs(double initialValue, double finalValue)
+		public void StepperValueChangedEventArgs(float initialValue, float finalValue)
 		{
 			var stepper = new Stepper
 			{
 				Maximum = 100,
 				Minimum = 0,
-				Increment = 0.5,
+				Increment = 0.5f,
 				Value = initialValue
 			};
 
@@ -180,7 +180,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		[TestCase(10)]
 		public void TestReturnToZero(int steps)
 		{
-			var stepper = new Stepper(0, 10, 0, 0.5);
+			var stepper = new Stepper(0, 10, 0, 0.5f);
 
 			for (int i = steps; i < steps; i++)
 				stepper.Value += stepper.Increment;
@@ -191,28 +191,28 @@ namespace Xamarin.Forms.Core.UnitTests
 			Assert.AreEqual(0.0, stepper.Value);
 		}
 
-		[TestCase(100, .5, 0, 100)]
-		[TestCase(100, .3, 0, 100)]
-		[TestCase(100, .03, 0, 100)]
-		[TestCase(100, .003, 0, 100)]
-		[TestCase(100, .0003, 0, 100)]
-		[TestCase(100, .0000003, 0, 100)]
-		[TestCase(100, .0000000003, 0, 100)]
-		[TestCase(100, .0000000000003, 0, 100)]
-		[TestCase(100, .5, -10000, 10000)]
-		[TestCase(100, .3, -10000, 10000)]
-		[TestCase(100, .03, -10000, 10000)]
-		[TestCase(100, .003, -10000, 10000)]
-		[TestCase(100, .0003, -10000, 10000)]
-		[TestCase(100, .0000003, -10000, 10000)]
-		[TestCase(100, .0000000003, -10000, 10000)]
-		[TestCase(100, .0000000000003, -10000, 10000)]
-		[TestCase(100, .00003456, -10000, 10000)] //we support 4 significant digits for the increment. no less, no more
+		[TestCase(100, .5f, 0, 100)]
+		[TestCase(100, .3f, 0, 100)]
+		[TestCase(100, .03f, 0, 100)]
+		[TestCase(100, .003f, 0, 100)]
+		[TestCase(100, .0003f, 0, 100)]
+		[TestCase(100, .0000003f, 0, 100)]
+		[TestCase(100, .0000000003f, 0, 100)]
+		[TestCase(100, .0000000000003f, 0, 100)]
+		[TestCase(100, .5f, -10000, 10000)]
+		[TestCase(100, .3f, -10000, 10000)]
+		[TestCase(100, .03f, -10000, 10000)]
+		[TestCase(100, .003f, -10000, 10000)]
+		[TestCase(100, .0003f, -10000, 10000)]
+		[TestCase(100, .0000003f, -10000, 10000)]
+		[TestCase(100, .0000000003f, -10000, 10000)]
+		[TestCase(100, .0000000000003f, -10000, 10000)]
+		[TestCase(100, .00003456f, -10000, 10000)] //we support 4 significant digits for the increment. no less, no more
 												  //https://github.com/xamarin/Xamarin.Forms/issues/5168
-		public void SmallIncrements(int steps, double increment, double min, double max)
+		public void SmallIncrements(int steps, float increment, float min, float max)
 		{
 			var stepper = new Stepper(min, max, 0, increment);
-			int digits = Math.Max(1, Math.Min(15, (int)(-Math.Log10((double)increment) + 4))); //logic copied from the Stepper code
+			int digits = Math.Max(1, Math.Min(15, (int)(-Math.Log10((float)increment) + 4))); //logic copied from the Stepper code
 
 			Assert.AreEqual(0.0, stepper.Value);
 
@@ -231,8 +231,8 @@ namespace Xamarin.Forms.Core.UnitTests
 		//https://github.com/xamarin/Xamarin.Forms/issues/10032
 		public void InitialValue()
 		{
-			var increment = .1;
-			var stepper = new Stepper(0, 10, 4.99, increment);
+			var increment = .1f;
+			var stepper = new Stepper(0, 10, 4.99f, increment);
 
 			Assert.AreEqual(4.99, stepper.Value);
 

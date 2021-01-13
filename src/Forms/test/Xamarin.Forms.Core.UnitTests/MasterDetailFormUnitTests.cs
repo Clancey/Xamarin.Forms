@@ -195,9 +195,9 @@ namespace Xamarin.Forms.Core.UnitTests
 				Detail = new ContentPage { Content = new View() }
 			};
 
-			((IMasterDetailPageController)page).MasterBounds = new Rectangle(0, 0, 100, 100);
-			Assert.AreEqual(new Rectangle(0, 0, 100, 100), page.Master.Bounds);
-			Assert.AreEqual(new Rectangle(0, 0, 100, 100), ((IMasterDetailPageController)page).MasterBounds);
+			((IMasterDetailPageController)page).MasterBounds = new RectangleF(0, 0, 100, 100);
+			Assert.AreEqual(new RectangleF(0, 0, 100, 100), page.Master.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 100, 100), ((IMasterDetailPageController)page).MasterBounds);
 		}
 
 		[Test]
@@ -209,9 +209,9 @@ namespace Xamarin.Forms.Core.UnitTests
 				Detail = new ContentPage { Content = new View() }
 			};
 
-			((IMasterDetailPageController)page).DetailBounds = new Rectangle(0, 0, 100, 100);
-			Assert.AreEqual(new Rectangle(0, 0, 100, 100), page.Detail.Bounds);
-			Assert.AreEqual(new Rectangle(0, 0, 100, 100), ((IMasterDetailPageController)page).DetailBounds);
+			((IMasterDetailPageController)page).DetailBounds = new RectangleF(0, 0, 100, 100);
+			Assert.AreEqual(new RectangleF(0, 0, 100, 100), page.Detail.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 100, 100), ((IMasterDetailPageController)page).DetailBounds);
 		}
 
 		[Test]
@@ -224,16 +224,16 @@ namespace Xamarin.Forms.Core.UnitTests
 				IsPlatformEnabled = true,
 			};
 
-			((IMasterDetailPageController)page).MasterBounds = new Rectangle(0, 0, 100, 200);
-			((IMasterDetailPageController)page).DetailBounds = new Rectangle(0, 0, 100, 100);
+			((IMasterDetailPageController)page).MasterBounds = new RectangleF(0, 0, 100, 200);
+			((IMasterDetailPageController)page).DetailBounds = new RectangleF(0, 0, 100, 100);
 
-			page.Master.Layout(new Rectangle(0, 0, 1, 1));
-			page.Detail.Layout(new Rectangle(0, 0, 1, 1));
+			page.Master.Layout(new RectangleF(0, 0, 1, 1));
+			page.Detail.Layout(new RectangleF(0, 0, 1, 1));
 
-			page.Layout(new Rectangle(0, 0, 200, 200));
+			page.Layout(new RectangleF(0, 0, 200, 200));
 
-			Assert.AreEqual(new Rectangle(0, 0, 100, 200), page.Master.Bounds);
-			Assert.AreEqual(new Rectangle(0, 0, 100, 100), page.Detail.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 100, 200), page.Master.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 100, 100), page.Detail.Bounds);
 		}
 
 		[Test]
@@ -245,7 +245,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				IsPlatformEnabled = true,
 			};
 
-			Assert.Throws<InvalidOperationException>(() => page.Layout(new Rectangle(0, 0, 200, 200)));
+			Assert.Throws<InvalidOperationException>(() => page.Layout(new RectangleF(0, 0, 200, 200)));
 		}
 
 		[Test]
@@ -257,7 +257,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				IsPlatformEnabled = true,
 			};
 
-			Assert.Throws<InvalidOperationException>(() => page.Layout(new Rectangle(0, 0, 200, 200)));
+			Assert.Throws<InvalidOperationException>(() => page.Layout(new RectangleF(0, 0, 200, 200)));
 		}
 
 		[Test]
@@ -269,7 +269,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				IsPlatformEnabled = true,
 			};
 
-			Assert.Throws<InvalidOperationException>(() => ((IMasterDetailPageController)page).DetailBounds = new Rectangle(0, 0, 200, 200));
+			Assert.Throws<InvalidOperationException>(() => ((IMasterDetailPageController)page).DetailBounds = new RectangleF(0, 0, 200, 200));
 		}
 
 		[Test]
@@ -281,7 +281,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				IsPlatformEnabled = true,
 			};
 
-			Assert.Throws<InvalidOperationException>(() => ((IMasterDetailPageController)page).MasterBounds = new Rectangle(0, 0, 200, 200));
+			Assert.Throws<InvalidOperationException>(() => ((IMasterDetailPageController)page).MasterBounds = new RectangleF(0, 0, 200, 200));
 		}
 
 		[Test]

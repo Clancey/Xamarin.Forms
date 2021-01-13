@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Graphics;
 using System.Linq;
 using System.Threading.Tasks;
 using NUnit.Framework;
@@ -60,7 +61,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				Style = style
 			};
 			Assert.AreEqual("foo", label.Text);
-			Assert.AreEqual(Color.Pink, label.BackgroundColor);
+			Assert.AreEqual(Colors.Pink, label.BackgroundColor);
 
 			label.Style = null;
 			Assert.AreEqual(Label.TextProperty.DefaultValue, label.Text);
@@ -90,7 +91,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			label.Resources = new ResourceDictionary {
 				{"qux", Colors.Pink}
 			};
-			Assert.AreEqual(Color.Pink, label.BackgroundColor);
+			Assert.AreEqual(Colors.Pink, label.BackgroundColor);
 
 			label.Style = null;
 			Assert.AreEqual(Label.TextProperty.DefaultValue, label.Text);
@@ -126,8 +127,8 @@ namespace Xamarin.Forms.Core.UnitTests
 			Assert.AreEqual("FOO", label0.Text);
 			Assert.AreEqual("FOO", label1.Text);
 
-			Assert.AreEqual(Color.Pink, label0.BackgroundColor);
-			Assert.AreEqual(Color.Pink, label1.BackgroundColor);
+			Assert.AreEqual(Colors.Pink, label0.BackgroundColor);
+			Assert.AreEqual(Colors.Pink, label1.BackgroundColor);
 
 			label0.Style = label1.Style = null;
 
@@ -336,8 +337,8 @@ namespace Xamarin.Forms.Core.UnitTests
 				Style = style
 			};
 
-			Assert.AreEqual(Color.Red, label0.BackgroundColor);
-			Assert.AreEqual(Color.Red, label0.TextColor);
+			Assert.AreEqual(Colors.Red, label0.BackgroundColor);
+			Assert.AreEqual(Colors.Red, label0.TextColor);
 			Assert.AreEqual(Label.TextProperty.DefaultValue, label0.Text);
 
 			var layout0 = new StackLayout
@@ -350,8 +351,8 @@ namespace Xamarin.Forms.Core.UnitTests
 				}
 			};
 
-			Assert.AreEqual(Color.Red, label0.BackgroundColor);
-			Assert.AreEqual(Color.Red, label0.TextColor);
+			Assert.AreEqual(Colors.Red, label0.BackgroundColor);
+			Assert.AreEqual(Colors.Red, label0.TextColor);
 			Assert.AreEqual("foo", label0.Text);
 
 			var label1 = new Label
@@ -359,8 +360,8 @@ namespace Xamarin.Forms.Core.UnitTests
 				Style = style
 			};
 
-			Assert.AreEqual(Color.Red, label1.BackgroundColor);
-			Assert.AreEqual(Color.Red, label1.TextColor);
+			Assert.AreEqual(Colors.Red, label1.BackgroundColor);
+			Assert.AreEqual(Colors.Red, label1.TextColor);
 			Assert.AreEqual(Label.TextProperty.DefaultValue, label1.Text);
 
 			var layout1 = new StackLayout
@@ -373,8 +374,8 @@ namespace Xamarin.Forms.Core.UnitTests
 				{"basestyle", baseStyle1}
 			};
 
-			Assert.AreEqual(Color.Red, label1.BackgroundColor);
-			Assert.AreEqual(Color.Red, label1.TextColor);
+			Assert.AreEqual(Colors.Red, label1.BackgroundColor);
+			Assert.AreEqual(Colors.Red, label1.TextColor);
 			Assert.AreEqual("bar", label1.Text);
 		}
 
@@ -421,12 +422,12 @@ namespace Xamarin.Forms.Core.UnitTests
 			var style = new Style(typeof(Label))
 			{
 				Setters = {
-					new Setter {Property = Label.TextColorProperty, Value=Color.Black},
+					new Setter {Property = Label.TextColorProperty, Value=Colors.Black},
 				}
 			};
 
 			var label = new Label { TextColor = Colors.White, Style = style };
-			Assert.AreEqual(Color.White, label.TextColor);
+			Assert.AreEqual(Colors.White, label.TextColor);
 		}
 
 		[Test]
@@ -450,9 +451,9 @@ namespace Xamarin.Forms.Core.UnitTests
 			};
 
 			var entry = new Entry { IsEnabled = false, Style = style };
-			Assert.AreEqual(Color.Red, entry.TextColor);
+			Assert.AreEqual(Colors.Red, entry.TextColor);
 			entry.IsEnabled = true;
-			Assert.AreEqual(Color.Yellow, entry.TextColor);
+			Assert.AreEqual(Colors.Yellow, entry.TextColor);
 		}
 
 		[Test]
@@ -543,7 +544,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				}
 			};
 			Assert.AreEqual("Foo", ((Label)view.Content).Text);
-			Assert.AreEqual(Color.Red, ((Label)view.Content).TextColor);
+			Assert.AreEqual(Colors.Red, ((Label)view.Content).TextColor);
 		}
 
 		[Test]
@@ -570,7 +571,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				}
 			};
 			Assert.AreEqual(Label.TextProperty.DefaultValue, ((Label)view.Content).Text);
-			Assert.AreEqual(Color.Red, ((Label)view.Content).TextColor);
+			Assert.AreEqual(Colors.Red, ((Label)view.Content).TextColor);
 		}
 
 		[Test]
@@ -598,7 +599,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				}
 			};
 			Assert.AreEqual("Foo", ((Label)view.Content).Text);
-			Assert.AreEqual(Color.Red, ((Label)view.Content).TextColor);
+			Assert.AreEqual(Colors.Red, ((Label)view.Content).TextColor);
 		}
 
 		[Test]
@@ -652,13 +653,13 @@ namespace Xamarin.Forms.Core.UnitTests
 				}
 			};
 
-			Assert.AreEqual(Color.Pink, button.TextColor);
+			Assert.AreEqual(Colors.Pink, button.TextColor);
 			Assert.AreEqual(null, button.BackgroundColor);
 
-			Assert.AreEqual(Color.Pink, myButton.TextColor);
+			Assert.AreEqual(Colors.Pink, myButton.TextColor);
 			Assert.AreEqual(null, myButton.BackgroundColor);
 
-			Assert.AreEqual(Color.Pink, label.BackgroundColor);
+			Assert.AreEqual(Colors.Pink, label.BackgroundColor);
 			Assert.AreEqual(null, label.TextColor);
 
 			Assert.AreEqual(null, myLabel.BackgroundColor);
@@ -707,10 +708,10 @@ namespace Xamarin.Forms.Core.UnitTests
 				}
 			};
 
-			Assert.AreEqual(Color.Pink, button.TextColor);
+			Assert.AreEqual(Colors.Pink, button.TextColor);
 			Assert.AreEqual(null, button.BackgroundColor);
 
-			Assert.AreEqual(Color.Pink, label.BackgroundColor);
+			Assert.AreEqual(Colors.Pink, label.BackgroundColor);
 			Assert.AreEqual(null, label.TextColor);
 		}
 
@@ -755,10 +756,10 @@ namespace Xamarin.Forms.Core.UnitTests
 			(cv.Content as StackLayout).Children.Add(button);
 			(cv.Content as StackLayout).Children.Add(label);
 
-			Assert.AreEqual(Color.Pink, button.TextColor);
+			Assert.AreEqual(Colors.Pink, button.TextColor);
 			Assert.AreEqual(null, button.BackgroundColor);
 
-			Assert.AreEqual(Color.Pink, label.BackgroundColor);
+			Assert.AreEqual(Colors.Pink, label.BackgroundColor);
 			Assert.AreEqual(null, label.TextColor);
 		}
 
@@ -792,7 +793,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				Content = button
 			};
 
-			Assert.AreEqual(Color.Pink, button.TextColor);
+			Assert.AreEqual(Colors.Pink, button.TextColor);
 			Assert.AreEqual(20d, button.FontSize);
 		}
 
@@ -805,7 +806,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			};
 			var label1 = new Label();
 
-			Assume.That(label0.TextColor, Is.EqualTo(Color.Pink));
+			Assume.That(label0.TextColor, Is.EqualTo(Colors.Pink));
 			Assume.That(label1.TextColor, Is.EqualTo(null));
 
 			var rd0 = new ResourceDictionary {
@@ -839,12 +840,12 @@ namespace Xamarin.Forms.Core.UnitTests
 			//Assert.That(label0.TextColor, Is.EqualTo(Color.Pink));
 			//Assert.That(label1.TextColor, Is.EqualTo(null));
 
-			Assert.That(label0.TextColor, Is.EqualTo(Color.Pink));
-			Assert.That(label1.TextColor, Is.EqualTo(Color.Olive));
+			Assert.That(label0.TextColor, Is.EqualTo(Colors.Pink));
+			Assert.That(label1.TextColor, Is.EqualTo(Colors.Olive));
 
 			mockApp.Resources = rd1;
-			Assert.That(label0.TextColor, Is.EqualTo(Color.Pink));
-			Assert.That(label1.TextColor, Is.EqualTo(Color.Lavender));
+			Assert.That(label0.TextColor, Is.EqualTo(Colors.Pink));
+			Assert.That(label1.TextColor, Is.EqualTo(Colors.Lavender));
 		}
 
 		[Test]

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using System.Windows.Input;
 using NUnit.Framework;
 using Xamarin.Forms.Maps;
@@ -60,15 +61,15 @@ namespace Xamarin.Forms.Core.UnitTests
 #pragma warning disable 0414
 		static PropertyTestCase[] Properties = {
 			new PropertyTestCase<View, bool> ("InputTransparent", v => v.InputTransparent, (v, o) => v.InputTransparent = o, () => false, true),
-			new PropertyTestCase<View, double> ("Scale", v => v.Scale, (v, o) => v.Scale = o, () => 1d, 2d),
-			new PropertyTestCase<View, double> ("Rotation", v => v.Rotation, (v, o) => v.Rotation = o, () => 0d, 90d),
-			new PropertyTestCase<View, double> ("RotationX", v => v.RotationX, (v, o) => v.RotationX = o, () => 0d, 90d),
-			new PropertyTestCase<View, double> ("RotationY", v => v.RotationY, (v, o) => v.RotationY = o, () => 0d, 90d),
-			new PropertyTestCase<View, double> ("AnchorX", v => v.AnchorX, (v, o) => v.AnchorX = o, () => 0.5d, 0d),
-			new PropertyTestCase<View, double> ("AnchorY", v => v.AnchorY, (v, o) => v.AnchorY = o, () => 0.5d, 0d),
-			new PropertyTestCase<View, double> ("TranslationX", v => v.TranslationX, (v, o) => v.TranslationX = o, () => 0d, 20d),
-			new PropertyTestCase<View, double> ("TranslationY", v => v.TranslationY, (v, o) => v.TranslationY = o, () => 0d, 20d),
-			new PropertyTestCase<View, double> ("Opacity", v => v.Opacity, (v, o) => v.Opacity = o, () => 1d, 0.5d),
+			new PropertyTestCase<View, float> ("Scale", v => v.Scale, (v, o) => v.Scale = o, () => 1f, 2f),
+			new PropertyTestCase<View, float> ("Rotation", v => v.Rotation, (v, o) => v.Rotation = o, () => 0f, 90f),
+			new PropertyTestCase<View, float> ("RotationX", v => v.RotationX, (v, o) => v.RotationX = o, () => 0, 90f),
+			new PropertyTestCase<View, float> ("RotationY", v => v.RotationY, (v, o) => v.RotationY = o, () => 0, 90f),
+			new PropertyTestCase<View, float> ("AnchorX", v => v.AnchorX, (v, o) => v.AnchorX = o, () => 0.5f, 0),
+			new PropertyTestCase<View, float> ("AnchorY", v => v.AnchorY, (v, o) => v.AnchorY = o, () => 0.5f, 0),
+			new PropertyTestCase<View, float> ("TranslationX", v => v.TranslationX, (v, o) => v.TranslationX = o, () => 0, 20),
+			new PropertyTestCase<View, float> ("TranslationY", v => v.TranslationY, (v, o) => v.TranslationY = o, () => 0, 20),
+			new PropertyTestCase<View, float> ("Opacity", v => v.Opacity, (v, o) => v.Opacity = o, () => 1, 0.5f),
 			new PropertyTestCase<View, bool> ("IsEnabled", v => v.IsEnabled, (v, o) => v.IsEnabled = o, () => true, false),
 			new PropertyTestCase<View, bool> ("IsVisible", v => v.IsVisible, (v, o) => v.IsVisible = o, () => true, false),
 			new PropertyTestCase<View, string> ("ClassId", v => v.ClassId, (v, o) => v.ClassId = o, () => null, "Foo"),
@@ -77,14 +78,14 @@ namespace Xamarin.Forms.Core.UnitTests
 			new PropertyTestCase<Button, string> ("Text", v => v.Text, (v, o) => v.Text = o, () => null, "Foo"),
 			new PropertyTestCase<Button, Color> ("TextColor", v => v.TextColor, (v, o) => v.TextColor = o, () => null, new Color (0, 1, 0)),
 			new PropertyTestCase<Button, Font> ("Font", v => v.Font, (v, o) => v.Font = o, () => default (Font), Font.SystemFontOfSize (20)),
-			new PropertyTestCase<Button, double> ("BorderWidth", v => v.BorderWidth, (v, o) => v.BorderWidth = o, () => -1d, 16d),
+			new PropertyTestCase<Button, float> ("BorderWidth", v => v.BorderWidth, (v, o) => v.BorderWidth = o, () => -1, 16),
 			new PropertyTestCase<Button, int> ("BorderRadius", v => v.BorderRadius, (v, o) => v.BorderRadius = o, () => 5, 12),
 			new PropertyTestCase<Button, int> ("CornerRadius", v => v.CornerRadius, (v, o) => v.CornerRadius = o, () => -1, 12),
 			new PropertyTestCase<Button, Color> ("BorderColor", v => v.BorderColor, (v, o) => v.BorderColor = o, () => null, new Color (0, 1, 0)),
 			new PropertyTestCase<Button, string> ("FontFamily", v => v.FontFamily, (v, o) => v.FontFamily = o, () => null, "TestingFace"),
-			new PropertyTestCase<Button, double> ("FontSize", v => v.FontSize, (v, o) => v.FontSize = o, () => Device.GetNamedSize (NamedSize.Default, typeof (Button), true), 123.0),
+			new PropertyTestCase<Button, float> ("FontSize", v => v.FontSize, (v, o) => v.FontSize = o, () => Device.GetNamedSize (NamedSize.Default, typeof (Button), true), 123),
 			new PropertyTestCase<Button, FontAttributes> ("FontAttributes", v => v.FontAttributes, (v, o) => v.FontAttributes = o, () => FontAttributes.None, FontAttributes.Italic),
-			new PropertyTestCase<CellTests.TestCell, double> ("Height", v => v.Height, (v, o) => v.Height = o, () => -1, 10),
+			new PropertyTestCase<CellTests.TestCell, float> ("Height", v => v.Height, (v, o) => v.Height = o, () => -1, 10),
 			new PropertyTestCase<DatePicker, DateTime> ("MinimumDate", v => v.MinimumDate, (v, o) => v.MinimumDate = o, () => new DateTime (1900, 1, 1), new DateTime (2014, 02, 05)),
 			new PropertyTestCase<DatePicker, DateTime> ("MaximumDate", v => v.MaximumDate, (v, o) => v.MaximumDate = o, () => new DateTime (2100, 12, 31), new DateTime (2014, 02, 05)),
 			new PropertyTestCase<DatePicker, DateTime> ("Date", v => v.Date, (v, o) => v.Date = o, () => DateTime.Now.Date, new DateTime (2008, 5, 5)),
@@ -97,8 +98,8 @@ namespace Xamarin.Forms.Core.UnitTests
 			new PropertyTestCase<Frame, Color> ("BackgroundColor", v => v.BackgroundColor, (v, o) => v.BackgroundColor = o, () => null, new Color (0, 1, 0)),
 			new PropertyTestCase<Frame, Color> ("OutlineColor", v => v.OutlineColor, (v, o) => v.OutlineColor = o, () => null, new Color (0, 1, 0)),
 			new PropertyTestCase<Frame, bool> ("HasShadow", v => v.HasShadow, (v, o) => v.HasShadow = o, () => true, false),
-			new PropertyTestCase<Grid, double> ("RowSpacing", v => v.RowSpacing, (v, o) => v.RowSpacing = o, () => 6, 12),
-			new PropertyTestCase<Grid, double> ("ColumnSpacing", v => v.ColumnSpacing, (v, o) => v.ColumnSpacing = o, () => 6, 12),
+			new PropertyTestCase<Grid, float> ("RowSpacing", v => v.RowSpacing, (v, o) => v.RowSpacing = o, () => 6, 12),
+			new PropertyTestCase<Grid, float> ("ColumnSpacing", v => v.ColumnSpacing, (v, o) => v.ColumnSpacing = o, () => 6, 12),
 			new PropertyTestCase<NaiveLayout, Thickness> ("Padding", v => v.Padding, (v, o) => v.Padding = o, () => default(Thickness), new Thickness (20, 20, 10, 10)),
 			new PropertyTestCase<Image, ImageSource> ("Source", v => v.Source, (v, o) => v.Source = o, () => null, ImageSource.FromFile("Foo")),
 			new PropertyTestCase<Image, Aspect> ("Aspect", v => v.Aspect, (v, o) => v.Aspect = o, () => Aspect.AspectFit, Aspect.AspectFill),
@@ -110,7 +111,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			new PropertyTestCase<Label, LineBreakMode> ("LineBreakMode", v => v.LineBreakMode, (v, o) => v.LineBreakMode = o, () => LineBreakMode.WordWrap, LineBreakMode.TailTruncation),
 			new PropertyTestCase<Label, Font> ("Font", v => v.Font, (v, o) => v.Font = o, () => default (Font), Font.SystemFontOfSize (12)),
 			new PropertyTestCase<Label, string> ("FontFamily", v => v.FontFamily, (v, o) => v.FontFamily = o, () => null, "TestingFace"),
-			new PropertyTestCase<Label, double> ("FontSize", v => v.FontSize, (v, o) => v.FontSize = o, () => Device.GetNamedSize (NamedSize.Default, typeof (Label), true), 123.0),
+			new PropertyTestCase<Label, float> ("FontSize", v => v.FontSize, (v, o) => v.FontSize = o, () => Device.GetNamedSize (NamedSize.Default, typeof (Label), true), 123),
 			new PropertyTestCase<Label, FontAttributes> ("FontAttributes", v => v.FontAttributes, (v, o) => v.FontAttributes = o, () => FontAttributes.None, FontAttributes.Italic),
 			new PropertyTestCase<Label, FormattedString> ("FormattedText", v => v.FormattedText, (v, o) => v.FormattedText = o, () => default (FormattedString), new FormattedString()),
 			new PropertyTestCase<Map, MapType> ("MapType", v => v.MapType, (v, o) => v.MapType = o, () => MapType.Street, MapType.Satellite),
@@ -126,19 +127,19 @@ namespace Xamarin.Forms.Core.UnitTests
 			new PropertyTestCase<Page, Thickness> ("Padding", v => v.Padding, (v, o) => v.Padding = o, () => default(Thickness), new Thickness (12)),
 			new PropertyTestCase<Picker, string> ("Title", v=>v.Title, (v, o) =>v.Title = o, () => null, "FooBar"),
 			new PropertyTestCase<Picker, int> ("SelectedIndex", v=>v.SelectedIndex, (v, o) =>v.SelectedIndex = o, () => -1, 2, ()=>new Picker{Items= {"Foo", "Bar", "Baz", "Qux"}}),
-			new PropertyTestCase<ProgressBar, double> ("Progress", v => v.Progress, (v, o) => v.Progress = o, () => 0, .5),
+			new PropertyTestCase<ProgressBar, float> ("Progress", v => v.Progress, (v, o) => v.Progress = o, () => 0, .5f),
 			new PropertyTestCase<ProgressBar, Color> ("ProgressColor", v => v.ProgressColor, (v, o) => v.ProgressColor = o, () => null, new Color (0, 1, 0)),
 			new PropertyTestCase<SearchBar, string> ("Placeholder", v => v.Placeholder, (v, o) => v.Placeholder = o, () => null, "Foo"),
 			new PropertyTestCase<SearchBar, string> ("Text", v => v.Text, (v, o) => v.Text = o, () => null, "Foo"),
-			new PropertyTestCase<Slider, double> ("Minimum", v => v.Minimum, (v, o) => v.Minimum = o, () => 0, .5),
-			new PropertyTestCase<Slider, double> ("Maximum", v => v.Maximum, (v, o) => v.Maximum = o, () => 1, .5),
-			new PropertyTestCase<Slider, double> ("Value", v => v.Value, (v, o) => v.Value = o, () => 0, .5),
+			new PropertyTestCase<Slider, float> ("Minimum", v => v.Minimum, (v, o) => v.Minimum = o, () => 0, .5f),
+			new PropertyTestCase<Slider, float> ("Maximum", v => v.Maximum, (v, o) => v.Maximum = o, () => 1, .5f),
+			new PropertyTestCase<Slider, float> ("Value", v => v.Value, (v, o) => v.Value = o, () => 0, .5f),
 			new PropertyTestCase<StackLayout, StackOrientation> ("Orientation", v => v.Orientation, (v, o) => v.Orientation = o, () => StackOrientation.Vertical, StackOrientation.Horizontal),
-			new PropertyTestCase<StackLayout, double> ("Spacing", v => v.Spacing, (v, o) => v.Spacing = o, () => 6, 12),
-			new PropertyTestCase<Stepper, double> ("Minimum", v => v.Minimum, (v, o) => v.Minimum = o, () => 0, 50),
-			new PropertyTestCase<Stepper, double> ("Maximum", v => v.Maximum, (v, o) => v.Maximum = o, () => 100, 50),
-			new PropertyTestCase<Stepper, double> ("Value", v => v.Value, (v, o) => v.Value = o, () => 0, 50),
-			new PropertyTestCase<Stepper, double> ("Increment", v => v.Increment, (v, o) => v.Increment = o, () => 1, 2),
+			new PropertyTestCase<StackLayout, float> ("Spacing", v => v.Spacing, (v, o) => v.Spacing = o, () => 6, 12),
+			new PropertyTestCase<Stepper, float> ("Minimum", v => v.Minimum, (v, o) => v.Minimum = o, () => 0, 50),
+			new PropertyTestCase<Stepper, float> ("Maximum", v => v.Maximum, (v, o) => v.Maximum = o, () => 100, 50),
+			new PropertyTestCase<Stepper, float> ("Value", v => v.Value, (v, o) => v.Value = o, () => 0, 50),
+			new PropertyTestCase<Stepper, float> ("Increment", v => v.Increment, (v, o) => v.Increment = o, () => 1, 2),
 			new PropertyTestCase<TableRoot, string> ("Title", v => v.Title, (v, o) => v.Title = o, () => null, "Foo"),
 			new PropertyTestCase<TableView, int> ("RowHeight", v => v.RowHeight, (v, o) => v.RowHeight = o, () => -1, 20),
 			new PropertyTestCase<TableView, bool> ("HasUnevenRows", v => v.HasUnevenRows, (v, o) => v.HasUnevenRows = o, () => false, true),
@@ -202,7 +203,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		}
 
 		[Test, TestCaseSource("Properties")]
-		public void DoubleSet(PropertyTestCase property)
+		public void floatSet(PropertyTestCase property)
 		{
 			var view = property.CreateView();
 

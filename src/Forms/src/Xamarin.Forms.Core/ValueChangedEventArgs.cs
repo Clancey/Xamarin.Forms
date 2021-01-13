@@ -4,14 +4,14 @@ namespace Xamarin.Forms
 {
 	public class ValueChangedEventArgs : EventArgs
 	{
-		public ValueChangedEventArgs(double oldValue, double newValue)
+		public ValueChangedEventArgs(float oldValue, float newValue)
 		{
 			OldValue = oldValue;
 			NewValue = newValue;
 		}
 
-		public double NewValue { get; private set; }
+		public float NewValue { get; private set; }
 
-		public double OldValue { get; private set; }
+		public float OldValue { get; private set; }
 	}
 }

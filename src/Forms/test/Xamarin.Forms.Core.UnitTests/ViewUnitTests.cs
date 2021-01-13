@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Graphics;
 using System.Threading.Tasks;
 
 using NUnit.Framework;
@@ -35,7 +36,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		public void TestLayout()
 		{
 			View view = new View();
-			view.Layout(new Rectangle(50, 25, 100, 200));
+			view.Layout(new RectangleF(50, 25, 100, 200));
 
 			Assert.AreEqual(view.X, 50);
 			Assert.AreEqual(view.Y, 25);
@@ -59,7 +60,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assert.True(fired);
 
-			var result = view.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity).Request;
+			var result = view.GetSizeRequest(float.PositiveInfinity, float.PositiveInfinity).Request;
 			Assert.AreEqual(new SizeF(200, 300), result);
 		}
 
@@ -71,7 +72,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			bool fired = false;
 			view.SizeChanged += (sender, e) => fired = true;
 
-			view.Layout(new Rectangle(0, 0, 100, 100));
+			view.Layout(new RectangleF(0, 0, 100, 100));
 
 			Assert.True(fired);
 		}
@@ -254,9 +255,9 @@ namespace Xamarin.Forms.Core.UnitTests
 			var view = new View { IsPlatformEnabled = true };
 			Ticker.Default = new BlockingTicker();
 
-			await view.FadeTo(0.1);
+			await view.FadeTo(0.1f);
 
-			Assert.True(Math.Abs(0.1 - view.Opacity) < 0.001);
+			Assert.True(Math.Abs(0.1f - view.Opacity) < 0.001);
 		}
 
 		[Test]
@@ -362,7 +363,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		}
 
 		[Test]
-		public void TestDoubleSetParent()
+		public void TestfloatSetParent()
 		{
 			var view = new ParentSignalView();
 			var parent = new NaiveLayout { Children = { view } };
@@ -678,7 +679,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			view.WidthRequest = 200;
 			view.MinimumWidthRequest = 100;
 
-			var result = view.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity);
+			var result = view.GetSizeRequest(float.PositiveInfinity, float.PositiveInfinity);
 			Assert.AreEqual(new SizeF(200, 20), result.Request);
 			Assert.AreEqual(new SizeF(100, 20), result.Minimum);
 		}
@@ -695,7 +696,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			view.WidthRequest = 20;
 			view.MinimumHeightRequest = 100;
 
-			var result = view.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity);
+			var result = view.GetSizeRequest(float.PositiveInfinity, float.PositiveInfinity);
 			Assert.AreEqual(new SizeF(20, 200), result.Request);
 			Assert.AreEqual(new SizeF(20, 100), result.Minimum);
 		}
@@ -766,7 +767,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		public void MockBounds()
 		{
 			var view = new View();
-			view.Layout(new Rectangle(10, 20, 30, 40));
+			view.Layout(new RectangleF(10, 20, 30, 40));
 
 			bool changed = false;
 			view.PropertyChanged += (sender, args) =>
@@ -780,14 +781,14 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			view.SizeChanged += (sender, args) => changed = true;
 
-			view.MockBounds(new Rectangle(5, 10, 15, 20));
+			view.MockBounds(new RectangleF(5, 10, 15, 20));
 
-			Assert.AreEqual(new Rectangle(5, 10, 15, 20), view.Bounds);
+			Assert.AreEqual(new RectangleF(5, 10, 15, 20), view.Bounds);
 			Assert.False(changed);
 
 			view.UnmockBounds();
 
-			Assert.AreEqual(new Rectangle(10, 20, 30, 40), view.Bounds);
+			Assert.AreEqual(new RectangleF(10, 20, 30, 40), view.Bounds);
 			Assert.False(changed);
 		}
 
@@ -831,7 +832,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var view = new View();
 			view.IsPlatformEnabled = true;
 			view.WidthRequest = 20;
-			var request = view.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity);
+			var request = view.GetSizeRequest(float.PositiveInfinity, float.PositiveInfinity);
 
 			Assert.AreEqual(new SizeF(20, 50), request.Request);
 		}
@@ -849,7 +850,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var view = new View();
 			view.IsPlatformEnabled = true;
 			view.HeightRequest = 20;
-			var request = view.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity);
+			var request = view.GetSizeRequest(float.PositiveInfinity, float.PositiveInfinity);
 
 			Assert.AreEqual(new SizeF(40, 20), request.Request);
 		}
@@ -864,7 +865,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 				Clip = new RectangleGeometry
 				{
-					Rect = new Rectangle(0, 0, 50, 50)
+					Rect = new RectangleF(0, 0, 50, 50)
 				}
 			};
 
@@ -881,7 +882,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 				Clip = new RectangleGeometry
 				{
-					Rect = new Rectangle(0, 0, 50, 50)
+					Rect = new RectangleF(0, 0, 50, 50)
 				}
 			};
 

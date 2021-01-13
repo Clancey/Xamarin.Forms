@@ -82,20 +82,20 @@ namespace Xamarin.Forms.Core.UnitTests
 			Assert.True(changed);
 		}
 
-		[TestCase(0.0, 1.0)]
-		[TestCase(1.0, 0.5)]
-		public void SliderValueChangedEventArgs(double initialValue, double finalValue)
+		[TestCase(0, 1)]
+		[TestCase(1, 0.5f)]
+		public void SliderValueChangedEventArgs(float initialValue, float finalValue)
 		{
 			var slider = new Slider
 			{
-				Minimum = 0.0,
-				Maximum = 1.0,
+				Minimum = 0,
+				Maximum = 1,
 				Value = initialValue
 			};
 
 			Slider sliderFromSender = null;
-			double oldValue = 0.0;
-			double newValue = 0.0;
+			float oldValue = 0;
+			float newValue = 0;
 
 			slider.ValueChanged += (s, e) =>
 			{

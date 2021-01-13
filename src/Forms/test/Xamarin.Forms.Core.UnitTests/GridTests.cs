@@ -280,7 +280,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				ColumnSpacing = 12
 			};
 
-			grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(0.8, GridUnitType.Star) });
+			grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(0.8f, GridUnitType.Star) });
 			grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Star });
 
 			grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
@@ -341,7 +341,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			// Because the column with the label in it is narrower in this grid (0.5* vs 1*), the label will have
 			// grow taller to fit the text. So we expect this grid to grow vertically to accommodate it.
-			grid2.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(0.5, GridUnitType.Star) });
+			grid2.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(0.5f, GridUnitType.Star) });
 			grid2.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Star });
 
 			grid2.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
@@ -890,7 +890,7 @@ namespace Xamarin.Forms.Core.UnitTests
 					if (op == 'C')
 						AddColumnDef();
 
-					_grid.Layout(new RectangleFF(0, 0, 912, 912));
+					_grid.Layout(new RectangleF(0, 0, 912, 912));
 				}
 
 				Console.WriteLine($"Operations: {string.Join(string.Empty, operations)}");

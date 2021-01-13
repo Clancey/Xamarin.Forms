@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Graphics;
+using NUnit.Framework;
 
 
 namespace Xamarin.Forms.Core.UnitTests
@@ -41,7 +42,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		}
 
 		[Test]
-		public void TestPointFromSize([Range(0, 2)] double x, [Range(0, 2)] double y)
+		public void TestPointFromSize([Range(0, 2)] float x, [Range(0, 2)] float y)
 		{
 			var size = new SizeF(x, y);
 			var point = (PointF)size;
@@ -51,7 +52,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		}
 
 		[Test]
-		public void HashCode([Range(3, 5)] double w1, [Range(3, 5)] double h1, [Range(3, 5)] double w2, [Range(3, 5)] double h2)
+		public void HashCode([Range(3, 5)] float w1, [Range(3, 5)] float h1, [Range(3, 5)] float w2, [Range(3, 5)] float h2)
 		{
 			bool result = new SizeF(w1, h1).GetHashCode() == new SizeF(w2, h2).GetHashCode();
 
@@ -75,13 +76,13 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		[TestCase(0, 0, ExpectedResult = "{Width=0 Height=0}")]
 		[TestCase(1, 5, ExpectedResult = "{Width=1 Height=5}")]
-		public string TestToString(double w, double h)
+		public string TestToString(float w, float h)
 		{
 			return new SizeF(w, h).ToString();
 		}
 
 		[Test]
-		public void MultiplyByScalar([Range(12, 15)] int w, [Range(12, 15)] int h, [Values(0.0, 2.0, 7.0, 0.25)] double scalar)
+		public void MultiplyByScalar([Range(12, 15)] int w, [Range(12, 15)] int h, [Values(0.0, 2.0, 7.0, 0.25)] float scalar)
 		{
 			var size = new SizeF(w, h);
 			var result = size * scalar;

@@ -20,7 +20,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void TestFontForSizeDouble()
 		{
-			var font = Font.OfSize("Foo", 12.7);
+			var font = Font.OfSize("Foo", 12.7f);
 			Assert.AreEqual("Foo", font.FontFamily);
 			Assert.AreEqual(12.7, font.FontSize);
 			Assert.AreEqual((NamedSize)0, font.NamedSize);
@@ -54,9 +54,9 @@ namespace Xamarin.Forms.Core.UnitTests
 		{
 			System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(culture);
 
-			var font = Font.SystemFontOfSize(12.7);
+			var font = Font.SystemFontOfSize(12.7f);
 			Assert.AreEqual(null, font.FontFamily);
-			Assert.AreEqual(12.7, font.FontSize);
+			Assert.AreEqual(12.7f, font.FontSize);
 			Assert.AreEqual((NamedSize)0, font.NamedSize);
 
 			font = Font.SystemFontOfSize(NamedSize.Medium);
@@ -113,7 +113,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			Assert.AreEqual(Font.SystemFontOfSize(42), converter.ConvertFromInvariantString("42"));
 			Assert.AreEqual(Font.OfSize("Foo", NamedSize.Micro), converter.ConvertFromInvariantString("Foo, Micro"));
 			Assert.AreEqual(Font.OfSize("Foo", 42), converter.ConvertFromInvariantString("Foo, 42"));
-			Assert.AreEqual(Font.OfSize("Foo", 12.7), converter.ConvertFromInvariantString("Foo, 12.7"));
+			Assert.AreEqual(Font.OfSize("Foo", 12.7f), converter.ConvertFromInvariantString("Foo, 12.7"));
 			Assert.AreEqual(Font.SystemFontOfSize(NamedSize.Large, FontAttributes.Bold), converter.ConvertFromInvariantString("Bold, Large"));
 			Assert.AreEqual(Font.SystemFontOfSize(42, FontAttributes.Bold), converter.ConvertFromInvariantString("Bold, 42"));
 			Assert.AreEqual(Font.OfSize("Foo", NamedSize.Medium), converter.ConvertFromInvariantString("Foo"));
@@ -121,11 +121,11 @@ namespace Xamarin.Forms.Core.UnitTests
 			Assert.AreEqual(Font.OfSize("Foo", NamedSize.Large).WithAttributes(FontAttributes.Italic), converter.ConvertFromInvariantString("Foo, Italic, Large"));
 			Assert.AreEqual(Font.OfSize("Foo", NamedSize.Large).WithAttributes(FontAttributes.Bold | FontAttributes.Italic), converter.ConvertFromInvariantString("Foo, Bold, Italic, Large"));
 			Assert.AreEqual(Font.OfSize("Foo", 12).WithAttributes(FontAttributes.Bold), converter.ConvertFromInvariantString("Foo, Bold, 12"));
-			Assert.AreEqual(Font.OfSize("Foo", 12.7).WithAttributes(FontAttributes.Bold), converter.ConvertFromInvariantString("Foo, Bold, 12.7"));
+			Assert.AreEqual(Font.OfSize("Foo", 12.7f).WithAttributes(FontAttributes.Bold), converter.ConvertFromInvariantString("Foo, Bold, 12.7"));
 			Assert.AreEqual(Font.OfSize("Foo", 12).WithAttributes(FontAttributes.Italic), converter.ConvertFromInvariantString("Foo, Italic, 12"));
-			Assert.AreEqual(Font.OfSize("Foo", 12.7).WithAttributes(FontAttributes.Italic), converter.ConvertFromInvariantString("Foo, Italic, 12.7"));
+			Assert.AreEqual(Font.OfSize("Foo", 12.7f).WithAttributes(FontAttributes.Italic), converter.ConvertFromInvariantString("Foo, Italic, 12.7"));
 			Assert.AreEqual(Font.OfSize("Foo", 12).WithAttributes(FontAttributes.Bold | FontAttributes.Italic), converter.ConvertFromInvariantString("Foo, Bold, Italic, 12"));
-			Assert.AreEqual(Font.OfSize("Foo", 12.7).WithAttributes(FontAttributes.Bold | FontAttributes.Italic), converter.ConvertFromInvariantString("Foo, Bold, Italic, 12.7"));
+			Assert.AreEqual(Font.OfSize("Foo", 12.7f).WithAttributes(FontAttributes.Bold | FontAttributes.Italic), converter.ConvertFromInvariantString("Foo, Bold, Italic, 12.7"));
 		}
 
 		[Test]

@@ -27,7 +27,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		{
 			var itemsView = new StructuredItemsView();
 
-			var sizeRequest = itemsView.Measure(double.PositiveInfinity, double.PositiveInfinity);
+			var sizeRequest = itemsView.Measure(float.PositiveInfinity, float.PositiveInfinity);
 
 			Assert.That(sizeRequest.Request.Height, Is.EqualTo(Device.Info.ScaledScreenSize.Height));
 			Assert.That(sizeRequest.Request.Width, Is.EqualTo(Device.Info.ScaledScreenSize.Width));
@@ -40,7 +40,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			itemsView.ItemsLayout = new LinearItemsLayout(ItemsLayoutOrientation.Horizontal);
 
-			var sizeRequest = itemsView.Measure(double.PositiveInfinity, double.PositiveInfinity);
+			var sizeRequest = itemsView.Measure(float.PositiveInfinity, float.PositiveInfinity);
 
 			Assert.That(sizeRequest.Request.Height, Is.EqualTo(Device.Info.ScaledScreenSize.Height));
 			Assert.That(sizeRequest.Request.Width, Is.EqualTo(Device.Info.ScaledScreenSize.Width));

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Graphics;
 using NUnit.Framework;
 using Xamarin.Forms.Internals;
 
@@ -21,7 +22,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			GestureStatus result = GestureStatus.Canceled;
 			var point = new PointF(10, 10);
-			var resultPoint = Point.Zero;
+			var resultPoint = PointF.Zero;
 			pinch.PinchUpdated += (object sender, PinchGestureUpdatedEventArgs e) =>
 			{
 				result = e.Status;
@@ -55,7 +56,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var view = new View();
 			var pinch = new PinchGestureRecognizer();
 			var point = new PointF(10, 10);
-			var resultPoint = Point.Zero;
+			var resultPoint = PointF.Zero;
 			double result = -1;
 			pinch.PinchUpdated += (object sender, PinchGestureUpdatedEventArgs e) =>
 			{

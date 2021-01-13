@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Graphics;
 using NUnit.Framework;
 
 namespace Xamarin.Forms.Core.UnitTests

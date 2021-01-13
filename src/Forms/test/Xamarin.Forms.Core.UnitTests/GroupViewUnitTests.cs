@@ -261,9 +261,9 @@ namespace Xamarin.Forms.Core.UnitTests
 				}
 			};
 
-			group.Layout(new Rectangle(0, 0, 400, 400));
+			group.Layout(new RectangleF(0, 0, 400, 400));
 
-			Assert.AreEqual(new Rectangle(0, 0, 50, 20), view.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 50, 20), view.Bounds);
 		}
 
 		[Test]

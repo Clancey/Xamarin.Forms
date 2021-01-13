@@ -82,7 +82,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		{
 			var tweener = new Tweener(250);
 
-			double value = 0;
+			float value = 0;
 			int updates = 0;
 			tweener.ValueUpdated += (sender, args) =>
 			{
@@ -98,7 +98,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void ThrowsWithNullCallback()
 		{
-			Assert.Throws<ArgumentNullException>(() => new View().Animate("Test", (Action<double>)null));
+			Assert.Throws<ArgumentNullException>(() => new View().Animate("Test", (Action<float>)null));
 		}
 
 		[Test]
@@ -117,12 +117,12 @@ namespace Xamarin.Forms.Core.UnitTests
 		public void Kinetic()
 		{
 			var view = new View();
-			var resultList = new List<Tuple<double, double>>();
+			var resultList = new List<Tuple<float, float>>();
 			view.AnimateKinetic(
 				name: "Kinetics",
 				callback: (distance, velocity) =>
 				{
-					resultList.Add(new Tuple<double, double>(distance, velocity));
+					resultList.Add(new Tuple<float, float>(distance, velocity));
 					return true;
 				},
 				velocity: 100,
@@ -271,7 +271,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			while (run)
 			{
 				await label.ScaleTo(2, 500);
-				run = !(await label.ScaleTo(0.5, 500));
+				run = !(await label.ScaleTo(0.5f, 500));
 			}
 		}
 

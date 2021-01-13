@@ -1992,7 +1992,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assert.That(slider.Value, Is.EqualTo(0.5));
 
-			slider.Value = 0.9;
+			slider.Value = 0.9f;
 
 			Assert.That(vm.Text, Is.EqualTo("0.9"));
 		}
@@ -2010,7 +2010,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assert.That(slider.Value, Is.EqualTo(0.5));
 
-			slider.Value = 0.9;
+			slider.Value = 0.9f;
 
 			Assert.That(vm.Text, Is.EqualTo("0.9"));
 		}

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Graphics;
 using System.Security.Cryptography.X509Certificates;
 using NUnit.Framework;
 
@@ -62,15 +63,15 @@ namespace Xamarin.Forms.Core.UnitTests
 		}
 
 		[Test]
-		public void ParameterizedConstuctorDoubles()
+		public void ParameterizedConstuctorfloats()
 		{
-			var thickness = new Thickness(1.2, 3.3, 4.2, 10.66);
-			Assert.AreEqual(1.2, thickness.Left);
-			Assert.AreEqual(3.3, thickness.Top);
-			Assert.AreEqual(4.2, thickness.Right);
-			Assert.AreEqual(10.66, thickness.Bottom);
-			Assert.AreEqual(5.4, thickness.HorizontalThickness);
-			Assert.AreEqual(13.96, thickness.VerticalThickness);
+			var thickness = new Thickness(1.2f, 3.3f, 4.2f, 10.66f);
+			Assert.AreEqual(1.2f, thickness.Left);
+			Assert.AreEqual(3.3f, thickness.Top);
+			Assert.AreEqual(4.2f, thickness.Right);
+			Assert.AreEqual(10.66f, thickness.Bottom);
+			Assert.AreEqual(5.4f, thickness.HorizontalThickness);
+			Assert.AreEqual(13.96f, thickness.VerticalThickness);
 		}
 
 		[Test]
@@ -86,8 +87,8 @@ namespace Xamarin.Forms.Core.UnitTests
 		}
 
 		[Test]
-		public void HashCode([Range(3, 4)] double l1, [Range(3, 4)] double t1, [Range(3, 4)] double r1, [Range(3, 4)] double b1,
-							  [Range(3, 4)] double l2, [Range(3, 4)] double t2, [Range(3, 4)] double r2, [Range(3, 4)] double b2)
+		public void HashCode([Range(3, 4)] float l1, [Range(3, 4)] float t1, [Range(3, 4)] float r1, [Range(3, 4)] float b1,
+							  [Range(3, 4)] float l2, [Range(3, 4)] float t2, [Range(3, 4)] float r2, [Range(3, 4)] float b2)
 		{
 			bool result = new Thickness(l1, t1, r1, b1).GetHashCode() == new Thickness(l2, t2, r2, b2).GetHashCode();
 			if (l1 == l2 && t1 == t2 && r1 == r2 && b1 == b2)
@@ -115,18 +116,18 @@ namespace Xamarin.Forms.Core.UnitTests
 			Assert.AreEqual(new Thickness(1), converter.ConvertFromInvariantString("1"));
 			Assert.AreEqual(new Thickness(1, 2), converter.ConvertFromInvariantString("1, 2"));
 			Assert.AreEqual(new Thickness(1, 2, 3, 4), converter.ConvertFromInvariantString("1, 2, 3, 4"));
-			Assert.AreEqual(new Thickness(1.1, 2), converter.ConvertFromInvariantString("1.1,2"));
+			Assert.AreEqual(new Thickness(1.1f, 2), converter.ConvertFromInvariantString("1.1,2"));
 			Assert.Throws<InvalidOperationException>(() => converter.ConvertFromInvariantString(""));
 		}
 
 		[Test]
-		public void ThicknessTypeConverterDoubles()
+		public void ThicknessTypeConverterfloats()
 		{
 			var converter = new ThicknessTypeConverter();
-			Assert.AreEqual(new Thickness(1.3), converter.ConvertFromInvariantString("1.3"));
-			Assert.AreEqual(new Thickness(1.4, 2.8), converter.ConvertFromInvariantString("1.4, 2.8"));
-			Assert.AreEqual(new Thickness(1.6, 2.1, 3.8, 4.2), converter.ConvertFromInvariantString(" 1.6 , 2.1, 3.8, 4.2"));
-			Assert.AreEqual(new Thickness(1.1, 2), converter.ConvertFromInvariantString("1.1,2"));
+			Assert.AreEqual(new Thickness(1.3f), converter.ConvertFromInvariantString("1.3"));
+			Assert.AreEqual(new Thickness(1.4f, 2.8f), converter.ConvertFromInvariantString("1.4, 2.8"));
+			Assert.AreEqual(new Thickness(1.6f, 2.1f, 3.8f, 4.2f), converter.ConvertFromInvariantString(" 1.6 , 2.1, 3.8, 4.2"));
+			Assert.AreEqual(new Thickness(1.1f, 2), converter.ConvertFromInvariantString("1.1,2"));
 		}
 	}
 }

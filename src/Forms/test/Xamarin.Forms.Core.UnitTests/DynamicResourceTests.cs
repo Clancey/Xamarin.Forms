@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Graphics;
+using NUnit.Framework;
 using Xamarin.Forms.Internals;
 
 namespace Xamarin.Forms.Core.UnitTests
@@ -50,7 +51,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				}
 			};
 
-			Assert.AreEqual(Color.Green, label.TextColor);
+			Assert.AreEqual(Colors.Green, label.TextColor);
 		}
 
 		[Test]

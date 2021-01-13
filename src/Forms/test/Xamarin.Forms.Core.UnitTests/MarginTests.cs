@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Graphics;
+using NUnit.Framework;
 using Xamarin.Forms;
 
 namespace Xamarin.Forms.Core.UnitTests
@@ -36,7 +37,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			child.Margin = new Thickness(10, 20, 30, 40);
 			parent.Content = child;
 
-			var result = parent.Measure(double.PositiveInfinity, double.PositiveInfinity, MeasureFlags.IncludeMargins);
+			var result = parent.Measure(float.PositiveInfinity, float.PositiveInfinity, MeasureFlags.IncludeMargins);
 			Assert.AreEqual(new SizeF(140, 110), result.Request);
 		}
 
@@ -57,8 +58,8 @@ namespace Xamarin.Forms.Core.UnitTests
 			child.Margin = new Thickness(10, 20, 30, 40);
 			parent.Content = child;
 
-			parent.Layout(new Rectangle(0, 0, 140, 110));
-			Assert.AreEqual(new Rectangle(10, 20, 100, 50), child.Bounds);
+			parent.Layout(new RectangleF(0, 0, 140, 110));
+			Assert.AreEqual(new RectangleF(10, 20, 100, 50), child.Bounds);
 		}
 
 		[Test]
@@ -80,8 +81,8 @@ namespace Xamarin.Forms.Core.UnitTests
 			child.Margin = new Thickness(10, 20, 30, 40);
 			parent.Content = child;
 
-			parent.Layout(new Rectangle(0, 0, 1000, 1000));
-			Assert.AreEqual(new Rectangle(10, 20, 100, 50), child.Bounds);
+			parent.Layout(new RectangleF(0, 0, 1000, 1000));
+			Assert.AreEqual(new RectangleF(10, 20, 100, 50), child.Bounds);
 		}
 
 		[Test]
@@ -112,15 +113,15 @@ namespace Xamarin.Forms.Core.UnitTests
 			parent.Children.Add(child1);
 			parent.Children.Add(child2);
 
-			parent.Layout(new Rectangle(0, 0, 1000, 1000));
+			parent.Layout(new RectangleF(0, 0, 1000, 1000));
 
-			Assert.AreEqual(new Rectangle(0, 0, 100, 50), child1.Bounds);
-			Assert.AreEqual(new Rectangle(5, 60, 980, 50), child2.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 100, 50), child1.Bounds);
+			Assert.AreEqual(new RectangleF(5, 60, 980, 50), child2.Bounds);
 
 			child1.Margin = new Thickness(10, 20, 30, 40);
 
-			Assert.AreEqual(new Rectangle(10, 20, 100, 50), child1.Bounds);
-			Assert.AreEqual(new Rectangle(5, 120, 980, 50), child2.Bounds);
+			Assert.AreEqual(new RectangleF(10, 20, 100, 50), child1.Bounds);
+			Assert.AreEqual(new RectangleF(5, 120, 980, 50), child2.Bounds);
 		}
 	}
 }

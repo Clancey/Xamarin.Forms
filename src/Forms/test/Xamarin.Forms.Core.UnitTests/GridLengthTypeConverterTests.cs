@@ -12,7 +12,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var converter = new GridLengthTypeConverter();
 
 			Assert.AreEqual(new GridLength(42), converter.ConvertFromInvariantString("42"));
-			Assert.AreEqual(new GridLength(42.2), converter.ConvertFromInvariantString("42.2"));
+			Assert.AreEqual(new GridLength(42.2f), converter.ConvertFromInvariantString("42.2"));
 
 			Assert.Throws<FormatException>(() => converter.ConvertFromInvariantString("foo"));
 		}
@@ -40,14 +40,14 @@ namespace Xamarin.Forms.Core.UnitTests
 		public void TestValue()
 		{
 			var converter = new GridLengthTypeConverter();
-			Assert.AreEqual(new GridLength(3.3), converter.ConvertFromInvariantString("3.3"));
+			Assert.AreEqual(new GridLength(3.3f), converter.ConvertFromInvariantString("3.3"));
 		}
 
 		[Test]
 		public void TestValueStar()
 		{
 			var converter = new GridLengthTypeConverter();
-			Assert.AreEqual(new GridLength(32.3, GridUnitType.Star), converter.ConvertFromInvariantString("32.3*"));
+			Assert.AreEqual(new GridLength(32.3f, GridUnitType.Star), converter.ConvertFromInvariantString("32.3*"));
 		}
 	}
 }

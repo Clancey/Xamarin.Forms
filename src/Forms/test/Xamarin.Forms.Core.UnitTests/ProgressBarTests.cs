@@ -43,7 +43,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		{
 			var bar = new ProgressBar();
 
-			bar.ProgressTo(0.8, 250, Easing.Linear);
+			bar.ProgressTo(0.8f, 250, Easing.Linear);
 
 			Assert.That(bar.Progress, Is.EqualTo(0.8).Within(0.001));
 		}

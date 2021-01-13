@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Graphics;
 using NUnit.Framework;
 using Xamarin.Forms;
 
@@ -25,12 +26,12 @@ namespace Xamarin.Forms.Core.UnitTests
 				Direction = FlexDirection.Column,
 			};
 
-			var sizeRequest = layout.Measure(100, double.PositiveInfinity);
-			layout.Layout(new Rectangle(0, 0, sizeRequest.Request.Width, sizeRequest.Request.Height));
-			Assert.That(layout.Bounds, Is.EqualTo(new Rectangle(0, 0, 100, 30)));
-			Assert.That(view0.Bounds, Is.EqualTo(new Rectangle(0, 0, 100, 10)));
-			Assert.That(view1.Bounds, Is.EqualTo(new Rectangle(0, 10, 100, 10)));
-			Assert.That(view2.Bounds, Is.EqualTo(new Rectangle(0, 20, 100, 10)));
+			var sizeRequest = layout.Measure(100, float.PositiveInfinity);
+			layout.Layout(new RectangleF(0, 0, sizeRequest.Request.Width, sizeRequest.Request.Height));
+			Assert.That(layout.Bounds, Is.EqualTo(new RectangleF(0, 0, 100, 30)));
+			Assert.That(view0.Bounds, Is.EqualTo(new RectangleF(0, 0, 100, 10)));
+			Assert.That(view1.Bounds, Is.EqualTo(new RectangleF(0, 10, 100, 10)));
+			Assert.That(view2.Bounds, Is.EqualTo(new RectangleF(0, 20, 100, 10)));
 		}
 
 		[Test]
@@ -52,12 +53,12 @@ namespace Xamarin.Forms.Core.UnitTests
 			};
 
 
-			var measure = layout.Measure(double.PositiveInfinity, 100);
-			layout.Layout(new Rectangle(0, 0, measure.Request.Width, measure.Request.Height));
-			Assert.That(layout.Bounds, Is.EqualTo(new Rectangle(0, 0, 30, 100)));
-			Assert.That(view0.Bounds, Is.EqualTo(new Rectangle(0, 0, 10, 100)));
-			Assert.That(view1.Bounds, Is.EqualTo(new Rectangle(10, 0, 10, 100)));
-			Assert.That(view2.Bounds, Is.EqualTo(new Rectangle(20, 0, 10, 100)));
+			var measure = layout.Measure(float.PositiveInfinity, 100);
+			layout.Layout(new RectangleF(0, 0, measure.Request.Width, measure.Request.Height));
+			Assert.That(layout.Bounds, Is.EqualTo(new RectangleF(0, 0, 30, 100)));
+			Assert.That(view0.Bounds, Is.EqualTo(new RectangleF(0, 0, 10, 100)));
+			Assert.That(view1.Bounds, Is.EqualTo(new RectangleF(10, 0, 10, 100)));
+			Assert.That(view2.Bounds, Is.EqualTo(new RectangleF(20, 0, 10, 100)));
 		}
 
 		[Test]
@@ -78,11 +79,11 @@ namespace Xamarin.Forms.Core.UnitTests
 				Direction = FlexDirection.Column,
 			};
 
-			layout.Layout(new Rectangle(0, 0, 100, 100));
-			Assert.That(layout.Bounds, Is.EqualTo(new Rectangle(0, 0, 100, 100)));
-			Assert.That(view0.Bounds, Is.EqualTo(new Rectangle(0, 0, 100, 10)));
-			Assert.That(view1.Bounds, Is.EqualTo(new Rectangle(0, 10, 100, 10)));
-			Assert.That(view2.Bounds, Is.EqualTo(new Rectangle(0, 20, 100, 10)));
+			layout.Layout(new RectangleF(0, 0, 100, 100));
+			Assert.That(layout.Bounds, Is.EqualTo(new RectangleF(0, 0, 100, 100)));
+			Assert.That(view0.Bounds, Is.EqualTo(new RectangleF(0, 0, 100, 10)));
+			Assert.That(view1.Bounds, Is.EqualTo(new RectangleF(0, 10, 100, 10)));
+			Assert.That(view2.Bounds, Is.EqualTo(new RectangleF(0, 20, 100, 10)));
 		}
 
 		[Test]
@@ -103,11 +104,11 @@ namespace Xamarin.Forms.Core.UnitTests
 				Direction = FlexDirection.Row,
 			};
 
-			layout.Layout(new Rectangle(0, 0, 100, 100));
-			Assert.That(layout.Bounds, Is.EqualTo(new Rectangle(0, 0, 100, 100)));
-			Assert.That(view0.Bounds, Is.EqualTo(new Rectangle(0, 0, 10, 100)));
-			Assert.That(view1.Bounds, Is.EqualTo(new Rectangle(10, 0, 10, 100)));
-			Assert.That(view2.Bounds, Is.EqualTo(new Rectangle(20, 0, 10, 100)));
+			layout.Layout(new RectangleF(0, 0, 100, 100));
+			Assert.That(layout.Bounds, Is.EqualTo(new RectangleF(0, 0, 100, 100)));
+			Assert.That(view0.Bounds, Is.EqualTo(new RectangleF(0, 0, 10, 100)));
+			Assert.That(view1.Bounds, Is.EqualTo(new RectangleF(10, 0, 10, 100)));
+			Assert.That(view2.Bounds, Is.EqualTo(new RectangleF(20, 0, 10, 100)));
 		}
 
 		[Test]
@@ -128,11 +129,11 @@ namespace Xamarin.Forms.Core.UnitTests
 				Direction = FlexDirection.ColumnReverse,
 			};
 
-			layout.Layout(new Rectangle(0, 0, 100, 100));
-			Assert.That(layout.Bounds, Is.EqualTo(new Rectangle(0, 0, 100, 100)));
-			Assert.That(view0.Bounds, Is.EqualTo(new Rectangle(0, 90, 100, 10)));
-			Assert.That(view1.Bounds, Is.EqualTo(new Rectangle(0, 80, 100, 10)));
-			Assert.That(view2.Bounds, Is.EqualTo(new Rectangle(0, 70, 100, 10)));
+			layout.Layout(new RectangleF(0, 0, 100, 100));
+			Assert.That(layout.Bounds, Is.EqualTo(new RectangleF(0, 0, 100, 100)));
+			Assert.That(view0.Bounds, Is.EqualTo(new RectangleF(0, 90, 100, 10)));
+			Assert.That(view1.Bounds, Is.EqualTo(new RectangleF(0, 80, 100, 10)));
+			Assert.That(view2.Bounds, Is.EqualTo(new RectangleF(0, 70, 100, 10)));
 		}
 
 		[Test]
@@ -154,11 +155,11 @@ namespace Xamarin.Forms.Core.UnitTests
 				Direction = FlexDirection.RowReverse,
 			};
 
-			layout.Layout(new Rectangle(0, 0, 100, 100));
-			Assert.That(layout.Bounds, Is.EqualTo(new Rectangle(0, 0, 100, 100)));
-			Assert.That(view0.Bounds, Is.EqualTo(new Rectangle(90, 0, 10, 100)));
-			Assert.That(view1.Bounds, Is.EqualTo(new Rectangle(80, 0, 10, 100)));
-			Assert.That(view2.Bounds, Is.EqualTo(new Rectangle(70, 0, 10, 100)));
+			layout.Layout(new RectangleF(0, 0, 100, 100));
+			Assert.That(layout.Bounds, Is.EqualTo(new RectangleF(0, 0, 100, 100)));
+			Assert.That(view0.Bounds, Is.EqualTo(new RectangleF(90, 0, 10, 100)));
+			Assert.That(view1.Bounds, Is.EqualTo(new RectangleF(80, 0, 10, 100)));
+			Assert.That(view2.Bounds, Is.EqualTo(new RectangleF(70, 0, 10, 100)));
 		}
 	}
 }

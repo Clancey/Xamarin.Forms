@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Graphics;
 using NUnit.Framework;
 
 
@@ -52,7 +53,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void TestPointRound()
 		{
-			var point = new PointF(2.4, 2.7);
+			var point = new PointF(2.4f, 2.7f);
 			point = point.Round();
 
 			Assert.AreEqual(Math.Round(2.4), point.X);
@@ -68,8 +69,8 @@ namespace Xamarin.Forms.Core.UnitTests
 		}
 
 		[Test]
-		public void TestPointHashCode([Range(3, 6)] double x1, [Range(3, 6)] double y1, [Range(3, 6)] double x2,
-									   [Range(3, 6)] double y2)
+		public void TestPointHashCode([Range(3, 6)] float x1, [Range(3, 6)] float y1, [Range(3, 6)] float x2,
+									   [Range(3, 6)] float y2)
 		{
 			bool result = new PointF(x1, y1).GetHashCode() == new PointF(x2, y2).GetHashCode();
 			if (x1 == x2 && y1 == y2)
@@ -82,7 +83,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		public void TestSizeFromPoint()
 		{
 			var point = new PointF(2, 4);
-			var size = (Size)point;
+			var size = (SizeF)point;
 
 			Assert.AreEqual(new SizeF(2, 4), size);
 		}
@@ -100,7 +101,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		[TestCase(0, 0, ExpectedResult = "{X=0 Y=0}")]
 		[TestCase(5, 2, ExpectedResult = "{X=5 Y=2}")]
-		public string TestPointToString(double x, double y)
+		public string TestPointToString(float x, float y)
 		{
 			return new PointF(x, y).ToString();
 		}
@@ -113,7 +114,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			Assert.AreEqual(new PointF(1, 2), converter.ConvertFromInvariantString("1,2"));
 			Assert.AreEqual(new PointF(1, 2), converter.ConvertFromInvariantString("1, 2"));
 			Assert.AreEqual(new PointF(1, 2), converter.ConvertFromInvariantString(" 1 , 2 "));
-			Assert.AreEqual(new PointF(1.1, 2), converter.ConvertFromInvariantString("1.1,2"));
+			Assert.AreEqual(new PointF(1.1f, 2), converter.ConvertFromInvariantString("1.1,2"));
 			Assert.Throws<InvalidOperationException>(() => converter.ConvertFromInvariantString(""));
 		}
 

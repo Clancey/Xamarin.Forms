@@ -280,8 +280,8 @@ namespace Xamarin.Forms.Core.UnitTests
 			Assert.AreEqual(new RectangleF(3, 4, 20, AbsoluteLayout.AutoSize), converter.ConvertFromInvariantString("3, 4, 20, AutoSize"));
 
 			var autoSize = "AutoSize";
-			Assert.AreEqual(new RectangleF(3.3, 4.4, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize), converter.ConvertFromInvariantString("3.3, 4.4, " + autoSize + ", AutoSize"));
-			Assert.AreEqual(new RectangleF(3.3, 4.4, 5.5, 6.6), converter.ConvertFromInvariantString("3.3, 4.4, 5.5, 6.6"));
+			Assert.AreEqual(new RectangleF(3.3f, 4.4f, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize), converter.ConvertFromInvariantString("3.3, 4.4, " + autoSize + ", AutoSize"));
+			Assert.AreEqual(new RectangleF(3.3f, 4.4f, 5.5f, 6.6f), converter.ConvertFromInvariantString("3.3, 4.4, 5.5, 6.6"));
 		}
 	}
 }

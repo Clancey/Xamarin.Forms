@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Graphics;
 using System.Linq;
 
 using NUnit.Framework;
@@ -95,11 +96,11 @@ namespace Xamarin.Forms.Core.UnitTests
 				IsPlatformEnabled = true,
 			};
 
-			Assert.AreEqual(new SizeF(120, 220), contentView.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity).Request);
+			Assert.AreEqual(new SizeF(120, 220), contentView.GetSizeRequest(float.PositiveInfinity, float.PositiveInfinity).Request);
 
-			contentView.Layout(new Rectangle(0, 0, 300, 300));
+			contentView.Layout(new RectangleF(0, 0, 300, 300));
 
-			Assert.AreEqual(new Rectangle(10, 10, 280, 280), child.Bounds);
+			Assert.AreEqual(new RectangleF(10, 10, 280, 280), child.Bounds);
 		}
 
 		[Test]
@@ -120,7 +121,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				WidthRequest = 20
 			};
 
-			Assert.AreEqual(new SizeF(40, 220), contentView.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity).Request);
+			Assert.AreEqual(new SizeF(40, 220), contentView.GetSizeRequest(float.PositiveInfinity, float.PositiveInfinity).Request);
 		}
 
 		[Test]
@@ -141,7 +142,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				HeightRequest = 20
 			};
 
-			Assert.AreEqual(new SizeF(120, 40), contentView.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity).Request);
+			Assert.AreEqual(new SizeF(120, 40), contentView.GetSizeRequest(float.PositiveInfinity, float.PositiveInfinity).Request);
 		}
 
 		[Test]
@@ -161,9 +162,9 @@ namespace Xamarin.Forms.Core.UnitTests
 				IsPlatformEnabled = true,
 			};
 
-			contentView.Layout(new Rectangle(0, 0, 200, 200));
+			contentView.Layout(new RectangleF(0, 0, 200, 200));
 
-			Assert.AreEqual(new Rectangle(0, 50, 200, 100), child.Bounds);
+			Assert.AreEqual(new RectangleF(0, 50, 200, 100), child.Bounds);
 		}
 
 		[Test]
@@ -183,9 +184,9 @@ namespace Xamarin.Forms.Core.UnitTests
 				IsPlatformEnabled = true,
 			};
 
-			contentView.Layout(new Rectangle(0, 0, 200, 200));
+			contentView.Layout(new RectangleF(0, 0, 200, 200));
 
-			Assert.AreEqual(new Rectangle(0, 0, 200, 100), child.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 200, 100), child.Bounds);
 		}
 
 		[Test]
@@ -205,9 +206,9 @@ namespace Xamarin.Forms.Core.UnitTests
 				IsPlatformEnabled = true,
 			};
 
-			contentView.Layout(new Rectangle(0, 0, 200, 200));
+			contentView.Layout(new RectangleF(0, 0, 200, 200));
 
-			Assert.AreEqual(new Rectangle(0, 100, 200, 100), child.Bounds);
+			Assert.AreEqual(new RectangleF(0, 100, 200, 100), child.Bounds);
 		}
 
 		[Test]
@@ -227,9 +228,9 @@ namespace Xamarin.Forms.Core.UnitTests
 				IsPlatformEnabled = true,
 			};
 
-			contentView.Layout(new Rectangle(0, 0, 200, 200));
+			contentView.Layout(new RectangleF(0, 0, 200, 200));
 
-			Assert.AreEqual(new Rectangle(50, 0, 100, 200), child.Bounds);
+			Assert.AreEqual(new RectangleF(50, 0, 100, 200), child.Bounds);
 		}
 
 		[Test]
@@ -249,9 +250,9 @@ namespace Xamarin.Forms.Core.UnitTests
 				IsPlatformEnabled = true,
 			};
 
-			contentView.Layout(new Rectangle(0, 0, 200, 200));
+			contentView.Layout(new RectangleF(0, 0, 200, 200));
 
-			Assert.AreEqual(new Rectangle(0, 0, 100, 200), child.Bounds);
+			Assert.AreEqual(new RectangleF(0, 0, 100, 200), child.Bounds);
 		}
 
 		[Test]
@@ -271,9 +272,9 @@ namespace Xamarin.Forms.Core.UnitTests
 				IsPlatformEnabled = true,
 			};
 
-			contentView.Layout(new Rectangle(0, 0, 200, 200));
+			contentView.Layout(new RectangleF(0, 0, 200, 200));
 
-			Assert.AreEqual(new Rectangle(100, 0, 100, 200), child.Bounds);
+			Assert.AreEqual(new RectangleF(100, 0, 100, 200), child.Bounds);
 		}
 
 		[Test]

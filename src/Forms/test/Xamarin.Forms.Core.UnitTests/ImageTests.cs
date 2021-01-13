@@ -30,7 +30,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		{
 			var image = new Image { Source = ImageSource.FromFile("File.png"), IsPlatformEnabled = true };
 
-			var result = image.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity);
+			var result = image.GetSizeRequest(float.PositiveInfinity, float.PositiveInfinity);
 
 			Assert.AreEqual(100, result.Request.Width);
 			Assert.AreEqual(20, result.Request.Height);
@@ -41,7 +41,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		{
 			var image = new Image { Source = ImageSource.FromFile("File.png"), IsPlatformEnabled = true };
 
-			var result = image.GetSizeRequest(double.PositiveInfinity, 10);
+			var result = image.GetSizeRequest(float.PositiveInfinity, 10);
 
 			Assert.AreEqual(50, result.Request.Width);
 			Assert.AreEqual(10, result.Request.Height);
@@ -52,7 +52,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		{
 			var image = new Image { Source = ImageSource.FromFile("File.png"), IsPlatformEnabled = true };
 
-			var result = image.GetSizeRequest(25, double.PositiveInfinity);
+			var result = image.GetSizeRequest(25, float.PositiveInfinity);
 
 			Assert.AreEqual(25, result.Request.Width);
 			Assert.AreEqual(5, result.Request.Height);
@@ -64,7 +64,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var image = new Image { Source = ImageSource.FromFile("File.png"), IsPlatformEnabled = true };
 
 			image.Aspect = Aspect.AspectFill;
-			var result = image.GetSizeRequest(double.PositiveInfinity, 10);
+			var result = image.GetSizeRequest(float.PositiveInfinity, 10);
 
 			Assert.AreEqual(50, result.Request.Width);
 			Assert.AreEqual(10, result.Request.Height);
@@ -76,7 +76,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var image = new Image { Source = ImageSource.FromFile("File.png"), IsPlatformEnabled = true };
 
 			image.Aspect = Aspect.AspectFill;
-			var result = image.GetSizeRequest(25, double.PositiveInfinity);
+			var result = image.GetSizeRequest(25, float.PositiveInfinity);
 
 			Assert.AreEqual(25, result.Request.Width);
 			Assert.AreEqual(5, result.Request.Height);
@@ -88,7 +88,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var image = new Image { Source = ImageSource.FromFile("File.png"), IsPlatformEnabled = true };
 
 			image.Aspect = Aspect.AspectFill;
-			var result = image.GetSizeRequest(double.PositiveInfinity, 10);
+			var result = image.GetSizeRequest(float.PositiveInfinity, 10);
 
 			Assert.AreEqual(50, result.Request.Width);
 			Assert.AreEqual(10, result.Request.Height);
@@ -100,7 +100,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			var image = new Image { Source = ImageSource.FromFile("File.png"), IsPlatformEnabled = true };
 
 			image.Aspect = Aspect.AspectFill;
-			var result = image.GetSizeRequest(25, double.PositiveInfinity);
+			var result = image.GetSizeRequest(25, float.PositiveInfinity);
 
 			Assert.AreEqual(25, result.Request.Width);
 			Assert.AreEqual(5, result.Request.Height);
@@ -142,7 +142,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		}
 
 		[Test]
-		public void TestSourceDoubleSet()
+		public void TestSourcefloatSet()
 		{
 			var image = new Image { Source = ImageSource.FromFile("File.png") };
 

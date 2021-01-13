@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Graphics;
+using NUnit.Framework;
 
 namespace Xamarin.Forms.Core.UnitTests
 {
@@ -20,7 +21,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void TestConstructorUsingColor()
 		{
-			SolidColorBrush solidColorBrush = new SolidColorBrush(Color.Red);
+			SolidColorBrush solidColorBrush = new SolidColorBrush(Colors.Red);
 			Assert.AreEqual("[Color: A=1, R=1, G=0, B=0, Hue=1, Saturation=1, Luminosity=0.5]", solidColorBrush.Color.ToString(), "Color");
 		}
 
@@ -50,9 +51,9 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void TestSolidColorBrushFromColor()
 		{
-			SolidColorBrush solidColorBrush = new SolidColorBrush(Color.Red);
+			SolidColorBrush solidColorBrush = new SolidColorBrush(Colors.Red);
 			Assert.IsNotNull(solidColorBrush.Color);
-			Assert.AreEqual("#FFFF0000", solidColorBrush.Color.ToHex());
+			Assert.AreEqual("#FFFF0000", solidColorBrush.Color.ToHexString());
 		}
 
 		[Test]
@@ -60,11 +61,11 @@ namespace Xamarin.Forms.Core.UnitTests
 		{
 			SolidColorBrush black = Brush.Black;
 			Assert.IsNotNull(black.Color);
-			Assert.AreEqual("#FF000000", black.Color.ToHex());
+			Assert.AreEqual("#FF000000", black.Color.ToHexString());
 
 			SolidColorBrush white = Brush.White;
 			Assert.IsNotNull(white.Color);
-			Assert.AreEqual("#FFFFFFFF", white.Color.ToHex());
+			Assert.AreEqual("#FFFFFFFF", white.Color.ToHexString());
 		}
 	}
 }

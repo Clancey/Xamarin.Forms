@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Graphics;
 using System.Runtime.CompilerServices;
 using NUnit.Framework;
 using NUnit.Framework.Constraints;
@@ -89,7 +90,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			[Values(FontAttributes.None, FontAttributes.Bold, FontAttributes.Italic, FontAttributes.Bold | FontAttributes.Italic)] FontAttributes attributes)
 		{
 			var label = new Label();
-			double startSize = label.FontSize;
+			float startSize = label.FontSize;
 			var startAttributes = label.FontAttributes;
 
 			bool firedSizeChanged = false;
@@ -129,20 +130,20 @@ namespace Xamarin.Forms.Core.UnitTests
 		}
 
 		[Test]
-		public void AssignedToFontSizeUpdatesFontDouble()
+		public void AssignedToFontSizeUpdatesFontfloat()
 		{
 			var label = new Label();
 
-			label.FontSize = 10.7;
-			Assert.AreEqual(label.Font, Font.SystemFontOfSize(10.7));
+			label.FontSize = 10.7f;
+			Assert.AreEqual(label.Font, Font.SystemFontOfSize(10.7f));
 		}
 
 		[Test]
-		public void AssignedToFontSizeDouble()
+		public void AssignedToFontSizefloat()
 		{
 			var label = new Label();
 
-			label.FontSize = 10.7;
+			label.FontSize = 10.7f;
 			Assert.AreEqual(label.FontSize, 10.7);
 		}
 
@@ -167,13 +168,13 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			var label = new Label { IsPlatformEnabled = true };
 
-			Assert.AreEqual(label.Font.FontSize, label.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity).Request.Width);
+			Assert.AreEqual(label.Font.FontSize, label.GetSizeRequest(float.PositiveInfinity, float.PositiveInfinity).Request.Width);
 
 			bool fired = false;
 
 			label.MeasureInvalidated += (sender, args) =>
 			{
-				Assert.AreEqual(25, label.GetSizeRequest(double.PositiveInfinity, double.PositiveInfinity).Request.Width);
+				Assert.AreEqual(25, label.GetSizeRequest(float.PositiveInfinity, float.PositiveInfinity).Request.Width);
 				fired = true;
 			};
 
@@ -219,13 +220,13 @@ namespace Xamarin.Forms.Core.UnitTests
 		public void ManuallySetFontSizeNotOverridenByFontSetInStyle()
 		{
 			var label = new Label();
-			Assume.That(label.FontSize, Is.EqualTo(10.0));
+			Assume.That(label.FontSize, Is.EqualTo(10.0f));
 
-			label.SetValue(Label.FontSizeProperty, 2.0);
-			Assert.AreEqual(2.0, label.FontSize);
+			label.SetValue(Label.FontSizeProperty, 2.0f);
+			Assert.AreEqual(2.0f, label.FontSize);
 
-			label.SetValue(Label.FontProperty, Font.SystemFontOfSize(1.0), fromStyle: true);
-			Assert.AreEqual(2.0, label.FontSize);
+			label.SetValue(Label.FontProperty, Font.SystemFontOfSize(1), fromStyle: true);
+			Assert.AreEqual(2.0f, label.FontSize);
 		}
 
 		[Test]

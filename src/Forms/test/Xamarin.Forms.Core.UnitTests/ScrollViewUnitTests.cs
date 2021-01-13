@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Graphics;
 using System.Linq;
 
 using NUnit.Framework;
@@ -75,7 +76,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			View view = new View { IsPlatformEnabled = true, WidthRequest = 100, HeightRequest = 100 };
 
 			ScrollView scroll = new ScrollView { Content = view };
-			scroll.Layout(new Rectangle(0, 0, 50, 50));
+			scroll.Layout(new RectangleF(0, 0, 50, 50));
 
 			Assert.AreEqual(new SizeF(50, 100), scroll.ContentSize);
 
@@ -102,7 +103,7 @@ namespace Xamarin.Forms.Core.UnitTests
 			View view = new View { IsPlatformEnabled = true, WidthRequest = 100, HeightRequest = 100 };
 
 			ScrollView scroll = new ScrollView { Content = view, Orientation = ScrollOrientation.Both };
-			scroll.Layout(new Rectangle(0, 0, 50, 50));
+			scroll.Layout(new RectangleF(0, 0, 50, 50));
 
 			Assert.AreEqual(new SizeF(100, 100), scroll.ContentSize);
 
@@ -133,7 +134,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				Orientation = ScrollOrientation.Horizontal,
 				Content = view
 			};
-			scroll.Layout(new Rectangle(0, 0, 50, 50));
+			scroll.Layout(new RectangleF(0, 0, 50, 50));
 
 			Assert.AreEqual(new SizeF(100, 50), scroll.ContentSize);
 
@@ -164,7 +165,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				Orientation = ScrollOrientation.Both,
 				Content = view
 			};
-			scroll.Layout(new Rectangle(0, 0, 50, 50));
+			scroll.Layout(new RectangleF(0, 0, 50, 50));
 
 			Assert.AreEqual(new SizeF(100, 100), scroll.ContentSize);
 
@@ -196,7 +197,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				Content = view
 			};
 
-			var originalBounds = new Rectangle(0, 0, 50, 50);
+			var originalBounds = new RectangleF(0, 0, 50, 50);
 
 			scroll.Layout(originalBounds);
 
@@ -229,7 +230,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				Orientation = ScrollOrientation.Horizontal,
 				Content = view,
 			};
-			scroll.Layout(new Rectangle(0, 0, 50, 50));
+			scroll.Layout(new RectangleF(0, 0, 50, 50));
 
 			bool changed = false;
 			scroll.PropertyChanged += (sender, e) =>
@@ -484,7 +485,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				Content = view,
 				Orientation = ScrollOrientation.Horizontal,
 			};
-			scroll.Layout(new Rectangle(0, 0, 100, 100));
+			scroll.Layout(new RectangleF(0, 0, 100, 100));
 
 			Assert.AreEqual(new SizeF(300, 100), scroll.ContentSize);
 			Assert.AreEqual(100, scroll.Height);
@@ -501,7 +502,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				Content = view,
 				Orientation = ScrollOrientation.Vertical,
 			};
-			scroll.Layout(new Rectangle(0, 0, 100, 100));
+			scroll.Layout(new RectangleF(0, 0, 100, 100));
 
 			Assert.AreEqual(new SizeF(100, 300), scroll.ContentSize);
 			Assert.AreEqual(100, scroll.Height);
@@ -518,7 +519,7 @@ namespace Xamarin.Forms.Core.UnitTests
 				Content = view,
 				Orientation = ScrollOrientation.Both,
 			};
-			scroll.Layout(new Rectangle(0, 0, 100, 100));
+			scroll.Layout(new RectangleF(0, 0, 100, 100));
 
 			Assert.AreEqual(new SizeF(300, 300), scroll.ContentSize);
 			Assert.AreEqual(100, scroll.Height);

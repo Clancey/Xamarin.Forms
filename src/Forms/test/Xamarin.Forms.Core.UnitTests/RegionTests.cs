@@ -1,3 +1,4 @@
+using System.Graphics;
 using NUnit.Framework;
 
 
@@ -9,11 +10,11 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void RegionOneLineConstruction()
 		{
-			double[] lineHeights = { 20 };
-			double maxWidth = 200;
-			double startX = 90;
-			double endX = 180;
-			double startY = 80;
+			float[] lineHeights = { 20 };
+			float maxWidth = 200;
+			float startX = 90;
+			float endX = 180;
+			float startY = 80;
 
 			var region = Region.FromLines(lineHeights, maxWidth, startX, endX, startY);
 
@@ -39,11 +40,11 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void RegionTwoLineConstruction()
 		{
-			double[] lineHeights = { 20, 20 };
-			double maxWidth = 200;
-			double startX = 90;
-			double endX = 40;
-			double startY = 80;
+			float[] lineHeights = { 20, 20 };
+			float maxWidth = 200;
+			float startX = 90;
+			float endX = 40;
+			float startY = 80;
 
 			var region = Region.FromLines(lineHeights, maxWidth, startX, endX, startY);
 
@@ -85,11 +86,11 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void RegionThreeLineConstruction()
 		{
-			double[] lineHeights = { 20, 20, 20 };
-			double maxWidth = 200;
-			double startX = 90;
-			double endX = 40;
-			double startY = 80;
+			float[] lineHeights = { 20, 20, 20 };
+			float maxWidth = 200;
+			float startX = 90;
+			float endX = 40;
+			float startY = 80;
 
 			var region = Region.FromLines(lineHeights, maxWidth, startX, endX, startY);
 
@@ -138,11 +139,11 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void RegionInflate()
 		{
-			double[] lineHeights = { 20 };
-			double maxWidth = 200;
-			double startX = 90;
-			double endX = 180;
-			double startY = 80;
+			float[] lineHeights = { 20 };
+			float maxWidth = 200;
+			float startX = 90;
+			float endX = 180;
+			float startY = 80;
 
 			var region = Region.FromLines(lineHeights, maxWidth, startX, endX, startY).Inflate(10);
 
@@ -176,11 +177,11 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void RegionDeflate()
 		{
-			double[] lineHeights = { 20 };
-			double maxWidth = 200;
-			double startX = 90;
-			double endX = 180;
-			double startY = 80;
+			float[] lineHeights = { 20 };
+			float maxWidth = 200;
+			float startX = 90;
+			float endX = 180;
+			float startY = 80;
 
 			var region = Region.FromLines(lineHeights, maxWidth, startX, endX, startY).Inflate(10).Deflate();
 

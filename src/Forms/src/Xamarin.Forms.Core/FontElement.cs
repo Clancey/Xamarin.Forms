@@ -13,7 +13,7 @@ namespace Xamarin.Forms
 									propertyChanged: OnFontFamilyChanged);
 
 		public static readonly BindableProperty FontSizeProperty =
-			BindableProperty.Create("FontSize", typeof(double), typeof(IFontElement), -1.0,
+			BindableProperty.Create("FontSize", typeof(float), typeof(IFontElement), -1f,
 									propertyChanged: OnFontSizeChanged,
 									defaultValueCreator: FontSizeDefaultValueCreator);
 
@@ -63,7 +63,7 @@ namespace Xamarin.Forms
 
 			SetCancelEvents(bindable, true);
 
-			var fontSize = (double)bindable.GetValue(FontSizeProperty);
+			var fontSize = (float)bindable.GetValue(FontSizeProperty);
 			var fontAttributes = (FontAttributes)bindable.GetValue(FontAttributesProperty);
 			var fontFamily = (string)newValue;
 
@@ -108,7 +108,7 @@ namespace Xamarin.Forms
 
 			SetCancelEvents(bindable, true);
 
-			var fontSize = (double)bindable.GetValue(FontSizeProperty);
+			var fontSize = (float)bindable.GetValue(FontSizeProperty);
 			var fontAttributes = (FontAttributes)newValue;
 			var fontFamily = (string)bindable.GetValue(FontFamilyProperty);
 

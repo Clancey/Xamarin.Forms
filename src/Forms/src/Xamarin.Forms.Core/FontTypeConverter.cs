@@ -20,13 +20,13 @@ namespace Xamarin.Forms
 				string name = null;
 				var bold = false;
 				var italic = false;
-				double size = -1;
+				float size = -1;
 				NamedSize namedSize = 0;
 
 				// check if last is a size
 				string last = parts.Last();
 
-				if (double.TryParse(last, NumberStyles.Number, CultureInfo.InvariantCulture, out var trySize))
+				if (float.TryParse(last, NumberStyles.Number, CultureInfo.InvariantCulture, out var trySize))
 				{
 					size = trySize;
 					parts.RemoveAt(parts.Count - 1);

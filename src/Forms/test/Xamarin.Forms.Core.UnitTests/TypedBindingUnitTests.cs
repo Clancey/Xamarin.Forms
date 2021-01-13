@@ -1264,7 +1264,7 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			Assert.That(slider.Value, Is.EqualTo(0.5));
 
-			slider.Value = 0.9;
+			slider.Value = 0.9f;
 
 			Assert.That(vm.Text, Is.EqualTo("0.9"));
 		}
@@ -1280,9 +1280,9 @@ namespace Xamarin.Forms.Core.UnitTests
 			slider.BindingContext = vm;
 			slider.SetBinding(Slider.ValueProperty, new TypedBinding<MockViewModel, string>(mvm => mvm.Text, (mvm, s) => mvm.Text = s, null) { Mode = BindingMode.TwoWay });
 
-			Assert.That(slider.Value, Is.EqualTo(0.5));
+			Assert.That(slider.Value, Is.EqualTo(0.5f));
 
-			slider.Value = 0.9;
+			slider.Value = 0.9f;
 
 			Assert.That(vm.Text, Is.EqualTo("0.9"));
 		}
