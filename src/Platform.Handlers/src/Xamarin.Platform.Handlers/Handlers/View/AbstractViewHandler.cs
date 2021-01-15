@@ -47,6 +47,8 @@ namespace Xamarin.Platform.Handlers
 		{
 			_ = view ?? throw new ArgumentNullException(nameof(view));
 
+			if (VirtualView == view)
+				return;
 			if (VirtualView?.Handler != null)
 				VirtualView.Handler = null;
 

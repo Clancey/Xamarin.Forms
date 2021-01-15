@@ -26,7 +26,7 @@ namespace Xamarin.Platform
 			UpdatePropertyCore(property, viewHandler, virtualView);
 		}
 
-		internal void UpdateProperties(IViewHandler viewHandler, IFrameworkElement? virtualView)
+		public void UpdateProperties(IViewHandler viewHandler, IFrameworkElement? virtualView)
 		{
 			if (virtualView == null)
 				return;
