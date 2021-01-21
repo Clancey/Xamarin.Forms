@@ -179,7 +179,11 @@ namespace Xamarin.Forms
 
 		RectangleF IFrameworkElement.Frame => Bounds;
 
-		public IViewHandler Handler { get; set; }
+		public IViewHandler Handler 
+		{ 
+			get; 
+			set; 
+		}
 
 		protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
 		{

@@ -175,6 +175,7 @@ namespace Xamarin.Forms
 			IsInitialized = true;
 
 			AccentColor = ColorExtensions.AccentColor.ToColor();
+			Internals.Registrar.RegisterRendererToHandlerShim(RendererToHandlerShim.CreateShim);
 
 			Log.Listeners.Add(new DelegateLogListener((c, m) => Trace.WriteLine(m, c)));
 
@@ -757,16 +758,17 @@ namespace Xamarin.Forms
 							return OSAppTheme.Unspecified;
 					};
 #else
-                    return AppearanceIsDark(NSApplication.SharedApplication.EffectiveAppearance) ? OSAppTheme.Dark : OSAppTheme.Light;
+                    return AppearanceIsDark() ? OSAppTheme.Dark : OSAppTheme.Light;
 #endif
 				}
 			}
 
 #if __MACOS__
-			bool AppearanceIsDark(NSAppearance appearance)
+			bool AppearanceIsDark()
 			{
 				if (IsMojaveOrNewer)
 				{
+					var appearance = NSApplication.SharedApplication.EffectiveAppearance;
 					var matchedAppearance = appearance.FindBestMatch(new string[] { NSAppearance.NameAqua, NSAppearance.NameDarkAqua });
 
 					return matchedAppearance == NSAppearance.NameDarkAqua;

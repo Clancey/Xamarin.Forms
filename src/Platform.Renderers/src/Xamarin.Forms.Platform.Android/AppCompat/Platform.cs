@@ -281,21 +281,61 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 			layout = null;
 		}
 
-		[Obsolete("CreateRenderer(VisualElement) is obsolete as of version 2.5. Please use CreateRendererWithContext(VisualElement, Context) instead.")]
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		public static IVisualElementRenderer CreateRenderer(VisualElement element)
-		{
-			// If there's a previewer context set, use that when created 
-			return CreateRenderer(element, GetPreviewerContext(element) ?? Forms.Context);
-		}
-
 		internal static IVisualElementRenderer CreateRenderer(VisualElement element, Context context)
 		{
-			IVisualElementRenderer renderer = Internals.Registrar.Registered.GetHandlerForObject<IVisualElementRenderer>(element, context)
-				?? new DefaultRenderer(context);
+			IVisualElementRenderer renderer = null;
+
+			// temporary hack to fix the following issues
+			// https://github.com/xamarin/Xamarin.Forms/issues/13261
+			// https://github.com/xamarin/Xamarin.Forms/issues/12484
+			if (element is RadioButton tv && tv.ResolveControlTemplate() != null)
+			{
+				renderer = new DefaultRenderer(context);
+			}
+
+			// This code is duplicated across all platforms currently
+			// So if any changes are made here please make sure to apply them to other platform.cs files
+			if (renderer == null)
+			{
+				Xamarin.Platform.IViewHandler handler = null;
+
+				try
+				{
+					handler = Xamarin.Platform.Registrar.Handlers.GetHandler(element.GetType());
+				}
+				catch 
+				{
+					// TODO define better catch response or define if this is needed?
+				}
+				
+				if(handler == null)
+				{
+					renderer = Registrar.Registered.GetHandlerForObject<IVisualElementRenderer>(element, context)
+										?? new DefaultRenderer(context);
+				}
+				// This means the only thing registered is the RendererToHandlerShim
+				// Which is only used when you are running a .NET MAUI app
+				// This indicates that the user hasn't registered a specific handler for this given type
+				else if (handler is RendererToHandlerShim shim)
+				{
+					renderer = shim.VisualElementRenderer;
+
+					if (renderer == null)
+					{
+						renderer = Registrar.Registered.GetHandlerForObject<IVisualElementRenderer>(element, context)
+										?? new DefaultRenderer(context);
+					}
+				}
+				else if (handler is IVisualElementRenderer ver)
+					renderer = ver;
+				else if (handler is Xamarin.Platform.IAndroidViewHandler vh)
+				{
+					vh.SetContext(context);
+					renderer = new HandlerToRendererShim(vh);
+				}
+			}
 
 			renderer.SetElement(element);
-
 			return renderer;
 		}
 
@@ -342,8 +382,8 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 			{
 				LayoutRootPage(Page, r - l, b - t);
 			}
-
-			GetRenderer(Page).UpdateLayout();
+						
+			GetRenderer(Page)?.UpdateLayout();
 
 			for (var i = 0; i < _renderer.ChildCount; i++)
 			{
