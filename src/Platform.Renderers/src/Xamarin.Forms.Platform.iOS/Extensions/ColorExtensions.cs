@@ -104,7 +104,7 @@ namespace Xamarin.Forms.Platform.MacOS
 				if (Forms.IsiOS13OrNewer)
 					return UIColor.SystemBlueColor;
 
-				return Color.FromBytes(50, 79, 133, 255).ToUIColor();
+				return Color.FromRgba(50, 79, 133, 255).ToUIColor();
 			}
 		}
 

@@ -26,7 +26,7 @@ namespace Xamarin.Platform
 			return ToNative(self);
 		}
 
-		public static Color ToColor(this uint argb) => Color.FromBytes((byte)((argb & 0x00ff0000) >> 0x10), (byte)((argb & 0x0000ff00) >> 0x8), (byte)(argb & 0x000000ff), (byte)((argb & 0xff000000) >> 0x18));
+		public static Color ToColor(this uint argb) => Color.FromRgba((byte)((argb & 0x00ff0000) >> 0x10), (byte)((argb & 0x0000ff00) >> 0x8), (byte)(argb & 0x000000ff), (byte)((argb & 0xff000000) >> 0x18));
 
 		public static AColor ToNative(this Color self, Color defaultColor) =>
 			self?.ToNative() ?? defaultColor.ToNative();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using UIKit;
 using Xamarin.Platform;
 
@@ -47,14 +48,14 @@ namespace Xamarin.Forms.Platform.iOS
 			ElementPropertyChanged?.Invoke(this, new PropertyChangedEventArgs(e.PropertyName));
 		}
 
-		public SizeRequest GetDesiredSize(double widthConstraint, double heightConstraint)
+		public SizeRequest GetDesiredSize(float widthConstraint, float heightConstraint)
 		{
 			return NativeView.GetSizeRequest(widthConstraint, heightConstraint);
 		}
 
-		public void SetElementSize(Size size)
+		public void SetElementSize(SizeF size)
 		{
-			Xamarin.Forms.Layout.LayoutChildIntoBoundingRegion(Element, new Rectangle(Element.X, Element.Y, size.Width, size.Height));
+			Xamarin.Forms.Layout.LayoutChildIntoBoundingRegion(Element, new RectangleF(Element.X, Element.Y, size.Width, size.Height));
 		}
 	}
 }

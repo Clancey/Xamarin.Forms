@@ -452,7 +452,7 @@ namespace Xamarin.Forms
 			if (!(value is Color color))
 				throw new NotSupportedException();
 
-			return color.ToHexString();
+			return color.ToHex();
 		}
 	}
 }

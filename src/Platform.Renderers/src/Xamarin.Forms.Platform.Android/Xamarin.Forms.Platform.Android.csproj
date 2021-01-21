@@ -46,7 +46,7 @@
     <PackageReference Include="Xamarin.AndroidX.Lifecycle.LiveData" Version="2.2.0.4" />
     <PackageReference Include="Xamarin.Google.Android.Material" Version="1.1.0.5" />
     <PackageReference Include="Xamarin.AndroidX.Legacy.Support.V4" Version="1.0.0.6" />
-    <PackageReference Include="JonLipsky.System.Graphics" Version="0.1.32" />
+    <PackageReference Include="JonLipsky.System.Graphics" Version="0.1.34" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Shapes\" />

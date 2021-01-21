@@ -112,7 +112,7 @@ namespace Xamarin.Platform
 					return UIColor.SystemBlueColor;
 #endif
 
-				return Color.FromBytes(50, 79, 133, 255).ToNative();
+				return Color.FromRgba(50, 79, 133, 255).ToNative();
 			}
 		}
 

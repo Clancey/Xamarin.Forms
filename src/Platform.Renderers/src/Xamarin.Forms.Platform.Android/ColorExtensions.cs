@@ -57,7 +57,7 @@ namespace Xamarin.Forms.Platform.Android
 		public static Color ToColor(this AColor color)
 			=> new Color(color.R, color.G, color.B, color.A);
 
-		public static Color ToColor(this uint argb) => Color.FromBytes((byte)((argb & 0x00ff0000) >> 0x10), (byte)((argb & 0x0000ff00) >> 0x8), (byte)(argb & 0x000000ff), (byte)((argb & 0xff000000) >> 0x18));
+		public static Color ToColor(this uint argb) => Color.FromRgba((byte)((argb & 0x00ff0000) >> 0x10), (byte)((argb & 0x0000ff00) >> 0x8), (byte)(argb & 0x000000ff), (byte)((argb & 0xff000000) >> 0x18));
 
 		internal static ColorStateList ToDefaultColorStateList(this Color color)
 		{

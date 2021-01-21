@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Views;
 using AndroidX.AppCompat.View.Menu;
 using AndroidX.Core.View;
@@ -38,7 +39,7 @@ namespace Xamarin.Forms
 		public SizeRequest GetDesiredSize(int widthConstraint, int heightConstraint)
 		{
 			View.Measure(widthConstraint, heightConstraint);
-			return new Size(View.MeasuredWidth, View.MeasuredHeight);
+			return new SizeF(View.MeasuredWidth, View.MeasuredHeight);
 		}
 
 		public void SetElement(VisualElement element)
