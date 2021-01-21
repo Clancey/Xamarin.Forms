@@ -4,7 +4,7 @@ using Xamarin.Platform;
 
 namespace Sample
 {
-	public class Label : View, ILabel
+	public class Label : Xamarin.Forms.View, ILabel
 	{
 		public string Text { get; set; }
 
