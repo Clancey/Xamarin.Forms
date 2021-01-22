@@ -39,7 +39,7 @@ namespace Xamarin.Platform.Handlers
 
 		protected TVirtualView? VirtualView { get; private set; }
 
-		public NativeView? View => TypedNativeView;
+		public NativeView? View => HasContainer ? ContainerView as NativeView : TypedNativeView;
 
 		public object? NativeView => TypedNativeView;
 
@@ -116,6 +116,10 @@ namespace Xamarin.Platform.Handlers
 			=> _mapper?.UpdateProperty(this, VirtualView, property);
 
 		protected virtual void SetupDefaults(TNativeView nativeView) { }
+
+#pragma warning disable CS8766 // Nullability of reference types in return type doesn't match implicitly implemented member (possibly because of nullability attributes).
+		public ContainerView? ContainerView { get; private set; }
+#pragma warning restore CS8766 // Nullability of reference types in return type doesn't match implicitly implemented member (possibly because of nullability attributes).
 
 		public bool HasContainer
 		{

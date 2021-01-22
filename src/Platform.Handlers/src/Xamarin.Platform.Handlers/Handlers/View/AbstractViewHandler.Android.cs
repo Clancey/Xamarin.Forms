@@ -72,7 +72,12 @@ namespace Xamarin.Platform.Handlers
 
 		void SetupContainer()
 		{
+			//This can't happen but it makes the null checks happy...
+			if (Context == null)
+				return;
 
+			ContainerView ??= new ContainerView(Context);
+			ContainerView.MainView = TypedNativeView;
 		}
 
 		void RemoveContainer()

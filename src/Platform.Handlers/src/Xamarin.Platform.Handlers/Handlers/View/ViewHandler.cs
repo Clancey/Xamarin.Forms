@@ -19,7 +19,8 @@ namespace Xamarin.Platform.Handlers
 		{
 			[nameof(IView.BackgroundColor)] = MapBackgroundColor,
 			[nameof(IView.Frame)] = MapFrame,
-			[nameof(IView.IsEnabled)] = MapIsEnabled
+			[nameof(IView.IsEnabled)] = MapIsEnabled,
+			[nameof(IClipShapeView.ClipShape)] = MapPropertyClipShape
 		};
 
 		public static void MapFrame(IViewHandler handler, IView view)
@@ -40,6 +41,18 @@ namespace Xamarin.Platform.Handlers
 			(handler.NativeView as NativeView)?.UpdateBackgroundColor(view);
 		}
 
+		public static void MapPropertyClipShape(IViewHandler handler, IView view)
+		{
+			CheckParameters(handler, view);
+			if (!(view is IClipShapeView clipShape))
+				return;
+			//If we are ever going to set HasContainer = false,
+			//we need to add a method to verify if anything else requires it
+			if (clipShape.ClipShape != null)
+				handler.HasContainer = true;
+			if (handler.ContainerView != null)
+				handler.ContainerView.ClipShape = clipShape.ClipShape;
+		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void CheckParameters(IViewHandler handler, IView view)
