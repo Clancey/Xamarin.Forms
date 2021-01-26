@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using UIKit;
 using RectangleF = CoreGraphics.CGRect;
@@ -151,7 +151,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		void UpdateBackgroundView()
 		{
-			Control.BackgroundView = Element.BackgroundColor == Color.Default ? _originalBackgroundView : null;
+			Control.BackgroundView = Element.BackgroundColor ?? _originalBackgroundView;
 			Control.BackgroundView.UpdateBackground(Element.Background);
 		}
 

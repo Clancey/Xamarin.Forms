@@ -1,4 +1,5 @@
-using System;
+﻿using System;
+using System.Graphics;
 
 namespace Xamarin.Forms
 {
@@ -13,9 +14,9 @@ namespace Xamarin.Forms
 			((Switch)bindable).ChangeVisualState();
 		}, defaultBindingMode: BindingMode.TwoWay);
 
-		public static readonly BindableProperty OnColorProperty = BindableProperty.Create(nameof(OnColor), typeof(Color), typeof(Switch), Color.Default);
+		public static readonly BindableProperty OnColorProperty = BindableProperty.Create(nameof(OnColor), typeof(Color), typeof(Switch), null);
 
-		public static readonly BindableProperty ThumbColorProperty = BindableProperty.Create(nameof(ThumbColor), typeof(Color), typeof(Switch), Color.Default);
+		public static readonly BindableProperty ThumbColorProperty = BindableProperty.Create(nameof(ThumbColor), typeof(Color), typeof(Switch), null);
 
 		public Color OnColor
 		{

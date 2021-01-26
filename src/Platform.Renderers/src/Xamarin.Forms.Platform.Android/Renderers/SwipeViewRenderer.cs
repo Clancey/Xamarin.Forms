@@ -113,7 +113,7 @@ namespace Xamarin.Forms.Platform.Android
 
 		protected override void UpdateBackgroundColor()
 		{
-			if (Element.BackgroundColor != Color.Default)
+			if (Element.BackgroundColor != null)
 				SetBackgroundColor(Element.BackgroundColor.ToAndroid());
 			else
 				Control?.SetWindowBackground();
@@ -371,7 +371,7 @@ namespace Xamarin.Forms.Platform.Android
 		AView CreateEmptyContent()
 		{
 			var emptyContentView = new AView(_context);
-			emptyContentView.SetBackgroundColor(Color.Default.ToAndroid());
+			emptyContentView.SetBackgroundColor(Color.Transparent.ToAndroid());
 
 			return emptyContentView;
 		}

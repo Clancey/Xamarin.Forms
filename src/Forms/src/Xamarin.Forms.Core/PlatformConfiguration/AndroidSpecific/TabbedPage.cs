@@ -2,6 +2,7 @@
 {
 	using System;
 	using System.ComponentModel;
+	using System.Graphics;
 	using FormsElement = Forms.TabbedPage;
 
 	public static class TabbedPage
@@ -155,7 +156,7 @@
 		[Obsolete("BarItemColor is obsolete as of version 4.0. Please use TabbedPage.UnselectedTabColor instead.")]
 		public static readonly BindableProperty BarItemColorProperty =
 			BindableProperty.Create("BarItemColor", typeof(Color),
-			typeof(TabbedPage), Color.Default, propertyChanged: (sender, oldValue, newValue) => { ((FormsElement)sender).UnselectedTabColor = (Color)newValue; });
+			typeof(TabbedPage), null, propertyChanged: (sender, oldValue, newValue) => { ((FormsElement)sender).UnselectedTabColor = (Color)newValue; });
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		[Obsolete("BarItemColor is obsolete as of version 4.0. Please use TabbedPage.UnselectedTabColor instead.")]
@@ -190,7 +191,7 @@
 		[Obsolete("BarSelectedItemColor is obsolete as of version 4.0. Please use TabbedPage.SelectedTabColor instead.")]
 		public static readonly BindableProperty BarSelectedItemColorProperty =
 			BindableProperty.Create("BarSelectedItemColor", typeof(Color),
-			typeof(TabbedPage), Color.Default, propertyChanged: (sender, oldValue, newValue) => { ((FormsElement)sender).SelectedTabColor = (Color)newValue; });
+			typeof(TabbedPage), null, propertyChanged: (sender, oldValue, newValue) => { ((FormsElement)sender).SelectedTabColor = (Color)newValue; });
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		[Obsolete("BarSelectedItemColor is obsolete as of version 4.0. Please use TabbedPage.SelectedTabColor instead.")]

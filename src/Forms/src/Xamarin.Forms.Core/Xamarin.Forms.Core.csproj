@@ -13,6 +13,9 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\..\..\Platform.Handlers\src\Xamarin.Platform.Handlers\Xamarin.Platform.Handlers.csproj" />
 	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="JonLipsky.System.Graphics" Version="0.1.36" />
+	</ItemGroup>
 	<PropertyGroup>
     <GitInfoReportImportance>high</GitInfoReportImportance>
   </PropertyGroup>

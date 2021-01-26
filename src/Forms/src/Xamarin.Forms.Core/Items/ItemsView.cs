@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Graphics;
 using System.Windows.Input;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml.Diagnostics;

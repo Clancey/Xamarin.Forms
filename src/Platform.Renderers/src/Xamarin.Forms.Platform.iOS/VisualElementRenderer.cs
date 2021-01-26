@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using RectangleF = CoreGraphics.CGRect;
@@ -263,7 +263,7 @@ namespace Xamarin.Forms.Platform.MacOS
 
 			if (element != null)
 			{
-				if (element.BackgroundColor != Color.Default || (oldElement != null && element.BackgroundColor != oldElement.BackgroundColor))
+				if (element.BackgroundColor != null || (oldElement != null && element.BackgroundColor != oldElement.BackgroundColor))
 					SetBackgroundColor(element.BackgroundColor);
 
 				if (element.Background != null && (!element.Background.IsEmpty || (oldElement != null && element.Background != oldElement.Background)))
@@ -454,7 +454,7 @@ namespace Xamarin.Forms.Platform.MacOS
 
 		protected virtual void SetBackgroundColor(Color color)
 		{
-			if (color == Color.Default)
+			if (color == null)
 #if __MOBILE__
 
 				BackgroundColor = _defaultColor;

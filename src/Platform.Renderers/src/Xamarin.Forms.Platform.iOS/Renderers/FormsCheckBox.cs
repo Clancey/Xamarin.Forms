@@ -131,7 +131,7 @@ namespace Xamarin.Forms.Platform.iOS
 		{
 			// Ideally I would use the static images here but when disabled it always tints them grey
 			// and I don't know how to make it not tint them gray
-			if (!Enabled && CheckBoxTintColor != Color.Default)
+			if (!Enabled && CheckBoxTintColor != null)
 			{
 				if (IsChecked)
 					return CreateCheckBox(CreateCheckMark()).ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);

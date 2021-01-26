@@ -158,7 +158,7 @@ namespace Xamarin.Forms.Platform.iOS
 			if (Control == null)
 				return;
 
-			UIColor backgroundColor = Element.BackgroundColor == Color.Default ? null : Element.BackgroundColor.ToUIColor();
+			UIColor backgroundColor = Element.BackgroundColor?.ToUIColor();
 
 			if (!Brush.IsNullOrEmpty(brush))
 			{
@@ -210,7 +210,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		void UpdateTextColor()
 		{
-			if (Element.TextColor == Color.Default)
+			if (Element.TextColor == null)
 			{
 				Control.SetTitleColor(_buttonTextColorDefaultNormal, UIControlState.Normal);
 				Control.SetTitleColor(_buttonTextColorDefaultHighlighted, UIControlState.Highlighted);

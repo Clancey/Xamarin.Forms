@@ -1,9 +1,11 @@
+﻿using System.Graphics;
+
 namespace Xamarin.Forms
 {
 	static class TextElement
 	{
 		public static readonly BindableProperty TextColorProperty =
-			BindableProperty.Create(nameof(ITextElement.TextColor), typeof(Color), typeof(ITextElement), Color.Default,
+			BindableProperty.Create(nameof(ITextElement.TextColor), typeof(Color), typeof(ITextElement), null,
 									propertyChanged: OnTextColorPropertyChanged);
 
 		public static readonly BindableProperty CharacterSpacingProperty =

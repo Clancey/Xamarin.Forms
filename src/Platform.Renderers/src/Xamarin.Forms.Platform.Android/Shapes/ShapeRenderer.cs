@@ -243,9 +243,9 @@ namespace Xamarin.Forms.Platform.Android
 				}
 				else
 				{
-					AColor fillColor = Color.Default.ToAndroid();
+					AColor fillColor = Color.Transparent.ToAndroid();
 
-					if (_fill is SolidColorBrush solidColorBrush && solidColorBrush.Color != Color.Default)
+					if (_fill is SolidColorBrush solidColorBrush && solidColorBrush.Color != null)
 						fillColor = solidColorBrush.Color.ToAndroid();
 
 					_drawable.Paint.Color = fillColor;
@@ -273,9 +273,9 @@ namespace Xamarin.Forms.Platform.Android
 				}
 				else
 				{
-					AColor strokeColor = Color.Default.ToAndroid();
+					AColor strokeColor = Color.Transparent.ToAndroid();
 
-					if (_stroke is SolidColorBrush solidColorBrush && solidColorBrush.Color != Color.Default)
+					if (_stroke is SolidColorBrush solidColorBrush && solidColorBrush.Color != null)
 						strokeColor = solidColorBrush.Color.ToAndroid();
 
 					_drawable.Paint.Color = strokeColor;
@@ -518,8 +518,8 @@ namespace Xamarin.Forms.Platform.Android
 				return null;
 
 			int gradientStopsCount = radialGradientBrush.GradientStops.Count;
-			AColor centerColor = gradientStopsCount > 0 ? radialGradientBrush.GradientStops[0].Color.ToAndroid() : Color.Default.ToAndroid();
-			AColor edgeColor = gradientStopsCount > 0 ? radialGradientBrush.GradientStops[gradientStopsCount - 1].Color.ToAndroid() : Color.Default.ToAndroid();
+			AColor centerColor = gradientStopsCount > 0 ? radialGradientBrush.GradientStops[0].Color.ToAndroid() : Color.Transparent.ToAndroid();
+			AColor edgeColor = gradientStopsCount > 0 ? radialGradientBrush.GradientStops[gradientStopsCount - 1].Color.ToAndroid() : Color.Transparent.ToAndroid();
 
 			float[] offsets = new float[radialGradientBrush.GradientStops.Count];
 

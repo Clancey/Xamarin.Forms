@@ -1,8 +1,9 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Graphics;
 using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms.Internals;
@@ -48,9 +49,9 @@ namespace Xamarin.Forms
 
 		public static readonly BindableProperty SeparatorVisibilityProperty = BindableProperty.Create("SeparatorVisibility", typeof(SeparatorVisibility), typeof(ListView), SeparatorVisibility.Default);
 
-		public static readonly BindableProperty SeparatorColorProperty = BindableProperty.Create("SeparatorColor", typeof(Color), typeof(ListView), Color.Default);
+		public static readonly BindableProperty SeparatorColorProperty = BindableProperty.Create("SeparatorColor", typeof(Color), typeof(ListView), null);
 
-		public static readonly BindableProperty RefreshControlColorProperty = BindableProperty.Create(nameof(RefreshControlColor), typeof(Color), typeof(ListView), Color.Default);
+		public static readonly BindableProperty RefreshControlColorProperty = BindableProperty.Create(nameof(RefreshControlColor), typeof(Color), typeof(ListView), null);
 
 		public static readonly BindableProperty HorizontalScrollBarVisibilityProperty = BindableProperty.Create(nameof(HorizontalScrollBarVisibility), typeof(ScrollBarVisibility), typeof(ListView), ScrollBarVisibility.Default);
 

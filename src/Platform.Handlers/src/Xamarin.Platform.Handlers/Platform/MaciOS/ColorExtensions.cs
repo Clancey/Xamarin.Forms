@@ -1,6 +1,7 @@
 ﻿using CoreGraphics;
 using Xamarin.Forms;
 using System;
+using System.Graphics;
 
 #if __IOS__
 using UIKit;
@@ -50,7 +51,7 @@ namespace Xamarin.Platform
 				if (Forms.IsiOS13OrNewer)
 					return UIColor.SecondaryLabelColor;
 #endif
-				return new Color(.32, .4, .57).ToNative();
+				return new Color(.32f, .4f, .57f).ToNative();
 			}
 		}
 
@@ -189,7 +190,7 @@ namespace Xamarin.Platform
 
 			color.GetRgba(out red, out green, out blue, out alpha);
 #endif
-			return new Color(red, green, blue, alpha);
+			return new Color((float)red, (float)green, (float)blue, (float)alpha);
 		}
 
 #if __MACOS__
@@ -204,24 +205,14 @@ namespace Xamarin.Platform
 #if __IOS__
 		public static UIColor ToNative(this Color color)
 		{
-			return new UIColor((float)color.R, (float)color.G, (float)color.B, (float)color.A);
+			return new UIColor(color.Red, color.Green,color.Blue, color.Alpha);
 		}
 
 		public static UIColor ToNative(this Color color, Color defaultColor)
-		{
-			if (color.IsDefault)
-				return defaultColor.ToNative();
-
-			return color.ToNative();
-		}
+			=> color?.ToNative() ?? defaultColor.ToNative();
 
 		public static UIColor ToNative(this Color color, UIColor defaultColor)
-		{
-			if (color.IsDefault)
-				return defaultColor;
-
-			return color.ToNative();
-		}
+			=> color.ToNative() ?? defaultColor;
 #else
 		public static NSColor ToNative(this Color color)
 		{
@@ -229,20 +220,10 @@ namespace Xamarin.Platform
 		}
 
 		public static NSColor ToNative(this Color color, Color defaultColor)
-		{
-			if (color.IsDefault)
-				return defaultColor.ToNative();
-
-			return color.ToNative();
-		}
+			=> color?.ToNative() ?? defaultColor.ToNative();
 
 		public static NSColor ToNative(this Color color, NSColor defaultColor)
-		{
-			if (color.IsDefault)
-				return defaultColor;
-
-			return color.ToNative();
-		}
+			=> color.ToNative() ?? defaultColor;
 #endif
 	}
 }

@@ -1,10 +1,11 @@
 ﻿namespace Xamarin.Forms.PlatformConfiguration.iOSSpecific
 {
+	using System.Graphics;
 	using FormsElement = Forms.Cell;
 
 	public static class Cell
 	{
-		public static readonly BindableProperty DefaultBackgroundColorProperty = BindableProperty.Create(nameof(DefaultBackgroundColor), typeof(Color), typeof(Cell), Color.Default);
+		public static readonly BindableProperty DefaultBackgroundColorProperty = BindableProperty.Create(nameof(DefaultBackgroundColor), typeof(Color), typeof(Cell), null);
 
 		public static Color GetDefaultBackgroundColor(BindableObject element)
 			=> (Color)element.GetValue(DefaultBackgroundColorProperty);

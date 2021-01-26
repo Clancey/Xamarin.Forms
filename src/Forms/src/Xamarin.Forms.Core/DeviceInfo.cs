@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using System.Runtime.CompilerServices;
 
 namespace Xamarin.Forms.Internals

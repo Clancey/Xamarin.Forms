@@ -32,7 +32,7 @@ namespace Xamarin.Forms.StyleSheets.UnitTests
 			Assume.That(style, Is.Not.Null);
 
 			var ve = new VisualElement();
-			Assume.That(ve.BackgroundColor, Is.EqualTo(Color.Default));
+			Assume.That(ve.BackgroundColor, Is.EqualTo(null));
 			style.Apply(ve);
 			Assert.That(ve.BackgroundColor, Is.EqualTo(Color.Red));
 		}
@@ -67,13 +67,13 @@ namespace Xamarin.Forms.StyleSheets.UnitTests
 				}
 			};
 
-			Assume.That(layout.BackgroundColor, Is.EqualTo(Color.Default));
-			Assume.That(label.BackgroundColor, Is.EqualTo(Color.Default));
-			Assume.That(label.TextColor, Is.EqualTo(Color.Default));
+			Assume.That(layout.BackgroundColor, Is.EqualTo(null));
+			Assume.That(label.BackgroundColor, Is.EqualTo(null));
+			Assume.That(label.TextColor, Is.EqualTo(null));
 
 			style.Apply(layout);
 			Assert.That(layout.BackgroundColor, Is.EqualTo(Color.Red));
-			Assert.That(label.BackgroundColor, Is.EqualTo(Color.Default));
+			Assert.That(label.BackgroundColor, Is.EqualTo(null));
 			Assert.That(label.TextColor, Is.EqualTo(Color.Lime));
 		}
 
@@ -85,7 +85,7 @@ namespace Xamarin.Forms.StyleSheets.UnitTests
 			Assume.That(style, Is.Not.Null);
 
 			var layout = new StackLayout();
-			Assert.That(layout.GetValue(TextElement.TextColorProperty), Is.EqualTo(Color.Default));
+			Assert.That(layout.GetValue(TextElement.TextColorProperty), Is.EqualTo(null));
 		}
 
 		[Test]

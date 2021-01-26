@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Graphics;
 using System.Linq;
 using Xamarin.Forms.Internals;
 

@@ -498,7 +498,7 @@ namespace Xamarin.Forms.Platform.MacOS
 #else
                     NSColor.Clear.CGColor;
 #endif
-                if (_fill is SolidColorBrush solidColorBrush && solidColorBrush.Color != Color.Default)
+                if (_fill is SolidColorBrush solidColorBrush && solidColorBrush.Color != null)
                     fillColor = solidColorBrush.Color.ToCGColor();
 
                 graphics.AddPath(_renderPath);
@@ -521,7 +521,7 @@ namespace Xamarin.Forms.Platform.MacOS
 #else
                     NSColor.Clear.CGColor;
 #endif
-                if (_stroke is SolidColorBrush solidColorBrush && solidColorBrush.Color != Color.Default)
+                if (_stroke is SolidColorBrush solidColorBrush && solidColorBrush.Color != null)
                     strokeColor = solidColorBrush.Color.ToCGColor();
 
                 graphics.AddPath(_renderPath);

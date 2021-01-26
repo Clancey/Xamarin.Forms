@@ -9,7 +9,7 @@ using Xamarin.Forms;
 using AActivity = Android.App.Activity;
 using AApplicationInfoFlags = Android.Content.PM.ApplicationInfoFlags;
 using AFragmentManager = AndroidX.Fragment.App.FragmentManager;
-using Size = Xamarin.Forms.Size;
+using Size = System.Graphics.Size;
 
 namespace Xamarin.Platform
 {

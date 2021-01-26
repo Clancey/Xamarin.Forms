@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Graphics;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms.Internals;

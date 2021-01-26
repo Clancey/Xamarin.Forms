@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Graphics;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
@@ -105,7 +106,7 @@ namespace Xamarin.Forms
 		}
 
 		public static readonly BindableProperty RefreshColorProperty =
-			BindableProperty.Create(nameof(RefreshColor), typeof(Color), typeof(RefreshView), Color.Default);
+			BindableProperty.Create(nameof(RefreshColor), typeof(Color), typeof(RefreshView), null);
 
 		public Color RefreshColor
 		{

@@ -160,7 +160,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		protected override void SetBackgroundColor(Color color)
 		{
-			if (Element.BackgroundColor != Color.Default)
+			if (Element.BackgroundColor != null)
 				BackgroundColor = Element.BackgroundColor.ToUIColor();
 			else
 				BackgroundColor = ColorExtensions.BackgroundColor;
@@ -408,7 +408,7 @@ namespace Xamarin.Forms.Platform.iOS
 		{
 			var emptyContentView = new UIView
 			{
-				BackgroundColor = Color.Default.ToUIColor()
+				BackgroundColor = Color.Transparent.ToUIColor()
 			};
 
 			return emptyContentView;

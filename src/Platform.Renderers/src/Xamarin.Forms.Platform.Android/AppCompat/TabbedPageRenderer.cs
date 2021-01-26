@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -46,8 +46,8 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 		int[] _checkedStateSet = null;
 		int[] _selectedStateSet = null;
 		int[] _emptyStateSet = null;
-		int _defaultARGBColor = Color.Default.ToAndroid().ToArgb();
-		AColor _defaultAndroidColor = Color.Default.ToAndroid();
+		int _defaultARGBColor = Color.Transparent.ToArgb();
+		AColor _defaultAndroidColor = Color.Transparent.ToAndroid();
 		Platform _platform;
 
 		public TabbedPageRenderer(Context context) : base(context)
@@ -91,7 +91,7 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 						return Element.UnselectedTabColor;
 				}
 
-				return Color.Default;
+				return null;
 			}
 		}
 
@@ -105,7 +105,7 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 						return Element.SelectedTabColor;
 				}
 
-				return Color.Default;
+				return null;
 			}
 		}
 

@@ -1,4 +1,5 @@
-using System;
+﻿using System;
+using System.Graphics;
 using System.Windows.Input;
 
 namespace Xamarin.Forms
@@ -37,9 +38,9 @@ namespace Xamarin.Forms
 
 		public static readonly BindableProperty DetailProperty = BindableProperty.Create("Detail", typeof(string), typeof(TextCell), default(string));
 
-		public static readonly BindableProperty TextColorProperty = BindableProperty.Create("TextColor", typeof(Color), typeof(TextCell), Color.Default);
+		public static readonly BindableProperty TextColorProperty = BindableProperty.Create("TextColor", typeof(Color), typeof(TextCell), null);
 
-		public static readonly BindableProperty DetailColorProperty = BindableProperty.Create("DetailColor", typeof(Color), typeof(TextCell), Color.Default);
+		public static readonly BindableProperty DetailColorProperty = BindableProperty.Create("DetailColor", typeof(Color), typeof(TextCell), null);
 
 		public ICommand Command
 		{

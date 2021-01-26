@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using UIKit;
 using SizeF = CoreGraphics.CGSize;
@@ -110,7 +110,7 @@ namespace Xamarin.Forms.Platform.iOS
 		{
 			if (Element != null)
 			{
-				if (Element.MinimumTrackColor == Color.Default)
+				if (Element.MinimumTrackColor == null)
 					Control.MinimumTrackTintColor = defaultmintrackcolor;
 				else
 					Control.MinimumTrackTintColor = Element.MinimumTrackColor.ToUIColor();
@@ -122,7 +122,7 @@ namespace Xamarin.Forms.Platform.iOS
 		{
 			if (Element != null)
 			{
-				if (Element.MaximumTrackColor == Color.Default)
+				if (Element.MaximumTrackColor == null)
 					Control.MaximumTrackTintColor = defaultmaxtrackcolor;
 				else
 					Control.MaximumTrackTintColor = Element.MaximumTrackColor.ToUIColor();
@@ -134,7 +134,7 @@ namespace Xamarin.Forms.Platform.iOS
 		{
 			if (Element != null)
 			{
-				if (Element.ThumbColor == Color.Default)
+				if (Element.ThumbColor == null)
 					Control.ThumbTintColor = defaultthumbcolor;
 				else
 					Control.ThumbTintColor = Element.ThumbColor.ToUIColor();

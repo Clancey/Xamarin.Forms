@@ -61,18 +61,18 @@ namespace Xamarin.Platform
 		}
 
 
-		public static void SetColorFilter(this ADrawable drawable, Forms.Color color, FilterMode mode, AColorFilter? defaultColorFilter)
+		public static void SetColorFilter(this ADrawable drawable, System.Graphics.Color color, FilterMode mode, AColorFilter? defaultColorFilter)
 		{
 			if (drawable == null)
 				return;
 
-			if (color == Forms.Color.Default)
+			if (color == null)
 				SetColorFilter(drawable, defaultColorFilter);
 			else
 				drawable.SetColorFilter(color.ToNative(), mode);
 		}
 
-		public static void SetColorFilter(this ADrawable drawable, Forms.Color color, FilterMode mode)
+		public static void SetColorFilter(this ADrawable drawable, System.Graphics.Color color, FilterMode mode)
 		{
 			if (drawable == null)
 				return;

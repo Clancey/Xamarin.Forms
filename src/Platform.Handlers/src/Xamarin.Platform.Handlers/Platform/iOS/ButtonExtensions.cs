@@ -1,4 +1,5 @@
-﻿using Foundation;
+﻿using System.Graphics;
+using Foundation;
 using UIKit;
 using Xamarin.Forms;
 
@@ -24,7 +25,7 @@ namespace Xamarin.Platform
 		public static void UpdateColor(this UIButton nativeButton, IButton button) =>
 			nativeButton.UpdateColor(button.Color, nativeButton.TitleColor(UIControlState.Normal).ToColor());
 
-		static Color Cleanse(this Color color, Color defaultColor) => color.IsDefault ? defaultColor : color;
+		static Color Cleanse(this Color color, Color defaultColor) => color ?? defaultColor;
 
 	}
 }

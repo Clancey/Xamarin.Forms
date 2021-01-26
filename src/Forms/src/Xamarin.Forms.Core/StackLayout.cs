@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Graphics;
 using System.Linq;
 using Xamarin.Forms.Internals;
 using Xamarin.Platform;

@@ -312,7 +312,7 @@ namespace Xamarin.Forms.Platform.Android
 				{
 					_scrimPaint = null;
 					var backdropColor = solidColor.Color;
-					if (backdropColor == Color.Default)
+					if (backdropColor == null)
 					{
 						unchecked
 						{
