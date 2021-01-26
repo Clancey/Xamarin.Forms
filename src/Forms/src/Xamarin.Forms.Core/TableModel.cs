@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using Xamarin.Forms.Internals;
 
 namespace Xamarin.Forms.Internals
@@ -40,7 +41,7 @@ namespace Xamarin.Forms.Internals
 
 		public virtual Color GetSectionTextColor(int section)
 		{
-			return Color.Default;
+			return null;
 		}
 
 		public event EventHandler<EventArg<object>> ItemLongPressed;

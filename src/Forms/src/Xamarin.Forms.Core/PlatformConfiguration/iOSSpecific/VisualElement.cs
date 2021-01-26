@@ -1,7 +1,8 @@
-
+﻿
 namespace Xamarin.Forms.PlatformConfiguration.iOSSpecific
 {
 	using System;
+	using System.Graphics;
 	using FormsElement = Forms.VisualElement;
 
 	public static class VisualElement
@@ -84,7 +85,7 @@ namespace Xamarin.Forms.PlatformConfiguration.iOSSpecific
 
 		public static readonly BindableProperty ShadowColorProperty =
 			BindableProperty.Create("ShadowColor", typeof(Color),
-			typeof(VisualElement), Color.Default);
+			typeof(VisualElement), null);
 
 		public static Color GetShadowColor(BindableObject element)
 		{

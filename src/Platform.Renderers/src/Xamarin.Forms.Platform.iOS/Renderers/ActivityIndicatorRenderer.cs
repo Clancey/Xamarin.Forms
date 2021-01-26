@@ -1,4 +1,4 @@
-using CoreGraphics;
+﻿using CoreGraphics;
 using System.ComponentModel;
 using System.Drawing;
 using UIKit;
@@ -71,7 +71,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		void UpdateColor()
 		{
-			Control.Color = Element.Color == Color.Default ? null : Element.Color.ToUIColor();
+			Control.Color = Element.Color?.ToUIColor();
 		}
 
 		void UpdateIsRunning()

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 
 using RectangleF = CoreGraphics.CGRect;
@@ -133,7 +133,7 @@ namespace Xamarin.Forms.Platform.MacOS
 
 			if (e.NewElement != null)
 			{
-				if (Control != null && e.OldElement != null && e.OldElement.BackgroundColor != e.NewElement.BackgroundColor || e.NewElement.BackgroundColor != Color.Default)
+				if (Control != null && e.OldElement != null && e.OldElement.BackgroundColor != e.NewElement.BackgroundColor || e.NewElement.BackgroundColor != null)
 					SetBackgroundColor(e.NewElement.BackgroundColor);
 
 				if(Control != null && e.OldElement != null && e.OldElement.Background != e.NewElement.Background)
@@ -201,12 +201,12 @@ namespace Xamarin.Forms.Platform.MacOS
 			if (IsElementOrControlEmpty)
 				return;
 #if __MOBILE__
-			if (color == Color.Default)
+			if (color == null)
 				Control.BackgroundColor = _defaultColor;
 			else
 				Control.BackgroundColor = color.ToUIColor();
 #else
-			Control.Layer.BackgroundColor = color == Color.Default ? _defaultColor : color.ToCGColor();
+			Control.Layer.BackgroundColor = color?.ToCGColor() ?? _defaultColor;
 #endif
 		}
 
@@ -262,7 +262,7 @@ namespace Xamarin.Forms.Platform.MacOS
 			if (IsElementOrControlEmpty)
 				return;
 
-			if (Element.BackgroundColor != Color.Default)
+			if (Element.BackgroundColor != null)
 				SetBackgroundColor(Element.BackgroundColor);
 		}
 

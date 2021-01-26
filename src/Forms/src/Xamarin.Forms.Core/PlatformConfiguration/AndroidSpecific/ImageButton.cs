@@ -1,5 +1,6 @@
 ﻿namespace Xamarin.Forms.PlatformConfiguration.AndroidSpecific
 {
+	using System.Graphics;
 	using FormsImageButton = Forms.ImageButton;
 
 	public static class ImageButton
@@ -28,7 +29,7 @@
 			return config;
 		}
 
-		public static readonly BindableProperty ShadowColorProperty = BindableProperty.Create("ShadowColor", typeof(Color), typeof(ImageButton), Color.Default);
+		public static readonly BindableProperty ShadowColorProperty = BindableProperty.Create("ShadowColor", typeof(Color), typeof(ImageButton), null);
 
 		public static Color GetShadowColor(BindableObject element)
 		{

@@ -1,11 +1,12 @@
-
+﻿
 namespace Xamarin.Forms.PlatformConfiguration.TizenSpecific
 {
+	using System.Graphics;
 	using FormsElement = Forms.Switch;
 
 	public static class Switch
 	{
-		public static readonly BindableProperty ColorProperty = BindableProperty.Create(nameof(Color), typeof(Color), typeof(FormsElement), Color.Default);
+		public static readonly BindableProperty ColorProperty = BindableProperty.Create(nameof(Color), typeof(Color), typeof(FormsElement), null);
 
 		public static Color GetColor(BindableObject element)
 		{

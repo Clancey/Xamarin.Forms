@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Graphics;
 
 namespace Xamarin.Forms.Shapes
 {
@@ -671,7 +672,7 @@ namespace Xamarin.Forms.Shapes
 
 	internal static class MatrixUtil
 	{
-		internal static void TransformRect(ref Xamarin.Forms.Rectangle rect, ref Matrix matrix)
+		internal static void TransformRect(ref System.Graphics.Rectangle rect, ref Matrix matrix)
 		{
 			if (rect.IsEmpty)
 			{

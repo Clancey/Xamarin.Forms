@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -156,7 +156,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		{
 			var nav = new NavigationPage();
 
-			Assert.AreEqual(Color.Default, nav.Tint);
+			Assert.AreEqual(null, nav.Tint);
 
 			bool signaled = false;
 			nav.PropertyChanged += (sender, args) =>

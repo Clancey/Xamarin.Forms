@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Graphics;
 
 namespace Xamarin.Forms
 {

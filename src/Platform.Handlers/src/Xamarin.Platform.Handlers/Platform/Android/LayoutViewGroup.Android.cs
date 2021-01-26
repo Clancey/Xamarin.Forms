@@ -3,8 +3,8 @@ using Android.Content;
 using Android.Runtime;
 using Android.Util;
 using Android.Views;
-using Rectangle = Xamarin.Forms.Rectangle;
-using Size = Xamarin.Forms.Size;
+using Rectangle = System.Graphics.Rectangle;
+using Size = System.Graphics.Size;
 
 namespace Xamarin.Platform.Handlers
 {

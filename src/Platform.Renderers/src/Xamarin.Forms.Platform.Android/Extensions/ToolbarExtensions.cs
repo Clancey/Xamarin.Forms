@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Android.Content;
@@ -74,7 +74,7 @@ namespace Xamarin.Forms.Platform.Android
 
 			if (!String.IsNullOrWhiteSpace(item.Text))
 			{
-				if (item.Order != ToolbarItemOrder.Secondary && tintColor != null && tintColor != Color.Default)
+				if (item.Order != ToolbarItemOrder.Secondary && tintColor != null && tintColor != null)
 				{
 					var color = item.IsEnabled ? tintColor.Value.ToAndroid() : tintColor.Value.MultiplyAlpha(0.302).ToAndroid();
 					SpannableString titleTinted = new SpannableString(item.Text);
@@ -123,7 +123,7 @@ namespace Xamarin.Forms.Platform.Android
 
 			menuitem.SetOnMenuItemClickListener(new GenericMenuClickListener(((IMenuItemController)item).Activate));
 
-			if (item.Order != ToolbarItemOrder.Secondary && !Forms.IsOreoOrNewer && (tintColor != null && tintColor != Color.Default))
+			if (item.Order != ToolbarItemOrder.Secondary && !Forms.IsOreoOrNewer && (tintColor != null && tintColor != null))
 			{
 				var view = toolbar.FindViewById(menuitem.ItemId);
 				if (view is ATextView textView)

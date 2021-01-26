@@ -1,4 +1,5 @@
-﻿namespace Xamarin.Forms.Shapes
+﻿using Rect = System.Graphics.Rectangle;
+namespace Xamarin.Forms.Shapes
 {
 	public class RectangleGeometry : Geometry
 	{

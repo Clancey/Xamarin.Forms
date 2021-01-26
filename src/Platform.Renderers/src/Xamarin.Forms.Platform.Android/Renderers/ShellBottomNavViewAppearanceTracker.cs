@@ -64,10 +64,10 @@ namespace Xamarin.Forms.Platform.Android
 			var oldBackground = bottomView.Background;
 			var colorDrawable = oldBackground as ColorDrawable;
 			var colorChangeRevealDrawable = oldBackground as ColorChangeRevealDrawable;
-			AColor lastColor = colorChangeRevealDrawable?.EndColor ?? colorDrawable?.Color ?? Color.Default.ToAndroid();
+			AColor lastColor = colorChangeRevealDrawable?.EndColor ?? colorDrawable?.Color ?? Color.Transparent.ToAndroid();
 			AColor newColor;
 
-			if (color == Color.Default)
+			if (color == null)
 				newColor = Color.White.ToAndroid();
 			else
 				newColor = color.ToAndroid();

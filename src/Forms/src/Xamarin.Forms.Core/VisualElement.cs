@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Graphics;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Shapes;
+using Geometry = Xamarin.Forms.Shapes.Geometry;
+using Rectangle = System.Graphics.Rectangle;
 
 namespace Xamarin.Forms
 {
@@ -198,7 +201,7 @@ namespace Xamarin.Forms
 
 		public static readonly BindableProperty OpacityProperty = BindableProperty.Create("Opacity", typeof(double), typeof(VisualElement), 1d, coerceValue: (bindable, value) => ((double)value).Clamp(0, 1));
 
-		public static readonly BindableProperty BackgroundColorProperty = BindableProperty.Create("BackgroundColor", typeof(Color), typeof(VisualElement), Color.Default);
+		public static readonly BindableProperty BackgroundColorProperty = BindableProperty.Create("BackgroundColor", typeof(Color), typeof(VisualElement), null);
 
 		public static readonly BindableProperty BackgroundProperty = BindableProperty.Create(nameof(Background), typeof(Brush), typeof(VisualElement), Brush.Default,
 			propertyChanging: (bindable, oldvalue, newvalue) =>
@@ -778,7 +781,7 @@ namespace Xamarin.Forms
 			return r;
 		}
 
-		public void Layout(Rectangle bounds) => Bounds = bounds;
+		public void Layout(System.Graphics.Rectangle bounds) => Bounds = bounds;
 
 		public SizeRequest Measure(double widthConstraint, double heightConstraint, MeasureFlags flags = MeasureFlags.None)
 		{
@@ -922,7 +925,7 @@ namespace Xamarin.Forms
 					}
 		}
 
-		internal void MockBounds(Rectangle bounds)
+		internal void MockBounds(System.Graphics.Rectangle bounds)
 		{
 #if NETSTANDARD2_0
 			(_mockX, _mockY, _mockWidth, _mockHeight) = bounds;

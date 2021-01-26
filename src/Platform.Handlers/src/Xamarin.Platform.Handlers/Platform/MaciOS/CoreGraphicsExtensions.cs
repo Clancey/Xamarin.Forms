@@ -1,4 +1,5 @@
-﻿using CoreGraphics;
+﻿using System.Graphics;
+using CoreGraphics;
 using Xamarin.Forms;
 
 namespace Xamarin.Platform

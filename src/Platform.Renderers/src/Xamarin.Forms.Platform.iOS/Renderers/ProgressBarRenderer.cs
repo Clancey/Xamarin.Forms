@@ -1,4 +1,4 @@
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using UIKit;
 using SizeF = CoreGraphics.CGSize;
 
@@ -51,12 +51,12 @@ namespace Xamarin.Forms.Platform.iOS
 			if (Control == null)
 				return;
 
-			Control.TrackTintColor = color != Color.Default ? color.ToUIColor() : null;
+			Control.TrackTintColor = color?.ToUIColor();
 		}
 
 		void UpdateProgressColor()
 		{
-			Control.ProgressTintColor = Element.ProgressColor == Color.Default ? null : Element.ProgressColor.ToUIColor();
+			Control.ProgressTintColor = Element.ProgressColor?.ToUIColor();
 		}
 
 		void UpdateProgress()

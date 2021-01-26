@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Graphics;
 using System.Text;
 
 namespace Xamarin.Forms
@@ -46,7 +47,7 @@ namespace Xamarin.Forms
 				return new SolidColorBrush(color);
 			}
 
-			return new SolidColorBrush(Color.Default);
+			return new SolidColorBrush(null);
 		}
 
 		public override string ConvertToInvariantString(object value) => throw new NotSupportedException();

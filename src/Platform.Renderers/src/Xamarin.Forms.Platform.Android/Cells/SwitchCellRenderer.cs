@@ -1,4 +1,4 @@
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using Android.Content;
 using Android.Graphics;
 using Android.Graphics.Drawables;
@@ -92,7 +92,7 @@ namespace Xamarin.Forms.Platform.Android
 			{
 				if (switchCell.On)
 				{
-					if (switchCell.OnColor == Color.Default)
+					if (switchCell.OnColor == null)
 					{
 						aSwitch.TrackDrawable = _defaultTrackDrawable;
 					}

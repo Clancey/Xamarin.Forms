@@ -32,6 +32,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Graphics;
 
 namespace Xamarin.Forms
 {
@@ -50,7 +51,6 @@ namespace Xamarin.Forms
 			{ typeof(Rectangle), typeof(RectangleTypeConverter) },
 			{ typeof(Size), typeof(SizeTypeConverter) },
 			{ typeof(Thickness), typeof(ThicknessTypeConverter) },
-			{ typeof(Rect), typeof(RectTypeConverter) },
 			{ typeof(Point), typeof(PointTypeConverter) },
 		};
 

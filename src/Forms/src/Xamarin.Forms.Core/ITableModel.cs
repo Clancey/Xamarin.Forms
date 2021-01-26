@@ -1,3 +1,5 @@
+using System.Graphics;
+
 namespace Xamarin.Forms
 {
 	public interface ITableModel

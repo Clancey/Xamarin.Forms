@@ -9,5 +9,8 @@
     <PackageId>Xamarin.Platform</PackageId>
     <Product>Xamarin</Product>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="JonLipsky.System.Graphics" Version="0.1.36" />
+  </ItemGroup>
   <Import Project="..\..\..\..\.nuspec\Xamarin.Forms.MultiTargeting.targets" />
 </Project>

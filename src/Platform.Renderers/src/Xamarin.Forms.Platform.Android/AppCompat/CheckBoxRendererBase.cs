@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using Android.Content;
 using Android.Content.Res;
@@ -195,7 +195,7 @@ namespace Xamarin.Forms.Platform.Android
 
 		protected virtual ColorStateList GetColorStateList()
 		{
-			var tintColor = Element.Color == Color.Default ? Color.Accent.ToAndroid() : Element.Color.ToAndroid();
+			var tintColor =  Element.Color?.ToAndroid() ?? Color.Accent.ToAndroid();
 
 			var list = new ColorStateList(
 					_checkedStates,
@@ -212,7 +212,7 @@ namespace Xamarin.Forms.Platform.Android
 
 		void UpdateBackgroundColor()
 		{
-			if (Element.BackgroundColor == Color.Default)
+			if (Element.BackgroundColor == null)
 				SetBackgroundColor(AColor.Transparent);
 			else
 				SetBackgroundColor(Element.BackgroundColor.ToAndroid());

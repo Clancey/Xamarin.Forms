@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Graphics;
+using System.Linq;
 using Xamarin.Forms;
 
 namespace Xamarin.Platform

@@ -1,9 +1,11 @@
 using System;
+using System.Graphics;
 
 namespace Xamarin.Forms
 {
 	public interface IScrollViewController : ILayoutController
 	{
+
 		Point GetScrollPositionForElement(VisualElement item, ScrollToPosition position);
 
 		event EventHandler<ScrollToRequestedEventArgs> ScrollToRequested;

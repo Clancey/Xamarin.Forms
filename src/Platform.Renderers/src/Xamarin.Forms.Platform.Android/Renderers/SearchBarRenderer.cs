@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -212,7 +212,7 @@ namespace Xamarin.Forms.Platform.Android
 				var image = FindViewById<ImageView>(searchViewCloseButtonId);
 				if (image != null && image.Drawable != null)
 				{
-					if (Element.CancelButtonColor != Color.Default)
+					if (Element.CancelButtonColor != null)
 						image.Drawable.SetColorFilter(Element.CancelButtonColor, FilterMode.SrcIn);
 					else
 						image.Drawable.ClearColorFilter();

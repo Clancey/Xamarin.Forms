@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Graphics;
 
 namespace Xamarin.Forms.Internals
 {

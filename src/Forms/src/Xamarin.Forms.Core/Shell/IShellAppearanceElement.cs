@@ -1,4 +1,6 @@
-﻿namespace Xamarin.Forms
+﻿using System.Graphics;
+
+namespace Xamarin.Forms
 {
 	public interface IShellAppearanceElement
 	{

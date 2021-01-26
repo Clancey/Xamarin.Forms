@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Specialized;
+using System.Graphics;
 
 namespace Xamarin.Forms
 {
@@ -96,14 +97,14 @@ namespace Xamarin.Forms
 				var position = _indicatorView.Position;
 				var selectedIndex = position >= maxVisible ? maxVisible - 1 : position;
 				Children[index].BackgroundColor = index == selectedIndex
-					? GetColorOrDefault(_indicatorView.SelectedIndicatorColor, Color.Gray)
-					: GetColorOrDefault(_indicatorView.IndicatorColor, Color.Silver);
+					? GetColorOrDefault(_indicatorView.SelectedIndicatorColor, Colors.Gray)
+					: GetColorOrDefault(_indicatorView.IndicatorColor, Colors.Silver);
 			}
 
 			IsVisible = indicatorCount > 1 || !_indicatorView.HideSingle;
 		}
 
-		Color GetColorOrDefault(Color color, Color defaultColor) => color.IsDefault ? defaultColor : color;
+		Color GetColorOrDefault(Color color, Color defaultColor) => color ?? defaultColor;
 
 		void AddExtraIndicatorItems()
 		{
@@ -120,7 +121,7 @@ namespace Xamarin.Forms
 				{
 					Padding = 0,
 					HasShadow = false,
-					BorderColor = Color.Transparent,
+					BorderColor = Colors.Transparent,
 					VerticalOptions = LayoutOptions.Center,
 					HorizontalOptions = LayoutOptions.Center,
 					WidthRequest = size,

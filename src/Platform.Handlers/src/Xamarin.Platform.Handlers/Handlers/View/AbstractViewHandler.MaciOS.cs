@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System.Graphics;
+using Xamarin.Forms;
 
 #if __IOS__
 using NativeColor = UIKit.UIColor;

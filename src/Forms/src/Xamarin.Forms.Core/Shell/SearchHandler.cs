@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Graphics;
 using System.Windows.Input;
 using Xamarin.Forms.Internals;
 using static Xamarin.Forms.VisualElement;
@@ -213,7 +214,7 @@ namespace Xamarin.Forms
 			set => SetValue(PlaceholderElement.PlaceholderProperty, value);
 		}
 
-		public static readonly BindableProperty BackgroundColorProperty = BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(SearchHandler), Color.Default);
+		public static readonly BindableProperty BackgroundColorProperty = BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(SearchHandler), null);
 
 		public Color BackgroundColor
 		{

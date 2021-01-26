@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Graphics;
 
 namespace Xamarin.Forms
 {
