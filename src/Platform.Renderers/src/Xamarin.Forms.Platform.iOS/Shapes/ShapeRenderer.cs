@@ -4,6 +4,7 @@ using CoreAnimation;
 using CoreGraphics;
 using Xamarin.Forms.Shapes;
 using Shape = Xamarin.Forms.Shapes.Shape;
+using System.Graphics;
 
 #if __MOBILE__
 using UIKit;
@@ -545,7 +546,7 @@ namespace Xamarin.Forms.Platform.MacOS
                 for (int index = 0; index < brush.GradientStops.Count; index++)
                 {
                     Color color = brush.GradientStops[index].Color;
-                    colors[index] = new CGColor(new nfloat(color.R), new nfloat(color.G), new nfloat(color.B), new nfloat(color.A));
+                    colors[index] = new CGColor(new nfloat(color.Red), new nfloat(color.Green), new nfloat(color.Blue), new nfloat(color.Alpha));
                     locations[index] = new nfloat(brush.GradientStops[index].Offset);
                 }
 

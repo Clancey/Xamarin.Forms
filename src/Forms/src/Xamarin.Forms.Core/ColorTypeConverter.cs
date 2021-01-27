@@ -129,7 +129,7 @@ namespace Xamarin.Forms
 						case "default":
 							return null;
 						case "accent":
-							return Colors.Accent;
+							return Application.AccentColor;
 						case "aliceblue":
 							return Colors.AliceBlue;
 						case "antiquewhite":

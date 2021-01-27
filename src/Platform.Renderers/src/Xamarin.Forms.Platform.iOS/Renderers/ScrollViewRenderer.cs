@@ -6,6 +6,7 @@ using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using PointF = CoreGraphics.CGPoint;
 using RectangleF = CoreGraphics.CGRect;
 using CoreGraphics;
+using System.Graphics;
 
 namespace Xamarin.Forms.Platform.iOS
 {

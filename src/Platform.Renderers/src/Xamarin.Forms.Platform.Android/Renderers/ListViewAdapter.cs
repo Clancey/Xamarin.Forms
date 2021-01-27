@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Graphics;
 using System.Linq;
 using Android.Content;
 using Android.Util;
@@ -703,8 +704,8 @@ namespace Xamarin.Forms.Platform.Android
 
 			Color separatorColor = _listView.SeparatorColor;
 
-			if (isHeader || !separatorColor.IsDefault)
-				bline.SetBackgroundColor(separatorColor.ToAndroid(Color.Accent));
+			if (isHeader || separatorColor != null)
+				bline.SetBackgroundColor(separatorColor.ToAndroid(Application.AccentColor));
 			else
 			{
 				if (s_dividerHorizontalDarkId == int.MinValue)

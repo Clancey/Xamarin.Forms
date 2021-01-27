@@ -6,6 +6,7 @@ using Android.Text;
 using Android.Text.Style;
 using Android.Util;
 using Android.Widget;
+using Color = System.Graphics.Color;
 
 namespace Xamarin.Forms.Platform.Android
 {

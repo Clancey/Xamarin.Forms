@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.Graphics;
 using CoreGraphics;
 using Foundation;
 using UIKit;
@@ -85,10 +86,7 @@ namespace Xamarin.Forms.Platform.iOS
 		protected internal override void UpdatePlaceholderColor()
 		{
 			Color placeholderColor = Element.PlaceholderColor;
-			if (placeholderColor.IsDefault)
-				_placeholderLabel.TextColor = _defaultPlaceholderColor;
-			else
-				_placeholderLabel.TextColor = placeholderColor.ToUIColor();
+			_placeholderLabel.TextColor = placeholderColor?.ToUIColor() ?? _defaultPlaceholderColor;
 		}
 
 		void CreatePlaceholderLabel()

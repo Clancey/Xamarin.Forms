@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using Android.Graphics.Drawables;
 using Android.Views;
@@ -171,7 +172,7 @@ namespace Xamarin.Forms.Platform.Android
 			}
 		}
 
-		protected virtual void UpdateBackgroundColor(Color? color = null)
+		protected virtual void UpdateBackgroundColor(Color color = null)
 		{
 			if (Element == null)
 			{

@@ -3,6 +3,7 @@ using CoreGraphics;
 using PointF = CoreGraphics.CGPoint;
 using RectangleF = CoreGraphics.CGRect;
 using SizeF = CoreGraphics.CGSize;
+using System.Graphics;
 #if __MOBILE__
 using UIKit;
 namespace Xamarin.Forms.Platform.iOS
@@ -272,24 +273,14 @@ namespace Xamarin.Forms.Platform.MacOS
 #if __MOBILE__
 		public static UIColor ToUIColor(this Color color)
 		{
-			return new UIColor((float)color.R, (float)color.G, (float)color.B, (float)color.A);
+			return new UIColor(color.Red, color.Green, color.Blue, color.Alpha);
 		}
 
 		public static UIColor ToUIColor(this Color color, Color defaultColor)
-		{
-			if (color.IsDefault)
-				return defaultColor.ToUIColor();
-
-			return color.ToUIColor();
-		}
+			=> (color ?? defaultColor).ToUIColor();
 
 		public static UIColor ToUIColor(this Color color, UIColor defaultColor)
-		{
-			if (color.IsDefault)
-				return defaultColor;
-
-			return color.ToUIColor();
-		}
+			=> color?.ToUIColor() ?? defaultColor;
 #else
 		public static NSColor ToNSColor(this Color color)
 		{
@@ -297,20 +288,10 @@ namespace Xamarin.Forms.Platform.MacOS
 		}
 
 		public static NSColor ToNSColor(this Color color, Color defaultColor)
-		{
-			if (color.IsDefault)
-				return defaultColor.ToNSColor();
-
-			return color.ToNSColor();
-		}
+			=> (color ?? defaultColor).ToNSColor();
 
 		public static NSColor ToNSColor(this Color color, NSColor defaultColor)
-		{
-			if (color.IsDefault)
-				return defaultColor;
-
-			return color.ToNSColor();
-		}
+			=> color?.ToNSColor() ?? defaultColor;
 #endif
 	}
 

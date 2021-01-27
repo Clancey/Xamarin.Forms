@@ -1,6 +1,7 @@
 using Foundation;
 using System;
 using Xamarin.Forms.Internals;
+using System.Graphics;
 #if __MOBILE__
 using UIKit;
 

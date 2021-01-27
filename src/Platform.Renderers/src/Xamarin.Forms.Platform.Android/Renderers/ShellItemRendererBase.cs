@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Graphics;
 using System.Linq;
 using System.Threading.Tasks;
 using Android.Views;
@@ -248,7 +249,7 @@ namespace Xamarin.Forms.Platform.Android
 
 			if (animated && trackFragment != null)
 			{
-				GetNavigationTarget().SetBackgroundColor(Color.Black.ToAndroid());
+				GetNavigationTarget().SetBackgroundColor(Colors.Black.ToAndroid());
 				void callback(object s, EventArgs e)
 				{
 					trackFragment.AnimationFinished -= callback;

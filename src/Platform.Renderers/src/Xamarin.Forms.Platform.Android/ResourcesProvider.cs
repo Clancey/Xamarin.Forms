@@ -1,3 +1,4 @@
+using System.Graphics;
 using Android.Content.Res;
 using Android.Util;
 using Xamarin.Forms.Internals;

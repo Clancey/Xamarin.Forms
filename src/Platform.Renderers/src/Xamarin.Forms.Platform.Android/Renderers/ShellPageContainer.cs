@@ -1,4 +1,5 @@
-﻿using Android.Content;
+﻿using System.Graphics;
+using Android.Content;
 
 namespace Xamarin.Forms.Platform.Android
 {

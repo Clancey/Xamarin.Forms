@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using Android.Graphics;
 using Android.Graphics.Drawables;
@@ -9,7 +10,9 @@ using AColor = Android.Graphics.Color;
 using AMatrix = Android.Graphics.Matrix;
 using APath = Android.Graphics.Path;
 using AView = Android.Views.View;
+using APaint = Android.Graphics.Paint;
 using Shape = Xamarin.Forms.Shapes.Shape;
+using Color = System.Graphics.Color;
 
 namespace Xamarin.Forms.Platform.Android
 {
@@ -133,18 +136,18 @@ namespace Xamarin.Forms.Platform.Android
 		void UpdateStrokeLineCap()
 		{
 			PenLineCap lineCap = Element.StrokeLineCap;
-			Paint.Cap aLineCap = Paint.Cap.Butt;
+			APaint.Cap aLineCap = APaint.Cap.Butt;
 
 			switch (lineCap)
 			{
 				case PenLineCap.Flat:
-					aLineCap = Paint.Cap.Butt;
+					aLineCap = APaint.Cap.Butt;
 					break;
 				case PenLineCap.Square:
-					aLineCap = Paint.Cap.Square;
+					aLineCap = APaint.Cap.Square;
 					break;
 				case PenLineCap.Round:
-					aLineCap = Paint.Cap.Round;
+					aLineCap = APaint.Cap.Round;
 					break;
 			}
 
@@ -154,18 +157,18 @@ namespace Xamarin.Forms.Platform.Android
 		void UpdateStrokeLineJoin()
 		{
 			PenLineJoin lineJoin = Element.StrokeLineJoin;
-			Paint.Join aLineJoin = Paint.Join.Miter;
+			APaint.Join aLineJoin = APaint.Join.Miter;
 
 			switch (lineJoin)
 			{
 				case PenLineJoin.Miter:
-					aLineJoin = Paint.Join.Miter;
+					aLineJoin = APaint.Join.Miter;
 					break;
 				case PenLineJoin.Bevel:
-					aLineJoin = Paint.Join.Bevel;
+					aLineJoin = APaint.Join.Bevel;
 					break;
 				case PenLineJoin.Round:
-					aLineJoin = Paint.Join.Round;
+					aLineJoin = APaint.Join.Round;
 					break;
 			}
 
@@ -229,7 +232,7 @@ namespace Xamarin.Forms.Platform.Android
 
 			if (_fill != null)
 			{
-				_drawable.Paint.SetStyle(Paint.Style.Fill);
+				_drawable.Paint.SetStyle(APaint.Style.Fill);
 
 				if (_fill is GradientBrush fillGradientBrush)
 				{
@@ -243,7 +246,7 @@ namespace Xamarin.Forms.Platform.Android
 				}
 				else
 				{
-					AColor fillColor = Color.Transparent.ToAndroid();
+					AColor fillColor = Colors.Transparent.ToAndroid();
 
 					if (_fill is SolidColorBrush solidColorBrush && solidColorBrush.Color != null)
 						fillColor = solidColorBrush.Color.ToAndroid();
@@ -257,7 +260,7 @@ namespace Xamarin.Forms.Platform.Android
 
 			if (_stroke != null)
 			{
-				_drawable.Paint.SetStyle(Paint.Style.Stroke);
+				_drawable.Paint.SetStyle(APaint.Style.Stroke);
 
 				if (_stroke is GradientBrush strokeGradientBrush)
 				{
@@ -273,7 +276,7 @@ namespace Xamarin.Forms.Platform.Android
 				}
 				else
 				{
-					AColor strokeColor = Color.Transparent.ToAndroid();
+					AColor strokeColor = Colors.Transparent.ToAndroid();
 
 					if (_stroke is SolidColorBrush solidColorBrush && solidColorBrush.Color != null)
 						strokeColor = solidColorBrush.Color.ToAndroid();
@@ -375,13 +378,13 @@ namespace Xamarin.Forms.Platform.Android
 			UpdatePathStrokeBounds();
 		}
 
-		public void UpdateStrokeLineCap(Paint.Cap strokeCap)
+		public void UpdateStrokeLineCap(APaint.Cap strokeCap)
 		{
 			_drawable.Paint.StrokeCap = strokeCap;
 			UpdatePathStrokeBounds();
 		}
 
-		public void UpdateStrokeLineJoin(Paint.Join strokeJoin)
+		public void UpdateStrokeLineJoin(APaint.Join strokeJoin)
 		{
 			_drawable.Paint.StrokeJoin = strokeJoin;
 			Invalidate();
@@ -411,7 +414,7 @@ namespace Xamarin.Forms.Platform.Android
 				using (APath fillPath = new APath())
 				{
 					_drawable.Paint.StrokeWidth = 0.01f;
-					_drawable.Paint.SetStyle(Paint.Style.Stroke);
+					_drawable.Paint.SetStyle(APaint.Style.Stroke);
 					_drawable.Paint.GetFillPath(_path, fillPath);
 					fillPath.ComputeBounds(_pathFillBounds, false);
 					_drawable.Paint.StrokeWidth = _strokeWidth;
@@ -468,7 +471,7 @@ namespace Xamarin.Forms.Platform.Android
 			{
 				using (APath strokePath = new APath())
 				{
-					_drawable.Paint.SetStyle(Paint.Style.Stroke);
+					_drawable.Paint.SetStyle(APaint.Style.Stroke);
 					_drawable.Paint.GetFillPath(_path, strokePath);
 					strokePath.ComputeBounds(_pathStrokeBounds, false);
 				}
@@ -518,8 +521,8 @@ namespace Xamarin.Forms.Platform.Android
 				return null;
 
 			int gradientStopsCount = radialGradientBrush.GradientStops.Count;
-			AColor centerColor = gradientStopsCount > 0 ? radialGradientBrush.GradientStops[0].Color.ToAndroid() : Color.Transparent.ToAndroid();
-			AColor edgeColor = gradientStopsCount > 0 ? radialGradientBrush.GradientStops[gradientStopsCount - 1].Color.ToAndroid() : Color.Transparent.ToAndroid();
+			AColor centerColor = gradientStopsCount > 0 ? radialGradientBrush.GradientStops[0].Color.ToAndroid() : Colors.Transparent.ToAndroid();
+			AColor edgeColor = gradientStopsCount > 0 ? radialGradientBrush.GradientStops[gradientStopsCount - 1].Color.ToAndroid() : Colors.Transparent.ToAndroid();
 
 			float[] offsets = new float[radialGradientBrush.GradientStops.Count];
 

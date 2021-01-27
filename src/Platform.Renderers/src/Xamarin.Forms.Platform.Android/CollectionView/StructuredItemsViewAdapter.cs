@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using AndroidX.RecyclerView.Widget;
 using ViewGroup = Android.Views.ViewGroup;

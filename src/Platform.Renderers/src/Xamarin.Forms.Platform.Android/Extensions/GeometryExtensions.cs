@@ -3,7 +3,8 @@ using Android.Content;
 using Android.Graphics;
 using Xamarin.Forms.Shapes;
 using APath = Android.Graphics.Path;
-using FormsRectangle = Xamarin.Forms.Rectangle;
+using FormsRectangle = System.Graphics.Rectangle;
+using Point = System.Graphics.Point;
 
 namespace Xamarin.Forms.Platform.Android
 {

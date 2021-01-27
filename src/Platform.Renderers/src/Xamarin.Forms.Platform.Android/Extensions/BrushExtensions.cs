@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Graphics;
 using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.Graphics.Drawables.Shapes;
 using static Android.Graphics.Drawables.GradientDrawable;
 using AView = Android.Views.View;
+using Color = System.Graphics.Color;
+using APaint = Android.Graphics.Paint;
 
 namespace Xamarin.Forms.Platform.Android
 {
@@ -42,7 +45,7 @@ namespace Xamarin.Forms.Platform.Android
 			view.SetPaintGradient(brush);
 		}
 
-		public static void UpdateBackground(this Paint paint, Brush brush, int height, int width)
+		public static void UpdateBackground(this APaint paint, Brush brush, int height, int width)
 		{
 			if (paint == null || brush == null || brush.IsEmpty)
 				return;
@@ -116,7 +119,7 @@ namespace Xamarin.Forms.Platform.Android
 			if (brush is SolidColorBrush solidColorBrush)
 			{
 				Color bgColor = solidColorBrush.Color;
-				gradientDrawable.SetColor(bgColor.IsDefault ? Color.Transparent.ToAndroid() : bgColor.ToAndroid());
+				gradientDrawable.SetColor(bgColor?.ToAndroid() ?? Colors.Transparent.ToAndroid());
 			}
 
 			if (brush is LinearGradientBrush linearGradientBrush)
@@ -194,11 +197,11 @@ namespace Xamarin.Forms.Platform.Android
 				Shape = new RectShape()
 			};
 
-			gradientStrokeDrawable.SetStroke(0, Color.Transparent.ToAndroid());
+			gradientStrokeDrawable.SetStroke(0, Colors.Transparent.ToAndroid());
 
 			if (brush is SolidColorBrush solidColorBrush)
 			{
-				var color = solidColorBrush.Color.IsDefault ? Color.Transparent.ToAndroid() : solidColorBrush.Color.ToAndroid();
+				var color = solidColorBrush?.Color?.ToAndroid() ?? Colors.Transparent.ToAndroid();
 				gradientStrokeDrawable.SetColor(color);
 			}
 			else

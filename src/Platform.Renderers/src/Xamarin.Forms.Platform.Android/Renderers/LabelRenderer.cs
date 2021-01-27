@@ -8,6 +8,8 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using Xamarin.Forms.PlatformConfiguration.TizenSpecific;
+using Size = System.Graphics.Size;
+using Color = System.Graphics.Color;
 
 namespace Xamarin.Forms.Platform.Android
 {
@@ -188,7 +190,7 @@ namespace Xamarin.Forms.Platform.Android
 				return;
 			_lastUpdateColor = c;
 
-			if (c.IsDefault)
+			if (c == null)
 				_view.SetTextColor(_labelTextColorDefault);
 			else
 				_view.SetTextColor(c.ToAndroid());

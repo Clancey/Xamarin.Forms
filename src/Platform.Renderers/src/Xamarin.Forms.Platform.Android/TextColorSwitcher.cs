@@ -1,4 +1,5 @@
 using System;
+using System.Graphics;
 using Android.Content.Res;
 using Android.Widget;
 
@@ -34,7 +35,7 @@ namespace Xamarin.Forms.Platform.Android
 
 			_currentTextColor = color;
 
-			if (color.IsDefault)
+			if (color == null)
 			{
 				setColor(_defaultTextColors);
 			}

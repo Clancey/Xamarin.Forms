@@ -1,6 +1,7 @@
 ﻿using CoreGraphics;
 using System;
 using System.ComponentModel;
+using System.Graphics;
 using UIKit;
 
 namespace Xamarin.Forms.Platform.iOS

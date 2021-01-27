@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using Android.Content.Res;
 using Android.Graphics;
@@ -12,6 +13,7 @@ using Xamarin.Forms.Platform.Android.FastRenderers;
 using AAttribute = Android.Resource.Attribute;
 using AColor = Android.Graphics.Color;
 using AView = Android.Views.View;
+using Color = System.Graphics.Color;
 
 namespace Xamarin.Forms.Platform.Android
 {
@@ -195,7 +197,7 @@ namespace Xamarin.Forms.Platform.Android
 
 		protected virtual ColorStateList GetColorStateList()
 		{
-			var tintColor =  Element.Color?.ToAndroid() ?? Color.Accent.ToAndroid();
+			var tintColor =  Element.Color?.ToAndroid() ?? Application.AccentColor.ToAndroid();
 
 			var list = new ColorStateList(
 					_checkedStates,

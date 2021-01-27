@@ -3,6 +3,7 @@ using Foundation;
 using System;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Graphics;
 using UIKit;
 
 namespace Xamarin.Forms.Platform.iOS

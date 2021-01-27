@@ -5,6 +5,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+using System.Graphics;
 
 #if __MOBILE__
 using UIKit;

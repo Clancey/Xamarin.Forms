@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using Android.Views;
 using Android.Views.Accessibility;
@@ -142,7 +143,7 @@ namespace Xamarin.Forms.Platform.Android
 					else
 					{
 						Color backgroundColor = page.BackgroundColor;
-						bool isDefaultBackgroundColor = backgroundColor.IsDefault;
+						bool isDefaultBackgroundColor = backgroundColor == null;
 
 						// A TabbedPage has no background. See Github6384.
 						bool isInShell = page.Parent is BaseShellItem ||

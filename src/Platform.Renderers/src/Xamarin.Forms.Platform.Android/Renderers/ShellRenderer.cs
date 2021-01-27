@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using Android.Graphics;
 using Android.Graphics.Drawables;
@@ -11,7 +12,9 @@ using Xamarin.Forms.Internals;
 using AColor = Android.Graphics.Color;
 using ARect = Android.Graphics.Rect;
 using AView = Android.Views.View;
+using Color = System.Graphics.Color;
 using LP = Android.Views.ViewGroup.LayoutParams;
+using APaint = Android.Graphics.Paint;
 using Toolbar = AndroidX.AppCompat.Widget.Toolbar;
 
 namespace Xamarin.Forms.Platform.Android
@@ -137,8 +140,8 @@ namespace Xamarin.Forms.Platform.Android
 		#endregion IAppearanceObserver
 
 		public static readonly Color DefaultBackgroundColor = Color.FromRgb(33, 150, 243);
-		public static readonly Color DefaultForegroundColor = Color.White;
-		public static readonly Color DefaultTitleColor = Color.White;
+		public static readonly Color DefaultForegroundColor = Colors.White;
+		public static readonly Color DefaultTitleColor = Colors.White;
 		public static readonly Color DefaultUnselectedColor = Color.FromRgba(255, 255, 255, 180);
 
 		bool _disposed;
@@ -378,7 +381,7 @@ namespace Xamarin.Forms.Platform.Android
 			{
 				var bounds = Bounds;
 
-				using (var paint = new Paint())
+				using (var paint = new APaint())
 				{
 
 					paint.Color = Color;

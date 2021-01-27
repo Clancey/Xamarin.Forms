@@ -9,6 +9,7 @@ using FragmentContainer = Xamarin.Forms.Platform.Android.AppCompat.FragmentConta
 using FragmentManager = AndroidX.Fragment.App.FragmentManager;
 using FragmentTransaction = AndroidX.Fragment.App.FragmentTransaction;
 using APlatform = Xamarin.Forms.Platform.Android.AppCompat.Platform;
+using System.Graphics;
 
 namespace Xamarin.Forms.Platform.Android
 {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using System.Linq;
 using UIKit;
 using Xamarin.Forms.Internals;
@@ -374,7 +375,7 @@ namespace Xamarin.Forms.Platform.iOS
 			if (Forms.RespondsToSetNeedsUpdateOfHomeIndicatorAutoHidden)
 				SetNeedsUpdateOfHomeIndicatorAutoHidden();
 
-			detailRenderer.ViewController.View.Superview.BackgroundColor = Xamarin.Forms.Color.Black.ToUIColor();
+			detailRenderer.ViewController.View.Superview.BackgroundColor = Colors.Black.ToUIColor();
 
 			ToggleAccessibilityElementsHidden();
 		}

@@ -1,4 +1,5 @@
-﻿using Android.Graphics.Drawables;
+﻿using System.Graphics;
+using Android.Graphics.Drawables;
 using Google.Android.Material.Tabs;
 
 namespace Xamarin.Forms.Platform.Android

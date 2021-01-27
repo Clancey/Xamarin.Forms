@@ -16,6 +16,7 @@ using Foundation;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms;
+using System.Graphics;
 
 #if __MOBILE__
 using UIKit;
@@ -174,7 +175,7 @@ namespace Xamarin.Forms
 			IsInitialized = true;
 
 			Internals.Registrar.RegisterRendererToHandlerShim(RendererToHandlerShim.CreateShim);
-			Color.SetAccent(ColorExtensions.AccentColor.ToColor());
+			Application.AccentColor = ColorExtensions.AccentColor.ToColor();
 
 			Log.Listeners.Add(new DelegateLogListener((c, m) => Trace.WriteLine(m, c)));
 

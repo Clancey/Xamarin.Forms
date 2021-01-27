@@ -11,6 +11,7 @@ using RectangleF = CoreGraphics.CGRect;
 using SizeF = CoreGraphics.CGSize;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Specifics = Xamarin.Forms.PlatformConfiguration.iOSSpecific.ListView;
+using System.Graphics;
 
 namespace Xamarin.Forms.Platform.iOS
 {

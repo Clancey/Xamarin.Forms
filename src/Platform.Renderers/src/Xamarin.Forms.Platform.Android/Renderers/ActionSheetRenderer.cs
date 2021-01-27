@@ -8,6 +8,7 @@ using Android.Widget;
 using Xamarin.Forms.Internals;
 using AButton = Android.Widget.Button;
 using AView = Android.Views.View;
+using Color = System.Graphics.Color;
 
 namespace Xamarin.Forms.Platform.Android
 {
@@ -67,7 +68,7 @@ namespace Xamarin.Forms.Platform.Android
 			if (_arguments.Cancel != null)
 			{
 				AButton cancel = AddButton(_arguments.Cancel);
-				cancel.Background.SetColorFilter(new Color(0.5, 0.5, 0.5, 1).ToAndroid(), PorterDuff.Mode.Multiply);
+				cancel.Background.SetColorFilter(new Color(0.5f, 0.5f, 0.5f, 1f).ToAndroid(), PorterDuff.Mode.Multiply);
 			}
 
 			SetTitle(_arguments.Title);

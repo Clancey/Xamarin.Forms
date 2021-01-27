@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Graphics;
 using System.Linq;
 using System.Threading.Tasks;
 using Android.Content;
@@ -660,7 +661,7 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 			void UpdateBackgroundColor()
 			{
 				Color modalBkgndColor = _modal.BackgroundColor;
-				if (modalBkgndColor.IsDefault)
+				if (modalBkgndColor == null)
 					_backgroundView.SetWindowBackground();
 				else
 					_backgroundView.SetBackgroundColor(modalBkgndColor.ToAndroid());

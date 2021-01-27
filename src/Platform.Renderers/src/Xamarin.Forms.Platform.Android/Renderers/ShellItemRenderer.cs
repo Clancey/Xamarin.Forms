@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using Android.Graphics.Drawables;
 using Android.OS;
@@ -62,7 +63,7 @@ namespace Xamarin.Forms.Platform.Android
 			_bottomView = _outerLayout.FindViewById<BottomNavigationView>(Resource.Id.bottomtab_tabbar);
 			_navigationArea = _outerLayout.FindViewById<FrameLayout>(Resource.Id.bottomtab_navarea);
 
-			_bottomView.SetBackgroundColor(Color.White.ToAndroid());
+			_bottomView.SetBackgroundColor(Colors.White.ToAndroid());
 			_bottomView.SetOnNavigationItemSelectedListener(this);
 
 			if (ShellItem == null)
@@ -205,7 +206,7 @@ namespace Xamarin.Forms.Platform.Android
 					{
 						if (!image.IsDisposed())
 						{
-							var color = Color.Black.MultiplyAlpha(0.6).ToAndroid();
+							var color = Colors.Black.MultiplyAlpha(0.6f).ToAndroid();
 							icon.SetTint(color);
 							image.SetImageDrawable(icon);
 						}

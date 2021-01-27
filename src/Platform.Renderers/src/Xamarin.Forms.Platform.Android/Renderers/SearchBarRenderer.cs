@@ -13,6 +13,7 @@ using Android.Widget;
 using Android.Views;
 using Xamarin.Platform;
 using AView = Android.Views.View;
+using Size = System.Graphics.Size;
 
 namespace Xamarin.Forms.Platform.Android
 {

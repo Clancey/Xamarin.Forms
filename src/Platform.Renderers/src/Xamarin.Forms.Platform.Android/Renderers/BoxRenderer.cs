@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using Android.Graphics.Drawables;
 using Android.Views;
@@ -100,7 +101,7 @@ namespace Xamarin.Forms.Platform.Android
 					if (colorToSet != null)
 						_backgroundDrawable.SetColor(colorToSet.ToAndroid());
 					else
-						_backgroundDrawable.SetColor(colorToSet.ToAndroid(Color.Transparent));
+						_backgroundDrawable.SetColor(colorToSet.ToAndroid(Colors.Transparent));
 
 					this.SetBackground(_backgroundDrawable);
 				}
@@ -109,7 +110,7 @@ namespace Xamarin.Forms.Platform.Android
 					if (colorToSet == null)
 						colorToSet = Element.BackgroundColor;
 
-					SetBackgroundColor(colorToSet.ToAndroid(Color.Transparent));
+					SetBackgroundColor(colorToSet.ToAndroid(Colors.Transparent));
 				}
 			}
 		}

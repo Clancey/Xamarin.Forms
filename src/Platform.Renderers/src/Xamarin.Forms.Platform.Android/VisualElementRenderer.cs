@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using Android.Content.Res;
 using Android.Graphics;
@@ -10,7 +11,7 @@ using AndroidX.Core.View;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Platform.Android.FastRenderers;
 using AView = Android.Views.View;
-
+using Color = System.Graphics.Color;
 
 namespace Xamarin.Forms.Platform.Android
 {

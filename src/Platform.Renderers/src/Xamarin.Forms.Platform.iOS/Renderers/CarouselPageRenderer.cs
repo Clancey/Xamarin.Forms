@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Graphics;
 using UIKit;
 using Xamarin.Forms.Internals;
 using PointF = CoreGraphics.CGPoint;

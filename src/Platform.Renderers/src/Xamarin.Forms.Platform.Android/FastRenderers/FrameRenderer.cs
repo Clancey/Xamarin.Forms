@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using Android.Graphics;
 using Android.Graphics.Drawables;
@@ -8,6 +9,7 @@ using AndroidX.CardView.Widget;
 using AndroidX.Core.View;
 using AColor = Android.Graphics.Color;
 using AView = Android.Views.View;
+using Color = System.Graphics.Color;
 
 namespace Xamarin.Forms.Platform.Android.FastRenderers
 {
@@ -283,7 +285,7 @@ namespace Xamarin.Forms.Platform.Android.FastRenderers
 				return;
 
 			Color bgColor = Element.BackgroundColor;
-			_backgroundDrawable.SetColor(bgColor.IsDefault ? AColor.White : bgColor.ToAndroid());
+			_backgroundDrawable.SetColor(bgColor?.ToAndroid() ?? AColor.White);
 		}
 
 		void UpdateBackground()
@@ -323,7 +325,7 @@ namespace Xamarin.Forms.Platform.Android.FastRenderers
 
 			Color borderColor = Element.BorderColor;
 
-			if (borderColor.IsDefault)
+			if (borderColor == null)
 				_backgroundDrawable.SetStroke(0, AColor.Transparent);
 			else
 				_backgroundDrawable.SetStroke(3, borderColor.ToAndroid());

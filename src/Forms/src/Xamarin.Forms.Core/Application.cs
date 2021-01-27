@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms.Internals;
+using System.Graphics;
 
 namespace Xamarin.Forms
 {
@@ -20,6 +21,7 @@ namespace Xamarin.Forms
 		ReadOnlyCollection<Element> _logicalChildren;
 		Page _mainPage;
 
+		public static Color AccentColor { get; set; }
 		static readonly SemaphoreSlim SaveSemaphore = new SemaphoreSlim(1, 1);
 
 		[Obsolete("Assign the LogWarningsListener")]

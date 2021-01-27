@@ -20,6 +20,7 @@ using AView = Android.Views.View;
 using AWebView = Android.Webkit.WebView;
 using Specifics = Xamarin.Forms.PlatformConfiguration.AndroidSpecific.SwipeView;
 using Xamarin.Platform;
+using System.Graphics;
 
 namespace Xamarin.Forms.Platform.Android
 {
@@ -371,7 +372,7 @@ namespace Xamarin.Forms.Platform.Android
 		AView CreateEmptyContent()
 		{
 			var emptyContentView = new AView(_context);
-			emptyContentView.SetBackgroundColor(Color.Transparent.ToAndroid());
+			emptyContentView.SetBackgroundColor(Colors.Transparent.ToAndroid());
 
 			return emptyContentView;
 		}
@@ -880,9 +881,9 @@ namespace Xamarin.Forms.Platform.Android
 
 		Color GetSwipeItemColor(Color backgroundColor)
 		{
-			var luminosity = 0.2126 * backgroundColor.R + 0.7152 * backgroundColor.G + 0.0722 * backgroundColor.B;
+			var luminosity = 0.2126 * backgroundColor.Red + 0.7152 * backgroundColor.Green + 0.0722 * backgroundColor.Blue;
 
-			return luminosity < 0.75 ? Color.White : Color.Black;
+			return luminosity < 0.75 ? Colors.White : Colors.Black;
 		}
 
 		void UnsubscribeSwipeItemEvents()
