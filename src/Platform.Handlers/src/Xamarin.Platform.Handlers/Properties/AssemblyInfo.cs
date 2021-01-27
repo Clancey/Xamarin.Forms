@@ -1,6 +1,7 @@
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
+[assembly: InternalsVisibleTo("Comet")]
 [assembly: InternalsVisibleTo("iOSUnitTests")]
 [assembly: InternalsVisibleTo("Xamarin.Forms.Core.UnitTests")]
 [assembly: InternalsVisibleTo("Xamarin.Forms.Core.Android.UnitTests")]

@@ -1,5 +1,6 @@
 ﻿using System;
 using UIKit;
+using Xamarin.Platform.Core;
 
 namespace Xamarin.Platform
 {
@@ -13,6 +14,9 @@ namespace Xamarin.Platform
 
 			if (handler == null)
 			{
+				//This is how MVU works. It collapses views down
+				if (view is IReplaceableView ir)
+					view = ir.ReplacedView;
 				handler = Registrar.Handlers.GetHandler(view.GetType());
 				view.Handler = handler;
 			}
