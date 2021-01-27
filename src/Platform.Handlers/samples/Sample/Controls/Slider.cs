@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Graphics;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;

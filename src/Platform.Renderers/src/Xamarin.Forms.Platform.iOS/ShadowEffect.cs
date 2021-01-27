@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using UIKit;
 using Xamarin.Forms.Internals;
 using PlatformElement = Xamarin.Forms.PlatformConfiguration.iOSSpecific.VisualElement;
@@ -20,7 +21,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 			if (layer != null)
 			{
-				layer.ShadowColor = Color.Transparent.ToCGColor();
+				layer.ShadowColor = Colors.Transparent.ToCGColor();
 				layer.ShadowOpacity = 0;
 			}
 		}
