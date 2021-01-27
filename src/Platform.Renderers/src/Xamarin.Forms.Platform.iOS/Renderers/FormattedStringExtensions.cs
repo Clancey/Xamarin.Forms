@@ -24,9 +24,9 @@ namespace Xamarin.Forms.Platform.MacOS
 			var font = span.Font != Font.Default ? span.Font : defaultFont;
 #pragma warning restore 0618
 			var fgcolor = span.TextColor;
-			if (fgcolor.IsDefault)
+			if (fgcolor == null)
 				fgcolor = defaultForegroundColor;
-			if (fgcolor.IsDefault)
+			if (fgcolor == null)
 				fgcolor = ColorExtensions.LabelColor.ToColor();
 
 #if __MOBILE__
@@ -104,13 +104,13 @@ namespace Xamarin.Forms.Platform.MacOS
 #endif
 			var fgcolor = span.TextColor;
 
-			if (fgcolor.IsDefault)
+			if (fgcolor == null)
 				fgcolor = defaultForegroundColor;
 
-			if (owner is Entry && !fgcolor.IsDefault)
+			if (owner is Entry && fgcolor != null)
 				fgcolor = defaultForegroundColor;
 
-			if (fgcolor.IsDefault)
+			if (fgcolor == null)
 				fgcolor = ColorExtensions.LabelColor.ToColor();
 #if __MOBILE__
 			UIColor spanFgColor;

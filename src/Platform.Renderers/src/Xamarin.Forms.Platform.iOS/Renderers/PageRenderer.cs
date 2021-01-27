@@ -533,11 +533,7 @@ namespace Xamarin.Forms.Platform.iOS
 					else
 					{
 						Color backgroundColor = Element.BackgroundColor;
-
-						if (backgroundColor.IsDefault)
-							NativeView.BackgroundColor = UIColor.White;
-						else
-							NativeView.BackgroundColor = backgroundColor.ToUIColor();
+						NativeView.BackgroundColor = backgroundColor?.ToUIColor() ?? UIColor.White;
 					}
 				}
 			});

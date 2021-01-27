@@ -49,7 +49,7 @@ namespace Xamarin.Forms.Platform.MacOS
 				if (Forms.IsiOS13OrNewer)
 					return UIColor.SecondaryLabelColor;
 
-				return new Color(.32, .4, .57).ToUIColor();
+				return new Color(.32f, .4f, .57f).ToUIColor();
 			}
 		}
 
@@ -258,7 +258,7 @@ namespace Xamarin.Forms.Platform.MacOS
 
 			color.GetRgba(out red, out green, out blue, out alpha);
 #endif
-			return new Color(red, green, blue, alpha);
+			return new Color((float)red, (float)green, (float)blue, (float)alpha);
 		}
 
 #if __MACOS__

@@ -565,7 +565,7 @@ namespace Xamarin.Forms.Platform.MacOS
 
 			var textColor = (Color)Element.GetValue(Label.TextColorProperty);
 
-			if (textColor.IsDefault && Element.TextType == TextType.Html)
+			if (textColor == null && Element.TextType == TextType.Html)
 			{
 				// If no explicit text color has been specified and we're displaying HTML, 
 				// let the HTML determine the colors

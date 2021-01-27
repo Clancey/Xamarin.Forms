@@ -48,7 +48,7 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 		int[] _checkedStateSet = null;
 		int[] _selectedStateSet = null;
 		int[] _emptyStateSet = null;
-		int _defaultARGBColor = Colors.Transparent.ToArgb();
+		int _defaultARGBColor = Colors.Transparent.ToAndroid().ToArgb();
 		AColor _defaultAndroidColor = Colors.Transparent.ToAndroid();
 		Platform _platform;
 

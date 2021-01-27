@@ -355,7 +355,7 @@ namespace Xamarin.Forms.Platform.iOS
 				return;
 
 			var barBackgroundColor = Tabbed.BarBackgroundColor;
-			var isDefaultColor = barBackgroundColor.IsDefault;
+			var isDefaultColor = barBackgroundColor == null;
 
 			if (isDefaultColor && !_barBackgroundColorWasSet)
 				return;
@@ -389,7 +389,7 @@ namespace Xamarin.Forms.Platform.iOS
 				return;
 
 			var barTextColor = Tabbed.BarTextColor;
-			var isDefaultColor = barTextColor.IsDefault;
+			var isDefaultColor = barTextColor == null;
 
 			if (isDefaultColor && !_barTextColorWasSet)
 				return;

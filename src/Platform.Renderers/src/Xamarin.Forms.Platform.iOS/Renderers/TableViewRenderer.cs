@@ -151,7 +151,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		void UpdateBackgroundView()
 		{
-			Control.BackgroundView = Element.BackgroundColor ?? _originalBackgroundView;
+			Control.BackgroundView = Element.BackgroundColor == null ? null : _originalBackgroundView;
 			Control.BackgroundView.UpdateBackground(Element.Background);
 		}
 

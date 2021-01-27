@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Drawing;
+using System.Graphics;
+using CoreGraphics;
 using UIKit;
 
 namespace Xamarin.Forms.Platform.iOS
@@ -33,7 +34,7 @@ namespace Xamarin.Forms.Platform.iOS
 			{
 				if (Control == null)
 				{
-					SetNativeControl(new UISwitch(RectangleF.Empty));
+					SetNativeControl(new UISwitch(CGRect.Empty));
 					Control.ValueChanged += OnControlValueChanged;
 				}
 
@@ -65,7 +66,7 @@ namespace Xamarin.Forms.Platform.iOS
 				return;
 
 			Color thumbColor = Element.ThumbColor;
-			Control.ThumbTintColor = thumbColor.IsDefault ? _defaultThumbColor : thumbColor.ToUIColor();
+			Control.ThumbTintColor = thumbColor?.ToUIColor() ?? _defaultThumbColor;
 		}
 
 		void OnControlValueChanged(object sender, EventArgs e)
