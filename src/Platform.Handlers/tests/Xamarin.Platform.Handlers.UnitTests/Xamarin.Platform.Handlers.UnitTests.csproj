@@ -17,6 +17,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="JonLipsky.System.Graphics" Version="0.1.36" />
   </ItemGroup>
 
   <ItemGroup>

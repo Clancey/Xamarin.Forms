@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Graphics;
 using System.Threading;
 using NUnit.Framework;
 

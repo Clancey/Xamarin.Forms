@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Graphics;
 using System.Threading.Tasks;
 
 using NUnit.Framework;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Shapes;
+using Rectangle = System.Graphics.Rectangle;
 
 namespace Xamarin.Forms.Core.UnitTests
 {

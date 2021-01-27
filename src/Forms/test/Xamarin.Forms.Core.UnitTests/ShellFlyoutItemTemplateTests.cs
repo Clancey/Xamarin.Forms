@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Graphics;
 using System.Linq;
 using System.Threading.Tasks;
 using NUnit.Framework;
@@ -128,14 +129,14 @@ namespace Xamarin.Forms.Core.UnitTests
 			normalState.Setters.Add(new Setter
 			{
 				Property = Label.BackgroundColorProperty,
-				Value = Color.Red,
+				Value = Colors.Red,
 				TargetName = "FlyoutItemLabel"
 			});
 
 			selectedState.Setters.Add(new Setter
 			{
 				Property = Label.BackgroundColorProperty,
-				Value = Color.Green,
+				Value = Colors.Green,
 				TargetName = "FlyoutItemLabel"
 			});
 
@@ -161,9 +162,9 @@ namespace Xamarin.Forms.Core.UnitTests
 			var grid = GetFlyoutItemDataTemplateElement<Grid>(shell, shellItem);
 			var label = grid.LogicalChildren.OfType<Label>().First();
 
-			Assert.AreEqual(Color.Red, label.BackgroundColor);
+			Assert.AreEqual(Colors.Red, label.BackgroundColor);
 			Assert.IsTrue(VisualStateManager.GoToState(grid, "Selected"));
-			Assert.AreEqual(Color.Green, label.BackgroundColor);
+			Assert.AreEqual(Colors.Green, label.BackgroundColor);
 		}
 
 

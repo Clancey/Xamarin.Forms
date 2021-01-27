@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
+using System.Graphics;
 using System.Linq;
 using Mono.Cecil;
 using Mono.Cecil.Cil;

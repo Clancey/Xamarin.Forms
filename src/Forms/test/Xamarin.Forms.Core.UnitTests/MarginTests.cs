@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Graphics;
+using NUnit.Framework;
 using Xamarin.Forms;
 
 namespace Xamarin.Forms.Core.UnitTests
