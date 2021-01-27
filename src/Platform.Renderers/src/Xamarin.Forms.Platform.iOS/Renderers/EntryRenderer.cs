@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-using System.Drawing;
+using System.Graphics;
 using CoreGraphics;
 using Foundation;
 using UIKit;
@@ -15,12 +15,12 @@ namespace Xamarin.Forms.Platform.iOS
 		[Preserve(Conditional = true)]
 		public EntryRenderer()
 		{
-			Frame = new RectangleF(0, 20, 320, 40);
+			Frame = new CGRect(0, 20, 320, 40);
 		}
 
 		protected override UITextField CreateNativeControl()
 		{
-			var textField = new UITextField(RectangleF.Empty);
+			var textField = new UITextField(CGRect.Empty);
 			textField.BorderStyle = UITextBorderStyle.RoundedRect;
 			textField.ClipsToBounds = true;
 			return textField;
@@ -271,11 +271,11 @@ namespace Xamarin.Forms.Platform.iOS
 
 			if (_useLegacyColorManagement)
 			{
-				Control.TextColor = textColor.IsDefault || !Element.IsEnabled ? _defaultTextColor : textColor.ToUIColor();
+				Control.TextColor = textColor == null || !Element.IsEnabled ? _defaultTextColor : textColor.ToUIColor();
 			}
 			else
 			{
-				Control.TextColor = textColor.IsDefault ? _defaultTextColor : textColor.ToUIColor();
+				Control.TextColor = textColor?.ToUIColor() ?? _defaultTextColor;
 			}
 		}
 
@@ -343,13 +343,13 @@ namespace Xamarin.Forms.Platform.iOS
 
 			if (_useLegacyColorManagement)
 			{
-				var color = targetColor.IsDefault || !Element.IsEnabled ? _defaultPlaceholderColor : targetColor;
+				var color = targetColor == null || !Element.IsEnabled ? _defaultPlaceholderColor : targetColor;
 				UpdateAttributedPlaceholder(formatted.ToAttributed(Element, color));
 			}
 			else
 			{
 				// Using VSM color management; take whatever is in Element.PlaceholderColor
-				var color = targetColor.IsDefault ? _defaultPlaceholderColor : targetColor;
+				var color = targetColor ?? _defaultPlaceholderColor;
 				UpdateAttributedPlaceholder(formatted.ToAttributed(Element, color));
 			}
 

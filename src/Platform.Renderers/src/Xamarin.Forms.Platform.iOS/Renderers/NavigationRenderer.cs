@@ -749,7 +749,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 			// set Tint color (i. e. Back Button arrow and Text)
 			var iconColor = Current != null ? NavigationPage.GetIconColor(Current) : null;
-			if (iconColor.IsDefault)
+			if (iconColor == null)
 				iconColor = barTextColor;
 
 			NavigationBar.TintColor = iconColor == null || NavPage.OnThisPlatform().GetStatusBarTextColorMode() == StatusBarTextColorMode.DoNotAdjust
@@ -762,7 +762,7 @@ namespace Xamarin.Forms.Platform.iOS
 			var barTextColor = NavPage.BarTextColor;
 			var statusBarColorMode = NavPage.OnThisPlatform().GetStatusBarTextColorMode();
 
-			if (statusBarColorMode == StatusBarTextColorMode.DoNotAdjust || barTextColor.Luminosity <= 0.5)
+			if (statusBarColorMode == StatusBarTextColorMode.DoNotAdjust || barTextColor.GetLuminosity() <= 0.5)
 			{
 				// Use dark text color for status bar
 				if (Forms.IsiOS13OrNewer)
@@ -793,7 +793,7 @@ namespace Xamarin.Forms.Platform.iOS
 			if (tintColor == null)
 				NavigationBar.TintColor = UINavigationBar.Appearance.TintColor;
 			else
-				NavigationBar.TintColor = tintColor.Luminosity > 0.5 ? UIColor.Black : UIColor.White;
+				NavigationBar.TintColor = tintColor.GetLuminosity() > 0.5 ? UIColor.Black : UIColor.White;
 		}
 
 		void UpdateToolBarVisible()

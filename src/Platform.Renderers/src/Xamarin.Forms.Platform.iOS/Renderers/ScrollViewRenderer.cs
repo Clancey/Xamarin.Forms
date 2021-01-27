@@ -301,7 +301,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		void UpdateBackgroundColor()
 		{
-			BackgroundColor = Element.BackgroundColor.ToUIColor(Color.Transparent);
+			BackgroundColor = Element.BackgroundColor.ToUIColor(Colors.Transparent);
 		}
 
 		void UpdateBackground()

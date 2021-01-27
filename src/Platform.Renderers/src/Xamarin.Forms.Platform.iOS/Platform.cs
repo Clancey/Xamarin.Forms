@@ -427,7 +427,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		void PresentAlert(AlertArguments arguments)
 		{
-			var window = new UIWindow { BackgroundColor = Color.Transparent.ToUIColor() };
+			var window = new UIWindow { BackgroundColor = Colors.Transparent.ToUIColor() };
 
 			var alert = UIAlertController.Create(arguments.Title, arguments.Message, UIAlertControllerStyle.Alert);
 			var oldFrame = alert.View.Frame;
@@ -450,7 +450,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		void PresentPrompt(PromptArguments arguments)
 		{
-			var window = new UIWindow { BackgroundColor = Color.Transparent.ToUIColor() };
+			var window = new UIWindow { BackgroundColor = Colors.Transparent.ToUIColor() };
 
 			var alert = UIAlertController.Create(arguments.Title, arguments.Message, UIAlertControllerStyle.Alert);
 			alert.AddTextField(uiTextField =>
@@ -472,7 +472,7 @@ namespace Xamarin.Forms.Platform.iOS
 		void PresentActionSheet(ActionSheetArguments arguments)
 		{
 			var alert = UIAlertController.Create(arguments.Title, null, UIAlertControllerStyle.ActionSheet);
-			var window = new UIWindow { BackgroundColor = Color.Transparent.ToUIColor() };
+			var window = new UIWindow { BackgroundColor = Colors.Transparent.ToUIColor() };
 
 			// Clicking outside of an ActionSheet is an implicit cancel on iPads. If we don't handle it, it freezes the app.
 			if (arguments.Cancel != null || UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
@@ -501,7 +501,7 @@ namespace Xamarin.Forms.Platform.iOS
 		static void PresentPopUp(UIWindow window, UIAlertController alert, ActionSheetArguments arguments = null)
 		{
 			window.RootViewController = new UIViewController();
-			window.RootViewController.View.BackgroundColor = Color.Transparent.ToUIColor();
+			window.RootViewController.View.BackgroundColor = Colors.Transparent.ToUIColor();
 			window.WindowLevel = UIWindowLevel.Alert + 1;
 			window.MakeKeyAndVisible();
 

@@ -330,7 +330,7 @@ namespace Xamarin.Forms.Platform.iOS
 		protected virtual void UpdateBackgroundColor()
 		{
 			var color = Shell.BackgroundColor;
-			if (color.IsDefault)
+			if (color == null)
 				color = ColorExtensions.BackgroundColor.ToColor();
 
 			FlyoutRenderer.View.BackgroundColor = color.ToUIColor();

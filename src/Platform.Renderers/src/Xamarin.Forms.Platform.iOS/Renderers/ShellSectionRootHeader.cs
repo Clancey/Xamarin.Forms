@@ -12,9 +12,9 @@ namespace Xamarin.Forms.Platform.iOS
 	{
 		#region IAppearanceObserver
 
-		Color _defaultBackgroundColor = new Color(0.964);
-		Color _defaultForegroundColor = Color.Black;
-		Color _defaultUnselectedColor = Color.Black.MultiplyAlpha(0.7);
+		Color _defaultBackgroundColor = new Color(0.964f);
+		Color _defaultForegroundColor = Colors.Black;
+		Color _defaultUnselectedColor = Colors.Black.MultiplyAlpha(0.7f);
 
 		void IAppearanceObserver.OnAppearanceChanged(ShellAppearance appearance)
 		{
@@ -31,14 +31,14 @@ namespace Xamarin.Forms.Platform.iOS
 
 		protected virtual void SetAppearance(ShellAppearance appearance)
 		{
-			SetValues(appearance.BackgroundColor.IsDefault ? _defaultBackgroundColor : appearance.BackgroundColor,
-				appearance.ForegroundColor.IsDefault ? _defaultForegroundColor : appearance.ForegroundColor,
-				appearance.UnselectedColor.IsDefault ? _defaultUnselectedColor : appearance.UnselectedColor);
+			SetValues(appearance.BackgroundColor ?? _defaultBackgroundColor,
+				appearance.ForegroundColor ?? _defaultForegroundColor ,
+				appearance.UnselectedColor ?? _defaultUnselectedColor);
 		}
 
 		void SetValues(Color backgroundColor, Color foregroundColor, Color unselectedColor)
 		{
-			CollectionView.BackgroundColor = new Color(backgroundColor.R, backgroundColor.G, backgroundColor.B, .863).ToUIColor();
+			CollectionView.BackgroundColor = new Color(backgroundColor.Red, backgroundColor.Green, backgroundColor.Blue, .863f).ToUIColor();
 
 			bool reloadData = _selectedColor != foregroundColor || _unselectedColor != unselectedColor;
 
@@ -180,7 +180,7 @@ namespace Xamarin.Forms.Platform.iOS
 			CollectionView.AddSubview(_bar);
 
 			_bottomShadow = new UIView(new CGRect(0, 0, 10, 1));
-			_bottomShadow.BackgroundColor = Color.Black.MultiplyAlpha(0.3).ToUIColor();
+			_bottomShadow.BackgroundColor = Colors.Black.MultiplyAlpha(0.3f).ToUIColor();
 			_bottomShadow.Layer.ZPosition = 9002;
 			CollectionView.AddSubview(_bottomShadow);
 

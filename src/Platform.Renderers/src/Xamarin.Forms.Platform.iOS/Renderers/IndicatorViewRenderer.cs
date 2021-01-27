@@ -212,7 +212,7 @@ namespace Xamarin.Forms.Platform.iOS
 				return;
 
 			var color = Element.IndicatorColor;
-			UIPager.PageIndicatorTintColor = color.IsDefault ? _defaultPagesIndicatorTintColor : color.ToUIColor();
+			UIPager.PageIndicatorTintColor = color.ToUIColor() ?? _defaultPagesIndicatorTintColor;
 		}
 
 		void UpdateCurrentPagesIndicatorTintColor()
@@ -221,7 +221,7 @@ namespace Xamarin.Forms.Platform.iOS
 				return;
 
 			var color = Element.SelectedIndicatorColor;
-			UIPager.CurrentPageIndicatorTintColor = color.IsDefault ? _defaultCurrentPagesIndicatorTintColor : color.ToUIColor();
+			UIPager.CurrentPageIndicatorTintColor = color.ToUIColor() ?? _defaultCurrentPagesIndicatorTintColor;
 		}
 
 		void UpdateMaximumVisible()

@@ -347,11 +347,7 @@ namespace Xamarin.Forms.Platform.iOS
 		protected internal virtual void UpdateTextColor()
 		{
 			var textColor = Element.TextColor;
-
-			if (textColor.IsDefault)
-				TextView.TextColor = ColorExtensions.LabelColor;
-			else
-				TextView.TextColor = textColor.ToUIColor();
+			TextView.TextColor = textColor?.ToUIColor() ?? ColorExtensions.LabelColor;
 		}
 
 		void UpdateMaxLength()

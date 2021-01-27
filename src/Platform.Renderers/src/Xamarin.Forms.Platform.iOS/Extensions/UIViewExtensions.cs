@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Drawing;
+using System.Graphics;
 using System.Linq;
 using static System.String;
 using Xamarin.Forms.Internals;
@@ -79,7 +79,7 @@ namespace Xamarin.Forms.Platform.MacOS
 		{
 			CoreGraphics.CGSize s;
 #if __MOBILE__
-			s = self.SizeThatFits(new SizeF((float)widthConstraint, (float)heightConstraint));
+			s = self.SizeThatFits(new CoreGraphics.CGSize(widthConstraint, heightConstraint));
 #else
 			var control = self as AppKit.NSControl;
 			if (control != null)

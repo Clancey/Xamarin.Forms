@@ -7,6 +7,7 @@ using System.Linq;
 using Foundation;
 using ObjCRuntime;
 using UIKit;
+using System.Graphics;
 
 namespace Xamarin.Forms.Platform.iOS
 {

@@ -84,10 +84,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 			var elementColor = Element.Color;
 
-			if (!elementColor.IsDefault)
-				_colorToRenderer = elementColor.ToUIColor();
-			else
-				_colorToRenderer = color.ToUIColor();
+			_colorToRenderer = elementColor?.ToUIColor() ?? color.ToUIColor();
 
 			SetNeedsDisplay();
 		}
