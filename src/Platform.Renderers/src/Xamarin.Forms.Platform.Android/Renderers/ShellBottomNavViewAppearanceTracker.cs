@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Graphics;
 using Android.Content.Res;
 using Android.Graphics.Drawables;
 using Google.Android.Material.BottomNavigation;
 using AColor = Android.Graphics.Color;
 using R = Android.Resource;
+using Color = System.Graphics.Color;
 
 namespace Xamarin.Forms.Platform.Android
 {
@@ -29,7 +31,7 @@ namespace Xamarin.Forms.Platform.Android
 				bottomView.ItemIconTintList = _defaultList;
 			}
 
-			SetBackgroundColor(bottomView, Color.White);
+			SetBackgroundColor(bottomView, Colors.White);
 		}
 
 		public virtual void SetAppearance(BottomNavigationView bottomView, IShellAppearanceElement appearance)
@@ -64,11 +66,11 @@ namespace Xamarin.Forms.Platform.Android
 			var oldBackground = bottomView.Background;
 			var colorDrawable = oldBackground as ColorDrawable;
 			var colorChangeRevealDrawable = oldBackground as ColorChangeRevealDrawable;
-			AColor lastColor = colorChangeRevealDrawable?.EndColor ?? colorDrawable?.Color ?? Color.Transparent.ToAndroid();
+			AColor lastColor = colorChangeRevealDrawable?.EndColor ?? colorDrawable?.Color ?? Colors.Transparent.ToAndroid();
 			AColor newColor;
 
 			if (color == null)
-				newColor = Color.White.ToAndroid();
+				newColor = Colors.White.ToAndroid();
 			else
 				newColor = color.ToAndroid();
 
@@ -103,17 +105,14 @@ namespace Xamarin.Forms.Platform.Android
 
 		ColorStateList MakeColorStateList(Color titleColor, Color disabledColor, Color unselectedColor)
 		{
-			var disabledInt = disabledColor.IsDefault ?
-				_defaultList.GetColorForState(new[] { -R.Attribute.StateEnabled }, AColor.Gray) :
-				disabledColor.ToAndroid().ToArgb();
+			var disabledInt = disabledColor?.ToAndroid().ToArgb() ??
+				_defaultList.GetColorForState(new[] { -R.Attribute.StateEnabled }, AColor.Gray);
 
-			var checkedInt = titleColor.IsDefault ?
-				_defaultList.GetColorForState(new[] { R.Attribute.StateChecked }, AColor.Black) :
-				titleColor.ToAndroid().ToArgb();
+			var checkedInt = titleColor?.ToAndroid().ToArgb() ??
+				_defaultList.GetColorForState(new[] { R.Attribute.StateChecked }, AColor.Black);
 
-			var defaultColor = unselectedColor.IsDefault ?
-				_defaultList.DefaultColor :
-				unselectedColor.ToAndroid().ToArgb();
+			var defaultColor = unselectedColor?.ToAndroid().ToArgb() ??
+				_defaultList.DefaultColor;
 
 			return MakeColorStateList(checkedInt, disabledInt, defaultColor);
 		}

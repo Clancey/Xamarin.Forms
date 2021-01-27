@@ -1,4 +1,5 @@
 using System;
+using System.Graphics;
 #if __MOBILE__
 using UIKit;
 using NativeView = UIKit.UIView;

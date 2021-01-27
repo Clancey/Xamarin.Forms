@@ -82,7 +82,7 @@ namespace Xamarin.Forms.Platform.Android
 			View.MainText = cell.Text;
 
 			if (!cell.GetIsGroupHeader<ItemsView<Cell>, Cell>())
-				View.SetDefaultMainTextColor(Color.Accent);
+				View.SetDefaultMainTextColor(Application.AccentColor);
 			else
 				View.SetDefaultMainTextColor(null);
 

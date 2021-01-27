@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Graphics;
 using System.Threading.Tasks;
 using Android.Content;
 using Android.Graphics.Drawables;
@@ -24,7 +25,7 @@ namespace Xamarin.Forms.Platform.Android
 
 		public static Drawable CreateItemBackgroundDrawable()
 		{
-			var stateList = ColorStateList.ValueOf(Color.Black.MultiplyAlpha(0.2).ToAndroid());
+			var stateList = ColorStateList.ValueOf(Colors.Black.MultiplyAlpha(0.2f).ToAndroid());
 			var colorDrawable = new ColorDrawable(AColor.White);
 
 			if (Forms.IsLollipopOrNewer)
@@ -164,7 +165,7 @@ namespace Xamarin.Forms.Platform.Android
 
 					if (Forms.IsLollipopOrNewer)
 					{
-						image.ImageTintList = ColorStateList.ValueOf(Color.Black.MultiplyAlpha(0.6).ToAndroid());
+						image.ImageTintList = ColorStateList.ValueOf(Colors.Black.MultiplyAlpha(0.6f).ToAndroid());
 					}
 
 					image.SetImage(shellContent.icon, context);

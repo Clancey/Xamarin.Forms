@@ -5,6 +5,7 @@ using RectangleF = CoreGraphics.CGRect;
 using SizeF = CoreGraphics.CGSize;
 using Xamarin.Forms.Internals;
 using CoreAnimation;
+using System.Graphics;
 
 #if __MOBILE__
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;

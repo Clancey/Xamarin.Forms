@@ -6,6 +6,7 @@ using Android.OS;
 using Android.Views;
 using Xamarin.Platform;
 using AProgressBar = Android.Widget.ProgressBar;
+using Color = System.Graphics.Color;
 
 namespace Xamarin.Forms.Platform.Android
 {
@@ -60,7 +61,7 @@ namespace Xamarin.Forms.Platform.Android
 
 			Color color = Element.Color;
 
-			if (!color.IsDefault)
+			if (color != null)
 				Control.IndeterminateDrawable?.SetColorFilter(color.ToAndroid(), FilterMode.SrcIn);
 			else
 				Control.IndeterminateDrawable?.ClearColorFilter();

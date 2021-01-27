@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Graphics;
 using CoreGraphics;
 using Xamarin.Forms.Shapes;
+using Geometry = Xamarin.Forms.Shapes.Geometry;
 
 #if __MOBILE__
 namespace Xamarin.Forms.Platform.iOS
@@ -33,7 +35,7 @@ namespace Xamarin.Forms.Platform.MacOS
             }
             else if (geometry is RectangleGeometry)
             {
-                Rect rect = (geometry as RectangleGeometry).Rect;
+                var rect = (geometry as RectangleGeometry).Rect;
                 pathData.Data.AddRect(transform, new CGRect(rect.X, rect.Y, rect.Width, rect.Height));
             }
             else if (geometry is EllipseGeometry)

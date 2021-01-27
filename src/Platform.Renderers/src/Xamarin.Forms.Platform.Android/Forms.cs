@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Graphics;
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Linq;
@@ -20,6 +21,7 @@ using Xamarin.Forms.Internals;
 using Xamarin.Forms.Platform.Android;
 using AColor = Android.Graphics.Color;
 using Resource = Android.Resource;
+using Size = System.Graphics.Size;
 using Trace = System.Diagnostics.Trace;
 
 namespace Xamarin.Forms
@@ -292,7 +294,7 @@ namespace Xamarin.Forms
 			Profile.FramePartition("Color.SetAccent()");
 			// We want this to be updated when we have a new activity (e.g. on a configuration change)
 			// This could change if the UI mode changes (e.g., if night mode is enabled)
-			Color.SetAccent(GetAccentColor(activity));
+			Application.AccentColor = GetAccentColor(activity);
 			_ColorButtonNormalSet = false;
 
 			if (!IsInitialized)

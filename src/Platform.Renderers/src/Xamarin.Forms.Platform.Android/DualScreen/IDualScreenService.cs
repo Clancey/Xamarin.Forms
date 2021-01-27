@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Graphics;
 using System.Threading.Tasks;
 
 namespace Xamarin.Forms.Platform.Android.DualScreen

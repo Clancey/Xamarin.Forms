@@ -28,6 +28,9 @@ using Fragment = AndroidX.Fragment.App.Fragment;
 using FragmentManager = AndroidX.Fragment.App.FragmentManager;
 using FragmentTransaction = AndroidX.Fragment.App.FragmentTransaction;
 using Object = Java.Lang.Object;
+using Xamarin.Platform;
+using System.Graphics;
+using Color = System.Graphics.Color;
 
 namespace Xamarin.Forms.Platform.Android.AppCompat
 {
@@ -995,7 +998,7 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 
 			if (Forms.IsLollipopOrNewer)
 			{
-				if (tintColor.IsDefault)
+				if (tintColor == null)
 					bar.BackgroundTintMode = null;
 				else
 				{
@@ -1005,9 +1008,9 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 			}
 			else
 			{
-				if (tintColor.IsDefault && _backgroundDrawable != null)
+				if (tintColor == null && _backgroundDrawable != null)
 					bar.SetBackground(_backgroundDrawable);
-				else if (!tintColor.IsDefault)
+				else if (tintColor != null)
 				{
 					if (_backgroundDrawable == null)
 						_backgroundDrawable = bar.Background;
@@ -1019,16 +1022,16 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 			bar.UpdateBackground(barBackground);
 
 			Color textColor = Element.BarTextColor;
-			if (!textColor.IsDefault)
+			if (textColor != null)
 				bar.SetTitleTextColor(textColor.ToAndroid().ToArgb());
 
 			Color navIconColor = NavigationPage.GetIconColor(Current);
-			if (!navIconColor.IsDefault && bar.NavigationIcon != null)
-				DrawableExtensions.SetColorFilter(bar.NavigationIcon, navIconColor, FilterMode.SrcAtop);
+			if (navIconColor != null && bar.NavigationIcon != null)
+				Xamarin.Platform.DrawableExtensions.SetColorFilter(bar.NavigationIcon, navIconColor, FilterMode.SrcAtop);
 
 			bar.Title = currentPage?.Title ?? string.Empty;
 
-			if (_toolbar.NavigationIcon != null && !textColor.IsDefault)
+			if (_toolbar.NavigationIcon != null && textColor != null)
 			{
 				var icon = _toolbar.NavigationIcon as DrawerArrowDrawable;
 				if (icon != null)

@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.Graphics;
 using Xamarin.Forms.Internals;
 using AView = Android.Views.View;
 
@@ -28,13 +29,13 @@ namespace Xamarin.Forms.Platform.Android
 			}
 		}
 
-		static void UpdateBackgroundColor(AView Control, VisualElement Element, Color? color = null)
+		static void UpdateBackgroundColor(AView Control, VisualElement Element, Color color = null)
 		{
 			if (Element == null || Control == null)
 				return;
 
 			var finalColor = color ?? Element.BackgroundColor;
-			if (finalColor.IsDefault)
+			if (finalColor == null)
 				Control.SetBackground(null);
 			else
 				Control.SetBackgroundColor(finalColor.ToAndroid());

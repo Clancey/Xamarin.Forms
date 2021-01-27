@@ -16,6 +16,8 @@ using WebKit;
 using Xamarin.Forms.Internals;
 using PreserveAttribute = Foundation.PreserveAttribute;
 using Uri = System.Uri;
+using Size = System.Graphics.Size;
+using Rectangle = System.Graphics.Rectangle;
 
 namespace Xamarin.Forms.Platform.iOS
 {

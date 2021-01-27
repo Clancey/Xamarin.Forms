@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using CoreGraphics;
 using UIKit;
 using static Xamarin.Forms.IndicatorView;

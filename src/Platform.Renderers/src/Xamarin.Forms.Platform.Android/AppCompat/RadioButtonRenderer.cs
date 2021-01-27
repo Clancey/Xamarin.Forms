@@ -11,6 +11,7 @@ using Xamarin.Forms.Internals;
 using Xamarin.Forms.Platform.Android.FastRenderers;
 using AColor = Android.Graphics.Color;
 using AView = Android.Views.View;
+using Size = System.Graphics.Size;
 
 namespace Xamarin.Forms.Platform.Android
 {

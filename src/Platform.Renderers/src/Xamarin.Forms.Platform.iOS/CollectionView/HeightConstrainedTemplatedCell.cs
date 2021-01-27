@@ -1,4 +1,5 @@
-﻿using CoreGraphics;
+﻿using System.Graphics;
+using CoreGraphics;
 using Foundation;
 
 namespace Xamarin.Forms.Platform.iOS

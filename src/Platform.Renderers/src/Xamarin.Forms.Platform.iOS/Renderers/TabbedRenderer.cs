@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Graphics;
 using System.Threading.Tasks;
 using UIKit;
 using Xamarin.Forms.Internals;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using Android.Content.Res;
 using Android.Graphics;
@@ -19,6 +20,7 @@ using AColor = Android.Graphics.Color;
 using ADrawableCompat = AndroidX.Core.Graphics.Drawable.DrawableCompat;
 using AView = Android.Views.View;
 using AWidget = Android.Widget;
+using Color = System.Graphics.Color;
 
 namespace Xamarin.Forms.Platform.Android.AppCompat
 {
@@ -46,8 +48,8 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 		int[] _checkedStateSet = null;
 		int[] _selectedStateSet = null;
 		int[] _emptyStateSet = null;
-		int _defaultARGBColor = Color.Transparent.ToArgb();
-		AColor _defaultAndroidColor = Color.Transparent.ToAndroid();
+		int _defaultARGBColor = Colors.Transparent.ToArgb();
+		AColor _defaultAndroidColor = Colors.Transparent.ToAndroid();
 		Platform _platform;
 
 		public TabbedPageRenderer(Context context) : base(context)
@@ -731,9 +733,9 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 			{
 				Color tintColor = Element.BarBackgroundColor;
 
-				if (tintColor.IsDefault)
+				if (tintColor == null)
 					_bottomNavigationView.SetBackground(null);
-				else if (!tintColor.IsDefault)
+				else
 					_bottomNavigationView.SetBackgroundColor(tintColor.ToAndroid());
 			}
 			else
@@ -742,7 +744,7 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 
 				if (Forms.IsLollipopOrNewer)
 				{
-					if (tintColor.IsDefault)
+					if (tintColor == null)
 						_tabLayout.BackgroundTintMode = null;
 					else
 					{
@@ -752,9 +754,9 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 				}
 				else
 				{
-					if (tintColor.IsDefault && _backgroundDrawable != null)
+					if (tintColor == null && _backgroundDrawable != null)
 						_tabLayout.SetBackground(_backgroundDrawable);
-					else if (!tintColor.IsDefault)
+					else if (tintColor != null)
 					{
 						// if you don't create a new drawable then SetBackgroundColor
 						// just sets the color on the background drawable that's saved
@@ -799,7 +801,7 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 			Color barTextColor = Element.BarTextColor;
 			Color barSelectedItemColor = BarSelectedItemColor;
 
-			if (barItemColor.IsDefault && barTextColor.IsDefault && barSelectedItemColor.IsDefault)
+			if (barItemColor == null && barTextColor == null && barSelectedItemColor == null)
 				return _originalTabTextColors;
 
 			if (_newTabTextColors != null)
@@ -808,7 +810,7 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 			int checkedColor;
 			int defaultColor;
 
-			if (!barTextColor.IsDefault)
+			if (barTextColor != null)
 			{
 				checkedColor = barTextColor.ToAndroid().ToArgb();
 				defaultColor = checkedColor;
@@ -817,12 +819,12 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 			{
 				defaultColor = barItemColor.ToAndroid().ToArgb();
 
-				if (barItemColor.IsDefault && _originalTabTextColors != null)
+				if (barItemColor == null && _originalTabTextColors != null)
 					defaultColor = _originalTabTextColors.DefaultColor;
 
 				checkedColor = defaultColor;
 
-				if (!barSelectedItemColor.IsDefault)
+				if (barSelectedItemColor != null)
 					checkedColor = barSelectedItemColor.ToAndroid().ToArgb();
 			}
 
@@ -841,13 +843,13 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 					_orignalTabIconColors = _bottomNavigationView.ItemIconTintList;
 			}
 			// this ensures that existing behavior doesn't change
-			else if (!IsBottomTabPlacement && BarSelectedItemColor.IsDefault && BarItemColor.IsDefault)
+			else if (!IsBottomTabPlacement && BarSelectedItemColor == null && BarItemColor == null)
 				return null;
 
 			Color barItemColor = BarItemColor;
 			Color barSelectedItemColor = BarSelectedItemColor;
 
-			if (barItemColor.IsDefault && barSelectedItemColor.IsDefault)
+			if (barItemColor == null && barSelectedItemColor == null)
 				return _orignalTabIconColors;
 
 			if (_newTabIconColors != null)
@@ -855,12 +857,12 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 
 			int defaultColor = barItemColor.ToAndroid().ToArgb();
 
-			if (barItemColor.IsDefault && _orignalTabIconColors != null)
+			if (barItemColor == null && _orignalTabIconColors != null)
 				defaultColor = _orignalTabIconColors.DefaultColor;
 
 			int checkedColor = defaultColor;
 
-			if (!barSelectedItemColor.IsDefault)
+			if (barSelectedItemColor != null)
 				checkedColor = barSelectedItemColor.ToAndroid().ToArgb();
 
 			_newTabIconColors = GetColorStateList(defaultColor, checkedColor);

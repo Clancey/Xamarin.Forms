@@ -9,6 +9,7 @@ using Android.Views;
 using Xamarin.Platform;
 using AColor = Android.Graphics.Color;
 using AProgressBar = Android.Widget.ProgressBar;
+using Color = System.Graphics.Color;
 
 namespace Xamarin.Forms.Platform.Android
 {
@@ -42,7 +43,7 @@ namespace Xamarin.Forms.Platform.Android
 
 		public void SetColor(Color color)
 		{
-			var progress = color.IsDefault ? DefaultColor : color.ToAndroid();
+			var progress = color?.ToAndroid() ?? DefaultColor;
 
 			if (Forms.IsLollipopOrNewer)
 			{
@@ -64,7 +65,7 @@ namespace Xamarin.Forms.Platform.Android
 					backgroundDrawable.UpdateBackground(brush, Height, Width);
 				else
 				{
-					_backgroudColor = color.IsDefault ? AColor.Transparent : color.ToAndroid();
+					_backgroudColor = color?.ToNative() ?? AColor.Transparent;
 					backgroundDrawable.SetColor(_backgroudColor);
 				}
 

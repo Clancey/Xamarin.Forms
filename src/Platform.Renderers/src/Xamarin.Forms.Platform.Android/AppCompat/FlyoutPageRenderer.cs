@@ -10,6 +10,7 @@ using AView = Android.Views.View;
 
 namespace Xamarin.Forms.Platform.Android
 {
+	using System.Graphics;
 	using Xamarin.Forms.Platform.Android.AppCompat;
 	using Xamarin.Forms.Platform.Android.FastRenderers;
 
@@ -414,7 +415,7 @@ namespace Xamarin.Forms.Platform.Android
 		void UpdateBackgroundColor(Page view)
 		{
 			Color backgroundColor = view.BackgroundColor;
-			if (backgroundColor.IsDefault)
+			if (backgroundColor == null)
 				SetBackgroundColor(backgroundColor.ToAndroid());
 		}
 
@@ -490,7 +491,7 @@ namespace Xamarin.Forms.Platform.Android
 				SetLockMode(isShowingSplit ? LockModeLockedOpen : LockModeUnlocked);
 				unchecked
 				{
-					SetScrimColor(isShowingSplit ? Color.Transparent.ToAndroid() : (int)DefaultScrimColor);
+					SetScrimColor(isShowingSplit ? Colors.Transparent.ToAndroid() : (int)DefaultScrimColor);
 				}
 			}
 		}

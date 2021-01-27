@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Graphics;
 
 namespace Xamarin.Forms.Platform.Android
 {

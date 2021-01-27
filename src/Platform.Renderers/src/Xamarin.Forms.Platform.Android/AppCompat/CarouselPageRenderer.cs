@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using Android.Views;
 using AndroidX.Fragment.App;

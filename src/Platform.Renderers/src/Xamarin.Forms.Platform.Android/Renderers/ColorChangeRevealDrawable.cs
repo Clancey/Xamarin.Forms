@@ -3,7 +3,7 @@ using Android.Animation;
 using Android.Graphics;
 using Android.Graphics.Drawables;
 using AColor = Android.Graphics.Color;
-
+using Point = System.Graphics.Point;
 namespace Xamarin.Forms.Platform.Android
 {
 	public class ColorChangeRevealDrawable : AnimationDrawable

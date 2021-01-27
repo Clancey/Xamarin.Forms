@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
@@ -188,7 +189,7 @@ namespace Xamarin.Forms.Platform.Android
 			};
 
 			var bar = new AView(parent.Context);
-			bar.SetBackgroundColor(Color.Black.MultiplyAlpha(0.14).ToAndroid());
+			bar.SetBackgroundColor(Colors.Black.MultiplyAlpha(0.14f).ToAndroid());
 			bar.LayoutParameters = new LP(LP.MatchParent, (int)parent.Context.ToPixels(1));
 			linearLayout.AddView(bar);
 

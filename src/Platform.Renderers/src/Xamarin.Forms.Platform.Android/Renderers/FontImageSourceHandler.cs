@@ -1,9 +1,11 @@
 ﻿using System.Collections.Concurrent;
+using System.Graphics;
 using System.Threading;
 using System.Threading.Tasks;
 using Android.Content;
 using Android.Graphics;
 using Android.Util;
+using APaint = Android.Graphics.Paint;
 
 namespace Xamarin.Forms.Platform.Android
 {
@@ -18,11 +20,11 @@ namespace Xamarin.Forms.Platform.Android
 			var fontsource = imagesource as FontImageSource;
 			if (fontsource != null)
 			{
-				using var paint = new Paint
+				using var paint = new APaint
 				{
 					TextSize = TypedValue.ApplyDimension(ComplexUnitType.Dip, (float)fontsource.Size, context.Resources.DisplayMetrics),
-					Color = (fontsource.Color ?? Color.White).ToAndroid(),
-					TextAlign = Paint.Align.Left,
+					Color = (fontsource.Color ?? Colors.White).ToAndroid(),
+					TextAlign = APaint.Align.Left,
 					AntiAlias = true,
 				};
 

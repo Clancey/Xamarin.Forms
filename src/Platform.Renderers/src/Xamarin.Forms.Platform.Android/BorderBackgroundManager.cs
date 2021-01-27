@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content.Res;
 using Android.Graphics.Drawables;
 using AColor = Android.Graphics.Color;
@@ -116,7 +117,7 @@ namespace Xamarin.Forms.Platform.Android
 				float shadowRadius = 0;
 				float shadowDy = 0;
 				float shadowDx = 0;
-				AColor shadowColor = Color.Transparent.ToAndroid();
+				AColor shadowColor = Colors.Transparent.ToAndroid();
 				// Add Android's default material shadow if we want it
 				if (useDefaultShadow)
 				{

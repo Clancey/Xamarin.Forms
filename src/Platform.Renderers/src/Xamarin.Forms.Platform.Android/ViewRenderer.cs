@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.Graphics;
 using Android.Content;
 using Android.Views;
 using Xamarin.Forms.Platform.Android.FastRenderers;

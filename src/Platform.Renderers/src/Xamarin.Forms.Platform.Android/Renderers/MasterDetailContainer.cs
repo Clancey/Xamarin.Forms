@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Graphics;
 using Android.Content;
 using Android.Content.Res;
 using Android.Runtime;

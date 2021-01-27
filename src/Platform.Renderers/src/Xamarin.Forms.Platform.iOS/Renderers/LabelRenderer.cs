@@ -6,6 +6,7 @@ using Foundation;
 using System.Collections.Generic;
 using CoreGraphics;
 using System.Diagnostics;
+using System.Graphics;
 
 #if __MOBILE__
 using UIKit;

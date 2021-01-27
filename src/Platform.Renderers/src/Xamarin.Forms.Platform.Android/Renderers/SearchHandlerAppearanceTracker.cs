@@ -15,6 +15,8 @@ using Xamarin.Forms.Internals;
 using Xamarin.Platform;
 using AImageButton = Android.Widget.ImageButton;
 using AView = Android.Views.View;
+using Xamarin.Forms.Internals;
+using Color = System.Graphics.Color;
 
 namespace Xamarin.Forms.Platform.Android
 {
@@ -184,7 +186,7 @@ namespace Xamarin.Forms.Platform.Android
 			var image = _control.FindViewWithTag(tagName) as AImageButton;
 			if (image != null && image.Drawable != null)
 			{
-				if (!toColor.IsDefault)
+				if (toColor != null)
 					image.Drawable.SetColorFilter(toColor, FilterMode.SrcIn);
 				else
 					image.Drawable.ClearColorFilter();

@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.Graphics;
 using System.Threading.Tasks;
 using Android.Animation;
 using Android.Content;
@@ -9,6 +10,8 @@ using Android.Widget;
 using AndroidX.Core.Widget;
 using Xamarin.Forms.Internals;
 using AView = Android.Views.View;
+using Color = System.Graphics.Color;
+using Point = System.Graphics.Point;
 
 namespace Xamarin.Forms.Platform.Android
 {
@@ -474,7 +477,7 @@ namespace Xamarin.Forms.Platform.Android
 
 		void UpdateBackgroundColor()
 		{
-			SetBackgroundColor(Element.BackgroundColor.ToAndroid(Color.Transparent));
+			SetBackgroundColor(Element.BackgroundColor.ToAndroid(Colors.Transparent));
 		}
 
 		void UpdateBackground()
