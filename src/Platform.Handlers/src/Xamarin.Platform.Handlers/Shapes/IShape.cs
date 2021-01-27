@@ -5,6 +5,6 @@ namespace Xamarin.Platform.Shapes
 {
 	public interface IShape
 	{
-		PathF PathForBounds(RectangleF rect);
+		PathF PathForBounds(Rectangle rect);
 	}
 }
