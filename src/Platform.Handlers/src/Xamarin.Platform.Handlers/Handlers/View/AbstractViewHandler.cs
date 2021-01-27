@@ -40,7 +40,7 @@ namespace Xamarin.Platform.Handlers
 
 		protected TVirtualView? VirtualView { get; private set; }
 
-		public NativeView? View => TypedNativeView;
+		public NativeView? View => HasContainer ? ContainerView as NativeView : TypedNativeView;
 
 		public object? NativeView => TypedNativeView;
 
@@ -118,6 +118,9 @@ namespace Xamarin.Platform.Handlers
 			=> _mapper?.UpdateProperty(this, VirtualView, property);
 
 		protected virtual void SetupDefaults(TNativeView nativeView) { }
+
+
+		public ContainerView? ContainerView { get; private set; }
 
 		public bool HasContainer
 		{
