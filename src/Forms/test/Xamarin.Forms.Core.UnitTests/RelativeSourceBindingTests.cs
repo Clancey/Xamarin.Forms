@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Graphics;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using NUnit.Framework;
@@ -45,15 +46,15 @@ namespace Xamarin.Forms.Core.UnitTests
 
 			StackLayout stack0 = new StackLayout
 			{
-				BackgroundColor = Color.Red
+				BackgroundColor = Colors.Red
 			};
 			StackLayout stack1 = new StackLayout
 			{
-				BackgroundColor = Color.Green
+				BackgroundColor = Colors.Green
 			};
 			StackLayout stack2 = new StackLayout
 			{
-				BackgroundColor = Color.Blue
+				BackgroundColor = Colors.Blue
 			};
 
 			Label label0 = new Label();

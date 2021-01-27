@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Graphics;
 using NSubstitute;
 using NUnit.Framework;
 using Xamarin.Forms;

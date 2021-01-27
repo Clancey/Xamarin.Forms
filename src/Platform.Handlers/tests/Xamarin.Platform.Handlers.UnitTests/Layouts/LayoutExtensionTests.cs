@@ -3,6 +3,7 @@ using Xamarin.Platform.Handlers.Tests;
 using NSubstitute;
 using Xamarin.Forms;
 using Xamarin.Platform.Layouts;
+using System.Graphics;
 
 namespace Xamarin.Platform.Handlers.UnitTests.Layouts
 {

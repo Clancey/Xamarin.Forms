@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Graphics;
 using System.Linq;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
@@ -24,10 +25,10 @@ namespace Xamarin.Forms.Core.XamlC
 				if (value.StartsWith("#", StringComparison.Ordinal))
 				{
 					var color = Color.FromHex(value);
-					yield return Instruction.Create(OpCodes.Ldc_R8, color.R);
-					yield return Instruction.Create(OpCodes.Ldc_R8, color.G);
-					yield return Instruction.Create(OpCodes.Ldc_R8, color.B);
-					yield return Instruction.Create(OpCodes.Ldc_R8, color.A);
+					yield return Instruction.Create(OpCodes.Ldc_R8, color.Red);
+					yield return Instruction.Create(OpCodes.Ldc_R8, color.Green);
+					yield return Instruction.Create(OpCodes.Ldc_R8, color.Blue);
+					yield return Instruction.Create(OpCodes.Ldc_R8, color.Alpha);
 
 					yield return Instruction.Create(OpCodes.Newobj, module.ImportCtorReference(("Xamarin.Platform", "Xamarin.Forms", "Color"), parameterTypes: new[] {
 						("mscorlib", "System", "Double"),

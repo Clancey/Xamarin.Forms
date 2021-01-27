@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Graphics;
 using NUnit.Framework;
 using Xamarin.Forms.Shapes;
+using Rectangle = System.Graphics.Rectangle;
 
 namespace Xamarin.Forms.Core.UnitTests
 {
@@ -87,7 +89,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void TestRectangleGeometryConstruction()
 		{
-			var rectangleGeometry = new RectangleGeometry(new Rect(0, 0, 150, 150));
+			var rectangleGeometry = new RectangleGeometry(new Rectangle(0, 0, 150, 150));
 
 			Assert.IsNotNull(rectangleGeometry);
 			Assert.AreEqual(150, rectangleGeometry.Rect.Height);
@@ -97,7 +99,7 @@ namespace Xamarin.Forms.Core.UnitTests
 		[Test]
 		public void TestRoundRectangleGeometryConstruction()
 		{
-			var roundRectangleGeometry = new RoundRectangleGeometry(new CornerRadius(12, 0, 0, 12), new Rect(0, 0, 150, 150));
+			var roundRectangleGeometry = new RoundRectangleGeometry(new CornerRadius(12, 0, 0, 12), new Rectangle(0, 0, 150, 150));
 
 			Assert.IsNotNull(roundRectangleGeometry);
 			Assert.AreEqual(12, roundRectangleGeometry.CornerRadius.TopLeft);
