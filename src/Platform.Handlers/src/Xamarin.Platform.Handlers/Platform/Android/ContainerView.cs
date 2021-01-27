@@ -47,7 +47,7 @@ namespace Xamarin.Platform
 
 
 		APath? currentPath;
-		SizeF lastPathSize;
+		Size lastPathSize;
 #pragma warning disable CS8765 // Nullability of type of parameter doesn't match overridden member (possibly because of nullability attributes).
 		protected override void DispatchDraw(Canvas canvas)
 #pragma warning restore CS8765 // Nullability of type of parameter doesn't match overridden member (possibly because of nullability attributes).

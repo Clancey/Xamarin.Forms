@@ -66,7 +66,7 @@ namespace Xamarin.Platform
 
 		partial void ClipShapeChanged()
 		{
-			lastMaskSize = SizeF.Zero;
+			lastMaskSize = Size.Zero;
 			if (Frame == CGRect.Empty)
 				return;
 		}
@@ -76,7 +76,7 @@ namespace Xamarin.Platform
 			SetClipShape();
 		}
 
-		SizeF lastMaskSize = SizeF.Zero;
+		Size lastMaskSize = Size.Zero;
 		void SetClipShape()
 		{
 			var mask = Mask;
