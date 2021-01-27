@@ -84,7 +84,7 @@ namespace Xamarin.Platform
 				return;
 			mask ??= Mask = new CAShapeLayer();
 			var frame = Frame;
-			var bounds = new RectangleF(0, 0, (float)frame.Width, (float)frame.Height);
+			var bounds = new Rectangle(0, 0, frame.Width, frame.Height);
 			if (bounds.Size == lastMaskSize)
 				return;
 			lastMaskSize = bounds.Size;

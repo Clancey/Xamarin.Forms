@@ -54,7 +54,7 @@ namespace Xamarin.Platform
 		{
 			if (ClipShape != null)
 			{
-				var bounds = new RectangleF(0, 0, canvas.Width, canvas.Height);
+				var bounds = new Rectangle(0, 0, canvas.Width, canvas.Height);
 				if (lastPathSize != bounds.Size || currentPath == null)
 				{
 					var path = ClipShape.PathForBounds(bounds);
