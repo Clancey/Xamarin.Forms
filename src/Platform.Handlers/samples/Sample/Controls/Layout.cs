@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Graphics;
 using Xamarin.Forms;
 using Xamarin.Platform;
 using Xamarin.Platform.Handlers;
