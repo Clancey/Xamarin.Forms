@@ -28,7 +28,6 @@ using Fragment = AndroidX.Fragment.App.Fragment;
 using FragmentManager = AndroidX.Fragment.App.FragmentManager;
 using FragmentTransaction = AndroidX.Fragment.App.FragmentTransaction;
 using Object = Java.Lang.Object;
-using Xamarin.Platform;
 using System.Graphics;
 using Color = System.Graphics.Color;
 

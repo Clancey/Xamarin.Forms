@@ -15,7 +15,6 @@ using Xamarin.Forms.Internals;
 using Xamarin.Platform;
 using AImageButton = Android.Widget.ImageButton;
 using AView = Android.Views.View;
-using Xamarin.Forms.Internals;
 using Color = System.Graphics.Color;
 
 namespace Xamarin.Forms.Platform.Android
