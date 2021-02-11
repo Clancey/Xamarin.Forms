@@ -17,7 +17,6 @@ namespace Sample
 				return;
 
 			HasInit = true;
-
 			//RegistrarHandlers.Handlers.Register<Layout, LayoutHandler>();
 
 			RegistrarHandlers.Handlers.Register<Button, ButtonHandler>();

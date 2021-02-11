@@ -7,11 +7,13 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms.Internals;
 using Xamarin.Platform;
+using Xamarin.Platform.Core;
+using Xamarin.Platform.HotReload;
 using Xamarin.Platform.Layouts;
 
 namespace Xamarin.Forms
 {
-	public class View : VisualElement, IView, IViewController, IGestureController, IGestureRecognizers, IPropertyMapperView
+	public class View : VisualElement, IView, IViewController, IGestureController, IGestureRecognizers, IPropertyMapperView, IHotReloadableView
 	{
 		protected internal IGestureController GestureController => this;
 
@@ -78,6 +80,7 @@ namespace Xamarin.Forms
 
 		protected internal View()
 		{
+			HotReloadHelper.AddActiveView(this);
 			_gestureRecognizers.CollectionChanged += (sender, args) =>
 			{
 				void AddItems()
@@ -250,9 +253,32 @@ namespace Xamarin.Forms
 		protected PropertyMapper<T> GetRendererOverides<T>() where T : IView => (PropertyMapper<T>)(propertyMapper as PropertyMapper<T> ?? (propertyMapper = new PropertyMapper<T>()));
 		PropertyMapper IPropertyMapperView.GetPropertyMapperOverrides() => propertyMapper;
 
+
 		double IFrameworkElement.Width { get => WidthRequest; }
 		double IFrameworkElement.Height { get => HeightRequest; }
 
+		#endregion
+
+
+		#region HotReload
+
+		IView IReplaceableView.ReplacedView => HotReloadHelper.GetReplacedView(this) ?? this;
+
+		void IHotReloadableView.TransferState(IView newView)
+		{
+			//TODO: LEt you hot reload the the ViewModel
+			if (newView is View v)
+				v.BindingContext = BindingContext;
+		}
+
+		void IHotReloadableView.Reload()
+		{
+			Device.BeginInvokeOnMainThread(() =>
+			{
+				Handler = null;
+				InvalidateMeasure();
+			});
+		}
 		#endregion
 	}
 }

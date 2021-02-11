@@ -1,7 +1,9 @@
-﻿using System.Graphics;
+﻿using System;
+using System.Graphics;
 using Xamarin.Forms;
 using Xamarin.Platform;
 using Xamarin.Platform.Core;
+using Xamarin.Platform.HotReload;
 
 namespace Sample
 {
@@ -10,6 +12,7 @@ namespace Sample
 		public MyApp()
 		{
 			Platform.Init();
+			SetupHotReload();
 		}
 
 		public IView CreateView()
@@ -39,6 +42,22 @@ namespace Sample
 			verticalStack.Add(new Slider());
 
 			return verticalStack;
+		}
+
+		async void SetupHotReload()
+		{
+#if DEBUG
+			try
+			{
+				Reloadify.Reload.Instance.ReplaceType = (d) => HotReloadHelper.RegisterReplacedView(d.ClassName, d.Type);
+				Reloadify.Reload.Instance.FinishedReload = () => HotReloadHelper.TriggerReload();
+				await Reloadify.Reload.Init(null, Esp.Resources.Constants.DEFAULT_PORT);
+			}
+			catch(Exception ex)
+			{
+				Console.WriteLine(ex);
+			}
+#endif
 		}
 	}
 }

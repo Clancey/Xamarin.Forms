@@ -68,7 +68,9 @@ namespace Sample
 		{
 			if (child == null)
 				return;
-
+			child.Parent = this;
+			if(child is Xamarin.Forms.View v)
+				v.Parent = this as Element;
 			_children.Add(child);
 
 			InvalidateMeasure();

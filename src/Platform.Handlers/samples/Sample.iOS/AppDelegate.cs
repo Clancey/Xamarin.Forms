@@ -23,6 +23,8 @@ namespace Sample.iOS
 
 		public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
 		{
+
+			Xamarin.Forms.Forms.Init();
 			_window = new UIWindow();
 			var app = new MyApp();
 

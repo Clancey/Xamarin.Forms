@@ -8,6 +8,7 @@ namespace Xamarin.Platform.HotReload
 {
 	public static class HotReloadHelper
 	{
+		public static void AddActiveView(IHotReloadableView view) => ActiveViews.Add(view);
 		public static void Reset()
 		{
 			replacedViews.Clear();
@@ -48,6 +49,7 @@ namespace Xamarin.Platform.HotReload
 			currentViews.TryGetValue(view, out var parameters);
 			try
 			{
+				//TODO: Add in a way to use IoC and DI
 				var newView = (IView)(parameters?.Length > 0 ? Activator.CreateInstance(newViewType, args: parameters) : Activator.CreateInstance(newViewType));
 				TransferState(view, newView);
 				return newView;

@@ -34,8 +34,10 @@ namespace Xamarin.Platform.Handlers
 
 		public static void MapMinimum(SliderHandler handler, ISlider slider)
 		{
+		
 			ViewHandler.CheckParameters(handler, slider);
-
+			//if (handler.TypedNativeView != null)
+			//	handler.TypedNativeView.BackgroundColor = UIColor.Green;
 			handler.TypedNativeView?.UpdateMinimum(slider);
 		}
 
