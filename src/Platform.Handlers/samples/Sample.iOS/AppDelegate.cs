@@ -30,11 +30,7 @@ namespace Sample.iOS
 
 			IView content = app.CreateView();
 
-			_window.RootViewController = new UIViewController
-			{
-				View = content.ToNative()
-			};
-
+			_window.RootViewController = content.ToUIViewController();
 			_window.MakeKeyAndVisible();
 
 			// In 5 seconds, add and remove some controls so we can see that working

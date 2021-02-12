@@ -194,7 +194,18 @@ namespace Xamarin.Forms
 			(Handler)?.UpdateValue(propertyName);
 		}
 
-		IFrameworkElement IFrameworkElement.Parent => Parent as IView;
+		//TODO: Remove the MauiParent...
+		IFrameworkElement _mauiParent;
+		public IFrameworkElement MauiParent {
+			get => _mauiParent ?? Parent as IView;
+			set
+			{
+				_mauiParent = value;
+				if (value is Element e)
+					Parent = e;
+			}
+		}
+		IFrameworkElement IFrameworkElement.Parent => MauiParent;
 
 		public Size DesiredSize { get; protected set; }
 
@@ -264,6 +275,8 @@ namespace Xamarin.Forms
 
 		IView IReplaceableView.ReplacedView => HotReloadHelper.GetReplacedView(this) ?? this;
 
+		IReloadHandler IHotReloadableView.ReloadHandler { get; set; }
+
 		void IHotReloadableView.TransferState(IView newView)
 		{
 			//TODO: LEt you hot reload the the ViewModel
@@ -275,8 +288,10 @@ namespace Xamarin.Forms
 		{
 			Device.BeginInvokeOnMainThread(() =>
 			{
-				Handler = null;
-				InvalidateMeasure();
+				var replacedView = HotReloadHelper.GetReplacedView(this);
+				if (replacedView == null || replacedView == this)
+					return;
+				replacedView.Handler = Handler;
 			});
 		}
 		#endregion

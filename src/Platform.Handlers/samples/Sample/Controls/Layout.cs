@@ -68,9 +68,9 @@ namespace Sample
 		{
 			if (child == null)
 				return;
-			child.Parent = this;
+			//TODO: Remove this hack...
 			if(child is Xamarin.Forms.View v)
-				v.Parent = this as Element;
+				v.MauiParent = this;
 			_children.Add(child);
 
 			InvalidateMeasure();
