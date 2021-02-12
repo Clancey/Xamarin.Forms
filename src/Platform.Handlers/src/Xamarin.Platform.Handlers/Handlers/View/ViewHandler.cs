@@ -55,7 +55,7 @@ namespace Xamarin.Platform.Handlers
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void CheckParameters(IViewHandler handler, IView view)
+		public static void CheckParameters(IViewHandler handler, IView view)
 		{
 			_ = handler ?? throw new ArgumentNullException(nameof(handler));
 			_ = view ?? throw new ArgumentNullException(nameof(view));
