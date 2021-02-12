@@ -34,12 +34,14 @@ namespace Sample
 					ReloadHandler.Reload();
 					return;
 				}
-//				var handler = Handler;
-//				Handler = null;
-//				var replacedView = HotReloadHelper.GetReplacedView(this) ?? this;
-//#if __IOS__
-//				var native = replacedView.ToNative();
-//#endif
+
+				//TODO: if reload handler is null, Do a manual reload?
+				//				var handler = Handler;
+				//				Handler = null;
+				//				var replacedView = HotReloadHelper.GetReplacedView(this) ?? this;
+				//#if __IOS__
+				//				var native = replacedView.ToNative();
+				//#endif
 			});
 		}
 	}

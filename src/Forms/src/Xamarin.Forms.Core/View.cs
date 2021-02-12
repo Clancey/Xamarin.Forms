@@ -288,10 +288,11 @@ namespace Xamarin.Forms
 		{
 			Device.BeginInvokeOnMainThread(() =>
 			{
-				var replacedView = HotReloadHelper.GetReplacedView(this);
-				if (replacedView == null || replacedView == this)
-					return;
-				replacedView.Handler = Handler;
+				this.CheckHandlers();
+				//Handler = null;
+				var reloadHandler = ((IHotReloadableView)this).ReloadHandler;
+				reloadHandler?.Reload();
+				//TODO: if reload handler is null, Do a manual reload?
 			});
 		}
 		#endregion
