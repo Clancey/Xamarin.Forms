@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 #if __IOS__
 using NativeView = UIKit.UIView;
@@ -35,6 +36,9 @@ namespace Xamarin.Platform.Handlers
 
 			TypedNativeView.CrossPlatformMeasure = VirtualView.Measure;
 			TypedNativeView.CrossPlatformArrange = VirtualView.Arrange;
+
+			var oldChildren = TypedNativeView.Subviews.ToList();
+			oldChildren.ForEach(x => x.RemoveFromSuperview());
 
 			foreach (var child in VirtualView.Children)
 			{
